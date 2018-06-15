@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Link /> renders <a /> when page is an error 1`] = `
+<Link
+  href="/"
+  isExternal={false}
+  prefetch={false}
+  router={
+    Object {
+      "components": Object {},
+    }
+  }
+>
+  Link
+</Link>
+`;
+
+exports[`<Link /> renders next.js <Link /> when page is ok 1`] = `
+<Link
+  href="/"
+  isExternal={false}
+  prefetch={false}
+  router={
+    Object {
+      "components": Object {
+        "test": "test",
+      },
+    }
+  }
+>
+  Link
+</Link>
+`;

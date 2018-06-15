@@ -1,0 +1,8 @@
+{
+  "/appearances/find": "/appearances",
+  "/appearances/:slug": "/appearance",
+  "/news/find": "/news",
+  "/news/:slug": "/newsArticle",
+  "/releases/find": "/releases",
+  "/releases/:slug": "/release"
+}

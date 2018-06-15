@@ -1,0 +1,17 @@
+.ReleaseListings {
+  margin-bottom: $spacing;
+  padding: $spacing;
+  background: $panel-color;
+
+  h2 {
+    @include line-before-after();
+
+    margin-top: 0;
+  }
+
+  &-items {
+    display: flex;
+    flex-flow: row wrap;
+    margin: (-($spacing / 2));
+  }
+}

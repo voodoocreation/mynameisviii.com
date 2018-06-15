@@ -1,0 +1,29 @@
+.PageHeader {
+  @include flag-left();
+
+  display: flex;
+  align-items: center;
+  margin: 0 (0 - $spacing) $spacing 0;
+  padding-top: $spacing / 2;
+  padding-right: $spacing;
+  padding-bottom: $spacing / 2;
+  background: $panel-color;
+  overflow: hidden;
+
+  &::before {
+    @include bg-light();
+    @include logo-symbol();
+
+    display: inline-block;
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    content: "";
+    margin-right: ($spacing / 2);
+  }
+
+  h1 {
+    display: inline-block;
+    margin: 0;
+  }
+}

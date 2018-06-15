@@ -1,0 +1,99 @@
+import Head from "next/head";
+import * as React from "react";
+import { InjectedIntl } from "react-intl";
+import { connect } from "react-redux";
+import { bindActionCreators, Dispatch } from "redux";
+import { ActionCreator } from "typescript-fsa";
+
+import injectIntl from "../../../helpers/injectIntl";
+import ConnectedErrorPage from "../../containers/ConnectedErrorPage/ConnectedErrorPage";
+import Release from "../../presentation/Release/Release";
+
+import * as actions from "../../../actions/root.actions";
+import * as selectors from "../../../selectors/root.selectors";
+
+interface IStoreProps {
+  release?: IRelease;
+}
+
+interface IDispatchProps {
+  fetchReleaseBySlug: ActionCreator<PLFetchReleaseBySlugStarted>;
+  trackEvent: ActionCreator<PLTrackEvent>;
+}
+
+interface IProps extends IStoreProps, IDispatchProps {
+  intl: InjectedIntl;
+}
+
+class ReleaseRoute extends React.Component<IProps> {
+  public static async getInitialProps(props: any) {
+    const { query, store } = props.ctx;
+
+    store.dispatch(actions.setCurrentReleaseSlug(query.slug));
+
+    const state = store.getState();
+
+    if (!selectors.getCurrentRelease(state)) {
+      store.dispatch(actions.fetchReleaseBySlug.started(query.slug));
+    }
+  }
+
+  public render() {
+    const { release } = this.props;
+    const { formatMessage } = this.props.intl;
+
+    if (!release) {
+      return <ConnectedErrorPage />;
+    }
+
+    return (
+      <React.Fragment>
+        <Head>
+          <title>
+            {release.title}
+            {" · "}
+            {formatMessage({ id: "BRAND_NAME" })}
+          </title>
+
+          <meta content={release.description} name="description" />
+
+          <meta name="og:image" content={release.images[0].imageUrl} />
+          <meta name="og:image:width" content="1000" />
+          <meta name="og:image:height" content="1000" />
+        </Head>
+
+        <Release
+          {...release}
+          onCarouselSlideChange={this.onCarouselSlideChange}
+        />
+      </React.Fragment>
+    );
+  }
+
+  private onCarouselSlideChange = (index: number) => {
+    this.props.trackEvent({
+      event: "release.carousel.slideChange",
+      index
+    });
+  };
+}
+
+const mapStateToProps = (state: any) => ({
+  release: selectors.getCurrentRelease(state)
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) =>
+  bindActionCreators(
+    {
+      fetchReleaseBySlug: actions.fetchReleaseBySlug.started,
+      trackEvent: actions.trackEvent
+    },
+    dispatch
+  );
+
+export default injectIntl(
+  connect<IStoreProps, IDispatchProps>(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ReleaseRoute)
+);

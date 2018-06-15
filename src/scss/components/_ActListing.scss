@@ -1,0 +1,48 @@
+.ActListing {
+  padding: ($spacing / 2);
+
+  h3 {
+    margin: 0 0 ($spacing / 2);
+  }
+
+  a {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  img {
+    border-radius: 100%;
+    overflow: hidden;
+  }
+
+  &-details {
+    display: flex;
+    flex-flow: row wrap;
+    flex-basis: 85%;
+    align-content: center;
+    padding-left: ($spacing / 2);
+
+    > * {
+      flex-basis: 100%;
+    }
+  }
+
+  .Meta {
+    display: flex;
+  }
+
+  &-image {
+    flex-basis: 15%;
+  }
+
+  @include screen-above($screen-md-min) {
+    &-details {
+      flex-basis: 70%;
+    }
+
+    &-image {
+      flex-basis: 30%;
+    }
+  }
+}

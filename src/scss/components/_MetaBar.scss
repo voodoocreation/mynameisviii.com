@@ -1,0 +1,24 @@
+.MetaBar {
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 1.5;
+  margin-bottom: $spacing;
+  padding: ($spacing / 2);
+  background: $panel-color;
+
+  > * {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 ($spacing / 2);
+
+    > span {
+      padding-left: ($spacing / 3);
+    }
+  }
+}
+
+.Meta-label {
+  @include hide-visually();
+}
+

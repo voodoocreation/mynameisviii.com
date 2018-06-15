@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Brand /> renders correctly 1`] = `
+<a
+  class="Brand"
+  href="/"
+>
+  <span>
+    My name is Viii: a painter of frequencies and thoughts
+  </span>
+  <svg />
+  <svg />
+</a>
+`;

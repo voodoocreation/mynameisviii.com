@@ -1,0 +1,219 @@
+{
+  "Items": [
+    {
+      "StreamList": [],
+      "Artist": "Viii",
+      "IsActive": "y",
+      "ProductionType": "studio",
+      "Description":
+        "<p>Lovedecay is the debut single from the EP <em>Heart</em>.</p><p>It also includes the B-side <em>Lovesong</em>, originally performed by The Cure.</p>",
+      "Type": "single",
+      "Tracklist": [
+        {
+          "Length": "4:13",
+          "Title": "lovedecay",
+          "Genre": "Goth/Electronic"
+        },
+        {
+          "Length": "3:21",
+          "Title": "lovesong",
+          "Genre": "Goth/Electronic"
+        }
+      ],
+      "Genre": "Goth/Electronic",
+      "RecordLabel": "Voodoo Creation Records",
+      "Title": "lovedecay / lovesong",
+      "BuyList": [],
+      "ReleasedOn": "2017-03-24",
+      "Slug": "lovedecay-lovesong",
+      "Images": [
+        {
+          "Title": "Front cover",
+          "ImageUrl":
+            "https://s3.amazonaws.com/mynameisviii-static/releases/lovedecay-lovesong.jpg"
+        }
+      ],
+      "Length": "7:31"
+    },
+    {
+      "StreamList": [
+        {
+          "Platform": "spotify",
+          "Url":
+            "https://open.spotify.com/album/6JFOKOrhbViajSzhJCaBBr?si=WrUJCrbaTVi01_SLylHYkw"
+        },
+        {
+          "Platform": "apple",
+          "Url":
+            "https://itunes.apple.com/album/heavens-to-elizabeth-single/1239637766?app=music"
+        },
+        {
+          "Platform": "tidal",
+          "Url": "https://tidal.com/album/74291455"
+        },
+        {
+          "Platform": "soundcloud",
+          "Url": "https://soundcloud.com/iamviii/sets/heavens-to-elizabeth"
+        }
+      ],
+      "Artist": "Viii",
+      "IsActive": "y",
+      "ProductionType": "studio",
+      "Description":
+        "<p>Heavens to Elizabeth is a special single release for New Zealand Music Month 2017 and is a cover of a song originally performed by New Zealand band, <em>Hanging Tree</em>, which was Viii's dad's band during the '80s and '90s.</p>",
+      "Type": "single",
+      "Tracklist": [
+        {
+          "Length": "3:43",
+          "Title": "Heavens to Elizabeth",
+          "Genre": "Goth/Rock"
+        },
+        {
+          "Length": "3:43",
+          "Title": "Heavens to Elizabeth (instrumental)",
+          "Genre": "Goth/Rock"
+        },
+        {
+          "Length": "3:43",
+          "Title": "Heavens to Elizabeth (acapella)",
+          "Genre": "Goth/Rock"
+        }
+      ],
+      "Genre": "Goth/Rock",
+      "RecordLabel": "Voodoo Creation Records",
+      "Title": "Heavens to Elizabeth",
+      "BuyList": [
+        {
+          "Platform": "itunes",
+          "Url":
+            "https://itunes.apple.com/album/heavens-to-elizabeth-single/1239637766?app=itunes"
+        },
+        {
+          "Platform": "amazon",
+          "Url": "http://a.co/4JzSHqE"
+        },
+        {
+          "Platform": "google",
+          "Url":
+            "https://play.google.com/store/music/album/Viii_Heavens_to_Elizabeth?id=Bb3w2adswh3kleagc3j4b2jm5ai"
+        }
+      ],
+      "ReleasedOn": "2017-05-16",
+      "Slug": "heavens-to-elizabeth",
+      "Images": [
+        {
+          "ImageUrl":
+            "https://s3.amazonaws.com/mynameisviii-static/releases/heavens-to-elizabeth.jpg",
+          "Title": "Front cover"
+        }
+      ],
+      "Length": "11:09"
+    },
+    {
+      "StreamList": [],
+      "Artist": "Viii",
+      "IsActive": "y",
+      "ProductionType": "studio",
+      "Description":
+        "<p>Witchlust is the second single from the EP \n<em>Heart</em>.</p><p>It also includes the \nB-side <em>Rev 22:20</em>, originally performed by Puscifer.</p>",
+      "Type": "single",
+      "Tracklist": [
+        {
+          "Length": "4:20",
+          "Title": "witchlust",
+          "Genre": "Goth/Electronic"
+        },
+        {
+          "Length": "4:34",
+          "Title": "rev 22:20",
+          "Genre": "Goth/Rock"
+        }
+      ],
+      "Genre": "Goth/Electronic",
+      "RecordLabel": "Voodoo Creation Records",
+      "Title": "witchlust / rev 22:20",
+      "BuyList": [],
+      "ReleasedOn": "2017-06-02",
+      "Slug": "witchlust-rev-22-20",
+      "Images": [
+        {
+          "Title": "Front cover",
+          "ImageUrl":
+            "https://s3.amazonaws.com/mynameisviii-static/releases/witchlust-rev-22-20.jpg"
+        }
+      ],
+      "Length": "8:54"
+    },
+    {
+      "StreamList": [
+        {
+          "Platform": "spotify",
+          "Url":
+            "https://open.spotify.com/album/1MTER9T2ct9xbVlrA0ulXb?si=w_fVj3OCSsWN37WVX63Zcw"
+        },
+        {
+          "Platform": "apple",
+          "Url":
+            "https://itunes.apple.com/album/threadfear-ask-me-to-stay-single/1293959453?app=music"
+        },
+        {
+          "Platform": "tidal",
+          "Url": "https://tidal.com/album/79697993"
+        },
+        {
+          "Platform": "soundcloud",
+          "Url": "https://soundcloud.com/iamviii/sets/threadfear-ask-me-to-stay"
+        }
+      ],
+      "Artist": "Viii",
+      "IsActive": "y",
+      "ProductionType": "studio",
+      "Description":
+        "<p>Threadfear is the third single from the EP <em>Heart</em>.</p><p>It also includes the B-side <em>Ask Me To Stay</em>, originally performed by Etta Bond × Raf Riley.</p>",
+      "Type": "single",
+      "Tracklist": [
+        {
+          "Length": "4:28",
+          "Title": "threadfear",
+          "Genre": "Goth/Rock"
+        },
+        {
+          "Length": "5:13",
+          "Title": "ask me to stay",
+          "Genre": "Goth/Rock"
+        }
+      ],
+      "Genre": "Goth/Rock",
+      "RecordLabel": "Voodoo Creation Records",
+      "Title": "threadfear / ask me to stay",
+      "BuyList": [
+        {
+          "Platform": "itunes",
+          "Url":
+            "https://itunes.apple.com/album/threadfear-ask-me-to-stay-single/1293959453?app=itunes"
+        },
+        {
+          "Platform": "amazon",
+          "Url": "http://a.co/5bjMXTF"
+        },
+        {
+          "Platform": "google",
+          "Url":
+            "https://play.google.com/store/music/album/Viii_Threadfear_Ask_Me_to_Stay?id=Ba32b4bey2go76nmrjgw5u7ihna"
+        }
+      ],
+      "ReleasedOn": "2017-11-03",
+      "Slug": "threadfear-ask-me-to-stay",
+      "Images": [
+        {
+          "ImageUrl":
+            "https://s3.amazonaws.com/mynameisviii-static/releases/threadfear-ask-me-to-stay.jpg",
+          "Title": "Front cover"
+        }
+      ],
+      "Length": "9:41"
+    }
+  ],
+  "Count": 4,
+  "ScannedCount": 4
+}

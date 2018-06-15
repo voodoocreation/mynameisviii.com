@@ -1,0 +1,150 @@
+@mixin hide-visually {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+@mixin bg-light {
+  background: $bg-light;
+  background-size: cover;
+  animation: pan-left infinite 90s ease-in-out;
+}
+
+@mixin bg-dark {
+  background: $bg-dark;
+  background-size: cover;
+}
+
+@mixin logo-name {
+  clip-path: url("#logo-name-clip");
+}
+
+@mixin logo-symbol {
+  clip-path: url("#logo-symbol-clip");
+}
+
+@mixin angle-after-top {
+  display: block;
+  position: absolute;
+  top: -0.5px;
+  bottom: -0.5px;
+  left: 100%;
+  content: "";
+  transform: translate3d(-0.6px, 0, 0);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+@mixin angle-after-bottom {
+  display: block;
+  position: absolute;
+  top: -0.5px;
+  bottom: -0.5px;
+  left: 100%;
+  content: "";
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+
+@mixin angle-before {
+  display: block;
+  position: absolute;
+  top: -0.5px;
+  bottom: -0.5px;
+  right: 100%;
+  content: "";
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+@mixin flag-left {
+  padding-left: $spacing * 2;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%, $spacing 50%);
+}
+
+@mixin screen-below($max) {
+  @media screen and (max-width: $max) {
+    @content;
+  }
+}
+
+@mixin screen-between($min, $max) {
+  @media screen and (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}
+
+@mixin screen-above($min) {
+  @media screen and (min-width: $min) {
+    @content;
+  }
+}
+
+@mixin line-before-after() {
+  display: flex;
+  align-items: center;
+
+  &::before,
+  &::after {
+    height: 1px;
+    content: "";
+    background: $text-color;
+  }
+
+  &::before {
+    width: $spacing;
+    margin-right: ($spacing / 2);
+  }
+
+  &::after {
+    flex-grow: 1;
+    margin-left: ($spacing / 2);
+  }
+}
+
+@mixin text-shadow($color: $body-color, $size: 3px) {
+  text-shadow:
+    $color 0 0 $size,
+    $color 0 0 $size,
+    $color 0 0 $size,
+    $color 0 0 $size;
+}
+
+@mixin fade-up-on-render($opacity: 1) {
+  .isClientRendered & {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transform: translate3d(0, 10%, 0);
+    transition: opacity 400ms ease-out, transform 400ms ease-out;
+
+    &.isRendered {
+      position: static;
+      width: auto;
+      height: auto;
+      opacity: $opacity;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
+
+@keyframes pan-left {
+  0% { background-position: 0 50%; }
+  50% { background-position: -200px 50%; }
+  100% { background-position: 0 50%; }
+}
+
+@keyframes pan-right {
+  0% { background-position: 0 50%; }
+  50% { background-position: 200px 50%; }
+  100% { background-position: 0 50%; }
+}
+
+@keyframes height-pulse {
+  0% { height: 10%; }
+  50% { height: 100%; }
+  100% { height: 10%; }
+}

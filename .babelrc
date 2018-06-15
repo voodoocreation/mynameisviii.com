@@ -1,0 +1,36 @@
+{
+  "plugins": [
+    ["module-resolver", {
+      "root": ["."],
+      "alias": {
+        "scss": "./scss"
+      },
+      "cwd": "babelrc"
+    }],
+    ["wrap-in-js", {
+      "extensions": ["css$", "scss$"]
+    }]
+  ],
+
+  "env": {
+    "development": {
+      "presets": ["next/babel", "@zeit/next-typescript/babel"]
+    },
+    "production": {
+      "presets": ["next/babel", "@zeit/next-typescript/babel"]
+    },
+    "test": {
+      "presets": [
+        [
+          "next/babel",
+          {
+            "preset-env": {
+              "modules": "commonjs"
+            }
+          }
+        ],
+        "@zeit/next-typescript/babel"
+      ]
+    }
+  }
+}
