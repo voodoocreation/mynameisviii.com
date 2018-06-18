@@ -1,7 +1,7 @@
 {
   "name": "mynameisviii.com",
   "author": "Raice Hannay <voodoocreation@gmail.com>",
-  "license": "cc-by-sa-4.0",
+  "license": "CC-BY-SA-4.0",
   "version": "1.0.0",
   "scripts": {
     "dev": "cross-env PORT=5000 node --icu-data-dir=node_modules/full-icu next.server.js",
