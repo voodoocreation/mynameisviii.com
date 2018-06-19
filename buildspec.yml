@@ -21,8 +21,15 @@ phases:
     commands:
 artifacts:
   files:
-    - node_modules/**/*
+    - node_modules/accepts/**/*
+    - node_modules/compression/**/*
+    - node_modules/cross-env/**/*
+    - node_modules/express/**/*
+    - node_modules/glob/**/*
+    - node_modules/json-server/**/*
+    - node_modules/next/**/*
     - dist/**/*
+    - locales/**/*
     - scripts/**/*
     - appspec.yml
     - next.config.js
