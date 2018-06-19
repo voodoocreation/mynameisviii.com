@@ -21,11 +21,11 @@ phases:
     commands:
 artifacts:
   files:
-    - node_modules/cross-env/*
-    - node_modules/full-icu/*
-    - node_modules/next/*
-    - dist/*
-    - scripts/*
+    - node_modules/cross-env/**/*
+    - node_modules/full-icu/**/*
+    - node_modules/next/**/*
+    - dist/**/*
+    - scripts/**/*
     - appspec.yml
     - next.routes.js
     - next.server.js
