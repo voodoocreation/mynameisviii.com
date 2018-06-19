@@ -1,0 +1,13 @@
+version: 0.1
+os: linux
+files:
+  - source: dist
+    destination: /var/www/mynameisviii.com/dist
+  - source: next.server.js
+    destination: /var/www/mynameisviii.com/next.server.js
+  - source: package.json
+    destination: /var/www/mynameisviii.com/package.json
+hooks:
+  ApplicationStart:
+    - location: yarn start
+      timeout: 3600
