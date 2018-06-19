@@ -21,9 +21,7 @@ phases:
     commands:
 artifacts:
   files:
-    - node_modules/cross-env/**/*
-    - node_modules/full-icu/**/*
-    - node_modules/next/**/*
+    - node_modules/**/*
     - dist/**/*
     - scripts/**/*
     - appspec.yml
