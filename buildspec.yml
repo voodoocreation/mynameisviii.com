@@ -36,6 +36,7 @@ artifacts:
     - next.routes.js
     - next.server.js
     - package.json
+    - yarn.lock
 cache:
   paths:
     - node_modules/**/*
