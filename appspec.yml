@@ -22,8 +22,8 @@ permissions:
     mode: 755
     owner: ec2-user
     acls:
-      - "d:u::rwx"
-      - "d:g::rwx"
-      - "d:o::rwx"
+      - "f:u::rwx"
+      - "f:g::rwx"
+      - "f:o::rwx"
     type:
       - file
