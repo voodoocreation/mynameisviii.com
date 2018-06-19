@@ -1,4 +1,4 @@
-import { Context } from "next/document";
+import { NextDocumentContext as Context } from "next/document";
 import * as React from "react";
 import { addLocaleData, injectIntl, IntlProvider } from "react-intl";
 

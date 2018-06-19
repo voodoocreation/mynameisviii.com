@@ -1,11 +1,11 @@
 import cn from "classnames";
-import { SingletonRouter, withRouter } from "next/router";
+import { withRouter, WithRouterProps } from "next/router";
 import * as React from "react";
 import { FormattedMessage } from "react-intl";
 
 import NavItem from "./NavItem";
 
-interface IProps extends SingletonRouter {}
+interface IProps extends WithRouterProps {}
 
 interface IState {
   currentRoute?: string;

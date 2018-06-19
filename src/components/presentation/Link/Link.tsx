@@ -1,16 +1,15 @@
 import NextLink from "next/link";
-import { SingletonRouter, withRouter } from "next/router";
+import { withRouter, WithRouterProps } from "next/router";
 import * as React from "react";
 
 import Routes from "../../../../next.routes";
 
-interface IProps extends SingletonRouter {
+interface IProps extends WithRouterProps {
   children: React.ReactNode | React.ReactNode[];
   href?: string;
   isExternal?: boolean;
   params?: {};
   prefetch?: boolean;
-  route?: string;
   [index: string]: any;
 }
 
