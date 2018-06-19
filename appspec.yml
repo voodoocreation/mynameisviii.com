@@ -9,8 +9,11 @@ hooks:
       timeout: 300
 permissions:
   - object: /var/www/mynameisviii.com
-    pattern: "**/*"
+    mode: 644
+    acls:
+      - "d:u::rwx"
+      - "d:g::rwx"
+      - "d:o::rwx"
     owner: ec2-user
-    mode: 777
     type:
-      - file
+      - directory

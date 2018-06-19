@@ -25,6 +25,7 @@ artifacts:
     - dist/**/*
     - scripts/**/*
     - appspec.yml
+    - next.config.js
     - next.routes.js
     - next.server.js
     - package.json
