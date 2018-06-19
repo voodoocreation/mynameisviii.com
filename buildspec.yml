@@ -21,10 +21,11 @@ phases:
     commands:
 artifacts:
   files:
+    - node_modules/full-icu/*
+    - node_modules/next/*
+    - dist/*
+    - scripts/*
     - appspec.yml
     - next.routes.js
     - next.server.js
-    - dist/*
     - package.json
-    - node_modules/next/*
-    - node_modules/full-icu/*
