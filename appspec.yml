@@ -7,3 +7,10 @@ hooks:
   ApplicationStart:
     - location: scripts/start.sh
       timeout: 300
+permissions:
+  - object: /var/www/mynameisviii.com
+    pattern: "**/*"
+    owner: ec2-user
+    mode: 777
+    type:
+      - file
