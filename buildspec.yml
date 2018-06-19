@@ -27,4 +27,3 @@ artifacts:
     - package.json
     - node_modules/next/*
     - node_modules/full-icu/*
-  discard-paths: yes
