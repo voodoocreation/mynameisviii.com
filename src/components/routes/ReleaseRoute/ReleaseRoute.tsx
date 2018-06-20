@@ -57,9 +57,9 @@ class ReleaseRoute extends React.Component<IProps> {
 
           <meta content={release.description} name="description" />
 
-          <meta name="og:image" content={release.images[0].imageUrl} />
-          <meta name="og:image:width" content="1000" />
-          <meta name="og:image:height" content="1000" />
+          <meta property="og:image" content={release.images[0].imageUrl} />
+          <meta property="og:image:width" content="640" />
+          <meta property="og:image:height" content="640" />
         </Head>
 
         <Release

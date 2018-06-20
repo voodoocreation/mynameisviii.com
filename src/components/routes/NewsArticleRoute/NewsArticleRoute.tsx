@@ -56,9 +56,9 @@ class NewsArticleRoute extends React.Component<IProps> {
 
           <meta content={article.excerpt} name="description" />
 
-          <meta name="og:image" content={article.ogImageUrl} />
-          <meta name="og:image:width" content="1200" />
-          <meta name="og:image:height" content="630" />
+          <meta property="og:image" content={article.ogImageUrl} />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
         </Head>
 
         <NewsArticle {...article} />

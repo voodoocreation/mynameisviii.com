@@ -59,10 +59,10 @@ class IndexRoute extends React.Component<IProps> {
             content={formatMessage({ id: "INDEX_DESCRIPTION" })}
             name="description"
           />
-          <meta name="og:image" content="https://s3.amazonaws.com/mynameisviii-static/homepage-og.jpg" />
-          <meta name="og:image:width" content="1200" />
-          <meta name="og:image:height" content="630" />
 
+          <meta property="og:image" content="https://s3.amazonaws.com/mynameisviii-static/homepage-og.jpg" />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
         </Head>
 
         <PageHeader>
