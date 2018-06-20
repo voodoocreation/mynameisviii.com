@@ -11,6 +11,7 @@
     "fmt": "prettier --write \"**/*.{js,jsx,json,ts,tsx}\"",
     "fmt:p": "prettier-package-json --write",
     "start": "cross-env PORT=8080 NODE_ENV=production pm2 start next.server.js --node-args=\"--icu-data-dir=node_modules/full-icu\"",
+    "stop": "cross-env pm2 kill",
     "lint": "npm-run-all --parallel lint:*",
     "lint:js": "eslint --config .eslintrc \"./{types,src,pages}/**/*.js?(x)\" --ext .js,.jsx",
     "lint:scss": "stylelint -c .eslintrc \"src/scss/**/**/**/**/*.+(css|scss)\"",
