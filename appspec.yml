@@ -4,8 +4,12 @@ files:
   - source: /
     destination: /var/www/mynameisviii.com
 hooks:
+  AfterInstall:
+    - location: scripts/AfterInstall.sh
+      timeout: 300
+      runas: ec2-user
   ApplicationStart:
-    - location: scripts/start.sh
+    - location: scripts/ApplicationStart.sh
       timeout: 300
       runas: ec2-user
 permissions:
