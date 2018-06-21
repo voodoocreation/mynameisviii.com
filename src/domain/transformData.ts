@@ -39,8 +39,12 @@ export const lengthToDuration = (length: string) => {
 };
 
 export const absUrl = (path: string) =>
-  process.env.NODE_ENV === "production"
-    ? `http://localhost:${process.env.PORT}${path}`
-    : `http://mynameisviii.com${path}`;
+  process.env.NODE_ENV !== "production"
+    ? `http://localhost:${process.env.PORT || window.location.port}${path}`
+    : `http://${
+        typeof window === "undefined"
+          ? process.env.DOMAIN
+          : window.location.host
+      }${path}`;
 
 export const extractDomain = (url: string) => url.split("/")[2];
