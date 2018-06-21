@@ -10,6 +10,7 @@ import injectIntl from "../../../helpers/injectIntl";
 import ButtonBar from "../../presentation/ButtonBar/ButtonBar";
 import LoadButton from "../../presentation/LoadButton/LoadButton";
 import NewsListing from "../../presentation/NewsListing/NewsListing";
+import NoResults from "../../presentation/NoResults/NoResults";
 import PageHeader from "../../presentation/PageHeader/PageHeader";
 
 import * as actions from "../../../actions/root.actions";
@@ -97,16 +98,27 @@ class NewsRoute extends React.Component<IProps, IState> {
           <FormattedMessage id="NEWS_TITLE" />
         </PageHeader>
 
-        <section className="NewsListings">
-          {articles.map(article => (
-            <NewsListing
-              {...article}
-              key={article.slug}
-              onLoad={this.onListingLoad}
-            />
-          ))}
-          <ButtonBar>{loadMoreButton}</ButtonBar>
-        </section>
+        {articles.length > 0 ? (
+          <section className="NewsListings">
+            {articles.map(article => (
+              <NewsListing
+                {...article}
+                key={article.slug}
+                onLoad={this.onListingLoad}
+              />
+            ))}
+          </section>
+        ) : null}
+
+        {hasAllNewsArticles && articles.length === 0 ? (
+          <NoResults>
+            <p>
+              <FormattedMessage id="NO_NEWS" />
+            </p>
+          </NoResults>
+        ) : null}
+
+        <ButtonBar>{loadMoreButton}</ButtonBar>
       </React.Fragment>
     );
   }

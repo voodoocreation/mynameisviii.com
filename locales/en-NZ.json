@@ -55,6 +55,9 @@
   "NEWS_TITLE": "News",
   "NEWS_DESCRIPTION":
     "The latest news for releases, appearances and other exciting Viii updates.",
+  "NO_APPEARANCES": "There are no upcoming appearances at this time.",
+  "NO_NEWS": "There are no news articles at this time.",
+  "NO_RELEASES": "There are no releases to show at this time.",
   "PAST": "Past",
   "PHOTOS": "Photos",
   "POSTED": "Posted",

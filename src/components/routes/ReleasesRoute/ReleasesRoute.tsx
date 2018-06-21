@@ -10,6 +10,7 @@ import { absUrl } from "../../../domain/transformData";
 import injectIntl from "../../../helpers/injectIntl";
 import ButtonBar from "../../presentation/ButtonBar/ButtonBar";
 import LoadButton from "../../presentation/LoadButton/LoadButton";
+import NoResults from "../../presentation/NoResults/NoResults";
 import PageHeader from "../../presentation/PageHeader/PageHeader";
 import ReleaseListing from "../../presentation/ReleaseListing/ReleaseListing";
 
@@ -100,7 +101,17 @@ class ReleasesRoute extends React.Component<IProps, IState> {
           <FormattedMessage id="RELEASES_TITLE" />
         </PageHeader>
 
-        {Object.keys(releases).map(this.renderListingsForType)}
+        {Object.keys(releases).length > 0
+          ? Object.keys(releases).map(this.renderListingsForType)
+          : null}
+
+        {hasAllReleases && Object.keys(releases).length === 0 ? (
+          <NoResults>
+            <p>
+              <FormattedMessage id="NO_RELEASES" />
+            </p>
+          </NoResults>
+        ) : null}
 
         <ButtonBar>{loadMoreButton}</ButtonBar>
       </React.Fragment>

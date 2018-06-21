@@ -5,9 +5,9 @@ const releases = require("./mocks/releases");
 
 module.exports = {
   appearances,
-  appearance: appearances.Items[0],
+  appearance: appearances.Items[0] || {},
   news,
-  newsArticle: news.Items[0],
+  newsArticle: news.Items[0] || {},
   releases,
-  release: releases.Items[0]
+  release: releases.Items[0] || {}
 };

@@ -10,6 +10,7 @@ import injectIntl from "../../../helpers/injectIntl";
 import AppearanceListing from "../../presentation/AppearanceListing/AppearanceListing";
 import ButtonBar from "../../presentation/ButtonBar/ButtonBar";
 import LoadButton from "../../presentation/LoadButton/LoadButton";
+import NoResults from "../../presentation/NoResults/NoResults";
 import PageHeader from "../../presentation/PageHeader/PageHeader";
 
 import * as actions from "../../../actions/root.actions";
@@ -134,6 +135,15 @@ class AppearancesRoute extends React.Component<IProps, IState> {
               ))}
             </div>
           </section>
+        ) : null}
+
+        {hasAllAppearances &&
+        upcomingAppearances.length + pastAppearances.length === 0 ? (
+          <NoResults>
+            <p>
+              <FormattedMessage id="NO_APPEARANCES" />
+            </p>
+          </NoResults>
         ) : null}
 
         <ButtonBar>{loadMoreButton}</ButtonBar>
