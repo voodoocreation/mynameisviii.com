@@ -57,12 +57,15 @@ class ReleaseRoute extends React.Component<IProps> {
             {formatMessage({ id: "BRAND_NAME" })}
           </title>
 
-          <meta content={stripTags(release.description)} name="description" />
+          <meta
+            content={stripTags(release.description).replace(/\n/g, "")}
+            name="description"
+          />
 
           <meta property="og:title" content={release.title} />
           <meta
             property="og:description"
-            content={stripTags(release.description)}
+            content={stripTags(release.description).replace(/\n/g, "")}
           />
           <meta
             property="og:url"

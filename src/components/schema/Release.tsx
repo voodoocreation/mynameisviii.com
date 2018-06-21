@@ -69,7 +69,7 @@ const Release: React.SFC<IRelease> = props => (
         name: props.artist.name
       },
       datePublished: props.releasedOn,
-      description: stripTags(props.description),
+      description: stripTags(props.description).replace(/\n/g, ""),
       image: props.images[0].imageUrl,
       mainEntityOfPage: {
         "@id": absUrl(`/releases/${props.slug}`)
