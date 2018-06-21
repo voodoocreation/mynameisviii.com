@@ -100,10 +100,6 @@
     button {
       padding-bottom: 4px;
     }
-
-    button {
-      display: block;
-    }
   }
 
   @include screen-between($screen-mobile-nav-min, $screen-xs-max) {
@@ -179,6 +175,8 @@
     }
 
     button {
+      display: block;
+
       &::before,
       &::after {
         top: 16px;
