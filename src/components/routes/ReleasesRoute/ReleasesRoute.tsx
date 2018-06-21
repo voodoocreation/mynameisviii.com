@@ -93,6 +93,10 @@ class ReleasesRoute extends React.Component<IProps, IState> {
             property="og:description"
             content={formatMessage({ id: "RELEASES_DESCRIPTION" })}
           />
+          <meta
+            property="og:image"
+            content="https://s3.amazonaws.com/mynameisviii-static/homepage-og.jpg"
+          />
           <meta property="og:url" content={absUrl("/releases")} />
           <meta property="og:type" content="website" />
         </Head>
