@@ -1,6 +1,7 @@
 .ButtonBar {
   display: flex;
   align-items: center;
+  margin-bottom: $spacing;
 
   &::before,
   &::after {

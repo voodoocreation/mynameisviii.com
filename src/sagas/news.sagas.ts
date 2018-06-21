@@ -31,7 +31,7 @@ export const fetchMoreLatestNewsSaga = (ports: IStorePorts) =>
         selectors.getNewsLastEvaluatedKeyAsString
       );
 
-      const res = yield call(ports.api.fetchLatestNews, 1, lastEvaluatedKey);
+      const res = yield call(ports.api.fetchLatestNews, 2, lastEvaluatedKey);
 
       if (res.ok) {
         const result = {
