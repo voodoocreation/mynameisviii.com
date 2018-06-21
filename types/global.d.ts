@@ -69,10 +69,16 @@ interface IReleaseTrack {
   genre: string;
   length: string;
   title: string;
+  url: string;
+}
+
+interface IArtist {
+  name: string;
+  url: string;
 }
 
 interface IRelease {
-  artist: string;
+  artist: IArtist;
   buyList: IBuyStreamLink[];
   description: string;
   genre: string;
@@ -85,7 +91,7 @@ interface IRelease {
   slug: string;
   streamList: IBuyStreamLink[];
   title: string;
-  tracklist: IReleaseTrack[];
+  tracklist: IReleaseTrack[][];
   type: string;
 }
 

@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { ActionCreator } from "typescript-fsa";
 
+import { absUrl } from "../../../domain/transformData";
 import injectIntl from "../../../helpers/injectIntl";
 import ConnectedErrorPage from "../../containers/ConnectedErrorPage/ConnectedErrorPage";
 import NewsArticle from "../../presentation/NewsArticle/NewsArticle";
@@ -56,6 +57,12 @@ class NewsArticleRoute extends React.Component<IProps> {
 
           <meta content={article.excerpt} name="description" />
 
+          <meta property="og:title" content={article.title} />
+          <meta property="og:description" content={article.excerpt} />
+          <meta property="og:url" content={absUrl(`/news/${article.slug}`)} />
+          <meta property="og:type" content="article" />
+          <meta property="article:published_time" content={article.createdAt} />
+          <meta property="article:author" content={article.author} />
           <meta property="og:image" content={article.ogImageUrl} />
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />

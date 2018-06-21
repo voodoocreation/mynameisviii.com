@@ -12,16 +12,16 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { ActionCreator } from "typescript-fsa";
 
+import { absUrl } from "../../../domain/transformData";
 import injectIntl from "../../../helpers/injectIntl";
-import PageHeader from "../../presentation/PageHeader/PageHeader";
-
-import * as actions from "../../../actions/root.actions";
-import * as selectors from "../../../selectors/root.selectors";
-
 import IconGenius from "../../icons/IconGenius";
 import Link from "../../presentation/Link/Link";
 import NewsListing from "../../presentation/NewsListing/NewsListing";
+import PageHeader from "../../presentation/PageHeader/PageHeader";
 import WebsiteListing from "../../presentation/WebsiteListing/WebsiteListing";
+
+import * as actions from "../../../actions/root.actions";
+import * as selectors from "../../../selectors/root.selectors";
 
 interface IStoreProps {
   articles: INewsArticle[];
@@ -60,7 +60,20 @@ class IndexRoute extends React.Component<IProps> {
             name="description"
           />
 
-          <meta property="og:image" content="https://s3.amazonaws.com/mynameisviii-static/homepage-og.jpg" />
+          <meta
+            property="og:title"
+            content={formatMessage({ id: "BRAND_NAME" })}
+          />
+          <meta
+            property="og:description"
+            content={formatMessage({ id: "INDEX_DESCRIPTION" })}
+          />
+          <meta property="og:url" content={absUrl("/")} />
+          <meta property="og:type" content="website" />
+          <meta
+            property="og:image"
+            content="https://s3.amazonaws.com/mynameisviii-static/homepage-og.jpg"
+          />
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />
         </Head>

@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { ActionCreator } from "typescript-fsa";
 
+import { absUrl } from "../../../domain/transformData";
 import injectIntl from "../../../helpers/injectIntl";
 import ConnectedErrorPage from "../../containers/ConnectedErrorPage/ConnectedErrorPage";
 import Release from "../../presentation/Release/Release";
@@ -57,6 +58,16 @@ class ReleaseRoute extends React.Component<IProps> {
 
           <meta content={release.description} name="description" />
 
+          <meta property="og:title" content={release.title} />
+          <meta property="og:description" content={release.description} />
+          <meta
+            property="og:url"
+            content={absUrl(`/releases/${release.slug}`)}
+          />
+          <meta property="og:type" content="music.album" />
+          <meta property="music:release_date" content={release.releasedOn} />
+          <meta property="music:musician" content={release.artist.url} />
+          {release.tracklist.map(this.renderTracklistAlbumMeta)}
           <meta property="og:image" content={release.images[0].imageUrl} />
           <meta property="og:image:width" content="640" />
           <meta property="og:image:height" content="640" />
@@ -69,6 +80,21 @@ class ReleaseRoute extends React.Component<IProps> {
       </React.Fragment>
     );
   }
+
+  private renderTracklistAlbumMeta = (
+    album: IReleaseTrack[],
+    albumIndex: number
+  ) => (
+    <React.Fragment key={albumIndex}>
+      {album.map((track, trackIndex) => (
+        <React.Fragment key={trackIndex}>
+          <meta property="music:song" content={track.url} />
+          <meta property="music:disc" content={`${albumIndex + 1}`} />
+          <meta property="music:track" content={`${trackIndex + 1}`} />
+        </React.Fragment>
+      ))}
+    </React.Fragment>
+  );
 
   private onCarouselSlideChange = (index: number) => {
     this.props.trackEvent({

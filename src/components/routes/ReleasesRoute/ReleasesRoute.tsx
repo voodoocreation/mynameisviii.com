@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { ActionCreator } from "typescript-fsa";
 
+import { absUrl } from "../../../domain/transformData";
 import injectIntl from "../../../helpers/injectIntl";
 import ButtonBar from "../../presentation/ButtonBar/ButtonBar";
 import LoadButton from "../../presentation/LoadButton/LoadButton";
@@ -83,6 +84,16 @@ class ReleasesRoute extends React.Component<IProps, IState> {
             content={formatMessage({ id: "RELEASES_DESCRIPTION" })}
             name="description"
           />
+          <meta
+            property="og:title"
+            content={formatMessage({ id: "RELEASES_TITLE" })}
+          />
+          <meta
+            property="og:description"
+            content={formatMessage({ id: "RELEASES_DESCRIPTION" })}
+          />
+          <meta property="og:url" content={absUrl("/releases")} />
+          <meta property="og:type" content="website" />
         </Head>
 
         <PageHeader>

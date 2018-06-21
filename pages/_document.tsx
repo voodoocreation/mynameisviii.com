@@ -1,5 +1,10 @@
 import { IncomingMessage } from "http";
-import Document, { Head, Main, NextDocumentContext as Context, NextScript } from "next/document";
+import Document, {
+  Head,
+  Main,
+  NextDocumentContext as Context,
+  NextScript
+} from "next/document";
 import * as React from "react";
 
 const isDev = process.env.NODE_ENV !== "production";

@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { ActionCreator } from "typescript-fsa";
 
+import { absUrl } from "../../../domain/transformData";
 import injectIntl from "../../../helpers/injectIntl";
 import AppearanceListing from "../../presentation/AppearanceListing/AppearanceListing";
 import ButtonBar from "../../presentation/ButtonBar/ButtonBar";
@@ -86,6 +87,17 @@ class AppearancesRoute extends React.Component<IProps, IState> {
             content={formatMessage({ id: "APPEARANCES_DESCRIPTION" })}
             name="description"
           />
+
+          <meta
+            property="og:title"
+            content={formatMessage({ id: "APPEARANCES_TITLE" })}
+          />
+          <meta
+            property="og:description"
+            content={formatMessage({ id: "APPEARANCES_DESCRIPTION" })}
+          />
+          <meta property="og:url" content={absUrl("/appearances")} />
+          <meta property="og:type" content="website" />
         </Head>
 
         <PageHeader>

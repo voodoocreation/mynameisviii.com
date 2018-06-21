@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { ActionCreator } from "typescript-fsa";
 
+import { absUrl } from "../../../domain/transformData";
 import injectIntl from "../../../helpers/injectIntl";
 import ButtonBar from "../../presentation/ButtonBar/ButtonBar";
 import LoadButton from "../../presentation/LoadButton/LoadButton";
@@ -79,6 +80,17 @@ class NewsRoute extends React.Component<IProps, IState> {
             content={formatMessage({ id: "NEWS_DESCRIPTION" })}
             name="description"
           />
+
+          <meta
+            property="og:title"
+            content={formatMessage({ id: "NEWS_TITLE" })}
+          />
+          <meta
+            property="og:description"
+            content={formatMessage({ id: "NEWS_DESCRIPTION" })}
+          />
+          <meta property="og:url" content={absUrl("/news")} />
+          <meta property="og:type" content="website" />
         </Head>
 
         <PageHeader>

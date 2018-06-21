@@ -37,6 +37,11 @@ export default class ReleaseListing extends React.Component<IProps, IState> {
   public render() {
     const { onLoad, ...release } = this.props;
 
+    const trackCount = release.tracklist.reduce((acc, curr) => {
+      acc += curr.length;
+      return acc;
+    }, 0);
+
     return (
       <article
         className={cn("ReleaseListing", { isRendered: this.state.isRendered })}
@@ -87,8 +92,8 @@ export default class ReleaseListing extends React.Component<IProps, IState> {
                 className="ReleaseListing-tracks"
                 icon={<MdFormatListNumbered />}
               >
-                {release.tracklist.length}{" "}
-                {release.tracklist.length === 1 ? (
+                {trackCount}{" "}
+                {trackCount === 1 ? (
                   <FormattedMessage id="TRACK" />
                 ) : (
                   <FormattedMessage id="TRACKS" />

@@ -1,29 +1,73 @@
 {
   "Items": [
     {
-      "StreamList": [],
-      "Artist": "Viii",
+      "StreamList": [
+        {
+          "Platform": "spotify",
+          "Url":
+            "https://open.spotify.com/album/6RcNsy2Ubn4tAvOVsBvqYr?si=PVnCiQAbQA2obLlBBKYNIw"
+        },
+        {
+          "Platform": "apple",
+          "Url":
+            "https://itunes.apple.com/album/lovedecay-lovesong-single/1212550755?app=music"
+        },
+        {
+          "Platform": "tidal",
+          "Url": "https://tidal.com/album/71082088"
+        },
+        {
+          "Platform": "soundcloud",
+          "Url": "https://soundcloud.com/iamviii/sets/lovedecay-lovesong"
+        }
+      ],
+      "Artist": {
+        "Url":
+          "https://open.spotify.com/artist/59s4iD384WECjyZyUmZ18G?si=YB4Ap1yuQHmQgOue6MrSTQ",
+        "Name": "Viii"
+      },
       "IsActive": "y",
       "ProductionType": "studio",
       "Description":
         "<p>Lovedecay is the debut single from the EP <em>Heart</em>.</p><p>It also includes the B-side <em>Lovesong</em>, originally performed by The Cure.</p>",
       "Type": "single",
       "Tracklist": [
-        {
-          "Length": "4:13",
-          "Title": "lovedecay",
-          "Genre": "Goth/Electronic"
-        },
-        {
-          "Length": "3:21",
-          "Title": "lovesong",
-          "Genre": "Goth/Electronic"
-        }
+        [
+          {
+            "Title": "lovedecay",
+            "Genre": "Goth/Electronic",
+            "Length": "4:13",
+            "Url":
+              "https://open.spotify.com/track/5ryHpwWacwJvgec1muco8t?si=Vug891EJSvK_SwcjzCnxMQ"
+          },
+          {
+            "Title": "lovesong",
+            "Genre": "Goth/Electronic",
+            "Length": "3:21",
+            "Url":
+              "https://open.spotify.com/track/7tjnvja6pQUfmIAyT8FVRB?si=Aq2F8YySRpCaUtLZiYN7XQ"
+          }
+        ]
       ],
       "Genre": "Goth/Electronic",
       "RecordLabel": "Voodoo Creation Records",
       "Title": "lovedecay / lovesong",
-      "BuyList": [],
+      "BuyList": [
+        {
+          "Platform": "itunes",
+          "Url":
+            "https://itunes.apple.com/album/lovedecay-lovesong-single/1212550755?app=itunes"
+        },
+        {
+          "Platform": "amazon",
+          "Url": "http://a.co/81x0jZT"
+        },
+        {
+          "Platform": "google",
+          "Url":
+            "https://play.google.com/store/music/album/Viii_Lovedecay_Lovesong?id=Bw6ti5fc6x5q5mrtp257ouieocy"
+        }
+      ],
       "ReleasedOn": "2017-03-24",
       "Slug": "lovedecay-lovesong",
       "Images": [
@@ -56,28 +100,40 @@
           "Url": "https://soundcloud.com/iamviii/sets/heavens-to-elizabeth"
         }
       ],
-      "Artist": "Viii",
+      "Artist": {
+        "Url":
+          "https://open.spotify.com/artist/59s4iD384WECjyZyUmZ18G?si=YB4Ap1yuQHmQgOue6MrSTQ",
+        "Name": "Viii"
+      },
       "IsActive": "y",
       "ProductionType": "studio",
       "Description":
         "<p>Heavens to Elizabeth is a special single release for New Zealand Music Month 2017 and is a cover of a song originally performed by New Zealand band, <em>Hanging Tree</em>, which was Viii's dad's band during the '80s and '90s.</p>",
       "Type": "single",
       "Tracklist": [
-        {
-          "Length": "3:43",
-          "Title": "Heavens to Elizabeth",
-          "Genre": "Goth/Rock"
-        },
-        {
-          "Length": "3:43",
-          "Title": "Heavens to Elizabeth (instrumental)",
-          "Genre": "Goth/Rock"
-        },
-        {
-          "Length": "3:43",
-          "Title": "Heavens to Elizabeth (acapella)",
-          "Genre": "Goth/Rock"
-        }
+        [
+          {
+            "Title": "Heavens to Elizabeth",
+            "Genre": "Goth/Rock",
+            "Length": "3:43",
+            "Url":
+              "https://open.spotify.com/track/7zA0G6tBfguylDSpHv22Li?si=sY93kYH3R9e4TUiLoyVccA"
+          },
+          {
+            "Title": "Heavens to Elizabeth (instrumental)",
+            "Genre": "Goth/Rock",
+            "Length": "3:43",
+            "Url":
+              "https://open.spotify.com/track/669NbzSzgTeYV8uIFb0Lsk?si=uJZLzLK7Qqie8S4FUgIAiA"
+          },
+          {
+            "Title": "Heavens to Elizabeth (acapella)",
+            "Genre": "Goth/Rock",
+            "Length": "3:43",
+            "Url":
+              "https://open.spotify.com/track/6ATQSWNf1rOStOLEIhXyG1?si=CCX1s3DXQVCilbcY8HFEFg"
+          }
+        ]
       ],
       "Genre": "Goth/Rock",
       "RecordLabel": "Voodoo Creation Records",
@@ -110,29 +166,73 @@
       "Length": "11:09"
     },
     {
-      "StreamList": [],
-      "Artist": "Viii",
+      "StreamList": [
+        {
+          "Platform": "spotify",
+          "Url":
+            "https://open.spotify.com/album/6fbHaC5ZfURKLK2RnsQ4fE?si=uqjbJD34TO6q6yI-J7VDLw"
+        },
+        {
+          "Platform": "apple",
+          "Url":
+            "https://itunes.apple.com/album/witchlust-rev-22-20-single/1234497036?app=music"
+        },
+        {
+          "Platform": "tidal",
+          "Url": "https://tidal.com/album/73727184"
+        },
+        {
+          "Platform": "soundcloud",
+          "Url": "https://soundcloud.com/iamviii/sets/witchlust-rev-22-20"
+        }
+      ],
+      "Artist": {
+        "Url":
+          "https://open.spotify.com/artist/59s4iD384WECjyZyUmZ18G?si=YB4Ap1yuQHmQgOue6MrSTQ",
+        "Name": "Viii"
+      },
       "IsActive": "y",
       "ProductionType": "studio",
       "Description":
         "<p>Witchlust is the second single from the EP \n<em>Heart</em>.</p><p>It also includes the \nB-side <em>Rev 22:20</em>, originally performed by Puscifer.</p>",
       "Type": "single",
       "Tracklist": [
-        {
-          "Length": "4:20",
-          "Title": "witchlust",
-          "Genre": "Goth/Electronic"
-        },
-        {
-          "Length": "4:34",
-          "Title": "rev 22:20",
-          "Genre": "Goth/Rock"
-        }
+        [
+          {
+            "Title": "witchlust",
+            "Genre": "Goth/Electronic",
+            "Length": "4:20",
+            "Url":
+              "https://open.spotify.com/track/61mQhOtbjBiHsqYV1nKuXp?si=98fIe33TR1GnAi57AXHyTg"
+          },
+          {
+            "Title": "rev 22:20",
+            "Genre": "Goth/Rock",
+            "Length": "4:34",
+            "Url":
+              "https://open.spotify.com/track/2g8wFx8tdzxy5pZSIQXxeq?si=tSD9qyyHQceVjH2YHr0Nzg"
+          }
+        ]
       ],
       "Genre": "Goth/Electronic",
       "RecordLabel": "Voodoo Creation Records",
       "Title": "witchlust / rev 22:20",
-      "BuyList": [],
+      "BuyList": [
+        {
+          "Platform": "itunes",
+          "Url":
+            "https://itunes.apple.com/album/witchlust-rev-22-20-single/1234497036?app=itunes"
+        },
+        {
+          "Platform": "amazon",
+          "Url": "http://a.co/6sBJHf6"
+        },
+        {
+          "Platform": "google",
+          "Url":
+            "https://play.google.com/store/music/album/Viii_Witchlust_Rev_22_20?id=Bwhdvl7kw7vml4t7p2dxes35c5m"
+        }
+      ],
       "ReleasedOn": "2017-06-02",
       "Slug": "witchlust-rev-22-20",
       "Images": [
@@ -165,23 +265,33 @@
           "Url": "https://soundcloud.com/iamviii/sets/threadfear-ask-me-to-stay"
         }
       ],
-      "Artist": "Viii",
+      "Artist": {
+        "Url":
+          "https://open.spotify.com/artist/59s4iD384WECjyZyUmZ18G?si=YB4Ap1yuQHmQgOue6MrSTQ",
+        "Name": "Viii"
+      },
       "IsActive": "y",
       "ProductionType": "studio",
       "Description":
         "<p>Threadfear is the third single from the EP <em>Heart</em>.</p><p>It also includes the B-side <em>Ask Me To Stay</em>, originally performed by Etta Bond × Raf Riley.</p>",
       "Type": "single",
       "Tracklist": [
-        {
-          "Length": "4:28",
-          "Title": "threadfear",
-          "Genre": "Goth/Rock"
-        },
-        {
-          "Length": "5:13",
-          "Title": "ask me to stay",
-          "Genre": "Goth/Rock"
-        }
+        [
+          {
+            "Title": "threadfear",
+            "Genre": "Goth/Rock",
+            "Length": "4:28",
+            "Url":
+              "https://open.spotify.com/track/53CVbs2ydKXbABXWx2YRAd?si=-quitLDNSFmn86L6SrSvkg"
+          },
+          {
+            "Title": "ask me to stay",
+            "Genre": "Goth/Rock",
+            "Length": "5:13",
+            "Url":
+              "https://open.spotify.com/track/4taN7Jl9SxfBv927qConv0?si=xjq8CmSgThCtaF8gPabvHw"
+          }
+        ]
       ],
       "Genre": "Goth/Rock",
       "RecordLabel": "Voodoo Creation Records",

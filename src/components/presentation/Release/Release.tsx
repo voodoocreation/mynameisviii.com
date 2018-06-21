@@ -48,6 +48,11 @@ class Release extends React.Component<IProps, IState> {
   public render() {
     const { intl, onCarouselSlideChange, ...release } = this.props;
 
+    const trackCount = release.tracklist.reduce((acc, curr) => {
+      acc += curr.length;
+      return acc;
+    }, 0);
+
     return (
       <article className="Release">
         <PageHeader>{release.title}</PageHeader>
@@ -95,8 +100,8 @@ class Release extends React.Component<IProps, IState> {
           </Meta>
 
           <Meta className="Release-tracks" icon={<MdFormatListNumbered />}>
-            {release.tracklist.length}{" "}
-            {release.tracklist.length === 1 ? (
+            {trackCount}{" "}
+            {trackCount === 1 ? (
               <FormattedMessage id="TRACK" />
             ) : (
               <FormattedMessage id="TRACKS" />
@@ -122,7 +127,19 @@ class Release extends React.Component<IProps, IState> {
                 <FormattedMessage id="TRACKLIST" />
               </h2>
 
-              <ol>{release.tracklist.map(this.renderTrack)}</ol>
+              {release.tracklist.map((album, albumIndex) => (
+                <React.Fragment key={albumIndex}>
+                  {release.tracklist.length > 1 ? (
+                    <h3>
+                      <FormattedMessage
+                        id="DISC_NUMBER"
+                        values={{ number: albumIndex }}
+                      />
+                    </h3>
+                  ) : null}
+                  <ol>{album.map(this.renderTrack)}</ol>
+                </React.Fragment>
+              ))}
             </section>
 
             {release.streamList.length > 0 ? (

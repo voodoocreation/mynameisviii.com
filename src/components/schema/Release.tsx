@@ -41,6 +41,14 @@ const getReleaseType = (type: string) => {
   }
 };
 
+const getFlatTracklist = (tracklist: IReleaseTrack[][]) => {
+  return tracklist.reduce((acc, curr) => {
+    acc = [...acc, ...curr];
+
+    return acc;
+  }, []);
+};
+
 const Release: React.SFC<IRelease> = props => (
   <Schema
     {...{
@@ -58,7 +66,7 @@ const Release: React.SFC<IRelease> = props => (
       albumReleaseType: `http://schema.org/${getReleaseType(props.type)}`,
       byArtist: {
         "@type": "MusicGroup",
-        name: props.artist
+        name: props.artist.name
       },
       datePublished: props.releasedOn,
       description: stripTags(props.description),
@@ -69,20 +77,22 @@ const Release: React.SFC<IRelease> = props => (
       name: props.title,
       track: {
         "@type": "ItemList",
-        itemListElement: props.tracklist.map((track: IReleaseTrack, index) => ({
-          "@type": "ListItem",
-          item: {
-            "@type": "MusicRecording",
-            duration: lengthToDuration(track.length),
-            name: track.title,
-            recordingOf: {
-              "@type": "MusicComposition",
-              name: track.title
-            }
-          },
-          position: index + 1
-        })),
-        numberOfItems: props.tracklist.length
+        itemListElement: getFlatTracklist(props.tracklist).map(
+          (track: IReleaseTrack, index) => ({
+            "@type": "ListItem",
+            item: {
+              "@type": "MusicRecording",
+              duration: lengthToDuration(track.length),
+              name: track.title,
+              recordingOf: {
+                "@type": "MusicComposition",
+                name: track.title
+              }
+            },
+            position: index + 1
+          })
+        ),
+        numberOfItems: getFlatTracklist(props.tracklist).length
       }
     }}
   />

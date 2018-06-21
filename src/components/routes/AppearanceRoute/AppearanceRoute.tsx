@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { ActionCreator } from "typescript-fsa";
 
+import { absUrl } from "../../../domain/transformData";
 import injectIntl from "../../../helpers/injectIntl";
 import ConnectedErrorPage from "../../containers/ConnectedErrorPage/ConnectedErrorPage";
 import Appearance from "../../presentation/Appearance/Appearance";
@@ -55,6 +56,13 @@ class AppearanceRoute extends React.Component<IProps> {
 
           <meta content={appearance.description} name="description" />
 
+          <meta property="og:title" content={appearance.title} />
+          <meta property="og:description" content={appearance.description} />
+          <meta
+            property="og:url"
+            content={absUrl(`/appearances/${appearance.slug}`)}
+          />
+          <meta property="og:type" content="website" />
           <meta property="og:image" content={appearance.ogImageUrl} />
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />
