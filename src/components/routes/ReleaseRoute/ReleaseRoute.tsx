@@ -3,6 +3,7 @@ import * as React from "react";
 import { InjectedIntl } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
+import stripTags from "striptags";
 import { ActionCreator } from "typescript-fsa";
 
 import { absUrl } from "../../../domain/transformData";
@@ -56,10 +57,13 @@ class ReleaseRoute extends React.Component<IProps> {
             {formatMessage({ id: "BRAND_NAME" })}
           </title>
 
-          <meta content={release.description} name="description" />
+          <meta content={stripTags(release.description)} name="description" />
 
           <meta property="og:title" content={release.title} />
-          <meta property="og:description" content={release.description} />
+          <meta
+            property="og:description"
+            content={stripTags(release.description)}
+          />
           <meta
             property="og:url"
             content={absUrl(`/releases/${release.slug}`)}
