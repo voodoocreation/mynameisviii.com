@@ -5,6 +5,7 @@ import * as actions from "../actions/root.actions";
 export const initialState: IPageReducers = {
   error: undefined,
   isLoading: false,
+  isNavOpen: false,
   transitioningTo: undefined
 };
 
@@ -36,10 +37,16 @@ export default reducerWithInitialState(initialState)
     })
   )
 
+  .case(actions.toggleNavigation, state => ({
+    ...state,
+    isNavOpen: !state.isNavOpen
+  }))
+
   .case(actions.changeRoute.started, (state, payload) => ({
     ...state,
     error: undefined,
     isLoading: true,
+    isNavOpen: false,
     transitioningTo: payload
   }))
 

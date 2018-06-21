@@ -2,20 +2,32 @@ import cn from "classnames";
 import { withRouter, WithRouterProps } from "next/router";
 import * as React from "react";
 import { FormattedMessage } from "react-intl";
+import { connect } from "react-redux";
+import { bindActionCreators, Dispatch } from "redux";
+import { ActionCreator } from "typescript-fsa";
 
 import NavItem from "./NavItem";
 
-interface IProps extends WithRouterProps {}
+import * as actions from "../../../actions/root.actions";
+import * as selectors from "../../../selectors/root.selectors";
+
+interface IStoreProps {
+  isOpen: boolean;
+}
+
+interface IDispatchProps {
+  toggleNavigation: ActionCreator<{}>;
+}
+
+interface IProps extends WithRouterProps, IStoreProps, IDispatchProps {}
 
 interface IState {
   currentRoute?: string;
-  isOpen: boolean;
 }
 
 class Navigation extends React.Component<IProps, IState> {
   public readonly state = {
-    currentRoute: undefined,
-    isOpen: false
+    currentRoute: undefined
   };
 
   private currentRouteTimeout: undefined | NodeJS.Timer = undefined;
@@ -49,7 +61,7 @@ class Navigation extends React.Component<IProps, IState> {
   public render() {
     return (
       <nav
-        className={cn("Navigation", { isOpen: this.state.isOpen })}
+        className={cn("Navigation", { isOpen: this.props.isOpen })}
         role="navigation"
       >
         <button onClick={this.onMenuButtonClick}>
@@ -65,15 +77,7 @@ class Navigation extends React.Component<IProps, IState> {
   }
 
   private onMenuButtonClick = () => {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  };
-
-  private onNavItemClick = () => {
-    this.setState({
-      isOpen: false
-    });
+    this.props.toggleNavigation({});
   };
 
   private renderNavItem = (route: string, messageId: string) => (
@@ -81,9 +85,23 @@ class Navigation extends React.Component<IProps, IState> {
       route={route}
       messageId={messageId}
       isSelected={this.state.currentRoute === route}
-      onClick={this.onNavItemClick}
     />
   );
 }
 
-export default withRouter<any>(Navigation);
+const mapStateToProps = (state: any) => ({
+  isOpen: selectors.isNavOpen(state)
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) =>
+  bindActionCreators(
+    {
+      toggleNavigation: actions.toggleNavigation
+    },
+    dispatch
+  );
+
+export default connect<IStoreProps, IDispatchProps>(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter<any>(Navigation));

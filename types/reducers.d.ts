@@ -50,5 +50,6 @@ interface IReleasesReducers {
 interface IPageReducers {
   error?: IError;
   isLoading: boolean;
+  isNavOpen: boolean;
   transitioningTo?: string;
 }
