@@ -26,6 +26,7 @@ artifacts:
     - next.config.js
     - next.routes.js
     - next.server.js
+    - start.config.json
     - package.json
     - yarn.lock
 cache:
