@@ -1,4 +1,4 @@
-import transformRelease from "../../domain/transformRelease";
+import transformRelease from "../../transformers/transformRelease";
 
 export default (internet: any) => {
   return async (slug: string) => {

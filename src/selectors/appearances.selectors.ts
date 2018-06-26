@@ -1,5 +1,5 @@
 import { createSelector, defaultMemoize } from "reselect";
-import { assocToArray } from "../domain/transformData";
+import { assocToArray } from "../transformers/transformData";
 
 export const getAppearances = defaultMemoize(
   (state: IRootReducers) => state.appearances.items

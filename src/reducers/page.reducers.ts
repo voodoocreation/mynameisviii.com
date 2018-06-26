@@ -52,11 +52,13 @@ export default reducerWithInitialState(initialState)
 
   .case(actions.changeRoute.done, state => ({
     ...state,
-    isLoading: false
+    isLoading: false,
+    transitioningTo: undefined
   }))
 
   .case(actions.changeRoute.failed, (state, { error }) => ({
     ...state,
     error,
-    isLoading: false
+    isLoading: false,
+    transitioningTo: undefined
   }));

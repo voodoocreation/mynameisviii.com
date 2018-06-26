@@ -11,14 +11,19 @@ type TStore = Store & {
   runSagaTask?: () => void;
 };
 
-const port = process.env.PORT || 5000;
 const isUsingLocalApi = false;
-const isDev = process.env.NODE_ENV === "development";
-const isSSR = typeof window === "undefined";
-const hasGA = !isSSR && typeof window.dataLayer !== "undefined";
-const hasMaps = !isSSR && typeof window.google.maps !== "undefined";
 
 export default (initialState = {}) => {
+  // Environment
+  const isSSR = typeof window === "undefined";
+  const hasGA = !isSSR && typeof window.dataLayer !== "undefined";
+  const hasMaps =
+    !isSSR &&
+    typeof window.google !== "undefined" &&
+    typeof window.google.maps !== "undefined";
+  const isDev = process.env.NODE_ENV === "development";
+  const port = process.env.PORT || window.location.port || 5000;
+
   // Middleware
   const sagaMiddleware = createSagaMiddleware();
   const middleware = [sagaMiddleware];

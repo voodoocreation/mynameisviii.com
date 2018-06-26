@@ -5,8 +5,8 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { ActionCreator } from "typescript-fsa";
 
-import { absUrl } from "../../../domain/transformData";
 import injectIntl from "../../../helpers/injectIntl";
+import { absUrl } from "../../../transformers/transformData";
 import AppearanceListing from "../../presentation/AppearanceListing/AppearanceListing";
 import ButtonBar from "../../presentation/ButtonBar/ButtonBar";
 import LoadButton from "../../presentation/LoadButton/LoadButton";

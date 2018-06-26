@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ConnectedErrorPage /> renders correctly 1`] = `
+Array [
+  <header
+    class="PageHeader"
+  >
+    <h1>
+      Page not found
+    </h1>
+  </header>,
+  <p>
+    This page does not exist - please use the site navigation to find what you're looking for.
+  </p>,
+]
+`;

@@ -1,7 +1,19 @@
-export const arrayToAssoc = (array: Array<{}>, key: string) =>
+export const arrayToAssoc = (
+  array: Array<{}>,
+  key: string,
+  failSilently = true
+) =>
   array.reduce(
-    (acc: { [index: string]: {} }, curr: { [index: string]: any }) => {
-      acc[curr[key]] = curr;
+    (
+      acc: { [index: string]: {} },
+      curr: { [index: string]: any },
+      index: number
+    ) => {
+      if (curr[key] !== undefined) {
+        acc[curr[key]] = curr;
+      } else if (!failSilently) {
+        throw new Error(`Key '${key}' not found at index ${index}`);
+      }
       return acc;
     },
     {}

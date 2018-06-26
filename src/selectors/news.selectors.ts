@@ -1,5 +1,5 @@
 import { createSelector, defaultMemoize } from "reselect";
-import { assocToArray } from "../domain/transformData";
+import { assocToArray } from "../transformers/transformData";
 
 export const getNewsArticles = defaultMemoize(
   (state: IRootReducers) => state.news.items

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ErrorRoute /> renders correctly 1`] = `
+Array [
+  <header
+    class="PageHeader"
+  >
+    <h1>
+      An error has occurred
+    </h1>
+  </header>,
+  <p>
+    An error has occurred, please try again.
+  </p>,
+]
+`;

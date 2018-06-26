@@ -1,4 +1,4 @@
-import transformNewsArticle from "../../domain/transformNewsArticle";
+import transformNewsArticle from "../../transformers/transformNewsArticle";
 
 export default (internet: any) => {
   return async (slug: string) => {

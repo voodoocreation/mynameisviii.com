@@ -1,6 +1,6 @@
 import { call, put, select, takeLatest } from "redux-saga/effects";
 
-import { arrayToAssoc, tryParseJson } from "../domain/transformData";
+import { arrayToAssoc, tryParseJson } from "../transformers/transformData";
 
 import * as actions from "../actions/root.actions";
 import * as selectors from "../selectors/root.selectors";

@@ -1,7 +1,5 @@
 /* eslint-disable no-console, global-require, import/no-dynamic-require */
 
-// TODO: Add S3 proxy with `Expires` header
-
 const path = require("path");
 const glob = require("glob");
 const accepts = require("accepts");

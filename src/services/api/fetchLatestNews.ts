@@ -1,4 +1,4 @@
-import transformNewsArticle from "../../domain/transformNewsArticle";
+import transformNewsArticle from "../../transformers/transformNewsArticle";
 
 export const transformLatestNews = (articles: any) =>
   articles.map(transformNewsArticle);

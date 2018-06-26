@@ -1,7 +1,7 @@
 import * as React from "react";
 import { InjectedIntl, injectIntl } from "react-intl";
 
-import { absUrl } from "../../domain/transformData";
+import { absUrl } from "../../transformers/transformData";
 import Schema from "./Schema";
 
 interface IProps extends IAppearance {

@@ -1,7 +1,7 @@
 import * as React from "react";
 import stripTags from "striptags";
 
-import { absUrl, lengthToDuration } from "../../domain/transformData";
+import { absUrl, lengthToDuration } from "../../transformers/transformData";
 import Schema from "./Schema";
 
 const getProductionType = (productionType: string) => {
@@ -37,6 +37,7 @@ const getReleaseType = (type: string) => {
       return "EPRelease";
 
     case "single":
+    case "remix":
       return "SingleRelease";
   }
 };

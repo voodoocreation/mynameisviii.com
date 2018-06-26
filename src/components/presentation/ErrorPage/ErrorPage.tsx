@@ -16,13 +16,13 @@ class ErrorPage extends React.Component<IProps> {
   };
 
   public render() {
-    const { intl } = this.props;
+    const { formatMessage } = this.props.intl;
 
     return (
       <React.Fragment>
         <Head>
           <title>
-            {`${this.getTitle()} · ${intl.formatMessage({
+            {`${this.getTitle()} · ${formatMessage({
               id: "BRAND_NAME"
             })}`}
           </title>

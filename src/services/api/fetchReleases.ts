@@ -1,4 +1,4 @@
-import transformRelease from "../../domain/transformRelease";
+import transformRelease from "../../transformers/transformRelease";
 
 export const transformReleases = (releases: any) =>
   releases.map(transformRelease);

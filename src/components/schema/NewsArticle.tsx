@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import organisation from "../../../server/mocks/organisation.json";
-import { absUrl } from "../../domain/transformData";
+import { absUrl } from "../../transformers/transformData";
 import Schema from "./Schema";
 
 const NewsArticle: React.SFC<INewsArticle> = props => (

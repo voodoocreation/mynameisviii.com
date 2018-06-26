@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Shell /> renders correctly 1`] = `
+<article
+  class="Page TestClassName"
+>
+  <header
+    class="Banner"
+    role="banner"
+  >
+    <a
+      class="Brand"
+      href="/"
+    >
+      <span>
+        My name is Viii: a painter of frequencies and thoughts
+      </span>
+      <svg />
+      <svg />
+    </a>
+    <nav
+      class="Navigation"
+      role="navigation"
+    >
+      <button>
+        <span>
+          Menu
+        </span>
+      </button>
+      <ul>
+        <li>
+          <a
+            href="/news"
+          >
+            <span>
+              News
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="/releases"
+          >
+            <span>
+              Releases
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="/appearances"
+          >
+            <span>
+              Appearances
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main
+    class="Page-body"
+    role="main"
+  />
+  <div
+    class="Portal"
+  />
+</article>
+`;
+
+exports[`<Shell /> renders correctly when loading 1`] = `
+<article
+  class="Page isLoading TestClassName"
+>
+  <header
+    class="Banner"
+    role="banner"
+  >
+    <a
+      class="Brand"
+      href="/"
+    >
+      <span>
+        My name is Viii: a painter of frequencies and thoughts
+      </span>
+      <svg />
+      <svg />
+    </a>
+    <nav
+      class="Navigation"
+      role="navigation"
+    >
+      <button>
+        <span>
+          Menu
+        </span>
+      </button>
+      <ul>
+        <li>
+          <a
+            href="/news"
+          >
+            <span>
+              News
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="/releases"
+          >
+            <span>
+              Releases
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="/appearances"
+          >
+            <span>
+              Appearances
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main
+    class="Page-body"
+    role="main"
+  >
+    <span
+      class="Loader"
+    >
+      <div
+        class="Loader-animation"
+      >
+        <span />
+        <span />
+        <span />
+      </div>
+    </span>
+  </main>
+  <div
+    class="Portal"
+  />
+</article>
+`;

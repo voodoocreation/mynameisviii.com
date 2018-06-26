@@ -1,15 +1,11 @@
 import setupSagas from "../helpers/setupSagas";
 
 import * as actions from "../actions/root.actions";
-import { assocToArray } from "../domain/transformData";
+import { assocToArray } from "../transformers/transformData";
 
 describe("actions.fetchLatestNews.started", () => {
   it("with actions.fetchLatestNews.done", async () => {
-    const testData = [
-      {
-        id: "test"
-      }
-    ];
+    const testData = [{ slug: "test" }];
 
     const { dispatch, store } = setupSagas(
       {

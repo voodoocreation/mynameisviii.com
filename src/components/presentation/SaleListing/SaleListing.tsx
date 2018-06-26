@@ -2,7 +2,7 @@ import * as React from "react";
 import { FaTicket } from "react-icons/lib/fa";
 import { MdLanguage } from "react-icons/lib/md";
 
-import { extractDomain } from "../../../domain/transformData";
+import { extractDomain } from "../../../transformers/transformData";
 import Link from "../Link/Link";
 import Meta from "../Meta/Meta";
 import Price from "../Price/Price";

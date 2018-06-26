@@ -1,7 +1,7 @@
 import { render } from "enzyme";
 import * as React from "react";
 
-import Index from "./IndexRoute";
+import ConnectedErrorPage from "./ConnectedErrorPage";
 
 jest.mock("react-redux", () => ({
   connect: () => (component: any) => component
@@ -9,16 +9,19 @@ jest.mock("react-redux", () => ({
 
 const setup = (fn: any) => {
   const props = {
-    articles: []
+    error: {
+      message: "Not found",
+      status: 404
+    }
   };
 
   return {
-    actual: fn(<Index {...props} />),
+    actual: fn(<ConnectedErrorPage {...props} />),
     props
   };
 };
 
-describe("<Index />", () => {
+describe("<ConnectedErrorPage />", () => {
   it("renders correctly", () => {
     const { actual } = setup(render);
     expect(actual).toMatchSnapshot();

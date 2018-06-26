@@ -1,4 +1,4 @@
-import transformAppearance from "../../domain/transformAppearance";
+import transformAppearance from "../../transformers/transformAppearance";
 
 export default (internet: any) => {
   return async (slug: string) => {

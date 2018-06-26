@@ -37,6 +37,10 @@
   &-content {
     padding: 0 $spacing;
     overflow: hidden;
+
+    a {
+      text-decoration: underline;
+    }
   }
 
   .isClientRendered & {

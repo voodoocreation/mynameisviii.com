@@ -12,8 +12,8 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { ActionCreator } from "typescript-fsa";
 
-import { absUrl } from "../../../domain/transformData";
 import injectIntl from "../../../helpers/injectIntl";
+import { absUrl } from "../../../transformers/transformData";
 import IconGenius from "../../icons/IconGenius";
 import Link from "../../presentation/Link/Link";
 import NewsListing from "../../presentation/NewsListing/NewsListing";
