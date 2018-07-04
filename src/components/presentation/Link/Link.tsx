@@ -13,28 +13,11 @@ interface IProps extends WithRouterProps {
   [index: string]: any;
 }
 
-interface IState {
-  isErrorPage: boolean;
-}
-
-class Link extends React.Component<IProps, IState> {
+class Link extends React.Component<IProps> {
   public static defaultProps = {
     isExternal: false,
     prefetch: false
   };
-
-  public readonly state = {
-    isErrorPage: false
-  };
-
-  public componentDidMount() {
-    if (
-      this.props.router &&
-      Object.keys(this.props.router.components).length < 1
-    ) {
-      this.setState({ isErrorPage: true });
-    }
-  }
 
   public render() {
     const {
@@ -59,7 +42,7 @@ class Link extends React.Component<IProps, IState> {
       return <span {...props}>{children}</span>;
     }
 
-    if (this.state.isErrorPage || !router) {
+    if (!router || Object.keys(router.components).length < 1) {
       return (
         <a href={route ? route : href} {...externalProps} {...props}>
           {children}

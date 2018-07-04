@@ -1,25 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Link /> renders <a /> when page is an error 1`] = `
-<Link
-  href="/"
-  isExternal={false}
-  prefetch={false}
-  router={
-    Object {
-      "components": Object {},
-    }
-  }
->
-  Link
-</Link>
-`;
-
-exports[`<Link /> renders next.js <Link /> when page is ok 1`] = `
-<Link
-  href="/"
-  isExternal={false}
-  prefetch={false}
+exports[`<Link /> renders <NextLink /> when router is available and \`route\` prop is passed 1`] = `
+<withRouter(Link)
+  route="/"
   router={
     Object {
       "components": Object {
@@ -28,6 +11,129 @@ exports[`<Link /> renders next.js <Link /> when page is ok 1`] = `
     }
   }
 >
-  Link
-</Link>
+  <Link
+    isExternal={false}
+    prefetch={false}
+    route="/"
+    router={
+      Object {
+        "components": Object {
+          "test": "test",
+        },
+      }
+    }
+  >
+    <LinkRoutes
+      prefetch={false}
+      route="/"
+    >
+      <Link
+        as="/"
+        href="/"
+        prefetch={false}
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+        >
+          Link
+        </a>
+      </Link>
+    </LinkRoutes>
+  </Link>
+</withRouter(Link)>
+`;
+
+exports[`<Link /> renders <Routes.Link /> when router is available and \`href\` prop is passed 1`] = `
+<withRouter(Link)
+  href="/"
+  router={
+    Object {
+      "components": Object {
+        "test": "test",
+      },
+    }
+  }
+>
+  <Link
+    href="/"
+    isExternal={false}
+    prefetch={false}
+    router={
+      Object {
+        "components": Object {
+          "test": "test",
+        },
+      }
+    }
+  >
+    <Link
+      href="/"
+      prefetch={false}
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Link
+      </a>
+    </Link>
+  </Link>
+</withRouter(Link)>
+`;
+
+exports[`<Link /> renders <a /> when router is unavailable 1`] = `
+<withRouter(Link)
+  href="/"
+  router={
+    Object {
+      "components": Object {},
+    }
+  }
+>
+  <Link
+    href="/"
+    isExternal={false}
+    prefetch={false}
+    router={
+      Object {
+        "components": Object {},
+      }
+    }
+  >
+    <a
+      href="/"
+    >
+      Link
+    </a>
+  </Link>
+</withRouter(Link)>
+`;
+
+exports[`<Link /> renders <span /> when \`href\` and \`route\` props are undefined 1`] = `
+<withRouter(Link)
+  router={
+    Object {
+      "components": Object {
+        "test": "test",
+      },
+    }
+  }
+>
+  <Link
+    isExternal={false}
+    prefetch={false}
+    router={
+      Object {
+        "components": Object {
+          "test": "test",
+        },
+      }
+    }
+  >
+    <span>
+      Link
+    </span>
+  </Link>
+</withRouter(Link)>
 `;

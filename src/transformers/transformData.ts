@@ -25,11 +25,17 @@ export const assocToArray: (object: any) => any = object =>
     return acc;
   }, []);
 
-export const tryParseJson = (json: string | Error) => {
+export const tryParseJson = (json: any) => {
   let result;
 
   try {
-    result = json.toString ? JSON.parse(json.toString()) : json;
+    let value = json;
+
+    if (json.message) {
+      value = json.message;
+    }
+
+    result = JSON.parse(value);
   } catch (error) {
     result = json;
   }
@@ -42,11 +48,17 @@ export const lengthToDuration = (length: string) => {
 
   switch (segments.length) {
     default:
+    case 1:
+      return `PT${parseInt(segments[0], 10)}S`;
+
     case 2:
-      return `PT${segments[0]}M${segments[1]}S`;
+      return `PT${parseInt(segments[0], 10)}M${parseInt(segments[1], 10)}S`;
 
     case 3:
-      return `PT${segments[0]}H${segments[1]}M${segments[2]}S`;
+      return `PT${parseInt(segments[0], 10)}H${parseInt(
+        segments[1],
+        10
+      )}M${parseInt(segments[2], 10)}S`;
   }
 };
 
@@ -54,7 +66,7 @@ export const absUrl = (path: string) =>
   process.env.NODE_ENV !== "production"
     ? `http://localhost:${process.env.PORT || window.location.port}${path}`
     : `http://${
-        typeof window === "undefined"
+        !!process.env.DOMAIN || typeof window === "undefined"
           ? process.env.DOMAIN
           : window.location.host
       }${path}`;

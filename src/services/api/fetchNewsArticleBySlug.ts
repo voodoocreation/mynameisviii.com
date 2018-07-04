@@ -1,19 +1,17 @@
 import transformNewsArticle from "../../transformers/transformNewsArticle";
 
-export default (internet: any) => {
-  return async (slug: string) => {
-    try {
-      const res = await internet({ url: `/news/${slug}` });
+export default (request: any) => async (slug: string) => {
+  try {
+    const res = await request({ url: `/news/${slug}` });
 
-      return {
-        data: transformNewsArticle(res),
-        ok: true
-      };
-    } catch (err) {
-      return {
-        message: err.message || err.toString(),
-        ok: false
-      };
-    }
-  };
+    return {
+      data: transformNewsArticle(res),
+      ok: true
+    };
+  } catch (err) {
+    return {
+      message: err.message,
+      ok: false
+    };
+  }
 };

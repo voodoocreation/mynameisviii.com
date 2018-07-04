@@ -1,19 +1,17 @@
 import transformAppearance from "../../transformers/transformAppearance";
 
-export default (internet: any) => {
-  return async (slug: string) => {
-    try {
-      const res = await internet({ url: `/appearances/${slug}` });
+export default (request: any) => async (slug: string) => {
+  try {
+    const response = await request({ url: `/appearances/${slug}` });
 
-      return {
-        data: transformAppearance(res),
-        ok: true
-      };
-    } catch (err) {
-      return {
-        message: err.message || err.toString(),
-        ok: false
-      };
-    }
-  };
+    return {
+      data: transformAppearance(response),
+      ok: true
+    };
+  } catch (error) {
+    return {
+      message: error.message,
+      ok: false
+    };
+  }
 };

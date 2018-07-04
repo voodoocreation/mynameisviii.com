@@ -2,7 +2,7 @@ import page, { initialState as pageModel } from "./page.reducers";
 
 import * as actions from "../actions/root.actions";
 
-describe("[Reducers] Page", () => {
+describe("[reducers] Page", () => {
   it("actions.changeRoute.started", () => {
     const testValue = "/";
 

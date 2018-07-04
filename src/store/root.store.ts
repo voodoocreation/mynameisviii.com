@@ -4,7 +4,7 @@ import createSagaMiddleware, { Task } from "redux-saga";
 import rootReducer from "../reducers/root.reducers";
 import rootSaga from "../sagas/root.sagas";
 import { createApiWith, createPortsWith } from "../services/configureApi";
-// import { createOfflineStorage } from "../services/configureOfflineStorage";
+// import createOfflineStorage from "../services/configureOfflineStorage";
 
 type TStore = Store & {
   sagaTask?: Task;
@@ -15,7 +15,7 @@ const isUsingLocalApi = false;
 
 export default (initialState = {}) => {
   // Environment
-  const isSSR = typeof window === "undefined";
+  const isSSR = typeof window === "undefined" || window.isServer;
   const hasGA = !isSSR && typeof window.dataLayer !== "undefined";
   const hasMaps =
     !isSSR &&
