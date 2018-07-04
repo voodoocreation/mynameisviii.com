@@ -1,41 +1,59 @@
-import page, { initialState as pageModel } from "./page.reducers";
+import reducer, { initialState as model } from "./page.reducers";
 
 import * as actions from "../actions/root.actions";
 
 describe("[reducers] Page", () => {
-  it("actions.changeRoute.started", () => {
-    const testValue = "/";
+  describe("actions.changeRoute", () => {
+    it("started is handled", () => {
+      const params = "/";
 
-    const state = page(pageModel, actions.changeRoute.started(testValue));
+      const state = reducer(model, actions.changeRoute.started(params));
 
-    expect(state.isLoading).toBe(true);
-    expect(state.transitioningTo).toEqual(testValue);
+      expect(state.isLoading).toBe(true);
+      expect(state.transitioningTo).toEqual(params);
+    });
+
+    it("done is handled", () => {
+      const params = "/";
+
+      const state = reducer(model, actions.changeRoute.done({ params }));
+
+      expect(state.isLoading).toBe(false);
+      expect(state.transitioningTo).toBeUndefined();
+    });
+
+    it("failed is handled", () => {
+      const params = "/";
+      const error = { message: "Error", status: 500 };
+
+      const state = reducer(
+        model,
+        actions.changeRoute.failed({ error, params })
+      );
+
+      expect(state.error).toEqual(error);
+      expect(state.isLoading).toBe(false);
+      expect(state.transitioningTo).toBeUndefined();
+    });
   });
 
-  it("actions.changeRoute.done", () => {
-    const testValue = "/";
+  it("actions.toggleNavigation is handled", () => {
+    const state1 = reducer(model, actions.toggleNavigation({}));
+    const state2 = reducer(state1, actions.toggleNavigation({}));
 
-    const state = page(
-      pageModel,
-      actions.changeRoute.done({ params: testValue })
-    );
-
-    expect(state.isLoading).toBe(false);
-    expect(state.transitioningTo).toBeUndefined();
+    expect(state1.isNavOpen).toBe(true);
+    expect(state2.isNavOpen).toEqual(false);
   });
 
-  it("actions.changeRoute.failed", () => {
-    const testValue = "/";
+  it("actions.fetchNewsArticleBySlug.failed is handled", () => {
+    const params = "test-1";
+    const error = { message: "Error", status: 500 };
 
-    const state = page(
-      pageModel,
-      actions.changeRoute.failed({
-        error: { message: "Error", status: 500 },
-        params: testValue
-      })
+    const state = reducer(
+      model,
+      actions.fetchNewsArticleBySlug.failed({ error, params })
     );
 
-    expect(state.isLoading).toBe(false);
-    expect(state.transitioningTo).toBeUndefined();
+    expect(state.error).toEqual(error);
   });
 });
