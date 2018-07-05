@@ -27,7 +27,11 @@ export default (initialState = {}) => {
 
   // Redux devtools
   let composeEnhancers = compose;
-  if (!isSSR && isDev && typeof window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ === "function") {
+  if (
+    !isSSR &&
+    isDev &&
+    typeof window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ === "function"
+  ) {
     composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
   }
 

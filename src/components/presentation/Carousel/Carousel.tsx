@@ -27,7 +27,7 @@ class Carousel extends React.Component<IProps, IState> {
 
   public componentWillReceiveProps(nextProps: IProps) {
     if (
-      nextProps.currentIndex &&
+      nextProps.currentIndex !== undefined &&
       nextProps.currentIndex !== this.state.currentIndex
     ) {
       this.setState({

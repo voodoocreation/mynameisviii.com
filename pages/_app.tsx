@@ -3,7 +3,8 @@ import withRedux from "next-redux-wrapper";
 import App, { Container } from "next/app";
 import { NextDocumentContext as Context } from "next/document";
 import * as React from "react";
-import { Provider, Store } from "react-redux";
+import { Provider } from "react-redux";
+import { Store } from "redux";
 
 import routes from "../next.routes";
 import * as actions from "../src/actions/root.actions";
