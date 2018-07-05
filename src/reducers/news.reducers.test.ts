@@ -11,10 +11,7 @@ const mockData: any = camelizeKeys(news);
 describe("[reducers] News", () => {
   describe("actions.fetchLatestNews", () => {
     it("started is handled", () => {
-      const state = reducer(
-        model,
-        actions.fetchLatestNews.started({})
-      );
+      const state = reducer(model, actions.fetchLatestNews.started({}));
 
       expect(state.isLoading).toBe(true);
       expect(Object.keys(state.items)).toHaveLength(0);
@@ -123,10 +120,7 @@ describe("[reducers] News", () => {
   });
 
   it("actions.setCurrentNewsArticleSlug is handled", () => {
-    const state = reducer(
-      model,
-      actions.setCurrentNewsArticleSlug("test-1")
-    );
+    const state = reducer(model, actions.setCurrentNewsArticleSlug("test-1"));
 
     expect(state.currentSlug).toEqual("test-1");
   });

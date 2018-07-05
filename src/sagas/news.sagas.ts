@@ -8,17 +8,20 @@ import * as selectors from "../selectors/root.selectors";
 export const fetchLatestNewsSaga = (ports: IStorePorts) =>
   function*() {
     yield takeLatest(actions.fetchLatestNews.started, function*() {
-      const res = yield call(ports.api.fetchLatestNews, 3);
+      const response = yield call(ports.api.fetchLatestNews, 3);
 
-      if (res.ok) {
+      if (response.ok) {
         const result = {
-          ...res.data,
-          items: arrayToAssoc(res.data.items, "slug")
+          ...response.data,
+          items: arrayToAssoc(response.data.items, "slug")
         };
         yield put(actions.fetchLatestNews.done({ result, params: {} }));
       } else {
         yield put(
-          actions.fetchLatestNews.failed({ error: res.message, params: {} })
+          actions.fetchLatestNews.failed({
+            error: response.message,
+            params: {}
+          })
         );
       }
     });
@@ -31,12 +34,16 @@ export const fetchMoreLatestNewsSaga = (ports: IStorePorts) =>
         selectors.getNewsLastEvaluatedKeyAsString
       );
 
-      const res = yield call(ports.api.fetchLatestNews, 2, lastEvaluatedKey);
+      const response = yield call(
+        ports.api.fetchLatestNews,
+        2,
+        lastEvaluatedKey
+      );
 
-      if (res.ok) {
+      if (response.ok) {
         const result = {
-          ...res.data,
-          items: arrayToAssoc(res.data.items, "slug")
+          ...response.data,
+          items: arrayToAssoc(response.data.items, "slug")
         };
 
         yield put(actions.fetchMoreLatestNews.done({ result, params: {} }));
@@ -50,7 +57,10 @@ export const fetchMoreLatestNewsSaga = (ports: IStorePorts) =>
         );
       } else {
         yield put(
-          actions.fetchMoreLatestNews.failed({ error: res.message, params: {} })
+          actions.fetchMoreLatestNews.failed({
+            error: response.message,
+            params: {}
+          })
         );
       }
     });
@@ -64,19 +74,19 @@ export const fetchNewsArticleBySlugSaga = (ports: IStorePorts) =>
       payload: PLFetchNewsArticleBySlugStarted;
       type: string;
     }) {
-      const res = yield call(ports.api.fetchNewsArticleBySlug, payload);
+      const response = yield call(ports.api.fetchNewsArticleBySlug, payload);
 
-      if (res.ok) {
+      if (response.ok) {
         yield put(
           actions.fetchNewsArticleBySlug.done({
             params: payload,
-            result: res.data
+            result: response.data
           })
         );
       } else {
         yield put(
           actions.fetchNewsArticleBySlug.failed({
-            error: tryParseJson(res.message),
+            error: tryParseJson(response.message),
             params: payload
           })
         );

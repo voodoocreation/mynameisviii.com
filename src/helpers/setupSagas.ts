@@ -6,11 +6,14 @@ import rootSaga from "../sagas/root.sagas";
 
 export default (fromTestStore = {}, fromTestPorts = {}) => {
   const initialState = merge({}, fromTestStore);
-  const ports = {
-    api: merge({}, fromTestPorts),
-    dataLayer: [],
-    maps: {}
-  };
+  const ports = merge(
+    {
+      api: {},
+      dataLayer: [],
+      maps: {}
+    },
+    fromTestPorts
+  );
 
   const sagaTester = new SagaTester({
     initialState,

@@ -107,25 +107,54 @@ describe("[transformers] Data", () => {
     it("transforms correctly for a string with hours, minutes and seconds", () => {
       expect(data.lengthToDuration("06:05:04")).toEqual("PT6H5M4S");
     });
+
+    it("throws an error for an invalid string", () => {
+      let isPassing = true;
+
+      try {
+        data.lengthToDuration("34:52:32:50");
+      } catch (error) {
+        isPassing = false;
+      }
+
+      expect(isPassing).toBe(false);
+    });
   });
 
   describe("absUrl()", () => {
-    it("adds local domain when NODE_ENV=development", () => {
-      process.env.NODE_ENV = "development";
-      process.env.PORT = "5000";
+    describe("when NODE_ENV=development", () => {
+      beforeEach(() => {
+        process.env.NODE_ENV = "development";
+        process.env.PORT = "5000";
+      });
 
-      expect(data.absUrl("/news/article-slug")).toEqual(
-        "http://localhost:5000/news/article-slug"
-      );
+      it("prefixes with http://localhost:{process.env.PORT}", () => {
+        expect(data.absUrl("/news/article-slug")).toEqual(
+          "http://localhost:5000/news/article-slug"
+        );
+      });
     });
 
-    it("adds prod domain when NODE_ENV=production", () => {
-      process.env.NODE_ENV = "production";
-      process.env.DOMAIN = "mynameisviii.com";
+    describe("when NODE_ENV=production", () => {
+      beforeEach(() => {
+        process.env.NODE_ENV = "production";
+      });
 
-      expect(data.absUrl("/news/article-slug")).toEqual(
-        "http://mynameisviii.com/news/article-slug"
-      );
+      it("prefixes with http://{process.env.DOMAIN} when it's defined", () => {
+        process.env.DOMAIN = "mynameisviii.com";
+
+        expect(data.absUrl("/news/article-slug")).toEqual(
+          "http://mynameisviii.com/news/article-slug"
+        );
+      });
+
+      it("prefixes with http://{window.location.host} when process.env.DOMAIN is undefined", () => {
+        process.env.DOMAIN = undefined;
+
+        expect(data.absUrl("/news/article-slug")).toEqual(
+          "http://localhost/news/article-slug"
+        );
+      });
     });
   });
 

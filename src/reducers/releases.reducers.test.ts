@@ -11,10 +11,7 @@ const mockData: any = camelizeKeys(releases);
 describe("[reducers] Releases", () => {
   describe("actions.fetchReleases", () => {
     it("started is handled", () => {
-      const state = reducer(
-        model,
-        actions.fetchReleases.started({})
-      );
+      const state = reducer(model, actions.fetchReleases.started({}));
 
       expect(state.isLoading).toBe(true);
       expect(Object.keys(state.items)).toHaveLength(0);
@@ -92,10 +89,7 @@ describe("[reducers] Releases", () => {
     const params = "test-1";
 
     it("started is handled", () => {
-      const state = reducer(
-        model,
-        actions.fetchReleaseBySlug.started(params)
-      );
+      const state = reducer(model, actions.fetchReleaseBySlug.started(params));
 
       expect(state.isLoading).toBe(true);
     });
@@ -123,10 +117,7 @@ describe("[reducers] Releases", () => {
   });
 
   it("actions.setCurrentReleaseSlug is handled", () => {
-    const state = reducer(
-      model,
-      actions.setCurrentReleaseSlug("test-1")
-    );
+    const state = reducer(model, actions.setCurrentReleaseSlug("test-1"));
 
     expect(state.currentSlug).toEqual("test-1");
   });

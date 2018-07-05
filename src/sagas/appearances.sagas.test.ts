@@ -3,17 +3,17 @@ import { arrayToAssoc, assocToArray } from "../transformers/transformData";
 
 import * as actions from "../actions/root.actions";
 
-describe("[sagas] News", () => {
+describe("[sagas] Appearances", () => {
   const existingItems = [{ slug: "existing-test" }];
   const items = [{ slug: "test" }];
 
-  describe("takeLatest(actions.fetchLatestNews.started)", () => {
-    it("put(actions.fetchLatestNews.done)", async () => {
+  describe("takeLatest(actions.fetchAppearances.started)", () => {
+    it("put(actions.fetchAppearances.done)", async () => {
       const { dispatch, findAction, store } = setupSagas(
         {},
         {
           api: {
-            fetchLatestNews: () => ({
+            fetchAppearances: () => ({
               data: { items },
               ok: true
             })
@@ -21,19 +21,19 @@ describe("[sagas] News", () => {
         }
       );
 
-      dispatch(actions.fetchLatestNews.started({}));
-      const doneAction = findAction(actions.fetchLatestNews.done);
+      dispatch(actions.fetchAppearances.started({}));
+      const doneAction = findAction(actions.fetchAppearances.done);
 
       expect(doneAction).toBeDefined();
-      expect(assocToArray(store().news.items)).toEqual(items);
+      expect(assocToArray(store().appearances.items)).toEqual(items);
     });
 
-    it("put(actions.fetchLatestNews.failed)", async () => {
+    it("put(actions.fetchAppearances.failed)", async () => {
       const { dispatch, findAction } = setupSagas(
         {},
         {
           api: {
-            fetchLatestNews: () => ({
+            fetchAppearances: () => ({
               message: "Bad request",
               ok: false
             })
@@ -41,25 +41,25 @@ describe("[sagas] News", () => {
         }
       );
 
-      dispatch(actions.fetchLatestNews.started({}));
-      const failedAction = findAction(actions.fetchLatestNews.failed);
+      dispatch(actions.fetchAppearances.started({}));
+      const failedAction = findAction(actions.fetchAppearances.failed);
 
       expect(failedAction).toBeDefined();
       expect(failedAction.payload.error).toBe("Bad request");
     });
   });
 
-  describe("takeLatest(actions.fetchMoreLatestNews.started)", () => {
-    it("put(actions.fetchMoreLatestNews.done)", async () => {
+  describe("takeLatest(actions.fetchMoreAppearances.started)", () => {
+    it("put(actions.fetchMoreAppearances.done)", async () => {
       const { dispatch, findAction, store } = setupSagas(
         {
-          news: {
+          appearances: {
             items: arrayToAssoc(existingItems, "slug")
           }
         },
         {
           api: {
-            fetchLatestNews: () => ({
+            fetchAppearances: () => ({
               data: { items },
               ok: true
             })
@@ -67,32 +67,32 @@ describe("[sagas] News", () => {
         }
       );
 
-      dispatch(actions.fetchMoreLatestNews.started({}));
-      const doneAction = findAction(actions.fetchMoreLatestNews.done);
+      dispatch(actions.fetchMoreAppearances.started({}));
+      const doneAction = findAction(actions.fetchMoreAppearances.done);
       const trackEventAction = findAction(actions.trackEvent);
 
       expect(doneAction).toBeDefined();
       expect(trackEventAction).toBeDefined();
       expect(trackEventAction.payload).toEqual({
-        event: "news.fetchedMore",
+        event: "appearances.fetchedMore",
         itemCount: 2
       });
-      expect(assocToArray(store().news.items)).toEqual([
+      expect(assocToArray(store().appearances.items)).toEqual([
         ...existingItems,
         ...items
       ]);
     });
 
-    it("put(actions.fetchMoreLatestNews.failed)", async () => {
+    it("put(actions.fetchMoreAppearances.failed)", async () => {
       const { dispatch, findAction } = setupSagas(
         {
-          news: {
+          appearances: {
             items: arrayToAssoc(existingItems, "slug")
           }
         },
         {
           api: {
-            fetchLatestNews: () => ({
+            fetchAppearances: () => ({
               message: "Bad request",
               ok: false
             })
@@ -100,21 +100,21 @@ describe("[sagas] News", () => {
         }
       );
 
-      dispatch(actions.fetchMoreLatestNews.started({}));
-      const failedAction = findAction(actions.fetchMoreLatestNews.failed);
+      dispatch(actions.fetchMoreAppearances.started({}));
+      const failedAction = findAction(actions.fetchMoreAppearances.failed);
 
       expect(failedAction).toBeDefined();
       expect(failedAction.payload.error).toBe("Bad request");
     });
   });
 
-  describe("takeLatest(actions.fetchNewsArticleBySlug.started)", () => {
-    it("put(actions.fetchNewsArticleBySlug.done)", async () => {
+  describe("takeLatest(actions.fetchAppearanceBySlug.started)", () => {
+    it("put(actions.fetchAppearanceBySlug.done)", async () => {
       const { dispatch, findAction, store } = setupSagas(
         {},
         {
           api: {
-            fetchNewsArticleBySlug: () => ({
+            fetchAppearanceBySlug: () => ({
               data: items[0],
               ok: true
             })
@@ -122,19 +122,19 @@ describe("[sagas] News", () => {
         }
       );
 
-      dispatch(actions.fetchNewsArticleBySlug.started("test"));
-      const doneAction = findAction(actions.fetchNewsArticleBySlug.done);
+      dispatch(actions.fetchAppearanceBySlug.started("test"));
+      const doneAction = findAction(actions.fetchAppearanceBySlug.done);
 
       expect(doneAction).toBeDefined();
-      expect(assocToArray(store().news.items)).toEqual(items);
+      expect(assocToArray(store().appearances.items)).toEqual(items);
     });
 
-    it("put(actions.fetchNewsArticleBySlug.failed)", async () => {
+    it("put(actions.fetchAppearanceBySlug.failed)", async () => {
       const { dispatch, findAction } = setupSagas(
         {},
         {
           api: {
-            fetchNewsArticleBySlug: () => ({
+            fetchAppearanceBySlug: () => ({
               message: "Bad request",
               ok: false
             })
@@ -142,8 +142,8 @@ describe("[sagas] News", () => {
         }
       );
 
-      dispatch(actions.fetchNewsArticleBySlug.started("test"));
-      const failedAction = findAction(actions.fetchNewsArticleBySlug.failed);
+      dispatch(actions.fetchAppearanceBySlug.started("test"));
+      const failedAction = findAction(actions.fetchAppearanceBySlug.failed);
 
       expect(failedAction).toBeDefined();
       expect(failedAction.payload.error).toBe("Bad request");

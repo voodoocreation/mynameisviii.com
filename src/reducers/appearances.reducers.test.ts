@@ -11,10 +11,7 @@ const mockData: any = camelizeKeys(appearances);
 describe("[reducers] Appearances", () => {
   describe("actions.fetchAppearances", () => {
     it("started is handled", () => {
-      const state = reducer(
-        model,
-        actions.fetchAppearances.started({})
-      );
+      const state = reducer(model, actions.fetchAppearances.started({}));
 
       expect(state.isLoading).toBe(true);
       expect(Object.keys(state.items)).toHaveLength(0);
@@ -123,10 +120,7 @@ describe("[reducers] Appearances", () => {
   });
 
   it("actions.setCurrentAppearanceSlug is handled", () => {
-    const state = reducer(
-      model,
-      actions.setCurrentAppearanceSlug("test-1")
-    );
+    const state = reducer(model, actions.setCurrentAppearanceSlug("test-1"));
 
     expect(state.currentSlug).toEqual("test-1");
   });

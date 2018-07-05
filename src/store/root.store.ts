@@ -11,8 +11,6 @@ type TStore = Store & {
   runSagaTask?: () => void;
 };
 
-const isUsingLocalApi = false;
-
 export default (initialState = {}) => {
   // Environment
   const isSSR = typeof window === "undefined" || window.isServer;
@@ -22,7 +20,6 @@ export default (initialState = {}) => {
     typeof window.google !== "undefined" &&
     typeof window.google.maps !== "undefined";
   const isDev = process.env.NODE_ENV === "development";
-  const port = process.env.PORT || window.location.port || 5000;
 
   // Middleware
   const sagaMiddleware = createSagaMiddleware();
@@ -30,23 +27,14 @@ export default (initialState = {}) => {
 
   // Redux devtools
   let composeEnhancers = compose;
-  if (!isSSR && isDev) {
-    const composeWithDevToolsExtension =
-      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
-
-    if (typeof composeWithDevToolsExtension === "function") {
-      composeEnhancers = composeWithDevToolsExtension;
-    }
+  if (!isSSR && isDev && typeof window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ === "function") {
+    composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
   }
 
   // Redux store
-  const apiUrl = isUsingLocalApi
-    ? `http://localhost:${port}/mock-api`
-    : "https://api.mynameisviii.com";
-
   // const offlineStorage = createOfflineStorage();
   const ports = createPortsWith({
-    apiUrl
+    apiUrl: "https://api.mynameisviii.com"
   });
   const store: TStore = createStore(
     rootReducer,

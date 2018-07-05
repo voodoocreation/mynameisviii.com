@@ -8,6 +8,6 @@ export const trackAnalyticsEventSaga = (ports: IStorePorts) =>
       type: string;
       payload: PLTrackEvent;
     }) {
-      yield call(ports.dataLayer.push, action.payload);
+      yield call(ports.dataLayer.push.bind(ports.dataLayer), action.payload);
     });
   };

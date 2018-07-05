@@ -47,7 +47,6 @@ export const lengthToDuration = (length: string) => {
   const segments = length.split(":");
 
   switch (segments.length) {
-    default:
     case 1:
       return `PT${parseInt(segments[0], 10)}S`;
 
@@ -59,6 +58,9 @@ export const lengthToDuration = (length: string) => {
         segments[1],
         10
       )}M${parseInt(segments[2], 10)}S`;
+
+    default:
+      throw new Error(`Invalid time format: ${length}`);
   }
 };
 
@@ -66,7 +68,7 @@ export const absUrl = (path: string) =>
   process.env.NODE_ENV !== "production"
     ? `http://localhost:${process.env.PORT || window.location.port}${path}`
     : `http://${
-        !!process.env.DOMAIN || typeof window === "undefined"
+        process.env.DOMAIN !== "undefined"
           ? process.env.DOMAIN
           : window.location.host
       }${path}`;
