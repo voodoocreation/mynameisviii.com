@@ -1,6 +1,6 @@
 import withReduxSaga from "next-redux-saga";
 import withRedux from "next-redux-wrapper";
-import App, { Container } from "next/app";
+import App, { AppComponentProps, Container } from "next/app";
 import { NextDocumentContext as Context } from "next/document";
 import * as React from "react";
 import { Provider } from "react-redux";
@@ -13,10 +13,9 @@ import createStore from "../src/store/root.store";
 
 import Shell from "../src/components/containers/Shell/Shell";
 
-interface IProps {
+interface IProps extends AppComponentProps {
   Component: any;
   ctx: Context & { store: any };
-  pageProps: any;
   store: Store<any>;
 }
 
