@@ -4,7 +4,7 @@ import SagaTester from "redux-saga-tester";
 import rootReducer from "../reducers/root.reducers";
 import rootSaga from "../sagas/root.sagas";
 
-export default (fromTestStore = {}, fromTestPorts = {}) => {
+export default (fromTestStore: {}, fromTestPorts: {}) => {
   const initialState = merge({}, fromTestStore);
   const ports = merge(
     {
@@ -22,20 +22,12 @@ export default (fromTestStore = {}, fromTestPorts = {}) => {
   sagaTester.start(rootSaga(ports));
 
   return {
-    actionsHistory: () => sagaTester.getCalledActions(),
     dispatch: (action: any) => sagaTester.dispatch(action),
-    filterAction: (actionFromTest: any) =>
-      sagaTester
-        .getCalledActions()
-        .filter((action: any) => action.type === actionFromTest().type),
     findAction: (actionFromTest: any) =>
       sagaTester
         .getCalledActions()
         .find((action: any) => action.type === actionFromTest().type),
-    getLatestAction: () => sagaTester.getLatestCalledAction(),
     sagaTester,
-    store: () => sagaTester.getState(),
-    waitFor: (action: any) => sagaTester.waitFor(action),
-    wasCalled: (action: any) => sagaTester.wasCalled(action)
+    store: () => sagaTester.getState()
   };
 };
