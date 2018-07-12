@@ -9,7 +9,7 @@ interface IProps {
   isRelative?: boolean;
   options?: Intl.DateTimeFormatOptions;
   updateInterval?: number;
-  value: Date | string | number;
+  value: string;
 }
 
 const DateTime: React.SFC<IProps> = ({
@@ -24,7 +24,7 @@ const DateTime: React.SFC<IProps> = ({
 }) => (
   <time
     className={cn("DateTime", className)}
-    dateTime={new Date(value).toISOString()}
+    dateTime={value}
     title={
       isDateOnly
         ? intl.formatDate(value, options)
