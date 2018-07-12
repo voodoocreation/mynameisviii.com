@@ -1,21 +1,31 @@
 import { render } from "enzyme";
+import merge from "lodash.merge";
 import * as React from "react";
+import { Provider } from "react-redux";
 
+import createStore from "../../../store/root.store";
 import Shell from "./Shell";
 
-jest.mock("react-redux", () => ({
-  connect: () => (component: any) => component
-}));
-
-const setup = (fn: any, fromTestProps?: any) => {
+const setup = (fn: any, fromTestProps?: any, fromTestStore?: any) => {
   const props = {
     className: "TestClassName",
     ...fromTestProps
   };
+  const store = createStore(
+    merge({
+      page: { isLoading: false },
+      ...fromTestStore
+    })
+  );
 
   return {
-    actual: fn(<Shell {...props} />),
-    props
+    actual: fn(
+      <Provider store={store}>
+        <Shell {...props} />
+      </Provider>
+    ),
+    props,
+    store
   };
 };
 
@@ -26,9 +36,13 @@ describe("<Shell />", () => {
   });
 
   it("renders correctly when loading", () => {
-    const { actual } = setup(render, {
-      isLoading: true
-    });
+    const { actual } = setup(
+      render,
+      {},
+      {
+        page: { isLoading: true }
+      }
+    );
     expect(actual).toMatchSnapshot();
   });
 });

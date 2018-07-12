@@ -1,11 +1,9 @@
 import { render } from "enzyme";
 import * as React from "react";
+import { Provider } from "react-redux";
 
+import createStore from "../../../store/root.store";
 import ConnectedErrorPage from "./ConnectedErrorPage";
-
-jest.mock("react-redux", () => ({
-  connect: () => (component: any) => component
-}));
 
 const setup = (fn: any) => {
   const props = {
@@ -14,9 +12,14 @@ const setup = (fn: any) => {
       status: 404
     }
   };
+  const store = createStore();
 
   return {
-    actual: fn(<ConnectedErrorPage {...props} />),
+    actual: fn(
+      <Provider store={store}>
+        <ConnectedErrorPage {...props} />
+      </Provider>
+    ),
     props
   };
 };

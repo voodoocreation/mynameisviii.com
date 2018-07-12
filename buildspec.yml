@@ -10,10 +10,10 @@ phases:
       - yarn install
   build:
     commands:
-      - yarn tsc
-      - yarn lint
-      - yarn test
-      - yarn build
+      - "yarn tsc"
+      - "yarn lint"
+      - "yarn test --coverage"
+      - "yarn build"
   post_build:
     commands:
 artifacts:

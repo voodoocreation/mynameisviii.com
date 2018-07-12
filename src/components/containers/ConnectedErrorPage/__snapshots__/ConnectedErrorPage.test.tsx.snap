@@ -6,11 +6,11 @@ Array [
     class="PageHeader"
   >
     <h1>
-      Page not found
+      An error has occurred
     </h1>
   </header>,
   <p>
-    This page does not exist - please use the site navigation to find what you're looking for.
+    An error has occurred, please try again.
   </p>,
 ]
 `;
