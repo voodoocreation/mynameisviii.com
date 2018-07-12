@@ -5,7 +5,7 @@ import MockDate from "mockdate";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-MockDate.set("2018-01-01T00:00:00");
+MockDate.set("2018-01-01T00:00:00.000Z");
 
 global.google = {
   maps: {
