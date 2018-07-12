@@ -1,0 +1,3136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[components] <Release /> renders correctly when productionType=compilation 1`] = `
+<article
+  class="Release"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1>
+      title
+    </h1>
+  </header>
+  <div
+    class="MetaBar Release-meta"
+  >
+    <div
+      class="Meta Release-type"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 18.4c0.9 0 1.6 0.7 1.6 1.6s-0.7 1.6-1.6 1.6-1.6-0.7-1.6-1.6 0.7-1.6 1.6-1.6z m0 9.1c4.1 0 7.5-3.4 7.5-7.5s-3.4-7.5-7.5-7.5-7.5 3.4-7.5 7.5 3.4 7.5 7.5 7.5z m0-24.1c9.2 0 16.6 7.4 16.6 16.6s-7.4 16.6-16.6 16.6-16.6-7.4-16.6-16.6 7.4-16.6 16.6-16.6z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Type
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <span>
+          Type
+        </span>
+      </span>
+    </div>
+    <div
+      class="Meta Release-releasedOn"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m31.6 33.4v-18.4h-23.2v18.4h23.2z m0-26.8c1.8 0 3.4 1.6 3.4 3.4v23.4c0 1.8-1.6 3.2-3.4 3.2h-23.2c-1.9 0-3.4-1.4-3.4-3.2v-23.4c0-1.8 1.5-3.4 3.4-3.4h1.6v-3.2h3.4v3.2h13.2v-3.2h3.4v3.2h1.6z m-3.2 11.8v3.2h-3.4v-3.2h3.4z m-6.8 0v3.2h-3.2v-3.2h3.2z m-6.6 0v3.2h-3.4v-3.2h3.4z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Released
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <time
+          class="DateTime"
+          datetime="2016-12-31T11:00:00.000Z"
+          title="January 1, 2017"
+        >
+          January 1, 2017
+        </time>
+      </span>
+    </div>
+    <div
+      class="Meta Release-length"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20.9 11.6v8.8l7.5 4.4-1.3 2.2-8.7-5.4v-10h2.5z m-0.9 21.8q5.5 0 9.4-4t4-9.4-4-9.4-9.4-4-9.4 4-4 9.4 4 9.4 9.4 4z m0-30q6.9 0 11.8 4.8t4.8 11.8-4.8 11.8-11.8 4.8-11.8-4.8-4.8-11.8 4.8-11.8 11.8-4.8z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Length
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        5:00
+      </span>
+    </div>
+    <div
+      class="Meta Release-genre"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 5h10v6.6h-6.6v16.8c0 3.6-3.1 6.6-6.8 6.6s-6.6-3-6.6-6.6 3-6.8 6.6-6.8c1.3 0 2.4 0.4 3.4 1v-17.6z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Genre
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        genre
+      </span>
+    </div>
+    <div
+      class="Meta Release-tracks"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m11.6 21.6v-3.2h23.4v3.2h-23.4z m0 10v-3.2h23.4v3.2h-23.4z m0-23.2h23.4v3.2h-23.4v-3.2z m-8.2 10v-1.8h5v1.6l-3.1 3.4h3.1v1.8h-5v-1.6l2.9-3.4h-2.9z m1.6-5v-5h-1.6v-1.8h3.2v6.8h-1.6z m-1.6 15v-1.8h5v6.8h-5v-1.8h3.2v-0.7h-1.6v-1.8h1.6v-0.7h-3.2z"
+          />
+        </g>
+      </svg>
+        
+      <span
+        class="Meta-value"
+      >
+        1 
+        <span>
+          track
+        </span>
+      </span>
+    </div>
+  </div>
+  <div
+    class="Release-body"
+  >
+    <section
+      class="Release-images"
+    >
+      <div
+        class="Carousel"
+      >
+        <div
+          class="Carousel-slides"
+          style="transform:translate3d(-0%, 0, 0)"
+        >
+          <figure
+            class="isLoading"
+          >
+            <img
+              alt="images 1 title"
+              src="images 1 imageUrl"
+            />
+            <span
+              class="Loader"
+            >
+              <div
+                class="Loader-animation"
+              >
+                <span />
+                <span />
+                <span />
+              </div>
+            </span>
+            <figcaption>
+              images 1 title
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <div
+      class="Release-details"
+    >
+      <section
+        class="Release-description"
+      >
+        description
+      </section>
+      <section
+        class="Release-tracklist"
+      >
+        <h2>
+          <span>
+            Tracklist
+          </span>
+        </h2>
+        <ol>
+          <li>
+            <span
+              class="Release-tracklist-title"
+            >
+              tracklist 1 title
+            </span>
+             
+            <span
+              class="Release-tracklist-genre"
+            >
+              tracklist 1 genre
+            </span>
+             
+            <span
+              class="Release-tracklist-length"
+            >
+              5:00
+            </span>
+          </li>
+        </ol>
+      </section>
+      <section
+        class="Release-copyright"
+      >
+        <p>
+          ℗© 2017 recordLabel
+        </p>
+      </section>
+    </div>
+  </div>
+</article>
+`;
+
+exports[`[components] <Release /> renders correctly when productionType=demo 1`] = `
+<article
+  class="Release"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1>
+      title
+    </h1>
+  </header>
+  <div
+    class="MetaBar Release-meta"
+  >
+    <div
+      class="Meta Release-type"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 18.4c0.9 0 1.6 0.7 1.6 1.6s-0.7 1.6-1.6 1.6-1.6-0.7-1.6-1.6 0.7-1.6 1.6-1.6z m0 9.1c4.1 0 7.5-3.4 7.5-7.5s-3.4-7.5-7.5-7.5-7.5 3.4-7.5 7.5 3.4 7.5 7.5 7.5z m0-24.1c9.2 0 16.6 7.4 16.6 16.6s-7.4 16.6-16.6 16.6-16.6-7.4-16.6-16.6 7.4-16.6 16.6-16.6z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Type
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <span>
+          Type
+        </span>
+      </span>
+    </div>
+    <div
+      class="Meta Release-releasedOn"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m31.6 33.4v-18.4h-23.2v18.4h23.2z m0-26.8c1.8 0 3.4 1.6 3.4 3.4v23.4c0 1.8-1.6 3.2-3.4 3.2h-23.2c-1.9 0-3.4-1.4-3.4-3.2v-23.4c0-1.8 1.5-3.4 3.4-3.4h1.6v-3.2h3.4v3.2h13.2v-3.2h3.4v3.2h1.6z m-3.2 11.8v3.2h-3.4v-3.2h3.4z m-6.8 0v3.2h-3.2v-3.2h3.2z m-6.6 0v3.2h-3.4v-3.2h3.4z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Released
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <time
+          class="DateTime"
+          datetime="2016-12-31T11:00:00.000Z"
+          title="January 1, 2017"
+        >
+          January 1, 2017
+        </time>
+      </span>
+    </div>
+    <div
+      class="Meta Release-length"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20.9 11.6v8.8l7.5 4.4-1.3 2.2-8.7-5.4v-10h2.5z m-0.9 21.8q5.5 0 9.4-4t4-9.4-4-9.4-9.4-4-9.4 4-4 9.4 4 9.4 9.4 4z m0-30q6.9 0 11.8 4.8t4.8 11.8-4.8 11.8-11.8 4.8-11.8-4.8-4.8-11.8 4.8-11.8 11.8-4.8z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Length
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        5:00
+      </span>
+    </div>
+    <div
+      class="Meta Release-genre"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 5h10v6.6h-6.6v16.8c0 3.6-3.1 6.6-6.8 6.6s-6.6-3-6.6-6.6 3-6.8 6.6-6.8c1.3 0 2.4 0.4 3.4 1v-17.6z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Genre
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        genre
+      </span>
+    </div>
+    <div
+      class="Meta Release-tracks"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m11.6 21.6v-3.2h23.4v3.2h-23.4z m0 10v-3.2h23.4v3.2h-23.4z m0-23.2h23.4v3.2h-23.4v-3.2z m-8.2 10v-1.8h5v1.6l-3.1 3.4h3.1v1.8h-5v-1.6l2.9-3.4h-2.9z m1.6-5v-5h-1.6v-1.8h3.2v6.8h-1.6z m-1.6 15v-1.8h5v6.8h-5v-1.8h3.2v-0.7h-1.6v-1.8h1.6v-0.7h-3.2z"
+          />
+        </g>
+      </svg>
+        
+      <span
+        class="Meta-value"
+      >
+        1 
+        <span>
+          track
+        </span>
+      </span>
+    </div>
+  </div>
+  <div
+    class="Release-body"
+  >
+    <section
+      class="Release-images"
+    >
+      <div
+        class="Carousel"
+      >
+        <div
+          class="Carousel-slides"
+          style="transform:translate3d(-0%, 0, 0)"
+        >
+          <figure
+            class="isLoading"
+          >
+            <img
+              alt="images 1 title"
+              src="images 1 imageUrl"
+            />
+            <span
+              class="Loader"
+            >
+              <div
+                class="Loader-animation"
+              >
+                <span />
+                <span />
+                <span />
+              </div>
+            </span>
+            <figcaption>
+              images 1 title
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <div
+      class="Release-details"
+    >
+      <section
+        class="Release-description"
+      >
+        description
+      </section>
+      <section
+        class="Release-tracklist"
+      >
+        <h2>
+          <span>
+            Tracklist
+          </span>
+        </h2>
+        <ol>
+          <li>
+            <span
+              class="Release-tracklist-title"
+            >
+              tracklist 1 title
+            </span>
+             
+            <span
+              class="Release-tracklist-genre"
+            >
+              tracklist 1 genre
+            </span>
+             
+            <span
+              class="Release-tracklist-length"
+            >
+              5:00
+            </span>
+          </li>
+        </ol>
+      </section>
+      <section
+        class="Release-copyright"
+      >
+        <p>
+          ℗© 2017 recordLabel
+        </p>
+      </section>
+    </div>
+  </div>
+</article>
+`;
+
+exports[`[components] <Release /> renders correctly when productionType=live 1`] = `
+<article
+  class="Release"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1>
+      title
+    </h1>
+  </header>
+  <div
+    class="MetaBar Release-meta"
+  >
+    <div
+      class="Meta Release-type"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 18.4c0.9 0 1.6 0.7 1.6 1.6s-0.7 1.6-1.6 1.6-1.6-0.7-1.6-1.6 0.7-1.6 1.6-1.6z m0 9.1c4.1 0 7.5-3.4 7.5-7.5s-3.4-7.5-7.5-7.5-7.5 3.4-7.5 7.5 3.4 7.5 7.5 7.5z m0-24.1c9.2 0 16.6 7.4 16.6 16.6s-7.4 16.6-16.6 16.6-16.6-7.4-16.6-16.6 7.4-16.6 16.6-16.6z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Type
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <span>
+          Type
+        </span>
+      </span>
+    </div>
+    <div
+      class="Meta Release-releasedOn"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m31.6 33.4v-18.4h-23.2v18.4h23.2z m0-26.8c1.8 0 3.4 1.6 3.4 3.4v23.4c0 1.8-1.6 3.2-3.4 3.2h-23.2c-1.9 0-3.4-1.4-3.4-3.2v-23.4c0-1.8 1.5-3.4 3.4-3.4h1.6v-3.2h3.4v3.2h13.2v-3.2h3.4v3.2h1.6z m-3.2 11.8v3.2h-3.4v-3.2h3.4z m-6.8 0v3.2h-3.2v-3.2h3.2z m-6.6 0v3.2h-3.4v-3.2h3.4z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Released
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <time
+          class="DateTime"
+          datetime="2016-12-31T11:00:00.000Z"
+          title="January 1, 2017"
+        >
+          January 1, 2017
+        </time>
+      </span>
+    </div>
+    <div
+      class="Meta Release-length"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20.9 11.6v8.8l7.5 4.4-1.3 2.2-8.7-5.4v-10h2.5z m-0.9 21.8q5.5 0 9.4-4t4-9.4-4-9.4-9.4-4-9.4 4-4 9.4 4 9.4 9.4 4z m0-30q6.9 0 11.8 4.8t4.8 11.8-4.8 11.8-11.8 4.8-11.8-4.8-4.8-11.8 4.8-11.8 11.8-4.8z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Length
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        5:00
+      </span>
+    </div>
+    <div
+      class="Meta Release-genre"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 5h10v6.6h-6.6v16.8c0 3.6-3.1 6.6-6.8 6.6s-6.6-3-6.6-6.6 3-6.8 6.6-6.8c1.3 0 2.4 0.4 3.4 1v-17.6z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Genre
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        genre
+      </span>
+    </div>
+    <div
+      class="Meta Release-tracks"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m11.6 21.6v-3.2h23.4v3.2h-23.4z m0 10v-3.2h23.4v3.2h-23.4z m0-23.2h23.4v3.2h-23.4v-3.2z m-8.2 10v-1.8h5v1.6l-3.1 3.4h3.1v1.8h-5v-1.6l2.9-3.4h-2.9z m1.6-5v-5h-1.6v-1.8h3.2v6.8h-1.6z m-1.6 15v-1.8h5v6.8h-5v-1.8h3.2v-0.7h-1.6v-1.8h1.6v-0.7h-3.2z"
+          />
+        </g>
+      </svg>
+        
+      <span
+        class="Meta-value"
+      >
+        1 
+        <span>
+          track
+        </span>
+      </span>
+    </div>
+  </div>
+  <div
+    class="Release-body"
+  >
+    <section
+      class="Release-images"
+    >
+      <div
+        class="Carousel"
+      >
+        <div
+          class="Carousel-slides"
+          style="transform:translate3d(-0%, 0, 0)"
+        >
+          <figure
+            class="isLoading"
+          >
+            <img
+              alt="images 1 title"
+              src="images 1 imageUrl"
+            />
+            <span
+              class="Loader"
+            >
+              <div
+                class="Loader-animation"
+              >
+                <span />
+                <span />
+                <span />
+              </div>
+            </span>
+            <figcaption>
+              images 1 title
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <div
+      class="Release-details"
+    >
+      <section
+        class="Release-description"
+      >
+        description
+      </section>
+      <section
+        class="Release-tracklist"
+      >
+        <h2>
+          <span>
+            Tracklist
+          </span>
+        </h2>
+        <ol>
+          <li>
+            <span
+              class="Release-tracklist-title"
+            >
+              tracklist 1 title
+            </span>
+             
+            <span
+              class="Release-tracklist-genre"
+            >
+              tracklist 1 genre
+            </span>
+             
+            <span
+              class="Release-tracklist-length"
+            >
+              5:00
+            </span>
+          </li>
+        </ol>
+      </section>
+      <section
+        class="Release-copyright"
+      >
+        <p>
+          ℗© 2017 recordLabel
+        </p>
+      </section>
+    </div>
+  </div>
+</article>
+`;
+
+exports[`[components] <Release /> renders correctly when productionType=remix 1`] = `
+<article
+  class="Release"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1>
+      title
+    </h1>
+  </header>
+  <div
+    class="MetaBar Release-meta"
+  >
+    <div
+      class="Meta Release-type"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 18.4c0.9 0 1.6 0.7 1.6 1.6s-0.7 1.6-1.6 1.6-1.6-0.7-1.6-1.6 0.7-1.6 1.6-1.6z m0 9.1c4.1 0 7.5-3.4 7.5-7.5s-3.4-7.5-7.5-7.5-7.5 3.4-7.5 7.5 3.4 7.5 7.5 7.5z m0-24.1c9.2 0 16.6 7.4 16.6 16.6s-7.4 16.6-16.6 16.6-16.6-7.4-16.6-16.6 7.4-16.6 16.6-16.6z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Type
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <span>
+          Type
+        </span>
+      </span>
+    </div>
+    <div
+      class="Meta Release-releasedOn"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m31.6 33.4v-18.4h-23.2v18.4h23.2z m0-26.8c1.8 0 3.4 1.6 3.4 3.4v23.4c0 1.8-1.6 3.2-3.4 3.2h-23.2c-1.9 0-3.4-1.4-3.4-3.2v-23.4c0-1.8 1.5-3.4 3.4-3.4h1.6v-3.2h3.4v3.2h13.2v-3.2h3.4v3.2h1.6z m-3.2 11.8v3.2h-3.4v-3.2h3.4z m-6.8 0v3.2h-3.2v-3.2h3.2z m-6.6 0v3.2h-3.4v-3.2h3.4z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Released
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <time
+          class="DateTime"
+          datetime="2016-12-31T11:00:00.000Z"
+          title="January 1, 2017"
+        >
+          January 1, 2017
+        </time>
+      </span>
+    </div>
+    <div
+      class="Meta Release-length"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20.9 11.6v8.8l7.5 4.4-1.3 2.2-8.7-5.4v-10h2.5z m-0.9 21.8q5.5 0 9.4-4t4-9.4-4-9.4-9.4-4-9.4 4-4 9.4 4 9.4 9.4 4z m0-30q6.9 0 11.8 4.8t4.8 11.8-4.8 11.8-11.8 4.8-11.8-4.8-4.8-11.8 4.8-11.8 11.8-4.8z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Length
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        5:00
+      </span>
+    </div>
+    <div
+      class="Meta Release-genre"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 5h10v6.6h-6.6v16.8c0 3.6-3.1 6.6-6.8 6.6s-6.6-3-6.6-6.6 3-6.8 6.6-6.8c1.3 0 2.4 0.4 3.4 1v-17.6z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Genre
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        genre
+      </span>
+    </div>
+    <div
+      class="Meta Release-tracks"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m11.6 21.6v-3.2h23.4v3.2h-23.4z m0 10v-3.2h23.4v3.2h-23.4z m0-23.2h23.4v3.2h-23.4v-3.2z m-8.2 10v-1.8h5v1.6l-3.1 3.4h3.1v1.8h-5v-1.6l2.9-3.4h-2.9z m1.6-5v-5h-1.6v-1.8h3.2v6.8h-1.6z m-1.6 15v-1.8h5v6.8h-5v-1.8h3.2v-0.7h-1.6v-1.8h1.6v-0.7h-3.2z"
+          />
+        </g>
+      </svg>
+        
+      <span
+        class="Meta-value"
+      >
+        1 
+        <span>
+          track
+        </span>
+      </span>
+    </div>
+  </div>
+  <div
+    class="Release-body"
+  >
+    <section
+      class="Release-images"
+    >
+      <div
+        class="Carousel"
+      >
+        <div
+          class="Carousel-slides"
+          style="transform:translate3d(-0%, 0, 0)"
+        >
+          <figure
+            class="isLoading"
+          >
+            <img
+              alt="images 1 title"
+              src="images 1 imageUrl"
+            />
+            <span
+              class="Loader"
+            >
+              <div
+                class="Loader-animation"
+              >
+                <span />
+                <span />
+                <span />
+              </div>
+            </span>
+            <figcaption>
+              images 1 title
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <div
+      class="Release-details"
+    >
+      <section
+        class="Release-description"
+      >
+        description
+      </section>
+      <section
+        class="Release-tracklist"
+      >
+        <h2>
+          <span>
+            Tracklist
+          </span>
+        </h2>
+        <ol>
+          <li>
+            <span
+              class="Release-tracklist-title"
+            >
+              tracklist 1 title
+            </span>
+             
+            <span
+              class="Release-tracklist-genre"
+            >
+              tracklist 1 genre
+            </span>
+             
+            <span
+              class="Release-tracklist-length"
+            >
+              5:00
+            </span>
+          </li>
+        </ol>
+      </section>
+      <section
+        class="Release-copyright"
+      >
+        <p>
+          ℗© 2017 recordLabel
+        </p>
+      </section>
+    </div>
+  </div>
+</article>
+`;
+
+exports[`[components] <Release /> renders correctly when productionType=soundtrack 1`] = `
+<article
+  class="Release"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1>
+      title
+    </h1>
+  </header>
+  <div
+    class="MetaBar Release-meta"
+  >
+    <div
+      class="Meta Release-type"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 18.4c0.9 0 1.6 0.7 1.6 1.6s-0.7 1.6-1.6 1.6-1.6-0.7-1.6-1.6 0.7-1.6 1.6-1.6z m0 9.1c4.1 0 7.5-3.4 7.5-7.5s-3.4-7.5-7.5-7.5-7.5 3.4-7.5 7.5 3.4 7.5 7.5 7.5z m0-24.1c9.2 0 16.6 7.4 16.6 16.6s-7.4 16.6-16.6 16.6-16.6-7.4-16.6-16.6 7.4-16.6 16.6-16.6z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Type
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <span>
+          Type
+        </span>
+      </span>
+    </div>
+    <div
+      class="Meta Release-releasedOn"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m31.6 33.4v-18.4h-23.2v18.4h23.2z m0-26.8c1.8 0 3.4 1.6 3.4 3.4v23.4c0 1.8-1.6 3.2-3.4 3.2h-23.2c-1.9 0-3.4-1.4-3.4-3.2v-23.4c0-1.8 1.5-3.4 3.4-3.4h1.6v-3.2h3.4v3.2h13.2v-3.2h3.4v3.2h1.6z m-3.2 11.8v3.2h-3.4v-3.2h3.4z m-6.8 0v3.2h-3.2v-3.2h3.2z m-6.6 0v3.2h-3.4v-3.2h3.4z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Released
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <time
+          class="DateTime"
+          datetime="2016-12-31T11:00:00.000Z"
+          title="January 1, 2017"
+        >
+          January 1, 2017
+        </time>
+      </span>
+    </div>
+    <div
+      class="Meta Release-length"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20.9 11.6v8.8l7.5 4.4-1.3 2.2-8.7-5.4v-10h2.5z m-0.9 21.8q5.5 0 9.4-4t4-9.4-4-9.4-9.4-4-9.4 4-4 9.4 4 9.4 9.4 4z m0-30q6.9 0 11.8 4.8t4.8 11.8-4.8 11.8-11.8 4.8-11.8-4.8-4.8-11.8 4.8-11.8 11.8-4.8z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Length
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        5:00
+      </span>
+    </div>
+    <div
+      class="Meta Release-genre"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 5h10v6.6h-6.6v16.8c0 3.6-3.1 6.6-6.8 6.6s-6.6-3-6.6-6.6 3-6.8 6.6-6.8c1.3 0 2.4 0.4 3.4 1v-17.6z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Genre
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        genre
+      </span>
+    </div>
+    <div
+      class="Meta Release-tracks"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m11.6 21.6v-3.2h23.4v3.2h-23.4z m0 10v-3.2h23.4v3.2h-23.4z m0-23.2h23.4v3.2h-23.4v-3.2z m-8.2 10v-1.8h5v1.6l-3.1 3.4h3.1v1.8h-5v-1.6l2.9-3.4h-2.9z m1.6-5v-5h-1.6v-1.8h3.2v6.8h-1.6z m-1.6 15v-1.8h5v6.8h-5v-1.8h3.2v-0.7h-1.6v-1.8h1.6v-0.7h-3.2z"
+          />
+        </g>
+      </svg>
+        
+      <span
+        class="Meta-value"
+      >
+        1 
+        <span>
+          track
+        </span>
+      </span>
+    </div>
+  </div>
+  <div
+    class="Release-body"
+  >
+    <section
+      class="Release-images"
+    >
+      <div
+        class="Carousel"
+      >
+        <div
+          class="Carousel-slides"
+          style="transform:translate3d(-0%, 0, 0)"
+        >
+          <figure
+            class="isLoading"
+          >
+            <img
+              alt="images 1 title"
+              src="images 1 imageUrl"
+            />
+            <span
+              class="Loader"
+            >
+              <div
+                class="Loader-animation"
+              >
+                <span />
+                <span />
+                <span />
+              </div>
+            </span>
+            <figcaption>
+              images 1 title
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <div
+      class="Release-details"
+    >
+      <section
+        class="Release-description"
+      >
+        description
+      </section>
+      <section
+        class="Release-tracklist"
+      >
+        <h2>
+          <span>
+            Tracklist
+          </span>
+        </h2>
+        <ol>
+          <li>
+            <span
+              class="Release-tracklist-title"
+            >
+              tracklist 1 title
+            </span>
+             
+            <span
+              class="Release-tracklist-genre"
+            >
+              tracklist 1 genre
+            </span>
+             
+            <span
+              class="Release-tracklist-length"
+            >
+              5:00
+            </span>
+          </li>
+        </ol>
+      </section>
+      <section
+        class="Release-copyright"
+      >
+        <p>
+          ℗© 2017 recordLabel
+        </p>
+      </section>
+    </div>
+  </div>
+</article>
+`;
+
+exports[`[components] <Release /> renders correctly when type=ep 1`] = `
+<article
+  class="Release"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1>
+      title
+    </h1>
+  </header>
+  <div
+    class="MetaBar Release-meta"
+  >
+    <div
+      class="Meta Release-type"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 18.4c0.9 0 1.6 0.7 1.6 1.6s-0.7 1.6-1.6 1.6-1.6-0.7-1.6-1.6 0.7-1.6 1.6-1.6z m0 9.1c4.1 0 7.5-3.4 7.5-7.5s-3.4-7.5-7.5-7.5-7.5 3.4-7.5 7.5 3.4 7.5 7.5 7.5z m0-24.1c9.2 0 16.6 7.4 16.6 16.6s-7.4 16.6-16.6 16.6-16.6-7.4-16.6-16.6 7.4-16.6 16.6-16.6z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Type
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <span>
+          EP
+        </span>
+      </span>
+    </div>
+    <div
+      class="Meta Release-releasedOn"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m31.6 33.4v-18.4h-23.2v18.4h23.2z m0-26.8c1.8 0 3.4 1.6 3.4 3.4v23.4c0 1.8-1.6 3.2-3.4 3.2h-23.2c-1.9 0-3.4-1.4-3.4-3.2v-23.4c0-1.8 1.5-3.4 3.4-3.4h1.6v-3.2h3.4v3.2h13.2v-3.2h3.4v3.2h1.6z m-3.2 11.8v3.2h-3.4v-3.2h3.4z m-6.8 0v3.2h-3.2v-3.2h3.2z m-6.6 0v3.2h-3.4v-3.2h3.4z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Released
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <time
+          class="DateTime"
+          datetime="2016-12-31T11:00:00.000Z"
+          title="January 1, 2017"
+        >
+          January 1, 2017
+        </time>
+      </span>
+    </div>
+    <div
+      class="Meta Release-length"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20.9 11.6v8.8l7.5 4.4-1.3 2.2-8.7-5.4v-10h2.5z m-0.9 21.8q5.5 0 9.4-4t4-9.4-4-9.4-9.4-4-9.4 4-4 9.4 4 9.4 9.4 4z m0-30q6.9 0 11.8 4.8t4.8 11.8-4.8 11.8-11.8 4.8-11.8-4.8-4.8-11.8 4.8-11.8 11.8-4.8z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Length
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        5:00
+      </span>
+    </div>
+    <div
+      class="Meta Release-genre"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 5h10v6.6h-6.6v16.8c0 3.6-3.1 6.6-6.8 6.6s-6.6-3-6.6-6.6 3-6.8 6.6-6.8c1.3 0 2.4 0.4 3.4 1v-17.6z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Genre
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        genre
+      </span>
+    </div>
+    <div
+      class="Meta Release-tracks"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m11.6 21.6v-3.2h23.4v3.2h-23.4z m0 10v-3.2h23.4v3.2h-23.4z m0-23.2h23.4v3.2h-23.4v-3.2z m-8.2 10v-1.8h5v1.6l-3.1 3.4h3.1v1.8h-5v-1.6l2.9-3.4h-2.9z m1.6-5v-5h-1.6v-1.8h3.2v6.8h-1.6z m-1.6 15v-1.8h5v6.8h-5v-1.8h3.2v-0.7h-1.6v-1.8h1.6v-0.7h-3.2z"
+          />
+        </g>
+      </svg>
+        
+      <span
+        class="Meta-value"
+      >
+        1 
+        <span>
+          track
+        </span>
+      </span>
+    </div>
+  </div>
+  <div
+    class="Release-body"
+  >
+    <section
+      class="Release-images"
+    >
+      <div
+        class="Carousel"
+      >
+        <div
+          class="Carousel-slides"
+          style="transform:translate3d(-0%, 0, 0)"
+        >
+          <figure
+            class="isLoading"
+          >
+            <img
+              alt="images 1 title"
+              src="images 1 imageUrl"
+            />
+            <span
+              class="Loader"
+            >
+              <div
+                class="Loader-animation"
+              >
+                <span />
+                <span />
+                <span />
+              </div>
+            </span>
+            <figcaption>
+              images 1 title
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <div
+      class="Release-details"
+    >
+      <section
+        class="Release-description"
+      >
+        description
+      </section>
+      <section
+        class="Release-tracklist"
+      >
+        <h2>
+          <span>
+            Tracklist
+          </span>
+        </h2>
+        <ol>
+          <li>
+            <span
+              class="Release-tracklist-title"
+            >
+              tracklist 1 title
+            </span>
+             
+            <span
+              class="Release-tracklist-genre"
+            >
+              tracklist 1 genre
+            </span>
+             
+            <span
+              class="Release-tracklist-length"
+            >
+              5:00
+            </span>
+          </li>
+        </ol>
+      </section>
+      <section
+        class="Release-copyright"
+      >
+        <p>
+          ℗© 2017 recordLabel
+        </p>
+      </section>
+    </div>
+  </div>
+</article>
+`;
+
+exports[`[components] <Release /> renders correctly when type=single 1`] = `
+<article
+  class="Release"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1>
+      title
+    </h1>
+  </header>
+  <div
+    class="MetaBar Release-meta"
+  >
+    <div
+      class="Meta Release-type"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 18.4c0.9 0 1.6 0.7 1.6 1.6s-0.7 1.6-1.6 1.6-1.6-0.7-1.6-1.6 0.7-1.6 1.6-1.6z m0 9.1c4.1 0 7.5-3.4 7.5-7.5s-3.4-7.5-7.5-7.5-7.5 3.4-7.5 7.5 3.4 7.5 7.5 7.5z m0-24.1c9.2 0 16.6 7.4 16.6 16.6s-7.4 16.6-16.6 16.6-16.6-7.4-16.6-16.6 7.4-16.6 16.6-16.6z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Type
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <span>
+          Single
+        </span>
+      </span>
+    </div>
+    <div
+      class="Meta Release-releasedOn"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m31.6 33.4v-18.4h-23.2v18.4h23.2z m0-26.8c1.8 0 3.4 1.6 3.4 3.4v23.4c0 1.8-1.6 3.2-3.4 3.2h-23.2c-1.9 0-3.4-1.4-3.4-3.2v-23.4c0-1.8 1.5-3.4 3.4-3.4h1.6v-3.2h3.4v3.2h13.2v-3.2h3.4v3.2h1.6z m-3.2 11.8v3.2h-3.4v-3.2h3.4z m-6.8 0v3.2h-3.2v-3.2h3.2z m-6.6 0v3.2h-3.4v-3.2h3.4z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Released
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <time
+          class="DateTime"
+          datetime="2016-12-31T11:00:00.000Z"
+          title="January 1, 2017"
+        >
+          January 1, 2017
+        </time>
+      </span>
+    </div>
+    <div
+      class="Meta Release-length"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20.9 11.6v8.8l7.5 4.4-1.3 2.2-8.7-5.4v-10h2.5z m-0.9 21.8q5.5 0 9.4-4t4-9.4-4-9.4-9.4-4-9.4 4-4 9.4 4 9.4 9.4 4z m0-30q6.9 0 11.8 4.8t4.8 11.8-4.8 11.8-11.8 4.8-11.8-4.8-4.8-11.8 4.8-11.8 11.8-4.8z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Length
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        5:00
+      </span>
+    </div>
+    <div
+      class="Meta Release-genre"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 5h10v6.6h-6.6v16.8c0 3.6-3.1 6.6-6.8 6.6s-6.6-3-6.6-6.6 3-6.8 6.6-6.8c1.3 0 2.4 0.4 3.4 1v-17.6z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Genre
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        genre
+      </span>
+    </div>
+    <div
+      class="Meta Release-tracks"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m11.6 21.6v-3.2h23.4v3.2h-23.4z m0 10v-3.2h23.4v3.2h-23.4z m0-23.2h23.4v3.2h-23.4v-3.2z m-8.2 10v-1.8h5v1.6l-3.1 3.4h3.1v1.8h-5v-1.6l2.9-3.4h-2.9z m1.6-5v-5h-1.6v-1.8h3.2v6.8h-1.6z m-1.6 15v-1.8h5v6.8h-5v-1.8h3.2v-0.7h-1.6v-1.8h1.6v-0.7h-3.2z"
+          />
+        </g>
+      </svg>
+        
+      <span
+        class="Meta-value"
+      >
+        1 
+        <span>
+          track
+        </span>
+      </span>
+    </div>
+  </div>
+  <div
+    class="Release-body"
+  >
+    <section
+      class="Release-images"
+    >
+      <div
+        class="Carousel"
+      >
+        <div
+          class="Carousel-slides"
+          style="transform:translate3d(-0%, 0, 0)"
+        >
+          <figure
+            class="isLoading"
+          >
+            <img
+              alt="images 1 title"
+              src="images 1 imageUrl"
+            />
+            <span
+              class="Loader"
+            >
+              <div
+                class="Loader-animation"
+              >
+                <span />
+                <span />
+                <span />
+              </div>
+            </span>
+            <figcaption>
+              images 1 title
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <div
+      class="Release-details"
+    >
+      <section
+        class="Release-description"
+      >
+        description
+      </section>
+      <section
+        class="Release-tracklist"
+      >
+        <h2>
+          <span>
+            Tracklist
+          </span>
+        </h2>
+        <ol>
+          <li>
+            <span
+              class="Release-tracklist-title"
+            >
+              tracklist 1 title
+            </span>
+             
+            <span
+              class="Release-tracklist-genre"
+            >
+              tracklist 1 genre
+            </span>
+             
+            <span
+              class="Release-tracklist-length"
+            >
+              5:00
+            </span>
+          </li>
+        </ol>
+      </section>
+      <section
+        class="Release-copyright"
+      >
+        <p>
+          ℗© 2017 recordLabel
+        </p>
+      </section>
+    </div>
+  </div>
+</article>
+`;
+
+exports[`[components] <Release /> renders correctly with all props 1`] = `
+<article
+  class="Release"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1>
+      title
+    </h1>
+  </header>
+  <div
+    class="MetaBar Release-meta"
+  >
+    <div
+      class="Meta Release-type"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 18.4c0.9 0 1.6 0.7 1.6 1.6s-0.7 1.6-1.6 1.6-1.6-0.7-1.6-1.6 0.7-1.6 1.6-1.6z m0 9.1c4.1 0 7.5-3.4 7.5-7.5s-3.4-7.5-7.5-7.5-7.5 3.4-7.5 7.5 3.4 7.5 7.5 7.5z m0-24.1c9.2 0 16.6 7.4 16.6 16.6s-7.4 16.6-16.6 16.6-16.6-7.4-16.6-16.6 7.4-16.6 16.6-16.6z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Type
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <span>
+          Type
+        </span>
+      </span>
+    </div>
+    <div
+      class="Meta Release-releasedOn"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m31.6 33.4v-18.4h-23.2v18.4h23.2z m0-26.8c1.8 0 3.4 1.6 3.4 3.4v23.4c0 1.8-1.6 3.2-3.4 3.2h-23.2c-1.9 0-3.4-1.4-3.4-3.2v-23.4c0-1.8 1.5-3.4 3.4-3.4h1.6v-3.2h3.4v3.2h13.2v-3.2h3.4v3.2h1.6z m-3.2 11.8v3.2h-3.4v-3.2h3.4z m-6.8 0v3.2h-3.2v-3.2h3.2z m-6.6 0v3.2h-3.4v-3.2h3.4z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Released
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <time
+          class="DateTime"
+          datetime="2016-12-31T11:00:00.000Z"
+          title="January 1, 2017"
+        >
+          January 1, 2017
+        </time>
+      </span>
+    </div>
+    <div
+      class="Meta Release-length"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20.9 11.6v8.8l7.5 4.4-1.3 2.2-8.7-5.4v-10h2.5z m-0.9 21.8q5.5 0 9.4-4t4-9.4-4-9.4-9.4-4-9.4 4-4 9.4 4 9.4 9.4 4z m0-30q6.9 0 11.8 4.8t4.8 11.8-4.8 11.8-11.8 4.8-11.8-4.8-4.8-11.8 4.8-11.8 11.8-4.8z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Length
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        5:00
+      </span>
+    </div>
+    <div
+      class="Meta Release-genre"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 5h10v6.6h-6.6v16.8c0 3.6-3.1 6.6-6.8 6.6s-6.6-3-6.6-6.6 3-6.8 6.6-6.8c1.3 0 2.4 0.4 3.4 1v-17.6z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Genre
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        genre
+      </span>
+    </div>
+    <div
+      class="Meta Release-tracks"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m11.6 21.6v-3.2h23.4v3.2h-23.4z m0 10v-3.2h23.4v3.2h-23.4z m0-23.2h23.4v3.2h-23.4v-3.2z m-8.2 10v-1.8h5v1.6l-3.1 3.4h3.1v1.8h-5v-1.6l2.9-3.4h-2.9z m1.6-5v-5h-1.6v-1.8h3.2v6.8h-1.6z m-1.6 15v-1.8h5v6.8h-5v-1.8h3.2v-0.7h-1.6v-1.8h1.6v-0.7h-3.2z"
+          />
+        </g>
+      </svg>
+        
+      <span
+        class="Meta-value"
+      >
+        4 
+        <span>
+          tracks
+        </span>
+      </span>
+    </div>
+  </div>
+  <div
+    class="Release-body"
+  >
+    <section
+      class="Release-images"
+    >
+      <div
+        class="Carousel"
+      >
+        <div
+          class="Carousel-slides"
+          style="transform:translate3d(-0%, 0, 0)"
+        >
+          <figure
+            class="isLoading"
+          >
+            <img
+              alt="images 1 title"
+              src="images 1 imageUrl"
+            />
+            <span
+              class="Loader"
+            >
+              <div
+                class="Loader-animation"
+              >
+                <span />
+                <span />
+                <span />
+              </div>
+            </span>
+            <figcaption>
+              images 1 title
+            </figcaption>
+          </figure>
+          <figure
+            class="isLoading"
+          >
+            <img
+              alt="images 2 title"
+              src="images 2 imageUrl"
+            />
+            <span
+              class="Loader"
+            >
+              <div
+                class="Loader-animation"
+              >
+                <span />
+                <span />
+                <span />
+              </div>
+            </span>
+            <figcaption>
+              images 2 title
+            </figcaption>
+          </figure>
+        </div>
+        <div
+          class="Carousel-pagination"
+        >
+          <button
+            class="Carousel-page isSelected"
+          >
+            <span>
+              1
+            </span>
+          </button>
+          <button
+            class="Carousel-page"
+          >
+            <span>
+              2
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+    <div
+      class="Release-details"
+    >
+      <section
+        class="Release-description"
+      >
+        description
+      </section>
+      <section
+        class="Release-tracklist"
+      >
+        <h2>
+          <span>
+            Tracklist
+          </span>
+        </h2>
+        <h3>
+          <span>
+            Disc 0
+          </span>
+        </h3>
+        <ol>
+          <li>
+            <span
+              class="Release-tracklist-title"
+            >
+              tracklist 1.1 title
+            </span>
+             
+            <span
+              class="Release-tracklist-genre"
+            >
+              tracklist 1.1 genre
+            </span>
+             
+            <span
+              class="Release-tracklist-length"
+            >
+              5:00
+            </span>
+          </li>
+          <li>
+            <span
+              class="Release-tracklist-title"
+            >
+              tracklist 1.2 title
+            </span>
+             
+            <span
+              class="Release-tracklist-genre"
+            >
+              tracklist 1.2 genre
+            </span>
+             
+            <span
+              class="Release-tracklist-length"
+            >
+              5:00
+            </span>
+          </li>
+        </ol>
+        <h3>
+          <span>
+            Disc 1
+          </span>
+        </h3>
+        <ol>
+          <li>
+            <span
+              class="Release-tracklist-title"
+            >
+              tracklist 2.1 title
+            </span>
+             
+            <span
+              class="Release-tracklist-genre"
+            >
+              tracklist 2.1 genre
+            </span>
+             
+            <span
+              class="Release-tracklist-length"
+            >
+              5:00
+            </span>
+          </li>
+          <li>
+            <span
+              class="Release-tracklist-title"
+            >
+              tracklist 2.2 title
+            </span>
+             
+            <span
+              class="Release-tracklist-genre"
+            >
+              tracklist 2.2 genre
+            </span>
+             
+            <span
+              class="Release-tracklist-length"
+            >
+              5:00
+            </span>
+          </li>
+        </ol>
+      </section>
+      <section
+        class="Release-streamList"
+      >
+        <h2>
+          <span>
+            Stream
+          </span>
+        </h2>
+        <ul
+          class="Release-platformList"
+        >
+          <li>
+            <a
+              href="streamList 1 url"
+              rel="noopener"
+              target="_blank"
+              title="Stream 'title' on Spotify"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                preserveAspectRatio="xMidYMid meet"
+                style="vertical-align:middle"
+                viewBox="0 0 40 40"
+                width="1em"
+              >
+                <g>
+                  <path
+                    d="m28.2 27q0-0.7-0.7-1.1-4.3-2.6-10-2.6-3 0-6.4 0.8-0.9 0.2-0.9 1.1 0 0.5 0.3 0.8t0.8 0.3q0.1 0 0.8-0.2 2.9-0.6 5.4-0.6 5.1 0 8.9 2.3 0.4 0.3 0.7 0.3 0.4 0 0.7-0.3t0.4-0.8z m2.1-4.8q0-0.9-0.8-1.4-5.3-3.1-12.2-3.1-3.4 0-6.8 0.9-1 0.3-1 1.5 0 0.5 0.3 0.9t1 0.4q0.1 0 0.8-0.2 2.7-0.7 5.6-0.7 6.2 0 10.9 2.8 0.5 0.3 0.9 0.3 0.5 0 0.9-0.4t0.4-1z m2.4-5.5q0-1.1-0.9-1.6-2.8-1.6-6.5-2.5t-7.7-0.8q-4.5 0-8.1 1.1-0.5 0.1-0.9 0.5t-0.3 1.1q0 0.7 0.5 1.2t1.1 0.4q0.2 0 0.9-0.1 3-0.9 6.8-0.9 3.6 0 7 0.8t5.6 2.1q0.5 0.3 0.9 0.3 0.7 0 1.1-0.5t0.5-1.1z m4.6 3.3q0 4.7-2.3 8.6t-6.3 6.2-8.6 2.3-8.6-2.3-6.2-6.2-2.3-8.6 2.3-8.6 6.2-6.2 8.6-2.3 8.6 2.3 6.3 6.2 2.3 8.6z"
+                  />
+                </g>
+              </svg>
+               
+              <span>
+                Spotify
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section
+        class="Release-buyList"
+      >
+        <h2>
+          <span>
+            Buy
+          </span>
+        </h2>
+        <ul
+          class="Release-platformList"
+        >
+          <li>
+            <a
+              href="buyList 1 url"
+              rel="noopener"
+              target="_blank"
+              title="Buy 'title' from iTunes"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                preserveAspectRatio="xMidYMid meet"
+                style="vertical-align:middle"
+                viewBox="0 0 40 40"
+                width="1em"
+              >
+                <g>
+                  <path
+                    d="m35.6 27.1q-0.9 2.8-2.8 5.6-2.8 4.4-5.7 4.4-1.1 0-3.1-0.7-1.9-0.8-3.4-0.8-1.3 0-3.2 0.8-1.8 0.7-2.9 0.7-3.4 0-6.7-5.7-3.3-5.9-3.3-11.3 0-5.1 2.5-8.3 2.5-3.2 6.4-3.2 1.6 0 3.9 0.6 2.3 0.7 3.1 0.7 1 0 3.2-0.7 2.3-0.8 3.8-0.8 2.7 0 4.8 1.4 1.2 0.8 2.3 2.3-1.7 1.5-2.5 2.6-1.5 2.1-1.5 4.6 0 2.8 1.6 5t3.5 2.8z m-8.4-26.2q0 1.4-0.6 3.1-0.7 1.7-2.1 3.1-1.2 1.2-2.4 1.6-0.9 0.2-2.4 0.3 0.1-3.3 1.8-5.7 1.6-2.4 5.6-3.3 0 0.1 0 0.2t0.1 0.3q0 0.1 0 0.2t0 0.2z"
+                  />
+                </g>
+              </svg>
+               
+              <span>
+                iTunes
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section
+        class="Release-copyright"
+      >
+        <p>
+          ℗© 2017 recordLabel
+        </p>
+      </section>
+    </div>
+  </div>
+</article>
+`;
+
+exports[`[components] <Release /> renders correctly with minimum props 1`] = `
+<article
+  class="Release"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1>
+      title
+    </h1>
+  </header>
+  <div
+    class="MetaBar Release-meta"
+  >
+    <div
+      class="Meta Release-type"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 18.4c0.9 0 1.6 0.7 1.6 1.6s-0.7 1.6-1.6 1.6-1.6-0.7-1.6-1.6 0.7-1.6 1.6-1.6z m0 9.1c4.1 0 7.5-3.4 7.5-7.5s-3.4-7.5-7.5-7.5-7.5 3.4-7.5 7.5 3.4 7.5 7.5 7.5z m0-24.1c9.2 0 16.6 7.4 16.6 16.6s-7.4 16.6-16.6 16.6-16.6-7.4-16.6-16.6 7.4-16.6 16.6-16.6z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Type
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <span>
+          Type
+        </span>
+      </span>
+    </div>
+    <div
+      class="Meta Release-releasedOn"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m31.6 33.4v-18.4h-23.2v18.4h23.2z m0-26.8c1.8 0 3.4 1.6 3.4 3.4v23.4c0 1.8-1.6 3.2-3.4 3.2h-23.2c-1.9 0-3.4-1.4-3.4-3.2v-23.4c0-1.8 1.5-3.4 3.4-3.4h1.6v-3.2h3.4v3.2h13.2v-3.2h3.4v3.2h1.6z m-3.2 11.8v3.2h-3.4v-3.2h3.4z m-6.8 0v3.2h-3.2v-3.2h3.2z m-6.6 0v3.2h-3.4v-3.2h3.4z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Released
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <time
+          class="DateTime"
+          datetime="2016-12-31T11:00:00.000Z"
+          title="January 1, 2017"
+        >
+          January 1, 2017
+        </time>
+      </span>
+    </div>
+    <div
+      class="Meta Release-length"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20.9 11.6v8.8l7.5 4.4-1.3 2.2-8.7-5.4v-10h2.5z m-0.9 21.8q5.5 0 9.4-4t4-9.4-4-9.4-9.4-4-9.4 4-4 9.4 4 9.4 9.4 4z m0-30q6.9 0 11.8 4.8t4.8 11.8-4.8 11.8-11.8 4.8-11.8-4.8-4.8-11.8 4.8-11.8 11.8-4.8z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Length
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        5:00
+      </span>
+    </div>
+    <div
+      class="Meta Release-genre"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 5h10v6.6h-6.6v16.8c0 3.6-3.1 6.6-6.8 6.6s-6.6-3-6.6-6.6 3-6.8 6.6-6.8c1.3 0 2.4 0.4 3.4 1v-17.6z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Genre
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        genre
+      </span>
+    </div>
+    <div
+      class="Meta Release-tracks"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m11.6 21.6v-3.2h23.4v3.2h-23.4z m0 10v-3.2h23.4v3.2h-23.4z m0-23.2h23.4v3.2h-23.4v-3.2z m-8.2 10v-1.8h5v1.6l-3.1 3.4h3.1v1.8h-5v-1.6l2.9-3.4h-2.9z m1.6-5v-5h-1.6v-1.8h3.2v6.8h-1.6z m-1.6 15v-1.8h5v6.8h-5v-1.8h3.2v-0.7h-1.6v-1.8h1.6v-0.7h-3.2z"
+          />
+        </g>
+      </svg>
+        
+      <span
+        class="Meta-value"
+      >
+        1 
+        <span>
+          track
+        </span>
+      </span>
+    </div>
+  </div>
+  <div
+    class="Release-body"
+  >
+    <section
+      class="Release-images"
+    >
+      <div
+        class="Carousel"
+      >
+        <div
+          class="Carousel-slides"
+          style="transform:translate3d(-0%, 0, 0)"
+        >
+          <figure
+            class="isLoading"
+          >
+            <img
+              alt="images 1 title"
+              src="images 1 imageUrl"
+            />
+            <span
+              class="Loader"
+            >
+              <div
+                class="Loader-animation"
+              >
+                <span />
+                <span />
+                <span />
+              </div>
+            </span>
+            <figcaption>
+              images 1 title
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <div
+      class="Release-details"
+    >
+      <section
+        class="Release-description"
+      >
+        description
+      </section>
+      <section
+        class="Release-tracklist"
+      >
+        <h2>
+          <span>
+            Tracklist
+          </span>
+        </h2>
+        <ol>
+          <li>
+            <span
+              class="Release-tracklist-title"
+            >
+              tracklist 1 title
+            </span>
+             
+            <span
+              class="Release-tracklist-genre"
+            >
+              tracklist 1 genre
+            </span>
+             
+            <span
+              class="Release-tracklist-length"
+            >
+              5:00
+            </span>
+          </li>
+        </ol>
+      </section>
+      <section
+        class="Release-copyright"
+      >
+        <p>
+          ℗© 2017 recordLabel
+        </p>
+      </section>
+    </div>
+  </div>
+</article>
+`;
+
+exports[`[components] <Release /> updates \`isImageLoaded\` state when image has loaded 1`] = `
+<article
+  class="Release"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1>
+      title
+    </h1>
+  </header>
+  <div
+    class="MetaBar Release-meta"
+  >
+    <div
+      class="Meta Release-type"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align: middle;"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 18.4c0.9 0 1.6 0.7 1.6 1.6s-0.7 1.6-1.6 1.6-1.6-0.7-1.6-1.6 0.7-1.6 1.6-1.6z m0 9.1c4.1 0 7.5-3.4 7.5-7.5s-3.4-7.5-7.5-7.5-7.5 3.4-7.5 7.5 3.4 7.5 7.5 7.5z m0-24.1c9.2 0 16.6 7.4 16.6 16.6s-7.4 16.6-16.6 16.6-16.6-7.4-16.6-16.6 7.4-16.6 16.6-16.6z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Type
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <span>
+          Type
+        </span>
+      </span>
+    </div>
+    <div
+      class="Meta Release-releasedOn"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align: middle;"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m31.6 33.4v-18.4h-23.2v18.4h23.2z m0-26.8c1.8 0 3.4 1.6 3.4 3.4v23.4c0 1.8-1.6 3.2-3.4 3.2h-23.2c-1.9 0-3.4-1.4-3.4-3.2v-23.4c0-1.8 1.5-3.4 3.4-3.4h1.6v-3.2h3.4v3.2h13.2v-3.2h3.4v3.2h1.6z m-3.2 11.8v3.2h-3.4v-3.2h3.4z m-6.8 0v3.2h-3.2v-3.2h3.2z m-6.6 0v3.2h-3.4v-3.2h3.4z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Released
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <time
+          class="DateTime"
+          datetime="2016-12-31T11:00:00.000Z"
+          title="January 1, 2017"
+        >
+          January 1, 2017
+        </time>
+      </span>
+    </div>
+    <div
+      class="Meta Release-length"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align: middle;"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20.9 11.6v8.8l7.5 4.4-1.3 2.2-8.7-5.4v-10h2.5z m-0.9 21.8q5.5 0 9.4-4t4-9.4-4-9.4-9.4-4-9.4 4-4 9.4 4 9.4 9.4 4z m0-30q6.9 0 11.8 4.8t4.8 11.8-4.8 11.8-11.8 4.8-11.8-4.8-4.8-11.8 4.8-11.8 11.8-4.8z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Length
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        5:00
+      </span>
+    </div>
+    <div
+      class="Meta Release-genre"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align: middle;"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 5h10v6.6h-6.6v16.8c0 3.6-3.1 6.6-6.8 6.6s-6.6-3-6.6-6.6 3-6.8 6.6-6.8c1.3 0 2.4 0.4 3.4 1v-17.6z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Genre
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        genre
+      </span>
+    </div>
+    <div
+      class="Meta Release-tracks"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align: middle;"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m11.6 21.6v-3.2h23.4v3.2h-23.4z m0 10v-3.2h23.4v3.2h-23.4z m0-23.2h23.4v3.2h-23.4v-3.2z m-8.2 10v-1.8h5v1.6l-3.1 3.4h3.1v1.8h-5v-1.6l2.9-3.4h-2.9z m1.6-5v-5h-1.6v-1.8h3.2v6.8h-1.6z m-1.6 15v-1.8h5v6.8h-5v-1.8h3.2v-0.7h-1.6v-1.8h1.6v-0.7h-3.2z"
+          />
+        </g>
+      </svg>
+        
+      <span
+        class="Meta-value"
+      >
+        1 
+        <span>
+          track
+        </span>
+      </span>
+    </div>
+  </div>
+  <div
+    class="Release-body"
+  >
+    <section
+      class="Release-images"
+    >
+      <div
+        class="Carousel"
+      >
+        <div
+          class="Carousel-slides"
+        >
+          <figure
+            class=""
+          >
+            <img
+              alt="images 1 title"
+              src="images 1 imageUrl"
+            />
+            <figcaption>
+              images 1 title
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <div
+      class="Release-details"
+    >
+      <section
+        class="Release-description"
+      >
+        description
+      </section>
+      <section
+        class="Release-tracklist"
+      >
+        <h2>
+          <span>
+            Tracklist
+          </span>
+        </h2>
+        <ol>
+          <li>
+            <span
+              class="Release-tracklist-title"
+            >
+              tracklist 1 title
+            </span>
+             
+            <span
+              class="Release-tracklist-genre"
+            >
+              tracklist 1 genre
+            </span>
+             
+            <span
+              class="Release-tracklist-length"
+            >
+              5:00
+            </span>
+          </li>
+        </ol>
+      </section>
+      <section
+        class="Release-copyright"
+      >
+        <p>
+          ℗© 2017 recordLabel
+        </p>
+      </section>
+    </div>
+  </div>
+</article>
+`;
+
+exports[`[components] <Release /> updates \`isImageLoaded\` state when image has previously been loaded 1`] = `
+<article
+  class="Release"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1>
+      title
+    </h1>
+  </header>
+  <div
+    class="MetaBar Release-meta"
+  >
+    <div
+      class="Meta Release-type"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align: middle;"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 18.4c0.9 0 1.6 0.7 1.6 1.6s-0.7 1.6-1.6 1.6-1.6-0.7-1.6-1.6 0.7-1.6 1.6-1.6z m0 9.1c4.1 0 7.5-3.4 7.5-7.5s-3.4-7.5-7.5-7.5-7.5 3.4-7.5 7.5 3.4 7.5 7.5 7.5z m0-24.1c9.2 0 16.6 7.4 16.6 16.6s-7.4 16.6-16.6 16.6-16.6-7.4-16.6-16.6 7.4-16.6 16.6-16.6z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Type
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <span>
+          Type
+        </span>
+      </span>
+    </div>
+    <div
+      class="Meta Release-releasedOn"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align: middle;"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m31.6 33.4v-18.4h-23.2v18.4h23.2z m0-26.8c1.8 0 3.4 1.6 3.4 3.4v23.4c0 1.8-1.6 3.2-3.4 3.2h-23.2c-1.9 0-3.4-1.4-3.4-3.2v-23.4c0-1.8 1.5-3.4 3.4-3.4h1.6v-3.2h3.4v3.2h13.2v-3.2h3.4v3.2h1.6z m-3.2 11.8v3.2h-3.4v-3.2h3.4z m-6.8 0v3.2h-3.2v-3.2h3.2z m-6.6 0v3.2h-3.4v-3.2h3.4z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Released
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <time
+          class="DateTime"
+          datetime="2016-12-31T11:00:00.000Z"
+          title="January 1, 2017"
+        >
+          January 1, 2017
+        </time>
+      </span>
+    </div>
+    <div
+      class="Meta Release-length"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align: middle;"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20.9 11.6v8.8l7.5 4.4-1.3 2.2-8.7-5.4v-10h2.5z m-0.9 21.8q5.5 0 9.4-4t4-9.4-4-9.4-9.4-4-9.4 4-4 9.4 4 9.4 9.4 4z m0-30q6.9 0 11.8 4.8t4.8 11.8-4.8 11.8-11.8 4.8-11.8-4.8-4.8-11.8 4.8-11.8 11.8-4.8z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Length
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        5:00
+      </span>
+    </div>
+    <div
+      class="Meta Release-genre"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align: middle;"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 5h10v6.6h-6.6v16.8c0 3.6-3.1 6.6-6.8 6.6s-6.6-3-6.6-6.6 3-6.8 6.6-6.8c1.3 0 2.4 0.4 3.4 1v-17.6z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Genre
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        genre
+      </span>
+    </div>
+    <div
+      class="Meta Release-tracks"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align: middle;"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m11.6 21.6v-3.2h23.4v3.2h-23.4z m0 10v-3.2h23.4v3.2h-23.4z m0-23.2h23.4v3.2h-23.4v-3.2z m-8.2 10v-1.8h5v1.6l-3.1 3.4h3.1v1.8h-5v-1.6l2.9-3.4h-2.9z m1.6-5v-5h-1.6v-1.8h3.2v6.8h-1.6z m-1.6 15v-1.8h5v6.8h-5v-1.8h3.2v-0.7h-1.6v-1.8h1.6v-0.7h-3.2z"
+          />
+        </g>
+      </svg>
+        
+      <span
+        class="Meta-value"
+      >
+        1 
+        <span>
+          track
+        </span>
+      </span>
+    </div>
+  </div>
+  <div
+    class="Release-body"
+  >
+    <section
+      class="Release-images"
+    >
+      <div
+        class="Carousel"
+      >
+        <div
+          class="Carousel-slides"
+        >
+          <figure
+            class=""
+          >
+            <img
+              alt="images 1 title"
+              src="images 1 imageUrl"
+            />
+            <figcaption>
+              images 1 title
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <div
+      class="Release-details"
+    >
+      <section
+        class="Release-description"
+      >
+        description
+      </section>
+      <section
+        class="Release-tracklist"
+      >
+        <h2>
+          <span>
+            Tracklist
+          </span>
+        </h2>
+        <ol>
+          <li>
+            <span
+              class="Release-tracklist-title"
+            >
+              tracklist 1 title
+            </span>
+             
+            <span
+              class="Release-tracklist-genre"
+            >
+              tracklist 1 genre
+            </span>
+             
+            <span
+              class="Release-tracklist-length"
+            >
+              5:00
+            </span>
+          </li>
+        </ol>
+      </section>
+      <section
+        class="Release-copyright"
+      >
+        <p>
+          ℗© 2017 recordLabel
+        </p>
+      </section>
+    </div>
+  </div>
+</article>
+`;

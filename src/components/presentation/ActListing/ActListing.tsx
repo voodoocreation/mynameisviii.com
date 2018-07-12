@@ -14,7 +14,7 @@ interface IProps extends IPerformer {
 }
 
 export default class ActListing extends React.Component<IProps, IState> {
-  public state = {
+  public readonly state = {
     isRendered: false
   };
 

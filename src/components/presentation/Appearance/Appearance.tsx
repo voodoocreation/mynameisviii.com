@@ -23,31 +23,20 @@ import SaleListing from "../SaleListing/SaleListing";
 
 interface IProps extends IAppearance {
   intl: InjectedIntl;
+  locationLatLng?: ILatLng;
   onGalleryInteraction?: (type: string, index?: number) => void;
 }
 
 interface IState {
   isImageLoaded: boolean;
-  location?: ILatLng;
 }
 
 class Appearance extends React.Component<IProps, IState> {
   public readonly state = {
-    isImageLoaded: false,
-    location: undefined
+    isImageLoaded: false
   };
 
   private imageRef: React.RefObject<HTMLImageElement> = React.createRef();
-
-  public componentWillMount() {
-    if (this.props.location.latLng) {
-      this.setState({
-        location: this.props.location.latLng
-      });
-    } else if (this.props.location.address && typeof window !== "undefined") {
-      this.geocodeAddress();
-    }
-  }
 
   public componentDidMount() {
     if (this.imageRef.current && this.imageRef.current.complete) {
@@ -56,7 +45,12 @@ class Appearance extends React.Component<IProps, IState> {
   }
 
   public render() {
-    const { intl, onGalleryInteraction, ...appearance } = this.props;
+    const {
+      intl,
+      locationLatLng,
+      onGalleryInteraction,
+      ...appearance
+    } = this.props;
 
     const isCancelled = appearance.status === "EventCancelled";
     const isPostponed = appearance.status === "EventPostponed";
@@ -183,7 +177,10 @@ class Appearance extends React.Component<IProps, IState> {
               </div>
             </section>
 
-            {isCancelled || isPostponed || isFinished ? null : (
+            {appearance.sales.length === 0 ||
+            isCancelled ||
+            isPostponed ||
+            isFinished ? null : (
               <section className="Appearance-tickets">
                 <h2>
                   <FormattedMessage id="GET_TICKETS" />
@@ -223,7 +220,7 @@ class Appearance extends React.Component<IProps, IState> {
             </section>
           ) : null}
 
-          {!!this.state.location ? (
+          {!!locationLatLng ? (
             <section className="Appearance-map">
               <h2>
                 <FormattedMessage id="LOCATION" />
@@ -231,13 +228,13 @@ class Appearance extends React.Component<IProps, IState> {
 
               <Map
                 className="Appearance-map-googleMap"
-                defaultCenter={this.state.location}
+                defaultCenter={locationLatLng}
                 defaultOptions={{
                   disableDefaultUI: true,
                   zoomControl: true
                 }}
               >
-                <Marker position={this.state.location} />
+                <Marker position={locationLatLng} />
               </Map>
             </section>
           ) : null}
@@ -247,28 +244,6 @@ class Appearance extends React.Component<IProps, IState> {
       </article>
     );
   }
-
-  private geocodeAddress = () => {
-    const { maps } = window.google;
-    const geocoder = new maps.Geocoder();
-
-    geocoder.geocode(
-      {
-        address: `${this.props.location.name}, ${this.props.location.address}`
-      },
-      (results: any, status: string) => {
-        if (status === maps.GeocoderStatus.OK && results[0]) {
-          const { location } = results[0].geometry;
-          this.setState({
-            location: {
-              lat: location.lat(),
-              lng: location.lng()
-            }
-          });
-        }
-      }
-    );
-  };
 
   private onImageLoad = () => {
     this.setState({

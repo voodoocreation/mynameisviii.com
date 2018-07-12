@@ -1,7 +1,7 @@
 import cn from "classnames";
 import * as React from "react";
 
-import { isAlmostInViewport } from "../../../helpers/dom";
+import { isAlmostInViewport, isServer } from "../../../helpers/dom";
 import Button from "../Button/Button";
 
 interface IProps {
@@ -25,7 +25,7 @@ export default class LoadButton extends React.Component<IProps> {
   private buttonRef: React.RefObject<Button> = React.createRef();
 
   public componentWillMount() {
-    if (typeof window !== "undefined" && this.props.isScrollLoadEnabled) {
+    if (!isServer() && this.props.isScrollLoadEnabled) {
       window.addEventListener("scroll", this.onWindowScroll);
     }
   }
@@ -35,7 +35,7 @@ export default class LoadButton extends React.Component<IProps> {
   }
 
   public componentWillReceiveProps(nextProps: IProps) {
-    if (typeof window !== "undefined") {
+    if (!isServer()) {
       if (!this.props.isScrollLoadEnabled && nextProps.isScrollLoadEnabled) {
         window.addEventListener("scroll", this.onWindowScroll);
       }
@@ -51,7 +51,7 @@ export default class LoadButton extends React.Component<IProps> {
   }
 
   public componentWillUnmount() {
-    if (typeof window !== "undefined" && this.props.isScrollLoadEnabled) {
+    if (!isServer() && this.props.isScrollLoadEnabled) {
       window.removeEventListener("scroll", this.onWindowScroll);
     }
   }

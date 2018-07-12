@@ -1,0 +1,291 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[components] <NewsArticle /> renders correctly 1`] = `
+<article
+  class="NewsArticle"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1>
+      title
+    </h1>
+  </header>
+  <div
+    class="NewsArticle-body"
+  >
+    <figure
+      class="NewsArticle-image isLoading"
+    >
+      <img
+        src="imageUrl"
+        title="title"
+      />
+      <span
+        class="Loader"
+      >
+        <div
+          class="Loader-animation"
+        >
+          <span />
+          <span />
+          <span />
+        </div>
+      </span>
+    </figure>
+    <section
+      class="NewsArticle-meta"
+    >
+      <div
+        class="NewsArticle-posted"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          preserveAspectRatio="xMidYMid meet"
+          style="vertical-align:middle"
+          viewBox="0 0 40 40"
+          width="1em"
+        >
+          <g>
+            <path
+              d="m20.9 11.6v8.8l7.5 4.4-1.3 2.2-8.7-5.4v-10h2.5z m-0.9 21.8q5.5 0 9.4-4t4-9.4-4-9.4-9.4-4-9.4 4-4 9.4 4 9.4 9.4 4z m0-30q6.9 0 11.8 4.8t4.8 11.8-4.8 11.8-11.8 4.8-11.8-4.8-4.8-11.8 4.8-11.8 11.8-4.8z"
+            />
+          </g>
+        </svg>
+         
+        <span>
+          Posted
+        </span>
+         
+        <time
+          class="DateTime"
+          datetime="2017-10-10T05:00:00.000Z"
+          title="Tuesday, October 10, 2017, 6:00 PM"
+        >
+          <span>
+            3 months ago
+          </span>
+        </time>
+         
+        <span>
+          by
+        </span>
+         author
+      </div>
+      <div
+        class="Type Type-undefined"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          preserveAspectRatio="xMidYMid meet"
+          style="vertical-align:middle"
+          viewBox="0 0 40 40"
+          width="1em"
+        >
+          <g>
+            <path
+              d="m21.6 21.6v-10h-3.2v10h3.2z m0 6.8v-3.4h-3.2v3.4h3.2z m16.8-8.4l-4.1 4.6 0.5 6.2-6 1.3-3.1 5.3-5.7-2.4-5.7 2.4-3.1-5.2-6-1.4 0.5-6.2-4.1-4.6 4.1-4.7-0.5-6.1 6-1.3 3.1-5.3 5.7 2.4 5.7-2.4 3.1 5.3 6 1.3-0.5 6.2z"
+            />
+          </g>
+        </svg>
+         News
+      </div>
+    </section>
+    <section
+      class="NewsArticle-content"
+    >
+      <p>
+        content
+      </p>
+    </section>
+  </div>
+</article>
+`;
+
+exports[`[components] <NewsArticle /> updates \`isImageLoaded\` state when image has loaded 1`] = `
+<article
+  class="NewsArticle"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1>
+      title
+    </h1>
+  </header>
+  <div
+    class="NewsArticle-body"
+  >
+    <figure
+      class="NewsArticle-image"
+    >
+      <img
+        src="imageUrl"
+        title="title"
+      />
+    </figure>
+    <section
+      class="NewsArticle-meta"
+    >
+      <div
+        class="NewsArticle-posted"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          preserveAspectRatio="xMidYMid meet"
+          style="vertical-align: middle;"
+          viewBox="0 0 40 40"
+          width="1em"
+        >
+          <g>
+            <path
+              d="m20.9 11.6v8.8l7.5 4.4-1.3 2.2-8.7-5.4v-10h2.5z m-0.9 21.8q5.5 0 9.4-4t4-9.4-4-9.4-9.4-4-9.4 4-4 9.4 4 9.4 9.4 4z m0-30q6.9 0 11.8 4.8t4.8 11.8-4.8 11.8-11.8 4.8-11.8-4.8-4.8-11.8 4.8-11.8 11.8-4.8z"
+            />
+          </g>
+        </svg>
+         
+        <span>
+          Posted
+        </span>
+         
+        <time
+          class="DateTime"
+          datetime="2017-10-10T05:00:00.000Z"
+          title="Tuesday, October 10, 2017, 6:00 PM"
+        >
+          <span>
+            3 months ago
+          </span>
+        </time>
+         
+        <span>
+          by
+        </span>
+         author
+      </div>
+      <div
+        class="Type Type-undefined"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          preserveAspectRatio="xMidYMid meet"
+          style="vertical-align: middle;"
+          viewBox="0 0 40 40"
+          width="1em"
+        >
+          <g>
+            <path
+              d="m21.6 21.6v-10h-3.2v10h3.2z m0 6.8v-3.4h-3.2v3.4h3.2z m16.8-8.4l-4.1 4.6 0.5 6.2-6 1.3-3.1 5.3-5.7-2.4-5.7 2.4-3.1-5.2-6-1.4 0.5-6.2-4.1-4.6 4.1-4.7-0.5-6.1 6-1.3 3.1-5.3 5.7 2.4 5.7-2.4 3.1 5.3 6 1.3-0.5 6.2z"
+            />
+          </g>
+        </svg>
+         News
+      </div>
+    </section>
+    <section
+      class="NewsArticle-content"
+    >
+      <p>
+        content
+      </p>
+    </section>
+  </div>
+</article>
+`;
+
+exports[`[components] <NewsArticle /> updates \`isImageLoaded\` state when image has previously been loaded 1`] = `
+<article
+  class="NewsArticle"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1>
+      title
+    </h1>
+  </header>
+  <div
+    class="NewsArticle-body"
+  >
+    <figure
+      class="NewsArticle-image"
+    >
+      <img
+        src="imageUrl"
+        title="title"
+      />
+    </figure>
+    <section
+      class="NewsArticle-meta"
+    >
+      <div
+        class="NewsArticle-posted"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          preserveAspectRatio="xMidYMid meet"
+          style="vertical-align: middle;"
+          viewBox="0 0 40 40"
+          width="1em"
+        >
+          <g>
+            <path
+              d="m20.9 11.6v8.8l7.5 4.4-1.3 2.2-8.7-5.4v-10h2.5z m-0.9 21.8q5.5 0 9.4-4t4-9.4-4-9.4-9.4-4-9.4 4-4 9.4 4 9.4 9.4 4z m0-30q6.9 0 11.8 4.8t4.8 11.8-4.8 11.8-11.8 4.8-11.8-4.8-4.8-11.8 4.8-11.8 11.8-4.8z"
+            />
+          </g>
+        </svg>
+         
+        <span>
+          Posted
+        </span>
+         
+        <time
+          class="DateTime"
+          datetime="2017-10-10T05:00:00.000Z"
+          title="Tuesday, October 10, 2017, 6:00 PM"
+        >
+          <span>
+            3 months ago
+          </span>
+        </time>
+         
+        <span>
+          by
+        </span>
+         author
+      </div>
+      <div
+        class="Type Type-undefined"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          preserveAspectRatio="xMidYMid meet"
+          style="vertical-align: middle;"
+          viewBox="0 0 40 40"
+          width="1em"
+        >
+          <g>
+            <path
+              d="m21.6 21.6v-10h-3.2v10h3.2z m0 6.8v-3.4h-3.2v3.4h3.2z m16.8-8.4l-4.1 4.6 0.5 6.2-6 1.3-3.1 5.3-5.7-2.4-5.7 2.4-3.1-5.2-6-1.4 0.5-6.2-4.1-4.6 4.1-4.7-0.5-6.1 6-1.3 3.1-5.3 5.7 2.4 5.7-2.4 3.1 5.3 6 1.3-0.5 6.2z"
+            />
+          </g>
+        </svg>
+         News
+      </div>
+    </section>
+    <section
+      class="NewsArticle-content"
+    >
+      <p>
+        content
+      </p>
+    </section>
+  </div>
+</article>
+`;

@@ -85,3 +85,6 @@ export const getAppearancePriceRange = (appearance: IAppearance) =>
 
       return acc;
     }, {});
+
+export const getCurrentAppearanceLocation = (state: IRootReducers) =>
+  state.appearances.currentLocation;

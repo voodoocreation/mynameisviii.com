@@ -1,0 +1,1810 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[components] <Appearance /> renders correctly when status=EventCancelled 1`] = `
+<article
+  class="Appearance isCancelled"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1 />
+  </header>
+  <div
+    class="MetaBar Appearance-meta"
+  >
+    <div
+      class="Meta Appearance-date"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m31.6 33.4v-18.4h-23.2v18.4h23.2z m0-26.8c1.8 0 3.4 1.6 3.4 3.4v23.4c0 1.8-1.6 3.2-3.4 3.2h-23.2c-1.9 0-3.4-1.4-3.4-3.2v-23.4c0-1.8 1.5-3.4 3.4-3.4h1.6v-3.2h3.4v3.2h13.2v-3.2h3.4v3.2h1.6z m-3.2 11.8v3.2h-3.4v-3.2h3.4z m-6.8 0v3.2h-3.2v-3.2h3.2z m-6.6 0v3.2h-3.4v-3.2h3.4z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Date
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <time
+          class="DateTime"
+          datetime="2018-10-10T05:00:00.000Z"
+          title="Wednesday, October 10, 2018"
+        >
+          Wednesday, October 10, 2018
+        </time>
+      </span>
+    </div>
+    <div
+      class="Meta Appearance-time"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20.9 11.6v8.8l7.5 4.4-1.3 2.2-8.7-5.4v-10h2.5z m-0.9 21.8q5.5 0 9.4-4t4-9.4-4-9.4-9.4-4-9.4 4-4 9.4 4 9.4 9.4 4z m0-30q6.9 0 11.8 4.8t4.8 11.8-4.8 11.8-11.8 4.8-11.8-4.8-4.8-11.8 4.8-11.8 11.8-4.8z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Time
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <time
+          class="DateTime"
+          datetime="2018-10-10T05:00:00.000Z"
+          title="6:00 PM"
+        >
+          6:00 PM
+        </time>
+        –
+        <time
+          class="DateTime"
+          datetime="2018-10-10T07:00:00.000Z"
+          title="8:00 PM"
+        >
+          8:00 PM
+        </time>
+      </span>
+    </div>
+    <div
+      class="Meta Appearance-location"
+      title="location name - undefined"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 19.1q1.7 0 2.9-1.2t1.2-2.9-1.2-2.9-2.9-1.2-2.9 1.2-1.2 2.9 1.2 2.9 2.9 1.2z m0-15.7q4.8 0 8.2 3.4t3.4 8.2q0 2.4-1.2 5.5t-2.9 5.9-3.4 5.1-2.8 3.8l-1.3 1.3q-0.5-0.5-1.2-1.4t-2.9-3.6-3.5-5.2-2.8-5.8-1.2-5.6q0-4.8 3.4-8.2t8.2-3.4z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Location
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        location name
+      </span>
+    </div>
+  </div>
+  <div
+    class="Appearance-body"
+  >
+    <figure
+      class="Appearance-image isLoading"
+    >
+      <img
+        src="imageUrl"
+      />
+      <div
+        class="Meta Appearance-status"
+      >
+         
+        <span
+          class="Meta-label"
+        >
+          <span>
+            Status
+          </span>
+          :
+        </span>
+         
+        <span
+          class="Meta-value"
+        >
+          <span>
+            Cancelled
+          </span>
+        </span>
+      </div>
+      <span
+        class="Loader"
+      >
+        <div
+          class="Loader-animation"
+        >
+          <span />
+          <span />
+          <span />
+        </div>
+      </span>
+    </figure>
+    <div
+      class="Appearance-details"
+    >
+      <section
+        class="Appearance-description"
+      >
+        <p>
+          description
+        </p>
+      </section>
+      <section
+        class="Appearance-acts"
+      >
+        <h2>
+          <span>
+            Featured acts
+          </span>
+        </h2>
+        <div
+          class="Appearance-acts-items"
+        >
+          <article
+            class="ActListing"
+          >
+            <span
+              class="ActListing-link"
+            >
+              <div
+                class="ActListing-details"
+              >
+                <h3>
+                  act name
+                </h3>
+                <section
+                  class="ActListing-meta"
+                >
+                  <div
+                    class="Meta ActListing-genre"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      preserveAspectRatio="xMidYMid meet"
+                      style="vertical-align:middle"
+                      viewBox="0 0 40 40"
+                      width="1em"
+                    >
+                      <g>
+                        <path
+                          d="m20 5h10v6.6h-6.6v16.8c0 3.6-3.1 6.6-6.8 6.6s-6.6-3-6.6-6.6 3-6.8 6.6-6.8c1.3 0 2.4 0.4 3.4 1v-17.6z"
+                        />
+                      </g>
+                    </svg>
+                     
+                    <span
+                      class="Meta-label"
+                    >
+                      <span>
+                        Genre
+                      </span>
+                      :
+                    </span>
+                     
+                    <span
+                      class="Meta-value"
+                    >
+                      act genre
+                    </span>
+                  </div>
+                  <div
+                    class="Meta ActListing-location"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      preserveAspectRatio="xMidYMid meet"
+                      style="vertical-align:middle"
+                      viewBox="0 0 40 40"
+                      width="1em"
+                    >
+                      <g>
+                        <path
+                          d="m20 19.1q1.7 0 2.9-1.2t1.2-2.9-1.2-2.9-2.9-1.2-2.9 1.2-1.2 2.9 1.2 2.9 2.9 1.2z m0-15.7q4.8 0 8.2 3.4t3.4 8.2q0 2.4-1.2 5.5t-2.9 5.9-3.4 5.1-2.8 3.8l-1.3 1.3q-0.5-0.5-1.2-1.4t-2.9-3.6-3.5-5.2-2.8-5.8-1.2-5.6q0-4.8 3.4-8.2t8.2-3.4z"
+                        />
+                      </g>
+                    </svg>
+                     
+                    <span
+                      class="Meta-label"
+                    >
+                      <span>
+                        Location
+                      </span>
+                      :
+                    </span>
+                     
+                    <span
+                      class="Meta-value"
+                    />
+                  </div>
+                </section>
+              </div>
+              <figure
+                class="ActListing-image"
+              >
+                <img
+                  alt="act name"
+                  src="act imageUrl"
+                />
+              </figure>
+            </span>
+          </article>
+        </div>
+      </section>
+    </div>
+  </div>
+</article>
+`;
+
+exports[`[components] <Appearance /> renders correctly when status=EventPostponed 1`] = `
+<article
+  class="Appearance isPostponed"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1 />
+  </header>
+  <div
+    class="MetaBar Appearance-meta"
+  >
+    <div
+      class="Meta Appearance-date"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m31.6 33.4v-18.4h-23.2v18.4h23.2z m0-26.8c1.8 0 3.4 1.6 3.4 3.4v23.4c0 1.8-1.6 3.2-3.4 3.2h-23.2c-1.9 0-3.4-1.4-3.4-3.2v-23.4c0-1.8 1.5-3.4 3.4-3.4h1.6v-3.2h3.4v3.2h13.2v-3.2h3.4v3.2h1.6z m-3.2 11.8v3.2h-3.4v-3.2h3.4z m-6.8 0v3.2h-3.2v-3.2h3.2z m-6.6 0v3.2h-3.4v-3.2h3.4z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Date
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <time
+          class="DateTime"
+          datetime="2018-10-10T05:00:00.000Z"
+          title="Wednesday, October 10, 2018"
+        >
+          Wednesday, October 10, 2018
+        </time>
+      </span>
+    </div>
+    <div
+      class="Meta Appearance-time"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20.9 11.6v8.8l7.5 4.4-1.3 2.2-8.7-5.4v-10h2.5z m-0.9 21.8q5.5 0 9.4-4t4-9.4-4-9.4-9.4-4-9.4 4-4 9.4 4 9.4 9.4 4z m0-30q6.9 0 11.8 4.8t4.8 11.8-4.8 11.8-11.8 4.8-11.8-4.8-4.8-11.8 4.8-11.8 11.8-4.8z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Time
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <time
+          class="DateTime"
+          datetime="2018-10-10T05:00:00.000Z"
+          title="6:00 PM"
+        >
+          6:00 PM
+        </time>
+        –
+        <time
+          class="DateTime"
+          datetime="2018-10-10T07:00:00.000Z"
+          title="8:00 PM"
+        >
+          8:00 PM
+        </time>
+      </span>
+    </div>
+    <div
+      class="Meta Appearance-location"
+      title="location name - undefined"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 19.1q1.7 0 2.9-1.2t1.2-2.9-1.2-2.9-2.9-1.2-2.9 1.2-1.2 2.9 1.2 2.9 2.9 1.2z m0-15.7q4.8 0 8.2 3.4t3.4 8.2q0 2.4-1.2 5.5t-2.9 5.9-3.4 5.1-2.8 3.8l-1.3 1.3q-0.5-0.5-1.2-1.4t-2.9-3.6-3.5-5.2-2.8-5.8-1.2-5.6q0-4.8 3.4-8.2t8.2-3.4z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Location
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        location name
+      </span>
+    </div>
+  </div>
+  <div
+    class="Appearance-body"
+  >
+    <figure
+      class="Appearance-image isLoading"
+    >
+      <img
+        src="imageUrl"
+      />
+      <div
+        class="Meta Appearance-status"
+      >
+         
+        <span
+          class="Meta-label"
+        >
+          <span>
+            Postponed
+          </span>
+          :
+        </span>
+         
+        <span
+          class="Meta-value"
+        >
+          <span>
+            Postponed
+          </span>
+        </span>
+      </div>
+      <span
+        class="Loader"
+      >
+        <div
+          class="Loader-animation"
+        >
+          <span />
+          <span />
+          <span />
+        </div>
+      </span>
+    </figure>
+    <div
+      class="Appearance-details"
+    >
+      <section
+        class="Appearance-description"
+      >
+        <p>
+          description
+        </p>
+      </section>
+      <section
+        class="Appearance-acts"
+      >
+        <h2>
+          <span>
+            Featured acts
+          </span>
+        </h2>
+        <div
+          class="Appearance-acts-items"
+        >
+          <article
+            class="ActListing"
+          >
+            <span
+              class="ActListing-link"
+            >
+              <div
+                class="ActListing-details"
+              >
+                <h3>
+                  act name
+                </h3>
+                <section
+                  class="ActListing-meta"
+                >
+                  <div
+                    class="Meta ActListing-genre"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      preserveAspectRatio="xMidYMid meet"
+                      style="vertical-align:middle"
+                      viewBox="0 0 40 40"
+                      width="1em"
+                    >
+                      <g>
+                        <path
+                          d="m20 5h10v6.6h-6.6v16.8c0 3.6-3.1 6.6-6.8 6.6s-6.6-3-6.6-6.6 3-6.8 6.6-6.8c1.3 0 2.4 0.4 3.4 1v-17.6z"
+                        />
+                      </g>
+                    </svg>
+                     
+                    <span
+                      class="Meta-label"
+                    >
+                      <span>
+                        Genre
+                      </span>
+                      :
+                    </span>
+                     
+                    <span
+                      class="Meta-value"
+                    >
+                      act genre
+                    </span>
+                  </div>
+                  <div
+                    class="Meta ActListing-location"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      preserveAspectRatio="xMidYMid meet"
+                      style="vertical-align:middle"
+                      viewBox="0 0 40 40"
+                      width="1em"
+                    >
+                      <g>
+                        <path
+                          d="m20 19.1q1.7 0 2.9-1.2t1.2-2.9-1.2-2.9-2.9-1.2-2.9 1.2-1.2 2.9 1.2 2.9 2.9 1.2z m0-15.7q4.8 0 8.2 3.4t3.4 8.2q0 2.4-1.2 5.5t-2.9 5.9-3.4 5.1-2.8 3.8l-1.3 1.3q-0.5-0.5-1.2-1.4t-2.9-3.6-3.5-5.2-2.8-5.8-1.2-5.6q0-4.8 3.4-8.2t8.2-3.4z"
+                        />
+                      </g>
+                    </svg>
+                     
+                    <span
+                      class="Meta-label"
+                    >
+                      <span>
+                        Location
+                      </span>
+                      :
+                    </span>
+                     
+                    <span
+                      class="Meta-value"
+                    />
+                  </div>
+                </section>
+              </div>
+              <figure
+                class="ActListing-image"
+              >
+                <img
+                  alt="act name"
+                  src="act imageUrl"
+                />
+              </figure>
+            </span>
+          </article>
+        </div>
+      </section>
+    </div>
+  </div>
+</article>
+`;
+
+exports[`[components] <Appearance /> renders correctly with all props 1`] = `
+<article
+  class="Appearance"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1 />
+  </header>
+  <div
+    class="MetaBar Appearance-meta"
+  >
+    <div
+      class="Meta Appearance-date"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m31.6 33.4v-18.4h-23.2v18.4h23.2z m0-26.8c1.8 0 3.4 1.6 3.4 3.4v23.4c0 1.8-1.6 3.2-3.4 3.2h-23.2c-1.9 0-3.4-1.4-3.4-3.2v-23.4c0-1.8 1.5-3.4 3.4-3.4h1.6v-3.2h3.4v3.2h13.2v-3.2h3.4v3.2h1.6z m-3.2 11.8v3.2h-3.4v-3.2h3.4z m-6.8 0v3.2h-3.2v-3.2h3.2z m-6.6 0v3.2h-3.4v-3.2h3.4z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Date
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <time
+          class="DateTime"
+          datetime="2018-10-10T05:00:00.000Z"
+          title="Wednesday, October 10, 2018"
+        >
+          Wednesday, October 10, 2018
+        </time>
+      </span>
+    </div>
+    <div
+      class="Meta Appearance-time"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20.9 11.6v8.8l7.5 4.4-1.3 2.2-8.7-5.4v-10h2.5z m-0.9 21.8q5.5 0 9.4-4t4-9.4-4-9.4-9.4-4-9.4 4-4 9.4 4 9.4 9.4 4z m0-30q6.9 0 11.8 4.8t4.8 11.8-4.8 11.8-11.8 4.8-11.8-4.8-4.8-11.8 4.8-11.8 11.8-4.8z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Time
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <time
+          class="DateTime"
+          datetime="2018-10-10T05:00:00.000Z"
+          title="6:00 PM"
+        >
+          6:00 PM
+        </time>
+        –
+        <time
+          class="DateTime"
+          datetime="2018-10-10T07:00:00.000Z"
+          title="8:00 PM"
+        >
+          8:00 PM
+        </time>
+      </span>
+    </div>
+    <div
+      class="Meta Appearance-location"
+      title="undefined - location address"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 19.1q1.7 0 2.9-1.2t1.2-2.9-1.2-2.9-2.9-1.2-2.9 1.2-1.2 2.9 1.2 2.9 2.9 1.2z m0-15.7q4.8 0 8.2 3.4t3.4 8.2q0 2.4-1.2 5.5t-2.9 5.9-3.4 5.1-2.8 3.8l-1.3 1.3q-0.5-0.5-1.2-1.4t-2.9-3.6-3.5-5.2-2.8-5.8-1.2-5.6q0-4.8 3.4-8.2t8.2-3.4z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Location
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      />
+    </div>
+    <div
+      class="Meta Appearance-audience"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m26.6 21.6c3.9 0 11.8 2 11.8 5.9v4.1h-10v-4.1c0-2.5-1.4-4.4-3.3-5.8 0.5-0.1 1.1-0.1 1.5-0.1z m-13.2 0c3.9 0 11.6 2 11.6 5.9v4.1h-23.4v-4.1c0-3.9 7.9-5.9 11.8-5.9z m0-3.2c-2.8 0-5-2.3-5-5s2.2-5 5-5 4.9 2.2 4.9 5-2.2 5-4.9 5z m13.2 0c-2.7 0-5-2.3-5-5s2.3-5 5-5 5 2.2 5 5-2.2 5-5 5z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Audience
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        audience
+      </span>
+    </div>
+  </div>
+  <div
+    class="Appearance-body"
+  >
+    <figure
+      class="Appearance-image isLoading"
+    >
+      <img
+        src="imageUrl"
+      />
+      <span
+        class="Loader"
+      >
+        <div
+          class="Loader-animation"
+        >
+          <span />
+          <span />
+          <span />
+        </div>
+      </span>
+    </figure>
+    <div
+      class="Appearance-details"
+    >
+      <section
+        class="Appearance-description"
+      >
+        <p>
+          description
+        </p>
+      </section>
+      <section
+        class="Appearance-acts"
+      >
+        <h2>
+          <span>
+            Featured acts
+          </span>
+        </h2>
+        <div
+          class="Appearance-acts-items"
+        >
+          <article
+            class="ActListing"
+          >
+            <span
+              class="ActListing-link"
+            >
+              <div
+                class="ActListing-details"
+              >
+                <h3>
+                  act name
+                </h3>
+                <section
+                  class="ActListing-meta"
+                >
+                  <div
+                    class="Meta ActListing-genre"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      preserveAspectRatio="xMidYMid meet"
+                      style="vertical-align:middle"
+                      viewBox="0 0 40 40"
+                      width="1em"
+                    >
+                      <g>
+                        <path
+                          d="m20 5h10v6.6h-6.6v16.8c0 3.6-3.1 6.6-6.8 6.6s-6.6-3-6.6-6.6 3-6.8 6.6-6.8c1.3 0 2.4 0.4 3.4 1v-17.6z"
+                        />
+                      </g>
+                    </svg>
+                     
+                    <span
+                      class="Meta-label"
+                    >
+                      <span>
+                        Genre
+                      </span>
+                      :
+                    </span>
+                     
+                    <span
+                      class="Meta-value"
+                    >
+                      act genre
+                    </span>
+                  </div>
+                  <div
+                    class="Meta ActListing-location"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      preserveAspectRatio="xMidYMid meet"
+                      style="vertical-align:middle"
+                      viewBox="0 0 40 40"
+                      width="1em"
+                    >
+                      <g>
+                        <path
+                          d="m20 19.1q1.7 0 2.9-1.2t1.2-2.9-1.2-2.9-2.9-1.2-2.9 1.2-1.2 2.9 1.2 2.9 2.9 1.2z m0-15.7q4.8 0 8.2 3.4t3.4 8.2q0 2.4-1.2 5.5t-2.9 5.9-3.4 5.1-2.8 3.8l-1.3 1.3q-0.5-0.5-1.2-1.4t-2.9-3.6-3.5-5.2-2.8-5.8-1.2-5.6q0-4.8 3.4-8.2t8.2-3.4z"
+                        />
+                      </g>
+                    </svg>
+                     
+                    <span
+                      class="Meta-label"
+                    >
+                      <span>
+                        Location
+                      </span>
+                      :
+                    </span>
+                     
+                    <span
+                      class="Meta-value"
+                    />
+                  </div>
+                </section>
+              </div>
+              <figure
+                class="ActListing-image"
+              >
+                <img
+                  alt="act name"
+                  src="act imageUrl"
+                />
+              </figure>
+            </span>
+          </article>
+        </div>
+      </section>
+      <section
+        class="Appearance-tickets"
+      >
+        <h2>
+          <span>
+            Get tickets
+          </span>
+        </h2>
+        <div
+          class="Appearance-tickets-items"
+        >
+          <article
+            class="SaleListing"
+          >
+            <span
+              class="SaleListing-link"
+            >
+              <div
+                class="SaleListing-icon"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  preserveAspectRatio="xMidYMid meet"
+                  style="vertical-align:middle"
+                  viewBox="0 0 40 40"
+                  width="1em"
+                >
+                  <g>
+                    <path
+                      d="m22.9 10.1l7 7-12.8 12.8-7-7z m-4.8 21.8l13.8-13.8q0.5-0.4 0.5-1t-0.5-1l-8-8q-0.4-0.4-1-0.4t-1 0.4l-13.8 13.8q-0.5 0.4-0.5 1t0.5 1l8 8q0.4 0.4 1 0.4t1-0.4z m19.9-14.2l-20.3 20.3q-0.8 0.8-2 0.8t-2-0.8l-2.8-2.8q1.2-1.3 1.2-3.1t-1.2-3-3-1.2-3.1 1.2l-2.8-2.8q-0.8-0.8-0.8-2t0.8-2l20.3-20.3q0.8-0.8 2-0.8t2 0.8l2.8 2.8q-1.2 1.3-1.2 3.1t1.2 3 3 1.2 3.1-1.2l2.8 2.8q0.8 0.8 0.8 2t-0.8 2z"
+                    />
+                  </g>
+                </svg>
+              </div>
+              <div
+                class="SaleListing-details"
+              >
+                <h3>
+                  sales 1 name: 
+                  <span
+                    class="Price"
+                  >
+                    <span>
+                      NaN
+                    </span>
+                  </span>
+                </h3>
+                <section
+                  class="SaleListing-meta"
+                />
+              </div>
+            </span>
+          </article>
+        </div>
+      </section>
+    </div>
+    <section
+      class="Appearance-images"
+    >
+      <h2>
+        <span>
+          Photos
+        </span>
+      </h2>
+      <div
+        class="Gallery Appearance-images-items"
+      >
+        <figure
+          class="Image"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="Image-wrapper"
+          >
+            <img
+              alt="images 1 title"
+              src="images 1 imageUrl"
+            />
+          </div>
+          <figcaption>
+            images 1 title
+          </figcaption>
+        </figure>
+        <figure
+          class="Image"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="Image-wrapper"
+          >
+            <img
+              alt="images 2 title"
+              src="images 2 imageUrl"
+            />
+          </div>
+          <figcaption>
+            images 2 title
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+    <section
+      class="Appearance-map"
+    >
+      <h2>
+        <span>
+          Location
+        </span>
+      </h2>
+      <div
+        class="Map-container Appearance-map-googleMap"
+      >
+        <div
+          class="Map"
+        />
+        <div />
+      </div>
+    </section>
+  </div>
+</article>
+`;
+
+exports[`[components] <Appearance /> renders correctly with minimum props 1`] = `
+<article
+  class="Appearance"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1 />
+  </header>
+  <div
+    class="MetaBar Appearance-meta"
+  >
+    <div
+      class="Meta Appearance-date"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m31.6 33.4v-18.4h-23.2v18.4h23.2z m0-26.8c1.8 0 3.4 1.6 3.4 3.4v23.4c0 1.8-1.6 3.2-3.4 3.2h-23.2c-1.9 0-3.4-1.4-3.4-3.2v-23.4c0-1.8 1.5-3.4 3.4-3.4h1.6v-3.2h3.4v3.2h13.2v-3.2h3.4v3.2h1.6z m-3.2 11.8v3.2h-3.4v-3.2h3.4z m-6.8 0v3.2h-3.2v-3.2h3.2z m-6.6 0v3.2h-3.4v-3.2h3.4z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Date
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <time
+          class="DateTime"
+          datetime="2018-10-10T05:00:00.000Z"
+          title="Wednesday, October 10, 2018"
+        >
+          Wednesday, October 10, 2018
+        </time>
+      </span>
+    </div>
+    <div
+      class="Meta Appearance-time"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20.9 11.6v8.8l7.5 4.4-1.3 2.2-8.7-5.4v-10h2.5z m-0.9 21.8q5.5 0 9.4-4t4-9.4-4-9.4-9.4-4-9.4 4-4 9.4 4 9.4 9.4 4z m0-30q6.9 0 11.8 4.8t4.8 11.8-4.8 11.8-11.8 4.8-11.8-4.8-4.8-11.8 4.8-11.8 11.8-4.8z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Time
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <time
+          class="DateTime"
+          datetime="2018-10-10T05:00:00.000Z"
+          title="6:00 PM"
+        >
+          6:00 PM
+        </time>
+        –
+        <time
+          class="DateTime"
+          datetime="2018-10-10T07:00:00.000Z"
+          title="8:00 PM"
+        >
+          8:00 PM
+        </time>
+      </span>
+    </div>
+    <div
+      class="Meta Appearance-location"
+      title="location name - undefined"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 19.1q1.7 0 2.9-1.2t1.2-2.9-1.2-2.9-2.9-1.2-2.9 1.2-1.2 2.9 1.2 2.9 2.9 1.2z m0-15.7q4.8 0 8.2 3.4t3.4 8.2q0 2.4-1.2 5.5t-2.9 5.9-3.4 5.1-2.8 3.8l-1.3 1.3q-0.5-0.5-1.2-1.4t-2.9-3.6-3.5-5.2-2.8-5.8-1.2-5.6q0-4.8 3.4-8.2t8.2-3.4z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Location
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        location name
+      </span>
+    </div>
+  </div>
+  <div
+    class="Appearance-body"
+  >
+    <figure
+      class="Appearance-image isLoading"
+    >
+      <img
+        src="imageUrl"
+      />
+      <span
+        class="Loader"
+      >
+        <div
+          class="Loader-animation"
+        >
+          <span />
+          <span />
+          <span />
+        </div>
+      </span>
+    </figure>
+    <div
+      class="Appearance-details"
+    >
+      <section
+        class="Appearance-description"
+      >
+        <p>
+          description
+        </p>
+      </section>
+      <section
+        class="Appearance-acts"
+      >
+        <h2>
+          <span>
+            Featured acts
+          </span>
+        </h2>
+        <div
+          class="Appearance-acts-items"
+        >
+          <article
+            class="ActListing"
+          >
+            <span
+              class="ActListing-link"
+            >
+              <div
+                class="ActListing-details"
+              >
+                <h3>
+                  act name
+                </h3>
+                <section
+                  class="ActListing-meta"
+                >
+                  <div
+                    class="Meta ActListing-genre"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      preserveAspectRatio="xMidYMid meet"
+                      style="vertical-align:middle"
+                      viewBox="0 0 40 40"
+                      width="1em"
+                    >
+                      <g>
+                        <path
+                          d="m20 5h10v6.6h-6.6v16.8c0 3.6-3.1 6.6-6.8 6.6s-6.6-3-6.6-6.6 3-6.8 6.6-6.8c1.3 0 2.4 0.4 3.4 1v-17.6z"
+                        />
+                      </g>
+                    </svg>
+                     
+                    <span
+                      class="Meta-label"
+                    >
+                      <span>
+                        Genre
+                      </span>
+                      :
+                    </span>
+                     
+                    <span
+                      class="Meta-value"
+                    >
+                      act genre
+                    </span>
+                  </div>
+                  <div
+                    class="Meta ActListing-location"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      preserveAspectRatio="xMidYMid meet"
+                      style="vertical-align:middle"
+                      viewBox="0 0 40 40"
+                      width="1em"
+                    >
+                      <g>
+                        <path
+                          d="m20 19.1q1.7 0 2.9-1.2t1.2-2.9-1.2-2.9-2.9-1.2-2.9 1.2-1.2 2.9 1.2 2.9 2.9 1.2z m0-15.7q4.8 0 8.2 3.4t3.4 8.2q0 2.4-1.2 5.5t-2.9 5.9-3.4 5.1-2.8 3.8l-1.3 1.3q-0.5-0.5-1.2-1.4t-2.9-3.6-3.5-5.2-2.8-5.8-1.2-5.6q0-4.8 3.4-8.2t8.2-3.4z"
+                        />
+                      </g>
+                    </svg>
+                     
+                    <span
+                      class="Meta-label"
+                    >
+                      <span>
+                        Location
+                      </span>
+                      :
+                    </span>
+                     
+                    <span
+                      class="Meta-value"
+                    />
+                  </div>
+                </section>
+              </div>
+              <figure
+                class="ActListing-image"
+              >
+                <img
+                  alt="act name"
+                  src="act imageUrl"
+                />
+              </figure>
+            </span>
+          </article>
+        </div>
+      </section>
+    </div>
+  </div>
+</article>
+`;
+
+exports[`[components] <Appearance /> updates \`isImageLoaded\` state when image has loaded 1`] = `
+<article
+  class="Appearance"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1 />
+  </header>
+  <div
+    class="MetaBar Appearance-meta"
+  >
+    <div
+      class="Meta Appearance-date"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align: middle;"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m31.6 33.4v-18.4h-23.2v18.4h23.2z m0-26.8c1.8 0 3.4 1.6 3.4 3.4v23.4c0 1.8-1.6 3.2-3.4 3.2h-23.2c-1.9 0-3.4-1.4-3.4-3.2v-23.4c0-1.8 1.5-3.4 3.4-3.4h1.6v-3.2h3.4v3.2h13.2v-3.2h3.4v3.2h1.6z m-3.2 11.8v3.2h-3.4v-3.2h3.4z m-6.8 0v3.2h-3.2v-3.2h3.2z m-6.6 0v3.2h-3.4v-3.2h3.4z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Date
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <time
+          class="DateTime"
+          datetime="2018-10-10T05:00:00.000Z"
+          title="Wednesday, October 10, 2018"
+        >
+          Wednesday, October 10, 2018
+        </time>
+      </span>
+    </div>
+    <div
+      class="Meta Appearance-time"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align: middle;"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20.9 11.6v8.8l7.5 4.4-1.3 2.2-8.7-5.4v-10h2.5z m-0.9 21.8q5.5 0 9.4-4t4-9.4-4-9.4-9.4-4-9.4 4-4 9.4 4 9.4 9.4 4z m0-30q6.9 0 11.8 4.8t4.8 11.8-4.8 11.8-11.8 4.8-11.8-4.8-4.8-11.8 4.8-11.8 11.8-4.8z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Time
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <time
+          class="DateTime"
+          datetime="2018-10-10T05:00:00.000Z"
+          title="6:00 PM"
+        >
+          6:00 PM
+        </time>
+        –
+        <time
+          class="DateTime"
+          datetime="2018-10-10T07:00:00.000Z"
+          title="8:00 PM"
+        >
+          8:00 PM
+        </time>
+      </span>
+    </div>
+    <div
+      class="Meta Appearance-location"
+      title="location name - undefined"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align: middle;"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 19.1q1.7 0 2.9-1.2t1.2-2.9-1.2-2.9-2.9-1.2-2.9 1.2-1.2 2.9 1.2 2.9 2.9 1.2z m0-15.7q4.8 0 8.2 3.4t3.4 8.2q0 2.4-1.2 5.5t-2.9 5.9-3.4 5.1-2.8 3.8l-1.3 1.3q-0.5-0.5-1.2-1.4t-2.9-3.6-3.5-5.2-2.8-5.8-1.2-5.6q0-4.8 3.4-8.2t8.2-3.4z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Location
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        location name
+      </span>
+    </div>
+  </div>
+  <div
+    class="Appearance-body"
+  >
+    <figure
+      class="Appearance-image"
+    >
+      <img
+        src="imageUrl"
+      />
+    </figure>
+    <div
+      class="Appearance-details"
+    >
+      <section
+        class="Appearance-description"
+      >
+        <p>
+          description
+        </p>
+      </section>
+      <section
+        class="Appearance-acts"
+      >
+        <h2>
+          <span>
+            Featured acts
+          </span>
+        </h2>
+        <div
+          class="Appearance-acts-items"
+        >
+          <article
+            class="ActListing"
+          >
+            <span
+              class="ActListing-link"
+            >
+              <div
+                class="ActListing-details"
+              >
+                <h3>
+                  act name
+                </h3>
+                <section
+                  class="ActListing-meta"
+                >
+                  <div
+                    class="Meta ActListing-genre"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      preserveAspectRatio="xMidYMid meet"
+                      style="vertical-align: middle;"
+                      viewBox="0 0 40 40"
+                      width="1em"
+                    >
+                      <g>
+                        <path
+                          d="m20 5h10v6.6h-6.6v16.8c0 3.6-3.1 6.6-6.8 6.6s-6.6-3-6.6-6.6 3-6.8 6.6-6.8c1.3 0 2.4 0.4 3.4 1v-17.6z"
+                        />
+                      </g>
+                    </svg>
+                     
+                    <span
+                      class="Meta-label"
+                    >
+                      <span>
+                        Genre
+                      </span>
+                      :
+                    </span>
+                     
+                    <span
+                      class="Meta-value"
+                    >
+                      act genre
+                    </span>
+                  </div>
+                  <div
+                    class="Meta ActListing-location"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      preserveAspectRatio="xMidYMid meet"
+                      style="vertical-align: middle;"
+                      viewBox="0 0 40 40"
+                      width="1em"
+                    >
+                      <g>
+                        <path
+                          d="m20 19.1q1.7 0 2.9-1.2t1.2-2.9-1.2-2.9-2.9-1.2-2.9 1.2-1.2 2.9 1.2 2.9 2.9 1.2z m0-15.7q4.8 0 8.2 3.4t3.4 8.2q0 2.4-1.2 5.5t-2.9 5.9-3.4 5.1-2.8 3.8l-1.3 1.3q-0.5-0.5-1.2-1.4t-2.9-3.6-3.5-5.2-2.8-5.8-1.2-5.6q0-4.8 3.4-8.2t8.2-3.4z"
+                        />
+                      </g>
+                    </svg>
+                     
+                    <span
+                      class="Meta-label"
+                    >
+                      <span>
+                        Location
+                      </span>
+                      :
+                    </span>
+                     
+                    <span
+                      class="Meta-value"
+                    />
+                  </div>
+                </section>
+              </div>
+              <figure
+                class="ActListing-image"
+              >
+                <img
+                  alt="act name"
+                  src="act imageUrl"
+                />
+              </figure>
+            </span>
+          </article>
+        </div>
+      </section>
+    </div>
+  </div>
+</article>
+`;
+
+exports[`[components] <Appearance /> updates \`isImageLoaded\` state when image has previously been loaded 1`] = `
+<article
+  class="Appearance"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1 />
+  </header>
+  <div
+    class="MetaBar Appearance-meta"
+  >
+    <div
+      class="Meta Appearance-date"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align: middle;"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m31.6 33.4v-18.4h-23.2v18.4h23.2z m0-26.8c1.8 0 3.4 1.6 3.4 3.4v23.4c0 1.8-1.6 3.2-3.4 3.2h-23.2c-1.9 0-3.4-1.4-3.4-3.2v-23.4c0-1.8 1.5-3.4 3.4-3.4h1.6v-3.2h3.4v3.2h13.2v-3.2h3.4v3.2h1.6z m-3.2 11.8v3.2h-3.4v-3.2h3.4z m-6.8 0v3.2h-3.2v-3.2h3.2z m-6.6 0v3.2h-3.4v-3.2h3.4z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Date
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <time
+          class="DateTime"
+          datetime="2018-10-10T05:00:00.000Z"
+          title="Wednesday, October 10, 2018"
+        >
+          Wednesday, October 10, 2018
+        </time>
+      </span>
+    </div>
+    <div
+      class="Meta Appearance-time"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align: middle;"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20.9 11.6v8.8l7.5 4.4-1.3 2.2-8.7-5.4v-10h2.5z m-0.9 21.8q5.5 0 9.4-4t4-9.4-4-9.4-9.4-4-9.4 4-4 9.4 4 9.4 9.4 4z m0-30q6.9 0 11.8 4.8t4.8 11.8-4.8 11.8-11.8 4.8-11.8-4.8-4.8-11.8 4.8-11.8 11.8-4.8z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Time
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        <time
+          class="DateTime"
+          datetime="2018-10-10T05:00:00.000Z"
+          title="6:00 PM"
+        >
+          6:00 PM
+        </time>
+        –
+        <time
+          class="DateTime"
+          datetime="2018-10-10T07:00:00.000Z"
+          title="8:00 PM"
+        >
+          8:00 PM
+        </time>
+      </span>
+    </div>
+    <div
+      class="Meta Appearance-location"
+      title="location name - undefined"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align: middle;"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m20 19.1q1.7 0 2.9-1.2t1.2-2.9-1.2-2.9-2.9-1.2-2.9 1.2-1.2 2.9 1.2 2.9 2.9 1.2z m0-15.7q4.8 0 8.2 3.4t3.4 8.2q0 2.4-1.2 5.5t-2.9 5.9-3.4 5.1-2.8 3.8l-1.3 1.3q-0.5-0.5-1.2-1.4t-2.9-3.6-3.5-5.2-2.8-5.8-1.2-5.6q0-4.8 3.4-8.2t8.2-3.4z"
+          />
+        </g>
+      </svg>
+       
+      <span
+        class="Meta-label"
+      >
+        <span>
+          Location
+        </span>
+        :
+      </span>
+       
+      <span
+        class="Meta-value"
+      >
+        location name
+      </span>
+    </div>
+  </div>
+  <div
+    class="Appearance-body"
+  >
+    <figure
+      class="Appearance-image"
+    >
+      <img
+        src="imageUrl"
+      />
+    </figure>
+    <div
+      class="Appearance-details"
+    >
+      <section
+        class="Appearance-description"
+      >
+        <p>
+          description
+        </p>
+      </section>
+      <section
+        class="Appearance-acts"
+      >
+        <h2>
+          <span>
+            Featured acts
+          </span>
+        </h2>
+        <div
+          class="Appearance-acts-items"
+        >
+          <article
+            class="ActListing"
+          >
+            <span
+              class="ActListing-link"
+            >
+              <div
+                class="ActListing-details"
+              >
+                <h3>
+                  act name
+                </h3>
+                <section
+                  class="ActListing-meta"
+                >
+                  <div
+                    class="Meta ActListing-genre"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      preserveAspectRatio="xMidYMid meet"
+                      style="vertical-align: middle;"
+                      viewBox="0 0 40 40"
+                      width="1em"
+                    >
+                      <g>
+                        <path
+                          d="m20 5h10v6.6h-6.6v16.8c0 3.6-3.1 6.6-6.8 6.6s-6.6-3-6.6-6.6 3-6.8 6.6-6.8c1.3 0 2.4 0.4 3.4 1v-17.6z"
+                        />
+                      </g>
+                    </svg>
+                     
+                    <span
+                      class="Meta-label"
+                    >
+                      <span>
+                        Genre
+                      </span>
+                      :
+                    </span>
+                     
+                    <span
+                      class="Meta-value"
+                    >
+                      act genre
+                    </span>
+                  </div>
+                  <div
+                    class="Meta ActListing-location"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      preserveAspectRatio="xMidYMid meet"
+                      style="vertical-align: middle;"
+                      viewBox="0 0 40 40"
+                      width="1em"
+                    >
+                      <g>
+                        <path
+                          d="m20 19.1q1.7 0 2.9-1.2t1.2-2.9-1.2-2.9-2.9-1.2-2.9 1.2-1.2 2.9 1.2 2.9 2.9 1.2z m0-15.7q4.8 0 8.2 3.4t3.4 8.2q0 2.4-1.2 5.5t-2.9 5.9-3.4 5.1-2.8 3.8l-1.3 1.3q-0.5-0.5-1.2-1.4t-2.9-3.6-3.5-5.2-2.8-5.8-1.2-5.6q0-4.8 3.4-8.2t8.2-3.4z"
+                        />
+                      </g>
+                    </svg>
+                     
+                    <span
+                      class="Meta-label"
+                    >
+                      <span>
+                        Location
+                      </span>
+                      :
+                    </span>
+                     
+                    <span
+                      class="Meta-value"
+                    />
+                  </div>
+                </section>
+              </div>
+              <figure
+                class="ActListing-image"
+              >
+                <img
+                  alt="act name"
+                  src="act imageUrl"
+                />
+              </figure>
+            </span>
+          </article>
+        </div>
+      </section>
+    </div>
+  </div>
+</article>
+`;

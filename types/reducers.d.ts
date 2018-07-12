@@ -6,6 +6,7 @@ interface IRootReducers {
 }
 
 interface IAppearancesReducers {
+  currentLocation?: ILatLng;
   currentSlug?: string;
   hasAllItems: boolean;
   isLoading: boolean;

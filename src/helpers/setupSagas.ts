@@ -4,13 +4,15 @@ import SagaTester from "redux-saga-tester";
 import rootReducer from "../reducers/root.reducers";
 import rootSaga from "../sagas/root.sagas";
 
+const g: any = global;
+
 export default (fromTestStore: {}, fromTestPorts: {}) => {
   const initialState = merge({}, fromTestStore);
   const ports = merge(
     {
       api: {},
       dataLayer: [],
-      maps: {}
+      maps: g.google.maps || {}
     },
     fromTestPorts
   );

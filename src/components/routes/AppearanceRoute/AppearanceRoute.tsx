@@ -15,10 +15,12 @@ import * as selectors from "../../../selectors/root.selectors";
 
 interface IStoreProps {
   appearance?: IAppearance;
+  currentLocation?: ILatLng;
 }
 
 interface IDispatchProps {
   fetchAppearanceBySlug: ActionCreator<PLFetchAppearanceBySlugStarted>;
+  geocodeCurrentAppearanceAddress: ActionCreator<{}>;
   trackEvent: ActionCreator<PLTrackEvent>;
 }
 
@@ -37,8 +39,14 @@ class AppearanceRoute extends React.Component<IProps> {
     }
   }
 
+  public componentWillMount() {
+    if (!this.props.currentLocation) {
+      this.props.geocodeCurrentAppearanceAddress({});
+    }
+  }
+
   public render() {
-    const { appearance } = this.props;
+    const { appearance, currentLocation } = this.props;
     const { formatMessage } = this.props.intl;
 
     if (!appearance) {
@@ -70,6 +78,7 @@ class AppearanceRoute extends React.Component<IProps> {
 
         <Appearance
           {...appearance}
+          locationLatLng={currentLocation}
           onGalleryInteraction={this.onGalleryInteraction}
         />
       </React.Fragment>
@@ -85,13 +94,16 @@ class AppearanceRoute extends React.Component<IProps> {
 }
 
 const mapStateToProps = (state: any) => ({
-  appearance: selectors.getCurrentAppearance(state)
+  appearance: selectors.getCurrentAppearance(state),
+  currentLocation: selectors.getCurrentAppearanceLocation(state)
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) =>
   bindActionCreators(
     {
       fetchAppearanceBySlug: actions.fetchAppearanceBySlug.started,
+      geocodeCurrentAppearanceAddress:
+        actions.geocodeCurrentAppearanceAddress.started,
       trackEvent: actions.trackEvent
     },
     dispatch

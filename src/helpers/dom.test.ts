@@ -13,6 +13,8 @@ const mockElement = (width: number, height: number, top = 0, left = 0) => ({
 
 const screenWidth = 1920;
 const screenHeight = 1080;
+const html = document.documentElement;
+const { body } = document;
 
 describe("[helpers] DOM", () => {
   describe("isInViewport()", () => {
@@ -22,7 +24,6 @@ describe("[helpers] DOM", () => {
       topLeft: mockElement(200, 200),
       topRight: mockElement(200, 200, 0, screenWidth - 200)
     };
-
     const outside: any = {
       bottomLeft: mockElement(200, 200, screenHeight - 199),
       bottomRight: mockElement(200, 200, screenHeight - 199, screenWidth - 199),
@@ -60,11 +61,11 @@ describe("[helpers] DOM", () => {
         g.innerWidth = undefined;
         g.innerHeight = undefined;
 
-        Object.defineProperty(g.document.documentElement, "clientWidth", {
+        Object.defineProperty(html, "clientWidth", {
           value: screenWidth,
           writable: false
         });
-        Object.defineProperty(g.document.documentElement, "clientHeight", {
+        Object.defineProperty(html, "clientHeight", {
           value: screenHeight,
           writable: false
         });
@@ -93,7 +94,6 @@ describe("[helpers] DOM", () => {
       topLeft: mockElement(200, 200, -399, -399),
       topRight: mockElement(200, 200, -399, screenWidth + 199)
     };
-
     const outside: any = {
       bottomLeft: mockElement(200, 200, screenHeight + 200, -400),
       bottomRight: mockElement(200, 200, screenHeight + 200, screenWidth + 200),
@@ -131,11 +131,11 @@ describe("[helpers] DOM", () => {
         g.innerWidth = undefined;
         g.innerHeight = undefined;
 
-        Object.defineProperty(g.document.documentElement, "clientWidth", {
+        Object.defineProperty(html, "clientWidth", {
           value: screenWidth,
           writable: false
         });
-        Object.defineProperty(g.document.documentElement, "clientHeight", {
+        Object.defineProperty(html, "clientHeight", {
           value: screenHeight,
           writable: false
         });
@@ -154,6 +154,90 @@ describe("[helpers] DOM", () => {
         expect(dom.isAlmostInViewport(outside.bottomRight, 200)).toBe(false);
         expect(dom.isAlmostInViewport(outside.bottomLeft, 200)).toBe(false);
       });
+    });
+  });
+
+  describe("lockScroll()", () => {
+    beforeEach(() => {
+      window.scrollState.count = 0;
+      body.scrollTop = 200;
+      body.style.paddingRight = "";
+      html.className = "";
+    });
+
+    it("adds `isLocked` class to html node and sets body padding to compensate for scrollbar", () => {
+      dom.lockScroll();
+
+      expect(html.classList.contains("isLocked")).toBe(true);
+      expect(body.style.paddingRight).not.toBe("");
+      expect(window.scrollState.count).toBe(1);
+      expect(window.scrollState.top).toBe(200);
+    });
+
+    it("does nothing when scrolling is already locked", () => {
+      dom.lockScroll();
+      dom.lockScroll();
+
+      expect(html.classList.contains("isLocked")).toBe(true);
+      expect(body.style.paddingRight).toBe("0px");
+      expect(window.scrollState.count).toBe(2);
+      expect(window.scrollState.top).toBe(200);
+    });
+
+    it("takes existing body padding into consideration when compensating for scrollbar", () => {
+      body.style.paddingRight = "50px";
+
+      dom.lockScroll();
+
+      expect(body.style.paddingRight).toBe("50px");
+    });
+
+    it("refers to html node instead of body node when body isn't what's scrolling", () => {
+      body.scrollTop = 0;
+      html.scrollTop = 300;
+
+      dom.lockScroll();
+
+      expect(body.style.paddingRight).toBe("50px");
+      expect(window.scrollState.top).toBe(300);
+    });
+  });
+
+  describe("unlockScroll()", () => {
+    beforeEach(() => {
+      window.scrollState.count = 0;
+      body.scrollTop = 200;
+      body.style.paddingRight = "";
+      html.className = "";
+    });
+
+    it("removes `isLocked` class from html node and resets body padding to initial value", () => {
+      body.style.paddingRight = "50px";
+
+      dom.lockScroll();
+      expect(html.classList.contains("isLocked")).toBe(true);
+
+      dom.unlockScroll();
+      expect(html.classList.contains("isLocked")).toBe(false);
+      expect(body.style.paddingRight).toBe("50px");
+    });
+
+    it("doesn't unlock scroll until it has been called the same number of times as lockScroll() has been called", () => {
+      dom.lockScroll();
+      dom.lockScroll();
+      dom.lockScroll();
+
+      dom.unlockScroll();
+      expect(html.classList.contains("isLocked")).toBe(true);
+
+      dom.unlockScroll();
+      expect(html.classList.contains("isLocked")).toBe(true);
+
+      dom.unlockScroll();
+      expect(html.classList.contains("isLocked")).toBe(false);
+
+      dom.unlockScroll();
+      expect(html.classList.contains("isLocked")).toBe(false);
     });
   });
 });

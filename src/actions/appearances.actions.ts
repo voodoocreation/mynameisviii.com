@@ -20,6 +20,12 @@ export const fetchAppearanceBySlug = actionCreator.async<
   PLFetchAppearanceBySlugFailed
 >("FETCH_BY_SLUG");
 
+export const geocodeCurrentAppearanceAddress = actionCreator.async<
+  {},
+  PLGeocodeCurrentAppearanceAddressDone,
+  PLGeocodeCurrentAppearanceAddressFailed
+>("GEOCODE_CURRENT_ADDRESS");
+
 export const setCurrentAppearanceSlug = actionCreator<
   PLSetCurrentAppearanceSlug
 >("SET_CURRENT_SLUG");

@@ -3,6 +3,7 @@ import { reducerWithInitialState } from "typescript-fsa-reducers";
 import * as actions from "../actions/root.actions";
 
 export const initialState: IAppearancesReducers = {
+  currentLocation: undefined,
   currentSlug: undefined,
   hasAllItems: false,
   isLoading: false,
@@ -69,4 +70,20 @@ export default reducerWithInitialState(initialState)
       ...state.items,
       [result.slug]: result
     }
+  }))
+
+  .cases(
+    [
+      actions.setCurrentAppearanceSlug,
+      actions.geocodeCurrentAppearanceAddress.started
+    ],
+    state => ({
+      ...state,
+      currentLocation: undefined
+    })
+  )
+
+  .case(actions.geocodeCurrentAppearanceAddress.done, (state, { result }) => ({
+    ...state,
+    currentLocation: result
   }));

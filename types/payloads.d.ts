@@ -18,6 +18,8 @@ type PLFetchAppearancesFailed = IError;
 type PLFetchAppearanceBySlugStarted = string;
 type PLFetchAppearanceBySlugDone = IAppearance;
 type PLFetchAppearanceBySlugFailed = IError;
+type PLGeocodeCurrentAppearanceAddressDone = ILatLng;
+type PLGeocodeCurrentAppearanceAddressFailed = IError;
 type PLSetCurrentAppearanceSlug = string;
 
 type PLFetchLatestNewsDone = {

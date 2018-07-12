@@ -3,6 +3,8 @@ import { arrayToAssoc, assocToArray } from "../transformers/transformData";
 
 import * as actions from "../actions/root.actions";
 
+const g: any = global;
+
 describe("[sagas] Appearances", () => {
   const existingItems = [{ slug: "existing-test" }];
   const items = [{ slug: "test" }];
@@ -147,6 +149,140 @@ describe("[sagas] Appearances", () => {
 
       expect(failedAction).toBeDefined();
       expect(failedAction.payload.error).toBe("Bad request");
+    });
+  });
+
+  describe("takeLatest(actions.geocodeCurrentAppearanceAddress.started", () => {
+    it("put(actions.geocodeCurrentAppearanceAddress.done) with stored `latLng`", async () => {
+      const { dispatch, findAction, store } = setupSagas(
+        {
+          appearances: {
+            currentSlug: "test-1",
+            items: {
+              "test-1": {
+                location: {
+                  address: "address",
+                  latLng: { lat: 0, lng: 0 },
+                  name: "name"
+                },
+                slug: "test-1"
+              }
+            }
+          }
+        },
+        {}
+      );
+
+      dispatch(actions.geocodeCurrentAppearanceAddress.started({}));
+      const doneAction = findAction(
+        actions.geocodeCurrentAppearanceAddress.done
+      );
+
+      expect(g.google.maps.Geocoder).not.toHaveBeenCalled();
+      expect(doneAction).toBeDefined();
+      expect(store().appearances.currentLocation).toEqual({ lat: 0, lng: 0 });
+    });
+
+    it("put(actions.geocodeCurrentAppearanceAddress.done) with geocoded address", async () => {
+      const { dispatch, findAction, store } = setupSagas(
+        {
+          appearances: {
+            currentSlug: "test-1",
+            items: {
+              "test-1": {
+                location: {
+                  address: "address",
+                  name: "name"
+                },
+                slug: "test-1"
+              }
+            }
+          }
+        },
+        {}
+      );
+
+      await dispatch(actions.geocodeCurrentAppearanceAddress.started({}));
+      const doneAction = findAction(
+        actions.geocodeCurrentAppearanceAddress.done
+      );
+
+      expect(g.google.maps.Geocoder).toHaveBeenCalled();
+      expect(doneAction).toBeDefined();
+      expect(store().appearances.currentLocation).toEqual({
+        lat: 51.54057,
+        lng: -0.14334
+      });
+    });
+
+    it("put(actions.geocodeCurrentAppearanceAddress.failed) with geocoder error", async () => {
+      g.google.maps.Geocoder = jest.fn(() => ({
+        geocode: jest.fn((_, callback) => callback([], "REQUEST_DENIED"))
+      }));
+
+      const { dispatch, findAction } = setupSagas(
+        {
+          appearances: {
+            currentSlug: "test-1",
+            items: {
+              "test-1": {
+                location: {
+                  address: "address",
+                  name: "name"
+                },
+                slug: "test-1"
+              }
+            }
+          }
+        },
+        {}
+      );
+
+      await dispatch(actions.geocodeCurrentAppearanceAddress.started({}));
+      const failedAction = findAction(
+        actions.geocodeCurrentAppearanceAddress.failed
+      );
+
+      expect(g.google.maps.Geocoder).toHaveBeenCalled();
+      expect(failedAction).toBeDefined();
+      expect(failedAction.payload.error.message).toBe(
+        "Geocoder error: REQUEST_DENIED"
+      );
+    });
+
+    it("put(actions.geocodeCurrentAppearanceAddress.failed) with rejected geocoder promise", async () => {
+      g.google.maps.Geocoder = jest.fn(() => ({
+        geocode: jest.fn(() => {
+          throw new Error("Failed promise");
+        })
+      }));
+
+      const { dispatch, findAction } = setupSagas(
+        {
+          appearances: {
+            currentSlug: "test-1",
+            items: {
+              "test-1": {
+                location: {
+                  address: "address",
+                  name: "name"
+                },
+                slug: "test-1"
+              }
+            }
+          }
+        },
+        {}
+      );
+
+      await dispatch(actions.geocodeCurrentAppearanceAddress.started({}));
+      const failedAction = findAction(
+        actions.geocodeCurrentAppearanceAddress.failed
+      );
+
+      expect(g.google.maps.Geocoder).toHaveBeenCalled();
+      expect(failedAction).toBeDefined();
+      expect(failedAction.payload.error.message).toBe("Failed promise");
     });
   });
 });

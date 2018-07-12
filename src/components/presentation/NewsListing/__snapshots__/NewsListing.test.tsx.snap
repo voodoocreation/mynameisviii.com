@@ -1,0 +1,193 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[components] <NewsListing /> renders correctly 1`] = `
+<article
+  class="NewsListing"
+>
+  <a
+    href="/news/slug"
+  >
+    <header
+      class="NewsListing-header"
+    >
+      <h2>
+        <div
+          class="Type Type-undefined"
+          title="News"
+        >
+          <svg
+            fill="currentColor"
+            height="1em"
+            preserveAspectRatio="xMidYMid meet"
+            style="vertical-align:middle"
+            viewBox="0 0 40 40"
+            width="1em"
+          >
+            <g>
+              <path
+                d="m21.6 21.6v-10h-3.2v10h3.2z m0 6.8v-3.4h-3.2v3.4h3.2z m16.8-8.4l-4.1 4.6 0.5 6.2-6 1.3-3.1 5.3-5.7-2.4-5.7 2.4-3.1-5.2-6-1.4 0.5-6.2-4.1-4.6 4.1-4.7-0.5-6.1 6-1.3 3.1-5.3 5.7 2.4 5.7-2.4 3.1 5.3 6 1.3-0.5 6.2z"
+              />
+            </g>
+          </svg>
+        </div>
+        <span>
+          title
+        </span>
+      </h2>
+    </header>
+    <img
+      alt="title"
+      src="imageUrl"
+    />
+    <p>
+      <span>
+        excerpt
+      </span>
+    </p>
+  </a>
+</article>
+`;
+
+exports[`[components] <NewsListing /> renders correctly when \`isCondensed\` prop is true 1`] = `
+<article
+  class="NewsListing isCondensed"
+>
+  <a
+    href="/news/slug"
+  >
+    <header
+      class="NewsListing-header"
+    >
+      <h3>
+        <div
+          class="Type Type-undefined"
+          title="News"
+        >
+          <svg
+            fill="currentColor"
+            height="1em"
+            preserveAspectRatio="xMidYMid meet"
+            style="vertical-align:middle"
+            viewBox="0 0 40 40"
+            width="1em"
+          >
+            <g>
+              <path
+                d="m21.6 21.6v-10h-3.2v10h3.2z m0 6.8v-3.4h-3.2v3.4h3.2z m16.8-8.4l-4.1 4.6 0.5 6.2-6 1.3-3.1 5.3-5.7-2.4-5.7 2.4-3.1-5.2-6-1.4 0.5-6.2-4.1-4.6 4.1-4.7-0.5-6.1 6-1.3 3.1-5.3 5.7 2.4 5.7-2.4 3.1 5.3 6 1.3-0.5 6.2z"
+              />
+            </g>
+          </svg>
+        </div>
+        <span>
+          title
+        </span>
+      </h3>
+    </header>
+    <img
+      alt="title"
+      src="imageUrl"
+    />
+    <p>
+      <span>
+        excerpt
+      </span>
+    </p>
+  </a>
+</article>
+`;
+
+exports[`[components] <NewsListing /> updates \`isImageLoaded\` state when image has previously been loaded 1`] = `
+<article
+  class="NewsListing isRendered"
+>
+  <a
+    href="/news/slug"
+  >
+    <header
+      class="NewsListing-header"
+    >
+      <h2>
+        <div
+          class="Type Type-undefined"
+          title="News"
+        >
+          <svg
+            fill="currentColor"
+            height="1em"
+            preserveAspectRatio="xMidYMid meet"
+            style="vertical-align: middle;"
+            viewBox="0 0 40 40"
+            width="1em"
+          >
+            <g>
+              <path
+                d="m21.6 21.6v-10h-3.2v10h3.2z m0 6.8v-3.4h-3.2v3.4h3.2z m16.8-8.4l-4.1 4.6 0.5 6.2-6 1.3-3.1 5.3-5.7-2.4-5.7 2.4-3.1-5.2-6-1.4 0.5-6.2-4.1-4.6 4.1-4.7-0.5-6.1 6-1.3 3.1-5.3 5.7 2.4 5.7-2.4 3.1 5.3 6 1.3-0.5 6.2z"
+              />
+            </g>
+          </svg>
+        </div>
+        <span>
+          title
+        </span>
+      </h2>
+    </header>
+    <img
+      alt="title"
+      src="imageUrl"
+    />
+    <p>
+      <span>
+        excerpt
+      </span>
+    </p>
+  </a>
+</article>
+`;
+
+exports[`[components] <NewsListing /> updates \`isRendered\` state after image has loaded 1`] = `
+<article
+  class="NewsListing isRendered"
+>
+  <a
+    href="/news/slug"
+  >
+    <header
+      class="NewsListing-header"
+    >
+      <h2>
+        <div
+          class="Type Type-undefined"
+          title="News"
+        >
+          <svg
+            fill="currentColor"
+            height="1em"
+            preserveAspectRatio="xMidYMid meet"
+            style="vertical-align: middle;"
+            viewBox="0 0 40 40"
+            width="1em"
+          >
+            <g>
+              <path
+                d="m21.6 21.6v-10h-3.2v10h3.2z m0 6.8v-3.4h-3.2v3.4h3.2z m16.8-8.4l-4.1 4.6 0.5 6.2-6 1.3-3.1 5.3-5.7-2.4-5.7 2.4-3.1-5.2-6-1.4 0.5-6.2-4.1-4.6 4.1-4.7-0.5-6.1 6-1.3 3.1-5.3 5.7 2.4 5.7-2.4 3.1 5.3 6 1.3-0.5 6.2z"
+              />
+            </g>
+          </svg>
+        </div>
+        <span>
+          title
+        </span>
+      </h2>
+    </header>
+    <img
+      alt="title"
+      src="imageUrl"
+    />
+    <p>
+      <span>
+        excerpt
+      </span>
+    </p>
+  </a>
+</article>
+`;

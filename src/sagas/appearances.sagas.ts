@@ -88,3 +88,73 @@ export const fetchAppearanceBySlugSaga = (ports: IStorePorts) =>
       }
     });
   };
+
+export const geocodeCurrentAppearanceAddressSaga = (ports: IStorePorts) =>
+  function*() {
+    yield takeLatest(
+      actions.geocodeCurrentAppearanceAddress.started,
+      function*() {
+        const currentAppearance = yield select(selectors.getCurrentAppearance);
+        const { address, latLng, name } = currentAppearance.location;
+
+        if (latLng) {
+          yield put(
+            actions.geocodeCurrentAppearanceAddress.done({
+              params: {},
+              result: latLng
+            })
+          );
+        } else {
+          const geocoder = new ports.maps.Geocoder();
+
+          const geocode = (params: any) =>
+            new Promise((resolve, reject) => {
+              try {
+                geocoder.geocode(
+                  params,
+                  (res: IGeocoderResult[], stat: string) => {
+                    resolve({ results: res, status: stat });
+                  }
+                );
+              } catch (error) {
+                reject(error);
+              }
+            });
+
+          try {
+            const { results, status } = yield call(geocode, {
+              address: `${name}, ${address}`
+            });
+
+            if (status === ports.maps.GeocoderStatus.OK && results.length > 0) {
+              const { location } = results[0].geometry;
+
+              yield put(
+                actions.geocodeCurrentAppearanceAddress.done({
+                  params: {},
+                  result: {
+                    lat: location.lat(),
+                    lng: location.lng()
+                  }
+                })
+              );
+            } else {
+              yield put(
+                actions.geocodeCurrentAppearanceAddress.failed({
+                  error: { status: 500, message: `Geocoder error: ${status}` },
+                  params: {}
+                })
+              );
+            }
+          } catch (error) {
+            yield put(
+              actions.geocodeCurrentAppearanceAddress.failed({
+                error,
+                params: {}
+              })
+            );
+          }
+        }
+      }
+    );
+  };
