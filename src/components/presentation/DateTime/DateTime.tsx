@@ -1,4 +1,5 @@
 import cn from "classnames";
+import moment from "moment";
 import * as React from "react";
 import { FormattedRelative, InjectedIntl, injectIntl } from "react-intl";
 
@@ -24,23 +25,23 @@ const DateTime: React.SFC<IProps> = ({
 }) => (
   <time
     className={cn("DateTime", className)}
-    dateTime={value}
+    dateTime={moment(value).toISOString()}
     title={
       isDateOnly
-        ? intl.formatDate(value, options)
-        : intl.formatTime(value, options)
+        ? intl.formatDate(moment(value).toDate(), options)
+        : intl.formatTime(moment(value).toDate(), options)
     }
   >
     {isRelative ? (
       <FormattedRelative
         updateInterval={updateInterval}
-        value={value}
+        value={moment(value).toDate()}
         {...props}
       />
     ) : isDateOnly ? (
-      intl.formatDate(value, options)
+      intl.formatDate(moment(value).toDate(), options)
     ) : (
-      intl.formatTime(value, options)
+      intl.formatTime(moment(value).toDate(), options)
     )}
   </time>
 );

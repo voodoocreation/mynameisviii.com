@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[presentation] <DateTime /> only renders the time when isRelative=false and options are set 1`] = `
+<time
+  class="DateTime TestDateTime"
+  datetime="2018-10-20T07:00:00.000Z"
+  title="8:00 PM"
+>
+  8:00 PM
+</time>
+`;
+
+exports[`[presentation] <DateTime /> renders correctly when isDateOnly=true 1`] = `
+<time
+  class="DateTime TestDateTime"
+  datetime="2018-10-20T07:00:00.000Z"
+  title="Saturday, October 20, 2018"
+>
+  <span>
+    in 10 months
+  </span>
+</time>
+`;
+
+exports[`[presentation] <DateTime /> renders correctly when isRelative=false 1`] = `
+<time
+  class="DateTime TestDateTime"
+  datetime="2018-10-20T07:00:00.000Z"
+  title="Saturday, October 20, 2018, 8:00 PM"
+>
+  Saturday, October 20, 2018, 8:00 PM
+</time>
+`;
+
+exports[`[presentation] <DateTime /> renders correctly when isRelative=false 2`] = `
+<time
+  class="DateTime TestDateTime"
+  datetime="2018-10-20T07:00:00.000Z"
+  title="Saturday, October 20, 2018"
+>
+  Saturday, October 20, 2018
+</time>
+`;
+
+exports[`[presentation] <DateTime /> renders correctly when value doesn't include the time  1`] = `
+<time
+  class="DateTime TestDateTime"
+  datetime="2018-10-19T11:00:00.000Z"
+  title="Saturday, October 20, 2018"
+>
+  <span>
+    in 10 months
+  </span>
+</time>
+`;
+
+exports[`[presentation] <DateTime /> renders correctly with minimum props 1`] = `
+<time
+  class="DateTime TestDateTime"
+  datetime="2018-10-20T07:00:00.000Z"
+  title="Saturday, October 20, 2018, 8:00 PM"
+>
+  <span>
+    in 10 months
+  </span>
+</time>
+`;

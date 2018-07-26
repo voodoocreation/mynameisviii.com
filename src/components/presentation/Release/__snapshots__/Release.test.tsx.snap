@@ -81,7 +81,7 @@ exports[`[presentation] <Release /> renders correctly when productionType=compil
       >
         <time
           class="DateTime"
-          datetime="2017-01-01T00:00:00"
+          datetime="2016-12-31T12:00:00.000Z"
           title="January 1, 2017"
         >
           January 1, 2017
@@ -351,7 +351,7 @@ exports[`[presentation] <Release /> renders correctly when productionType=demo 1
       >
         <time
           class="DateTime"
-          datetime="2017-01-01T00:00:00"
+          datetime="2016-12-31T12:00:00.000Z"
           title="January 1, 2017"
         >
           January 1, 2017
@@ -621,7 +621,7 @@ exports[`[presentation] <Release /> renders correctly when productionType=live 1
       >
         <time
           class="DateTime"
-          datetime="2017-01-01T00:00:00"
+          datetime="2016-12-31T12:00:00.000Z"
           title="January 1, 2017"
         >
           January 1, 2017
@@ -891,7 +891,7 @@ exports[`[presentation] <Release /> renders correctly when productionType=remix 
       >
         <time
           class="DateTime"
-          datetime="2017-01-01T00:00:00"
+          datetime="2016-12-31T12:00:00.000Z"
           title="January 1, 2017"
         >
           January 1, 2017
@@ -1161,7 +1161,7 @@ exports[`[presentation] <Release /> renders correctly when productionType=soundt
       >
         <time
           class="DateTime"
-          datetime="2017-01-01T00:00:00"
+          datetime="2016-12-31T12:00:00.000Z"
           title="January 1, 2017"
         >
           January 1, 2017
@@ -1431,7 +1431,7 @@ exports[`[presentation] <Release /> renders correctly when type=ep 1`] = `
       >
         <time
           class="DateTime"
-          datetime="2017-01-01T00:00:00"
+          datetime="2016-12-31T12:00:00.000Z"
           title="January 1, 2017"
         >
           January 1, 2017
@@ -1701,7 +1701,7 @@ exports[`[presentation] <Release /> renders correctly when type=single 1`] = `
       >
         <time
           class="DateTime"
-          datetime="2017-01-01T00:00:00"
+          datetime="2016-12-31T12:00:00.000Z"
           title="January 1, 2017"
         >
           January 1, 2017
@@ -1971,7 +1971,7 @@ exports[`[presentation] <Release /> renders correctly with all props 1`] = `
       >
         <time
           class="DateTime"
-          datetime="2017-01-01T00:00:00"
+          datetime="2016-12-31T12:00:00.000Z"
           title="January 1, 2017"
         >
           January 1, 2017
@@ -2430,7 +2430,7 @@ exports[`[presentation] <Release /> renders correctly with minimum props 1`] = `
       >
         <time
           class="DateTime"
-          datetime="2017-01-01T00:00:00"
+          datetime="2016-12-31T12:00:00.000Z"
           title="January 1, 2017"
         >
           January 1, 2017
@@ -2700,7 +2700,7 @@ exports[`[presentation] <Release /> updates \`isImageLoaded\` state when image h
       >
         <time
           class="DateTime"
-          datetime="2017-01-01T00:00:00"
+          datetime="2016-12-31T12:00:00.000Z"
           title="January 1, 2017"
         >
           January 1, 2017
@@ -2958,7 +2958,7 @@ exports[`[presentation] <Release /> updates \`isImageLoaded\` state when image h
       >
         <time
           class="DateTime"
-          datetime="2017-01-01T00:00:00"
+          datetime="2016-12-31T12:00:00.000Z"
           title="January 1, 2017"
         >
           January 1, 2017
