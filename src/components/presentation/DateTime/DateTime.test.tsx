@@ -22,7 +22,7 @@ describe("[presentation] <DateTime />", () => {
     const { actual, props } = setup(render);
 
     expect(actual.attr("datetime")).toBe(
-      moment(new Date(props.value)).toISOString()
+      moment(props.value).toISOString()
     );
     expect(actual.attr("title")).toBe("Saturday, October 20, 2018, 8:00 PM");
     expect(actual.text()).toBe("in 10 months");
@@ -33,7 +33,7 @@ describe("[presentation] <DateTime />", () => {
     const { actual, props } = setup(render, { isDateOnly: true });
 
     expect(actual.attr("datetime")).toBe(
-      moment(new Date(props.value)).toISOString()
+      moment(props.value).toISOString()
     );
     expect(actual.attr("title")).toBe("Saturday, October 20, 2018");
     expect(actual.text()).toBe("in 10 months");
@@ -46,7 +46,7 @@ describe("[presentation] <DateTime />", () => {
     });
 
     expect(actual.attr("datetime")).toBe(
-      moment(new Date(props.value)).toISOString()
+      moment(props.value).toISOString()
     );
     expect(actual.attr("title")).toBe("Saturday, October 20, 2018, 8:00 PM");
     expect(actual.text()).toBe("Saturday, October 20, 2018, 8:00 PM");
@@ -60,7 +60,7 @@ describe("[presentation] <DateTime />", () => {
     });
 
     expect(actual.attr("datetime")).toBe(
-      moment(new Date(props.value)).toISOString()
+      moment(props.value).toISOString()
     );
     expect(actual.attr("title")).toBe("Saturday, October 20, 2018");
     expect(actual.text()).toBe("Saturday, October 20, 2018");
@@ -78,7 +78,7 @@ describe("[presentation] <DateTime />", () => {
     });
 
     expect(actual.attr("datetime")).toBe(
-      moment(new Date(props.value)).toISOString()
+      moment(props.value).toISOString()
     );
     expect(actual.attr("title")).toBe("8:00 PM");
     expect(actual.text()).toBe("8:00 PM");
@@ -92,7 +92,7 @@ describe("[presentation] <DateTime />", () => {
     });
 
     expect(actual.attr("datetime")).toBe(
-      moment(new Date(props.value)).toISOString()
+      moment(props.value).toISOString()
     );
     expect(actual.attr("title")).toBe("Saturday, October 20, 2018");
     expect(actual.text()).toBe("in 10 months");

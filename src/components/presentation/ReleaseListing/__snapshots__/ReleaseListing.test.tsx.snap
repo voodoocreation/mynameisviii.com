@@ -54,7 +54,7 @@ exports[`[presentation] <ReleaseListing /> renders correctly with all props 1`] 
           >
             <time
               class="DateTime"
-              datetime="2016-12-31T12:00:00.000Z"
+              datetime="2016-12-31T11:00:00.000Z"
               title="January 1, 2017"
             >
               January 1, 2017
@@ -218,7 +218,7 @@ exports[`[presentation] <ReleaseListing /> renders correctly with minimum props 
           >
             <time
               class="DateTime"
-              datetime="2016-12-31T12:00:00.000Z"
+              datetime="2016-12-31T11:00:00.000Z"
               title="January 1, 2017"
             >
               January 1, 2017
@@ -382,7 +382,7 @@ exports[`[presentation] <ReleaseListing /> updates \`isImageLoaded\` state when 
           >
             <time
               class="DateTime"
-              datetime="2016-12-31T12:00:00.000Z"
+              datetime="2016-12-31T11:00:00.000Z"
               title="January 1, 2017"
             >
               January 1, 2017
@@ -546,7 +546,7 @@ exports[`[presentation] <ReleaseListing /> updates \`isRendered\` state after im
           >
             <time
               class="DateTime"
-              datetime="2016-12-31T12:00:00.000Z"
+              datetime="2016-12-31T11:00:00.000Z"
               title="January 1, 2017"
             >
               January 1, 2017

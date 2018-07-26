@@ -75,7 +75,7 @@ exports[`[routes] <AppearancesRoute /> renders correctly 1`] = `
                 >
                   <time
                     class="DateTime"
-                    datetime="2018-01-20T08:00:00.000Z"
+                    datetime="2018-01-20T07:00:00.000Z"
                     title="January 20, 2018"
                   >
                     January 20, 2018
@@ -114,10 +114,10 @@ exports[`[routes] <AppearancesRoute /> renders correctly 1`] = `
                 >
                   <time
                     class="DateTime"
-                    datetime="2018-01-20T08:00:00.000Z"
-                    title="9:00 PM"
+                    datetime="2018-01-20T07:00:00.000Z"
+                    title="8:00 PM"
                   >
-                    9:00 PM
+                    8:00 PM
                   </time>
                 </span>
               </div>

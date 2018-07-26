@@ -45,7 +45,7 @@ exports[`[presentation] <DateTime /> renders correctly when isRelative=false 2`]
 exports[`[presentation] <DateTime /> renders correctly when value doesn't include the time  1`] = `
 <time
   class="DateTime TestDateTime"
-  datetime="2018-10-20T00:00:00.000Z"
+  datetime="2018-10-19T11:00:00.000Z"
   title="Saturday, October 20, 2018"
 >
   <span>

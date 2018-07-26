@@ -238,10 +238,10 @@ exports[`[routes] <ReleasesRoute /> renders correctly 1`] = `
                 >
                   <time
                     class="DateTime"
-                    datetime="2017-05-15T11:00:00.000Z"
-                    title="May 15, 2017"
+                    datetime="2017-05-15T12:00:00.000Z"
+                    title="May 16, 2017"
                   >
-                    May 15, 2017
+                    May 16, 2017
                   </time>
                 </span>
               </div>
@@ -399,10 +399,10 @@ exports[`[routes] <ReleasesRoute /> renders correctly 1`] = `
                 >
                   <time
                     class="DateTime"
-                    datetime="2017-06-01T11:00:00.000Z"
-                    title="June 1, 2017"
+                    datetime="2017-06-01T12:00:00.000Z"
+                    title="June 2, 2017"
                   >
-                    June 1, 2017
+                    June 2, 2017
                   </time>
                 </span>
               </div>
