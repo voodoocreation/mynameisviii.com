@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[presentation] <Image /> renders correctly with minimum props 1`] = `
+<figure
+  class="Image TestImage"
+>
+  <div
+    class="Image-wrapper"
+  >
+    <img />
+  </div>
+</figure>
+`;
+
+exports[`[presentation] <Image /> updates \`isRendered\` state after image has loaded 1`] = `
+<figure
+  class="Image TestImage isRendered"
+>
+  <div
+    class="Image-wrapper"
+  >
+    <img />
+  </div>
+</figure>
+`;
+
+exports[`[presentation] <Image /> updates \`isRendered\` state when image has previously been loaded 1`] = `
+<figure
+  class="Image TestImage isRendered"
+>
+  <div
+    class="Image-wrapper"
+  >
+    <img />
+  </div>
+</figure>
+`;

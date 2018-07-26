@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[presentation] <Carousel /> renders correctly with minimum props 1`] = `
+<div
+  class="Carousel TestCarousel"
+>
+  <div
+    class="Carousel-slides"
+    style="transform:translate3d(-0%, 0, 0)"
+  >
+    <div
+      class="Slide-1"
+    />
+    <div
+      class="Slide-2"
+    />
+    <div
+      class="Slide-3"
+    />
+  </div>
+  <div
+    class="Carousel-pagination"
+  >
+    <button
+      class="Carousel-page isSelected"
+    >
+      <span>
+        1
+      </span>
+    </button>
+    <button
+      class="Carousel-page"
+    >
+      <span>
+        2
+      </span>
+    </button>
+    <button
+      class="Carousel-page"
+    >
+      <span>
+        3
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`[presentation] <Carousel /> selects correct initial slide when \`currentIndex\` prop is passed 1`] = `
+<div
+  class="Carousel TestCarousel"
+>
+  <div
+    class="Carousel-slides"
+    style="transform:translate3d(-100%, 0, 0)"
+  >
+    <div
+      class="Slide-1"
+    />
+    <div
+      class="Slide-2"
+    />
+    <div
+      class="Slide-3"
+    />
+  </div>
+  <div
+    class="Carousel-pagination"
+  >
+    <button
+      class="Carousel-page"
+    >
+      <span>
+        1
+      </span>
+    </button>
+    <button
+      class="Carousel-page isSelected"
+    >
+      <span>
+        2
+      </span>
+    </button>
+    <button
+      class="Carousel-page"
+    >
+      <span>
+        3
+      </span>
+    </button>
+  </div>
+</div>
+`;

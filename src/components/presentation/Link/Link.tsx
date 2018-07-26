@@ -5,7 +5,6 @@ import * as React from "react";
 import Routes from "../../../../next.routes";
 
 interface IProps extends WithRouterProps {
-  children: React.ReactNode | React.ReactNode[];
   href?: string;
   isExternal?: boolean;
   params?: {};
@@ -42,7 +41,11 @@ class Link extends React.Component<IProps> {
       return <span {...props}>{children}</span>;
     }
 
-    if (!router || Object.keys(router.components).length < 1) {
+    if (
+      !router ||
+      !router.components ||
+      Object.keys(router.components).length < 1
+    ) {
       return (
         <a href={route ? route : href} {...externalProps} {...props}>
           {children}

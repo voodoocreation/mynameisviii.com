@@ -1,63 +1,30 @@
 import cn from "classnames";
-import { withRouter, WithRouterProps } from "next/router";
 import * as React from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, InjectedIntl, injectIntl } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { ActionCreator } from "typescript-fsa";
 
-import NavItem from "./NavItem";
+import NavItem from "../../presentation/NavItem/NavItem";
 
 import * as actions from "../../../actions/root.actions";
 import * as selectors from "../../../selectors/root.selectors";
 
 interface IStoreProps {
   isOpen: boolean;
-}
-
-interface IDispatchProps {
-  toggleNavigation: ActionCreator<{}>;
-}
-
-interface IProps extends WithRouterProps, IStoreProps, IDispatchProps {}
-
-interface IState {
   currentRoute?: string;
 }
 
-class Navigation extends React.Component<IProps, IState> {
-  public readonly state = {
-    currentRoute: undefined
-  };
+interface IDispatchProps {
+  setCurrentRoute: ActionCreator<PLSetCurrentRoute>;
+  toggleNavigation: ActionCreator<{}>;
+}
 
-  private currentRouteTimeout: undefined | NodeJS.Timer = undefined;
+interface IProps extends IStoreProps, IDispatchProps {
+  intl: InjectedIntl;
+}
 
-  public componentDidMount() {
-    this.currentRouteTimeout = setTimeout(() => {
-      this.setState({
-        currentRoute: this.props.router.route
-      });
-    }, 1);
-  }
-
-  public componentWillUpdate(nextProps: IProps) {
-    if (this.currentRouteTimeout) {
-      clearTimeout(this.currentRouteTimeout);
-    }
-
-    this.currentRouteTimeout = setTimeout(() => {
-      this.setState({
-        currentRoute: nextProps.router.route
-      });
-    }, 1);
-  }
-
-  public componentWillUnmount() {
-    if (this.currentRouteTimeout) {
-      clearTimeout(this.currentRouteTimeout);
-    }
-  }
-
+class Navigation extends React.Component<IProps> {
   public render() {
     return (
       <nav
@@ -81,27 +48,29 @@ class Navigation extends React.Component<IProps, IState> {
   };
 
   private renderNavItem = (route: string, messageId: string) => (
-    <NavItem
-      route={route}
-      messageId={messageId}
-      isSelected={this.state.currentRoute === route}
-    />
+    <NavItem route={route} isSelected={this.props.currentRoute === route}>
+      <FormattedMessage id={messageId} />
+    </NavItem>
   );
 }
 
 const mapStateToProps = (state: any) => ({
+  currentRoute: selectors.getCurrentRoute(state),
   isOpen: selectors.isNavOpen(state)
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) =>
   bindActionCreators(
     {
+      setCurrentRoute: actions.setCurrentRoute,
       toggleNavigation: actions.toggleNavigation
     },
     dispatch
   );
 
-export default connect<IStoreProps, IDispatchProps>(
-  mapStateToProps,
-  mapDispatchToProps
-)(withRouter<any>(Navigation));
+export default injectIntl<any>(
+  connect<IStoreProps, IDispatchProps>(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Navigation)
+);

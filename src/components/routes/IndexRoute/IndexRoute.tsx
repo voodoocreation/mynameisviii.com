@@ -12,7 +12,7 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { ActionCreator } from "typescript-fsa";
 
-import injectIntl from "../../../helpers/injectIntl";
+import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { absUrl } from "../../../transformers/transformData";
 import IconGenius from "../../icons/IconGenius";
 import Link from "../../presentation/Link/Link";
@@ -104,31 +104,19 @@ class IndexRoute extends React.Component<IProps> {
               </h2>
 
               <p>
-                Viii is a New Zealand-born singer, songwriter,
-                multi-instramentalist and producer. Known for his ability to
-                take characteristics from his eclectic musical background to
-                create a broad palette to paint an interesting and unique
-                canvas.
+                <FormattedMessage id="BIO_CONTENT_1" />
               </p>
               <p>
-                Drawing from influences such as ✝✝✝ (Crosses), Nine Inch Nails,
-                Puscifer, Banks, Etta Bond, Massive Attack, Portishead and many
-                more, creating a colourful source of inspiration.
+                <FormattedMessage id="BIO_CONTENT_2" />
               </p>
               <p>
-                Lyrically, Viii has a distinct common ground of self-reflection
-                and understanding, often abstracting the subject in some form –
-                either writing symbolically or from an alternate perspective
-                about personal life experiences or abstract thoughts.
+                <FormattedMessage id="BIO_CONTENT_3" />
               </p>
               <p>
-                Outside of the music, Viii also handles his own artistic
-                direction and other aspects surrounding performances, such as
-                photography, graphic design, makeup artistry and fashion.
+                <FormattedMessage id="BIO_CONTENT_4" />
               </p>
               <p>
-                Viii currently releases music under his own independent label,
-                Voodoo Creation Records.
+                <FormattedMessage id="BIO_CONTENT_5" />
               </p>
             </div>
           </section>
@@ -186,7 +174,7 @@ class IndexRoute extends React.Component<IProps> {
 
               <div className="Home-connect-press">
                 <p>
-                  For booking and press enquiries, contact{" "}
+                  <FormattedMessage id="BOOKING_AND_PRESS_CONTACT" />{" "}
                   <Link href="mailto:mgmt@mynameisviii.com">
                     mgmt@mynameisviii.com
                   </Link>.
@@ -212,7 +200,7 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
     dispatch
   );
 
-export default injectIntl(
+export default injectIntlIntoPage(
   connect<IStoreProps, IDispatchProps>(
     mapStateToProps,
     mapDispatchToProps

@@ -27,7 +27,13 @@ const setup = (fn: any, fromTestProps?: any) => {
   };
 };
 
-describe("[components] <ActListing />", () => {
+describe("[presentation] <ActListing />", () => {
+  beforeEach(() => {
+    Object.defineProperty(g.Image.prototype, "complete", {
+      value: false
+    });
+  });
+
   it("renders correctly", () => {
     const { actual } = setup(render);
     expect(actual).toMatchSnapshot();
@@ -41,7 +47,7 @@ describe("[components] <ActListing />", () => {
     expect(actual.render()).toMatchSnapshot();
   });
 
-  it("triggers onLoad prop after image has loaded", () => {
+  it("triggers `onLoad` prop after image has loaded", () => {
     const { actual, props } = setup(shallow, {
       onLoad: jest.fn()
     });

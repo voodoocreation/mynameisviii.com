@@ -195,7 +195,7 @@ class Release extends React.Component<IProps, IState> {
 
   private renderImage = (image: IImage, index: number) => (
     <figure
-      key={image.imageUrl}
+      key={`image-${index}`}
       className={cn({ isLoading: !this.state.loadedImages[index] })}
     >
       <img

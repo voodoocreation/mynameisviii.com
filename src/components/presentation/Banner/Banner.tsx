@@ -1,7 +1,7 @@
 import * as React from "react";
 
+import Navigation from "../../containers/Navigation/Navigation";
 import Brand from "../Brand/Brand";
-import Navigation from "../Navigation/Navigation";
 
 const Banner: React.SFC<{}> = () => (
   <header className="Banner" role="banner">

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[components] <NewsListing /> renders correctly 1`] = `
+exports[`[presentation] <NewsListing /> renders correctly 1`] = `
 <article
   class="NewsListing"
 >
@@ -48,7 +48,7 @@ exports[`[components] <NewsListing /> renders correctly 1`] = `
 </article>
 `;
 
-exports[`[components] <NewsListing /> renders correctly when \`isCondensed\` prop is true 1`] = `
+exports[`[presentation] <NewsListing /> renders correctly when \`isCondensed\` prop is true 1`] = `
 <article
   class="NewsListing isCondensed"
 >
@@ -96,7 +96,7 @@ exports[`[components] <NewsListing /> renders correctly when \`isCondensed\` pro
 </article>
 `;
 
-exports[`[components] <NewsListing /> updates \`isImageLoaded\` state when image has previously been loaded 1`] = `
+exports[`[presentation] <NewsListing /> updates \`isImageLoaded\` state when image has previously been loaded 1`] = `
 <article
   class="NewsListing isRendered"
 >
@@ -144,7 +144,7 @@ exports[`[components] <NewsListing /> updates \`isImageLoaded\` state when image
 </article>
 `;
 
-exports[`[components] <NewsListing /> updates \`isRendered\` state after image has loaded 1`] = `
+exports[`[presentation] <NewsListing /> updates \`isRendered\` state after image has loaded 1`] = `
 <article
   class="NewsListing isRendered"
 >

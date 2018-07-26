@@ -11,8 +11,8 @@ export default (fromTestStore: {}, fromTestPorts: {}) => {
   const ports = merge(
     {
       api: {},
-      dataLayer: [],
-      maps: g.google.maps || {}
+      dataLayer: g.dataLayer,
+      maps: g.google.maps
     },
     fromTestPorts
   );

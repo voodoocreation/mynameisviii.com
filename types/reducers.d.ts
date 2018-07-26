@@ -49,6 +49,7 @@ interface IReleasesReducers {
 }
 
 interface IPageReducers {
+  currentRoute?: string;
   error?: IError;
   isLoading: boolean;
   isNavOpen: boolean;

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Link /> renders <NextLink /> when router is available and \`route\` prop is passed 1`] = `
+exports[`[presentation] <Link /> renders <NextLink /> when router is available and \`route\` prop is passed 1`] = `
 <withRouter(Link)
   route="/"
   router={
@@ -44,7 +44,7 @@ exports[`<Link /> renders <NextLink /> when router is available and \`route\` pr
 </withRouter(Link)>
 `;
 
-exports[`<Link /> renders <Routes.Link /> when router is available and \`href\` prop is passed 1`] = `
+exports[`[presentation] <Link /> renders <Routes.Link /> when router is available and \`href\` prop is passed 1`] = `
 <withRouter(Link)
   href="/"
   router={
@@ -82,7 +82,7 @@ exports[`<Link /> renders <Routes.Link /> when router is available and \`href\` 
 </withRouter(Link)>
 `;
 
-exports[`<Link /> renders <a /> when router is unavailable 1`] = `
+exports[`[presentation] <Link /> renders <a /> when router is unavailable 1`] = `
 <withRouter(Link)
   href="/"
   router={
@@ -110,7 +110,7 @@ exports[`<Link /> renders <a /> when router is unavailable 1`] = `
 </withRouter(Link)>
 `;
 
-exports[`<Link /> renders <span /> when \`href\` and \`route\` props are undefined 1`] = `
+exports[`[presentation] <Link /> renders <span /> when \`href\` and \`route\` props are undefined 1`] = `
 <withRouter(Link)
   router={
     Object {

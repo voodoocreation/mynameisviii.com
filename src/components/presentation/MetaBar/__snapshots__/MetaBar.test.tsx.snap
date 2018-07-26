@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[presentation] <MetaBar /> renders correctly with children 1`] = `
+<div
+  class="MetaBar TestMetaBar"
+>
+  Test meta bar
+</div>
+`;
+
+exports[`[presentation] <MetaBar /> renders null without children 1`] = `null`;

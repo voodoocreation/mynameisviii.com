@@ -2,7 +2,6 @@ import cn from "classnames";
 import * as React from "react";
 
 interface IProps {
-  children: React.ReactNode | React.ReactNode[];
   className?: string;
   currentIndex?: number;
   onSlideChange?: (index: number) => void;

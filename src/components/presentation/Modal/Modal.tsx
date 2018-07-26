@@ -1,17 +1,18 @@
 import cn from "classnames";
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import { MdClose } from "react-icons/lib/md";
 
-import { lockScroll, unlockScroll } from "../../../helpers/dom";
+import { isInPortal, lockScroll, unlockScroll } from "../../../helpers/dom";
+import Portal from "../Portal/Portal";
 
 interface IProps {
   className?: string;
-  isOpen?: boolean;
-  onClose: () => void;
-  onKeyDown?: (event: KeyboardEvent) => void;
   hasFocusRestriction?: boolean;
   hasOverlayClick?: boolean;
+  isOpen?: boolean;
+  onClose: () => void;
+  onKeyPress?: (event: KeyboardEvent) => void;
+  usePortal?: boolean;
 }
 
 interface IState {
@@ -21,19 +22,17 @@ interface IState {
 export default class Modal extends React.Component<IProps, IState> {
   public static defaultProps = {
     hasFocusRestriction: true,
-    hasOverlayClick: true
+    hasOverlayClick: true,
+    usePortal: true
   };
 
   public readonly state = {
     isVisible: false
   };
 
-  private container: HTMLDivElement | null = null;
   private modalRef: React.RefObject<HTMLDivElement> = React.createRef();
 
   public componentDidMount() {
-    this.container = document.querySelector(".Portal");
-
     if (this.props.isOpen) {
       this.onShow();
     }
@@ -54,57 +53,57 @@ export default class Modal extends React.Component<IProps, IState> {
   }
 
   public render() {
-    return this.container && this.props.isOpen
-      ? ReactDOM.createPortal(this.renderModal(), this.container)
-      : null;
-  }
-
-  private renderModal() {
-    const { children, className, hasOverlayClick, isOpen } = this.props;
+    const {
+      children,
+      className,
+      hasOverlayClick,
+      isOpen,
+      usePortal
+    } = this.props;
     const { isVisible } = this.state;
 
-    return (
-      <div
-        aria-hidden={!isOpen}
-        aria-modal={true}
-        className={cn("Modal", className, { isVisible })}
-        ref={this.modalRef}
-        role="dialog"
-        tabIndex={isOpen ? 0 : -1}
-      >
+    return !isOpen ? null : (
+      <Portal className="ModalPortal" isRenderingInPlace={!usePortal}>
         <div
-          className="Modal-overlay"
-          onClick={hasOverlayClick ? this.onClose : undefined}
-        />
+          aria-hidden={!isOpen}
+          aria-modal={true}
+          className={cn("Modal", className, { isVisible })}
+          ref={this.modalRef}
+          role="dialog"
+          tabIndex={isVisible ? 0 : -1}
+        >
+          <div
+            className="Modal-overlay"
+            onClick={hasOverlayClick ? this.onClose : undefined}
+          />
 
-        <div className="Modal-content">
-          <div className="Modal-body">{children}</div>
+          <div className="Modal-content">
+            <div className="Modal-body">{children}</div>
 
-          <button className="Modal-closeButton" onClick={this.onClose}>
-            <MdClose />
-          </button>
+            <button className="Modal-closeButton" onClick={this.onClose}>
+              <MdClose />
+            </button>
+          </div>
         </div>
-      </div>
+      </Portal>
     );
   }
 
   private onFocus = (event: FocusEvent) => {
-    if (
-      this.container &&
-      event.target &&
-      this.props.isOpen &&
-      this.props.hasFocusRestriction
-    ) {
-      if (
-        event.target === window ||
-        !this.container.contains(event.target as Node)
-      ) {
-        event.stopPropagation();
+    const { hasFocusRestriction, isOpen, usePortal } = this.props;
+    const modalRef = this.modalRef.current as HTMLDivElement;
 
-        if (this.modalRef.current) {
-          this.modalRef.current.focus();
-        }
-      }
+    if (
+      modalRef &&
+      event.target &&
+      isOpen &&
+      hasFocusRestriction &&
+      (event.target === window ||
+        (usePortal && !isInPortal(event.target as HTMLElement)) ||
+        (!usePortal && modalRef.contains(event.target as Node)))
+    ) {
+      event.stopPropagation();
+      modalRef.focus();
     }
   };
 
@@ -112,55 +111,41 @@ export default class Modal extends React.Component<IProps, IState> {
     this.props.onClose();
   };
 
-  private onKeyDown = (event: KeyboardEvent) => {
+  private onKeyPress = (event: KeyboardEvent) => {
     if (event.key === "Escape") {
       this.onClose();
     }
 
-    if (this.props.onKeyDown) {
-      this.props.onKeyDown(event);
+    if (this.props.onKeyPress) {
+      this.props.onKeyPress(event);
     }
   };
 
   private onShow = () => {
-    if (this.container) {
-      if (!this.state.isVisible) {
-        setTimeout(() => {
-          this.setState({
-            isVisible: true
-          });
-        }, 1);
-      }
+    const modalRef = this.modalRef.current as HTMLDivElement;
+    window.addEventListener("keypress", this.onKeyPress);
 
-      if (this.props.hasFocusRestriction) {
-        window.addEventListener("focus", this.onFocus, true);
-      }
-
-      window.addEventListener("keydown", this.onKeyDown);
-
-      lockScroll();
-
-      if (this.modalRef.current) {
-        this.modalRef.current.focus();
-      }
+    if (this.props.hasFocusRestriction) {
+      window.addEventListener("focus", this.onFocus, true);
     }
+
+    this.setState({
+      isVisible: true
+    });
+    lockScroll();
+    modalRef.focus();
   };
 
   private onHide = () => {
-    if (this.container) {
-      if (this.state.isVisible) {
-        this.setState({
-          isVisible: false
-        });
-      }
+    window.removeEventListener("keypress", this.onKeyPress);
 
-      if (this.props.hasFocusRestriction) {
-        window.removeEventListener("focus", this.onFocus, true);
-      }
-
-      window.removeEventListener("keypress", this.onKeyDown);
-
-      unlockScroll();
+    if (this.props.hasFocusRestriction) {
+      window.removeEventListener("focus", this.onFocus, true);
     }
+
+    unlockScroll();
+    this.setState({
+      isVisible: false
+    });
   };
 }

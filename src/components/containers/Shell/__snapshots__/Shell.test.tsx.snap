@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Shell /> renders correctly 1`] = `
+exports[`[containers] <Shell /> renders correctly 1`] = `
 <article
   class="Page TestClassName"
 >
@@ -68,7 +68,7 @@ exports[`<Shell /> renders correctly 1`] = `
 </article>
 `;
 
-exports[`<Shell /> renders correctly when loading 1`] = `
+exports[`[containers] <Shell /> renders correctly when loading 1`] = `
 <article
   class="Page isLoading TestClassName"
 >

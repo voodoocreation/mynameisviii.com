@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[components] <Appearance /> renders correctly when status=EventCancelled 1`] = `
+exports[`[presentation] <Appearance /> renders correctly when status=EventCancelled 1`] = `
 <article
   class="Appearance isCancelled"
 >
@@ -294,7 +294,7 @@ exports[`[components] <Appearance /> renders correctly when status=EventCancelle
 </article>
 `;
 
-exports[`[components] <Appearance /> renders correctly when status=EventPostponed 1`] = `
+exports[`[presentation] <Appearance /> renders correctly when status=EventPostponed 1`] = `
 <article
   class="Appearance isPostponed"
 >
@@ -588,7 +588,7 @@ exports[`[components] <Appearance /> renders correctly when status=EventPostpone
 </article>
 `;
 
-exports[`[components] <Appearance /> renders correctly with all props 1`] = `
+exports[`[presentation] <Appearance /> renders correctly with all props 1`] = `
 <article
   class="Appearance"
 >
@@ -1012,7 +1012,7 @@ exports[`[components] <Appearance /> renders correctly with all props 1`] = `
 </article>
 `;
 
-exports[`[components] <Appearance /> renders correctly with minimum props 1`] = `
+exports[`[presentation] <Appearance /> renders correctly with minimum props 1`] = `
 <article
   class="Appearance"
 >
@@ -1285,7 +1285,7 @@ exports[`[components] <Appearance /> renders correctly with minimum props 1`] = 
 </article>
 `;
 
-exports[`[components] <Appearance /> updates \`isImageLoaded\` state when image has loaded 1`] = `
+exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when image has loaded 1`] = `
 <article
   class="Appearance"
 >
@@ -1547,7 +1547,7 @@ exports[`[components] <Appearance /> updates \`isImageLoaded\` state when image 
 </article>
 `;
 
-exports[`[components] <Appearance /> updates \`isImageLoaded\` state when image has previously been loaded 1`] = `
+exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when image has previously been loaded 1`] = `
 <article
   class="Appearance"
 >

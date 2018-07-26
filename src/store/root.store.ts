@@ -12,7 +12,7 @@ type TStore = Store & {
   runSagaTask?: () => void;
 };
 
-export default (initialState = {}) => {
+export default (initialState = {}, api?: {}) => {
   // Environment
   const hasGA = !isServer() && typeof window.dataLayer !== "undefined";
   const hasMaps =
@@ -46,7 +46,7 @@ export default (initialState = {}) => {
     composeEnhancers(applyMiddleware(...middleware))
   );
   const saga = rootSaga({
-    api: createApiWith(ports),
+    api: api ? api : createApiWith(ports),
     dataLayer: hasGA ? window.dataLayer : [],
     maps: hasMaps ? window.google.maps : undefined
   });

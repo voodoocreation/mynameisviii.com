@@ -1,0 +1,156 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[routes] <NewsRoute /> renders correctly 1`] = `
+<article
+  class="NewsRoute"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1>
+      <span>
+        News
+      </span>
+    </h1>
+  </header>
+  <section
+    class="NewsListings"
+  >
+    <article
+      class="NewsListing"
+    >
+      <a
+        href="/news/single-threadfear-ask-me-to-stay-released"
+      >
+        <header
+          class="NewsListing-header"
+        >
+          <h2>
+            <div
+              class="Type Type-release"
+              title="Release"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                preserveAspectRatio="xMidYMid meet"
+                style="vertical-align:middle"
+                viewBox="0 0 40 40"
+                width="1em"
+              >
+                <g>
+                  <path
+                    d="m20 18.4c0.9 0 1.6 0.7 1.6 1.6s-0.7 1.6-1.6 1.6-1.6-0.7-1.6-1.6 0.7-1.6 1.6-1.6z m0 9.1c4.1 0 7.5-3.4 7.5-7.5s-3.4-7.5-7.5-7.5-7.5 3.4-7.5 7.5 3.4 7.5 7.5 7.5z m0-24.1c9.2 0 16.6 7.4 16.6 16.6s-7.4 16.6-16.6 16.6-16.6-7.4-16.6-16.6 7.4-16.6 16.6-16.6z"
+                  />
+                </g>
+              </svg>
+            </div>
+            <span>
+              Single 'threadfear / ask me to stay' released
+            </span>
+          </h2>
+        </header>
+        <img
+          alt="Single 'threadfear / ask me to stay' released"
+          src="https://s3.amazonaws.com/mynameisviii-static/news/single-threadfear-ask-me-to-stay-released.jpg"
+        />
+        <p>
+          <span>
+            New single 'threadfear' released with accompanying B-side, 'ask me to stay'.
+          </span>
+        </p>
+      </a>
+    </article>
+    <article
+      class="NewsListing"
+    >
+      <a
+        href="/news/single-witchlust-rev-22-20-released"
+      >
+        <header
+          class="NewsListing-header"
+        >
+          <h2>
+            <div
+              class="Type Type-release"
+              title="Release"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                preserveAspectRatio="xMidYMid meet"
+                style="vertical-align:middle"
+                viewBox="0 0 40 40"
+                width="1em"
+              >
+                <g>
+                  <path
+                    d="m20 18.4c0.9 0 1.6 0.7 1.6 1.6s-0.7 1.6-1.6 1.6-1.6-0.7-1.6-1.6 0.7-1.6 1.6-1.6z m0 9.1c4.1 0 7.5-3.4 7.5-7.5s-3.4-7.5-7.5-7.5-7.5 3.4-7.5 7.5 3.4 7.5 7.5 7.5z m0-24.1c9.2 0 16.6 7.4 16.6 16.6s-7.4 16.6-16.6 16.6-16.6-7.4-16.6-16.6 7.4-16.6 16.6-16.6z"
+                  />
+                </g>
+              </svg>
+            </div>
+            <span>
+              Single 'witchlust / rev 22:20' released
+            </span>
+          </h2>
+        </header>
+        <img
+          alt="Single 'witchlust / rev 22:20' released"
+          src="https://s3.amazonaws.com/mynameisviii-static/news/single-witchlust-rev-22-20-released.jpg"
+        />
+        <p>
+          <span>
+            New single 'witchlust' released with accompanying B-side, 'rev 22:20'.
+          </span>
+        </p>
+      </a>
+    </article>
+    <article
+      class="NewsListing"
+    >
+      <a
+        href="/news/debut-single-lovedecay-lovesong-released"
+      >
+        <header
+          class="NewsListing-header"
+        >
+          <h2>
+            <div
+              class="Type Type-release"
+              title="Release"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                preserveAspectRatio="xMidYMid meet"
+                style="vertical-align:middle"
+                viewBox="0 0 40 40"
+                width="1em"
+              >
+                <g>
+                  <path
+                    d="m20 18.4c0.9 0 1.6 0.7 1.6 1.6s-0.7 1.6-1.6 1.6-1.6-0.7-1.6-1.6 0.7-1.6 1.6-1.6z m0 9.1c4.1 0 7.5-3.4 7.5-7.5s-3.4-7.5-7.5-7.5-7.5 3.4-7.5 7.5 3.4 7.5 7.5 7.5z m0-24.1c9.2 0 16.6 7.4 16.6 16.6s-7.4 16.6-16.6 16.6-16.6-7.4-16.6-16.6 7.4-16.6 16.6-16.6z"
+                  />
+                </g>
+              </svg>
+            </div>
+            <span>
+              Debut single 'lovedecay / lovesong' released
+            </span>
+          </h2>
+        </header>
+        <img
+          alt="Debut single 'lovedecay / lovesong' released"
+          src="https://s3.amazonaws.com/mynameisviii-static/news/debut-single-lovedecay-lovesong-released.jpg"
+        />
+        <p>
+          <span>
+            Debut single 'lovedecay' released with accompanying B-side, 'lovesong'.
+          </span>
+        </p>
+      </a>
+    </article>
+  </section>
+</article>
+`;

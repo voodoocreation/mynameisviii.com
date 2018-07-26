@@ -1,12 +1,10 @@
 import * as React from "react";
-import { FormattedMessage } from "react-intl";
 
 import Link from "../Link/Link";
 
 interface IProps {
   href?: string;
-  isSelected: boolean;
-  messageId: string;
+  isSelected?: boolean;
   onClick?: () => void;
   params?: {};
   prefetch?: boolean;
@@ -14,24 +12,23 @@ interface IProps {
 }
 
 const NavItem: React.SFC<IProps> = ({
+  children,
   isSelected,
-  messageId,
   onClick,
   ...linkProps
 }) =>
   isSelected ? (
     <li className="isSelected" onClick={onClick}>
-      <FormattedMessage id={messageId} />
+      {children}
     </li>
   ) : (
     <li onClick={onClick}>
-      <Link {...linkProps}>
-        <FormattedMessage id={messageId} />
-      </Link>
+      <Link {...linkProps}>{children}</Link>
     </li>
   );
 
 NavItem.defaultProps = {
+  isSelected: false,
   onClick: () => undefined
 };
 

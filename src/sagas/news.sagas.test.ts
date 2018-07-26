@@ -54,7 +54,12 @@ describe("[sagas] News", () => {
       const { dispatch, findAction, store } = setupSagas(
         {
           news: {
-            items: arrayToAssoc(existingItems, "slug")
+            items: arrayToAssoc(existingItems, "slug"),
+            lastEvaluatedKey: {
+              createdAt: "",
+              isActive: "y",
+              slug: ""
+            }
           }
         },
         {

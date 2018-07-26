@@ -41,7 +41,7 @@ const setup = (fn: any, fromTestProps?: any) => {
   };
 };
 
-describe("[components] <AppearanceListing />", () => {
+describe("[presentation] <AppearanceListing />", () => {
   beforeEach(() => {
     g.isServer = false;
 

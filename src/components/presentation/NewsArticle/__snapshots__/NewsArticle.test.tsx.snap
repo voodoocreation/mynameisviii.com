@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[components] <NewsArticle /> renders correctly 1`] = `
+exports[`[presentation] <NewsArticle /> renders correctly 1`] = `
 <article
   class="NewsArticle"
 >
@@ -104,7 +104,7 @@ exports[`[components] <NewsArticle /> renders correctly 1`] = `
 </article>
 `;
 
-exports[`[components] <NewsArticle /> updates \`isImageLoaded\` state when image has loaded 1`] = `
+exports[`[presentation] <NewsArticle /> updates \`isImageLoaded\` state when image has loaded 1`] = `
 <article
   class="NewsArticle"
 >
@@ -197,7 +197,7 @@ exports[`[components] <NewsArticle /> updates \`isImageLoaded\` state when image
 </article>
 `;
 
-exports[`[components] <NewsArticle /> updates \`isImageLoaded\` state when image has previously been loaded 1`] = `
+exports[`[presentation] <NewsArticle /> updates \`isImageLoaded\` state when image has previously been loaded 1`] = `
 <article
   class="NewsArticle"
 >

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[components] <ActListing /> renders correctly 1`] = `
+exports[`[presentation] <ActListing /> renders correctly 1`] = `
 <article
   class="ActListing"
 >
@@ -99,7 +99,7 @@ exports[`[components] <ActListing /> renders correctly 1`] = `
 </article>
 `;
 
-exports[`[components] <ActListing /> updates \`isRendered\` state after image has loaded 1`] = `
+exports[`[presentation] <ActListing /> updates \`isRendered\` state after image has loaded 1`] = `
 <article
   class="ActListing isRendered"
 >
@@ -198,7 +198,7 @@ exports[`[components] <ActListing /> updates \`isRendered\` state after image ha
 </article>
 `;
 
-exports[`[components] <ActListing /> updates \`isRendered\` state and triggers onLoad prop when image has previously been loaded 1`] = `
+exports[`[presentation] <ActListing /> updates \`isRendered\` state and triggers onLoad prop when image has previously been loaded 1`] = `
 <article
   class="ActListing isRendered"
 >

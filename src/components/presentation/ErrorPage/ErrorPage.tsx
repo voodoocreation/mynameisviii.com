@@ -1,5 +1,6 @@
 import Head from "next/head";
 import * as React from "react";
+import { MdErrorOutline } from "react-icons/lib/md";
 import { InjectedIntl, injectIntl } from "react-intl";
 
 import PageHeader from "../../presentation/PageHeader/PageHeader";
@@ -28,9 +29,14 @@ class ErrorPage extends React.Component<IProps> {
           </title>
         </Head>
 
-        <PageHeader>{this.getTitle()}</PageHeader>
+        <article className="ErrorPage">
+          <PageHeader>{this.getTitle()}</PageHeader>
 
-        <p>{this.getMessage()}</p>
+          <div className="ErrorPage-content">
+            <MdErrorOutline />
+            <p>{this.getMessage()}</p>
+          </div>
+        </article>
       </React.Fragment>
     );
   }

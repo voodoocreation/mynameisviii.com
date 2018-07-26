@@ -5,9 +5,9 @@ import { MdArrowBack, MdArrowForward } from "react-icons/lib/md";
 import Modal from "../Modal/Modal";
 
 interface IProps {
-  children: React.ReactNode | React.ReactNode[];
   className?: string;
   isLooped?: boolean;
+  usePortal?: boolean;
   onItemClick?: (index: number) => void;
   onGoTo?: (index: number) => void;
   onModalClose?: () => void;
@@ -16,30 +16,29 @@ interface IProps {
 }
 
 interface IState {
-  currentItemIndex?: number;
+  currentIndex?: number;
   isOpen: boolean;
 }
 
 export default class Gallery extends React.Component<IProps, IState> {
   public static defaultProps = {
-    isLooped: true
+    isLooped: true,
+    usePortal: true
   };
 
   public readonly state = {
-    currentItemIndex: undefined,
+    currentIndex: undefined,
     isOpen: false
   };
 
   public render() {
     const { children, className } = this.props;
-    const { currentItemIndex } = this.state;
+    const { currentIndex } = this.state;
 
     const currentItem =
-      currentItemIndex !== undefined
-        ? this.getItemAtIndex(currentItemIndex)
-        : null;
+      currentIndex !== undefined ? this.getItemAtIndex(currentIndex) : null;
 
-    return React.Children.count(children) > 0 ? (
+    return (
       <React.Fragment>
         <div className={cn("Gallery", className)}>
           {React.Children.map(children, (item, index) =>
@@ -52,8 +51,9 @@ export default class Gallery extends React.Component<IProps, IState> {
         <Modal
           className="Gallery-modal"
           isOpen={this.state.isOpen}
+          usePortal={this.props.usePortal}
           onClose={this.onModalClose}
-          onKeyDown={this.onModalKeyDown}
+          onKeyPress={this.onModalKeyPress}
         >
           <div className="Gallery-modal-item">{currentItem}</div>
 
@@ -68,13 +68,13 @@ export default class Gallery extends React.Component<IProps, IState> {
           </div>
         </Modal>
       </React.Fragment>
-    ) : null;
+    );
   }
 
   public goTo = (nextItemIndex: number) => {
     if (this.getItemAtIndex(nextItemIndex)) {
       this.setState({
-        currentItemIndex: nextItemIndex
+        currentIndex: nextItemIndex
       });
     }
 
@@ -84,9 +84,8 @@ export default class Gallery extends React.Component<IProps, IState> {
   };
 
   public previous = () => {
-    const { currentItemIndex } = this.state;
-    const previousIndex =
-      currentItemIndex !== undefined ? currentItemIndex - 1 : 0;
+    const { currentIndex } = this.state;
+    const previousIndex = currentIndex !== undefined ? currentIndex - 1 : 0;
     const goToIndex =
       this.props.isLooped && !this.getItemAtIndex(previousIndex)
         ? React.Children.count(this.props.children) - 1
@@ -100,8 +99,8 @@ export default class Gallery extends React.Component<IProps, IState> {
   };
 
   public next = () => {
-    const { currentItemIndex } = this.state;
-    const nextIndex = currentItemIndex !== undefined ? currentItemIndex + 1 : 0;
+    const { currentIndex } = this.state;
+    const nextIndex = currentIndex !== undefined ? currentIndex + 1 : 0;
     const goToIndex =
       this.props.isLooped && !this.getItemAtIndex(nextIndex) ? 0 : nextIndex;
 
@@ -119,7 +118,7 @@ export default class Gallery extends React.Component<IProps, IState> {
 
   private onItemClick = (index: number) => () => {
     this.setState({
-      currentItemIndex: index,
+      currentIndex: index,
       isOpen: true
     });
 
@@ -128,7 +127,7 @@ export default class Gallery extends React.Component<IProps, IState> {
     }
   };
 
-  private onModalKeyDown = (event: KeyboardEvent) => {
+  private onModalKeyPress = (event: KeyboardEvent) => {
     switch (event.key) {
       case "ArrowLeft":
         this.previous();
@@ -142,7 +141,7 @@ export default class Gallery extends React.Component<IProps, IState> {
 
   private onModalClose = () => {
     this.setState({
-      currentItemIndex: undefined,
+      currentIndex: undefined,
       isOpen: false
     });
 

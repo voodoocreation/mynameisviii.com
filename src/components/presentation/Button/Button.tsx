@@ -4,7 +4,6 @@ import * as React from "react";
 import Loader from "../Loader/Loader";
 
 interface IProps {
-  children: React.ReactNode | React.ReactNode[];
   className?: string;
   isDisabled?: boolean;
   isLoading?: boolean;

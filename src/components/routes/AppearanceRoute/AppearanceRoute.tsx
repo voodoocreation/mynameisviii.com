@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { ActionCreator } from "typescript-fsa";
 
-import injectIntl from "../../../helpers/injectIntl";
+import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { absUrl } from "../../../transformers/transformData";
 import ConnectedErrorPage from "../../containers/ConnectedErrorPage/ConnectedErrorPage";
 import Appearance from "../../presentation/Appearance/Appearance";
@@ -40,7 +40,7 @@ class AppearanceRoute extends React.Component<IProps> {
   }
 
   public componentWillMount() {
-    if (!this.props.currentLocation) {
+    if (this.props.appearance && !this.props.currentLocation) {
       this.props.geocodeCurrentAppearanceAddress({});
     }
   }
@@ -109,7 +109,7 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
     dispatch
   );
 
-export default injectIntl(
+export default injectIntlIntoPage(
   connect<IStoreProps, IDispatchProps>(
     mapStateToProps,
     mapDispatchToProps

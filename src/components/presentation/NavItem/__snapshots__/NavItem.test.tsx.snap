@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[containers] <NavItem /> renders correctly when isSelected=true 1`] = `
+<li
+  class="isSelected"
+>
+  Test nav item
+</li>
+`;
+
+exports[`[containers] <NavItem /> renders correctly with minimum props 1`] = `
+<li>
+  <span>
+    Test nav item
+  </span>
+</li>
+`;

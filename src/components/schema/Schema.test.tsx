@@ -14,7 +14,7 @@ const setup = (fn: any, fromTestProps?: any) => {
   };
 };
 
-describe("[components] <Schema />", () => {
+describe("[schema] <Schema />", () => {
   it("renders correctly", () => {
     const { actual } = setup(render);
     expect(actual).toMatchSnapshot();

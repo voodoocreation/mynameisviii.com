@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[components] <AppearanceListing /> renders correctly when status=EventCancelled 1`] = `
+exports[`[presentation] <AppearanceListing /> renders correctly when status=EventCancelled 1`] = `
 <article
   class="AppearanceListing isCancelled"
 >
@@ -181,7 +181,7 @@ exports[`[components] <AppearanceListing /> renders correctly when status=EventC
 </article>
 `;
 
-exports[`[components] <AppearanceListing /> renders correctly when status=EventPostponed 1`] = `
+exports[`[presentation] <AppearanceListing /> renders correctly when status=EventPostponed 1`] = `
 <article
   class="AppearanceListing isPostponed"
 >
@@ -362,7 +362,7 @@ exports[`[components] <AppearanceListing /> renders correctly when status=EventP
 </article>
 `;
 
-exports[`[components] <AppearanceListing /> renders correctly with all props 1`] = `
+exports[`[presentation] <AppearanceListing /> renders correctly with all props 1`] = `
 <article
   class="AppearanceListing"
 >
@@ -561,7 +561,7 @@ exports[`[components] <AppearanceListing /> renders correctly with all props 1`]
 </article>
 `;
 
-exports[`[components] <AppearanceListing /> renders correctly with minimum props 1`] = `
+exports[`[presentation] <AppearanceListing /> renders correctly with minimum props 1`] = `
 <article
   class="AppearanceListing"
 >
@@ -721,7 +721,7 @@ exports[`[components] <AppearanceListing /> renders correctly with minimum props
 </article>
 `;
 
-exports[`[components] <AppearanceListing /> updates \`isRendered\` state after image has loaded 1`] = `
+exports[`[presentation] <AppearanceListing /> updates \`isRendered\` state after image has loaded 1`] = `
 <article
   class="AppearanceListing isRendered"
 >
@@ -881,7 +881,7 @@ exports[`[components] <AppearanceListing /> updates \`isRendered\` state after i
 </article>
 `;
 
-exports[`[components] <AppearanceListing /> updates \`isRendered\` state and triggers onLoad prop when image has previously been loaded 1`] = `
+exports[`[presentation] <AppearanceListing /> updates \`isRendered\` state and triggers onLoad prop when image has previously been loaded 1`] = `
 <article
   class="AppearanceListing isRendered"
 >

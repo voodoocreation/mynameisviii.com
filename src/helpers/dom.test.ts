@@ -1,34 +1,24 @@
 import * as dom from "./dom";
 
 const g: any = global;
-
-const mockElement = (width: number, height: number, top = 0, left = 0) => ({
-  getBoundingClientRect: () => ({
-    bottom: top + height,
-    left,
-    right: left + width,
-    top
-  })
-});
-
-const screenWidth = 1920;
-const screenHeight = 1080;
+const sWidth = 1920;
+const sHeight = 1080;
 const html = document.documentElement;
 const { body } = document;
 
 describe("[helpers] DOM", () => {
   describe("isInViewport()", () => {
     const inside: any = {
-      bottomLeft: mockElement(200, 200, screenHeight - 200),
-      bottomRight: mockElement(200, 200, screenHeight - 200, screenWidth - 200),
-      topLeft: mockElement(200, 200),
-      topRight: mockElement(200, 200, 0, screenWidth - 200)
+      bottomLeft: g.mockElement(200, 200, sHeight - 200),
+      bottomRight: g.mockElement(200, 200, sHeight - 200, sWidth - 200),
+      topLeft: g.mockElement(200, 200),
+      topRight: g.mockElement(200, 200, 0, sWidth - 200)
     };
     const outside: any = {
-      bottomLeft: mockElement(200, 200, screenHeight - 199),
-      bottomRight: mockElement(200, 200, screenHeight - 199, screenWidth - 199),
-      topLeft: mockElement(200, 200, -1, -1),
-      topRight: mockElement(200, 200, -1, screenWidth - 199)
+      bottomLeft: g.mockElement(200, 200, sHeight - 199),
+      bottomRight: g.mockElement(200, 200, sHeight - 199, sWidth - 199),
+      topLeft: g.mockElement(200, 200, -1, -1),
+      topRight: g.mockElement(200, 200, -1, sWidth - 199)
     };
 
     it("returns false when an element isn't provided", () => {
@@ -37,8 +27,8 @@ describe("[helpers] DOM", () => {
 
     describe("on a browser that supports window.innerWidth and window.innerHeight", () => {
       beforeEach(() => {
-        g.innerWidth = screenWidth;
-        g.innerHeight = screenHeight;
+        g.innerWidth = sWidth;
+        g.innerHeight = sHeight;
       });
 
       it("returns true when entire element is within the viewport", () => {
@@ -62,11 +52,11 @@ describe("[helpers] DOM", () => {
         g.innerHeight = undefined;
 
         Object.defineProperty(html, "clientWidth", {
-          value: screenWidth,
+          value: sWidth,
           writable: false
         });
         Object.defineProperty(html, "clientHeight", {
-          value: screenHeight,
+          value: sHeight,
           writable: false
         });
       });
@@ -89,16 +79,16 @@ describe("[helpers] DOM", () => {
 
   describe("isAlmostInViewport()", () => {
     const inside: any = {
-      bottomLeft: mockElement(200, 200, screenHeight + 199, -399),
-      bottomRight: mockElement(200, 200, screenHeight + 199, screenWidth + 199),
-      topLeft: mockElement(200, 200, -399, -399),
-      topRight: mockElement(200, 200, -399, screenWidth + 199)
+      bottomLeft: g.mockElement(200, 200, sHeight + 199, -399),
+      bottomRight: g.mockElement(200, 200, sHeight + 199, sWidth + 199),
+      topLeft: g.mockElement(200, 200, -399, -399),
+      topRight: g.mockElement(200, 200, -399, sWidth + 199)
     };
     const outside: any = {
-      bottomLeft: mockElement(200, 200, screenHeight + 200, -400),
-      bottomRight: mockElement(200, 200, screenHeight + 200, screenWidth + 200),
-      topLeft: mockElement(200, 200, -400, -400),
-      topRight: mockElement(200, 200, -400, screenWidth + 200)
+      bottomLeft: g.mockElement(200, 200, sHeight + 200, -400),
+      bottomRight: g.mockElement(200, 200, sHeight + 200, sWidth + 200),
+      topLeft: g.mockElement(200, 200, -400, -400),
+      topRight: g.mockElement(200, 200, -400, sWidth + 200)
     };
 
     it("returns false when an element isn't provided", () => {
@@ -107,8 +97,8 @@ describe("[helpers] DOM", () => {
 
     describe("on a browser that supports window.innerWidth and window.innerHeight", () => {
       beforeEach(() => {
-        g.innerWidth = screenWidth;
-        g.innerHeight = screenHeight;
+        g.innerWidth = sWidth;
+        g.innerHeight = sHeight;
       });
 
       it("returns true when element is within an area 200px bigger than the viewport", () => {
@@ -132,11 +122,11 @@ describe("[helpers] DOM", () => {
         g.innerHeight = undefined;
 
         Object.defineProperty(html, "clientWidth", {
-          value: screenWidth,
+          value: sWidth,
           writable: false
         });
         Object.defineProperty(html, "clientHeight", {
-          value: screenHeight,
+          value: sHeight,
           writable: false
         });
       });
@@ -159,7 +149,8 @@ describe("[helpers] DOM", () => {
 
   describe("lockScroll()", () => {
     beforeEach(() => {
-      window.scrollState.count = 0;
+      g.isServer = false;
+      dom.scrollState.count = 0;
       body.scrollTop = 200;
       body.style.paddingRight = "";
       html.className = "";
@@ -170,8 +161,8 @@ describe("[helpers] DOM", () => {
 
       expect(html.classList.contains("isLocked")).toBe(true);
       expect(body.style.paddingRight).not.toBe("");
-      expect(window.scrollState.count).toBe(1);
-      expect(window.scrollState.top).toBe(200);
+      expect(dom.scrollState.count).toBe(1);
+      expect(dom.scrollState.top).toBe(200);
     });
 
     it("does nothing when scrolling is already locked", () => {
@@ -180,8 +171,8 @@ describe("[helpers] DOM", () => {
 
       expect(html.classList.contains("isLocked")).toBe(true);
       expect(body.style.paddingRight).toBe("0px");
-      expect(window.scrollState.count).toBe(2);
-      expect(window.scrollState.top).toBe(200);
+      expect(dom.scrollState.count).toBe(2);
+      expect(dom.scrollState.top).toBe(200);
     });
 
     it("takes existing body padding into consideration when compensating for scrollbar", () => {
@@ -199,13 +190,27 @@ describe("[helpers] DOM", () => {
       dom.lockScroll();
 
       expect(body.style.paddingRight).toBe("50px");
-      expect(window.scrollState.top).toBe(300);
+      expect(dom.scrollState.top).toBe(300);
+    });
+
+    it("doesn't throw an error when called on the server", () => {
+      let isPassing = true;
+      g.isServer = true;
+
+      try {
+        dom.lockScroll();
+      } catch (error) {
+        isPassing = false;
+      }
+
+      expect(isPassing).toBe(true);
     });
   });
 
   describe("unlockScroll()", () => {
     beforeEach(() => {
-      window.scrollState.count = 0;
+      g.isServer = false;
+      dom.scrollState.count = 0;
       body.scrollTop = 200;
       body.style.paddingRight = "";
       html.className = "";
@@ -238,6 +243,50 @@ describe("[helpers] DOM", () => {
 
       dom.unlockScroll();
       expect(html.classList.contains("isLocked")).toBe(false);
+    });
+
+    it("doesn't throw an error when called on the server", () => {
+      let isPassing = true;
+      g.isServer = true;
+
+      try {
+        dom.unlockScroll();
+      } catch (error) {
+        isPassing = false;
+      }
+
+      expect(isPassing).toBe(true);
+    });
+  });
+
+  describe("isInPortal()", () => {
+    beforeEach(() => {
+      g.isServer = false;
+    });
+
+    it("returns true when an element is within the document portal", () => {
+      const element = document.createElement("div");
+      const portal = document.createElement("div");
+      portal.className = "Portal";
+      portal.appendChild(element);
+      document.body.appendChild(portal);
+
+      expect(dom.isInPortal(element)).toBe(true);
+    });
+
+    it("returns false when an element isn't within the document portal", () => {
+      const element = document.createElement("div");
+      const portal = document.createElement("div");
+      portal.className = "Portal";
+      document.body.appendChild(portal);
+
+      expect(dom.isInPortal(element)).toBe(false);
+    });
+
+    it("returns false when calling it on the server", () => {
+      g.isServer = true;
+      const element = document.createElement("div");
+      expect(dom.isInPortal(element)).toBe(false);
     });
   });
 });

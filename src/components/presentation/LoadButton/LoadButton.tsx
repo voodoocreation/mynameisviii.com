@@ -5,7 +5,6 @@ import { isAlmostInViewport, isServer } from "../../../helpers/dom";
 import Button from "../Button/Button";
 
 interface IProps {
-  children: React.ReactNode | React.ReactNode[];
   className?: string;
   isDisabled?: boolean;
   isLoading?: boolean;
@@ -19,7 +18,7 @@ export default class LoadButton extends React.Component<IProps> {
     isDisabled: false,
     isLoading: false,
     isScrollLoadEnabled: true,
-    triggerDistance: 200
+    triggerDistance: 50
   };
 
   private buttonRef: React.RefObject<Button> = React.createRef();
@@ -78,7 +77,10 @@ export default class LoadButton extends React.Component<IProps> {
       !this.props.isDisabled &&
       !this.props.isLoading &&
       this.buttonRef.current &&
-      isAlmostInViewport(this.buttonRef.current.buttonNode)
+      isAlmostInViewport(
+        this.buttonRef.current.buttonNode,
+        this.props.triggerDistance
+      )
     ) {
       this.props.onLoad();
     }

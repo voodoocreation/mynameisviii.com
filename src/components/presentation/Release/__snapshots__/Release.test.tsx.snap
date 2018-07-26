@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[components] <Release /> renders correctly when productionType=compilation 1`] = `
+exports[`[presentation] <Release /> renders correctly when productionType=compilation 1`] = `
 <article
   class="Release"
 >
@@ -270,7 +270,7 @@ exports[`[components] <Release /> renders correctly when productionType=compilat
 </article>
 `;
 
-exports[`[components] <Release /> renders correctly when productionType=demo 1`] = `
+exports[`[presentation] <Release /> renders correctly when productionType=demo 1`] = `
 <article
   class="Release"
 >
@@ -540,7 +540,7 @@ exports[`[components] <Release /> renders correctly when productionType=demo 1`]
 </article>
 `;
 
-exports[`[components] <Release /> renders correctly when productionType=live 1`] = `
+exports[`[presentation] <Release /> renders correctly when productionType=live 1`] = `
 <article
   class="Release"
 >
@@ -810,7 +810,7 @@ exports[`[components] <Release /> renders correctly when productionType=live 1`]
 </article>
 `;
 
-exports[`[components] <Release /> renders correctly when productionType=remix 1`] = `
+exports[`[presentation] <Release /> renders correctly when productionType=remix 1`] = `
 <article
   class="Release"
 >
@@ -1080,7 +1080,7 @@ exports[`[components] <Release /> renders correctly when productionType=remix 1`
 </article>
 `;
 
-exports[`[components] <Release /> renders correctly when productionType=soundtrack 1`] = `
+exports[`[presentation] <Release /> renders correctly when productionType=soundtrack 1`] = `
 <article
   class="Release"
 >
@@ -1350,7 +1350,7 @@ exports[`[components] <Release /> renders correctly when productionType=soundtra
 </article>
 `;
 
-exports[`[components] <Release /> renders correctly when type=ep 1`] = `
+exports[`[presentation] <Release /> renders correctly when type=ep 1`] = `
 <article
   class="Release"
 >
@@ -1620,7 +1620,7 @@ exports[`[components] <Release /> renders correctly when type=ep 1`] = `
 </article>
 `;
 
-exports[`[components] <Release /> renders correctly when type=single 1`] = `
+exports[`[presentation] <Release /> renders correctly when type=single 1`] = `
 <article
   class="Release"
 >
@@ -1890,7 +1890,7 @@ exports[`[components] <Release /> renders correctly when type=single 1`] = `
 </article>
 `;
 
-exports[`[components] <Release /> renders correctly with all props 1`] = `
+exports[`[presentation] <Release /> renders correctly with all props 1`] = `
 <article
   class="Release"
 >
@@ -2349,7 +2349,7 @@ exports[`[components] <Release /> renders correctly with all props 1`] = `
 </article>
 `;
 
-exports[`[components] <Release /> renders correctly with minimum props 1`] = `
+exports[`[presentation] <Release /> renders correctly with minimum props 1`] = `
 <article
   class="Release"
 >
@@ -2619,7 +2619,7 @@ exports[`[components] <Release /> renders correctly with minimum props 1`] = `
 </article>
 `;
 
-exports[`[components] <Release /> updates \`isImageLoaded\` state when image has loaded 1`] = `
+exports[`[presentation] <Release /> updates \`isImageLoaded\` state when image has loaded 1`] = `
 <article
   class="Release"
 >
@@ -2877,7 +2877,7 @@ exports[`[components] <Release /> updates \`isImageLoaded\` state when image has
 </article>
 `;
 
-exports[`[components] <Release /> updates \`isImageLoaded\` state when image has previously been loaded 1`] = `
+exports[`[presentation] <Release /> updates \`isImageLoaded\` state when image has previously been loaded 1`] = `
 <article
   class="Release"
 >

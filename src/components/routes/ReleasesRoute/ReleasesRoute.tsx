@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { ActionCreator } from "typescript-fsa";
 
-import injectIntl from "../../../helpers/injectIntl";
+import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { absUrl } from "../../../transformers/transformData";
 import ButtonBar from "../../presentation/ButtonBar/ButtonBar";
 import LoadButton from "../../presentation/LoadButton/LoadButton";
@@ -62,9 +62,11 @@ class ReleasesRoute extends React.Component<IProps, IState> {
     const { hasAllReleases, releases, releasesCount } = this.props;
     const { formatMessage } = this.props.intl;
 
+    const hasLoadedAllListings = releasesCount === Object.keys(this.state.loadedListings).length;
+
     const isLoading =
       this.props.isLoading ||
-      releasesCount !== Object.keys(this.state.loadedListings).length;
+      !hasLoadedAllListings;
 
     const loadMoreButton = hasAllReleases ? null : (
       <LoadButton isLoading={isLoading} onLoad={this.onLoadMore}>
@@ -73,7 +75,7 @@ class ReleasesRoute extends React.Component<IProps, IState> {
     );
 
     return (
-      <React.Fragment>
+      <article className={cn("ReleasesRoute", { hasLoadedAllListings })}>
         <Head>
           <title>
             {formatMessage({ id: "RELEASES_TITLE" })}
@@ -118,7 +120,7 @@ class ReleasesRoute extends React.Component<IProps, IState> {
         ) : null}
 
         <ButtonBar>{loadMoreButton}</ButtonBar>
-      </React.Fragment>
+      </article>
     );
   }
 
@@ -173,7 +175,7 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
     dispatch
   );
 
-export default injectIntl(
+export default injectIntlIntoPage(
   connect<IStoreProps, IDispatchProps>(
     mapStateToProps,
     mapDispatchToProps

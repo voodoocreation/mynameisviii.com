@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Brand /> renders correctly 1`] = `
+exports[`[presentation] <Brand /> renders correctly 1`] = `
 <a
   class="Brand"
   href="/"

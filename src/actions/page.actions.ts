@@ -4,6 +4,9 @@ const actionCreator = actionCreatorFactory("PAGE");
 
 export const toggleNavigation = actionCreator<{}>("TOGGLE_NAVIGATION");
 
+export const setCurrentRoute = actionCreator<PLSetCurrentRoute>(
+  "SET_CURRENT_ROUTE"
+);
 export const changeRoute = actionCreator.async<
   PLChangeRouteStarted,
   PLChangeRouteDone,

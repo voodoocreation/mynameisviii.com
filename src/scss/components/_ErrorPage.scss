@@ -1,0 +1,19 @@
+.ErrorPage {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: $panel-color;
+  }
+
+  svg {
+    font-size: 128px;
+  }
+}

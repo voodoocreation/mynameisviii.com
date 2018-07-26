@@ -1,13 +1,5 @@
 import getScrollbarWidth from "scrollbar-size";
 
-if (typeof window !== "undefined") {
-  window.scrollState = {
-    count: 0,
-    left: 0,
-    top: 0
-  };
-}
-
 export const isServer = () => typeof window === "undefined" || window.isServer;
 
 export const isInViewport = (element?: HTMLElement | null) => {
@@ -51,11 +43,21 @@ export const isAlmostInViewport = (
   );
 };
 
+export const scrollState = {
+  count: 0,
+  left: 0,
+  top: 0
+};
+
 export const lockScroll = () => {
+  if (isServer()) {
+    return;
+  }
+
   const { body } = document;
   const html = document.documentElement;
 
-  window.scrollState.count += 1;
+  scrollState.count += 1;
 
   if (!html.classList.contains("isLocked")) {
     const existingPadding = parseInt(
@@ -70,8 +72,8 @@ export const lockScroll = () => {
     const scrollElement =
       body.scrollTop > 0 || html.scrollTop === 0 ? body : html;
 
-    window.scrollState.top = scrollElement.scrollTop;
-    window.scrollState.left = scrollElement.scrollLeft;
+    scrollState.top = scrollElement.scrollTop;
+    scrollState.left = scrollElement.scrollLeft;
 
     html.classList.add("isLocked");
     body.style.paddingRight = `${newPadding}px`;
@@ -79,16 +81,30 @@ export const lockScroll = () => {
 };
 
 export const unlockScroll = () => {
+  if (isServer()) {
+    return;
+  }
+
   const { body } = document;
   const html = document.documentElement;
 
-  if (window.scrollState.count <= 1 && html.classList.contains("isLocked")) {
+  if (scrollState.count <= 1 && html.classList.contains("isLocked")) {
     body.style.paddingRight = "";
     html.classList.remove("isLocked");
-    window.scrollTo(window.scrollState.left, window.scrollState.top);
+    window.scrollTo(scrollState.left, scrollState.top);
   }
 
-  if (window.scrollState.count > 0) {
-    window.scrollState.count -= 1;
+  if (scrollState.count > 0) {
+    scrollState.count -= 1;
   }
+};
+
+export const isInPortal = (element: HTMLElement) => {
+  if (isServer()) {
+    return false;
+  }
+
+  const portal = document.querySelector(".Portal");
+
+  return !!portal && portal.contains(element);
 };

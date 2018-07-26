@@ -3,7 +3,6 @@ import * as React from "react";
 import Link from "../Link/Link";
 
 interface IProps {
-  children: React.ReactNode | React.ReactNode[];
   icon?: React.ReactNode;
   title: string;
   url: string;

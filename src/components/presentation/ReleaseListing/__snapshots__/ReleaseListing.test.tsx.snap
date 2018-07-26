@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[components] <ReleaseListing /> renders correctly with all props 1`] = `
+exports[`[presentation] <ReleaseListing /> renders correctly with all props 1`] = `
 <article
   class="ReleaseListing"
 >
@@ -164,7 +164,7 @@ exports[`[components] <ReleaseListing /> renders correctly with all props 1`] = 
 </article>
 `;
 
-exports[`[components] <ReleaseListing /> renders correctly with minimum props 1`] = `
+exports[`[presentation] <ReleaseListing /> renders correctly with minimum props 1`] = `
 <article
   class="ReleaseListing"
 >
@@ -328,7 +328,7 @@ exports[`[components] <ReleaseListing /> renders correctly with minimum props 1`
 </article>
 `;
 
-exports[`[components] <ReleaseListing /> updates \`isImageLoaded\` state when image has previously been loaded 1`] = `
+exports[`[presentation] <ReleaseListing /> updates \`isImageLoaded\` state when image has previously been loaded 1`] = `
 <article
   class="ReleaseListing isRendered"
 >
@@ -492,7 +492,7 @@ exports[`[components] <ReleaseListing /> updates \`isImageLoaded\` state when im
 </article>
 `;
 
-exports[`[components] <ReleaseListing /> updates \`isRendered\` state after image has loaded 1`] = `
+exports[`[presentation] <ReleaseListing /> updates \`isRendered\` state after image has loaded 1`] = `
 <article
   class="ReleaseListing isRendered"
 >

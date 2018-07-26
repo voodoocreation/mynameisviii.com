@@ -3,7 +3,6 @@ import * as React from "react";
 import { FormattedMessage, InjectedIntl, injectIntl } from "react-intl";
 
 interface IProps {
-  children: React.ReactNode | React.ReactNode[];
   className?: string;
   icon?: React.ReactNode;
   intl: InjectedIntl;

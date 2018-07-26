@@ -8,7 +8,7 @@ const setup = (fn: any) => ({
   actual: fn(<Brand />)
 });
 
-describe("<Brand />", () => {
+describe("[presentation] <Brand />", () => {
   it("renders correctly", () => {
     const { actual } = setup(render);
     expect(toJson(actual)).toMatchSnapshot();

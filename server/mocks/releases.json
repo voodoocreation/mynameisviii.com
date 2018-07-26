@@ -75,6 +75,11 @@
           "Title": "Front cover",
           "ImageUrl":
             "https://s3.amazonaws.com/mynameisviii-static/releases/lovedecay-lovesong.jpg"
+        },
+        {
+          "Title": "Back cover",
+          "ImageUrl":
+            "https://s3.amazonaws.com/mynameisviii-static/releases/lovedecay-lovesong.jpg"
         }
       ],
       "Length": "7:31"

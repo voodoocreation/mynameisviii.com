@@ -56,7 +56,12 @@ describe("[sagas] Appearances", () => {
       const { dispatch, findAction, store } = setupSagas(
         {
           appearances: {
-            items: arrayToAssoc(existingItems, "slug")
+            items: arrayToAssoc(existingItems, "slug"),
+            lastEvaluatedKey: {
+              isActive: "y",
+              slug: "",
+              startingAt: ""
+            }
           }
         },
         {

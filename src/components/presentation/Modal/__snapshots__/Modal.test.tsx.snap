@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[presentation] <Modal /> renders correctly 1`] = `
+<div
+  class="Portal-inPlace"
+>
+  <div
+    aria-hidden="false"
+    aria-modal="true"
+    class="Modal TestModal isVisible"
+    role="dialog"
+    tabindex="0"
+  >
+    <div
+      class="Modal-overlay"
+    />
+    <div
+      class="Modal-content"
+    >
+      <div
+        class="Modal-body"
+      >
+        <div
+          class="Modal-testContent"
+        >
+          <span>
+            Modal content
+          </span>
+          <button>
+            Modal button
+          </button>
+        </div>
+      </div>
+      <button
+        class="Modal-closeButton"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          preserveAspectRatio="xMidYMid meet"
+          style="vertical-align: middle;"
+          viewBox="0 0 40 40"
+          width="1em"
+        >
+          <g>
+            <path
+              d="m31.6 10.7l-9.3 9.3 9.3 9.3-2.3 2.3-9.3-9.3-9.3 9.3-2.3-2.3 9.3-9.3-9.3-9.3 2.3-2.3 9.3 9.3 9.3-9.3z"
+            />
+          </g>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`[presentation] <Modal /> renders correctly when isOpen=false 1`] = `null`;
+
+exports[`[presentation] <Modal /> renders correctly when usePortal=true 1`] = `
+<div
+  aria-hidden="false"
+  aria-modal="true"
+  class="Modal TestModal isVisible"
+  role="dialog"
+  tabindex="0"
+>
+  <div
+    class="Modal-overlay"
+  />
+  <div
+    class="Modal-content"
+  >
+    <div
+      class="Modal-body"
+    >
+      <div
+        class="Modal-testContent"
+      >
+        <span>
+          Modal content
+        </span>
+        <button>
+          Modal button
+        </button>
+      </div>
+    </div>
+    <button
+      class="Modal-closeButton"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align: middle;"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m31.6 10.7l-9.3 9.3 9.3 9.3-2.3 2.3-9.3-9.3-9.3 9.3-2.3-2.3 9.3-9.3-9.3-9.3 2.3-2.3 9.3 9.3 9.3-9.3z"
+          />
+        </g>
+      </svg>
+    </button>
+  </div>
+</div>
+`;

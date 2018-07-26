@@ -29,7 +29,7 @@ const setup = (fn: any, fromTestProps?: any, fromTestStore?: any) => {
   };
 };
 
-describe("<Shell />", () => {
+describe("[containers] <Shell />", () => {
   it("renders correctly", () => {
     const { actual } = setup(render);
     expect(actual).toMatchSnapshot();

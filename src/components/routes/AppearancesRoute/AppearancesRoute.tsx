@@ -1,3 +1,4 @@
+import cn from "classnames";
 import Head from "next/head";
 import * as React from "react";
 import { FormattedMessage, InjectedIntl } from "react-intl";
@@ -5,7 +6,7 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { ActionCreator } from "typescript-fsa";
 
-import injectIntl from "../../../helpers/injectIntl";
+import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { absUrl } from "../../../transformers/transformData";
 import AppearanceListing from "../../presentation/AppearanceListing/AppearanceListing";
 import ButtonBar from "../../presentation/ButtonBar/ButtonBar";
@@ -65,9 +66,10 @@ class AppearancesRoute extends React.Component<IProps, IState> {
     } = this.props;
     const { formatMessage } = this.props.intl;
 
-    const isLoading =
-      this.props.isLoading ||
-      appearancesCount !== Object.keys(this.state.loadedListings).length;
+    const hasLoadedAllListings =
+      appearancesCount === Object.keys(this.state.loadedListings).length;
+
+    const isLoading = this.props.isLoading || !hasLoadedAllListings;
 
     const loadMoreButton = hasAllAppearances ? null : (
       <LoadButton isLoading={isLoading} onLoad={this.onLoadMore}>
@@ -76,7 +78,7 @@ class AppearancesRoute extends React.Component<IProps, IState> {
     );
 
     return (
-      <React.Fragment>
+      <article className={cn("AppearancesRoute", { hasLoadedAllListings })}>
         <Head>
           <title>
             {formatMessage({ id: "APPEARANCES_TITLE" })}
@@ -151,7 +153,7 @@ class AppearancesRoute extends React.Component<IProps, IState> {
         ) : null}
 
         <ButtonBar>{loadMoreButton}</ButtonBar>
-      </React.Fragment>
+      </article>
     );
   }
 
@@ -186,7 +188,7 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
     dispatch
   );
 
-export default injectIntl(
+export default injectIntlIntoPage(
   connect<IStoreProps, IDispatchProps>(
     mapStateToProps,
     mapDispatchToProps

@@ -10,6 +10,16 @@
     "Where Viii will be at for performances at gigs, shows and other appearances.",
   "AUDIENCE": "Audience",
   "BIOGRAPHY": "Biography",
+  "BIO_CONTENT_1":
+    "Viii is a New Zealand-born singer, songwriter, multi-instramentalist and producer. Known for his ability to take characteristics from his eclectic musical background to create a broad palette to paint an interesting and unique canvas.",
+  "BIO_CONTENT_2":
+    "Drawing from influences such as ✝✝✝ (Crosses), Nine Inch Nails, Puscifer, Banks, Etta Bond, Massive Attack, Portishead and many more, creating a colourful source of inspiration.",
+  "BIO_CONTENT_3":
+    "Lyrically, Viii has a distinct common ground of self-reflection and understanding, often abstracting the subject in some form – either writing symbolically or from an alternate perspective about personal life experiences or abstract thoughts.",
+  "BIO_CONTENT_4":
+    "Outside of the music, Viii also handles his own artistic direction and other aspects surrounding performances, such as photography, graphic design, makeup artistry and fashion.",
+  "BIO_CONTENT_5":
+    "Viii currently releases music under his own independent label, Voodoo Creation Records.",
   "BRAND_NAME": "My name is Viii: a painter of frequencies and thoughts",
   "BUY": "Buy",
   "BUY_FROM_AMAZON": "Buy '{title}' from Amazon",
@@ -65,6 +75,7 @@
   "PHOTOS": "Photos",
   "POSTED": "Posted",
   "POSTPONED": "Postponed",
+  "BOOKING_AND_PRESS_CONTACT": "For booking and press enquiries, contact",
   "PRICE": "Price",
   "RELEASE": "Release",
   "RELEASED": "Released",
