@@ -25,23 +25,23 @@ const DateTime: React.SFC<IProps> = ({
 }) => (
   <time
     className={cn("DateTime", className)}
-    dateTime={moment(value).toISOString()}
+    dateTime={moment(new Date(value)).toISOString()}
     title={
       isDateOnly
-        ? intl.formatDate(moment(value).toDate(), options)
-        : intl.formatTime(moment(value).toDate(), options)
+        ? intl.formatDate(moment(new Date(value)).toDate(), options)
+        : intl.formatTime(moment(new Date(value)).toDate(), options)
     }
   >
     {isRelative ? (
       <FormattedRelative
         updateInterval={updateInterval}
-        value={moment(value).toDate()}
+        value={moment(new Date(value)).toDate()}
         {...props}
       />
     ) : isDateOnly ? (
-      intl.formatDate(moment(value).toDate(), options)
+      intl.formatDate(moment(new Date(value)).toDate(), options)
     ) : (
-      intl.formatTime(moment(value).toDate(), options)
+      intl.formatTime(moment(new Date(value)).toDate(), options)
     )}
   </time>
 );

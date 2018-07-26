@@ -62,11 +62,10 @@ class ReleasesRoute extends React.Component<IProps, IState> {
     const { hasAllReleases, releases, releasesCount } = this.props;
     const { formatMessage } = this.props.intl;
 
-    const hasLoadedAllListings = releasesCount === Object.keys(this.state.loadedListings).length;
+    const hasLoadedAllListings =
+      releasesCount === Object.keys(this.state.loadedListings).length;
 
-    const isLoading =
-      this.props.isLoading ||
-      !hasLoadedAllListings;
+    const isLoading = this.props.isLoading || !hasLoadedAllListings;
 
     const loadMoreButton = hasAllReleases ? null : (
       <LoadButton isLoading={isLoading} onLoad={this.onLoadMore}>

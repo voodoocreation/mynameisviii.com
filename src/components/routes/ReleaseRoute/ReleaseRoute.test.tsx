@@ -101,9 +101,7 @@ describe("[routes] <ReleaseRoute />", () => {
         }
       });
 
-      expect(selectors.getCurrentReleaseSlug(store.getState())).toBe(
-        "test-1"
-      );
+      expect(selectors.getCurrentReleaseSlug(store.getState())).toBe("test-1");
     });
 
     it("fetches release when it's not already in the store", async () => {
