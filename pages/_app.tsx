@@ -82,8 +82,6 @@ class Application extends App {
   public render() {
     const { Component, intlProps, pageProps, store } = this.props as IProps;
 
-    console.log(this.props.router);
-
     return (
       <Container>
         <Provider store={store}>

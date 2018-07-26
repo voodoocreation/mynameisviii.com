@@ -4,8 +4,8 @@ import merge from "lodash.merge";
 import * as React from "react";
 import { Provider } from "react-redux";
 
-import createStore from "../../../store/root.store";
 import * as selectors from "../../../selectors/root.selectors";
+import createStore from "../../../store/root.store";
 import ReleasesRoute from "./ReleasesRoute";
 
 import releases from "../../../../server/mocks/releases.json";
