@@ -71,7 +71,7 @@ exports[`[presentation] <AppearanceListing /> renders correctly when status=Even
           >
             <time
               class="DateTime"
-              datetime="2018-10-10T05:00:00.000Z"
+              datetime="2018-10-10T18:00:00"
               title="October 10, 2018"
             >
               October 10, 2018
@@ -110,7 +110,7 @@ exports[`[presentation] <AppearanceListing /> renders correctly when status=Even
           >
             <time
               class="DateTime"
-              datetime="2018-10-10T05:00:00.000Z"
+              datetime="2018-10-10T18:00:00"
               title="6:00 PM"
             >
               6:00 PM
@@ -252,7 +252,7 @@ exports[`[presentation] <AppearanceListing /> renders correctly when status=Even
           >
             <time
               class="DateTime"
-              datetime="2018-10-10T05:00:00.000Z"
+              datetime="2018-10-10T18:00:00"
               title="October 10, 2018"
             >
               October 10, 2018
@@ -291,7 +291,7 @@ exports[`[presentation] <AppearanceListing /> renders correctly when status=Even
           >
             <time
               class="DateTime"
-              datetime="2018-10-10T05:00:00.000Z"
+              datetime="2018-10-10T18:00:00"
               title="6:00 PM"
             >
               6:00 PM
@@ -412,7 +412,7 @@ exports[`[presentation] <AppearanceListing /> renders correctly with all props 1
           >
             <time
               class="DateTime"
-              datetime="2018-10-10T05:00:00.000Z"
+              datetime="2018-10-10T18:00:00"
               title="October 10, 2018"
             >
               October 10, 2018
@@ -451,7 +451,7 @@ exports[`[presentation] <AppearanceListing /> renders correctly with all props 1
           >
             <time
               class="DateTime"
-              datetime="2018-10-10T05:00:00.000Z"
+              datetime="2018-10-10T18:00:00"
               title="6:00 PM"
             >
               6:00 PM
@@ -611,7 +611,7 @@ exports[`[presentation] <AppearanceListing /> renders correctly with minimum pro
           >
             <time
               class="DateTime"
-              datetime="2018-10-10T05:00:00.000Z"
+              datetime="2018-10-10T18:00:00"
               title="October 10, 2018"
             >
               October 10, 2018
@@ -650,7 +650,7 @@ exports[`[presentation] <AppearanceListing /> renders correctly with minimum pro
           >
             <time
               class="DateTime"
-              datetime="2018-10-10T05:00:00.000Z"
+              datetime="2018-10-10T18:00:00"
               title="6:00 PM"
             >
               6:00 PM
@@ -771,7 +771,7 @@ exports[`[presentation] <AppearanceListing /> updates \`isRendered\` state after
           >
             <time
               class="DateTime"
-              datetime="2018-10-10T05:00:00.000Z"
+              datetime="2018-10-10T18:00:00"
               title="October 10, 2018"
             >
               October 10, 2018
@@ -810,7 +810,7 @@ exports[`[presentation] <AppearanceListing /> updates \`isRendered\` state after
           >
             <time
               class="DateTime"
-              datetime="2018-10-10T05:00:00.000Z"
+              datetime="2018-10-10T18:00:00"
               title="6:00 PM"
             >
               6:00 PM
@@ -931,7 +931,7 @@ exports[`[presentation] <AppearanceListing /> updates \`isRendered\` state and t
           >
             <time
               class="DateTime"
-              datetime="2018-10-10T05:00:00.000Z"
+              datetime="2018-10-10T18:00:00"
               title="October 10, 2018"
             >
               October 10, 2018
@@ -970,7 +970,7 @@ exports[`[presentation] <AppearanceListing /> updates \`isRendered\` state and t
           >
             <time
               class="DateTime"
-              datetime="2018-10-10T05:00:00.000Z"
+              datetime="2018-10-10T18:00:00"
               title="6:00 PM"
             >
               6:00 PM

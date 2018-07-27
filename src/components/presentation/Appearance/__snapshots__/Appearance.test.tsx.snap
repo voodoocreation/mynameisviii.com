@@ -44,7 +44,7 @@ exports[`[presentation] <Appearance /> renders correctly when status=EventCancel
       >
         <time
           class="DateTime"
-          datetime="2018-10-10T05:00:00.000Z"
+          datetime="2018-10-10T18:00:00"
           title="Wednesday, October 10, 2018"
         >
           Wednesday, October 10, 2018
@@ -83,7 +83,7 @@ exports[`[presentation] <Appearance /> renders correctly when status=EventCancel
       >
         <time
           class="DateTime"
-          datetime="2018-10-10T05:00:00.000Z"
+          datetime="2018-10-10T18:00:00"
           title="6:00 PM"
         >
           6:00 PM
@@ -91,7 +91,7 @@ exports[`[presentation] <Appearance /> renders correctly when status=EventCancel
         –
         <time
           class="DateTime"
-          datetime="2018-10-10T07:00:00.000Z"
+          datetime="2018-10-10T20:00:00"
           title="8:00 PM"
         >
           8:00 PM
@@ -338,7 +338,7 @@ exports[`[presentation] <Appearance /> renders correctly when status=EventPostpo
       >
         <time
           class="DateTime"
-          datetime="2018-10-10T05:00:00.000Z"
+          datetime="2018-10-10T18:00:00"
           title="Wednesday, October 10, 2018"
         >
           Wednesday, October 10, 2018
@@ -377,7 +377,7 @@ exports[`[presentation] <Appearance /> renders correctly when status=EventPostpo
       >
         <time
           class="DateTime"
-          datetime="2018-10-10T05:00:00.000Z"
+          datetime="2018-10-10T18:00:00"
           title="6:00 PM"
         >
           6:00 PM
@@ -385,7 +385,7 @@ exports[`[presentation] <Appearance /> renders correctly when status=EventPostpo
         –
         <time
           class="DateTime"
-          datetime="2018-10-10T07:00:00.000Z"
+          datetime="2018-10-10T20:00:00"
           title="8:00 PM"
         >
           8:00 PM
@@ -632,7 +632,7 @@ exports[`[presentation] <Appearance /> renders correctly with all props 1`] = `
       >
         <time
           class="DateTime"
-          datetime="2018-10-10T05:00:00.000Z"
+          datetime="2018-10-10T18:00:00"
           title="Wednesday, October 10, 2018"
         >
           Wednesday, October 10, 2018
@@ -671,7 +671,7 @@ exports[`[presentation] <Appearance /> renders correctly with all props 1`] = `
       >
         <time
           class="DateTime"
-          datetime="2018-10-10T05:00:00.000Z"
+          datetime="2018-10-10T18:00:00"
           title="6:00 PM"
         >
           6:00 PM
@@ -679,7 +679,7 @@ exports[`[presentation] <Appearance /> renders correctly with all props 1`] = `
         –
         <time
           class="DateTime"
-          datetime="2018-10-10T07:00:00.000Z"
+          datetime="2018-10-10T20:00:00"
           title="8:00 PM"
         >
           8:00 PM
@@ -1056,7 +1056,7 @@ exports[`[presentation] <Appearance /> renders correctly with minimum props 1`] 
       >
         <time
           class="DateTime"
-          datetime="2018-10-10T05:00:00.000Z"
+          datetime="2018-10-10T18:00:00"
           title="Wednesday, October 10, 2018"
         >
           Wednesday, October 10, 2018
@@ -1095,7 +1095,7 @@ exports[`[presentation] <Appearance /> renders correctly with minimum props 1`] 
       >
         <time
           class="DateTime"
-          datetime="2018-10-10T05:00:00.000Z"
+          datetime="2018-10-10T18:00:00"
           title="6:00 PM"
         >
           6:00 PM
@@ -1103,7 +1103,7 @@ exports[`[presentation] <Appearance /> renders correctly with minimum props 1`] 
         –
         <time
           class="DateTime"
-          datetime="2018-10-10T07:00:00.000Z"
+          datetime="2018-10-10T20:00:00"
           title="8:00 PM"
         >
           8:00 PM
@@ -1329,7 +1329,7 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
       >
         <time
           class="DateTime"
-          datetime="2018-10-10T05:00:00.000Z"
+          datetime="2018-10-10T18:00:00"
           title="Wednesday, October 10, 2018"
         >
           Wednesday, October 10, 2018
@@ -1368,7 +1368,7 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
       >
         <time
           class="DateTime"
-          datetime="2018-10-10T05:00:00.000Z"
+          datetime="2018-10-10T18:00:00"
           title="6:00 PM"
         >
           6:00 PM
@@ -1376,7 +1376,7 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
         –
         <time
           class="DateTime"
-          datetime="2018-10-10T07:00:00.000Z"
+          datetime="2018-10-10T20:00:00"
           title="8:00 PM"
         >
           8:00 PM
@@ -1591,7 +1591,7 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
       >
         <time
           class="DateTime"
-          datetime="2018-10-10T05:00:00.000Z"
+          datetime="2018-10-10T18:00:00"
           title="Wednesday, October 10, 2018"
         >
           Wednesday, October 10, 2018
@@ -1630,7 +1630,7 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
       >
         <time
           class="DateTime"
-          datetime="2018-10-10T05:00:00.000Z"
+          datetime="2018-10-10T18:00:00"
           title="6:00 PM"
         >
           6:00 PM
@@ -1638,7 +1638,7 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
         –
         <time
           class="DateTime"
-          datetime="2018-10-10T07:00:00.000Z"
+          datetime="2018-10-10T20:00:00"
           title="8:00 PM"
         >
           8:00 PM

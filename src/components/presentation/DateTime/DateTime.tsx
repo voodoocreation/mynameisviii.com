@@ -25,7 +25,7 @@ const DateTime: React.SFC<IProps> = ({
 }) => (
   <time
     className={cn("DateTime", className)}
-    dateTime={moment(value).toISOString()}
+    dateTime={value}
     title={
       isDateOnly
         ? intl.formatDate(moment(value).toDate(), options)

@@ -116,7 +116,7 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
       >
         <time
           class="DateTime"
-          datetime="2018-10-20T07:00:00.000Z"
+          datetime="2018-10-20T20:00:00"
           title="Saturday, October 20, 2018"
         >
           Saturday, October 20, 2018
@@ -155,7 +155,7 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
       >
         <time
           class="DateTime"
-          datetime="2018-10-20T07:00:00.000Z"
+          datetime="2018-10-20T20:00:00"
           title="8:00 PM"
         >
           8:00 PM
@@ -163,7 +163,7 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
         –
         <time
           class="DateTime"
-          datetime="2018-10-20T12:00:00.000Z"
+          datetime="2018-10-21T01:00:00"
           title="1:00 AM"
         >
           1:00 AM

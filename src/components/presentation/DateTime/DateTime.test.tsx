@@ -21,9 +21,7 @@ describe("[presentation] <DateTime />", () => {
   it("renders correctly with minimum props", () => {
     const { actual, props } = setup(render);
 
-    expect(actual.attr("datetime")).toBe(
-      moment(props.value).toISOString()
-    );
+    expect(actual.attr("datetime")).toBe(props.value);
     expect(actual.attr("title")).toBe("Saturday, October 20, 2018, 8:00 PM");
     expect(actual.text()).toBe("in 10 months");
     expect(actual).toMatchSnapshot();
@@ -32,9 +30,7 @@ describe("[presentation] <DateTime />", () => {
   it("renders correctly when isDateOnly=true", () => {
     const { actual, props } = setup(render, { isDateOnly: true });
 
-    expect(actual.attr("datetime")).toBe(
-      moment(props.value).toISOString()
-    );
+    expect(actual.attr("datetime")).toBe(props.value);
     expect(actual.attr("title")).toBe("Saturday, October 20, 2018");
     expect(actual.text()).toBe("in 10 months");
     expect(actual).toMatchSnapshot();
@@ -45,9 +41,7 @@ describe("[presentation] <DateTime />", () => {
       isRelative: false
     });
 
-    expect(actual.attr("datetime")).toBe(
-      moment(props.value).toISOString()
-    );
+    expect(actual.attr("datetime")).toBe(props.value);
     expect(actual.attr("title")).toBe("Saturday, October 20, 2018, 8:00 PM");
     expect(actual.text()).toBe("Saturday, October 20, 2018, 8:00 PM");
     expect(actual).toMatchSnapshot();
@@ -59,9 +53,7 @@ describe("[presentation] <DateTime />", () => {
       isRelative: false
     });
 
-    expect(actual.attr("datetime")).toBe(
-      moment(props.value).toISOString()
-    );
+    expect(actual.attr("datetime")).toBe(props.value);
     expect(actual.attr("title")).toBe("Saturday, October 20, 2018");
     expect(actual.text()).toBe("Saturday, October 20, 2018");
     expect(actual).toMatchSnapshot();
@@ -77,9 +69,7 @@ describe("[presentation] <DateTime />", () => {
       }
     });
 
-    expect(actual.attr("datetime")).toBe(
-      moment(props.value).toISOString()
-    );
+    expect(actual.attr("datetime")).toBe(props.value);
     expect(actual.attr("title")).toBe("8:00 PM");
     expect(actual.text()).toBe("8:00 PM");
     expect(actual).toMatchSnapshot();
@@ -91,9 +81,7 @@ describe("[presentation] <DateTime />", () => {
       value: "2018-10-20"
     });
 
-    expect(actual.attr("datetime")).toBe(
-      moment(props.value).toISOString()
-    );
+    expect(actual.attr("datetime")).toBe(props.value);
     expect(actual.attr("title")).toBe("Saturday, October 20, 2018");
     expect(actual.text()).toBe("in 10 months");
     expect(actual).toMatchSnapshot();

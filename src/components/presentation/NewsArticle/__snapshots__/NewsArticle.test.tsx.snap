@@ -60,7 +60,7 @@ exports[`[presentation] <NewsArticle /> renders correctly 1`] = `
          
         <time
           class="DateTime"
-          datetime="2017-10-10T05:00:00.000Z"
+          datetime="2017-10-10T18:00:00"
           title="Tuesday, October 10, 2017, 6:00 PM"
         >
           <span>
@@ -153,7 +153,7 @@ exports[`[presentation] <NewsArticle /> updates \`isImageLoaded\` state when ima
          
         <time
           class="DateTime"
-          datetime="2017-10-10T05:00:00.000Z"
+          datetime="2017-10-10T18:00:00"
           title="Tuesday, October 10, 2017, 6:00 PM"
         >
           <span>
@@ -246,7 +246,7 @@ exports[`[presentation] <NewsArticle /> updates \`isImageLoaded\` state when ima
          
         <time
           class="DateTime"
-          datetime="2017-10-10T05:00:00.000Z"
+          datetime="2017-10-10T18:00:00"
           title="Tuesday, October 10, 2017, 6:00 PM"
         >
           <span>
