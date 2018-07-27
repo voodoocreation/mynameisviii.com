@@ -12,7 +12,7 @@ type TStore = Store & {
   runSagaTask?: () => void;
 };
 
-export default (initialState = {}, api?: {}) => {
+export default (initialState = {}, _?: any, api?: {}) => {
   // Environment
   const hasGA = !isServer() && typeof window.dataLayer !== "undefined";
   const hasMaps =

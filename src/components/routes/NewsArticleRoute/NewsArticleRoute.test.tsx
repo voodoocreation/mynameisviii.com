@@ -25,6 +25,7 @@ const setup = (fn: any, fromTestStore = {}, fromTestApi?: {}) => {
       },
       fromTestStore
     ),
+    {},
     fromTestApi
   );
 
