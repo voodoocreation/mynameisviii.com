@@ -130,8 +130,8 @@ exports[`[routes] <NewsArticleRoute /> renders correctly 1`] = `
          
         <time
           class="DateTime"
-          datetime="2017-11-03T00:00:00+12:00"
-          title="Friday, November 3, 2017, 1:00 AM"
+          datetime="2017-11-03T00:00:00"
+          title="Friday, November 3, 2017, 12:00 AM"
         >
           <span>
             2 months ago
