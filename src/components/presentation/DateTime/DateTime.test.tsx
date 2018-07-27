@@ -1,5 +1,4 @@
 import { render } from "enzyme";
-import moment from "moment";
 import * as React from "react";
 
 import DateTime from "./DateTime";
