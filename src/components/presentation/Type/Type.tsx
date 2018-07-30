@@ -1,6 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
-import { MdAlbum, MdEvent, MdNewReleases } from "react-icons/lib/md";
+import { MdAlbum, MdEvent, MdNewReleases } from "react-icons/md";
 import { InjectedIntl, injectIntl } from "react-intl";
 
 interface IProps {

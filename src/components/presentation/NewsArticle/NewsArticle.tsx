@@ -1,6 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
-import { MdAccessTime } from "react-icons/lib/md";
+import { MdAccessTime } from "react-icons/md";
 import { FormattedMessage, InjectedIntl, injectIntl } from "react-intl";
 
 import Schema from "../../schema/NewsArticle";

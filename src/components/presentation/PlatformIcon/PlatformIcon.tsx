@@ -5,8 +5,8 @@ import {
   FaGoogle,
   FaSoundcloud,
   FaSpotify
-} from "react-icons/lib/fa";
-import { MdPlayCircleFilled } from "react-icons/lib/md";
+} from "react-icons/fa";
+import { MdPlayCircleFilled } from "react-icons/md";
 
 interface IProps {
   value: string;

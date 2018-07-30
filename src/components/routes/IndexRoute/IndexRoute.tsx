@@ -6,7 +6,7 @@ import {
   FaSoundcloud,
   FaSpotify,
   FaTwitter
-} from "react-icons/lib/fa";
+} from "react-icons/fa";
 import { FormattedMessage, InjectedIntl } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
