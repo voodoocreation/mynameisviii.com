@@ -6,20 +6,14 @@
   "API_DATA": "API data",
   "APPEARANCE": "Appearance",
   "APPEARANCES_TITLE": "Appearances",
-  "APPEARANCES_DESCRIPTION":
-    "Where Viii will be at for performances at gigs, shows and other appearances.",
+  "APPEARANCES_DESCRIPTION": "Where Viii will be at for performances at gigs, shows and other appearances.",
   "AUDIENCE": "Audience",
   "BIOGRAPHY": "Biography",
-  "BIO_CONTENT_1":
-    "Viii is a New Zealand-born singer, songwriter, multi-instramentalist and producer. Known for his ability to take characteristics from his eclectic musical background to create a broad palette to paint an interesting and unique canvas.",
-  "BIO_CONTENT_2":
-    "Drawing from influences such as ✝✝✝ (Crosses), Nine Inch Nails, Puscifer, Banks, Etta Bond, Massive Attack, Portishead and many more, creating a colourful source of inspiration.",
-  "BIO_CONTENT_3":
-    "Lyrically, Viii has a distinct common ground of self-reflection and understanding, often abstracting the subject in some form – either writing symbolically or from an alternate perspective about personal life experiences or abstract thoughts.",
-  "BIO_CONTENT_4":
-    "Outside of the music, Viii also handles his own artistic direction and other aspects surrounding performances, such as photography, graphic design, makeup artistry and fashion.",
-  "BIO_CONTENT_5":
-    "Viii currently releases music under his own independent label, Voodoo Creation Records.",
+  "BIO_CONTENT_1": "Viii is a New Zealand-born singer, songwriter, multi-instramentalist and producer. Known for his ability to take characteristics from his eclectic musical background to create a broad palette to paint an interesting and unique canvas.",
+  "BIO_CONTENT_2": "Drawing from influences such as ✝✝✝ (Crosses), Nine Inch Nails, Puscifer, Banks, Etta Bond, Massive Attack, Portishead and many more, creating a colourful source of inspiration.",
+  "BIO_CONTENT_3": "Lyrically, Viii has a distinct common ground of self-reflection and understanding, often abstracting the subject in some form – either writing symbolically or from an alternate perspective about personal life experiences or abstract thoughts.",
+  "BIO_CONTENT_4": "Outside of the music, Viii also handles his own artistic direction and other aspects surrounding performances, such as photography, graphic design, makeup artistry and fashion.",
+  "BIO_CONTENT_5": "Viii currently releases music under his own independent label, Voodoo Creation Records.",
   "BRAND_NAME": "My name is Viii: a painter of frequencies and thoughts",
   "BUY": "Buy",
   "BUY_FROM_AMAZON": "Buy '{title}' from Amazon",
@@ -43,8 +37,7 @@
   "ERROR_TITLE": "An error has occurred",
   "ERROR_MESSAGE": "An error has occurred, please try again.",
   "ERROR_404_TITLE": "Page not found",
-  "ERROR_404_MESSAGE":
-    "This page does not exist - please use the site navigation to find what you're looking for.",
+  "ERROR_404_MESSAGE": "This page does not exist - please use the site navigation to find what you're looking for.",
   "FACEBOOK": "Facebook",
   "FEATURED_ACTS": "Featured acts",
   "FETCH_API_DATA": "Fetch API data",
@@ -53,8 +46,7 @@
   "GET_TICKETS": "Get tickets",
   "GOOGLE": "Google Play",
   "INDEX_TITLE": "Home",
-  "INDEX_DESCRIPTION":
-    "The official website of Viii - the artist, singer, songwriter, musician, producer and engineer.",
+  "INDEX_DESCRIPTION": "The official website of Viii - the artist, singer, songwriter, musician, producer and engineer.",
   "INSTAGRAM": "Instagram",
   "ITUNES": "iTunes",
   "LATEST_NEWS": "Latest news",
@@ -66,8 +58,7 @@
   "MENU": "Menu",
   "NEWS": "News",
   "NEWS_TITLE": "News",
-  "NEWS_DESCRIPTION":
-    "The latest news for releases, appearances and other exciting Viii updates.",
+  "NEWS_DESCRIPTION": "The latest news for releases, appearances and other exciting Viii updates.",
   "NO_APPEARANCES": "There are no upcoming appearances at this time.",
   "NO_NEWS": "There are no news articles at this time.",
   "NO_RELEASES": "There are no releases to show at this time.",
@@ -80,8 +71,7 @@
   "RELEASE": "Release",
   "RELEASED": "Released",
   "RELEASES_TITLE": "Releases",
-  "RELEASES_DESCRIPTION":
-    "The latest album, EP, single and remix releases from Viii.",
+  "RELEASES_DESCRIPTION": "The latest album, EP, single and remix releases from Viii.",
   "REMIX": "Remix",
   "REMIXS": "Remixes",
   "SINGLE": "Single",

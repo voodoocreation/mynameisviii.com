@@ -4,13 +4,11 @@
       "StreamList": [
         {
           "Platform": "spotify",
-          "Url":
-            "https://open.spotify.com/album/6RcNsy2Ubn4tAvOVsBvqYr?si=PVnCiQAbQA2obLlBBKYNIw"
+          "Url": "https://open.spotify.com/album/6RcNsy2Ubn4tAvOVsBvqYr?si=PVnCiQAbQA2obLlBBKYNIw"
         },
         {
           "Platform": "apple",
-          "Url":
-            "https://itunes.apple.com/album/lovedecay-lovesong-single/1212550755?app=music"
+          "Url": "https://itunes.apple.com/album/lovedecay-lovesong-single/1212550755?app=music"
         },
         {
           "Platform": "tidal",
@@ -22,14 +20,12 @@
         }
       ],
       "Artist": {
-        "Url":
-          "https://open.spotify.com/artist/59s4iD384WECjyZyUmZ18G?si=YB4Ap1yuQHmQgOue6MrSTQ",
+        "Url": "https://open.spotify.com/artist/59s4iD384WECjyZyUmZ18G?si=YB4Ap1yuQHmQgOue6MrSTQ",
         "Name": "Viii"
       },
       "IsActive": "y",
       "ProductionType": "studio",
-      "Description":
-        "<p>Lovedecay is the debut single from the EP <em>Heart</em>.</p><p>It also includes the B-side <em>Lovesong</em>, originally performed by The Cure.</p>",
+      "Description": "<p>Lovedecay is the debut single from the EP <em>Heart</em>.</p><p>It also includes the B-side <em>Lovesong</em>, originally performed by The Cure.</p>",
       "Type": "single",
       "Tracklist": [
         [
@@ -37,15 +33,13 @@
             "Title": "lovedecay",
             "Genre": "Goth/Electronic",
             "Length": "4:13",
-            "Url":
-              "https://open.spotify.com/track/5ryHpwWacwJvgec1muco8t?si=Vug891EJSvK_SwcjzCnxMQ"
+            "Url": "https://open.spotify.com/track/5ryHpwWacwJvgec1muco8t?si=Vug891EJSvK_SwcjzCnxMQ"
           },
           {
             "Title": "lovesong",
             "Genre": "Goth/Electronic",
             "Length": "3:21",
-            "Url":
-              "https://open.spotify.com/track/7tjnvja6pQUfmIAyT8FVRB?si=Aq2F8YySRpCaUtLZiYN7XQ"
+            "Url": "https://open.spotify.com/track/7tjnvja6pQUfmIAyT8FVRB?si=Aq2F8YySRpCaUtLZiYN7XQ"
           }
         ]
       ],
@@ -55,8 +49,7 @@
       "BuyList": [
         {
           "Platform": "itunes",
-          "Url":
-            "https://itunes.apple.com/album/lovedecay-lovesong-single/1212550755?app=itunes"
+          "Url": "https://itunes.apple.com/album/lovedecay-lovesong-single/1212550755?app=itunes"
         },
         {
           "Platform": "amazon",
@@ -64,8 +57,7 @@
         },
         {
           "Platform": "google",
-          "Url":
-            "https://play.google.com/store/music/album/Viii_Lovedecay_Lovesong?id=Bw6ti5fc6x5q5mrtp257ouieocy"
+          "Url": "https://play.google.com/store/music/album/Viii_Lovedecay_Lovesong?id=Bw6ti5fc6x5q5mrtp257ouieocy"
         }
       ],
       "ReleasedOn": "2017-03-24",
@@ -73,13 +65,11 @@
       "Images": [
         {
           "Title": "Front cover",
-          "ImageUrl":
-            "https://s3.amazonaws.com/mynameisviii-static/releases/lovedecay-lovesong.jpg"
+          "ImageUrl": "https://s3.amazonaws.com/mynameisviii-static/releases/lovedecay-lovesong.jpg"
         },
         {
           "Title": "Back cover",
-          "ImageUrl":
-            "https://s3.amazonaws.com/mynameisviii-static/releases/lovedecay-lovesong.jpg"
+          "ImageUrl": "https://s3.amazonaws.com/mynameisviii-static/releases/lovedecay-lovesong.jpg"
         }
       ],
       "Length": "7:31"
@@ -88,13 +78,11 @@
       "StreamList": [
         {
           "Platform": "spotify",
-          "Url":
-            "https://open.spotify.com/album/6JFOKOrhbViajSzhJCaBBr?si=WrUJCrbaTVi01_SLylHYkw"
+          "Url": "https://open.spotify.com/album/6JFOKOrhbViajSzhJCaBBr?si=WrUJCrbaTVi01_SLylHYkw"
         },
         {
           "Platform": "apple",
-          "Url":
-            "https://itunes.apple.com/album/heavens-to-elizabeth-single/1239637766?app=music"
+          "Url": "https://itunes.apple.com/album/heavens-to-elizabeth-single/1239637766?app=music"
         },
         {
           "Platform": "tidal",
@@ -106,14 +94,12 @@
         }
       ],
       "Artist": {
-        "Url":
-          "https://open.spotify.com/artist/59s4iD384WECjyZyUmZ18G?si=YB4Ap1yuQHmQgOue6MrSTQ",
+        "Url": "https://open.spotify.com/artist/59s4iD384WECjyZyUmZ18G?si=YB4Ap1yuQHmQgOue6MrSTQ",
         "Name": "Viii"
       },
       "IsActive": "y",
       "ProductionType": "studio",
-      "Description":
-        "<p>Heavens to Elizabeth is a special single release for New Zealand Music Month 2017 and is a cover of a song originally performed by New Zealand band, <em>Hanging Tree</em>, which was Viii's dad's band during the '80s and '90s.</p>",
+      "Description": "<p>Heavens to Elizabeth is a special single release for New Zealand Music Month 2017 and is a cover of a song originally performed by New Zealand band, <em>Hanging Tree</em>, which was Viii's dad's band during the '80s and '90s.</p>",
       "Type": "single",
       "Tracklist": [
         [
@@ -121,22 +107,19 @@
             "Title": "Heavens to Elizabeth",
             "Genre": "Goth/Rock",
             "Length": "3:43",
-            "Url":
-              "https://open.spotify.com/track/7zA0G6tBfguylDSpHv22Li?si=sY93kYH3R9e4TUiLoyVccA"
+            "Url": "https://open.spotify.com/track/7zA0G6tBfguylDSpHv22Li?si=sY93kYH3R9e4TUiLoyVccA"
           },
           {
             "Title": "Heavens to Elizabeth (instrumental)",
             "Genre": "Goth/Rock",
             "Length": "3:43",
-            "Url":
-              "https://open.spotify.com/track/669NbzSzgTeYV8uIFb0Lsk?si=uJZLzLK7Qqie8S4FUgIAiA"
+            "Url": "https://open.spotify.com/track/669NbzSzgTeYV8uIFb0Lsk?si=uJZLzLK7Qqie8S4FUgIAiA"
           },
           {
             "Title": "Heavens to Elizabeth (acapella)",
             "Genre": "Goth/Rock",
             "Length": "3:43",
-            "Url":
-              "https://open.spotify.com/track/6ATQSWNf1rOStOLEIhXyG1?si=CCX1s3DXQVCilbcY8HFEFg"
+            "Url": "https://open.spotify.com/track/6ATQSWNf1rOStOLEIhXyG1?si=CCX1s3DXQVCilbcY8HFEFg"
           }
         ]
       ],
@@ -146,8 +129,7 @@
       "BuyList": [
         {
           "Platform": "itunes",
-          "Url":
-            "https://itunes.apple.com/album/heavens-to-elizabeth-single/1239637766?app=itunes"
+          "Url": "https://itunes.apple.com/album/heavens-to-elizabeth-single/1239637766?app=itunes"
         },
         {
           "Platform": "amazon",
@@ -155,16 +137,14 @@
         },
         {
           "Platform": "google",
-          "Url":
-            "https://play.google.com/store/music/album/Viii_Heavens_to_Elizabeth?id=Bb3w2adswh3kleagc3j4b2jm5ai"
+          "Url": "https://play.google.com/store/music/album/Viii_Heavens_to_Elizabeth?id=Bb3w2adswh3kleagc3j4b2jm5ai"
         }
       ],
       "ReleasedOn": "2017-05-16",
       "Slug": "heavens-to-elizabeth",
       "Images": [
         {
-          "ImageUrl":
-            "https://s3.amazonaws.com/mynameisviii-static/releases/heavens-to-elizabeth.jpg",
+          "ImageUrl": "https://s3.amazonaws.com/mynameisviii-static/releases/heavens-to-elizabeth.jpg",
           "Title": "Front cover"
         }
       ],
@@ -174,13 +154,11 @@
       "StreamList": [
         {
           "Platform": "spotify",
-          "Url":
-            "https://open.spotify.com/album/6fbHaC5ZfURKLK2RnsQ4fE?si=uqjbJD34TO6q6yI-J7VDLw"
+          "Url": "https://open.spotify.com/album/6fbHaC5ZfURKLK2RnsQ4fE?si=uqjbJD34TO6q6yI-J7VDLw"
         },
         {
           "Platform": "apple",
-          "Url":
-            "https://itunes.apple.com/album/witchlust-rev-22-20-single/1234497036?app=music"
+          "Url": "https://itunes.apple.com/album/witchlust-rev-22-20-single/1234497036?app=music"
         },
         {
           "Platform": "tidal",
@@ -192,14 +170,12 @@
         }
       ],
       "Artist": {
-        "Url":
-          "https://open.spotify.com/artist/59s4iD384WECjyZyUmZ18G?si=YB4Ap1yuQHmQgOue6MrSTQ",
+        "Url": "https://open.spotify.com/artist/59s4iD384WECjyZyUmZ18G?si=YB4Ap1yuQHmQgOue6MrSTQ",
         "Name": "Viii"
       },
       "IsActive": "y",
       "ProductionType": "studio",
-      "Description":
-        "<p>Witchlust is the second single from the EP \n<em>Heart</em>.</p><p>It also includes the \nB-side <em>Rev 22:20</em>, originally performed by Puscifer.</p>",
+      "Description": "<p>Witchlust is the second single from the EP \n<em>Heart</em>.</p><p>It also includes the \nB-side <em>Rev 22:20</em>, originally performed by Puscifer.</p>",
       "Type": "single",
       "Tracklist": [
         [
@@ -207,15 +183,13 @@
             "Title": "witchlust",
             "Genre": "Goth/Electronic",
             "Length": "4:20",
-            "Url":
-              "https://open.spotify.com/track/61mQhOtbjBiHsqYV1nKuXp?si=98fIe33TR1GnAi57AXHyTg"
+            "Url": "https://open.spotify.com/track/61mQhOtbjBiHsqYV1nKuXp?si=98fIe33TR1GnAi57AXHyTg"
           },
           {
             "Title": "rev 22:20",
             "Genre": "Goth/Rock",
             "Length": "4:34",
-            "Url":
-              "https://open.spotify.com/track/2g8wFx8tdzxy5pZSIQXxeq?si=tSD9qyyHQceVjH2YHr0Nzg"
+            "Url": "https://open.spotify.com/track/2g8wFx8tdzxy5pZSIQXxeq?si=tSD9qyyHQceVjH2YHr0Nzg"
           }
         ]
       ],
@@ -225,8 +199,7 @@
       "BuyList": [
         {
           "Platform": "itunes",
-          "Url":
-            "https://itunes.apple.com/album/witchlust-rev-22-20-single/1234497036?app=itunes"
+          "Url": "https://itunes.apple.com/album/witchlust-rev-22-20-single/1234497036?app=itunes"
         },
         {
           "Platform": "amazon",
@@ -234,8 +207,7 @@
         },
         {
           "Platform": "google",
-          "Url":
-            "https://play.google.com/store/music/album/Viii_Witchlust_Rev_22_20?id=Bwhdvl7kw7vml4t7p2dxes35c5m"
+          "Url": "https://play.google.com/store/music/album/Viii_Witchlust_Rev_22_20?id=Bwhdvl7kw7vml4t7p2dxes35c5m"
         }
       ],
       "ReleasedOn": "2017-06-02",
@@ -243,8 +215,7 @@
       "Images": [
         {
           "Title": "Front cover",
-          "ImageUrl":
-            "https://s3.amazonaws.com/mynameisviii-static/releases/witchlust-rev-22-20.jpg"
+          "ImageUrl": "https://s3.amazonaws.com/mynameisviii-static/releases/witchlust-rev-22-20.jpg"
         }
       ],
       "Length": "8:54"
@@ -253,13 +224,11 @@
       "StreamList": [
         {
           "Platform": "spotify",
-          "Url":
-            "https://open.spotify.com/album/1MTER9T2ct9xbVlrA0ulXb?si=w_fVj3OCSsWN37WVX63Zcw"
+          "Url": "https://open.spotify.com/album/1MTER9T2ct9xbVlrA0ulXb?si=w_fVj3OCSsWN37WVX63Zcw"
         },
         {
           "Platform": "apple",
-          "Url":
-            "https://itunes.apple.com/album/threadfear-ask-me-to-stay-single/1293959453?app=music"
+          "Url": "https://itunes.apple.com/album/threadfear-ask-me-to-stay-single/1293959453?app=music"
         },
         {
           "Platform": "tidal",
@@ -271,14 +240,12 @@
         }
       ],
       "Artist": {
-        "Url":
-          "https://open.spotify.com/artist/59s4iD384WECjyZyUmZ18G?si=YB4Ap1yuQHmQgOue6MrSTQ",
+        "Url": "https://open.spotify.com/artist/59s4iD384WECjyZyUmZ18G?si=YB4Ap1yuQHmQgOue6MrSTQ",
         "Name": "Viii"
       },
       "IsActive": "y",
       "ProductionType": "studio",
-      "Description":
-        "<p>Threadfear is the third single from the EP <em>Heart</em>.</p><p>It also includes the B-side <em>Ask Me To Stay</em>, originally performed by Etta Bond × Raf Riley.</p>",
+      "Description": "<p>Threadfear is the third single from the EP <em>Heart</em>.</p><p>It also includes the B-side <em>Ask Me To Stay</em>, originally performed by Etta Bond × Raf Riley.</p>",
       "Type": "single",
       "Tracklist": [
         [
@@ -286,15 +253,13 @@
             "Title": "threadfear",
             "Genre": "Goth/Rock",
             "Length": "4:28",
-            "Url":
-              "https://open.spotify.com/track/53CVbs2ydKXbABXWx2YRAd?si=-quitLDNSFmn86L6SrSvkg"
+            "Url": "https://open.spotify.com/track/53CVbs2ydKXbABXWx2YRAd?si=-quitLDNSFmn86L6SrSvkg"
           },
           {
             "Title": "ask me to stay",
             "Genre": "Goth/Rock",
             "Length": "5:13",
-            "Url":
-              "https://open.spotify.com/track/4taN7Jl9SxfBv927qConv0?si=xjq8CmSgThCtaF8gPabvHw"
+            "Url": "https://open.spotify.com/track/4taN7Jl9SxfBv927qConv0?si=xjq8CmSgThCtaF8gPabvHw"
           }
         ]
       ],
@@ -304,8 +269,7 @@
       "BuyList": [
         {
           "Platform": "itunes",
-          "Url":
-            "https://itunes.apple.com/album/threadfear-ask-me-to-stay-single/1293959453?app=itunes"
+          "Url": "https://itunes.apple.com/album/threadfear-ask-me-to-stay-single/1293959453?app=itunes"
         },
         {
           "Platform": "amazon",
@@ -313,16 +277,14 @@
         },
         {
           "Platform": "google",
-          "Url":
-            "https://play.google.com/store/music/album/Viii_Threadfear_Ask_Me_to_Stay?id=Ba32b4bey2go76nmrjgw5u7ihna"
+          "Url": "https://play.google.com/store/music/album/Viii_Threadfear_Ask_Me_to_Stay?id=Ba32b4bey2go76nmrjgw5u7ihna"
         }
       ],
       "ReleasedOn": "2017-11-03",
       "Slug": "threadfear-ask-me-to-stay",
       "Images": [
         {
-          "ImageUrl":
-            "https://s3.amazonaws.com/mynameisviii-static/releases/threadfear-ask-me-to-stay.jpg",
+          "ImageUrl": "https://s3.amazonaws.com/mynameisviii-static/releases/threadfear-ask-me-to-stay.jpg",
           "Title": "Front cover"
         }
       ],

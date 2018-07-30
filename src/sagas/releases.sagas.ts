@@ -8,17 +8,17 @@ import * as selectors from "../selectors/root.selectors";
 export const fetchReleasesSaga = (ports: IStorePorts) =>
   function*() {
     yield takeLatest(actions.fetchReleases.started, function*() {
-      const res = yield call(ports.api.fetchReleases);
+      const response = yield call(ports.api.fetchReleases);
 
-      if (res.ok) {
+      if (response.ok) {
         const result = {
-          ...res.data,
-          items: arrayToAssoc(res.data.items, "slug")
+          ...response.data,
+          items: arrayToAssoc(response.data.items, "slug")
         };
         yield put(actions.fetchReleases.done({ result, params: {} }));
       } else {
         yield put(
-          actions.fetchReleases.failed({ error: res.message, params: {} })
+          actions.fetchReleases.failed({ error: response.message, params: {} })
         );
       }
     });
@@ -30,16 +30,16 @@ export const fetchMoreReleasesSaga = (ports: IStorePorts) =>
       const lastEvaluatedKey = yield select(
         selectors.getReleasesLastEvaluatedKeyAsString
       );
-      const res = yield call(
+      const response = yield call(
         ports.api.fetchReleases,
         undefined,
         lastEvaluatedKey
       );
 
-      if (res.ok) {
+      if (response.ok) {
         const result = {
-          ...res.data,
-          items: arrayToAssoc(res.data.items, "slug")
+          ...response.data,
+          items: arrayToAssoc(response.data.items, "slug")
         };
         yield put(actions.fetchMoreReleases.done({ result, params: {} }));
 
@@ -52,7 +52,10 @@ export const fetchMoreReleasesSaga = (ports: IStorePorts) =>
         );
       } else {
         yield put(
-          actions.fetchMoreReleases.failed({ error: res.message, params: {} })
+          actions.fetchMoreReleases.failed({
+            error: response.message,
+            params: {}
+          })
         );
       }
     });
@@ -66,19 +69,19 @@ export const fetchReleaseBySlugSaga = (ports: IStorePorts) =>
       payload: PLFetchReleaseBySlugStarted;
       type: string;
     }) {
-      const res = yield call(ports.api.fetchReleaseBySlug, payload);
+      const response = yield call(ports.api.fetchReleaseBySlug, payload);
 
-      if (res.ok) {
+      if (response.ok) {
         yield put(
           actions.fetchReleaseBySlug.done({
             params: payload,
-            result: res.data
+            result: response.data
           })
         );
       } else {
         yield put(
           actions.fetchReleaseBySlug.failed({
-            error: tryParseJson(res.message),
+            error: tryParseJson(response.message),
             params: payload
           })
         );

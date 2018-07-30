@@ -2,15 +2,15 @@ import transformNewsArticle from "../../transformers/transformNewsArticle";
 
 export default (request: any) => async (slug: string) => {
   try {
-    const res = await request({ url: `/news/${slug}` });
+    const response = await request({ url: `/news/${slug}` });
 
     return {
-      data: transformNewsArticle(res),
+      data: transformNewsArticle(response),
       ok: true
     };
-  } catch (err) {
+  } catch (error) {
     return {
-      message: err.message,
+      message: error.message,
       ok: false
     };
   }

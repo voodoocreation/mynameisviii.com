@@ -8,21 +8,21 @@ export default (request: any) => async (
   exclusiveStartKey?: string
 ) => {
   try {
-    const res = await request({
+    const response = await request({
       params: { exclusiveStartKey, limit },
       url: `/news/find`
     });
 
     return {
       data: {
-        ...res,
-        items: transformLatestNews(res.items)
+        ...response,
+        items: transformLatestNews(response.items)
       },
       ok: true
     };
-  } catch (err) {
+  } catch (error) {
     return {
-      message: err.message,
+      message: error.message,
       ok: false
     };
   }

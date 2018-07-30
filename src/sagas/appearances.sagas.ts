@@ -5,20 +5,37 @@ import { arrayToAssoc, tryParseJson } from "../transformers/transformData";
 import * as actions from "../actions/root.actions";
 import * as selectors from "../selectors/root.selectors";
 
+const geocode = (geocoder: any, params: any) =>
+  new Promise((resolve, reject) => {
+    try {
+      geocoder.geocode(
+        params,
+        (response: IGeocoderResult[], status: string) => {
+          resolve({ results: response, status });
+        }
+      );
+    } catch (error) {
+      reject(error);
+    }
+  });
+
 export const fetchAppearancesSaga = (ports: IStorePorts) =>
   function*() {
     yield takeLatest(actions.fetchAppearances.started, function*() {
-      const res = yield call(ports.api.fetchAppearances);
+      const response = yield call(ports.api.fetchAppearances);
 
-      if (res.ok) {
+      if (response.ok) {
         const result = {
-          ...res.data,
-          items: arrayToAssoc(res.data.items, "slug")
+          ...response.data,
+          items: arrayToAssoc(response.data.items, "slug")
         };
         yield put(actions.fetchAppearances.done({ result, params: {} }));
       } else {
         yield put(
-          actions.fetchAppearances.failed({ error: res.message, params: {} })
+          actions.fetchAppearances.failed({
+            error: response.message,
+            params: {}
+          })
         );
       }
     });
@@ -30,16 +47,16 @@ export const fetchMoreAppearancesSaga = (ports: IStorePorts) =>
       const lastEvaluatedKey = yield select(
         selectors.getAppearancesLastEvaluatedKeyAsString
       );
-      const res = yield call(
+      const response = yield call(
         ports.api.fetchAppearances,
         undefined,
         lastEvaluatedKey
       );
 
-      if (res.ok) {
+      if (response.ok) {
         const result = {
-          ...res.data,
-          items: arrayToAssoc(res.data.items, "slug")
+          ...response.data,
+          items: arrayToAssoc(response.data.items, "slug")
         };
         yield put(actions.fetchMoreAppearances.done({ result, params: {} }));
 
@@ -53,7 +70,7 @@ export const fetchMoreAppearancesSaga = (ports: IStorePorts) =>
       } else {
         yield put(
           actions.fetchMoreAppearances.failed({
-            error: res.message,
+            error: response.message,
             params: {}
           })
         );
@@ -69,19 +86,19 @@ export const fetchAppearanceBySlugSaga = (ports: IStorePorts) =>
       payload: PLFetchAppearanceBySlugStarted;
       type: string;
     }) {
-      const res = yield call(ports.api.fetchAppearanceBySlug, payload);
+      const response = yield call(ports.api.fetchAppearanceBySlug, payload);
 
-      if (res.ok) {
+      if (response.ok) {
         yield put(
           actions.fetchAppearanceBySlug.done({
             params: payload,
-            result: res.data
+            result: response.data
           })
         );
       } else {
         yield put(
           actions.fetchAppearanceBySlug.failed({
-            error: tryParseJson(res.message),
+            error: tryParseJson(response.message),
             params: payload
           })
         );
@@ -105,26 +122,12 @@ export const geocodeCurrentAppearanceAddressSaga = (ports: IStorePorts) =>
             })
           );
         } else {
-          const geocoder = new ports.maps.Geocoder();
-
-          const geocode = (params: any) =>
-            new Promise((resolve, reject) => {
-              try {
-                geocoder.geocode(
-                  params,
-                  (res: IGeocoderResult[], stat: string) => {
-                    resolve({ results: res, status: stat });
-                  }
-                );
-              } catch (error) {
-                reject(error);
-              }
-            });
-
           try {
-            const { results, status } = yield call(geocode, {
-              address: `${name}, ${address}`
-            });
+            const { results, status } = yield call(
+              geocode,
+              new ports.maps.Geocoder(),
+              { address: `${name}, ${address}` }
+            );
 
             if (status === ports.maps.GeocoderStatus.OK && results.length > 0) {
               const { location } = results[0].geometry;

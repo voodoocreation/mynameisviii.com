@@ -2,44 +2,36 @@
   "Items": [
     {
       "Audience": "18+",
-      "Description":
-        "This is nothing but a test gig. It's not a real event or anything, so don't come.",
+      "Description": "This is nothing but a test gig. It's not a real event or anything, so don't come.",
       "FinishingAt": "2018-10-21T01:00:00",
       "Images": [
         {
-          "ImageUrl":
-            "https://scontent-syd2-1.cdninstagram.com/vp/54127bb2824cd7fdc53b16529d2cbf66/5B9DCAA5/t51.2885-15/s640x640/sh0.08/e35/22071123_377597075993359_300443987536248832_n.jpg",
+          "ImageUrl": "https://scontent-syd2-1.cdninstagram.com/vp/54127bb2824cd7fdc53b16529d2cbf66/5B9DCAA5/t51.2885-15/s640x640/sh0.08/e35/22071123_377597075993359_300443987536248832_n.jpg",
           "Title": "Test"
         },
         {
-          "ImageUrl":
-            "https://scontent-syd2-1.cdninstagram.com/vp/6948ffd2ec1841a230fd4a2951d9682b/5BB16229/t51.2885-15/s640x640/sh0.08/e35/22071185_120049202025917_3641908262988677120_n.jpg",
+          "ImageUrl": "https://scontent-syd2-1.cdninstagram.com/vp/6948ffd2ec1841a230fd4a2951d9682b/5BB16229/t51.2885-15/s640x640/sh0.08/e35/22071185_120049202025917_3641908262988677120_n.jpg",
           "Title": "Test 2"
         },
         {
-          "ImageUrl":
-            "https://scontent-syd2-1.cdninstagram.com/vp/ca18e3e0d39573400c30b9f0fffac979/5B9E448A/t51.2885-15/s640x640/sh0.08/e35/21985087_1131650620300022_6079660459575738368_n.jpg",
+          "ImageUrl": "https://scontent-syd2-1.cdninstagram.com/vp/ca18e3e0d39573400c30b9f0fffac979/5B9E448A/t51.2885-15/s640x640/sh0.08/e35/21985087_1131650620300022_6079660459575738368_n.jpg",
           "Title": "Test 3"
         },
         {
-          "ImageUrl":
-            "https://scontent-syd2-1.cdninstagram.com/vp/3d5a511d89df625d3aedf6a39d62b734/5BA72356/t51.2885-15/e35/28429228_1781197762175359_1584060036995350528_n.jpg",
+          "ImageUrl": "https://scontent-syd2-1.cdninstagram.com/vp/3d5a511d89df625d3aedf6a39d62b734/5BA72356/t51.2885-15/e35/28429228_1781197762175359_1584060036995350528_n.jpg",
           "Title": "Test 4"
         }
       ],
-      "ImageUrl":
-        "https://s3.amazonaws.com/mynameisviii-static/appearances/nothing-but-a-test-gig-2018-10-20.jpg",
+      "ImageUrl": "https://s3.amazonaws.com/mynameisviii-static/appearances/nothing-but-a-test-gig-2018-10-20.jpg",
       "IsActive": "y",
       "Location": {
         "Address": "9 Edward Street, Te Aro, Wellington 6011",
         "Name": "Meow",
         "Type": "MusicVenue"
       },
-      "OgImageUrl":
-        "https://s3.amazonaws.com/mynameisviii-static/appearances/og/nothing-but-a-test-gig-2018-10-20.jpg",
+      "OgImageUrl": "https://s3.amazonaws.com/mynameisviii-static/appearances/og/nothing-but-a-test-gig-2018-10-20.jpg",
       "Organizer": {
-        "Logo":
-          "https://s3.amazonaws.com/mynameisviii-static/voodoo-creation-records-logo.png",
+        "Logo": "https://s3.amazonaws.com/mynameisviii-static/voodoo-creation-records-logo.png",
         "Name": "Voodoo Creation Records",
         "Type": "Organization"
       },
@@ -48,8 +40,7 @@
           "Name": "Viii",
           "Type": "MusicGroup",
           "Genre": "Goth/Electronic",
-          "ImageUrl":
-            "https://s3.amazonaws.com/mynameisviii-static/viii-profile.jpg",
+          "ImageUrl": "https://s3.amazonaws.com/mynameisviii-static/viii-profile.jpg",
           "Location": {
             "Type": "City",
             "Name": "Wellington"
@@ -82,23 +73,19 @@
     },
     {
       "Audience": "18+",
-      "Description":
-        "This is nothing but a test gig. It's not a real event or anything, so don't come.",
+      "Description": "This is nothing but a test gig. It's not a real event or anything, so don't come.",
       "FinishingAt": "2018-10-21T01:00:00",
       "Images": [],
-      "ImageUrl":
-        "https://s3.amazonaws.com/mynameisviii-static/appearances/nothing-but-a-test-gig-2018-10-20.jpg",
+      "ImageUrl": "https://s3.amazonaws.com/mynameisviii-static/appearances/nothing-but-a-test-gig-2018-10-20.jpg",
       "IsActive": "y",
       "Location": {
         "Address": "9 Edward Street, Te Aro, Wellington 6011",
         "Name": "Meow",
         "Type": "MusicVenue"
       },
-      "OgImageUrl":
-        "https://s3.amazonaws.com/mynameisviii-static/appearances/og/nothing-but-a-test-gig-2018-10-20.jpg",
+      "OgImageUrl": "https://s3.amazonaws.com/mynameisviii-static/appearances/og/nothing-but-a-test-gig-2018-10-20.jpg",
       "Organizer": {
-        "Logo":
-          "https://s3.amazonaws.com/mynameisviii-static/voodoo-creation-records-logo.png",
+        "Logo": "https://s3.amazonaws.com/mynameisviii-static/voodoo-creation-records-logo.png",
         "Name": "Voodoo Creation Records",
         "Type": "Organization"
       },
@@ -107,8 +94,7 @@
           "Name": "Viii",
           "Type": "MusicGroup",
           "Genre": "Goth/Electronic",
-          "ImageUrl":
-            "https://s3.amazonaws.com/mynameisviii-static/viii-profile.jpg",
+          "ImageUrl": "https://s3.amazonaws.com/mynameisviii-static/viii-profile.jpg",
           "Location": {
             "Type": "City",
             "Name": "Wellington"
@@ -133,23 +119,19 @@
     },
     {
       "Audience": "All ages",
-      "Description":
-        "This is nothing but a test gig. It's not a real event or anything, so don't come.",
+      "Description": "This is nothing but a test gig. It's not a real event or anything, so don't come.",
       "FinishingAt": "2018-01-21T01:00:00",
       "Images": [],
-      "ImageUrl":
-        "https://s3.amazonaws.com/mynameisviii-static/appearances/nothing-but-a-test-gig-2018-10-20.jpg",
+      "ImageUrl": "https://s3.amazonaws.com/mynameisviii-static/appearances/nothing-but-a-test-gig-2018-10-20.jpg",
       "IsActive": "y",
       "Location": {
         "Address": "9 Edward Street, Te Aro, Wellington 6011",
         "Name": "Meow",
         "Type": "MusicVenue"
       },
-      "OgImageUrl":
-        "https://s3.amazonaws.com/mynameisviii-static/appearances/og/nothing-but-a-test-gig-2018-10-20.jpg",
+      "OgImageUrl": "https://s3.amazonaws.com/mynameisviii-static/appearances/og/nothing-but-a-test-gig-2018-10-20.jpg",
       "Organizer": {
-        "Logo":
-          "https://s3.amazonaws.com/mynameisviii-static/voodoo-creation-records-logo.png",
+        "Logo": "https://s3.amazonaws.com/mynameisviii-static/voodoo-creation-records-logo.png",
         "Name": "Voodoo Creation Records",
         "Type": "Organization"
       },
@@ -158,8 +140,7 @@
           "Name": "Viii",
           "Type": "MusicGroup",
           "Genre": "Goth/Electronic",
-          "ImageUrl":
-            "https://s3.amazonaws.com/mynameisviii-static/viii-profile.jpg",
+          "ImageUrl": "https://s3.amazonaws.com/mynameisviii-static/viii-profile.jpg",
           "Location": {
             "Type": "City",
             "Name": "Wellington"

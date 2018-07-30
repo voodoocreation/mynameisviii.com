@@ -2,15 +2,15 @@ import transformRelease from "../../transformers/transformRelease";
 
 export default (request: any) => async (slug: string) => {
   try {
-    const res = await request({ url: `/releases/${slug}` });
+    const response = await request({ url: `/releases/${slug}` });
 
     return {
-      data: transformRelease(res),
+      data: transformRelease(response),
       ok: true
     };
-  } catch (err) {
+  } catch (error) {
     return {
-      message: err.message,
+      message: error.message,
       ok: false
     };
   }
