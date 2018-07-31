@@ -52,6 +52,7 @@ describe("[presentation] <AppearanceListing />", () => {
 
   it("renders correctly with minimum props", () => {
     const { actual } = setup(render);
+
     expect(actual).toMatchSnapshot();
   });
 
@@ -59,6 +60,8 @@ describe("[presentation] <AppearanceListing />", () => {
     const { actual } = setup(render, {
       status: "EventCancelled"
     });
+
+    expect(actual.hasClass("isCancelled")).toBe(true);
     expect(actual).toMatchSnapshot();
   });
 
@@ -66,6 +69,8 @@ describe("[presentation] <AppearanceListing />", () => {
     const { actual } = setup(render, {
       status: "EventPostponed"
     });
+
+    expect(actual.hasClass("isPostponed")).toBe(true);
     expect(actual).toMatchSnapshot();
   });
 

@@ -1,4 +1,5 @@
 import { mount, render } from "enzyme";
+import moment from "moment";
 import * as React from "react";
 
 import Appearance from "./Appearance";
@@ -50,6 +51,7 @@ describe("[presentation] <Appearance />", () => {
 
   it("renders correctly with minimum props", () => {
     const { actual } = setup(render);
+
     expect(actual).toMatchSnapshot();
   });
 
@@ -57,6 +59,9 @@ describe("[presentation] <Appearance />", () => {
     const { actual } = setup(render, {
       status: "EventCancelled"
     });
+
+    expect(actual.hasClass("isCancelled")).toBe(true);
+    expect(actual.find(".Appearance-tickets")).toHaveLength(0);
     expect(actual).toMatchSnapshot();
   });
 
@@ -64,6 +69,21 @@ describe("[presentation] <Appearance />", () => {
     const { actual } = setup(render, {
       status: "EventPostponed"
     });
+
+    expect(actual.hasClass("isPostponed")).toBe(true);
+    expect(actual.find(".Appearance-tickets")).toHaveLength(0);
+    expect(actual).toMatchSnapshot();
+  });
+
+  it("renders correctly when finishingAt < now", () => {
+    const { actual } = setup(render, {
+      finishingAt: moment()
+        .subtract(1, "days")
+        .toISOString()
+    });
+
+    expect(actual.hasClass("isFinished")).toBe(true);
+    expect(actual.find(".Appearance-tickets")).toHaveLength(0);
     expect(actual).toMatchSnapshot();
   });
 

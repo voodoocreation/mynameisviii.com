@@ -36,6 +36,7 @@ describe("[presentation] <ActListing />", () => {
 
   it("renders correctly", () => {
     const { actual } = setup(render);
+
     expect(actual).toMatchSnapshot();
   });
 

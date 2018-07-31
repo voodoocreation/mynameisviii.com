@@ -27,6 +27,7 @@ const setup = (fn: any, fromTestProps?: any) => {
 describe("[presentation] <Portal />", () => {
   beforeEach(() => {
     g.isServer = false;
+    document.body.innerHTML = "";
   });
 
   it("renders correctly on the client", () => {

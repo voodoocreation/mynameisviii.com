@@ -62,9 +62,6 @@ exports[`[containers] <Shell /> renders correctly 1`] = `
     class="Page-body"
     role="main"
   />
-  <div
-    class="Portal"
-  />
 </article>
 `;
 
@@ -142,8 +139,5 @@ exports[`[containers] <Shell /> renders correctly when loading 1`] = `
       </div>
     </span>
   </main>
-  <div
-    class="Portal"
-  />
 </article>
 `;

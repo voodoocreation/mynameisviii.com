@@ -57,6 +57,7 @@ describe("[presentation] <Release />", () => {
 
   it("renders correctly with minimum props", () => {
     const { actual } = setup(render);
+
     expect(actual).toMatchSnapshot();
   });
 
@@ -105,41 +106,49 @@ describe("[presentation] <Release />", () => {
         ]
       ]
     });
+
     expect(actual).toMatchSnapshot();
   });
 
   it("renders correctly when productionType=compilation", () => {
     const { actual } = setup(render, { productionType: "compilation" });
+
     expect(actual).toMatchSnapshot();
   });
 
   it("renders correctly when productionType=demo", () => {
     const { actual } = setup(render, { productionType: "demo" });
+
     expect(actual).toMatchSnapshot();
   });
 
   it("renders correctly when productionType=live", () => {
     const { actual } = setup(render, { productionType: "live" });
+
     expect(actual).toMatchSnapshot();
   });
 
   it("renders correctly when productionType=remix", () => {
     const { actual } = setup(render, { productionType: "remix" });
+
     expect(actual).toMatchSnapshot();
   });
 
   it("renders correctly when productionType=soundtrack", () => {
     const { actual } = setup(render, { productionType: "soundtrack" });
+
     expect(actual).toMatchSnapshot();
   });
 
   it("renders correctly when type=ep", () => {
     const { actual } = setup(render, { type: "ep" });
+
     expect(actual).toMatchSnapshot();
   });
 
   it("renders correctly when type=single", () => {
     const { actual } = setup(render, { type: "single" });
+
     expect(actual).toMatchSnapshot();
   });
 

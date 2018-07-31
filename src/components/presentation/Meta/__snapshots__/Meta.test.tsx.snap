@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[presentation] <Meta /> renders correctly with minimum props 1`] = `
+exports[`[presentation] <Meta /> renders correctly with \`label\` prop 1`] = `
 <div
   class="Meta TestMeta"
 >
@@ -9,6 +9,28 @@ exports[`[presentation] <Meta /> renders correctly with minimum props 1`] = `
     class="Meta-label"
   >
     Test label:
+  </span>
+   
+  <span
+    class="Meta-value"
+  >
+    Meta value
+  </span>
+</div>
+`;
+
+exports[`[presentation] <Meta /> renders correctly with \`labelConstant\` prop 1`] = `
+<div
+  class="Meta TestMeta"
+>
+   
+  <span
+    class="Meta-label"
+  >
+    <span>
+      Genre
+    </span>
+    :
   </span>
    
   <span

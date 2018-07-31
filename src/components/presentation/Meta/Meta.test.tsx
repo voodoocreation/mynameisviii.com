@@ -6,7 +6,6 @@ import Meta from "./Meta";
 const setup = (fn: any, fromTestProps?: any) => {
   const props = {
     className: "TestMeta",
-    label: "Test label",
     ...fromTestProps
   };
 
@@ -17,8 +16,14 @@ const setup = (fn: any, fromTestProps?: any) => {
 };
 
 describe("[presentation] <Meta />", () => {
-  it("renders correctly with minimum props", () => {
-    const { actual } = setup(render);
+  it("renders correctly with `label` prop", () => {
+    const { actual } = setup(render, { label: "Test label" });
+
+    expect(actual).toMatchSnapshot();
+  });
+
+  it("renders correctly with `labelConstant` prop", () => {
+    const { actual } = setup(render, { labelConstant: "GENRE" });
 
     expect(actual).toMatchSnapshot();
   });

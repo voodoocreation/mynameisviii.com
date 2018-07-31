@@ -35,6 +35,7 @@ describe("[containers] <Navigation />", () => {
     button.simulate("click");
     expect(store.getState().page.isNavOpen).toBe(true);
     expect(actual.find(".isOpen")).toHaveLength(1);
+
     button.simulate("click");
     expect(store.getState().page.isNavOpen).toBe(false);
     expect(actual.find(".isOpen")).toHaveLength(0);

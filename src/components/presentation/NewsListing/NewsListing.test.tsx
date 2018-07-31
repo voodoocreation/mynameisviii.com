@@ -33,11 +33,13 @@ describe("[presentation] <NewsListing />", () => {
 
   it("renders correctly", () => {
     const { actual } = setup(render);
+
     expect(actual).toMatchSnapshot();
   });
 
   it("renders correctly when `isCondensed` prop is true", () => {
     const { actual } = setup(render, { isCondensed: true });
+
     expect(actual).toMatchSnapshot();
   });
 

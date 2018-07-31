@@ -22,21 +22,15 @@ export default class Portal extends React.Component<IProps> {
         this.container.classList.add(this.props.className);
       }
 
-      const portal = document.querySelector(".Portal");
-
-      if (portal) {
-        portal.appendChild(this.container);
-      }
+      const portal = this.getPortalNode();
+      portal.appendChild(this.container);
     }
   }
 
   public componentWillUnmount() {
     if (!isServer() && this.container) {
-      const portal = document.querySelector(".Portal");
-
-      if (portal) {
-        portal.removeChild(this.container);
-      }
+      const portal = this.getPortalNode();
+      portal.removeChild(this.container);
     }
   }
 
@@ -47,4 +41,16 @@ export default class Portal extends React.Component<IProps> {
 
     return ReactDOM.createPortal(this.props.children, this.container);
   }
+
+  private getPortalNode = () => {
+    let portal = document.querySelector(".Portal");
+
+    if (!portal) {
+      portal = document.createElement("div");
+      portal.className = "Portal";
+      document.body.appendChild(portal);
+    }
+
+    return portal;
+  };
 }

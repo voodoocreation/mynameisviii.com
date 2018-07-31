@@ -10,8 +10,10 @@ exports[`[containers] <NavItem /> renders correctly when isSelected=true 1`] = `
 
 exports[`[containers] <NavItem /> renders correctly with minimum props 1`] = `
 <li>
-  <span>
+  <a
+    href="/"
+  >
     Test nav item
-  </span>
+  </a>
 </li>
 `;

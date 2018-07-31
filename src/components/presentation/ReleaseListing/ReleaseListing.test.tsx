@@ -57,6 +57,7 @@ describe("[presentation] <ReleaseListing />", () => {
 
   it("renders correctly with minimum props", () => {
     const { actual } = setup(render);
+
     expect(actual).toMatchSnapshot();
   });
 
@@ -105,6 +106,7 @@ describe("[presentation] <ReleaseListing />", () => {
         ]
       ]
     });
+
     expect(actual).toMatchSnapshot();
   });
 

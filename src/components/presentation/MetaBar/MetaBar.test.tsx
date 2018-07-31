@@ -18,11 +18,13 @@ const setup = (fn: any, fromTestProps?: any) => {
 describe("[presentation] <MetaBar />", () => {
   it("renders null without children", () => {
     const { actual } = setup(render);
+
     expect(actual).toMatchSnapshot();
   });
 
   it("renders correctly with children", () => {
     const { actual } = setup(render, { children: "Test meta bar" });
+
     expect(actual).toMatchSnapshot();
   });
 });

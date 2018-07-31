@@ -19,11 +19,13 @@ const setup = (fn: any, fromTestProps?: any) => {
 describe("[presentation] <Type />", () => {
   it("renders correctly with minimum props", () => {
     const { actual } = setup(render);
+
     expect(actual).toMatchSnapshot();
   });
 
   it("renders correctly without label", () => {
     const { actual } = setup(render, { hasLabel: false });
+
     expect(actual).toMatchSnapshot();
   });
 
@@ -34,6 +36,7 @@ describe("[presentation] <Type />", () => {
 
   it("renders correctly when value=appearance", () => {
     const { actual } = setup(render, { value: "appearance" });
+
     expect(actual).toMatchSnapshot();
   });
 });

@@ -5,6 +5,7 @@ import NavItem from "./NavItem";
 
 const setup = (fn: any, fromTestProps?: any) => {
   const props = {
+    href: "/",
     ...fromTestProps
   };
 
@@ -17,11 +18,16 @@ const setup = (fn: any, fromTestProps?: any) => {
 describe("[containers] <NavItem />", () => {
   it("renders correctly with minimum props", () => {
     const { actual } = setup(render);
+
+    expect(actual.find("a")).toHaveLength(1);
     expect(actual).toMatchSnapshot();
   });
 
   it("renders correctly when isSelected=true", () => {
     const { actual } = setup(render, { isSelected: true });
+
+    expect(actual.hasClass("isSelected")).toBe(true);
+    expect(actual.find("a")).toHaveLength(0);
     expect(actual).toMatchSnapshot();
   });
 

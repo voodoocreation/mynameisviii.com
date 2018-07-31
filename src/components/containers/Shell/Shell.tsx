@@ -46,8 +46,6 @@ class Shell extends React.Component<IProps> {
         <main className="Page-body" role="main">
           {isLoading ? <Loader /> : children}
         </main>
-
-        <div className="Portal" />
       </article>
     );
   }
