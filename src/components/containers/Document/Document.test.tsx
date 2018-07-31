@@ -9,7 +9,9 @@ const setup = async (fn: any, fromTestProps?: any) => {
     {
       __NEXT_DATA__: {
         assetPrefix: "/assets",
-        page: "/"
+        buildId: "buildId",
+        page: "/",
+        pathname: "pathname"
       },
       asPath: "",
       buildManifest: {

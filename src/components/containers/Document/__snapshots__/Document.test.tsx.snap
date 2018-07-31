@@ -4,17 +4,17 @@ exports[`[containers] <Document /> renders correctly when NODE_ENV=development 1
 Array [
   <link
     as="script"
-    href="/assets/_next/undefined/pageundefined.js"
+    href="/assets/_next/buildId/pagepathname.js"
     rel="preload"
   />,
   <link
     as="script"
-    href="/assets/_next/undefined/page/_app.js"
+    href="/assets/_next/buildId/page/_app.js"
     rel="preload"
   />,
   <link
     as="script"
-    href="/assets/_next/undefined/page/_error.js"
+    href="/assets/_next/buildId/page/_error.js"
     rel="preload"
   />,
   <link
@@ -136,17 +136,17 @@ exports[`[containers] <Document /> renders currectly when NODE_ENV=production 1`
 Array [
   <link
     as="script"
-    href="/assets/_next/undefined/pageundefined.js"
+    href="/assets/_next/buildId/pagepathname.js"
     rel="preload"
   />,
   <link
     as="script"
-    href="/assets/_next/undefined/page/_app.js"
+    href="/assets/_next/buildId/page/_app.js"
     rel="preload"
   />,
   <link
     as="script"
-    href="/assets/_next/undefined/page/_error.js"
+    href="/assets/_next/buildId/page/_error.js"
     rel="preload"
   />,
   <link
@@ -247,7 +247,7 @@ Array [
     rel="manifest"
   />,
   <link
-    href="/assets/main.css?undefined"
+    href="/assets/main.css?buildId"
     rel="stylesheet"
   />,
   <noscript>
