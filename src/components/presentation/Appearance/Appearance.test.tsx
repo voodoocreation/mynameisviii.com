@@ -77,8 +77,7 @@ describe("[presentation] <Appearance />", () => {
 
   it("renders correctly when finishingAt < now", () => {
     const { actual } = setup(render, {
-      finishingAt: moment()
-        .utc()
+      finishingAt: moment(new Date())
         .subtract(1, "days")
         .format('YYYY-MM-DDTHH:mm:ss')
     });

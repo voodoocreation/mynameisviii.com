@@ -91,10 +91,10 @@ exports[`[presentation] <Appearance /> renders correctly when finishingAt < now 
         –
         <time
           class="DateTime"
-          datetime="2017-12-30T11:00:00"
-          title="11:00 AM"
+          datetime="2017-12-31T00:00:00"
+          title="12:00 AM"
         >
-          11:00 AM
+          12:00 AM
         </time>
       </span>
     </div>
