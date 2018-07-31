@@ -48,7 +48,7 @@ const setup = async (fn: any, fromTestProps?: any) => {
 
 const g: any = global;
 
-describe("[app] App root", () => {
+describe("[containers] <App />", () => {
   beforeEach(() => {
     g.isServer = false;
     g.__NEXT_DATA__ = {

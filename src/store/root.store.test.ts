@@ -2,7 +2,7 @@ import createStore from "./root.store";
 
 const nodeEnv = process.env.NODE_ENV;
 
-describe("[store]", () => {
+describe("[store] Root store", () => {
   afterEach(() => {
     window.isServer = undefined;
     process.env.NODE_ENV = nodeEnv;
