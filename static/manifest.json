@@ -4,7 +4,8 @@
   "display": "minimal-ui",
   "theme_color": "#160f20",
   "background_color": "#160f20",
-  "description": "The official website of Viii - the artist, singer, songwriter, musician, producer and engineer.",
+  "description":
+    "The official website of Viii - the artist, singer, songwriter, musician, producer and engineer.",
   "icons": [
     {
       "src": "/static/favicon/android-chrome-192x192.png",
