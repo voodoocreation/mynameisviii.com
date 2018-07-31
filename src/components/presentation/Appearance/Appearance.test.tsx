@@ -78,8 +78,9 @@ describe("[presentation] <Appearance />", () => {
   it("renders correctly when finishingAt < now", () => {
     const { actual } = setup(render, {
       finishingAt: moment()
+        .utc()
         .subtract(1, "days")
-        .toISOString()
+        .format('YYYY-MM-DDTHH:mm:ss')
     });
 
     expect(actual.hasClass("isFinished")).toBe(true);
