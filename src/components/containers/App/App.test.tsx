@@ -4,13 +4,12 @@ import * as React from "react";
 
 import App from "./App";
 
-import * as actions from "../../../actions/root.actions";
-
 jest.mock("../../../../next.routes", () => ({
   Router: {
     route: ""
   }
 }));
+
 import routes from "../../../../next.routes";
 
 const setup = async (fn: any, fromTestProps?: any) => {
@@ -79,19 +78,13 @@ describe("[app] App root", () => {
     expect(actual.render()).toMatchSnapshot();
   });
 
-  it("unsubscribes from Redux store and adds `statusCode` to the response from the store", async () => {
-    const Component: any = () => <div className="PageComponent hasError" />;
-    Component.getInitialProps = async (props: any) => {
-      const { store } = props.ctx;
-      store.dispatch(actions.fetchLatestNews.failed({
-        error: { message: "Server error", status: 500 },
-        params: {}
-      }));
-    };
+  it("gets `initialProps` from component correctly", async () => {
+    const test = "Test";
+    const Component: any = () => <div className="PageComponent" />;
+    Component.getInitialProps = async () => ({ test });
+    const { props } = await setup(mount, { Component });
 
-    const { actual } = await setup(mount, { Component });
-
-    expect(actual.render()).toMatchSnapshot();
+    expect(props.initialProps.pageProps).toEqual({ test })
   });
 
   describe("router events", async () => {

@@ -20,8 +20,12 @@ import en from "react-intl/locale-data/en";
 
 addLocaleData([...en]);
 
+type NextPageComponent = React.ComponentType<any> & {
+  getInitialProps: (props: any) => any;
+};
+
 interface IProps extends AppComponentProps {
-  Component: any;
+  Component: NextPageComponent;
   ctx: Context & { store: any };
   intlProps: {
     locale: string;
