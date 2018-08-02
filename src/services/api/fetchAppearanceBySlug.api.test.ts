@@ -1,7 +1,7 @@
 import createMockHttpClient from "../../helpers/createMockHttpClient";
 import { tryParseJson } from "../../transformers/transformData";
 import { createPortsWith } from "../configureApi";
-import fetchAppearanceBySlug from "./fetchAppearanceBySlug";
+import { fetchAppearanceBySlug } from "./fetchAppearanceBySlug.api";
 
 describe("[api] fetchAppearanceBySlug()", () => {
   it("handles successful request correctly", async () => {

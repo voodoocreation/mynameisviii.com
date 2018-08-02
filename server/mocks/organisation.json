@@ -3,8 +3,7 @@
   "name": "Voodoo Creation Records",
   "logo": {
     "@type": "ImageObject",
-    "url":
-      "https://s3.amazonaws.com/mynameisviii-static/voodoo-creation-records-logo.png"
+    "url": "https://s3.amazonaws.com/mynameisviii-static/voodoo-creation-records-logo.png"
   },
   "email": "mgmt@mynameisviii.com"
 }

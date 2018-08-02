@@ -1,6 +1,6 @@
 import transformRelease from "../../transformers/transformRelease";
 
-export default (request: any) => async (slug: string) => {
+export const fetchReleaseBySlug = (request: any) => async (slug: string) => {
   try {
     const response = await request({ url: `/releases/${slug}` });
 

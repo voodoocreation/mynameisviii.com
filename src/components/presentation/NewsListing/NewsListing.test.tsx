@@ -40,6 +40,8 @@ describe("[presentation] <NewsListing />", () => {
   it("renders correctly when `isCondensed` prop is true", () => {
     const { actual } = setup(render, { isCondensed: true });
 
+    expect(actual.hasClass("isCondensed")).toBe(true);
+    expect(actual.find("h3")).toHaveLength(1);
     expect(actual).toMatchSnapshot();
   });
 

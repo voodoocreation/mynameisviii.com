@@ -77,28 +77,22 @@ class AppearancesRoute extends React.Component<IProps, IState> {
       </LoadButton>
     );
 
+    const pageTitle = formatMessage({ id: "APPEARANCES_TITLE" });
+    const pageDescription = formatMessage({ id: "APPEARANCES_DESCRIPTION" });
+
     return (
       <article className={cn("AppearancesRoute", { hasLoadedAllListings })}>
         <Head>
           <title>
-            {formatMessage({ id: "APPEARANCES_TITLE" })}
+            {pageTitle}
             {" · "}
             {formatMessage({ id: "BRAND_NAME" })}
           </title>
 
-          <meta
-            content={formatMessage({ id: "APPEARANCES_DESCRIPTION" })}
-            name="description"
-          />
+          <meta content={pageDescription} name="description" />
 
-          <meta
-            property="og:title"
-            content={formatMessage({ id: "APPEARANCES_TITLE" })}
-          />
-          <meta
-            property="og:description"
-            content={formatMessage({ id: "APPEARANCES_DESCRIPTION" })}
-          />
+          <meta property="og:title" content={pageTitle} />
+          <meta property="og:description" content={pageDescription} />
           <meta
             property="og:image"
             content="https://s3.amazonaws.com/mynameisviii-static/homepage-og.jpg"
@@ -107,9 +101,7 @@ class AppearancesRoute extends React.Component<IProps, IState> {
           <meta property="og:type" content="website" />
         </Head>
 
-        <PageHeader>
-          <FormattedMessage id="APPEARANCES_TITLE" />
-        </PageHeader>
+        <PageHeader>{pageTitle}</PageHeader>
 
         {upcomingAppearances.length > 0 ? (
           <section className="AppearanceListings AppearanceListings-upcoming">
@@ -143,8 +135,7 @@ class AppearancesRoute extends React.Component<IProps, IState> {
           </section>
         ) : null}
 
-        {hasAllAppearances &&
-        upcomingAppearances.length + pastAppearances.length === 0 ? (
+        {hasAllAppearances && appearancesCount === 0 ? (
           <NoResults>
             <p>
               <FormattedMessage id="NO_APPEARANCES" />

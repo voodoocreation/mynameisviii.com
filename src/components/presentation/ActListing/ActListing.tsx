@@ -28,12 +28,11 @@ export default class ActListing extends React.Component<IProps, IState> {
 
   public render() {
     const { onLoad, ...act } = this.props;
+    const { isRendered } = this.state;
 
     return (
-      <article
-        className={cn("ActListing", { isRendered: this.state.isRendered })}
-      >
-        <Link href={act.url} isExternal={true} className="ActListing-link">
+      <article className={cn("ActListing", { isRendered })}>
+        <Link className="ActListing-link" href={act.url} isExternal={true}>
           <div className="ActListing-details">
             <h3>{act.name}</h3>
 

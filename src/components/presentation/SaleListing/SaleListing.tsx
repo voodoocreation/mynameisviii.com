@@ -9,7 +9,7 @@ import Price from "../Price/Price";
 
 const SaleListing: React.SFC<IOffer> = ({ ...sale }) => (
   <article className="SaleListing">
-    <Link href={sale.url} isExternal={true} className="SaleListing-link">
+    <Link className="SaleListing-link" href={sale.url} isExternal={true}>
       <div className="SaleListing-icon">
         <FaTicket />
       </div>

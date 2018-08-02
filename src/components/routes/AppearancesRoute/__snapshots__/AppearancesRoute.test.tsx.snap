@@ -8,9 +8,7 @@ exports[`[routes] <AppearancesRoute /> renders correctly 1`] = `
     class="PageHeader"
   >
     <h1>
-      <span>
-        Appearances
-      </span>
+      Appearances
     </h1>
   </header>
   <section

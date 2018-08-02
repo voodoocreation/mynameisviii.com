@@ -1,22 +1,21 @@
-import transformAppearance from "../../transformers/transformAppearance";
+import transformStem from "../../transformers/transformStem";
 
-export const transformAppearances = (appearances: any) =>
-  appearances.map(transformAppearance);
+const transformStems = (stems: any) => stems.map(transformStem);
 
-export default (request: any) => async (
+export const fetchStems = (request: any) => async (
   limit?: number,
   exclusiveStartKey?: string
 ) => {
   try {
     const response = await request({
       params: { exclusiveStartKey, limit },
-      url: `/appearances/find`
+      url: `/stems/find`
     });
 
     return {
       data: {
         ...response,
-        items: transformAppearances(response.items)
+        items: transformStems(response.items)
       },
       ok: true
     };

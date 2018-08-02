@@ -7,6 +7,7 @@ describe("[transformers] News article", () => {
   it("transforms API data correctly", () => {
     let isPassing = true;
     let transformed;
+
     try {
       transformed = transformNewsArticle(camelizeKeys(news.Items[0]));
     } catch (error) {

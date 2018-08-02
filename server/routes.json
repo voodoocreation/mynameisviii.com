@@ -4,5 +4,6 @@
   "/news/find*": "/news",
   "/news/:slug": "/newsArticle",
   "/releases/find*": "/releases",
-  "/releases/:slug": "/release"
+  "/releases/:slug": "/release",
+  "/stems/find*": "/stems"
 }

@@ -19,6 +19,7 @@ import * as selectors from "../../../selectors/root.selectors";
 
 interface IStoreProps {
   articles: INewsArticle[];
+  articlesCount: number;
   hasAllNewsArticles: boolean;
   isLoading: boolean;
 }
@@ -56,11 +57,11 @@ class NewsRoute extends React.Component<IProps, IState> {
   };
 
   public render() {
-    const { articles, hasAllNewsArticles } = this.props;
+    const { articles, articlesCount, hasAllNewsArticles } = this.props;
     const { formatMessage } = this.props.intl;
 
     const hasLoadedAllListings =
-      articles.length === Object.keys(this.state.loadedListings).length;
+      articlesCount === Object.keys(this.state.loadedListings).length;
 
     const isLoading = this.props.isLoading || !hasLoadedAllListings;
 
@@ -70,28 +71,22 @@ class NewsRoute extends React.Component<IProps, IState> {
       </LoadButton>
     );
 
+    const pageTitle = formatMessage({ id: "NEWS_TITLE" });
+    const pageDescription = formatMessage({ id: "NEWS_DESCRIPTION" });
+
     return (
       <article className={cn("NewsRoute", { hasLoadedAllListings })}>
         <Head>
           <title>
-            {formatMessage({ id: "NEWS_TITLE" })}
+            {pageTitle}
             {" · "}
             {formatMessage({ id: "BRAND_NAME" })}
           </title>
 
-          <meta
-            content={formatMessage({ id: "NEWS_DESCRIPTION" })}
-            name="description"
-          />
+          <meta content={pageDescription} name="description" />
 
-          <meta
-            property="og:title"
-            content={formatMessage({ id: "NEWS_TITLE" })}
-          />
-          <meta
-            property="og:description"
-            content={formatMessage({ id: "NEWS_DESCRIPTION" })}
-          />
+          <meta property="og:title" content={pageTitle} />
+          <meta property="og:description" content={pageDescription} />
           <meta
             property="og:image"
             content="https://s3.amazonaws.com/mynameisviii-static/homepage-og.jpg"
@@ -104,7 +99,7 @@ class NewsRoute extends React.Component<IProps, IState> {
           <FormattedMessage id="NEWS_TITLE" />
         </PageHeader>
 
-        {articles.length > 0 ? (
+        {articlesCount > 0 ? (
           <section className="NewsListings">
             {articles.map(article => (
               <NewsListing
@@ -116,7 +111,7 @@ class NewsRoute extends React.Component<IProps, IState> {
           </section>
         ) : null}
 
-        {hasAllNewsArticles && articles.length === 0 ? (
+        {hasAllNewsArticles && articlesCount === 0 ? (
           <NoResults>
             <p>
               <FormattedMessage id="NO_NEWS" />
@@ -145,6 +140,7 @@ class NewsRoute extends React.Component<IProps, IState> {
 
 const mapStateToProps = (state: any) => ({
   articles: selectors.getNewsArticlesAsArray(state),
+  articlesCount: selectors.getNewsArticlesCount(state),
   hasAllNewsArticles: selectors.getHasAllNewsArticles(state),
   isLoading: selectors.getNewsIsLoading(state)
 });

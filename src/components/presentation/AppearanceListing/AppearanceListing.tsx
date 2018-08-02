@@ -40,6 +40,12 @@ class AppearanceListing extends React.Component<IProps, IState> {
 
   public render() {
     const { intl, onLoad, ...appearance } = this.props;
+    const { isRendered } = this.state;
+
+    const isCancelled = appearance.status === "EventCancelled";
+    const isPostponed = appearance.status === "EventPostponed";
+    const isFinished = appearance.finishingAt < new Date().toISOString();
+
     const priceRange: IPriceRange = selectors.getAppearancePriceRange(
       appearance
     );
@@ -48,10 +54,10 @@ class AppearanceListing extends React.Component<IProps, IState> {
       <article
         className={cn(
           "AppearanceListing",
-          { isRendered: this.state.isRendered },
-          { isCancelled: appearance.status === "EventCancelled" },
-          { isPostponed: appearance.status === "EventPostponed" },
-          { isFinished: appearance.finishingAt < new Date().toISOString() }
+          { isRendered },
+          { isCancelled },
+          { isPostponed },
+          { isFinished }
         )}
       >
         <Link route={`/appearances/${appearance.slug}`}>
@@ -61,7 +67,7 @@ class AppearanceListing extends React.Component<IProps, IState> {
             </header>
 
             <section className="AppearanceListing-meta">
-              {appearance.status === "EventCancelled" ? (
+              {isCancelled ? (
                 <Meta
                   className="AppearanceListing-status"
                   labelConstant="STATUS"
@@ -69,7 +75,7 @@ class AppearanceListing extends React.Component<IProps, IState> {
                   <FormattedMessage id="CANCELLED" />
                 </Meta>
               ) : null}
-              {appearance.status === "EventPostponed" ? (
+              {isPostponed ? (
                 <Meta
                   className="AppearanceListing-status"
                   labelConstant="POSTPONED"

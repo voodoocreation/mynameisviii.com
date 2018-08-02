@@ -1,17 +1,16 @@
 import createMockHttpClient from "../helpers/createMockHttpClient";
 import { tryParseJson } from "../transformers/transformData";
+import * as apiMethods from "./api/root.api";
 import { createApiWith, createPortsWith } from "./configureApi";
 
 describe("[services] API", () => {
   it("creates API instance correctly", () => {
     const api = createApiWith(createPortsWith({}));
 
-    expect(typeof api.fetchAppearanceBySlug).toBe("function");
-    expect(typeof api.fetchAppearances).toBe("function");
-    expect(typeof api.fetchLatestNews).toBe("function");
-    expect(typeof api.fetchNewsArticleBySlug).toBe("function");
-    expect(typeof api.fetchReleaseBySlug).toBe("function");
-    expect(typeof api.fetchReleases).toBe("function");
+    expect(Object.keys(api).length).toBe(Object.keys(apiMethods).length);
+    Object.keys(api).forEach((method: any) => {
+      expect(typeof api[method]).toBe("function");
+    });
   });
 
   it("makes API requests and transforms JSON keys correctly when successful", async () => {

@@ -4,10 +4,12 @@ import appearances from "./appearances.reducers";
 import news from "./news.reducers";
 import page from "./page.reducers";
 import releases from "./releases.reducers";
+import stems from "./stems.reducers";
 
 export default combineReducers({
   appearances,
   news,
   page,
-  releases
+  releases,
+  stems
 });

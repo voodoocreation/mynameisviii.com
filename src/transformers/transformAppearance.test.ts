@@ -7,6 +7,7 @@ describe("[transformers] Appearance", () => {
   it("transforms API data correctly", () => {
     let isPassing = true;
     let transformed;
+
     try {
       transformed = transformAppearance(camelizeKeys(appearances.Items[0]));
     } catch (error) {

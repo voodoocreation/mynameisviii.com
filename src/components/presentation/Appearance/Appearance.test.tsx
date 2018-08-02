@@ -79,7 +79,7 @@ describe("[presentation] <Appearance />", () => {
     const { actual } = setup(render, {
       finishingAt: moment(new Date())
         .subtract(1, "days")
-        .format('YYYY-MM-DDTHH:mm:ss')
+        .format("YYYY-MM-DDTHH:mm:ss")
     });
 
     expect(actual.hasClass("isFinished")).toBe(true);

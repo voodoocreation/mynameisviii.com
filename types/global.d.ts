@@ -60,56 +60,34 @@ interface IImage {
   imageUrl: string;
 }
 
-interface IBuyStreamLink {
-  platform: string;
-  url: string;
-}
-
-interface INewsArticle {
-  author: string;
-  content: string;
-  createdAt: string;
-  excerpt: string;
-  imageUrl: string;
-  ogImageUrl: string;
-  slug: string;
-  title: string;
-  type: string;
-}
-
-interface IReleaseTrack {
-  genre: string;
-  length: string;
-  title: string;
-  url: string;
-}
-
-interface IArtist {
-  name: string;
-  url: string;
-}
-
-interface IRelease {
-  artist: IArtist;
-  buyList: IBuyStreamLink[];
-  description: string;
-  genre: string;
-  images: IImage[];
-  isActive: boolean;
-  length: string;
-  productionType: string;
-  recordLabel: string;
-  releasedOn: string;
-  slug: string;
-  streamList: IBuyStreamLink[];
-  title: string;
-  tracklist: IReleaseTrack[][];
-  type: string;
+interface IGeocoderResult {
+  types: string[];
+  formatted_address: string;
+  address_components: Array<{
+    short_name: string;
+    long_name: string;
+    postcode_localities: string[];
+    types: string[];
+  }>;
+  partial_match: boolean;
+  place_id: string;
+  postcode_localities: string[];
+  geometry: {
+    location: any;
+    location_type: any;
+    viewport: any;
+    bounds: any;
+  };
 }
 
 interface ILatLng {
   lat: number;
   lng: number;
+}
+
+interface IPriceRange {
+  min?: IOffer;
+  max?: IOffer;
 }
 
 interface ILocation {
@@ -125,6 +103,11 @@ interface IOrganization {
   logo: string;
   name: string;
   type?: string;
+}
+
+interface IArtist {
+  name: string;
+  url: string;
 }
 
 interface IPerformer {
@@ -145,9 +128,9 @@ interface IOffer {
   validFrom?: string;
 }
 
-interface IPriceRange {
-  min?: IOffer;
-  max?: IOffer;
+interface IBuyStreamLink {
+  platform: string;
+  url: string;
 }
 
 interface IAppearance {
@@ -169,22 +152,51 @@ interface IAppearance {
   type: string;
 }
 
-interface IGeocoderResult {
-  types: string[];
-  formatted_address: string;
-  address_components: Array<{
-    short_name: string;
-    long_name: string;
-    postcode_localities: string[];
-    types: string[];
-  }>;
-  partial_match: boolean;
-  place_id: string;
-  postcode_localities: string[];
-  geometry: {
-    location: any;
-    location_type: any;
-    viewport: any;
-    bounds: any;
-  };
+interface INewsArticle {
+  author: string;
+  content: string;
+  createdAt: string;
+  excerpt: string;
+  imageUrl: string;
+  ogImageUrl: string;
+  slug: string;
+  title: string;
+  type: string;
+}
+
+interface IRelease {
+  artist: IArtist;
+  buyList: IBuyStreamLink[];
+  description: string;
+  genre: string;
+  images: IImage[];
+  isActive: boolean;
+  length: string;
+  productionType: string;
+  recordLabel: string;
+  releasedOn: string;
+  slug: string;
+  streamList: IBuyStreamLink[];
+  title: string;
+  tracklist: IReleaseTrack[][];
+  type: string;
+}
+
+interface IReleaseTrack {
+  genre: string;
+  length: string;
+  title: string;
+  url: string;
+}
+
+interface IStem {
+  audioFormat: string;
+  createdAt: string;
+  imageUrl: string;
+  isActive: boolean;
+  packageFormat: string;
+  size: string;
+  slug: string;
+  title: string;
+  url: string;
 }

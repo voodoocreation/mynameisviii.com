@@ -1,7 +1,7 @@
 import createMockHttpClient from "../../helpers/createMockHttpClient";
 import { tryParseJson } from "../../transformers/transformData";
 import { createPortsWith } from "../configureApi";
-import fetchReleaseBySlug from "./fetchReleaseBySlug";
+import { fetchReleaseBySlug } from "./fetchReleaseBySlug.api";
 
 describe("[api] fetchReleaseBySlug()", () => {
   it("handles successful request correctly", async () => {

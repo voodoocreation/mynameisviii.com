@@ -1,21 +1,21 @@
-import news from "../../../server/mocks/news.json";
+import appearances from "../../../server/mocks/appearances.json";
 import createMockHttpClient from "../../helpers/createMockHttpClient";
 import { tryParseJson } from "../../transformers/transformData";
 import { createPortsWith } from "../configureApi";
-import fetchLatestNews from "./fetchLatestNews";
+import { fetchAppearances } from "./fetchAppearances.api";
 
-describe("[api] fetchLatestNews()", () => {
+describe("[api] fetchAppearances()", () => {
   it("handles successful request correctly", async () => {
     const client = createMockHttpClient(resolve => {
       resolve({
-        data: news
+        data: appearances
       });
     });
-    const fetch = fetchLatestNews(createPortsWith({}, client));
+    const fetch = fetchAppearances(createPortsWith({}, client));
     const response = await fetch(1, "test");
 
     expect(client).toHaveBeenCalled();
-    expect(client.mock.calls[0][0].url).toBe("/news/find");
+    expect(client.mock.calls[0][0].url).toBe("/appearances/find");
     expect(client.mock.calls[0][0].params).toEqual({
       exclusiveStartKey: "test",
       limit: 1
@@ -33,11 +33,11 @@ describe("[api] fetchLatestNews()", () => {
         }
       });
     });
-    const fetch = fetchLatestNews(createPortsWith({}, client));
+    const fetch = fetchAppearances(createPortsWith({}, client));
     const response = await fetch();
 
     expect(client).toHaveBeenCalled();
-    expect(client.mock.calls[0][0].url).toBe("/news/find");
+    expect(client.mock.calls[0][0].url).toBe("/appearances/find");
     expect(response.ok).toBe(false);
     expect(tryParseJson(response.message)).toEqual({
       message: "Server error",

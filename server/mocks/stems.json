@@ -1,0 +1,28 @@
+{
+  "Items": [
+    {
+      "Title": "threadfear",
+      "Size": "383MB",
+      "ImageUrl": "https://s3.amazonaws.com/mynameisviii-static/releases/threadfear-ask-me-to-stay.jpg",
+      "PackageFormat": "RAR",
+      "Slug": "threadfear",
+      "IsActive": "y",
+      "Url": "https://www.dropbox.com/s/qzf7a8ps2mrbflc/Threadfear.rar?dl=0",
+      "AudioFormat": "WAV, 16bit, 44.1kHz",
+      "CreatedAt": "2018-07-01T18:00:00"
+    },
+    {
+      "Title": "Ask Me To Stay",
+      "Size": "383MB",
+      "ImageUrl": "https://s3.amazonaws.com/mynameisviii-static/releases/threadfear-ask-me-to-stay.jpg",
+      "PackageFormat": "RAR",
+      "Slug": "ask-me-to-stay",
+      "IsActive": "y",
+      "Url": "https://www.dropbox.com/s/qzf7a8ps2mrbflc/Threadfear.rar?dl=0",
+      "AudioFormat": "WAV, 16bit, 44.1kHz",
+      "CreatedAt": "2018-07-01T18:00:00"
+    }
+  ],
+  "Count": 2,
+  "ScannedCount": 2
+}

@@ -18,7 +18,8 @@ export default reducerWithInitialState(initialState)
       actions.fetchLatestNews.failed,
       actions.fetchMoreLatestNews.failed,
       actions.fetchReleases.failed,
-      actions.fetchMoreReleases.failed
+      actions.fetchMoreReleases.failed,
+      actions.fetchStems.failed
     ],
     (state, { error }) => ({
       ...state,

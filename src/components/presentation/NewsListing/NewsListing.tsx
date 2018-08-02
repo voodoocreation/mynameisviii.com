@@ -33,6 +33,7 @@ export default class NewsListing extends React.Component<IProps, IState> {
 
   public render() {
     const { isCondensed, onLoad, ...article } = this.props;
+    const { isRendered } = this.state;
 
     const header = isCondensed ? (
       <h3>
@@ -47,13 +48,7 @@ export default class NewsListing extends React.Component<IProps, IState> {
     );
 
     return (
-      <article
-        className={cn(
-          "NewsListing",
-          { isCondensed },
-          { isRendered: this.state.isRendered }
-        )}
-      >
+      <article className={cn("NewsListing", { isCondensed }, { isRendered })}>
         <Link route={`/news/${article.slug}`}>
           <header className="NewsListing-header">{header}</header>
 

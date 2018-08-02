@@ -55,6 +55,18 @@ type PLFetchReleaseBySlugDone = IRelease;
 type PLFetchReleaseBySlugFailed = IError;
 type PLSetCurrentReleaseSlug = string;
 
+type PLFetchStemsDone = {
+  items: {
+    [index: string]: IStem;
+  };
+  lastEvaluatedKey?: {
+    isActive: string;
+    createdAt: string;
+    slug: string;
+  };
+};
+type PLFetchStemsFailed = IError;
+
 type PLTrackEvent = {
   event: string;
   [index: string]: any;

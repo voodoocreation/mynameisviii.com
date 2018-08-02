@@ -6,7 +6,7 @@ import {
   MdFormatListNumbered,
   MdMusicNote
 } from "react-icons/lib/md";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, InjectedIntl, injectIntl } from "react-intl";
 
 import Schema from "../../schema/Release";
 import DateTime from "../DateTime/DateTime";
@@ -18,10 +18,11 @@ interface IState {
 }
 
 interface IProps extends IRelease {
+  intl: InjectedIntl;
   onLoad?: (slug: string) => void;
 }
 
-export default class ReleaseListing extends React.Component<IProps, IState> {
+class ReleaseListing extends React.Component<IProps, IState> {
   public state = {
     isRendered: false
   };
@@ -35,7 +36,8 @@ export default class ReleaseListing extends React.Component<IProps, IState> {
   }
 
   public render() {
-    const { onLoad, ...release } = this.props;
+    const { intl, onLoad, ...release } = this.props;
+    const { isRendered } = this.state;
 
     const trackCount = release.tracklist.reduce((acc, curr) => {
       acc += curr.length;
@@ -43,9 +45,7 @@ export default class ReleaseListing extends React.Component<IProps, IState> {
     }, 0);
 
     return (
-      <article
-        className={cn("ReleaseListing", { isRendered: this.state.isRendered })}
-      >
+      <article className={cn("ReleaseListing", { isRendered })}>
         <Link route={`/releases/${release.slug}`}>
           <div className="ReleaseListing-details">
             <header className="ReleaseListing-header">
@@ -126,3 +126,5 @@ export default class ReleaseListing extends React.Component<IProps, IState> {
     }
   };
 }
+
+export default injectIntl<any>(ReleaseListing);

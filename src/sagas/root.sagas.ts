@@ -4,6 +4,7 @@ import * as analytics from "./analytics.sagas";
 import * as appearances from "./appearances.sagas";
 import * as news from "./news.sagas";
 import * as releases from "./releases.sagas";
+import * as stems from "./stems.sagas";
 
 const mapSagas = (ports: any, effect: any) => (sagas: any) =>
   Object.keys(sagas).reduce(
@@ -18,7 +19,8 @@ export default (ports: IStorePorts) =>
         ...analytics,
         ...appearances,
         ...news,
-        ...releases
+        ...releases,
+        ...stems
       })
     );
   };

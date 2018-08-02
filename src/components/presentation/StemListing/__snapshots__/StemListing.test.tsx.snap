@@ -1,0 +1,406 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[presentation] <NewsListing /> renders correctly 1`] = `
+<article
+  class="StemListing"
+>
+  <a
+    class="StemListing-link"
+    href="url"
+    rel="noopener"
+    target="_blank"
+  >
+    <div
+      class="StemListing-details"
+    >
+      <header
+        class="StemListing-header"
+      >
+        <h2>
+          <span>
+            title
+          </span>
+        </h2>
+      </header>
+      <section
+        class="StemListing-meta"
+      >
+        <div
+          class="Meta StemListing-audioFormat"
+        >
+           
+          <span
+            class="Meta-label"
+          >
+            <span>
+              Audio format
+            </span>
+            :
+          </span>
+           
+          <span
+            class="Meta-value"
+          >
+            audioFormat
+          </span>
+        </div>
+        <div
+          class="Meta StemListing-packageFormat"
+        >
+           
+          <span
+            class="Meta-label"
+          >
+            <span>
+              Package format
+            </span>
+            :
+          </span>
+           
+          <span
+            class="Meta-value"
+          >
+            packageFormat, size
+          </span>
+        </div>
+        <div
+          class="Meta StemListing-licence"
+          title="Licenced under the Creative Commons Remix licence"
+        >
+          <svg
+            fill="currentColor"
+            height="1em"
+            preserveAspectRatio="xMidYMid meet"
+            style="vertical-align:middle"
+            viewBox="0 0 40 40"
+            width="1em"
+          >
+            <g>
+              <path
+                d="m13.5 27.5q3.4 0 5.7-2.3 0.4-0.4 0.1-0.8l-1-1.8q-0.1-0.3-0.5-0.4-0.4-0.1-0.6 0.2l-0.1 0.1q-0.1 0.1-0.3 0.2t-0.4 0.3-0.5 0.3-0.6 0.3-0.8 0.3-0.8 0q-1.7 0-2.8-1.1t-1.1-2.8q0-1.7 1.1-2.8t2.7-1.1q0.8 0 1.6 0.3t1.1 0.6l0.4 0.3q0.2 0.3 0.6 0.2 0.3 0 0.5-0.3l1.2-1.7q0.3-0.5-0.1-0.9 0-0.1-0.2-0.2t-0.7-0.6-1.1-0.6-1.5-0.5-1.9-0.2q-3.3 0-5.5 2.1t-2.2 5.4q0 3.3 2.2 5.4t5.5 2.1z m14.1 0q3.4 0 5.7-2.3 0.3-0.4 0.1-0.8l-1-1.8q-0.2-0.3-0.6-0.4-0.3-0.1-0.6 0.2l-0.1 0.1q-0.1 0.1-0.2 0.2t-0.4 0.3-0.5 0.3-0.7 0.3-0.7 0.3-0.9 0q-1.7 0-2.7-1.1t-1.1-2.8q0-1.7 1-2.8t2.8-1.1q0.8 0 1.6 0.3t1.1 0.6l0.3 0.3q0.3 0.3 0.6 0.2 0.4 0 0.6-0.3l1.1-1.7q0.3-0.5 0-0.9-0.1-0.1-0.3-0.2t-0.6-0.6-1.1-0.6-1.5-0.5-1.9-0.2q-3.3 0-5.5 2.1t-2.2 5.4q0 3.3 2.1 5.4t5.6 2.1z m-7.6-23.9q-3.3 0-6.4 1.3t-5.2 3.5-3.5 5.2-1.3 6.4 1.3 6.4 3.5 5.2 5.2 3.5 6.4 1.3 6.4-1.3 5.2-3.5 3.5-5.2 1.3-6.4-1.3-6.4-3.5-5.2-5.2-3.5-6.4-1.3z m0-3.6q4.1 0 7.8 1.6t6.4 4.2 4.2 6.4 1.6 7.8-1.6 7.8-4.2 6.4-6.4 4.2-7.8 1.6-7.8-1.6-6.4-4.2-4.2-6.4-1.6-7.8 1.6-7.8 4.2-6.4 6.4-4.2 7.8-1.6z"
+              />
+            </g>
+          </svg>
+           
+          <span
+            class="Meta-label"
+          >
+            <span>
+              Licenced under the Creative Commons Remix licence
+            </span>
+            :
+          </span>
+           
+          <span
+            class="Meta-value"
+          />
+        </div>
+      </section>
+    </div>
+    <div
+      class="StemListing-thumbnail"
+    >
+      <figure
+        class="Image StemListing-image"
+      >
+        <div
+          class="Image-wrapper"
+        >
+          <img
+            alt="title"
+            src="imageUrl"
+          />
+        </div>
+      </figure>
+      <div
+        class="StemListing-downloadIcon"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          preserveAspectRatio="xMidYMid meet"
+          style="vertical-align:middle"
+          viewBox="0 0 40 40"
+          width="1em"
+        >
+          <g>
+            <path
+              d="m28.4 21.6h-5v-6.6h-6.8v6.6h-5l8.4 8.4z m3.9-4.9c4.3 0.3 7.7 3.9 7.7 8.3 0 4.6-3.7 8.4-8.4 8.4h-21.6c-5.5 0-10-4.5-10-10 0-5.2 3.9-9.4 8.9-10 2.1-3.9 6.3-6.8 11.1-6.8 6.1 0 11.1 4.3 12.3 10.1z"
+            />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </a>
+</article>
+`;
+
+exports[`[presentation] <NewsListing /> updates \`isImageLoaded\` state when image has previously been loaded 1`] = `
+<article
+  class="StemListing isRendered"
+>
+  <a
+    class="StemListing-link"
+    href="url"
+    rel="noopener"
+    target="_blank"
+  >
+    <div
+      class="StemListing-details"
+    >
+      <header
+        class="StemListing-header"
+      >
+        <h2>
+          <span>
+            title
+          </span>
+        </h2>
+      </header>
+      <section
+        class="StemListing-meta"
+      >
+        <div
+          class="Meta StemListing-audioFormat"
+        >
+           
+          <span
+            class="Meta-label"
+          >
+            <span>
+              Audio format
+            </span>
+            :
+          </span>
+           
+          <span
+            class="Meta-value"
+          >
+            audioFormat
+          </span>
+        </div>
+        <div
+          class="Meta StemListing-packageFormat"
+        >
+           
+          <span
+            class="Meta-label"
+          >
+            <span>
+              Package format
+            </span>
+            :
+          </span>
+           
+          <span
+            class="Meta-value"
+          >
+            packageFormat, size
+          </span>
+        </div>
+        <div
+          class="Meta StemListing-licence"
+          title="Licenced under the Creative Commons Remix licence"
+        >
+          <svg
+            fill="currentColor"
+            height="1em"
+            preserveAspectRatio="xMidYMid meet"
+            style="vertical-align: middle;"
+            viewBox="0 0 40 40"
+            width="1em"
+          >
+            <g>
+              <path
+                d="m13.5 27.5q3.4 0 5.7-2.3 0.4-0.4 0.1-0.8l-1-1.8q-0.1-0.3-0.5-0.4-0.4-0.1-0.6 0.2l-0.1 0.1q-0.1 0.1-0.3 0.2t-0.4 0.3-0.5 0.3-0.6 0.3-0.8 0.3-0.8 0q-1.7 0-2.8-1.1t-1.1-2.8q0-1.7 1.1-2.8t2.7-1.1q0.8 0 1.6 0.3t1.1 0.6l0.4 0.3q0.2 0.3 0.6 0.2 0.3 0 0.5-0.3l1.2-1.7q0.3-0.5-0.1-0.9 0-0.1-0.2-0.2t-0.7-0.6-1.1-0.6-1.5-0.5-1.9-0.2q-3.3 0-5.5 2.1t-2.2 5.4q0 3.3 2.2 5.4t5.5 2.1z m14.1 0q3.4 0 5.7-2.3 0.3-0.4 0.1-0.8l-1-1.8q-0.2-0.3-0.6-0.4-0.3-0.1-0.6 0.2l-0.1 0.1q-0.1 0.1-0.2 0.2t-0.4 0.3-0.5 0.3-0.7 0.3-0.7 0.3-0.9 0q-1.7 0-2.7-1.1t-1.1-2.8q0-1.7 1-2.8t2.8-1.1q0.8 0 1.6 0.3t1.1 0.6l0.3 0.3q0.3 0.3 0.6 0.2 0.4 0 0.6-0.3l1.1-1.7q0.3-0.5 0-0.9-0.1-0.1-0.3-0.2t-0.6-0.6-1.1-0.6-1.5-0.5-1.9-0.2q-3.3 0-5.5 2.1t-2.2 5.4q0 3.3 2.1 5.4t5.6 2.1z m-7.6-23.9q-3.3 0-6.4 1.3t-5.2 3.5-3.5 5.2-1.3 6.4 1.3 6.4 3.5 5.2 5.2 3.5 6.4 1.3 6.4-1.3 5.2-3.5 3.5-5.2 1.3-6.4-1.3-6.4-3.5-5.2-5.2-3.5-6.4-1.3z m0-3.6q4.1 0 7.8 1.6t6.4 4.2 4.2 6.4 1.6 7.8-1.6 7.8-4.2 6.4-6.4 4.2-7.8 1.6-7.8-1.6-6.4-4.2-4.2-6.4-1.6-7.8 1.6-7.8 4.2-6.4 6.4-4.2 7.8-1.6z"
+              />
+            </g>
+          </svg>
+           
+          <span
+            class="Meta-label"
+          >
+            <span>
+              Licenced under the Creative Commons Remix licence
+            </span>
+            :
+          </span>
+           
+          <span
+            class="Meta-value"
+          />
+        </div>
+      </section>
+    </div>
+    <div
+      class="StemListing-thumbnail"
+    >
+      <figure
+        class="Image StemListing-image isRendered"
+      >
+        <div
+          class="Image-wrapper"
+        >
+          <img
+            alt="title"
+            src="imageUrl"
+          />
+        </div>
+      </figure>
+      <div
+        class="StemListing-downloadIcon"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          preserveAspectRatio="xMidYMid meet"
+          style="vertical-align: middle;"
+          viewBox="0 0 40 40"
+          width="1em"
+        >
+          <g>
+            <path
+              d="m28.4 21.6h-5v-6.6h-6.8v6.6h-5l8.4 8.4z m3.9-4.9c4.3 0.3 7.7 3.9 7.7 8.3 0 4.6-3.7 8.4-8.4 8.4h-21.6c-5.5 0-10-4.5-10-10 0-5.2 3.9-9.4 8.9-10 2.1-3.9 6.3-6.8 11.1-6.8 6.1 0 11.1 4.3 12.3 10.1z"
+            />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </a>
+</article>
+`;
+
+exports[`[presentation] <NewsListing /> updates \`isRendered\` state after image has loaded 1`] = `
+<article
+  class="StemListing isRendered"
+>
+  <a
+    class="StemListing-link"
+    href="url"
+    rel="noopener"
+    target="_blank"
+  >
+    <div
+      class="StemListing-details"
+    >
+      <header
+        class="StemListing-header"
+      >
+        <h2>
+          <span>
+            title
+          </span>
+        </h2>
+      </header>
+      <section
+        class="StemListing-meta"
+      >
+        <div
+          class="Meta StemListing-audioFormat"
+        >
+           
+          <span
+            class="Meta-label"
+          >
+            <span>
+              Audio format
+            </span>
+            :
+          </span>
+           
+          <span
+            class="Meta-value"
+          >
+            audioFormat
+          </span>
+        </div>
+        <div
+          class="Meta StemListing-packageFormat"
+        >
+           
+          <span
+            class="Meta-label"
+          >
+            <span>
+              Package format
+            </span>
+            :
+          </span>
+           
+          <span
+            class="Meta-value"
+          >
+            packageFormat, size
+          </span>
+        </div>
+        <div
+          class="Meta StemListing-licence"
+          title="Licenced under the Creative Commons Remix licence"
+        >
+          <svg
+            fill="currentColor"
+            height="1em"
+            preserveAspectRatio="xMidYMid meet"
+            style="vertical-align: middle;"
+            viewBox="0 0 40 40"
+            width="1em"
+          >
+            <g>
+              <path
+                d="m13.5 27.5q3.4 0 5.7-2.3 0.4-0.4 0.1-0.8l-1-1.8q-0.1-0.3-0.5-0.4-0.4-0.1-0.6 0.2l-0.1 0.1q-0.1 0.1-0.3 0.2t-0.4 0.3-0.5 0.3-0.6 0.3-0.8 0.3-0.8 0q-1.7 0-2.8-1.1t-1.1-2.8q0-1.7 1.1-2.8t2.7-1.1q0.8 0 1.6 0.3t1.1 0.6l0.4 0.3q0.2 0.3 0.6 0.2 0.3 0 0.5-0.3l1.2-1.7q0.3-0.5-0.1-0.9 0-0.1-0.2-0.2t-0.7-0.6-1.1-0.6-1.5-0.5-1.9-0.2q-3.3 0-5.5 2.1t-2.2 5.4q0 3.3 2.2 5.4t5.5 2.1z m14.1 0q3.4 0 5.7-2.3 0.3-0.4 0.1-0.8l-1-1.8q-0.2-0.3-0.6-0.4-0.3-0.1-0.6 0.2l-0.1 0.1q-0.1 0.1-0.2 0.2t-0.4 0.3-0.5 0.3-0.7 0.3-0.7 0.3-0.9 0q-1.7 0-2.7-1.1t-1.1-2.8q0-1.7 1-2.8t2.8-1.1q0.8 0 1.6 0.3t1.1 0.6l0.3 0.3q0.3 0.3 0.6 0.2 0.4 0 0.6-0.3l1.1-1.7q0.3-0.5 0-0.9-0.1-0.1-0.3-0.2t-0.6-0.6-1.1-0.6-1.5-0.5-1.9-0.2q-3.3 0-5.5 2.1t-2.2 5.4q0 3.3 2.1 5.4t5.6 2.1z m-7.6-23.9q-3.3 0-6.4 1.3t-5.2 3.5-3.5 5.2-1.3 6.4 1.3 6.4 3.5 5.2 5.2 3.5 6.4 1.3 6.4-1.3 5.2-3.5 3.5-5.2 1.3-6.4-1.3-6.4-3.5-5.2-5.2-3.5-6.4-1.3z m0-3.6q4.1 0 7.8 1.6t6.4 4.2 4.2 6.4 1.6 7.8-1.6 7.8-4.2 6.4-6.4 4.2-7.8 1.6-7.8-1.6-6.4-4.2-4.2-6.4-1.6-7.8 1.6-7.8 4.2-6.4 6.4-4.2 7.8-1.6z"
+              />
+            </g>
+          </svg>
+           
+          <span
+            class="Meta-label"
+          >
+            <span>
+              Licenced under the Creative Commons Remix licence
+            </span>
+            :
+          </span>
+           
+          <span
+            class="Meta-value"
+          />
+        </div>
+      </section>
+    </div>
+    <div
+      class="StemListing-thumbnail"
+    >
+      <figure
+        class="Image StemListing-image isRendered"
+      >
+        <div
+          class="Image-wrapper"
+        >
+          <img
+            alt="title"
+            src="imageUrl"
+          />
+        </div>
+      </figure>
+      <div
+        class="StemListing-downloadIcon"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          preserveAspectRatio="xMidYMid meet"
+          style="vertical-align: middle;"
+          viewBox="0 0 40 40"
+          width="1em"
+        >
+          <g>
+            <path
+              d="m28.4 21.6h-5v-6.6h-6.8v6.6h-5l8.4 8.4z m3.9-4.9c4.3 0.3 7.7 3.9 7.7 8.3 0 4.6-3.7 8.4-8.4 8.4h-21.6c-5.5 0-10-4.5-10-10 0-5.2 3.9-9.4 8.9-10 2.1-3.9 6.3-6.8 11.1-6.8 6.1 0 11.1 4.3 12.3 10.1z"
+            />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </a>
+</article>
+`;

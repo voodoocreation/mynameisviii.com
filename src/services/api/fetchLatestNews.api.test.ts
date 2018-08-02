@@ -1,27 +1,27 @@
-import releases from "../../../server/mocks/releases.json";
+import news from "../../../server/mocks/news.json";
 import createMockHttpClient from "../../helpers/createMockHttpClient";
 import { tryParseJson } from "../../transformers/transformData";
 import { createPortsWith } from "../configureApi";
-import fetchReleases from "./fetchReleases";
+import { fetchLatestNews } from "./fetchLatestNews.api";
 
-describe("[api] fetchReleases()", () => {
+describe("[api] fetchLatestNews()", () => {
   it("handles successful request correctly", async () => {
     const client = createMockHttpClient(resolve => {
       resolve({
-        data: releases
+        data: news
       });
     });
-    const fetch = fetchReleases(createPortsWith({}, client));
+    const fetch = fetchLatestNews(createPortsWith({}, client));
     const response = await fetch(1, "test");
 
     expect(client).toHaveBeenCalled();
-    expect(client.mock.calls[0][0].url).toBe("/releases/find");
+    expect(client.mock.calls[0][0].url).toBe("/news/find");
     expect(client.mock.calls[0][0].params).toEqual({
       exclusiveStartKey: "test",
       limit: 1
     });
     expect(response.ok).toBe(true);
-    expect(response.data.items).toHaveLength(4);
+    expect(response.data.items).toHaveLength(3);
   });
 
   it("handles request failure correctly", async () => {
@@ -33,11 +33,11 @@ describe("[api] fetchReleases()", () => {
         }
       });
     });
-    const fetch = fetchReleases(createPortsWith({}, client));
+    const fetch = fetchLatestNews(createPortsWith({}, client));
     const response = await fetch();
 
     expect(client).toHaveBeenCalled();
-    expect(client.mock.calls[0][0].url).toBe("/releases/find");
+    expect(client.mock.calls[0][0].url).toBe("/news/find");
     expect(response.ok).toBe(false);
     expect(tryParseJson(response.message)).toEqual({
       message: "Server error",

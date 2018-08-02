@@ -1,21 +1,18 @@
 import axios from "axios";
 import { camelizeKeys } from "humps";
 
-import fetchAppearanceBySlug from "./api/fetchAppearanceBySlug";
-import fetchAppearances from "./api/fetchAppearances";
-import fetchLatestNews from "./api/fetchLatestNews";
-import fetchNewsArticleBySlug from "./api/fetchNewsArticleBySlug";
-import fetchReleaseBySlug from "./api/fetchReleaseBySlug";
-import fetchReleases from "./api/fetchReleases";
+import * as api from "./api/root.api";
 
-export const createApiWith = (ports: any) => ({
-  fetchAppearanceBySlug: fetchAppearanceBySlug(ports),
-  fetchAppearances: fetchAppearances(ports),
-  fetchLatestNews: fetchLatestNews(ports),
-  fetchNewsArticleBySlug: fetchNewsArticleBySlug(ports),
-  fetchReleaseBySlug: fetchReleaseBySlug(ports),
-  fetchReleases: fetchReleases(ports)
-});
+const mapApi = (methods: any, ports: any) =>
+  Object.keys(methods).reduce(
+    (acc: any, curr: any) => ({
+      ...acc,
+      [curr]: methods[curr](ports)
+    }),
+    {}
+  );
+
+export const createApiWith = (ports: any) => mapApi(api, ports);
 
 export const createPortsWith = (
   config: any,

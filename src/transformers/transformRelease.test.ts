@@ -7,6 +7,7 @@ describe("[transformers] Release", () => {
   it("transforms API data correctly", () => {
     let isPassing = true;
     let transformed;
+
     try {
       transformed = transformRelease(camelizeKeys(releases.Items[0]));
     } catch (error) {

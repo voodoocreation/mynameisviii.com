@@ -73,27 +73,21 @@ class ReleasesRoute extends React.Component<IProps, IState> {
       </LoadButton>
     );
 
+    const pageTitle = formatMessage({ id: "RELEASES_TITLE" });
+    const pageDescription = formatMessage({ id: "RELEASES_DESCRIPTION" });
+
     return (
       <article className={cn("ReleasesRoute", { hasLoadedAllListings })}>
         <Head>
           <title>
-            {formatMessage({ id: "RELEASES_TITLE" })}
+            {pageTitle}
             {" · "}
             {formatMessage({ id: "BRAND_NAME" })}
           </title>
 
-          <meta
-            content={formatMessage({ id: "RELEASES_DESCRIPTION" })}
-            name="description"
-          />
-          <meta
-            property="og:title"
-            content={formatMessage({ id: "RELEASES_TITLE" })}
-          />
-          <meta
-            property="og:description"
-            content={formatMessage({ id: "RELEASES_DESCRIPTION" })}
-          />
+          <meta content={pageDescription} name="description" />
+          <meta property="og:title" content={pageTitle} />
+          <meta property="og:description" content={pageDescription} />
           <meta
             property="og:image"
             content="https://s3.amazonaws.com/mynameisviii-static/homepage-og.jpg"
@@ -106,11 +100,11 @@ class ReleasesRoute extends React.Component<IProps, IState> {
           <FormattedMessage id="RELEASES_TITLE" />
         </PageHeader>
 
-        {Object.keys(releases).length > 0
+        {releasesCount > 0
           ? Object.keys(releases).map(this.renderListingsForType)
           : null}
 
-        {hasAllReleases && Object.keys(releases).length === 0 ? (
+        {hasAllReleases && releasesCount === 0 ? (
           <NoResults>
             <p>
               <FormattedMessage id="NO_RELEASES" />

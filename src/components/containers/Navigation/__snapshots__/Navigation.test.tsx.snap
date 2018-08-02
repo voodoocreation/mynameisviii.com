@@ -31,6 +31,15 @@ exports[`[containers] <Navigation /> renders correctly 1`] = `
     </li>
     <li>
       <a
+        href="/stems"
+      >
+        <span>
+          Stems
+        </span>
+      </a>
+    </li>
+    <li>
+      <a
         href="/appearances"
       >
         <span>

@@ -47,27 +47,20 @@ class IndexRoute extends React.Component<IProps> {
   }
 
   public render() {
-    const { articles } = this.props;
     const { formatMessage } = this.props.intl;
+
+    const pageTitle = formatMessage({ id: "BRAND_NAME" });
+    const pageDescription = formatMessage({ id: "INDEX_DESCRIPTION" });
 
     return (
       <React.Fragment>
         <Head>
-          <title>{formatMessage({ id: "BRAND_NAME" })}</title>
+          <title>{pageTitle}</title>
 
-          <meta
-            content={formatMessage({ id: "INDEX_DESCRIPTION" })}
-            name="description"
-          />
+          <meta content={pageDescription} name="description" />
 
-          <meta
-            property="og:title"
-            content={formatMessage({ id: "BRAND_NAME" })}
-          />
-          <meta
-            property="og:description"
-            content={formatMessage({ id: "INDEX_DESCRIPTION" })}
-          />
+          <meta property="og:title" content={pageTitle} />
+          <meta property="og:description" content={pageDescription} />
           <meta property="og:url" content={absUrl("/")} />
           <meta property="og:type" content="website" />
           <meta
@@ -83,109 +76,123 @@ class IndexRoute extends React.Component<IProps> {
         </PageHeader>
 
         <div className="Home">
-          {articles.length > 0 ? (
-            <section className="Home-news">
-              <div className="Home-news-content">
-                <h2>
-                  <FormattedMessage id="LATEST_NEWS" />
-                </h2>
-
-                <div className="Home-news-items">
-                  <NewsListing isCondensed={true} {...articles[0]} />
-                </div>
-              </div>
-            </section>
-          ) : null}
-
-          <section className="Home-bio">
-            <div className="Home-bio-content">
-              <h2>
-                <FormattedMessage id="BIOGRAPHY" />
-              </h2>
-
-              <p>
-                <FormattedMessage id="BIO_CONTENT_1" />
-              </p>
-              <p>
-                <FormattedMessage id="BIO_CONTENT_2" />
-              </p>
-              <p>
-                <FormattedMessage id="BIO_CONTENT_3" />
-              </p>
-              <p>
-                <FormattedMessage id="BIO_CONTENT_4" />
-              </p>
-              <p>
-                <FormattedMessage id="BIO_CONTENT_5" />
-              </p>
-            </div>
-          </section>
-
-          <section className="Home-connect">
-            <div className="Home-connect-content">
-              <h2>
-                <FormattedMessage id="CONNECT_WITH_VIII" />
-              </h2>
-
-              <div className="Home-connect-websites">
-                <WebsiteListing
-                  icon={<FaSpotify />}
-                  url="https://open.spotify.com/artist/59s4iD384WECjyZyUmZ18G?si=rlWWtIUNS1uvdLD5BzqxvQ"
-                  title={formatMessage({ id: "CONNECT_ON_SPOTIFY" })}
-                >
-                  <FormattedMessage id="SPOTIFY" />
-                </WebsiteListing>
-                <WebsiteListing
-                  icon={<FaFacebookSquare />}
-                  url="https://facebook.com/mynameisviii"
-                  title={formatMessage({ id: "CONNECT_ON_FACEBOOK" })}
-                >
-                  <FormattedMessage id="FACEBOOK" />
-                </WebsiteListing>
-                <WebsiteListing
-                  icon={<FaTwitter />}
-                  url="https://twitter.com/mynameisviii"
-                  title={formatMessage({ id: "CONNECT_ON_TWITTER" })}
-                >
-                  <FormattedMessage id="TWITTER" />
-                </WebsiteListing>
-                <WebsiteListing
-                  icon={<FaInstagram />}
-                  url="https://instagram.com/mynameisviii"
-                  title={formatMessage({ id: "CONNECT_ON_INSTAGRAM" })}
-                >
-                  <FormattedMessage id="INSTAGRAM" />
-                </WebsiteListing>
-                <WebsiteListing
-                  icon={<FaSoundcloud />}
-                  url="https://soundcloud.com/iamviii"
-                  title={formatMessage({ id: "CONNECT_ON_SOUNDCLOUD" })}
-                >
-                  <FormattedMessage id="SOUNDCLOUD" />
-                </WebsiteListing>
-                <WebsiteListing
-                  icon={<IconGenius />}
-                  url="https://genius.com/artists/Viii"
-                  title={formatMessage({ id: "CONNECT_ON_GENIUS" })}
-                >
-                  <FormattedMessage id="GENIUS" />
-                </WebsiteListing>
-              </div>
-
-              <div className="Home-connect-press">
-                <p>
-                  <FormattedMessage id="BOOKING_AND_PRESS_CONTACT" />{" "}
-                  <Link href="mailto:mgmt@mynameisviii.com">
-                    mgmt@mynameisviii.com
-                  </Link>.
-                </p>
-              </div>
-            </div>
-          </section>
+          {this.renderNewsSection()}
+          {this.renderBioSection()}
+          {this.renderConnectSection()}
         </div>
       </React.Fragment>
     );
   }
+
+  private renderNewsSection = () =>
+    this.props.articles.length < 1 ? null : (
+      <section className="Home-news">
+        <div className="Home-news-content">
+          <h2>
+            <FormattedMessage id="LATEST_NEWS" />
+          </h2>
+
+          <div className="Home-news-items">
+            <NewsListing isCondensed={true} {...this.props.articles[0]} />
+          </div>
+        </div>
+      </section>
+    );
+
+  private renderBioSection = () => (
+    <section className="Home-bio">
+      <div className="Home-bio-content">
+        <h2>
+          <FormattedMessage id="BIOGRAPHY" />
+        </h2>
+
+        <p>
+          <FormattedMessage id="BIO_CONTENT_1" />
+        </p>
+        <p>
+          <FormattedMessage id="BIO_CONTENT_2" />
+        </p>
+        <p>
+          <FormattedMessage id="BIO_CONTENT_3" />
+        </p>
+        <p>
+          <FormattedMessage id="BIO_CONTENT_4" />
+        </p>
+        <p>
+          <FormattedMessage id="BIO_CONTENT_5" />
+        </p>
+      </div>
+    </section>
+  );
+
+  private renderConnectSection = () => {
+    const { formatMessage } = this.props.intl;
+
+    return (
+      <section className="Home-connect">
+        <div className="Home-connect-content">
+          <h2>
+            <FormattedMessage id="CONNECT_WITH_VIII" />
+          </h2>
+
+          <div className="Home-connect-websites">
+            <WebsiteListing
+              icon={<FaSpotify />}
+              url="https://open.spotify.com/artist/59s4iD384WECjyZyUmZ18G?si=rlWWtIUNS1uvdLD5BzqxvQ"
+              title={formatMessage({ id: "CONNECT_ON_SPOTIFY" })}
+            >
+              <FormattedMessage id="SPOTIFY" />
+            </WebsiteListing>
+            <WebsiteListing
+              icon={<FaFacebookSquare />}
+              url="https://facebook.com/mynameisviii"
+              title={formatMessage({ id: "CONNECT_ON_FACEBOOK" })}
+            >
+              <FormattedMessage id="FACEBOOK" />
+            </WebsiteListing>
+            <WebsiteListing
+              icon={<FaTwitter />}
+              url="https://twitter.com/mynameisviii"
+              title={formatMessage({ id: "CONNECT_ON_TWITTER" })}
+            >
+              <FormattedMessage id="TWITTER" />
+            </WebsiteListing>
+            <WebsiteListing
+              icon={<FaInstagram />}
+              url="https://instagram.com/mynameisviii"
+              title={formatMessage({ id: "CONNECT_ON_INSTAGRAM" })}
+            >
+              <FormattedMessage id="INSTAGRAM" />
+            </WebsiteListing>
+            <WebsiteListing
+              icon={<FaSoundcloud />}
+              url="https://soundcloud.com/iamviii"
+              title={formatMessage({ id: "CONNECT_ON_SOUNDCLOUD" })}
+            >
+              <FormattedMessage id="SOUNDCLOUD" />
+            </WebsiteListing>
+            <WebsiteListing
+              icon={<IconGenius />}
+              url="https://genius.com/artists/Viii"
+              title={formatMessage({ id: "CONNECT_ON_GENIUS" })}
+            >
+              <FormattedMessage id="GENIUS" />
+            </WebsiteListing>
+          </div>
+
+          <div className="Home-connect-press">
+            <p>
+              <FormattedMessage id="BOOKING_AND_PRESS_CONTACT" />{" "}
+              <Link href="mailto:mgmt@mynameisviii.com">
+                mgmt@mynameisviii.com
+              </Link>
+              .
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  };
 }
 
 const mapStateToProps = (state: any) => ({

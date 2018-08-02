@@ -1,22 +1,22 @@
-import transformRelease from "../../transformers/transformRelease";
+import transformNewsArticle from "../../transformers/transformNewsArticle";
 
-export const transformReleases = (releases: any) =>
-  releases.map(transformRelease);
+const transformLatestNews = (articles: any) =>
+  articles.map(transformNewsArticle);
 
-export default (request: any) => async (
+export const fetchLatestNews = (request: any) => async (
   limit?: number,
   exclusiveStartKey?: string
 ) => {
   try {
     const response = await request({
       params: { exclusiveStartKey, limit },
-      url: `/releases/find`
+      url: `/news/find`
     });
 
     return {
       data: {
         ...response,
-        items: transformReleases(response.items)
+        items: transformLatestNews(response.items)
       },
       ok: true
     };

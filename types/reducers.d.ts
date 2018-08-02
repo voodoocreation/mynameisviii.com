@@ -3,6 +3,7 @@ interface IRootReducers {
   news: INewsReducers;
   page: IPageReducers;
   releases: IReleasesReducers;
+  stems: IStemsReducers;
 }
 
 interface IAppearancesReducers {
@@ -34,6 +35,14 @@ interface INewsReducers {
   };
 }
 
+interface IPageReducers {
+  currentRoute?: string;
+  error?: IError;
+  isLoading: boolean;
+  isNavOpen: boolean;
+  transitioningTo?: string;
+}
+
 interface IReleasesReducers {
   currentSlug?: string;
   hasAllItems: boolean;
@@ -48,10 +57,15 @@ interface IReleasesReducers {
   };
 }
 
-interface IPageReducers {
-  currentRoute?: string;
-  error?: IError;
+interface IStemsReducers {
+  hasAllItems: boolean;
   isLoading: boolean;
-  isNavOpen: boolean;
-  transitioningTo?: string;
+  items: {
+    [index: string]: IStem;
+  };
+  lastEvaluatedKey?: {
+    createdAt: string;
+    isActive?: string;
+    slug: string;
+  };
 }
