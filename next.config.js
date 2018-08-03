@@ -37,6 +37,7 @@ const configCSSLoaders = env => {
 
 module.exports = withTypescript({
   distDir: "dist",
+  poweredByHeader: false,
   webpack: config => {
     config.module.rules.push(
       {
