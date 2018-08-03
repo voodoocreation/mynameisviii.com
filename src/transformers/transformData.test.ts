@@ -144,7 +144,7 @@ describe("[transformers] Data", () => {
         process.env.DOMAIN = "mynameisviii.com";
 
         expect(data.absUrl("/news/article-slug")).toEqual(
-          "http://mynameisviii.com/news/article-slug"
+          "https://mynameisviii.com/news/article-slug"
         );
       });
 
@@ -152,7 +152,7 @@ describe("[transformers] Data", () => {
         process.env.DOMAIN = undefined;
 
         expect(data.absUrl("/news/article-slug")).toEqual(
-          "http://localhost/news/article-slug"
+          "https://localhost/news/article-slug"
         );
       });
     });
@@ -160,7 +160,7 @@ describe("[transformers] Data", () => {
 
   describe("extractDomain()", () => {
     it("extracts domain correctly", () => {
-      expect(data.extractDomain("http://mynameisviii.com/news")).toEqual(
+      expect(data.extractDomain("https://mynameisviii.com/news")).toEqual(
         "mynameisviii.com"
       );
     });

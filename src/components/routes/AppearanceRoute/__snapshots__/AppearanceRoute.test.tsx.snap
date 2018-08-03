@@ -286,7 +286,7 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
           >
             <a
               class="ActListing-link"
-              href="http://mynameisviii.com"
+              href="https://mynameisviii.com"
               rel="noopener"
               target="_blank"
             >

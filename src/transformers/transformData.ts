@@ -67,7 +67,7 @@ export const lengthToDuration = (length: string) => {
 export const absUrl = (path: string) =>
   process.env.NODE_ENV !== "production"
     ? `http://localhost:${process.env.PORT || window.location.port}${path}`
-    : `http://${
+    : `https://${
         process.env.DOMAIN !== "undefined"
           ? process.env.DOMAIN
           : window.location.host
