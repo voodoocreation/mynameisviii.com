@@ -34,7 +34,11 @@ class NewsArticle extends React.Component<IProps> {
     let action = null;
 
     if (article.action && article.action.route) {
-      action = <Link className="Button" route={article.action.route}>{article.action.text}</Link>;
+      action = (
+        <Link className="Button" route={article.action.route}>
+          {article.action.text}
+        </Link>
+      );
     } else if (article.action && article.action.url) {
       action = (
         <Link className="Button" href={article.action.url} isExternal={true}>

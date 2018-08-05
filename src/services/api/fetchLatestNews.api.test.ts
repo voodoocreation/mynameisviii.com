@@ -21,7 +21,7 @@ describe("[api] fetchLatestNews()", () => {
       limit: 1
     });
     expect(response.ok).toBe(true);
-    expect(response.data.items).toHaveLength(3);
+    expect(response.data.items).toHaveLength(5);
   });
 
   it("handles request failure correctly", async () => {

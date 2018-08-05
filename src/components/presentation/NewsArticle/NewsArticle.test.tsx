@@ -15,6 +15,7 @@ const setup = (fn: any, fromTestProps?: any) => {
     isActive: true,
     slug: "slug",
     title: "title",
+    type: "type",
     ...fromTestProps
   };
 
@@ -34,6 +35,36 @@ describe("[presentation] <NewsArticle />", () => {
   it("renders correctly", () => {
     const { actual } = setup(render);
 
+    expect(actual).toMatchSnapshot();
+  });
+
+  it("renders action with internal route correctly", () => {
+    const { actual, props } = setup(render, {
+      action: {
+        route: "route",
+        text: "text"
+      }
+    });
+    const action = actual.find(".NewsArticle-action a");
+
+    expect(action).toHaveLength(1);
+    expect(action.attr("href")).toBe(props.action.route);
+    expect(action.attr("target")).toBeUndefined();
+    expect(actual).toMatchSnapshot();
+  });
+
+  it("renders action with internal route correctly", () => {
+    const { actual, props } = setup(render, {
+      action: {
+        text: "text",
+        url: "url"
+      }
+    });
+    const action = actual.find(".NewsArticle-action a");
+
+    expect(action).toHaveLength(1);
+    expect(action.attr("href")).toBe(props.action.url);
+    expect(action.attr("target")).toBe("_blank");
     expect(actual).toMatchSnapshot();
   });
 
