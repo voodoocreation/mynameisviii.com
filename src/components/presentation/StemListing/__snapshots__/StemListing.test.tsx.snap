@@ -65,7 +65,7 @@ exports[`[presentation] <NewsListing /> renders correctly 1`] = `
         </div>
         <div
           class="Meta StemListing-licence"
-          title="Licenced under the Creative Commons Remix licence"
+          title="Licenced under the Creative Commons Attribution-NonCommercial-ShareAlike licence (CC BY-NC-SA)"
         >
           <svg
             fill="currentColor"
@@ -86,7 +86,7 @@ exports[`[presentation] <NewsListing /> renders correctly 1`] = `
             class="Meta-label"
           >
             <span>
-              Licenced under the Creative Commons Remix licence
+              Licenced under the Creative Commons Attribution-NonCommercial-ShareAlike licence (CC BY-NC-SA)
             </span>
             :
           </span>
@@ -200,7 +200,7 @@ exports[`[presentation] <NewsListing /> updates \`isImageLoaded\` state when ima
         </div>
         <div
           class="Meta StemListing-licence"
-          title="Licenced under the Creative Commons Remix licence"
+          title="Licenced under the Creative Commons Attribution-NonCommercial-ShareAlike licence (CC BY-NC-SA)"
         >
           <svg
             fill="currentColor"
@@ -221,7 +221,7 @@ exports[`[presentation] <NewsListing /> updates \`isImageLoaded\` state when ima
             class="Meta-label"
           >
             <span>
-              Licenced under the Creative Commons Remix licence
+              Licenced under the Creative Commons Attribution-NonCommercial-ShareAlike licence (CC BY-NC-SA)
             </span>
             :
           </span>
@@ -335,7 +335,7 @@ exports[`[presentation] <NewsListing /> updates \`isRendered\` state after image
         </div>
         <div
           class="Meta StemListing-licence"
-          title="Licenced under the Creative Commons Remix licence"
+          title="Licenced under the Creative Commons Attribution-NonCommercial-ShareAlike licence (CC BY-NC-SA)"
         >
           <svg
             fill="currentColor"
@@ -356,7 +356,7 @@ exports[`[presentation] <NewsListing /> updates \`isRendered\` state after image
             class="Meta-label"
           >
             <span>
-              Licenced under the Creative Commons Remix licence
+              Licenced under the Creative Commons Attribution-NonCommercial-ShareAlike licence (CC BY-NC-SA)
             </span>
             :
           </span>
