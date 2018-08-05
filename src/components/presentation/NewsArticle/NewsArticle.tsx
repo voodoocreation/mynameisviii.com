@@ -4,7 +4,9 @@ import { MdAccessTime } from "react-icons/lib/md";
 import { FormattedMessage, InjectedIntl, injectIntl } from "react-intl";
 
 import Schema from "../../schema/NewsArticle";
+import ButtonBar from "../ButtonBar/ButtonBar";
 import DateTime from "../DateTime/DateTime";
+import Link from "../Link/Link";
 import Loader from "../Loader/Loader";
 import PageHeader from "../PageHeader/PageHeader";
 import Type from "../Type/Type";
@@ -28,6 +30,18 @@ class NewsArticle extends React.Component<IProps> {
 
   public render() {
     const { intl, ...article } = this.props;
+
+    let action = null;
+
+    if (article.action && article.action.route) {
+      action = <Link className="Button" route={article.action.route}>{article.action.text}</Link>;
+    } else if (article.action && article.action.url) {
+      action = (
+        <Link className="Button" href={article.action.url} isExternal={true}>
+          {article.action.text}
+        </Link>
+      );
+    }
 
     return (
       <article className="NewsArticle">
@@ -59,10 +73,14 @@ class NewsArticle extends React.Component<IProps> {
             <Type value={article.type} />
           </section>
 
-          <section
-            className="NewsArticle-content"
-            dangerouslySetInnerHTML={{ __html: article.content }}
-          />
+          <section className="NewsArticle-content">
+            <div
+              className="NewsArticle-contentText"
+              dangerouslySetInnerHTML={{ __html: article.content }}
+            />
+
+            <ButtonBar className="NewsArticle-action">{action}</ButtonBar>
+          </section>
         </div>
 
         <Schema {...article} />

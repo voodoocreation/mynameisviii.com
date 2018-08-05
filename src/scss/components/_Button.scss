@@ -22,4 +22,8 @@
       margin: 0 auto;
     }
   }
+
+  &:hover {
+    background: $panel-color-2;
+  }
 }

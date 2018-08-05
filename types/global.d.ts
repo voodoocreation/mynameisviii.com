@@ -55,6 +55,12 @@ interface IError {
   status: number;
 }
 
+interface IAction {
+  route?: string;
+  url?: string;
+  text: string;
+}
+
 interface IImage {
   title: string;
   imageUrl: string;
@@ -153,6 +159,7 @@ interface IAppearance {
 }
 
 interface INewsArticle {
+  action?: IAction;
   author: string;
   content: string;
   createdAt: string;
