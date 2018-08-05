@@ -66,6 +66,7 @@ export default reducerWithInitialState(initialState)
 
   .case(actions.fetchAppearanceBySlug.done, (state, { result }) => ({
     ...state,
+    isLoading: false,
     items: {
       ...state.items,
       [result.slug]: result

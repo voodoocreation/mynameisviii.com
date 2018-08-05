@@ -44,7 +44,7 @@ class Shell extends React.Component<IProps> {
         <Banner />
 
         <main className="Page-body" role="main">
-          {isLoading ? <Loader /> : children}
+          {isLoading ? <Loader className="PageLoader" /> : children}
         </main>
       </article>
     );

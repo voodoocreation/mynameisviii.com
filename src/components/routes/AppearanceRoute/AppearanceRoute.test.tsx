@@ -45,6 +45,15 @@ describe("[routes] <AppearanceRoute />", () => {
     expect(actual).toMatchSnapshot();
   });
 
+  it("renders a loader when item is being fetched", () => {
+    const { actual } = setup(render, {
+      appearances: { isLoading: true }
+    });
+
+    expect(actual.hasClass("PageLoader")).toBe(true);
+    expect(actual).toMatchSnapshot();
+  });
+
   it("renders 404 error page when no appearance exists", () => {
     const { actual } = setup(mount, {
       appearances: {

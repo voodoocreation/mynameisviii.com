@@ -146,7 +146,7 @@ exports[`[containers] <Shell /> renders correctly when loading 1`] = `
     role="main"
   >
     <span
-      class="Loader"
+      class="Loader PageLoader"
     >
       <div
         class="Loader-animation"

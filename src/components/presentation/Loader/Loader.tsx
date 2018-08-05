@@ -1,7 +1,12 @@
+import cn from "classnames";
 import * as React from "react";
 
-const Loader: React.SFC<{}> = () => (
-  <span className="Loader">
+interface IProps {
+  className?: string;
+}
+
+const Loader: React.SFC<IProps> = ({ className }) => (
+  <span className={cn("Loader", className)}>
     <div className="Loader-animation">
       <span />
       <span />

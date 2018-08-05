@@ -46,6 +46,15 @@ describe("[routes] <NewsArticleRoute />", () => {
     expect(actual).toMatchSnapshot();
   });
 
+  it("renders a loader when item is being fetched", () => {
+    const { actual } = setup(render, {
+      news: { isLoading: true }
+    });
+
+    expect(actual.hasClass("PageLoader")).toBe(true);
+    expect(actual).toMatchSnapshot();
+  });
+
   it("renders 404 error page when no news article exists", () => {
     const { actual } = setup(mount, {
       news: {

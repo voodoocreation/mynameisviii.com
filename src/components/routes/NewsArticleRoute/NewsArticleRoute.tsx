@@ -8,6 +8,7 @@ import { ActionCreator } from "typescript-fsa";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { absUrl } from "../../../transformers/transformData";
 import ConnectedErrorPage from "../../containers/ConnectedErrorPage/ConnectedErrorPage";
+import Loader from "../../presentation/Loader/Loader";
 import NewsArticle from "../../presentation/NewsArticle/NewsArticle";
 
 import * as actions from "../../../actions/root.actions";
@@ -15,6 +16,7 @@ import * as selectors from "../../../selectors/root.selectors";
 
 interface IStoreProps {
   article?: INewsArticle;
+  isLoading: boolean;
 }
 
 interface IDispatchProps {
@@ -39,8 +41,12 @@ class NewsArticleRoute extends React.Component<IProps> {
   }
 
   public render() {
-    const { article } = this.props;
+    const { article, isLoading } = this.props;
     const { formatMessage } = this.props.intl;
+
+    if (isLoading) {
+      return <Loader className="PageLoader" />;
+    }
 
     if (!article) {
       return <ConnectedErrorPage />;
@@ -75,7 +81,8 @@ class NewsArticleRoute extends React.Component<IProps> {
 }
 
 const mapStateToProps = (state: any) => ({
-  article: selectors.getCurrentNewsArticle(state)
+  article: selectors.getCurrentNewsArticle(state),
+  isLoading: selectors.getNewsIsLoading(state)
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) =>

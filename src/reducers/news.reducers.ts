@@ -65,6 +65,7 @@ export default reducerWithInitialState(initialState)
 
   .case(actions.fetchNewsArticleBySlug.done, (state, { result }) => ({
     ...state,
+    isLoading: false,
     items: {
       ...state.items,
       [result.slug]: result

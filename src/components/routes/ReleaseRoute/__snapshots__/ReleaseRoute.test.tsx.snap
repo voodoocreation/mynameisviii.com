@@ -70,6 +70,20 @@ exports[`[routes] <ReleaseRoute /> renders 500 error page when slug isn't in the
 </article>
 `;
 
+exports[`[routes] <ReleaseRoute /> renders a loader when item is being fetched 1`] = `
+<span
+  class="Loader PageLoader"
+>
+  <div
+    class="Loader-animation"
+  >
+    <span />
+    <span />
+    <span />
+  </div>
+</span>
+`;
+
 exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
 <article
   class="Release"

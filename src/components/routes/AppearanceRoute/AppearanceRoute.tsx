@@ -9,6 +9,7 @@ import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { absUrl } from "../../../transformers/transformData";
 import ConnectedErrorPage from "../../containers/ConnectedErrorPage/ConnectedErrorPage";
 import Appearance from "../../presentation/Appearance/Appearance";
+import Loader from "../../presentation/Loader/Loader";
 
 import * as actions from "../../../actions/root.actions";
 import * as selectors from "../../../selectors/root.selectors";
@@ -16,6 +17,7 @@ import * as selectors from "../../../selectors/root.selectors";
 interface IStoreProps {
   appearance?: IAppearance;
   currentLocation?: ILatLng;
+  isLoading: boolean;
 }
 
 interface IDispatchProps {
@@ -46,8 +48,12 @@ class AppearanceRoute extends React.Component<IProps> {
   }
 
   public render() {
-    const { appearance, currentLocation } = this.props;
+    const { appearance, currentLocation, isLoading } = this.props;
     const { formatMessage } = this.props.intl;
+
+    if (isLoading) {
+      return <Loader className="PageLoader" />;
+    }
 
     if (!appearance) {
       return <ConnectedErrorPage />;
@@ -95,7 +101,8 @@ class AppearanceRoute extends React.Component<IProps> {
 
 const mapStateToProps = (state: any) => ({
   appearance: selectors.getCurrentAppearance(state),
-  currentLocation: selectors.getCurrentAppearanceLocation(state)
+  currentLocation: selectors.getCurrentAppearanceLocation(state),
+  isLoading: selectors.getAppearancesIsLoading(state)
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) =>

@@ -9,12 +9,14 @@ import { ActionCreator } from "typescript-fsa";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { absUrl } from "../../../transformers/transformData";
 import ConnectedErrorPage from "../../containers/ConnectedErrorPage/ConnectedErrorPage";
+import Loader from "../../presentation/Loader/Loader";
 import Release from "../../presentation/Release/Release";
 
 import * as actions from "../../../actions/root.actions";
 import * as selectors from "../../../selectors/root.selectors";
 
 interface IStoreProps {
+  isLoading: boolean;
   release?: IRelease;
 }
 
@@ -41,8 +43,12 @@ class ReleaseRoute extends React.Component<IProps> {
   }
 
   public render() {
-    const { release } = this.props;
+    const { isLoading, release } = this.props;
     const { formatMessage } = this.props.intl;
+
+    if (isLoading) {
+      return <Loader className="PageLoader" />;
+    }
 
     if (!release) {
       return <ConnectedErrorPage />;
@@ -112,6 +118,7 @@ class ReleaseRoute extends React.Component<IProps> {
 }
 
 const mapStateToProps = (state: any) => ({
+  isLoading: selectors.getReleasesIsLoading(state),
   release: selectors.getCurrentRelease(state)
 });
 

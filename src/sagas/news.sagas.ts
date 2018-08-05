@@ -8,7 +8,7 @@ import * as selectors from "../selectors/root.selectors";
 export const fetchLatestNewsSaga = (ports: IStorePorts) =>
   function*() {
     yield takeLatest(actions.fetchLatestNews.started, function*() {
-      const response = yield call(ports.api.fetchLatestNews, 3);
+      const response = yield call(ports.api.fetchLatestNews, 5);
 
       if (response.ok) {
         const result = {
@@ -36,7 +36,7 @@ export const fetchMoreLatestNewsSaga = (ports: IStorePorts) =>
 
       const response = yield call(
         ports.api.fetchLatestNews,
-        2,
+        3,
         lastEvaluatedKey
       );
 

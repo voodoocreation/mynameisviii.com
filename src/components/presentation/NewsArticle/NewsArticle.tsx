@@ -35,7 +35,7 @@ class NewsArticle extends React.Component<IProps> {
 
     if (article.action && article.action.route) {
       action = (
-        <Link className="Button" route={article.action.route}>
+        <Link className="Button" route={article.action.route} prefetch={true}>
           {article.action.text}
         </Link>
       );

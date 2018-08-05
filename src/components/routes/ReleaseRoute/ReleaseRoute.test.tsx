@@ -45,6 +45,15 @@ describe("[routes] <ReleaseRoute />", () => {
     expect(actual).toMatchSnapshot();
   });
 
+  it("renders a loader when item is being fetched", () => {
+    const { actual } = setup(render, {
+      releases: { isLoading: true }
+    });
+
+    expect(actual.hasClass("PageLoader")).toBe(true);
+    expect(actual).toMatchSnapshot();
+  });
+
   it("renders 404 error page when no release exists", () => {
     const { actual } = setup(mount, {
       page: {
