@@ -34,6 +34,7 @@ class Navigation extends React.Component<IProps> {
         <button onClick={this.onMenuButtonClick}>
           <FormattedMessage id="MENU" />
         </button>
+
         <ul>
           {this.renderNavItem("/news", "NEWS_TITLE")}
           {this.renderNavItem("/releases", "RELEASES_TITLE")}

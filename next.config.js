@@ -41,13 +41,6 @@ module.exports = withTypescript({
   webpack: config => {
     config.module.rules.push(
       {
-        test: /\.(css|scss)/,
-        loader: "emit-file-loader",
-        options: {
-          name: "[path][name].[ext]"
-        }
-      },
-      {
         test: /\.css$/,
         use: ["babel-loader", "raw-loader", "postcss-loader"]
       },

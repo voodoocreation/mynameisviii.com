@@ -7,6 +7,7 @@ declare module "*.svg";
 declare module "jest-mock-axios";
 declare module "lodash.merge";
 declare module "next-redux-saga";
+declare module "react-icon-base";
 declare module "react-relative-time";
 declare module "redux-saga-tester";
 
