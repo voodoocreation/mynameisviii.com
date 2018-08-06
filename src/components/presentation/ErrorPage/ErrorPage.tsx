@@ -1,6 +1,6 @@
 import Head from "next/head";
 import * as React from "react";
-import { MdErrorOutline } from "react-icons/md";
+import { MdErrorOutline } from "react-icons/lib/md";
 import { InjectedIntl, injectIntl } from "react-intl";
 
 import PageHeader from "../../presentation/PageHeader/PageHeader";

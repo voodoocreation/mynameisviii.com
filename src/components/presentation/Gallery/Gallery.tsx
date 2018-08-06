@@ -1,6 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
-import { MdArrowBack, MdArrowForward } from "react-icons/md";
+import { MdArrowBack, MdArrowForward } from "react-icons/lib/md";
 
 import Modal from "../Modal/Modal";
 

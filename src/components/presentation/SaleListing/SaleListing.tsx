@@ -1,6 +1,6 @@
 import * as React from "react";
-import { FaTicketAlt } from "react-icons/fa";
-import { MdLanguage } from "react-icons/md";
+import { FaTicket } from "react-icons/lib/fa";
+import { MdLanguage } from "react-icons/lib/md";
 
 import { extractDomain } from "../../../transformers/transformData";
 import Link from "../Link/Link";
@@ -11,7 +11,7 @@ const SaleListing: React.SFC<IOffer> = ({ ...sale }) => (
   <article className="SaleListing">
     <Link className="SaleListing-link" href={sale.url} isExternal={true}>
       <div className="SaleListing-icon">
-        <FaTicketAlt />
+        <FaTicket />
       </div>
 
       <div className="SaleListing-details">

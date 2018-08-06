@@ -1,6 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
-import { MdLocationOn, MdMusicNote } from "react-icons/md";
+import { MdLocationOn, MdMusicNote } from "react-icons/lib/md";
 
 import Link from "../Link/Link";
 import Meta from "../Meta/Meta";

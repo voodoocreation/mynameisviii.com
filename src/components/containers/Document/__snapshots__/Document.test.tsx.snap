@@ -4,22 +4,17 @@ exports[`[containers] <Document /> renders correctly when NODE_ENV=development 1
 Array [
   <link
     as="script"
-    href="/assets/_next/buildId/pagepathname.js"
+    href="undefined/_next/static/buildId/pagespathname.js"
     rel="preload"
   />,
   <link
     as="script"
-    href="/assets/_next/buildId/page/_app.js"
+    href="undefined/_next/static/buildId/pages/_app.js"
     rel="preload"
   />,
   <link
     as="script"
-    href="/assets/_next/buildId/page/_error.js"
-    rel="preload"
-  />,
-  <link
-    as="script"
-    href="/assets/_next/webpack/chunks/main.js"
+    href="undefined/_next/static/buildId/pages/_error.js"
     rel="preload"
   />,
   null,
@@ -128,7 +123,6 @@ Array [
   null,
   null,
   null,
-  null,
 ]
 `;
 
@@ -136,22 +130,17 @@ exports[`[containers] <Document /> renders currectly when NODE_ENV=production 1`
 Array [
   <link
     as="script"
-    href="/assets/_next/buildId/pagepathname.js"
+    href="undefined/_next/static/buildId/pagespathname.js"
     rel="preload"
   />,
   <link
     as="script"
-    href="/assets/_next/buildId/page/_app.js"
+    href="undefined/_next/static/buildId/pages/_app.js"
     rel="preload"
   />,
   <link
     as="script"
-    href="/assets/_next/buildId/page/_error.js"
-    rel="preload"
-  />,
-  <link
-    as="script"
-    href="/assets/_next/webpack/chunks/main.js"
+    href="undefined/_next/static/buildId/pages/_error.js"
     rel="preload"
   />,
   null,
@@ -259,7 +248,6 @@ Array [
   <div
     id="__next-error"
   />,
-  null,
   null,
   null,
   null,

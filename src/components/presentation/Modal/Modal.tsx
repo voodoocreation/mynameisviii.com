@@ -1,6 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
-import { MdClose } from "react-icons/md";
+import { MdClose } from "react-icons/lib/md";
 
 import { isInPortal, lockScroll, unlockScroll } from "../../../helpers/dom";
 import Portal from "../Portal/Portal";
