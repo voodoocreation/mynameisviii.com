@@ -28,5 +28,5 @@ describe("[presentation] <ToastContainer />", () => {
 
     expect(actual.find(".ToastContainer")).toHaveLength(0);
     expect(actual).toMatchSnapshot();
-  })
+  });
 });

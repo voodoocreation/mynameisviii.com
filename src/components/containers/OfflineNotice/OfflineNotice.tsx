@@ -13,21 +13,20 @@ interface IProps extends IStoreProps {
   intl: InjectedIntl;
 }
 
-const OfflineNotice: React.SFC<IProps> = ({ isOnline }) => isOnline ? null : (
-  <div className="OfflineNotice">
-    <MdPortableWifiOff />
-    <p>
-      <FormattedMessage id="CONTENT_UNAVAILABLE_OFFLINE" />
-    </p>
-  </div>
-);
+const OfflineNotice: React.SFC<IProps> = ({ isOnline }) =>
+  isOnline ? null : (
+    <div className="OfflineNotice">
+      <MdPortableWifiOff />
+      <p>
+        <FormattedMessage id="CONTENT_UNAVAILABLE_OFFLINE" />
+      </p>
+    </div>
+  );
 
 const mapStateToProps = (state: any) => ({
   isOnline: selectors.isOnline(state)
 });
 
 export default injectIntl<any>(
-  connect<IStoreProps>(
-    mapStateToProps
-  )(OfflineNotice)
+  connect<IStoreProps>(mapStateToProps)(OfflineNotice)
 );
