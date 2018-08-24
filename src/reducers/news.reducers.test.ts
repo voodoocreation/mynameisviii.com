@@ -38,6 +38,7 @@ describe("[reducers] News", () => {
         actions.fetchLatestNews.failed({ error, params: {} })
       );
 
+      expect(state.error).toEqual(error);
       expect(state.isLoading).toBe(false);
     });
   });
@@ -81,6 +82,7 @@ describe("[reducers] News", () => {
         actions.fetchMoreLatestNews.failed({ error, params: {} })
       );
 
+      expect(state.error).toEqual(error);
       expect(state.isLoading).toBe(false);
     });
   });
@@ -115,6 +117,7 @@ describe("[reducers] News", () => {
         actions.fetchNewsArticleBySlug.failed({ error, params })
       );
 
+      expect(state.error).toEqual(error);
       expect(state.isLoading).toBe(false);
     });
   });

@@ -37,7 +37,7 @@ const setup = (fn: any, fromTestStore = {}, fromTestApi?: {}) => {
   };
 };
 
-describe("[routes] <Index />", () => {
+describe("[routes] <IndexRoute />", () => {
   it("renders correctly with news results", () => {
     const { actual } = setup(render, {
       news: {

@@ -36,7 +36,7 @@ export const fetchMoreLatestNewsSaga = (ports: IStorePorts) =>
 
       const response = yield call(
         ports.api.fetchLatestNews,
-        3,
+        5,
         lastEvaluatedKey
       );
 

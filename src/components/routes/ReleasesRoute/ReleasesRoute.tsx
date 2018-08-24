@@ -8,6 +8,7 @@ import { ActionCreator } from "typescript-fsa";
 
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { absUrl } from "../../../transformers/transformData";
+import OfflineNotice from "../../containers/OfflineNotice/OfflineNotice";
 import ButtonBar from "../../presentation/ButtonBar/ButtonBar";
 import LoadButton from "../../presentation/LoadButton/LoadButton";
 import NoResults from "../../presentation/NoResults/NoResults";
@@ -18,6 +19,7 @@ import * as actions from "../../../actions/root.actions";
 import * as selectors from "../../../selectors/root.selectors";
 
 interface IStoreProps {
+  error?: IError;
   hasAllReleases: boolean;
   isLoading: boolean;
   releases: {
@@ -59,7 +61,7 @@ class ReleasesRoute extends React.Component<IProps, IState> {
   };
 
   public render() {
-    const { hasAllReleases, releases, releasesCount } = this.props;
+    const { error, hasAllReleases, releases, releasesCount } = this.props;
     const { formatMessage } = this.props.intl;
 
     const hasLoadedAllListings =
@@ -68,8 +70,16 @@ class ReleasesRoute extends React.Component<IProps, IState> {
     const isLoading = this.props.isLoading || !hasLoadedAllListings;
 
     const loadMoreButton = hasAllReleases ? null : (
-      <LoadButton isLoading={isLoading} onLoad={this.onLoadMore}>
-        <FormattedMessage id="LOAD_MORE" />
+      <LoadButton
+        isLoading={isLoading}
+        isScrollLoadEnabled={!error}
+        onLoad={this.onLoadMore}
+      >
+        {!error ? (
+          <FormattedMessage id="LOAD_MORE" />
+        ) : (
+          <FormattedMessage id="TRY_AGAIN" />
+        )}
       </LoadButton>
     );
 
@@ -99,6 +109,8 @@ class ReleasesRoute extends React.Component<IProps, IState> {
         <PageHeader>
           <FormattedMessage id="RELEASES_TITLE" />
         </PageHeader>
+
+        {error ? <OfflineNotice /> : null}
 
         {releasesCount > 0
           ? Object.keys(releases).map(this.renderListingsForType)
@@ -153,6 +165,7 @@ class ReleasesRoute extends React.Component<IProps, IState> {
 }
 
 const mapStateToProps = (state: any) => ({
+  error: selectors.getReleasesError(state),
   hasAllReleases: selectors.getHasAllReleases(state),
   isLoading: selectors.getReleasesIsLoading(state),
   releases: selectors.getReleasesByType(state),

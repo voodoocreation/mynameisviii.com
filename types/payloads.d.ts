@@ -1,5 +1,7 @@
 /* tslint:disable:interface-over-type-literal */
 
+type PLUpdateOnlineStatus = boolean;
+
 type PLSetCurrentRoute = string;
 type PLChangeRouteStarted = string;
 type PLChangeRouteDone = undefined;

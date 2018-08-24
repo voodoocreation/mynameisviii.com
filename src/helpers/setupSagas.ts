@@ -6,7 +6,7 @@ import rootSaga from "../sagas/root.sagas";
 
 const g: any = global;
 
-export default (fromTestStore: {}, fromTestPorts: {}) => {
+export default (fromTestStore = {}, fromTestPorts = {}) => {
   const initialState = merge({}, fromTestStore);
   const ports = merge(
     {

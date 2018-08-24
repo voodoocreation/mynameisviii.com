@@ -40,11 +40,18 @@ const addEventListener = g.addEventListener;
 const removeEventListener = g.removeEventListener;
 
 describe("[presentation] <Modal />", () => {
-  g.addEventListener = jest.fn((...args) => addEventListener(...args));
-  g.removeEventListener = jest.fn((...args) => removeEventListener(...args));
+  beforeAll(() => {
+    g.addEventListener = jest.fn((...args) => addEventListener(...args));
+    g.removeEventListener = jest.fn((...args) => removeEventListener(...args));
+  });
 
   afterEach(() => {
     jest.clearAllMocks();
+  });
+
+  afterAll(() => {
+    g.addEventListener = addEventListener;
+    g.removeEventListener = removeEventListener;
   });
 
   it("renders correctly", () => {

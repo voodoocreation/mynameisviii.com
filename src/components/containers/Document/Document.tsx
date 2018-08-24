@@ -16,7 +16,7 @@ const Meta: React.SFC<{}> = () => (
   <React.Fragment>
     <meta charSet="UTF-8" />
     <meta
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
       name="viewport"
     />
 
@@ -144,10 +144,7 @@ export default class extends Document {
       process.env.NODE_ENV !== "production" ? (
         <style dangerouslySetInnerHTML={{ __html: css }} />
       ) : (
-        <link
-          href={`/assets/main.css?${this.props.__NEXT_DATA__.buildId}`}
-          rel="stylesheet"
-        />
+        <link href="/assets/main.css" rel="stylesheet" />
       );
 
     return (

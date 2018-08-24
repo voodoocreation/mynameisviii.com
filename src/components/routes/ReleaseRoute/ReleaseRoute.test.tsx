@@ -56,14 +56,12 @@ describe("[routes] <ReleaseRoute />", () => {
 
   it("renders 404 error page when no release exists", () => {
     const { actual } = setup(mount, {
-      page: {
+      releases: {
+        currentSlug: "test-1",
         error: {
           message: "Not found",
           status: 404
         }
-      },
-      releases: {
-        currentSlug: "test-1"
       }
     });
 

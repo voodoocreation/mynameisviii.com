@@ -4,6 +4,7 @@ import * as actions from "../actions/root.actions";
 
 export const initialState: INewsReducers = {
   currentSlug: undefined,
+  error: undefined,
   hasAllItems: false,
   isLoading: false,
   items: {},
@@ -17,14 +18,16 @@ export default reducerWithInitialState(initialState)
       actions.fetchMoreLatestNews.failed,
       actions.fetchNewsArticleBySlug.failed
     ],
-    state => ({
+    (state, { error }) => ({
       ...state,
+      error,
       isLoading: false
     })
   )
 
   .case(actions.fetchLatestNews.started, state => ({
     ...state,
+    error: undefined,
     isLoading: true,
     items: {}
   }))
@@ -39,6 +42,7 @@ export default reducerWithInitialState(initialState)
 
   .case(actions.fetchMoreLatestNews.started, state => ({
     ...state,
+    error: undefined,
     isLoading: true
   }))
 
@@ -60,6 +64,7 @@ export default reducerWithInitialState(initialState)
 
   .case(actions.fetchNewsArticleBySlug.started, state => ({
     ...state,
+    error: undefined,
     isLoading: true
   }))
 

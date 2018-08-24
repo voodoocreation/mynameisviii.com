@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[presentation] <ToastContainer /> renders correctly with children 1`] = `
+<div
+  class="ToastContainer TestToastContainer"
+>
+  <div>
+    Test
+  </div>
+</div>
+`;
+
+exports[`[presentation] <ToastContainer /> renders null with no children 1`] = `null`;

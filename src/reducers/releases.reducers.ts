@@ -4,6 +4,7 @@ import * as actions from "../actions/root.actions";
 
 export const initialState: IReleasesReducers = {
   currentSlug: undefined,
+  error: undefined,
   hasAllItems: false,
   isLoading: false,
   items: {},
@@ -17,14 +18,16 @@ export default reducerWithInitialState(initialState)
       actions.fetchMoreReleases.failed,
       actions.fetchReleaseBySlug.failed
     ],
-    state => ({
+    (state, { error }) => ({
       ...state,
+      error,
       isLoading: false
     })
   )
 
   .case(actions.fetchReleases.started, state => ({
     ...state,
+    error: undefined,
     isLoading: true,
     items: {}
   }))
@@ -39,6 +42,7 @@ export default reducerWithInitialState(initialState)
 
   .case(actions.fetchMoreReleases.started, state => ({
     ...state,
+    error: undefined,
     isLoading: true
   }))
 
@@ -60,6 +64,7 @@ export default reducerWithInitialState(initialState)
 
   .case(actions.fetchReleaseBySlug.started, state => ({
     ...state,
+    error: undefined,
     isLoading: true
   }))
 

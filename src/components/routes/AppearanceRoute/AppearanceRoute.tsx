@@ -7,8 +7,8 @@ import { ActionCreator } from "typescript-fsa";
 
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { absUrl } from "../../../transformers/transformData";
-import ConnectedErrorPage from "../../containers/ConnectedErrorPage/ConnectedErrorPage";
 import Appearance from "../../presentation/Appearance/Appearance";
+import ErrorPage from "../../presentation/ErrorPage/ErrorPage";
 import Loader from "../../presentation/Loader/Loader";
 
 import * as actions from "../../../actions/root.actions";
@@ -17,6 +17,7 @@ import * as selectors from "../../../selectors/root.selectors";
 interface IStoreProps {
   appearance?: IAppearance;
   currentLocation?: ILatLng;
+  error?: IError;
   isLoading: boolean;
 }
 
@@ -48,7 +49,7 @@ class AppearanceRoute extends React.Component<IProps> {
   }
 
   public render() {
-    const { appearance, currentLocation, isLoading } = this.props;
+    const { appearance, currentLocation, error, isLoading } = this.props;
     const { formatMessage } = this.props.intl;
 
     if (isLoading) {
@@ -56,7 +57,7 @@ class AppearanceRoute extends React.Component<IProps> {
     }
 
     if (!appearance) {
-      return <ConnectedErrorPage />;
+      return <ErrorPage {...error} />;
     }
 
     return (
@@ -102,6 +103,7 @@ class AppearanceRoute extends React.Component<IProps> {
 const mapStateToProps = (state: any) => ({
   appearance: selectors.getCurrentAppearance(state),
   currentLocation: selectors.getCurrentAppearanceLocation(state),
+  error: selectors.getAppearancesError(state),
   isLoading: selectors.getAppearancesIsLoading(state)
 });
 

@@ -57,9 +57,7 @@ describe("[routes] <AppearanceRoute />", () => {
   it("renders 404 error page when no appearance exists", () => {
     const { actual } = setup(mount, {
       appearances: {
-        currentSlug: "test-1"
-      },
-      page: {
+        currentSlug: "test-1",
         error: {
           message: "Not found",
           status: 404

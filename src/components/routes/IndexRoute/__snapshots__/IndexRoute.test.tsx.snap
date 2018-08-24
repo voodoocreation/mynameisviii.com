@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[routes] <Index /> renders correctly with news results 1`] = `
+exports[`[routes] <IndexRoute /> renders correctly with news results 1`] = `
 Array [
   <header
     class="PageHeader"
@@ -349,7 +349,7 @@ Array [
 ]
 `;
 
-exports[`[routes] <Index /> renders correctly with no news results 1`] = `
+exports[`[routes] <IndexRoute /> renders correctly with no news results 1`] = `
 Array [
   <header
     class="PageHeader"

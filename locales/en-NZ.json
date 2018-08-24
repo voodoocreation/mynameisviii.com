@@ -23,6 +23,7 @@
   "BUY_FROM_GOOGLE": "Buy '{title}' from Google Play",
   "BY": "by",
   "CANCELLED": "Cancelled",
+  "CLOSE": "Close",
   "COMPILATION": "Compilation",
   "CONNECT_ON_FACEBOOK": "Connect with Viii on Facebook",
   "CONNECT_ON_GENIUS": "Connect with Viii on Genius",
@@ -31,6 +32,7 @@
   "CONNECT_ON_SPOTIFY": "Connect with Viii on Spotify",
   "CONNECT_ON_TWITTER": "Connect with Viii on Twitter",
   "CONNECT_WITH_VIII": "Connect with Viii",
+  "CONTENT_UNAVAILABLE_OFFLINE": "This content is currently unavailable while you're offline. Visit this page when you're back online and it will be available next time you go offline.",
   "DATE": "Date",
   "DEMO": "Demo",
   "DISC_NUMBER": "Disc {number}",
@@ -97,9 +99,12 @@
   "TRACKLIST": "Tracklist",
   "TRACK": "track",
   "TRACKS": "tracks",
+  "TRY_AGAIN": "Try again",
   "TWITTER": "Twitter",
   "TYPE": "Type",
   "UPCOMING": "Upcoming",
   "UPDATE_LOCAL_DATA": "Update local data",
-  "WEBSITE": "Website"
+  "WEBSITE": "Website",
+  "YOU_ARE_BACK_ONLINE": "You are back online!",
+  "YOU_ARE_OFFLINE": "You are offline. Some data and external links will be unavailable until you reconnect."
 }

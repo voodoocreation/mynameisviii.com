@@ -8,6 +8,7 @@ import { ActionCreator } from "typescript-fsa";
 
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { absUrl } from "../../../transformers/transformData";
+import OfflineNotice from "../../containers/OfflineNotice/OfflineNotice";
 import ButtonBar from "../../presentation/ButtonBar/ButtonBar";
 import LoadButton from "../../presentation/LoadButton/LoadButton";
 import NoResults from "../../presentation/NoResults/NoResults";
@@ -18,6 +19,7 @@ import * as actions from "../../../actions/root.actions";
 import * as selectors from "../../../selectors/root.selectors";
 
 interface IStoreProps {
+  error?: IError;
   hasAllStems: boolean;
   isLoading: boolean;
   stems: IStem[];
@@ -57,7 +59,7 @@ class StemsRoute extends React.Component<IProps, IState> {
   };
 
   public render() {
-    const { hasAllStems, stems, stemsCount } = this.props;
+    const { error, hasAllStems, stems, stemsCount } = this.props;
     const { formatMessage } = this.props.intl;
 
     const hasLoadedAllListings =
@@ -66,8 +68,16 @@ class StemsRoute extends React.Component<IProps, IState> {
     const isLoading = this.props.isLoading || !hasLoadedAllListings;
 
     const loadMoreButton = hasAllStems ? null : (
-      <LoadButton isLoading={isLoading} onLoad={this.onLoadMore}>
-        <FormattedMessage id="LOAD_MORE" />
+      <LoadButton
+        isLoading={isLoading}
+        isScrollLoadEnabled={!error}
+        onLoad={this.onLoadMore}
+      >
+        {!error ? (
+          <FormattedMessage id="LOAD_MORE" />
+        ) : (
+          <FormattedMessage id="TRY_AGAIN" />
+        )}
       </LoadButton>
     );
 
@@ -95,6 +105,8 @@ class StemsRoute extends React.Component<IProps, IState> {
         </Head>
 
         <PageHeader>{pageTitle}</PageHeader>
+
+        {error ? <OfflineNotice /> : null}
 
         {stemsCount < 1 ? null : (
           <section className="StemListings">
@@ -136,6 +148,7 @@ class StemsRoute extends React.Component<IProps, IState> {
 }
 
 const mapStateToProps = (state: any) => ({
+  error: selectors.getStemsError(state),
   hasAllStems: selectors.getHasAllStems(state),
   isLoading: selectors.getStemsIsLoading(state),
   stems: selectors.getStemsAsArray(state),

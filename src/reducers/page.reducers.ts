@@ -7,37 +7,15 @@ export const initialState: IPageReducers = {
   error: undefined,
   isLoading: false,
   isNavOpen: false,
+  isOnline: true,
   transitioningTo: undefined
 };
 
 export default reducerWithInitialState(initialState)
-  .cases(
-    [
-      actions.fetchAppearances.failed,
-      actions.fetchMoreAppearances.failed,
-      actions.fetchLatestNews.failed,
-      actions.fetchMoreLatestNews.failed,
-      actions.fetchReleases.failed,
-      actions.fetchMoreReleases.failed,
-      actions.fetchStems.failed
-    ],
-    (state, { error }) => ({
-      ...state,
-      error
-    })
-  )
-
-  .cases(
-    [
-      actions.fetchAppearanceBySlug.failed,
-      actions.fetchNewsArticleBySlug.failed,
-      actions.fetchReleaseBySlug.failed
-    ],
-    (state, { error }) => ({
-      ...state,
-      error
-    })
-  )
+  .case(actions.updateOnlineStatus, (state, payload) => ({
+    ...state,
+    isOnline: payload
+  }))
 
   .case(actions.toggleNavigation, state => ({
     ...state,

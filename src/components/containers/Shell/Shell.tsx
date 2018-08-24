@@ -5,12 +5,15 @@ import { InjectedIntl, injectIntl } from "react-intl";
 import { connect } from "react-redux";
 
 import Banner from "../../presentation/Banner/Banner";
+import Loader from "../../presentation/Loader/Loader";
+import OnlineStatusToast from "../../presentation/OnlineStatusToast/OnlineStatusToast";
+import ToastContainer from "../../presentation/ToastContainer/ToastContainer";
 
 import * as selectors from "../../../selectors/root.selectors";
-import Loader from "../../presentation/Loader/Loader";
 
 interface IStoreProps {
   isLoading: boolean;
+  isOnline: boolean;
 }
 
 interface IProps extends IStoreProps {
@@ -29,7 +32,7 @@ class Shell extends React.Component<IProps> {
   }
 
   public render() {
-    const { children, className, isLoading } = this.props;
+    const { children, className, isLoading, isOnline } = this.props;
     const { formatMessage } = this.props.intl;
 
     return (
@@ -46,13 +49,18 @@ class Shell extends React.Component<IProps> {
         <main className="Page-body" role="main">
           {isLoading ? <Loader className="PageLoader" /> : children}
         </main>
+
+        <ToastContainer>
+          <OnlineStatusToast isOnline={isOnline} />
+        </ToastContainer>
       </article>
     );
   }
 }
 
 const mapStateToProps = (state: any) => ({
-  isLoading: selectors.getPageIsLoading(state)
+  isLoading: selectors.getPageIsLoading(state),
+  isOnline: selectors.isOnline(state)
 });
 
 export default injectIntl<any>(connect<IStoreProps>(mapStateToProps)(Shell));

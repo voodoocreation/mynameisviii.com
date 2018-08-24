@@ -1,6 +1,9 @@
 import { createSelector, defaultMemoize } from "reselect";
 import { assocToArray } from "../transformers/transformData";
 
+export const getAppearancesError = (state: IRootReducers) =>
+  state.appearances.error;
+
 export const getAppearances = defaultMemoize(
   (state: IRootReducers) => state.appearances.items
 );

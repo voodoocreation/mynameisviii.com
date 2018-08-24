@@ -48,7 +48,7 @@ export const createPortsWith = (
             })
           )
         );
-      } else if (error.request) {
+      } else if (error.request && error.request.statusText) {
         // The request was made but no response was received
         // `err.request` is an instance of XMLHttpRequest in the browser
         throw new Error(error.request.statusText);

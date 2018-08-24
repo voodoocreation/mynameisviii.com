@@ -1,0 +1,10 @@
+.ToastContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  position: fixed;
+  right: $spacing;
+  bottom: $spacing;
+  left: $spacing;
+  z-index: ($modal-index + 1);
+}

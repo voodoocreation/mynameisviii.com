@@ -38,6 +38,7 @@ describe("[reducers] Appearances", () => {
         actions.fetchAppearances.failed({ error, params: {} })
       );
 
+      expect(state.error).toEqual(error);
       expect(state.isLoading).toBe(false);
     });
   });
@@ -81,6 +82,7 @@ describe("[reducers] Appearances", () => {
         actions.fetchMoreAppearances.failed({ error, params: {} })
       );
 
+      expect(state.error).toEqual(error);
       expect(state.isLoading).toBe(false);
     });
   });
@@ -115,6 +117,7 @@ describe("[reducers] Appearances", () => {
         actions.fetchAppearanceBySlug.failed({ error, params })
       );
 
+      expect(state.error).toEqual(error);
       expect(state.isLoading).toBe(false);
     });
   });

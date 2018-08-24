@@ -38,6 +38,7 @@ describe("[reducers] Releases", () => {
         actions.fetchReleases.failed({ error, params: {} })
       );
 
+      expect(state.error).toEqual(error);
       expect(state.isLoading).toBe(false);
     });
   });
@@ -81,6 +82,7 @@ describe("[reducers] Releases", () => {
         actions.fetchMoreReleases.failed({ error, params: {} })
       );
 
+      expect(state.error).toEqual(error);
       expect(state.isLoading).toBe(false);
     });
   });
@@ -112,6 +114,7 @@ describe("[reducers] Releases", () => {
         actions.fetchReleaseBySlug.failed({ error, params })
       );
 
+      expect(state.error).toEqual(error);
       expect(state.isLoading).toBe(false);
     });
   });

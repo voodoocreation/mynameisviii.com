@@ -3,6 +3,7 @@ import { reducerWithInitialState } from "typescript-fsa-reducers";
 import * as actions from "../actions/root.actions";
 
 export const initialState: IStemsReducers = {
+  error: undefined,
   hasAllItems: false,
   isLoading: false,
   items: {},
@@ -10,13 +11,18 @@ export const initialState: IStemsReducers = {
 };
 
 export default reducerWithInitialState(initialState)
-  .cases([actions.fetchStems.failed, actions.fetchMoreStems.failed], state => ({
-    ...state,
-    isLoading: false
-  }))
+  .cases(
+    [actions.fetchStems.failed, actions.fetchMoreStems.failed],
+    (state, { error }) => ({
+      ...state,
+      error,
+      isLoading: false
+    })
+  )
 
   .case(actions.fetchStems.started, state => ({
     ...state,
+    error: undefined,
     isLoading: true,
     items: {}
   }))
@@ -31,6 +37,7 @@ export default reducerWithInitialState(initialState)
 
   .case(actions.fetchMoreStems.started, state => ({
     ...state,
+    error: undefined,
     isLoading: true
   }))
 

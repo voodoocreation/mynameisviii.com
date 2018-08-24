@@ -1,0 +1,15 @@
+.OfflineNotice {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: $spacing;
+  padding: $spacing;
+  background: $panel-color;
+
+  svg {
+    font-size: 128px;
+  }
+}

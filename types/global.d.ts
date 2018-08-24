@@ -10,6 +10,8 @@ declare module "next-redux-saga";
 declare module "react-icon-base";
 declare module "react-relative-time";
 declare module "redux-saga-tester";
+declare module "serviceworker-webpack-plugin/lib/runtime";
+declare module "service-worker-mock";
 
 type TInputEvent = React.FormEvent<HTMLInputElement>;
 

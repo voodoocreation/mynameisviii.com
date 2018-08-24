@@ -244,3 +244,35 @@ exports[`[routes] <NewsRoute /> renders correctly 1`] = `
   </section>
 </article>
 `;
+
+exports[`[routes] <NewsRoute /> renders with an error correctly 1`] = `
+<article
+  class="NewsRoute hasLoadedAllListings"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1>
+      <span>
+        News
+      </span>
+    </h1>
+  </header>
+  <div
+    class="ButtonBar"
+  >
+    <button
+      class="Button LoadButton"
+      type="button"
+    >
+      <span
+        class="Button-content"
+      >
+        <span>
+          Try again
+        </span>
+      </span>
+    </button>
+  </div>
+</article>
+`;

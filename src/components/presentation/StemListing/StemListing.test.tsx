@@ -25,7 +25,7 @@ const setup = (fn: any, fromTestProps?: any) => {
   };
 };
 
-describe("[presentation] <NewsListing />", () => {
+describe("[presentation] <StemListing />", () => {
   beforeEach(() => {
     Object.defineProperty(g.Image.prototype, "complete", {
       value: false

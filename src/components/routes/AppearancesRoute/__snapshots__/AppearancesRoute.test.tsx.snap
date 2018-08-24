@@ -666,3 +666,33 @@ exports[`[routes] <AppearancesRoute /> renders correctly 1`] = `
   </section>
 </article>
 `;
+
+exports[`[routes] <AppearancesRoute /> renders with an error correctly 1`] = `
+<article
+  class="AppearancesRoute hasLoadedAllListings"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1>
+      Appearances
+    </h1>
+  </header>
+  <div
+    class="ButtonBar"
+  >
+    <button
+      class="Button LoadButton"
+      type="button"
+    >
+      <span
+        class="Button-content"
+      >
+        <span>
+          Try again
+        </span>
+      </span>
+    </button>
+  </div>
+</article>
+`;

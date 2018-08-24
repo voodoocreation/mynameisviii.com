@@ -49,16 +49,4 @@ describe("[reducers] Page", () => {
     expect(state1.isNavOpen).toBe(true);
     expect(state2.isNavOpen).toEqual(false);
   });
-
-  it("actions.fetchNewsArticleBySlug.failed is handled", () => {
-    const params = "test-1";
-    const error = { message: "Error", status: 500 };
-
-    const state = reducer(
-      model,
-      actions.fetchNewsArticleBySlug.failed({ error, params })
-    );
-
-    expect(state.error).toEqual(error);
-  });
 });

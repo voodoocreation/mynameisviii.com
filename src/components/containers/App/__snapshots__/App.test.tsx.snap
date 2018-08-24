@@ -75,6 +75,9 @@ exports[`[containers] <App /> mounts application correctly on the client 1`] = `
       class="PageComponent"
     />
   </main>
+  <div
+    class="ToastContainer"
+  />
 </article>
 `;
 
@@ -153,5 +156,8 @@ exports[`[containers] <App /> mounts application correctly on the server 1`] = `
       class="PageComponent"
     />
   </main>
+  <div
+    class="ToastContainer"
+  />
 </article>
 `;

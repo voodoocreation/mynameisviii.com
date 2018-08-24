@@ -8,6 +8,7 @@ import { ActionCreator } from "typescript-fsa";
 
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { absUrl } from "../../../transformers/transformData";
+import OfflineNotice from "../../containers/OfflineNotice/OfflineNotice";
 import ButtonBar from "../../presentation/ButtonBar/ButtonBar";
 import LoadButton from "../../presentation/LoadButton/LoadButton";
 import NewsListing from "../../presentation/NewsListing/NewsListing";
@@ -20,6 +21,7 @@ import * as selectors from "../../../selectors/root.selectors";
 interface IStoreProps {
   articles: INewsArticle[];
   articlesCount: number;
+  error?: IError;
   hasAllNewsArticles: boolean;
   isLoading: boolean;
 }
@@ -57,7 +59,7 @@ class NewsRoute extends React.Component<IProps, IState> {
   };
 
   public render() {
-    const { articles, articlesCount, hasAllNewsArticles } = this.props;
+    const { articles, articlesCount, error, hasAllNewsArticles } = this.props;
     const { formatMessage } = this.props.intl;
 
     const hasLoadedAllListings =
@@ -66,8 +68,16 @@ class NewsRoute extends React.Component<IProps, IState> {
     const isLoading = this.props.isLoading || !hasLoadedAllListings;
 
     const loadMoreButton = hasAllNewsArticles ? null : (
-      <LoadButton isLoading={isLoading} onLoad={this.onLoadMore}>
-        <FormattedMessage id="LOAD_MORE" />
+      <LoadButton
+        isLoading={isLoading}
+        isScrollLoadEnabled={!error}
+        onLoad={this.onLoadMore}
+      >
+        {!error ? (
+          <FormattedMessage id="LOAD_MORE" />
+        ) : (
+          <FormattedMessage id="TRY_AGAIN" />
+        )}
       </LoadButton>
     );
 
@@ -98,6 +108,8 @@ class NewsRoute extends React.Component<IProps, IState> {
         <PageHeader>
           <FormattedMessage id="NEWS_TITLE" />
         </PageHeader>
+
+        {error ? <OfflineNotice /> : null}
 
         {articlesCount > 0 ? (
           <section className="NewsListings">
@@ -141,6 +153,7 @@ class NewsRoute extends React.Component<IProps, IState> {
 const mapStateToProps = (state: any) => ({
   articles: selectors.getNewsArticlesAsArray(state),
   articlesCount: selectors.getNewsArticlesCount(state),
+  error: selectors.getNewsError(state),
   hasAllNewsArticles: selectors.getHasAllNewsArticles(state),
   isLoading: selectors.getNewsIsLoading(state)
 });

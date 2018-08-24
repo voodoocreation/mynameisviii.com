@@ -1,6 +1,11 @@
 import cn from "classnames";
 import * as React from "react";
-import { MdAccessTime, MdDateRange, MdPeople, MdPlace } from "react-icons/lib/md";
+import {
+  MdAccessTime,
+  MdDateRange,
+  MdPeople,
+  MdPlace
+} from "react-icons/lib/md";
 import { FormattedMessage, InjectedIntl, injectIntl } from "react-intl";
 
 import Schema from "../../schema/Appearance";

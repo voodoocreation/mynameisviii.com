@@ -1,6 +1,8 @@
 import { createSelector, defaultMemoize } from "reselect";
 import { assocToArray } from "../transformers/transformData";
 
+export const getStemsError = (state: IRootReducers) => state.stems.error;
+
 export const getStems = defaultMemoize(
   (state: IRootReducers) => state.stems.items
 );

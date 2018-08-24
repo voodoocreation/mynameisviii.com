@@ -1,7 +1,28 @@
-const path = require("path");
+const fs = require("fs");
 const glob = require("glob");
-const PluginExtractText = require("extract-text-webpack-plugin");
+const path = require("path");
+const webpack = require("webpack");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ServiceWorkerPlugin = require("serviceworker-webpack-plugin");
 const withTypescript = require("@zeit/next-typescript");
+const PluginLodashModuleReplacement = require("lodash-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+
+const getFiles = (dir, files = []) => {
+  const list = fs.readdirSync(dir);
+
+  return list.reduce((acc, curr) => {
+    const name = `${dir}/${curr}`;
+
+    if (fs.statSync(name).isDirectory()) {
+      getFiles(name, files);
+    } else {
+      acc.push(name.replace(__dirname, "").replace(/\\/g, "/"));
+    }
+
+    return acc;
+  }, files);
+};
 
 const configCSSLoaders = env => {
   let cssLoader = { loader: "css-loader" };
@@ -38,7 +59,7 @@ const configCSSLoaders = env => {
 module.exports = withTypescript({
   distDir: "dist",
   poweredByHeader: false,
-  webpack: config => {
+  webpack: (config, { buildId, dev }) => {
     config.module.rules.push(
       {
         test: /\.css$/,
@@ -54,20 +75,44 @@ module.exports = withTypescript({
       }
     );
 
-    if (process.env.NODE_ENV === "production") {
+    config.plugins.push(
+      new PluginLodashModuleReplacement(),
+
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+
+      new ServiceWorkerPlugin({
+        entry: path.join(__dirname, "src/services/appService.ts"),
+        filename: "appService.js",
+        transformOptions: swOptions => ({
+          ...swOptions,
+          assets: swOptions.assets
+            .map(asset => `/_next${asset.replace(/\\/g, "/")}`)
+            .filter(asset => asset.startsWith("/_next/static/")),
+          staticFiles: [
+            "/assets/main.css",
+            ...getFiles(path.join(__dirname, "static"))
+          ],
+          buildId
+        })
+      })
+    );
+
+    if (!dev) {
       config.module.rules.push({
         test: /\.s(a|c)ss$/,
-        use: PluginExtractText.extract({
+        use: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: configCSSLoaders(process.env.NODE_ENV)
         })
       });
 
       config.plugins.push(
-        new PluginExtractText({
+        new ExtractTextPlugin({
           filename: "/assets/main.css",
           allChunks: true
-        })
+        }),
+
+        new OptimizeCSSAssetsPlugin({})
       );
     } else {
       config.module.rules.push({

@@ -4,6 +4,10 @@ import * as React from "react";
 
 import App from "./App";
 
+jest.mock("serviceworker-webpack-plugin/lib/runtime", () => ({
+  register: jest.fn(() => new Promise(resolve => resolve()))
+}));
+
 jest.mock("../../../../next.routes", () => ({
   Router: {
     route: ""
@@ -47,6 +51,7 @@ const setup = async (fn: any, fromTestProps?: any) => {
 };
 
 const g: any = global;
+const actualServiceWorker = navigator.serviceWorker;
 
 describe("[containers] <App />", () => {
   beforeEach(() => {
@@ -66,17 +71,35 @@ describe("[containers] <App />", () => {
 
   it("mounts application correctly on the server", async () => {
     g.isServer = true;
-    const { actual } = await setup(mount, {
-      ctx: { isServer: g.isServer }
-    });
+    let isPassing = true;
 
-    expect(actual.render()).toMatchSnapshot();
+    try {
+      const { actual } = await setup(mount, {
+        ctx: { isServer: g.isServer }
+      });
+
+      expect(actual.render()).toMatchSnapshot();
+      actual.unmount();
+    } catch (error) {
+      isPassing = false;
+    }
+
+    expect(isPassing).toBe(true);
   });
 
   it("mounts application correctly on the client", async () => {
-    const { actual } = await setup(mount);
+    let isPassing = true;
 
-    expect(actual.render()).toMatchSnapshot();
+    try {
+      const { actual } = await setup(mount);
+
+      expect(actual.render()).toMatchSnapshot();
+      actual.unmount();
+    } catch (error) {
+      isPassing = false;
+    }
+
+    expect(isPassing).toBe(true);
   });
 
   it("gets `initialProps` from component correctly", async () => {
@@ -116,6 +139,74 @@ describe("[containers] <App />", () => {
         message: "Error: Server error",
         status: 500
       });
+    });
+  });
+
+  describe("service worker", () => {
+    const addEventListener = g.addEventListener;
+    const removeEventListener = g.removeEventListener;
+
+    beforeAll(() => {
+      g.addEventListener = jest.fn((...args) => addEventListener(...args));
+      g.removeEventListener = jest.fn((...args) =>
+        removeEventListener(...args)
+      );
+
+      Object.defineProperty(navigator, "serviceWorker", {
+        value: {
+          controller: {
+            postMessage: jest.fn(),
+            state: "activated"
+          }
+        },
+        writable: true
+      });
+    });
+
+    afterEach(() => {
+      jest.clearAllMocks();
+    });
+
+    afterAll(() => {
+      g.addEventListener = addEventListener;
+      g.removeEventListener = removeEventListener;
+
+      Object.defineProperty(navigator, "serviceWorker", {
+        value: actualServiceWorker,
+        writable: true
+      });
+    });
+
+    it("registers when browser support exists", async () => {
+      const { actual } = await setup(mount);
+      const { serviceWorkerContainer } = actual.find("App").instance();
+
+      expect(serviceWorkerContainer).toBeDefined();
+      expect(serviceWorkerContainer.register).toHaveBeenCalledWith({
+        scope: "/"
+      });
+
+      actual.unmount();
+    });
+
+    it("updates online status correctly", async () => {
+      const { actual, props } = await setup(mount);
+
+      expect(g.findMockCall(g.addEventListener, "offline")).toBeDefined();
+      expect(g.findMockCall(g.addEventListener, "online")).toBeDefined();
+
+      g.dispatchEvent(new Event("offline"));
+      expect(props.store.getState().page.isOnline).toBe(false);
+
+      g.dispatchEvent(new Event("online"));
+      expect(props.store.getState().page.isOnline).toBe(true);
+
+      actual.unmount();
+      expect(g.findMockCall(g.removeEventListener, "offline")).toBeDefined();
+      expect(g.findMockCall(g.removeEventListener, "online")).toBeDefined();
+
+      window.dispatchEvent(new Event("offline"));
+      expect(props.store.getState().page.isOnline).toBe(true);
     });
   });
 });

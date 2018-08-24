@@ -5,6 +5,7 @@ import * as actions from "../actions/root.actions";
 export const initialState: IAppearancesReducers = {
   currentLocation: undefined,
   currentSlug: undefined,
+  error: undefined,
   hasAllItems: false,
   isLoading: false,
   items: {},
@@ -18,14 +19,16 @@ export default reducerWithInitialState(initialState)
       actions.fetchMoreAppearances.failed,
       actions.fetchAppearanceBySlug.failed
     ],
-    state => ({
+    (state, { error }) => ({
       ...state,
+      error,
       isLoading: false
     })
   )
 
   .case(actions.fetchAppearances.started, state => ({
     ...state,
+    error: undefined,
     isLoading: true,
     items: {}
   }))
@@ -40,6 +43,7 @@ export default reducerWithInitialState(initialState)
 
   .case(actions.fetchMoreAppearances.started, state => ({
     ...state,
+    error: undefined,
     isLoading: true
   }))
 
@@ -61,6 +65,7 @@ export default reducerWithInitialState(initialState)
 
   .case(actions.fetchAppearanceBySlug.started, state => ({
     ...state,
+    error: undefined,
     isLoading: true
   }))
 

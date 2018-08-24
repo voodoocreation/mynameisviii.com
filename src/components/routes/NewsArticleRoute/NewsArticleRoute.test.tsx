@@ -58,9 +58,7 @@ describe("[routes] <NewsArticleRoute />", () => {
   it("renders 404 error page when no news article exists", () => {
     const { actual } = setup(mount, {
       news: {
-        currentSlug: "test-1"
-      },
-      page: {
+        currentSlug: "test-1",
         error: {
           message: "Not found",
           status: 404

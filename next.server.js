@@ -45,6 +45,15 @@ app.prepare().then(() => {
     express.static(path.join(__dirname, "dist/server/assets"))
   );
 
+  server.use(
+    "/appService.js",
+    express.static(path.join(__dirname, "dist/appService.js"), {
+      setHeaders: res => {
+        res.set("Cache-Control", "max-age=0");
+      }
+    })
+  );
+
   server.use((req, res) => {
     const accept = accepts(req);
     const locale = accept.language(languages);

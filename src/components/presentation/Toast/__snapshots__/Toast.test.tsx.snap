@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[presentation] <Toast /> renders correctly 1`] = `
+<div
+  class="Toast TestToast isHidden"
+>
+  <div
+    class="Toast-content"
+  >
+    <div
+      class="Toast-message"
+    >
+      Test
+    </div>
+    <button
+      class="Toast-closeButton"
+      title="Close"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style="vertical-align:middle"
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m31.6 10.7l-9.3 9.3 9.3 9.3-2.3 2.3-9.3-9.3-9.3 9.3-2.3-2.3 9.3-9.3-9.3-9.3 2.3-2.3 9.3 9.3 9.3-9.3z"
+          />
+        </g>
+      </svg>
+    </button>
+  </div>
+</div>
+`;

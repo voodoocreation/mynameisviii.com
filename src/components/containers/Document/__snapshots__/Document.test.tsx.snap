@@ -24,7 +24,7 @@ Array [
     charset="UTF-8"
   />,
   <meta
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
     name="viewport"
   />,
   <meta
@@ -150,7 +150,7 @@ Array [
     charset="UTF-8"
   />,
   <meta
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
     name="viewport"
   />,
   <meta
@@ -236,7 +236,7 @@ Array [
     rel="manifest"
   />,
   <link
-    href="/assets/main.css?buildId"
+    href="/assets/main.css"
     rel="stylesheet"
   />,
   <noscript>

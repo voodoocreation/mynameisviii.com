@@ -1,3 +1,4 @@
+// tslint:disable:no-submodule-imports
 import withReduxSaga from "next-redux-saga";
 import withRedux from "next-redux-wrapper";
 import App, { AppComponentProps, Container } from "next/app";
@@ -9,16 +10,20 @@ import { Store } from "redux";
 
 import routes from "../../../../next.routes";
 import * as actions from "../../../actions/root.actions";
+import { isServer } from "../../../helpers/dom";
+import * as selectors from "../../../selectors/root.selectors";
 import createStore from "../../../store/root.store";
 
-import { isServer } from "../../../helpers/dom";
 import Shell from "../Shell/Shell";
 
-// tslint:disable:no-submodule-imports
 import en from "react-intl/locale-data/en";
 // tslint:enable:no-submodule-imports
 
 addLocaleData([...en]);
+
+// @TODO: convert listings to display loader in image instead of fading in on load
+// @TODO: add install prompt
+// @TODO: add facebook app
 
 type NextPageComponent = React.ComponentType<any> & {
   getInitialProps: (props: any) => any;
@@ -54,9 +59,10 @@ class Application extends App {
 
     const unsubscribe = ctx.store.subscribe(() => {
       const state = ctx.store.getState();
+      const pageError = selectors.getPageError(state);
 
-      if (state.page.error && ctx.res) {
-        ctx.res.statusCode = state.page.error.status;
+      if (pageError && ctx.res) {
+        ctx.res.statusCode = pageError.status;
         unsubscribe();
       }
     });
@@ -70,7 +76,19 @@ class Application extends App {
     return { pageProps, intlProps };
   }
 
+  private serviceWorkerContainer: any = undefined;
+
   public componentWillMount() {
+    if (
+      !isServer() &&
+      "serviceWorker" in navigator &&
+      (window.location.protocol === "https:" ||
+        window.location.hostname === "localhost")
+    ) {
+      // tslint:disable-next-line
+      this.serviceWorkerContainer = require("serviceworker-webpack-plugin/lib/runtime");
+    }
+
     routes.Router.onRouteChangeStart = this.onRouteChangeStart;
     routes.Router.onRouteChangeComplete = this.onRouteChangeComplete;
     routes.Router.onRouteChangeError = this.onRouteChangeError;
@@ -79,7 +97,23 @@ class Application extends App {
   public componentDidMount() {
     if (!isServer()) {
       const { store } = this.props as IProps;
+
+      store.dispatch(actions.updateOnlineStatus(navigator.onLine));
       store.dispatch(actions.setCurrentRoute(routes.Router.route));
+
+      if (this.serviceWorkerContainer) {
+        this.serviceWorkerContainer.register({ scope: "/" }).then(() => {
+          window.addEventListener("offline", this.onOnlineStatusChange);
+          window.addEventListener("online", this.onOnlineStatusChange);
+        });
+      }
+    }
+  }
+
+  public componentWillUnmount() {
+    if (this.serviceWorkerContainer) {
+      window.removeEventListener("offline", this.onOnlineStatusChange);
+      window.removeEventListener("online", this.onOnlineStatusChange);
     }
   }
 
@@ -102,6 +136,12 @@ class Application extends App {
       </Container>
     );
   }
+
+  private onOnlineStatusChange = (event: Event) => {
+    const { store } = this.props as IProps;
+
+    store.dispatch(actions.updateOnlineStatus(event.type === "online"));
+  };
 
   private onRouteChangeStart = (path: string) => {
     const { store } = this.props as IProps;

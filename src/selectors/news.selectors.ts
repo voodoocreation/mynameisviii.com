@@ -1,6 +1,8 @@
 import { createSelector, defaultMemoize } from "reselect";
 import { assocToArray } from "../transformers/transformData";
 
+export const getNewsError = (state: IRootReducers) => state.news.error;
+
 export const getNewsArticles = defaultMemoize(
   (state: IRootReducers) => state.news.items
 );

@@ -4,6 +4,7 @@ import * as analytics from "./analytics.sagas";
 import * as appearances from "./appearances.sagas";
 import * as news from "./news.sagas";
 import * as releases from "./releases.sagas";
+import * as serviceWorker from "./serviceWorker.sagas";
 import * as stems from "./stems.sagas";
 
 const mapSagas = (ports: any, effect: any) => (sagas: any) =>
@@ -20,6 +21,7 @@ export default (ports: IStorePorts) =>
         ...appearances,
         ...news,
         ...releases,
+        ...serviceWorker,
         ...stems
       })
     );

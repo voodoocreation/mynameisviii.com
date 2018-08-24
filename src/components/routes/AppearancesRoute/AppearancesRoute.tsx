@@ -8,6 +8,7 @@ import { ActionCreator } from "typescript-fsa";
 
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { absUrl } from "../../../transformers/transformData";
+import OfflineNotice from "../../containers/OfflineNotice/OfflineNotice";
 import AppearanceListing from "../../presentation/AppearanceListing/AppearanceListing";
 import ButtonBar from "../../presentation/ButtonBar/ButtonBar";
 import LoadButton from "../../presentation/LoadButton/LoadButton";
@@ -19,6 +20,7 @@ import * as selectors from "../../../selectors/root.selectors";
 
 interface IStoreProps {
   appearancesCount: number;
+  error?: IError;
   hasAllAppearances: boolean;
   isLoading: boolean;
   pastAppearances: IAppearance[];
@@ -60,6 +62,7 @@ class AppearancesRoute extends React.Component<IProps, IState> {
   public render() {
     const {
       appearancesCount,
+      error,
       hasAllAppearances,
       pastAppearances,
       upcomingAppearances
@@ -72,8 +75,16 @@ class AppearancesRoute extends React.Component<IProps, IState> {
     const isLoading = this.props.isLoading || !hasLoadedAllListings;
 
     const loadMoreButton = hasAllAppearances ? null : (
-      <LoadButton isLoading={isLoading} onLoad={this.onLoadMore}>
-        <FormattedMessage id="LOAD_MORE" />
+      <LoadButton
+        isLoading={isLoading}
+        isScrollLoadEnabled={!error}
+        onLoad={this.onLoadMore}
+      >
+        {!error ? (
+          <FormattedMessage id="LOAD_MORE" />
+        ) : (
+          <FormattedMessage id="TRY_AGAIN" />
+        )}
       </LoadButton>
     );
 
@@ -102,6 +113,8 @@ class AppearancesRoute extends React.Component<IProps, IState> {
         </Head>
 
         <PageHeader>{pageTitle}</PageHeader>
+
+        {error ? <OfflineNotice /> : null}
 
         {upcomingAppearances.length > 0 ? (
           <section className="AppearanceListings AppearanceListings-upcoming">
@@ -164,6 +177,7 @@ class AppearancesRoute extends React.Component<IProps, IState> {
 
 const mapStateToProps = (state: any) => ({
   appearancesCount: selectors.getAppearancesCount(state),
+  error: selectors.getAppearancesError(state),
   hasAllAppearances: selectors.getHasAllAppearances(state),
   isLoading: selectors.getAppearancesIsLoading(state),
   pastAppearances: selectors.getPastAppearances(state),

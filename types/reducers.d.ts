@@ -9,6 +9,7 @@ interface IRootReducers {
 interface IAppearancesReducers {
   currentLocation?: ILatLng;
   currentSlug?: string;
+  error?: IError;
   hasAllItems: boolean;
   isLoading: boolean;
   items: {
@@ -23,6 +24,7 @@ interface IAppearancesReducers {
 
 interface INewsReducers {
   currentSlug?: string;
+  error?: IError;
   hasAllItems: boolean;
   isLoading: boolean;
   items: {
@@ -40,11 +42,13 @@ interface IPageReducers {
   error?: IError;
   isLoading: boolean;
   isNavOpen: boolean;
+  isOnline: boolean;
   transitioningTo?: string;
 }
 
 interface IReleasesReducers {
   currentSlug?: string;
+  error?: IError;
   hasAllItems: boolean;
   isLoading: boolean;
   items: {
@@ -58,6 +62,7 @@ interface IReleasesReducers {
 }
 
 interface IStemsReducers {
+  error?: IError;
   hasAllItems: boolean;
   isLoading: boolean;
   items: {

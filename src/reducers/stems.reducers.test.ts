@@ -38,6 +38,7 @@ describe("[reducers] Stems", () => {
         actions.fetchStems.failed({ error, params: {} })
       );
 
+      expect(state.error).toEqual(error);
       expect(state.isLoading).toBe(false);
     });
   });
@@ -78,6 +79,7 @@ describe("[reducers] Stems", () => {
         actions.fetchMoreStems.failed({ error, params: {} })
       );
 
+      expect(state.error).toEqual(error);
       expect(state.isLoading).toBe(false);
     });
   });

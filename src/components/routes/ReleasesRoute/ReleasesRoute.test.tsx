@@ -64,6 +64,20 @@ describe("[routes] <ReleasesRoute />", () => {
     expect(actual.find(".NoResults")).toHaveLength(1);
   });
 
+  it("renders with an error correctly", () => {
+    const { actual } = setup(render, {
+      releases: {
+        error: {
+          message: "Server error",
+          status: 500
+        }
+      }
+    });
+
+    expect(actual.find(".LoadButton").text()).toBe("Try again");
+    expect(actual).toMatchSnapshot();
+  });
+
   it("renders with 'load more' button when hasAllItems=false", () => {
     const { actual } = setup(render, {
       releases: {
