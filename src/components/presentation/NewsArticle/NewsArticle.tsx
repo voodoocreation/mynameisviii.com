@@ -6,8 +6,8 @@ import { FormattedMessage, InjectedIntl, injectIntl } from "react-intl";
 import Schema from "../../schema/NewsArticle";
 import ButtonBar from "../ButtonBar/ButtonBar";
 import DateTime from "../DateTime/DateTime";
+import Image from "../Image/Image";
 import Link from "../Link/Link";
-import Loader from "../Loader/Loader";
 import PageHeader from "../PageHeader/PageHeader";
 import Type from "../Type/Type";
 
@@ -19,14 +19,6 @@ class NewsArticle extends React.Component<IProps> {
   public readonly state = {
     isImageLoaded: false
   };
-
-  private imageRef: React.RefObject<HTMLImageElement> = React.createRef();
-
-  public componentDidMount() {
-    if (this.imageRef.current && this.imageRef.current.complete) {
-      setTimeout(this.onImageLoad, 1);
-    }
-  }
 
   public render() {
     const { intl, ...article } = this.props;
@@ -48,24 +40,18 @@ class NewsArticle extends React.Component<IProps> {
     }
 
     return (
-      <article className="NewsArticle">
+      <article
+        className={cn("NewsArticle", { isRendered: this.state.isImageLoaded })}
+      >
         <PageHeader>{article.title}</PageHeader>
 
         <div className="NewsArticle-body">
-          <figure
-            className={cn("NewsArticle-image", {
-              isLoading: !this.state.isImageLoaded
-            })}
-          >
-            <img
-              onLoad={this.onImageLoad}
-              onError={this.onImageLoad}
-              ref={this.imageRef}
-              src={article.imageUrl}
-              title={article.title}
-            />
-            {!this.state.isImageLoaded ? <Loader /> : null}
-          </figure>
+          <Image
+            alt={article.title}
+            className="NewsArticle-image"
+            onLoad={this.onImageLoad}
+            src={article.imageUrl}
+          />
 
           <section className="NewsArticle-meta">
             <div className="NewsArticle-posted">

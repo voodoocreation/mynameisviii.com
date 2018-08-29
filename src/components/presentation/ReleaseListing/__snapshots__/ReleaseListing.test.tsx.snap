@@ -152,10 +152,29 @@ exports[`[presentation] <ReleaseListing /> renders correctly with all props 1`] 
         </div>
       </section>
     </div>
-    <img
-      alt="title"
-      src="images 1 imageUrl"
-    />
+    <figure
+      class="Image ReleaseListing-image isLoading"
+    >
+      <div
+        class="Image-wrapper"
+      >
+        <img
+          alt="title"
+          src="images 1 imageUrl"
+        />
+        <span
+          class="Loader"
+        >
+          <div
+            class="Loader-animation"
+          >
+            <span />
+            <span />
+            <span />
+          </div>
+        </span>
+      </div>
+    </figure>
   </a>
 </article>
 `;
@@ -312,10 +331,29 @@ exports[`[presentation] <ReleaseListing /> renders correctly with minimum props 
         </div>
       </section>
     </div>
-    <img
-      alt="title"
-      src="images 1 imageUrl"
-    />
+    <figure
+      class="Image ReleaseListing-image isLoading"
+    >
+      <div
+        class="Image-wrapper"
+      >
+        <img
+          alt="title"
+          src="images 1 imageUrl"
+        />
+        <span
+          class="Loader"
+        >
+          <div
+            class="Loader-animation"
+          >
+            <span />
+            <span />
+            <span />
+          </div>
+        </span>
+      </div>
+    </figure>
   </a>
 </article>
 `;
@@ -472,10 +510,18 @@ exports[`[presentation] <ReleaseListing /> updates \`isImageLoaded\` state when 
         </div>
       </section>
     </div>
-    <img
-      alt="title"
-      src="images 1 imageUrl"
-    />
+    <figure
+      class="Image ReleaseListing-image isRendered"
+    >
+      <div
+        class="Image-wrapper"
+      >
+        <img
+          alt="title"
+          src="images 1 imageUrl"
+        />
+      </div>
+    </figure>
   </a>
 </article>
 `;
@@ -632,10 +678,18 @@ exports[`[presentation] <ReleaseListing /> updates \`isRendered\` state after im
         </div>
       </section>
     </div>
-    <img
-      alt="title"
-      src="images 1 imageUrl"
-    />
+    <figure
+      class="Image ReleaseListing-image isRendered"
+    >
+      <div
+        class="Image-wrapper"
+      >
+        <img
+          alt="title"
+          src="images 1 imageUrl"
+        />
+      </div>
+    </figure>
   </a>
 </article>
 `;

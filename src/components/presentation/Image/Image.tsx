@@ -1,6 +1,8 @@
 import cn from "classnames";
 import * as React from "react";
 
+import Loader from "../Loader/Loader";
+
 interface IProps {
   alt: string;
   caption?: string;
@@ -32,6 +34,7 @@ export default class Image extends React.Component<IProps, IState> {
     const {
       alt,
       caption,
+      children,
       className,
       onClick,
       src,
@@ -51,7 +54,12 @@ export default class Image extends React.Component<IProps, IState> {
 
     return (
       <figure
-        className={cn("Image", className, { isRendered })}
+        className={cn(
+          "Image",
+          className,
+          { isLoading: !isRendered },
+          { isRendered }
+        )}
         {...clickableProps}
         {...props}
       >
@@ -64,6 +72,8 @@ export default class Image extends React.Component<IProps, IState> {
             ref={this.imageRef}
             title={title}
           />
+          {!this.state.isRendered ? <Loader /> : null}
+          {children}
         </div>
         {caption ? <figcaption>{caption}</figcaption> : null}
       </figure>

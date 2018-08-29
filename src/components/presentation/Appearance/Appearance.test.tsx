@@ -151,7 +151,7 @@ describe("[presentation] <Appearance />", () => {
     });
 
     actual
-      .find("Image")
+      .find("Gallery Image")
       .first()
       .simulate("click");
     expect(props.onGalleryInteraction).toHaveBeenCalledWith("itemClick", 0);
@@ -170,7 +170,7 @@ describe("[presentation] <Appearance />", () => {
 
     try {
       actual
-        .find("Image")
+        .find("Gallery Image")
         .first()
         .simulate("click");
     } catch (error) {

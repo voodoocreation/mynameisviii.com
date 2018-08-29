@@ -15,23 +15,27 @@ exports[`[presentation] <NewsArticle /> renders action with internal route corre
     class="NewsArticle-body"
   >
     <figure
-      class="NewsArticle-image isLoading"
+      class="Image NewsArticle-image isLoading"
     >
-      <img
-        src="imageUrl"
-        title="title"
-      />
-      <span
-        class="Loader"
+      <div
+        class="Image-wrapper"
       >
-        <div
-          class="Loader-animation"
+        <img
+          alt="title"
+          src="imageUrl"
+        />
+        <span
+          class="Loader"
         >
-          <span />
-          <span />
-          <span />
-        </div>
-      </span>
+          <div
+            class="Loader-animation"
+          >
+            <span />
+            <span />
+            <span />
+          </div>
+        </span>
+      </div>
     </figure>
     <section
       class="NewsArticle-meta"
@@ -131,23 +135,27 @@ exports[`[presentation] <NewsArticle /> renders action with internal route corre
     class="NewsArticle-body"
   >
     <figure
-      class="NewsArticle-image isLoading"
+      class="Image NewsArticle-image isLoading"
     >
-      <img
-        src="imageUrl"
-        title="title"
-      />
-      <span
-        class="Loader"
+      <div
+        class="Image-wrapper"
       >
-        <div
-          class="Loader-animation"
+        <img
+          alt="title"
+          src="imageUrl"
+        />
+        <span
+          class="Loader"
         >
-          <span />
-          <span />
-          <span />
-        </div>
-      </span>
+          <div
+            class="Loader-animation"
+          >
+            <span />
+            <span />
+            <span />
+          </div>
+        </span>
+      </div>
     </figure>
     <section
       class="NewsArticle-meta"
@@ -249,23 +257,27 @@ exports[`[presentation] <NewsArticle /> renders correctly 1`] = `
     class="NewsArticle-body"
   >
     <figure
-      class="NewsArticle-image isLoading"
+      class="Image NewsArticle-image isLoading"
     >
-      <img
-        src="imageUrl"
-        title="title"
-      />
-      <span
-        class="Loader"
+      <div
+        class="Image-wrapper"
       >
-        <div
-          class="Loader-animation"
+        <img
+          alt="title"
+          src="imageUrl"
+        />
+        <span
+          class="Loader"
         >
-          <span />
-          <span />
-          <span />
-        </div>
-      </span>
+          <div
+            class="Loader-animation"
+          >
+            <span />
+            <span />
+            <span />
+          </div>
+        </span>
+      </div>
     </figure>
     <section
       class="NewsArticle-meta"
@@ -342,7 +354,7 @@ exports[`[presentation] <NewsArticle /> renders correctly 1`] = `
 
 exports[`[presentation] <NewsArticle /> updates \`isImageLoaded\` state when image has loaded 1`] = `
 <article
-  class="NewsArticle"
+  class="NewsArticle isRendered"
 >
   <header
     class="PageHeader"
@@ -355,12 +367,16 @@ exports[`[presentation] <NewsArticle /> updates \`isImageLoaded\` state when ima
     class="NewsArticle-body"
   >
     <figure
-      class="NewsArticle-image"
+      class="Image NewsArticle-image isRendered"
     >
-      <img
-        src="imageUrl"
-        title="title"
-      />
+      <div
+        class="Image-wrapper"
+      >
+        <img
+          alt="title"
+          src="imageUrl"
+        />
+      </div>
     </figure>
     <section
       class="NewsArticle-meta"
@@ -437,7 +453,7 @@ exports[`[presentation] <NewsArticle /> updates \`isImageLoaded\` state when ima
 
 exports[`[presentation] <NewsArticle /> updates \`isImageLoaded\` state when image has previously been loaded 1`] = `
 <article
-  class="NewsArticle"
+  class="NewsArticle isRendered"
 >
   <header
     class="PageHeader"
@@ -450,12 +466,16 @@ exports[`[presentation] <NewsArticle /> updates \`isImageLoaded\` state when ima
     class="NewsArticle-body"
   >
     <figure
-      class="NewsArticle-image"
+      class="Image NewsArticle-image isRendered"
     >
-      <img
-        src="imageUrl"
-        title="title"
-      />
+      <div
+        class="Image-wrapper"
+      >
+        <img
+          alt="title"
+          src="imageUrl"
+        />
+      </div>
     </figure>
     <section
       class="NewsArticle-meta"

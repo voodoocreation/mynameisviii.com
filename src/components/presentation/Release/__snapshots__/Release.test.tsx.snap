@@ -191,23 +191,27 @@ exports[`[presentation] <Release /> renders correctly when productionType=compil
           style="transform:translate3d(-0%, 0, 0)"
         >
           <figure
-            class="isLoading"
+            class="Image Release-image isLoading"
           >
-            <img
-              alt="images 1 title"
-              src="images 1 imageUrl"
-            />
-            <span
-              class="Loader"
+            <div
+              class="Image-wrapper"
             >
-              <div
-                class="Loader-animation"
+              <img
+                alt="images 1 title"
+                src="images 1 imageUrl"
+              />
+              <span
+                class="Loader"
               >
-                <span />
-                <span />
-                <span />
-              </div>
-            </span>
+                <div
+                  class="Loader-animation"
+                >
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </span>
+            </div>
             <figcaption>
               images 1 title
             </figcaption>
@@ -456,23 +460,27 @@ exports[`[presentation] <Release /> renders correctly when productionType=demo 1
           style="transform:translate3d(-0%, 0, 0)"
         >
           <figure
-            class="isLoading"
+            class="Image Release-image isLoading"
           >
-            <img
-              alt="images 1 title"
-              src="images 1 imageUrl"
-            />
-            <span
-              class="Loader"
+            <div
+              class="Image-wrapper"
             >
-              <div
-                class="Loader-animation"
+              <img
+                alt="images 1 title"
+                src="images 1 imageUrl"
+              />
+              <span
+                class="Loader"
               >
-                <span />
-                <span />
-                <span />
-              </div>
-            </span>
+                <div
+                  class="Loader-animation"
+                >
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </span>
+            </div>
             <figcaption>
               images 1 title
             </figcaption>
@@ -721,23 +729,27 @@ exports[`[presentation] <Release /> renders correctly when productionType=live 1
           style="transform:translate3d(-0%, 0, 0)"
         >
           <figure
-            class="isLoading"
+            class="Image Release-image isLoading"
           >
-            <img
-              alt="images 1 title"
-              src="images 1 imageUrl"
-            />
-            <span
-              class="Loader"
+            <div
+              class="Image-wrapper"
             >
-              <div
-                class="Loader-animation"
+              <img
+                alt="images 1 title"
+                src="images 1 imageUrl"
+              />
+              <span
+                class="Loader"
               >
-                <span />
-                <span />
-                <span />
-              </div>
-            </span>
+                <div
+                  class="Loader-animation"
+                >
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </span>
+            </div>
             <figcaption>
               images 1 title
             </figcaption>
@@ -986,23 +998,27 @@ exports[`[presentation] <Release /> renders correctly when productionType=remix 
           style="transform:translate3d(-0%, 0, 0)"
         >
           <figure
-            class="isLoading"
+            class="Image Release-image isLoading"
           >
-            <img
-              alt="images 1 title"
-              src="images 1 imageUrl"
-            />
-            <span
-              class="Loader"
+            <div
+              class="Image-wrapper"
             >
-              <div
-                class="Loader-animation"
+              <img
+                alt="images 1 title"
+                src="images 1 imageUrl"
+              />
+              <span
+                class="Loader"
               >
-                <span />
-                <span />
-                <span />
-              </div>
-            </span>
+                <div
+                  class="Loader-animation"
+                >
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </span>
+            </div>
             <figcaption>
               images 1 title
             </figcaption>
@@ -1251,23 +1267,27 @@ exports[`[presentation] <Release /> renders correctly when productionType=soundt
           style="transform:translate3d(-0%, 0, 0)"
         >
           <figure
-            class="isLoading"
+            class="Image Release-image isLoading"
           >
-            <img
-              alt="images 1 title"
-              src="images 1 imageUrl"
-            />
-            <span
-              class="Loader"
+            <div
+              class="Image-wrapper"
             >
-              <div
-                class="Loader-animation"
+              <img
+                alt="images 1 title"
+                src="images 1 imageUrl"
+              />
+              <span
+                class="Loader"
               >
-                <span />
-                <span />
-                <span />
-              </div>
-            </span>
+                <div
+                  class="Loader-animation"
+                >
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </span>
+            </div>
             <figcaption>
               images 1 title
             </figcaption>
@@ -1516,23 +1536,27 @@ exports[`[presentation] <Release /> renders correctly when type=ep 1`] = `
           style="transform:translate3d(-0%, 0, 0)"
         >
           <figure
-            class="isLoading"
+            class="Image Release-image isLoading"
           >
-            <img
-              alt="images 1 title"
-              src="images 1 imageUrl"
-            />
-            <span
-              class="Loader"
+            <div
+              class="Image-wrapper"
             >
-              <div
-                class="Loader-animation"
+              <img
+                alt="images 1 title"
+                src="images 1 imageUrl"
+              />
+              <span
+                class="Loader"
               >
-                <span />
-                <span />
-                <span />
-              </div>
-            </span>
+                <div
+                  class="Loader-animation"
+                >
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </span>
+            </div>
             <figcaption>
               images 1 title
             </figcaption>
@@ -1781,23 +1805,27 @@ exports[`[presentation] <Release /> renders correctly when type=single 1`] = `
           style="transform:translate3d(-0%, 0, 0)"
         >
           <figure
-            class="isLoading"
+            class="Image Release-image isLoading"
           >
-            <img
-              alt="images 1 title"
-              src="images 1 imageUrl"
-            />
-            <span
-              class="Loader"
+            <div
+              class="Image-wrapper"
             >
-              <div
-                class="Loader-animation"
+              <img
+                alt="images 1 title"
+                src="images 1 imageUrl"
+              />
+              <span
+                class="Loader"
               >
-                <span />
-                <span />
-                <span />
-              </div>
-            </span>
+                <div
+                  class="Loader-animation"
+                >
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </span>
+            </div>
             <figcaption>
               images 1 title
             </figcaption>
@@ -2046,45 +2074,53 @@ exports[`[presentation] <Release /> renders correctly with all props 1`] = `
           style="transform:translate3d(-0%, 0, 0)"
         >
           <figure
-            class="isLoading"
+            class="Image Release-image isLoading"
           >
-            <img
-              alt="images 1 title"
-              src="images 1 imageUrl"
-            />
-            <span
-              class="Loader"
+            <div
+              class="Image-wrapper"
             >
-              <div
-                class="Loader-animation"
+              <img
+                alt="images 1 title"
+                src="images 1 imageUrl"
+              />
+              <span
+                class="Loader"
               >
-                <span />
-                <span />
-                <span />
-              </div>
-            </span>
+                <div
+                  class="Loader-animation"
+                >
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </span>
+            </div>
             <figcaption>
               images 1 title
             </figcaption>
           </figure>
           <figure
-            class="isLoading"
+            class="Image Release-image isLoading"
           >
-            <img
-              alt="images 2 title"
-              src="images 2 imageUrl"
-            />
-            <span
-              class="Loader"
+            <div
+              class="Image-wrapper"
             >
-              <div
-                class="Loader-animation"
+              <img
+                alt="images 2 title"
+                src="images 2 imageUrl"
+              />
+              <span
+                class="Loader"
               >
-                <span />
-                <span />
-                <span />
-              </div>
-            </span>
+                <div
+                  class="Loader-animation"
+                >
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </span>
+            </div>
             <figcaption>
               images 2 title
             </figcaption>
@@ -2498,23 +2534,27 @@ exports[`[presentation] <Release /> renders correctly with minimum props 1`] = `
           style="transform:translate3d(-0%, 0, 0)"
         >
           <figure
-            class="isLoading"
+            class="Image Release-image isLoading"
           >
-            <img
-              alt="images 1 title"
-              src="images 1 imageUrl"
-            />
-            <span
-              class="Loader"
+            <div
+              class="Image-wrapper"
             >
-              <div
-                class="Loader-animation"
+              <img
+                alt="images 1 title"
+                src="images 1 imageUrl"
+              />
+              <span
+                class="Loader"
               >
-                <span />
-                <span />
-                <span />
-              </div>
-            </span>
+                <div
+                  class="Loader-animation"
+                >
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </span>
+            </div>
             <figcaption>
               images 1 title
             </figcaption>
@@ -2762,12 +2802,16 @@ exports[`[presentation] <Release /> updates \`isImageLoaded\` state when image h
           class="Carousel-slides"
         >
           <figure
-            class=""
+            class="Image Release-image isRendered"
           >
-            <img
-              alt="images 1 title"
-              src="images 1 imageUrl"
-            />
+            <div
+              class="Image-wrapper"
+            >
+              <img
+                alt="images 1 title"
+                src="images 1 imageUrl"
+              />
+            </div>
             <figcaption>
               images 1 title
             </figcaption>
@@ -3015,12 +3059,16 @@ exports[`[presentation] <Release /> updates \`isImageLoaded\` state when image h
           class="Carousel-slides"
         >
           <figure
-            class=""
+            class="Image Release-image isRendered"
           >
-            <img
-              alt="images 1 title"
-              src="images 1 imageUrl"
-            />
+            <div
+              class="Image-wrapper"
+            >
+              <img
+                alt="images 1 title"
+                src="images 1 imageUrl"
+              />
+            </div>
             <figcaption>
               images 1 title
             </figcaption>

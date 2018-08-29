@@ -250,23 +250,27 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
     class="Appearance-body"
   >
     <figure
-      class="Appearance-image isLoading"
+      class="Image Appearance-image isLoading"
     >
-      <img
-        src="https://s3.amazonaws.com/mynameisviii-static/appearances/nothing-but-a-test-gig-2018-10-20.jpg"
-        title="Nothing But a Test Gig"
-      />
-      <span
-        class="Loader"
+      <div
+        class="Image-wrapper"
       >
-        <div
-          class="Loader-animation"
+        <img
+          alt="Nothing But a Test Gig"
+          src="https://s3.amazonaws.com/mynameisviii-static/appearances/nothing-but-a-test-gig-2018-10-20.jpg"
+        />
+        <span
+          class="Loader"
         >
-          <span />
-          <span />
-          <span />
-        </div>
-      </span>
+          <div
+            class="Loader-animation"
+          >
+            <span />
+            <span />
+            <span />
+          </div>
+        </span>
+      </div>
     </figure>
     <div
       class="Appearance-details"
@@ -531,7 +535,7 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
         class="Gallery Appearance-images-items"
       >
         <figure
-          class="Image"
+          class="Image isLoading"
           role="button"
           tabindex="0"
         >
@@ -542,13 +546,24 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
               alt="Test"
               src="https://scontent-syd2-1.cdninstagram.com/vp/54127bb2824cd7fdc53b16529d2cbf66/5B9DCAA5/t51.2885-15/s640x640/sh0.08/e35/22071123_377597075993359_300443987536248832_n.jpg"
             />
+            <span
+              class="Loader"
+            >
+              <div
+                class="Loader-animation"
+              >
+                <span />
+                <span />
+                <span />
+              </div>
+            </span>
           </div>
           <figcaption>
             Test
           </figcaption>
         </figure>
         <figure
-          class="Image"
+          class="Image isLoading"
           role="button"
           tabindex="0"
         >
@@ -559,13 +574,24 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
               alt="Test 2"
               src="https://scontent-syd2-1.cdninstagram.com/vp/6948ffd2ec1841a230fd4a2951d9682b/5BB16229/t51.2885-15/s640x640/sh0.08/e35/22071185_120049202025917_3641908262988677120_n.jpg"
             />
+            <span
+              class="Loader"
+            >
+              <div
+                class="Loader-animation"
+              >
+                <span />
+                <span />
+                <span />
+              </div>
+            </span>
           </div>
           <figcaption>
             Test 2
           </figcaption>
         </figure>
         <figure
-          class="Image"
+          class="Image isLoading"
           role="button"
           tabindex="0"
         >
@@ -576,13 +602,24 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
               alt="Test 3"
               src="https://scontent-syd2-1.cdninstagram.com/vp/ca18e3e0d39573400c30b9f0fffac979/5B9E448A/t51.2885-15/s640x640/sh0.08/e35/21985087_1131650620300022_6079660459575738368_n.jpg"
             />
+            <span
+              class="Loader"
+            >
+              <div
+                class="Loader-animation"
+              >
+                <span />
+                <span />
+                <span />
+              </div>
+            </span>
           </div>
           <figcaption>
             Test 3
           </figcaption>
         </figure>
         <figure
-          class="Image"
+          class="Image isLoading"
           role="button"
           tabindex="0"
         >
@@ -593,6 +630,17 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
               alt="Test 4"
               src="https://scontent-syd2-1.cdninstagram.com/vp/3d5a511d89df625d3aedf6a39d62b734/5BA72356/t51.2885-15/e35/28429228_1781197762175359_1584060036995350528_n.jpg"
             />
+            <span
+              class="Loader"
+            >
+              <div
+                class="Loader-animation"
+              >
+                <span />
+                <span />
+                <span />
+              </div>
+            </span>
           </div>
           <figcaption>
             Test 4

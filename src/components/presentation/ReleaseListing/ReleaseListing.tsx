@@ -10,6 +10,7 @@ import { FormattedMessage, InjectedIntl, injectIntl } from "react-intl";
 
 import Schema from "../../schema/Release";
 import DateTime from "../DateTime/DateTime";
+import Image from "../Image/Image";
 import Link from "../Link/Link";
 import Meta from "../Meta/Meta";
 
@@ -26,14 +27,6 @@ class ReleaseListing extends React.Component<IProps, IState> {
   public state = {
     isRendered: false
   };
-
-  private imageRef: React.RefObject<HTMLImageElement> = React.createRef();
-
-  public componentDidMount() {
-    if (this.imageRef.current && this.imageRef.current.complete) {
-      setTimeout(this.onLoad, 1);
-    }
-  }
 
   public render() {
     const { intl, onLoad, ...release } = this.props;
@@ -102,11 +95,10 @@ class ReleaseListing extends React.Component<IProps, IState> {
             </section>
           </div>
 
-          <img
+          <Image
+            className="ReleaseListing-image"
             alt={release.title}
-            onError={this.onLoad}
             onLoad={this.onLoad}
-            ref={this.imageRef}
             src={release.images[0].imageUrl}
           />
         </Link>

@@ -1,6 +1,4 @@
 .ReleaseListing {
-  @include fade-up-on-render();
-
   flex-basis: 50%;
 
   a {
@@ -12,6 +10,10 @@
 
   h3 {
     margin: 0;
+  }
+
+  &-image .Loader {
+    padding-top: 100%;
   }
 
   &-details {

@@ -1,6 +1,4 @@
 .StemListing {
-  @include fade-up-on-render();
-
   flex-basis: 100%;
   padding: ($spacing / 2);
 
@@ -29,6 +27,10 @@
 
   &-thumbnail {
     display: none;
+  }
+
+  &-image .Loader {
+    padding-top: 100%;
   }
 
   &-downloadIcon {

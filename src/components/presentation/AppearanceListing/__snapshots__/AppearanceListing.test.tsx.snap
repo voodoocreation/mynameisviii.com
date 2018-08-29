@@ -168,11 +168,26 @@ exports[`[presentation] <AppearanceListing /> renders correctly when status=Even
       </section>
     </div>
     <figure
-      class="AppearanceListing-image"
+      class="Image AppearanceListing-image isLoading"
     >
-      <img
-        src="imageUrl"
-      />
+      <div
+        class="Image-wrapper"
+      >
+        <img
+          src="imageUrl"
+        />
+        <span
+          class="Loader"
+        >
+          <div
+            class="Loader-animation"
+          >
+            <span />
+            <span />
+            <span />
+          </div>
+        </span>
+      </div>
     </figure>
   </a>
 </article>
@@ -346,11 +361,26 @@ exports[`[presentation] <AppearanceListing /> renders correctly when status=Even
       </section>
     </div>
     <figure
-      class="AppearanceListing-image"
+      class="Image AppearanceListing-image isLoading"
     >
-      <img
-        src="imageUrl"
-      />
+      <div
+        class="Image-wrapper"
+      >
+        <img
+          src="imageUrl"
+        />
+        <span
+          class="Loader"
+        >
+          <div
+            class="Loader-animation"
+          >
+            <span />
+            <span />
+            <span />
+          </div>
+        </span>
+      </div>
     </figure>
   </a>
 </article>
@@ -541,11 +571,26 @@ exports[`[presentation] <AppearanceListing /> renders correctly with all props 1
       </section>
     </div>
     <figure
-      class="AppearanceListing-image"
+      class="Image AppearanceListing-image isLoading"
     >
-      <img
-        src="imageUrl"
-      />
+      <div
+        class="Image-wrapper"
+      >
+        <img
+          src="imageUrl"
+        />
+        <span
+          class="Loader"
+        >
+          <div
+            class="Loader-animation"
+          >
+            <span />
+            <span />
+            <span />
+          </div>
+        </span>
+      </div>
     </figure>
   </a>
 </article>
@@ -698,11 +743,26 @@ exports[`[presentation] <AppearanceListing /> renders correctly with minimum pro
       </section>
     </div>
     <figure
-      class="AppearanceListing-image"
+      class="Image AppearanceListing-image isLoading"
     >
-      <img
-        src="imageUrl"
-      />
+      <div
+        class="Image-wrapper"
+      >
+        <img
+          src="imageUrl"
+        />
+        <span
+          class="Loader"
+        >
+          <div
+            class="Loader-animation"
+          >
+            <span />
+            <span />
+            <span />
+          </div>
+        </span>
+      </div>
     </figure>
   </a>
 </article>
@@ -855,11 +915,15 @@ exports[`[presentation] <AppearanceListing /> updates \`isRendered\` state after
       </section>
     </div>
     <figure
-      class="AppearanceListing-image"
+      class="Image AppearanceListing-image isRendered"
     >
-      <img
-        src="imageUrl"
-      />
+      <div
+        class="Image-wrapper"
+      >
+        <img
+          src="imageUrl"
+        />
+      </div>
     </figure>
   </a>
 </article>
@@ -1012,11 +1076,15 @@ exports[`[presentation] <AppearanceListing /> updates \`isRendered\` state and t
       </section>
     </div>
     <figure
-      class="AppearanceListing-image"
+      class="Image AppearanceListing-image isRendered"
     >
-      <img
-        src="imageUrl"
-      />
+      <div
+        class="Image-wrapper"
+      >
+        <img
+          src="imageUrl"
+        />
+      </div>
     </figure>
   </a>
 </article>

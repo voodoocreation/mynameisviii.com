@@ -34,10 +34,29 @@ exports[`[presentation] <NewsListing /> renders correctly 1`] = `
         </span>
       </h2>
     </header>
-    <img
-      alt="title"
-      src="imageUrl"
-    />
+    <figure
+      class="Image NewsListing-image isLoading"
+    >
+      <div
+        class="Image-wrapper"
+      >
+        <img
+          alt="title"
+          src="imageUrl"
+        />
+        <span
+          class="Loader"
+        >
+          <div
+            class="Loader-animation"
+          >
+            <span />
+            <span />
+            <span />
+          </div>
+        </span>
+      </div>
+    </figure>
     <p>
       <span>
         excerpt
@@ -81,10 +100,29 @@ exports[`[presentation] <NewsListing /> renders correctly when \`isCondensed\` p
         </span>
       </h3>
     </header>
-    <img
-      alt="title"
-      src="imageUrl"
-    />
+    <figure
+      class="Image NewsListing-image isLoading"
+    >
+      <div
+        class="Image-wrapper"
+      >
+        <img
+          alt="title"
+          src="imageUrl"
+        />
+        <span
+          class="Loader"
+        >
+          <div
+            class="Loader-animation"
+          >
+            <span />
+            <span />
+            <span />
+          </div>
+        </span>
+      </div>
+    </figure>
     <p>
       <span>
         excerpt
@@ -128,10 +166,18 @@ exports[`[presentation] <NewsListing /> updates \`isImageLoaded\` state when ima
         </span>
       </h2>
     </header>
-    <img
-      alt="title"
-      src="imageUrl"
-    />
+    <figure
+      class="Image NewsListing-image isRendered"
+    >
+      <div
+        class="Image-wrapper"
+      >
+        <img
+          alt="title"
+          src="imageUrl"
+        />
+      </div>
+    </figure>
     <p>
       <span>
         excerpt
@@ -175,10 +221,18 @@ exports[`[presentation] <NewsListing /> updates \`isRendered\` state after image
         </span>
       </h2>
     </header>
-    <img
-      alt="title"
-      src="imageUrl"
-    />
+    <figure
+      class="Image NewsListing-image isRendered"
+    >
+      <div
+        class="Image-wrapper"
+      >
+        <img
+          alt="title"
+          src="imageUrl"
+        />
+      </div>
+    </figure>
     <p>
       <span>
         excerpt

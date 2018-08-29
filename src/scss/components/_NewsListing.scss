@@ -1,6 +1,4 @@
 .NewsListing {
-  @include fade-up-on-render();
-
   padding-bottom: $spacing;
 
   &:last-child {
@@ -46,8 +44,14 @@
     }
   }
 
-  img {
-    @include bg-light();
+  &-image {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    .Loader {
+      padding-top: 31.25%;
+    }
   }
 
   @include screen-below($screen-xs-max) {

@@ -27,6 +27,7 @@ describe("[presentation] <Image />", () => {
   it("renders correctly with minimum props", () => {
     const { actual } = setup(render);
 
+    expect(actual.find(".Loader")).toHaveLength(1);
     expect(actual).toMatchSnapshot();
   });
 
@@ -34,6 +35,7 @@ describe("[presentation] <Image />", () => {
     const { actual, props } = setup(mount, { onClick: jest.fn() });
 
     actual.simulate("keypress", { key: "Enter" });
+
     expect(props.onClick).toHaveBeenCalled();
   });
 
@@ -41,23 +43,20 @@ describe("[presentation] <Image />", () => {
     const { actual, props } = setup(mount, { onClick: jest.fn() });
 
     actual.simulate("keypress", { key: "ArrowLeft" });
+
     expect(props.onClick).not.toHaveBeenCalled();
   });
 
-  it("updates `isRendered` state after image has loaded", () => {
-    const { actual } = setup(mount);
-
-    actual.find("img").simulate("load");
-    expect(actual.render()).toMatchSnapshot();
-  });
-
-  it("triggers `onLoad` prop after image has loaded", () => {
+  it("updates `isRendered` state and triggers `onLoad` prop after image has loaded", () => {
     const { actual, props } = setup(mount, {
       onLoad: jest.fn()
     });
 
     actual.find("img").simulate("load");
+
     expect(props.onLoad).toHaveBeenCalled();
+    expect(actual.find("Loader")).toHaveLength(0);
+    expect(actual.render()).toMatchSnapshot();
   });
 
   it("updates `isRendered` state when image has previously been loaded", () => {
@@ -68,6 +67,8 @@ describe("[presentation] <Image />", () => {
     const { actual } = setup(mount);
 
     actual.find("img").simulate("load");
+
+    expect(actual.find("Loader")).toHaveLength(0);
     expect(actual.render()).toMatchSnapshot();
   });
 });

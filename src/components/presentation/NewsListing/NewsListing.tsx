@@ -2,6 +2,7 @@ import cn from "classnames";
 import * as React from "react";
 
 import Schema from "../../schema/NewsArticle";
+import Image from "../Image/Image";
 import Link from "../Link/Link";
 import Type from "../Type/Type";
 
@@ -22,14 +23,6 @@ export default class NewsListing extends React.Component<IProps, IState> {
   public readonly state = {
     isRendered: false
   };
-
-  private imageRef: React.RefObject<HTMLImageElement> = React.createRef();
-
-  public componentDidMount() {
-    if (this.imageRef.current && this.imageRef.current.complete) {
-      setTimeout(this.onLoad, 1);
-    }
-  }
 
   public render() {
     const { isCondensed, onLoad, ...article } = this.props;
@@ -52,12 +45,11 @@ export default class NewsListing extends React.Component<IProps, IState> {
         <Link route={`/news/${article.slug}`}>
           <header className="NewsListing-header">{header}</header>
 
-          <img
+          <Image
+            className="NewsListing-image"
             alt={article.title}
-            onError={this.onLoad}
-            onLoad={this.onLoad}
-            ref={this.imageRef}
             src={article.imageUrl}
+            onLoad={this.onLoad}
           />
 
           <p>

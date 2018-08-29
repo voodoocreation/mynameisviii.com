@@ -3,11 +3,6 @@
     @include line-before-after();
   }
 
-  img {
-    opacity: 1;
-    transition: opacity 600ms ease-out;
-  }
-
   .Map {
     height: 300px;
   }
@@ -49,16 +44,7 @@
     flex-basis: 100%;
 
     .Loader {
-      position: relative;
       padding-top: 141.5%;
-      background: $panel-color-2;
-
-      > * {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate3d(-50%, -50%, 0);
-      }
     }
   }
 
@@ -106,24 +92,6 @@
     flex-basis: 100%;
     padding: 0 $spacing $spacing;
 
-    img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-    }
-
-    figcaption {
-      @include hide-visually();
-    }
-
-    .Image-wrapper {
-      position: relative;
-      padding-top: 100%;
-    }
-
     &-items {
       display: flex;
       flex-flow: row wrap;
@@ -149,13 +117,6 @@
       height: 1px;
       content: "";
       transform: rotate(-2deg);
-    }
-  }
-
-  .isClientRendered & {
-    figure.isLoading img {
-      height: 0;
-      opacity: 0;
     }
   }
 

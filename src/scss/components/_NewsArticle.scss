@@ -1,25 +1,11 @@
 .NewsArticle {
-  img {
-    opacity: 1;
-    transition: opacity 600ms ease-out;
-  }
-
-  figure {
+  &-image {
     position: relative;
     width: 100%;
     overflow: hidden;
-  }
 
-  &-image .Loader {
-    position: relative;
-    padding-top: 31.25%;
-    background: $panel-color-2;
-
-    > * {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate3d(-50%, -50%, 0);
+    .Loader {
+      padding-top: 31.25%;
     }
   }
 
@@ -45,13 +31,6 @@
 
   &-action {
     margin-top: $spacing;
-  }
-
-  .isClientRendered & {
-    figure.isLoading img {
-      height: 0;
-      opacity: 0;
-    }
   }
 
   @include screen-above($screen-sm-min) {

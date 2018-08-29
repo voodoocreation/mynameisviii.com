@@ -37,13 +37,6 @@ const configCSSLoaders = env => {
     }
   };
 
-  const mediaQueryLoader = {
-    loader: "group-css-media-queries-loader",
-    options: {
-      sourceMap: false
-    }
-  };
-
   if (env === "production") {
     cssLoader = {
       loader: "css-loader",
@@ -53,7 +46,7 @@ const configCSSLoaders = env => {
     };
   }
 
-  return [cssLoader, mediaQueryLoader, postcssLoader, sassLoader];
+  return [cssLoader, postcssLoader, sassLoader];
 };
 
 module.exports = withTypescript({
@@ -120,10 +113,6 @@ module.exports = withTypescript({
         use: [
           "babel-loader",
           "raw-loader",
-          {
-            loader: "group-css-media-queries-loader",
-            options: { sourceMap: false }
-          },
           "postcss-loader",
           {
             loader: "sass-loader",

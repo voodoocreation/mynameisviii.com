@@ -218,12 +218,27 @@ exports[`[routes] <AppearancesRoute /> renders correctly 1`] = `
             </section>
           </div>
           <figure
-            class="AppearanceListing-image"
+            class="Image AppearanceListing-image isLoading"
           >
-            <img
-              alt="Nothing But Yet Another Test Gig"
-              src="https://s3.amazonaws.com/mynameisviii-static/appearances/nothing-but-a-test-gig-2018-10-20.jpg"
-            />
+            <div
+              class="Image-wrapper"
+            >
+              <img
+                alt="Nothing But Yet Another Test Gig"
+                src="https://s3.amazonaws.com/mynameisviii-static/appearances/nothing-but-a-test-gig-2018-10-20.jpg"
+              />
+              <span
+                class="Loader"
+              >
+                <div
+                  class="Loader-animation"
+                >
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </span>
+            </div>
           </figure>
         </a>
       </article>
@@ -423,12 +438,27 @@ exports[`[routes] <AppearancesRoute /> renders correctly 1`] = `
             </section>
           </div>
           <figure
-            class="AppearanceListing-image"
+            class="Image AppearanceListing-image isLoading"
           >
-            <img
-              alt="Nothing But a Test Gig"
-              src="https://s3.amazonaws.com/mynameisviii-static/appearances/nothing-but-a-test-gig-2018-10-20.jpg"
-            />
+            <div
+              class="Image-wrapper"
+            >
+              <img
+                alt="Nothing But a Test Gig"
+                src="https://s3.amazonaws.com/mynameisviii-static/appearances/nothing-but-a-test-gig-2018-10-20.jpg"
+              />
+              <span
+                class="Loader"
+              >
+                <div
+                  class="Loader-animation"
+                >
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </span>
+            </div>
           </figure>
         </a>
       </article>
@@ -641,12 +671,27 @@ exports[`[routes] <AppearancesRoute /> renders correctly 1`] = `
             </section>
           </div>
           <figure
-            class="AppearanceListing-image"
+            class="Image AppearanceListing-image isLoading"
           >
-            <img
-              alt="Nothing But Another Test Gig"
-              src="https://s3.amazonaws.com/mynameisviii-static/appearances/nothing-but-a-test-gig-2018-10-20.jpg"
-            />
+            <div
+              class="Image-wrapper"
+            >
+              <img
+                alt="Nothing But Another Test Gig"
+                src="https://s3.amazonaws.com/mynameisviii-static/appearances/nothing-but-a-test-gig-2018-10-20.jpg"
+              />
+              <span
+                class="Loader"
+              >
+                <div
+                  class="Loader-animation"
+                >
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </span>
+            </div>
           </figure>
         </a>
       </article>

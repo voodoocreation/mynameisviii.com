@@ -134,22 +134,26 @@ exports[`[presentation] <Appearance /> renders correctly when finishingAt < now 
     class="Appearance-body"
   >
     <figure
-      class="Appearance-image isLoading"
+      class="Image Appearance-image isLoading"
     >
-      <img
-        src="imageUrl"
-      />
-      <span
-        class="Loader"
+      <div
+        class="Image-wrapper"
       >
-        <div
-          class="Loader-animation"
+        <img
+          src="imageUrl"
+        />
+        <span
+          class="Loader"
         >
-          <span />
-          <span />
-          <span />
-        </div>
-      </span>
+          <div
+            class="Loader-animation"
+          >
+            <span />
+            <span />
+            <span />
+          </div>
+        </span>
+      </div>
     </figure>
     <div
       class="Appearance-details"
@@ -402,43 +406,47 @@ exports[`[presentation] <Appearance /> renders correctly when status=EventCancel
     class="Appearance-body"
   >
     <figure
-      class="Appearance-image isLoading"
+      class="Image Appearance-image isLoading"
     >
-      <img
-        src="imageUrl"
-      />
       <div
-        class="Meta Appearance-status"
+        class="Image-wrapper"
       >
-         
+        <img
+          src="imageUrl"
+        />
         <span
-          class="Meta-label"
+          class="Loader"
         >
-          <span>
-            Status
-          </span>
-          :
+          <div
+            class="Loader-animation"
+          >
+            <span />
+            <span />
+            <span />
+          </div>
         </span>
-         
-        <span
-          class="Meta-value"
-        >
-          <span>
-            Cancelled
-          </span>
-        </span>
-      </div>
-      <span
-        class="Loader"
-      >
         <div
-          class="Loader-animation"
+          class="Meta Appearance-status"
         >
-          <span />
-          <span />
-          <span />
+           
+          <span
+            class="Meta-label"
+          >
+            <span>
+              Status
+            </span>
+            :
+          </span>
+           
+          <span
+            class="Meta-value"
+          >
+            <span>
+              Cancelled
+            </span>
+          </span>
         </div>
-      </span>
+      </div>
     </figure>
     <div
       class="Appearance-details"
@@ -691,43 +699,47 @@ exports[`[presentation] <Appearance /> renders correctly when status=EventPostpo
     class="Appearance-body"
   >
     <figure
-      class="Appearance-image isLoading"
+      class="Image Appearance-image isLoading"
     >
-      <img
-        src="imageUrl"
-      />
       <div
-        class="Meta Appearance-status"
+        class="Image-wrapper"
       >
-         
+        <img
+          src="imageUrl"
+        />
         <span
-          class="Meta-label"
+          class="Loader"
         >
-          <span>
-            Postponed
-          </span>
-          :
+          <div
+            class="Loader-animation"
+          >
+            <span />
+            <span />
+            <span />
+          </div>
         </span>
-         
-        <span
-          class="Meta-value"
-        >
-          <span>
-            Postponed
-          </span>
-        </span>
-      </div>
-      <span
-        class="Loader"
-      >
         <div
-          class="Loader-animation"
+          class="Meta Appearance-status"
         >
-          <span />
-          <span />
-          <span />
+           
+          <span
+            class="Meta-label"
+          >
+            <span>
+              Postponed
+            </span>
+            :
+          </span>
+           
+          <span
+            class="Meta-value"
+          >
+            <span>
+              Postponed
+            </span>
+          </span>
         </div>
-      </span>
+      </div>
     </figure>
     <div
       class="Appearance-details"
@@ -1010,22 +1022,26 @@ exports[`[presentation] <Appearance /> renders correctly with all props 1`] = `
     class="Appearance-body"
   >
     <figure
-      class="Appearance-image isLoading"
+      class="Image Appearance-image isLoading"
     >
-      <img
-        src="imageUrl"
-      />
-      <span
-        class="Loader"
+      <div
+        class="Image-wrapper"
       >
-        <div
-          class="Loader-animation"
+        <img
+          src="imageUrl"
+        />
+        <span
+          class="Loader"
         >
-          <span />
-          <span />
-          <span />
-        </div>
-      </span>
+          <div
+            class="Loader-animation"
+          >
+            <span />
+            <span />
+            <span />
+          </div>
+        </span>
+      </div>
     </figure>
     <div
       class="Appearance-details"
@@ -1207,7 +1223,7 @@ exports[`[presentation] <Appearance /> renders correctly with all props 1`] = `
         class="Gallery Appearance-images-items"
       >
         <figure
-          class="Image"
+          class="Image isLoading"
           role="button"
           tabindex="0"
         >
@@ -1218,13 +1234,24 @@ exports[`[presentation] <Appearance /> renders correctly with all props 1`] = `
               alt="images 1 title"
               src="images 1 imageUrl"
             />
+            <span
+              class="Loader"
+            >
+              <div
+                class="Loader-animation"
+              >
+                <span />
+                <span />
+                <span />
+              </div>
+            </span>
           </div>
           <figcaption>
             images 1 title
           </figcaption>
         </figure>
         <figure
-          class="Image"
+          class="Image isLoading"
           role="button"
           tabindex="0"
         >
@@ -1235,6 +1262,17 @@ exports[`[presentation] <Appearance /> renders correctly with all props 1`] = `
               alt="images 2 title"
               src="images 2 imageUrl"
             />
+            <span
+              class="Loader"
+            >
+              <div
+                class="Loader-animation"
+              >
+                <span />
+                <span />
+                <span />
+              </div>
+            </span>
           </div>
           <figcaption>
             images 2 title
@@ -1397,22 +1435,26 @@ exports[`[presentation] <Appearance /> renders correctly with minimum props 1`] 
     class="Appearance-body"
   >
     <figure
-      class="Appearance-image isLoading"
+      class="Image Appearance-image isLoading"
     >
-      <img
-        src="imageUrl"
-      />
-      <span
-        class="Loader"
+      <div
+        class="Image-wrapper"
       >
-        <div
-          class="Loader-animation"
+        <img
+          src="imageUrl"
+        />
+        <span
+          class="Loader"
         >
-          <span />
-          <span />
-          <span />
-        </div>
-      </span>
+          <div
+            class="Loader-animation"
+          >
+            <span />
+            <span />
+            <span />
+          </div>
+        </span>
+      </div>
     </figure>
     <div
       class="Appearance-details"
@@ -1665,11 +1707,15 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
     class="Appearance-body"
   >
     <figure
-      class="Appearance-image"
+      class="Image Appearance-image isRendered"
     >
-      <img
-        src="imageUrl"
-      />
+      <div
+        class="Image-wrapper"
+      >
+        <img
+          src="imageUrl"
+        />
+      </div>
     </figure>
     <div
       class="Appearance-details"
@@ -1922,11 +1968,15 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
     class="Appearance-body"
   >
     <figure
-      class="Appearance-image"
+      class="Image Appearance-image isRendered"
     >
-      <img
-        src="imageUrl"
-      />
+      <div
+        class="Image-wrapper"
+      >
+        <img
+          src="imageUrl"
+        />
+      </div>
     </figure>
     <div
       class="Appearance-details"

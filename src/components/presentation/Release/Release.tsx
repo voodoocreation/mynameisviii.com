@@ -1,4 +1,3 @@
-import cn from "classnames";
 import * as React from "react";
 import {
   MdAccessTime,
@@ -12,8 +11,8 @@ import { FormattedMessage, InjectedIntl, injectIntl } from "react-intl";
 import Schema from "../../schema/Release";
 import Carousel from "../Carousel/Carousel";
 import DateTime from "../DateTime/DateTime";
+import Image from "../Image/Image";
 import Link from "../Link/Link";
-import Loader from "../Loader/Loader";
 import Meta from "../Meta/Meta";
 import MetaBar from "../MetaBar/MetaBar";
 import PageHeader from "../PageHeader/PageHeader";
@@ -34,16 +33,6 @@ class Release extends React.Component<IProps, IState> {
   public readonly state: IState = {
     loadedImages: {}
   };
-
-  private imageRefs: HTMLImageElement[] = [];
-
-  public componentDidMount() {
-    this.imageRefs.forEach((imageRef, index) => {
-      if (imageRef.complete) {
-        setTimeout(this.onImageLoad(index), 1);
-      }
-    });
-  }
 
   public render() {
     const { intl, onCarouselSlideChange, ...release } = this.props;
@@ -189,25 +178,15 @@ class Release extends React.Component<IProps, IState> {
     });
   };
 
-  private setImageRef = (index: number) => (image: HTMLImageElement) => {
-    this.imageRefs[index] = image;
-  };
-
   private renderImage = (image: IImage, index: number) => (
-    <figure
+    <Image
+      alt={image.title}
+      caption={image.title}
+      className="Release-image"
       key={`image-${index}`}
-      className={cn({ isLoading: !this.state.loadedImages[index] })}
-    >
-      <img
-        alt={image.title}
-        onError={this.onImageLoad(index)}
-        onLoad={this.onImageLoad(index)}
-        ref={this.setImageRef(index)}
-        src={image.imageUrl}
-      />
-      {!this.state.loadedImages[index] ? <Loader /> : null}
-      <figcaption>{image.title}</figcaption>
-    </figure>
+      onLoad={this.onImageLoad(index)}
+      src={image.imageUrl}
+    />
   );
 
   private renderTrack = (track: IReleaseTrack) => (

@@ -49,10 +49,29 @@ exports[`[routes] <NewsRoute /> renders correctly 1`] = `
             </span>
           </h2>
         </header>
-        <img
-          alt="New website launched"
-          src="https://s3.amazonaws.com/mynameisviii-static/news/new-website-launched.jpg"
-        />
+        <figure
+          class="Image NewsListing-image isLoading"
+        >
+          <div
+            class="Image-wrapper"
+          >
+            <img
+              alt="New website launched"
+              src="https://s3.amazonaws.com/mynameisviii-static/news/new-website-launched.jpg"
+            />
+            <span
+              class="Loader"
+            >
+              <div
+                class="Loader-animation"
+              >
+                <span />
+                <span />
+                <span />
+              </div>
+            </span>
+          </div>
+        </figure>
         <p>
           <span>
             The new official Viii website is now live!
@@ -93,10 +112,29 @@ exports[`[routes] <NewsRoute /> renders correctly 1`] = `
             </span>
           </h2>
         </header>
-        <img
-          alt="Single 'Threadfear / Ask Me to Stay' released"
-          src="https://s3.amazonaws.com/mynameisviii-static/news/single-threadfear-ask-me-to-stay-released.jpg"
-        />
+        <figure
+          class="Image NewsListing-image isLoading"
+        >
+          <div
+            class="Image-wrapper"
+          >
+            <img
+              alt="Single 'Threadfear / Ask Me to Stay' released"
+              src="https://s3.amazonaws.com/mynameisviii-static/news/single-threadfear-ask-me-to-stay-released.jpg"
+            />
+            <span
+              class="Loader"
+            >
+              <div
+                class="Loader-animation"
+              >
+                <span />
+                <span />
+                <span />
+              </div>
+            </span>
+          </div>
+        </figure>
         <p>
           <span>
             New single 'Threadfear' released with accompanying B-side, 'Ask Me to Stay'.
@@ -137,10 +175,29 @@ exports[`[routes] <NewsRoute /> renders correctly 1`] = `
             </span>
           </h2>
         </header>
-        <img
-          alt="Single 'Witchlust / Rev 22:20' released"
-          src="https://s3.amazonaws.com/mynameisviii-static/news/single-witchlust-rev-22-20-released.jpg"
-        />
+        <figure
+          class="Image NewsListing-image isLoading"
+        >
+          <div
+            class="Image-wrapper"
+          >
+            <img
+              alt="Single 'Witchlust / Rev 22:20' released"
+              src="https://s3.amazonaws.com/mynameisviii-static/news/single-witchlust-rev-22-20-released.jpg"
+            />
+            <span
+              class="Loader"
+            >
+              <div
+                class="Loader-animation"
+              >
+                <span />
+                <span />
+                <span />
+              </div>
+            </span>
+          </div>
+        </figure>
         <p>
           <span>
             New single 'Witchlust' released with accompanying B-side, 'Rev 22:20'.
@@ -181,10 +238,29 @@ exports[`[routes] <NewsRoute /> renders correctly 1`] = `
             </span>
           </h2>
         </header>
-        <img
-          alt="Single 'Heavens to Elizabeth' released"
-          src="https://s3.amazonaws.com/mynameisviii-static/news/heavens-to-elizabeth-released.jpg"
-        />
+        <figure
+          class="Image NewsListing-image isLoading"
+        >
+          <div
+            class="Image-wrapper"
+          >
+            <img
+              alt="Single 'Heavens to Elizabeth' released"
+              src="https://s3.amazonaws.com/mynameisviii-static/news/heavens-to-elizabeth-released.jpg"
+            />
+            <span
+              class="Loader"
+            >
+              <div
+                class="Loader-animation"
+              >
+                <span />
+                <span />
+                <span />
+              </div>
+            </span>
+          </div>
+        </figure>
         <p>
           <span>
             Special single 'Heavens to Elizabeth' released to celebrate New Zealand Music Month.
@@ -225,10 +301,29 @@ exports[`[routes] <NewsRoute /> renders correctly 1`] = `
             </span>
           </h2>
         </header>
-        <img
-          alt="Debut single 'Lovedecay / Lovesong' released"
-          src="https://s3.amazonaws.com/mynameisviii-static/news/debut-single-lovedecay-lovesong-released.jpg"
-        />
+        <figure
+          class="Image NewsListing-image isLoading"
+        >
+          <div
+            class="Image-wrapper"
+          >
+            <img
+              alt="Debut single 'Lovedecay / Lovesong' released"
+              src="https://s3.amazonaws.com/mynameisviii-static/news/debut-single-lovedecay-lovesong-released.jpg"
+            />
+            <span
+              class="Loader"
+            >
+              <div
+                class="Loader-animation"
+              >
+                <span />
+                <span />
+                <span />
+              </div>
+            </span>
+          </div>
+        </figure>
         <p>
           <span>
             Debut single 'Lovedecay' released with accompanying B-side, 'Lovesong'.

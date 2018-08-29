@@ -61,10 +61,29 @@ Array [
                   </span>
                 </h3>
               </header>
-              <img
-                alt="New website launched"
-                src="https://s3.amazonaws.com/mynameisviii-static/news/new-website-launched.jpg"
-              />
+              <figure
+                class="Image NewsListing-image isLoading"
+              >
+                <div
+                  class="Image-wrapper"
+                >
+                  <img
+                    alt="New website launched"
+                    src="https://s3.amazonaws.com/mynameisviii-static/news/new-website-launched.jpg"
+                  />
+                  <span
+                    class="Loader"
+                  >
+                    <div
+                      class="Loader-animation"
+                    >
+                      <span />
+                      <span />
+                      <span />
+                    </div>
+                  </span>
+                </div>
+              </figure>
               <p>
                 <span>
                   The new official Viii website is now live!

@@ -1,6 +1,4 @@
 .AppearanceListing {
-  @include fade-up-on-render(0.8);
-
   flex-basis: 100%;
   padding: ($spacing / 2);
 
@@ -13,6 +11,16 @@
     flex-flow: row-reverse wrap;
     position: relative;
     background: $panel-color-2;
+  }
+
+  &-image {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    .Loader {
+      padding-top: 141.5%;
+    }
   }
 
   .Meta-label {

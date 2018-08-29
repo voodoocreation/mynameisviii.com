@@ -175,10 +175,29 @@ exports[`[routes] <ReleasesRoute /> renders correctly 1`] = `
               </div>
             </section>
           </div>
-          <img
-            alt="lovedecay / lovesong"
-            src="https://s3.amazonaws.com/mynameisviii-static/releases/lovedecay-lovesong.jpg"
-          />
+          <figure
+            class="Image ReleaseListing-image isLoading"
+          >
+            <div
+              class="Image-wrapper"
+            >
+              <img
+                alt="lovedecay / lovesong"
+                src="https://s3.amazonaws.com/mynameisviii-static/releases/lovedecay-lovesong.jpg"
+              />
+              <span
+                class="Loader"
+              >
+                <div
+                  class="Loader-animation"
+                >
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </span>
+            </div>
+          </figure>
         </a>
       </article>
       <article
@@ -332,10 +351,29 @@ exports[`[routes] <ReleasesRoute /> renders correctly 1`] = `
               </div>
             </section>
           </div>
-          <img
-            alt="Heavens to Elizabeth"
-            src="https://s3.amazonaws.com/mynameisviii-static/releases/heavens-to-elizabeth.jpg"
-          />
+          <figure
+            class="Image ReleaseListing-image isLoading"
+          >
+            <div
+              class="Image-wrapper"
+            >
+              <img
+                alt="Heavens to Elizabeth"
+                src="https://s3.amazonaws.com/mynameisviii-static/releases/heavens-to-elizabeth.jpg"
+              />
+              <span
+                class="Loader"
+              >
+                <div
+                  class="Loader-animation"
+                >
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </span>
+            </div>
+          </figure>
         </a>
       </article>
       <article
@@ -489,10 +527,29 @@ exports[`[routes] <ReleasesRoute /> renders correctly 1`] = `
               </div>
             </section>
           </div>
-          <img
-            alt="witchlust / rev 22:20"
-            src="https://s3.amazonaws.com/mynameisviii-static/releases/witchlust-rev-22-20.jpg"
-          />
+          <figure
+            class="Image ReleaseListing-image isLoading"
+          >
+            <div
+              class="Image-wrapper"
+            >
+              <img
+                alt="witchlust / rev 22:20"
+                src="https://s3.amazonaws.com/mynameisviii-static/releases/witchlust-rev-22-20.jpg"
+              />
+              <span
+                class="Loader"
+              >
+                <div
+                  class="Loader-animation"
+                >
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </span>
+            </div>
+          </figure>
         </a>
       </article>
       <article
@@ -646,10 +703,29 @@ exports[`[routes] <ReleasesRoute /> renders correctly 1`] = `
               </div>
             </section>
           </div>
-          <img
-            alt="threadfear / ask me to stay"
-            src="https://s3.amazonaws.com/mynameisviii-static/releases/threadfear-ask-me-to-stay.jpg"
-          />
+          <figure
+            class="Image ReleaseListing-image isLoading"
+          >
+            <div
+              class="Image-wrapper"
+            >
+              <img
+                alt="threadfear / ask me to stay"
+                src="https://s3.amazonaws.com/mynameisviii-static/releases/threadfear-ask-me-to-stay.jpg"
+              />
+              <span
+                class="Loader"
+              >
+                <div
+                  class="Loader-animation"
+                >
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </span>
+            </div>
+          </figure>
         </a>
       </article>
     </div>

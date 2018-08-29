@@ -9,7 +9,6 @@ import ActListing from "../ActListing/ActListing";
 import DateTime from "../DateTime/DateTime";
 import Gallery from "../Gallery/Gallery";
 import Image from "../Image/Image";
-import Loader from "../Loader/Loader";
 import Map from "../Map/Map";
 import Meta from "../Meta/Meta";
 import MetaBar from "../MetaBar/MetaBar";
@@ -30,14 +29,6 @@ class Appearance extends React.Component<IProps, IState> {
   public readonly state = {
     isImageLoaded: false
   };
-
-  private imageRef: React.RefObject<HTMLImageElement> = React.createRef();
-
-  public componentDidMount() {
-    if (this.imageRef.current && this.imageRef.current.complete) {
-      setTimeout(this.onImageLoad, 1);
-    }
-  }
 
   public render() {
     const {
@@ -130,18 +121,12 @@ class Appearance extends React.Component<IProps, IState> {
         </MetaBar>
 
         <div className="Appearance-body">
-          <figure
-            className={cn("Appearance-image", {
-              isLoading: !this.state.isImageLoaded
-            })}
+          <Image
+            alt={appearance.title}
+            className="Appearance-image"
+            onLoad={this.onImageLoad}
+            src={appearance.imageUrl}
           >
-            <img
-              onLoad={this.onImageLoad}
-              onError={this.onImageLoad}
-              ref={this.imageRef}
-              src={appearance.imageUrl}
-              title={appearance.title}
-            />
             {appearance.status === "EventCancelled" ? (
               <Meta className="Appearance-status" labelConstant="STATUS">
                 <FormattedMessage id="CANCELLED" />
@@ -152,8 +137,7 @@ class Appearance extends React.Component<IProps, IState> {
                 <FormattedMessage id="POSTPONED" />
               </Meta>
             ) : null}
-            {!this.state.isImageLoaded ? <Loader /> : null}
-          </figure>
+          </Image>
 
           <div className="Appearance-details">
             <section className="Appearance-description">

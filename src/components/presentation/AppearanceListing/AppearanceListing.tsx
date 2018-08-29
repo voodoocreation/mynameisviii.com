@@ -5,6 +5,7 @@ import { FormattedMessage, InjectedIntl, injectIntl } from "react-intl";
 
 import Schema from "../../schema/Appearance";
 import DateTime from "../DateTime/DateTime";
+import Image from "../Image/Image";
 import Link from "../Link/Link";
 import Meta from "../Meta/Meta";
 import PriceRange from "../Price/PriceRange";
@@ -24,14 +25,6 @@ class AppearanceListing extends React.Component<IProps, IState> {
   public state = {
     isRendered: false
   };
-
-  private imageRef: React.RefObject<HTMLImageElement> = React.createRef();
-
-  public componentDidMount() {
-    if (this.imageRef.current && this.imageRef.current.complete) {
-      setTimeout(this.onLoad, 1);
-    }
-  }
 
   public render() {
     const { intl, onLoad, ...appearance } = this.props;
@@ -138,15 +131,12 @@ class AppearanceListing extends React.Component<IProps, IState> {
             </section>
           </div>
 
-          <figure className="AppearanceListing-image">
-            <img
-              alt={appearance.title}
-              onLoad={this.onLoad}
-              onError={this.onLoad}
-              ref={this.imageRef}
-              src={appearance.imageUrl}
-            />
-          </figure>
+          <Image
+            className="AppearanceListing-image"
+            alt={appearance.title}
+            onLoad={this.onLoad}
+            src={appearance.imageUrl}
+          />
         </Link>
 
         <Schema {...appearance} />

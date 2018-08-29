@@ -139,7 +139,7 @@ exports[`[presentation] <StemListing /> renders correctly 1`] = `
       class="StemListing-thumbnail"
     >
       <figure
-        class="Image StemListing-image"
+        class="Image StemListing-image isLoading"
       >
         <div
           class="Image-wrapper"
@@ -148,6 +148,17 @@ exports[`[presentation] <StemListing /> renders correctly 1`] = `
             alt="title"
             src="imageUrl"
           />
+          <span
+            class="Loader"
+          >
+            <div
+              class="Loader-animation"
+            >
+              <span />
+              <span />
+              <span />
+            </div>
+          </span>
         </div>
       </figure>
       <div

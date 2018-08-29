@@ -273,45 +273,53 @@ exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
           style="transform:translate3d(-0%, 0, 0)"
         >
           <figure
-            class="isLoading"
+            class="Image Release-image isLoading"
           >
-            <img
-              alt="Front cover"
-              src="https://s3.amazonaws.com/mynameisviii-static/releases/lovedecay-lovesong.jpg"
-            />
-            <span
-              class="Loader"
+            <div
+              class="Image-wrapper"
             >
-              <div
-                class="Loader-animation"
+              <img
+                alt="Front cover"
+                src="https://s3.amazonaws.com/mynameisviii-static/releases/lovedecay-lovesong.jpg"
+              />
+              <span
+                class="Loader"
               >
-                <span />
-                <span />
-                <span />
-              </div>
-            </span>
+                <div
+                  class="Loader-animation"
+                >
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </span>
+            </div>
             <figcaption>
               Front cover
             </figcaption>
           </figure>
           <figure
-            class="isLoading"
+            class="Image Release-image isLoading"
           >
-            <img
-              alt="Back cover"
-              src="https://s3.amazonaws.com/mynameisviii-static/releases/lovedecay-lovesong.jpg"
-            />
-            <span
-              class="Loader"
+            <div
+              class="Image-wrapper"
             >
-              <div
-                class="Loader-animation"
+              <img
+                alt="Back cover"
+                src="https://s3.amazonaws.com/mynameisviii-static/releases/lovedecay-lovesong.jpg"
+              />
+              <span
+                class="Loader"
               >
-                <span />
-                <span />
-                <span />
-              </div>
-            </span>
+                <div
+                  class="Loader-animation"
+                >
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </span>
+            </div>
             <figcaption>
               Back cover
             </figcaption>

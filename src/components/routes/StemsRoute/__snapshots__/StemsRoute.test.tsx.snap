@@ -152,7 +152,7 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
           class="StemListing-thumbnail"
         >
           <figure
-            class="Image StemListing-image"
+            class="Image StemListing-image isLoading"
           >
             <div
               class="Image-wrapper"
@@ -161,6 +161,17 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
                 alt="threadfear"
                 src="https://s3.amazonaws.com/mynameisviii-static/releases/threadfear-ask-me-to-stay.jpg"
               />
+              <span
+                class="Loader"
+              >
+                <div
+                  class="Loader-animation"
+                >
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </span>
             </div>
           </figure>
           <div
@@ -321,7 +332,7 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
           class="StemListing-thumbnail"
         >
           <figure
-            class="Image StemListing-image"
+            class="Image StemListing-image isLoading"
           >
             <div
               class="Image-wrapper"
@@ -330,6 +341,17 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
                 alt="Ask Me To Stay"
                 src="https://s3.amazonaws.com/mynameisviii-static/releases/threadfear-ask-me-to-stay.jpg"
               />
+              <span
+                class="Loader"
+              >
+                <div
+                  class="Loader-animation"
+                >
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </span>
             </div>
           </figure>
           <div
