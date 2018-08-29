@@ -1,4 +1,5 @@
 const g: any = global;
+const s: any = self;
 const { assets, buildId, staticFiles } = g.serviceWorkerOption;
 
 g.CACHE_PREFIX = "mynameisviii.com";
@@ -30,6 +31,9 @@ g.workbox.core.setCacheNameDetails({
   prefix: g.CACHE_PREFIX,
   suffix: buildId
 });
+
+g.workbox.skipWaiting();
+g.workbox.clientsClaim();
 
 if (buildId !== "development") {
   g.workbox.precaching.precacheAndRoute(

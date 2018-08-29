@@ -7,6 +7,7 @@ const createWorkboxMock = () => ({
   cacheableResponse: {
     Plugin: jest.fn()
   },
+  clientsClaim: jest.fn(),
   core: {
     setCacheNameDetails: jest.fn()
   },
@@ -22,6 +23,7 @@ const createWorkboxMock = () => ({
   routing: {
     registerRoute: jest.fn()
   },
+  skipWaiting: jest.fn(),
   strategies: {
     cacheFirst: jest.fn(() => "cacheFirst"),
     networkFirst: jest.fn(() => "networkFirst"),
@@ -82,6 +84,11 @@ describe("[service] App service worker", () => {
       expect(g.importScripts).toHaveBeenCalledWith(
         "https://storage.googleapis.com/workbox-cdn/releases/3.4.1/workbox-sw.js"
       );
+    });
+
+    it("claims the client instantly", () => {
+      expect(g.workbox.clientsClaim).toHaveBeenCalled();
+      expect(g.workbox.skipWaiting).toHaveBeenCalled();
     });
 
     it("defines cache name details correctly", () => {
