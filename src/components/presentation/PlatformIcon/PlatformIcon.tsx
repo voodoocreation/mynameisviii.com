@@ -5,8 +5,8 @@ import {
   FaGoogle,
   FaSoundcloud,
   FaSpotify
-} from "react-icons/lib/fa";
-import { MdPlayCircleFilled } from "react-icons/lib/md";
+} from "react-icons/fa";
+import { MdPlayCircleFilled } from "react-icons/md";
 
 interface IProps {
   value: string;
@@ -15,23 +15,23 @@ interface IProps {
 const PlatformIcon: React.SFC<IProps> = ({ value }) => {
   switch (value) {
     default:
-      return <MdPlayCircleFilled />;
+      return <MdPlayCircleFilled /> as React.ReactElement<any>;
 
     case "amazon":
-      return <FaAmazon />;
+      return <FaAmazon /> as React.ReactElement<any>;
 
     case "apple":
     case "itunes":
-      return <FaApple />;
+      return <FaApple /> as React.ReactElement<any>;
 
     case "google":
-      return <FaGoogle />;
+      return <FaGoogle /> as React.ReactElement<any>;
 
     case "soundcloud":
-      return <FaSoundcloud />;
+      return <FaSoundcloud /> as React.ReactElement<any>;
 
     case "spotify":
-      return <FaSpotify />;
+      return <FaSpotify /> as React.ReactElement<any>;
   }
 };
 

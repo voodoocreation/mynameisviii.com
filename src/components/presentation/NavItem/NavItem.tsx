@@ -17,15 +17,17 @@ const NavItem: React.SFC<IProps> = ({
   onClick,
   ...linkProps
 }) =>
-  isSelected ? (
-    <li className="isSelected" onClick={onClick}>
-      {children}
-    </li>
-  ) : (
-    <li onClick={onClick}>
-      <Link {...linkProps}>{children}</Link>
-    </li>
-  );
+  isSelected
+    ? ((
+        <li className="isSelected" onClick={onClick}>
+          {children}
+        </li>
+      ) as React.ReactElement<any>)
+    : ((
+        <li onClick={onClick}>
+          <Link {...linkProps}>{children}</Link>
+        </li>
+      ) as React.ReactElement<any>);
 
 NavItem.defaultProps = {
   isSelected: false,

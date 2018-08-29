@@ -6,6 +6,10 @@ interface IProps {
 }
 
 const MetaBar: React.SFC<IProps> = ({ children, className }) =>
-  !children ? null : <div className={cn("MetaBar", className)}>{children}</div>;
+  !children
+    ? null
+    : ((
+        <div className={cn("MetaBar", className)}>{children}</div>
+      ) as React.ReactElement<any>);
 
 export default MetaBar;

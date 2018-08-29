@@ -24,6 +24,8 @@ addLocaleData([...en]);
 // @TODO: convert listings to display loader in image instead of fading in on load
 // @TODO: add install prompt
 // @TODO: add facebook app
+// @TODO: refactor scss compiling/linking
+// @TODO: optimise webpack bundle
 
 type NextPageComponent = React.ComponentType<any> & {
   getInitialProps: (props: any) => any;

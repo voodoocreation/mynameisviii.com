@@ -8,13 +8,14 @@ interface IProps {
   url: string;
 }
 
-const WebsiteListing: React.SFC<IProps> = ({ children, icon, title, url }) => (
-  <article className="WebsiteListing">
-    <Link href={url} isExternal={true} title={title}>
-      {icon}
-      <span className="WebsiteListing-title">{children}</span>
-    </Link>
-  </article>
-);
+const WebsiteListing: React.SFC<IProps> = ({ children, icon, title, url }) =>
+  (
+    <article className="WebsiteListing">
+      <Link href={url} isExternal={true} title={title}>
+        {icon}
+        <span className="WebsiteListing-title">{children}</span>
+      </Link>
+    </article>
+  ) as React.ReactElement<any>;
 
 export default WebsiteListing;

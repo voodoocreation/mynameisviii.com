@@ -12,91 +12,93 @@ const isDev = () => process.env.NODE_ENV !== "production";
 // tslint:disable-next-line
 const css = require("../../../scss/index.scss");
 
-const Meta: React.SFC<{}> = () => (
-  <React.Fragment>
-    <meta charSet="UTF-8" />
-    <meta
-      content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
-      name="viewport"
-    />
+const Meta: React.SFC<{}> = () =>
+  (
+    <React.Fragment>
+      <meta charSet="UTF-8" />
+      <meta
+        content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
+        name="viewport"
+      />
 
-    <meta name="theme-color" content="#160f20" />
-    <meta name="msapplication-TileColor" content="#160f20" />
-    <meta
-      name="msapplication-TileImage"
-      content="/static/favicon/mstile-150x150.png"
-    />
-    <link rel="icon" href="/static/favicon/favicon.ico" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/static/favicon/apple-touch-icon.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="152x152"
-      href="/static/favicon/apple-touch-icon-152x152.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="144x144"
-      href="/static/favicon/apple-touch-icon-144x144.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="120x120"
-      href="/static/favicon/apple-touch-icon-120x120.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="114x114"
-      href="/static/favicon/apple-touch-icon-114x114.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="76x76"
-      href="/static/favicon/apple-touch-icon-76x76.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="72x72"
-      href="/static/favicon/apple-touch-icon-72x72.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="60x60"
-      href="/static/favicon/apple-touch-icon-60x60.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="57x57"
-      href="/static/favicon/apple-touch-icon-57x57.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/static/favicon/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/static/favicon/favicon-16x16.png"
-    />
-    <link
-      rel="mask-icon"
-      href="/static/favicon/safari-pinned-tab.svg"
-      color="#160f20"
-    />
-    <link rel="manifest" href="/static/manifest.json" />
-  </React.Fragment>
-);
+      <meta name="theme-color" content="#160f20" />
+      <meta name="msapplication-TileColor" content="#160f20" />
+      <meta
+        name="msapplication-TileImage"
+        content="/static/favicon/mstile-150x150.png"
+      />
+      <link rel="icon" href="/static/favicon/favicon.ico" />
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/static/favicon/apple-touch-icon.png"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="152x152"
+        href="/static/favicon/apple-touch-icon-152x152.png"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="144x144"
+        href="/static/favicon/apple-touch-icon-144x144.png"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="120x120"
+        href="/static/favicon/apple-touch-icon-120x120.png"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="114x114"
+        href="/static/favicon/apple-touch-icon-114x114.png"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="76x76"
+        href="/static/favicon/apple-touch-icon-76x76.png"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="72x72"
+        href="/static/favicon/apple-touch-icon-72x72.png"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="60x60"
+        href="/static/favicon/apple-touch-icon-60x60.png"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="57x57"
+        href="/static/favicon/apple-touch-icon-57x57.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="/static/favicon/favicon-32x32.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="/static/favicon/favicon-16x16.png"
+      />
+      <link
+        rel="mask-icon"
+        href="/static/favicon/safari-pinned-tab.svg"
+        color="#160f20"
+      />
+      <link rel="manifest" href="/static/manifest.json" />
+    </React.Fragment>
+  ) as React.ReactElement<any>;
 
-const AnalyticsHead: React.SFC<{}> = () => (
-  <script
-    dangerouslySetInnerHTML={{
-      __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+const AnalyticsHead: React.SFC<{}> = () =>
+  (
+    <script
+      dangerouslySetInnerHTML={{
+        __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         'https://www.googletagmanager.com/gtm.js?id='+i+dl${
@@ -105,24 +107,25 @@ const AnalyticsHead: React.SFC<{}> = () => (
             : ""
         };f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-TJZ52XC');`
-    }}
-  />
-);
-
-const AnalyticsBody: React.SFC<{}> = () => (
-  <noscript>
-    <iframe
-      src={`https://www.googletagmanager.com/ns.html?id=GTM-TJZ52XC${
-        isDev()
-          ? `&gtm_auth=5N0VfAOq-iEoyMOidFx0kQ&gtm_preview=env-3&gtm_cookies_win=x`
-          : ""
-      }`}
-      height="0"
-      width="0"
-      style={{ display: "none", visibility: "hidden" }}
+      }}
     />
-  </noscript>
-);
+  ) as React.ReactElement<any>;
+
+const AnalyticsBody: React.SFC<{}> = () =>
+  (
+    <noscript>
+      <iframe
+        src={`https://www.googletagmanager.com/ns.html?id=GTM-TJZ52XC${
+          isDev()
+            ? `&gtm_auth=5N0VfAOq-iEoyMOidFx0kQ&gtm_preview=env-3&gtm_cookies_win=x`
+            : ""
+        }`}
+        height="0"
+        width="0"
+        style={{ display: "none", visibility: "hidden" }}
+      />
+    </noscript>
+  ) as React.ReactElement<any>;
 
 export default class extends Document {
   public static async getInitialProps(context: Context) {

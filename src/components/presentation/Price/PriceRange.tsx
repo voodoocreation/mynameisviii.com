@@ -13,24 +13,25 @@ interface IProps {
   };
 }
 
-const PriceRange: React.SFC<IProps> = ({ max, min }) => (
-  <React.Fragment>
-    {min ? (
-      <Price
-        className="PriceRange-min"
-        value={min.price}
-        currency={min.priceCurrency}
-      />
-    ) : null}
-    {max ? "–" : null}
-    {max ? (
-      <Price
-        className="PriceRange-max"
-        value={max.price}
-        currency={max.priceCurrency}
-      />
-    ) : null}
-  </React.Fragment>
-);
+const PriceRange: React.SFC<IProps> = ({ max, min }) =>
+  (
+    <React.Fragment>
+      {min ? (
+        <Price
+          className="PriceRange-min"
+          value={min.price}
+          currency={min.priceCurrency}
+        />
+      ) : null}
+      {max ? "–" : null}
+      {max ? (
+        <Price
+          className="PriceRange-max"
+          value={max.price}
+          currency={max.priceCurrency}
+        />
+      ) : null}
+    </React.Fragment>
+  ) as React.ReactElement<any>;
 
 export default PriceRange;

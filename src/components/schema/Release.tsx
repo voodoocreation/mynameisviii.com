@@ -50,53 +50,54 @@ const getFlatTracklist = (tracklist: IReleaseTrack[][]) => {
   }, []);
 };
 
-const Release: React.SFC<IRelease> = props => (
-  <Schema
-    {...{
-      "@id": absUrl(`/releases/${props.slug}`),
-      "@type": "MusicAlbum",
-      albumProductionType: `http://schema.org/${getProductionType(
-        props.productionType
-      )}`,
-      albumRelease: {
-        "@type": "MusicRelease",
-        duration: lengthToDuration(props.length),
+const Release: React.SFC<IRelease> = props =>
+  (
+    <Schema
+      {...{
+        "@id": absUrl(`/releases/${props.slug}`),
+        "@type": "MusicAlbum",
+        albumProductionType: `http://schema.org/${getProductionType(
+          props.productionType
+        )}`,
+        albumRelease: {
+          "@type": "MusicRelease",
+          duration: lengthToDuration(props.length),
+          name: props.title,
+          recordLabel: props.recordLabel
+        },
+        albumReleaseType: `http://schema.org/${getReleaseType(props.type)}`,
+        byArtist: {
+          "@type": "MusicGroup",
+          name: props.artist.name
+        },
+        datePublished: props.releasedOn,
+        description: stripTags(props.description).replace(/\n/g, ""),
+        image: props.images[0].imageUrl,
+        mainEntityOfPage: {
+          "@id": absUrl(`/releases/${props.slug}`)
+        },
         name: props.title,
-        recordLabel: props.recordLabel
-      },
-      albumReleaseType: `http://schema.org/${getReleaseType(props.type)}`,
-      byArtist: {
-        "@type": "MusicGroup",
-        name: props.artist.name
-      },
-      datePublished: props.releasedOn,
-      description: stripTags(props.description).replace(/\n/g, ""),
-      image: props.images[0].imageUrl,
-      mainEntityOfPage: {
-        "@id": absUrl(`/releases/${props.slug}`)
-      },
-      name: props.title,
-      track: {
-        "@type": "ItemList",
-        itemListElement: getFlatTracklist(props.tracklist).map(
-          (track: IReleaseTrack, index) => ({
-            "@type": "ListItem",
-            item: {
-              "@type": "MusicRecording",
-              duration: lengthToDuration(track.length),
-              name: track.title,
-              recordingOf: {
-                "@type": "MusicComposition",
-                name: track.title
-              }
-            },
-            position: index + 1
-          })
-        ),
-        numberOfItems: getFlatTracklist(props.tracklist).length
-      }
-    }}
-  />
-);
+        track: {
+          "@type": "ItemList",
+          itemListElement: getFlatTracklist(props.tracklist).map(
+            (track: IReleaseTrack, index) => ({
+              "@type": "ListItem",
+              item: {
+                "@type": "MusicRecording",
+                duration: lengthToDuration(track.length),
+                name: track.title,
+                recordingOf: {
+                  "@type": "MusicComposition",
+                  name: track.title
+                }
+              },
+              position: index + 1
+            })
+          ),
+          numberOfItems: getFlatTracklist(props.tracklist).length
+        }
+      }}
+    />
+  ) as React.ReactElement<any>;
 
 export default Release;

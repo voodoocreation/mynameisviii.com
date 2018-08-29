@@ -1,5 +1,5 @@
 import * as React from "react";
-import { MdPortableWifiOff } from "react-icons/lib/md";
+import { MdPortableWifiOff } from "react-icons/md";
 import { FormattedMessage, InjectedIntl, injectIntl } from "react-intl";
 import { connect } from "react-redux";
 
@@ -14,14 +14,16 @@ interface IProps extends IStoreProps {
 }
 
 const OfflineNotice: React.SFC<IProps> = ({ isOnline }) =>
-  isOnline ? null : (
-    <div className="OfflineNotice">
-      <MdPortableWifiOff />
-      <p>
-        <FormattedMessage id="CONTENT_UNAVAILABLE_OFFLINE" />
-      </p>
-    </div>
-  );
+  isOnline
+    ? null
+    : ((
+        <div className="OfflineNotice">
+          <MdPortableWifiOff />
+          <p>
+            <FormattedMessage id="CONTENT_UNAVAILABLE_OFFLINE" />
+          </p>
+        </div>
+      ) as React.ReactElement<any>);
 
 const mapStateToProps = (state: any) => ({
   isOnline: selectors.isOnline(state)

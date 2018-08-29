@@ -7,14 +7,15 @@ interface IProps {
   [index: string]: any;
 }
 
-const Schema: React.SFC<IProps> = ({ isPretty, ...props }) => (
-  <script
-    type="application/ld+json"
-    dangerouslySetInnerHTML={{
-      __html: JSON.stringify(props, null, isPretty ? "  " : undefined)
-    }}
-  />
-);
+const Schema: React.SFC<IProps> = ({ isPretty, ...props }) =>
+  (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(props, null, isPretty ? "  " : undefined)
+      }}
+    />
+  ) as React.ReactElement<any>;
 
 Schema.defaultProps = {
   "@context": "http://schema.org/",

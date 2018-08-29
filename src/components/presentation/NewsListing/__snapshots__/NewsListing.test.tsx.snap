@@ -16,18 +16,17 @@ exports[`[presentation] <NewsListing /> renders correctly 1`] = `
           title="News"
         >
           <svg
+            attr="[object Object]"
             fill="currentColor"
             height="1em"
-            preserveAspectRatio="xMidYMid meet"
-            style="vertical-align:middle"
-            viewBox="0 0 40 40"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
             width="1em"
           >
-            <g>
-              <path
-                d="m21.6 21.6v-10h-3.2v10h3.2z m0 6.8v-3.4h-3.2v3.4h3.2z m16.8-8.4l-4.1 4.6 0.5 6.2-6 1.3-3.1 5.3-5.7-2.4-5.7 2.4-3.1-5.2-6-1.4 0.5-6.2-4.1-4.6 4.1-4.7-0.5-6.1 6-1.3 3.1-5.3 5.7 2.4 5.7-2.4 3.1 5.3 6 1.3-0.5 6.2z"
-              />
-            </g>
+            <path
+              d="M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12zm-10 5h-2v-2h2v2zm0-4h-2V7h2v6z"
+            />
           </svg>
         </div>
         <span>
@@ -64,18 +63,17 @@ exports[`[presentation] <NewsListing /> renders correctly when \`isCondensed\` p
           title="News"
         >
           <svg
+            attr="[object Object]"
             fill="currentColor"
             height="1em"
-            preserveAspectRatio="xMidYMid meet"
-            style="vertical-align:middle"
-            viewBox="0 0 40 40"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
             width="1em"
           >
-            <g>
-              <path
-                d="m21.6 21.6v-10h-3.2v10h3.2z m0 6.8v-3.4h-3.2v3.4h3.2z m16.8-8.4l-4.1 4.6 0.5 6.2-6 1.3-3.1 5.3-5.7-2.4-5.7 2.4-3.1-5.2-6-1.4 0.5-6.2-4.1-4.6 4.1-4.7-0.5-6.1 6-1.3 3.1-5.3 5.7 2.4 5.7-2.4 3.1 5.3 6 1.3-0.5 6.2z"
-              />
-            </g>
+            <path
+              d="M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12zm-10 5h-2v-2h2v2zm0-4h-2V7h2v6z"
+            />
           </svg>
         </div>
         <span>
@@ -112,18 +110,17 @@ exports[`[presentation] <NewsListing /> updates \`isImageLoaded\` state when ima
           title="News"
         >
           <svg
+            attr="[object Object]"
             fill="currentColor"
             height="1em"
-            preserveAspectRatio="xMidYMid meet"
-            style="vertical-align: middle;"
-            viewBox="0 0 40 40"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
             width="1em"
           >
-            <g>
-              <path
-                d="m21.6 21.6v-10h-3.2v10h3.2z m0 6.8v-3.4h-3.2v3.4h3.2z m16.8-8.4l-4.1 4.6 0.5 6.2-6 1.3-3.1 5.3-5.7-2.4-5.7 2.4-3.1-5.2-6-1.4 0.5-6.2-4.1-4.6 4.1-4.7-0.5-6.1 6-1.3 3.1-5.3 5.7 2.4 5.7-2.4 3.1 5.3 6 1.3-0.5 6.2z"
-              />
-            </g>
+            <path
+              d="M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12zm-10 5h-2v-2h2v2zm0-4h-2V7h2v6z"
+            />
           </svg>
         </div>
         <span>
@@ -160,18 +157,17 @@ exports[`[presentation] <NewsListing /> updates \`isRendered\` state after image
           title="News"
         >
           <svg
+            attr="[object Object]"
             fill="currentColor"
             height="1em"
-            preserveAspectRatio="xMidYMid meet"
-            style="vertical-align: middle;"
-            viewBox="0 0 40 40"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
             width="1em"
           >
-            <g>
-              <path
-                d="m21.6 21.6v-10h-3.2v10h3.2z m0 6.8v-3.4h-3.2v3.4h3.2z m16.8-8.4l-4.1 4.6 0.5 6.2-6 1.3-3.1 5.3-5.7-2.4-5.7 2.4-3.1-5.2-6-1.4 0.5-6.2-4.1-4.6 4.1-4.7-0.5-6.1 6-1.3 3.1-5.3 5.7 2.4 5.7-2.4 3.1 5.3 6 1.3-0.5 6.2z"
-              />
-            </g>
+            <path
+              d="M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12zm-10 5h-2v-2h2v2zm0-4h-2V7h2v6z"
+            />
           </svg>
         </div>
         <span>

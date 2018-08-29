@@ -10,25 +10,31 @@ interface IProps extends GoogleMapProps {
   className?: string;
 }
 
-const Map = withGoogleMap(({ children, ...props }: IProps) => (
-  <GoogleMap {...props}>{children}</GoogleMap>
-));
+const Map = withGoogleMap(
+  ({ children, ...props }: IProps) =>
+    <GoogleMap {...props}>{children}</GoogleMap> as React.ReactElement<any>
+);
 
 const ConnectedMap: React.SFC<IProps> = ({
   children,
   className,
   defaultOptions,
   ...props
-}) => (
-  <Map
-    {...props}
-    containerElement={<div className={cn("Map-container", className)} />}
-    defaultOptions={merge({ styles }, defaultOptions)}
-    mapElement={<div className="Map" />}
-  >
-    {children}
-  </Map>
-);
+}) =>
+  (
+    <Map
+      {...props}
+      containerElement={
+        (
+          <div className={cn("Map-container", className)} />
+        ) as React.ReactElement<any>
+      }
+      defaultOptions={merge({ styles }, defaultOptions)}
+      mapElement={<div className="Map" /> as React.ReactElement<any>}
+    >
+      {children}
+    </Map>
+  ) as React.ReactElement<any>;
 
 ConnectedMap.defaultProps = {
   defaultZoom: 17

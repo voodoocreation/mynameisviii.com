@@ -1,12 +1,7 @@
 import cn from "classnames";
 import * as React from "react";
 import { Marker } from "react-google-maps";
-import {
-  MdAccessTime,
-  MdDateRange,
-  MdPeople,
-  MdPlace
-} from "react-icons/lib/md";
+import { MdAccessTime, MdDateRange, MdPeople, MdPlace } from "react-icons/md";
 import { FormattedMessage, InjectedIntl, injectIntl } from "react-intl";
 
 import Schema from "../../schema/Appearance";

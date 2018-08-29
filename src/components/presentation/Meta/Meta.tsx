@@ -18,16 +18,17 @@ const Meta: React.SFC<IProps> = ({
   label,
   labelConstant,
   title
-}) => (
-  <div className={cn("Meta", className)} title={title}>
-    {icon}{" "}
-    {labelConstant || label ? (
-      <span className="Meta-label">
-        {labelConstant ? <FormattedMessage id={labelConstant} /> : label}:
-      </span>
-    ) : null}{" "}
-    <span className="Meta-value">{children}</span>
-  </div>
-);
+}) =>
+  (
+    <div className={cn("Meta", className)} title={title}>
+      {icon}{" "}
+      {labelConstant || label ? (
+        <span className="Meta-label">
+          {labelConstant ? <FormattedMessage id={labelConstant} /> : label}:
+        </span>
+      ) : null}{" "}
+      <span className="Meta-value">{children}</span>
+    </div>
+  ) as React.ReactElement<any>;
 
 export default injectIntl<any>(Meta);

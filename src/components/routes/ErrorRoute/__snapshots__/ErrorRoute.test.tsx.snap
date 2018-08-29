@@ -15,18 +15,17 @@ exports[`[routes] <ErrorRoute /> renders correctly 1`] = `
     class="ErrorPage-content"
   >
     <svg
+      attr="[object Object]"
       fill="currentColor"
       height="1em"
-      preserveAspectRatio="xMidYMid meet"
-      style="vertical-align:middle"
-      viewBox="0 0 40 40"
+      stroke="currentColor"
+      stroke-width="0"
+      viewBox="0 0 24 24"
       width="1em"
     >
-      <g>
-        <path
-          d="m20 33.4c7.3 0 13.4-6.1 13.4-13.4s-6.1-13.4-13.4-13.4-13.4 6.1-13.4 13.4 6.1 13.4 13.4 13.4z m0-30c9.2 0 16.6 7.4 16.6 16.6s-7.4 16.6-16.6 16.6-16.6-7.4-16.6-16.6 7.4-16.6 16.6-16.6z m-1.6 8.2h3.2v10h-3.2v-10z m0 13.4h3.2v3.4h-3.2v-3.4z"
-        />
-      </g>
+      <path
+        d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+      />
     </svg>
     <p>
       An error has occurred, please try again.
@@ -50,18 +49,17 @@ exports[`[routes] <ErrorRoute /> renders correctly with custom error message 1`]
     class="ErrorPage-content"
   >
     <svg
+      attr="[object Object]"
       fill="currentColor"
       height="1em"
-      preserveAspectRatio="xMidYMid meet"
-      style="vertical-align:middle"
-      viewBox="0 0 40 40"
+      stroke="currentColor"
+      stroke-width="0"
+      viewBox="0 0 24 24"
       width="1em"
     >
-      <g>
-        <path
-          d="m20 33.4c7.3 0 13.4-6.1 13.4-13.4s-6.1-13.4-13.4-13.4-13.4 6.1-13.4 13.4 6.1 13.4 13.4 13.4z m0-30c9.2 0 16.6 7.4 16.6 16.6s-7.4 16.6-16.6 16.6-16.6-7.4-16.6-16.6 7.4-16.6 16.6-16.6z m-1.6 8.2h3.2v10h-3.2v-10z m0 13.4h3.2v3.4h-3.2v-3.4z"
-        />
-      </g>
+      <path
+        d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+      />
     </svg>
     <p>
       Test

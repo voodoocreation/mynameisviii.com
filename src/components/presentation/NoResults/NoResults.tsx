@@ -5,8 +5,9 @@ interface IProps {
   className?: string;
 }
 
-const Meta: React.SFC<IProps> = ({ children, className }) => (
-  <div className={cn("NoResults", className)}>{children}</div>
-);
+const NoResults: React.SFC<IProps> = ({ children, className }) =>
+  (
+    <div className={cn("NoResults", className)}>{children}</div>
+  ) as React.ReactElement<any>;
 
-export default Meta;
+export default NoResults;

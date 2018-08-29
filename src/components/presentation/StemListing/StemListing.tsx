@@ -1,7 +1,12 @@
 import cn from "classnames";
 import * as React from "react";
-import { FaCreativeCommons } from "react-icons/lib/fa";
-import { MdCloudDownload } from "react-icons/lib/md";
+import {
+  FaCreativeCommons,
+  FaCreativeCommonsBy,
+  FaCreativeCommonsNc,
+  FaCreativeCommonsSa
+} from "react-icons/fa";
+import { MdCloudDownload } from "react-icons/md";
 import { InjectedIntl, injectIntl } from "react-intl";
 
 import Image from "../Image/Image";
@@ -54,7 +59,14 @@ class StemListing extends React.Component<IProps, IState> {
 
               <Meta
                 className="StemListing-licence"
-                icon={<FaCreativeCommons />}
+                icon={
+                  <React.Fragment>
+                    <FaCreativeCommons />
+                    <FaCreativeCommonsBy />
+                    <FaCreativeCommonsNc />
+                    <FaCreativeCommonsSa />
+                  </React.Fragment>
+                }
                 labelConstant="LICENCED_UNDER_CC_REMIX"
                 title={formatMessage({ id: "LICENCED_UNDER_CC_REMIX" })}
               />

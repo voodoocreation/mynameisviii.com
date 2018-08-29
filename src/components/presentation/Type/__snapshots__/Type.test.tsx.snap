@@ -5,18 +5,17 @@ exports[`[presentation] <Type /> renders correctly when value=appearance 1`] = `
   class="Type Type-appearance TestType"
 >
   <svg
+    attr="[object Object]"
     fill="currentColor"
     height="1em"
-    preserveAspectRatio="xMidYMid meet"
-    style="vertical-align:middle"
-    viewBox="0 0 40 40"
+    stroke="currentColor"
+    stroke-width="0"
+    viewBox="0 0 24 24"
     width="1em"
   >
-    <g>
-      <path
-        d="m31.6 31.6v-18.2h-23.2v18.2h23.2z m-5-30h3.4v3.4h1.6q1.4 0 2.4 1t1 2.4v23.2q0 1.4-1 2.4t-2.4 1h-23.2q-1.4 0-2.4-1t-1-2.4v-23.2q0-1.4 1-2.4t2.4-1h1.6v-3.4h3.4v3.4h13.2v-3.4z m1.8 18.4v8.4h-8.4v-8.4h8.4z"
-      />
-    </g>
+    <path
+      d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
+    />
   </svg>
    Appearance
 </div>
@@ -27,18 +26,17 @@ exports[`[presentation] <Type /> renders correctly when value=release 1`] = `
   class="Type Type-release TestType"
 >
   <svg
+    attr="[object Object]"
     fill="currentColor"
     height="1em"
-    preserveAspectRatio="xMidYMid meet"
-    style="vertical-align:middle"
-    viewBox="0 0 40 40"
+    stroke="currentColor"
+    stroke-width="0"
+    viewBox="0 0 24 24"
     width="1em"
   >
-    <g>
-      <path
-        d="m20 18.4c0.9 0 1.6 0.7 1.6 1.6s-0.7 1.6-1.6 1.6-1.6-0.7-1.6-1.6 0.7-1.6 1.6-1.6z m0 9.1c4.1 0 7.5-3.4 7.5-7.5s-3.4-7.5-7.5-7.5-7.5 3.4-7.5 7.5 3.4 7.5 7.5 7.5z m0-24.1c9.2 0 16.6 7.4 16.6 16.6s-7.4 16.6-16.6 16.6-16.6-7.4-16.6-16.6 7.4-16.6 16.6-16.6z"
-      />
-    </g>
+    <path
+      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5zm0-5.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"
+    />
   </svg>
    Release
 </div>
@@ -49,18 +47,17 @@ exports[`[presentation] <Type /> renders correctly with minimum props 1`] = `
   class="Type Type-news TestType"
 >
   <svg
+    attr="[object Object]"
     fill="currentColor"
     height="1em"
-    preserveAspectRatio="xMidYMid meet"
-    style="vertical-align:middle"
-    viewBox="0 0 40 40"
+    stroke="currentColor"
+    stroke-width="0"
+    viewBox="0 0 24 24"
     width="1em"
   >
-    <g>
-      <path
-        d="m21.6 21.6v-10h-3.2v10h3.2z m0 6.8v-3.4h-3.2v3.4h3.2z m16.8-8.4l-4.1 4.6 0.5 6.2-6 1.3-3.1 5.3-5.7-2.4-5.7 2.4-3.1-5.2-6-1.4 0.5-6.2-4.1-4.6 4.1-4.7-0.5-6.1 6-1.3 3.1-5.3 5.7 2.4 5.7-2.4 3.1 5.3 6 1.3-0.5 6.2z"
-      />
-    </g>
+    <path
+      d="M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12zm-10 5h-2v-2h2v2zm0-4h-2V7h2v6z"
+    />
   </svg>
    News
 </div>
@@ -72,18 +69,17 @@ exports[`[presentation] <Type /> renders correctly without label 1`] = `
   title="News"
 >
   <svg
+    attr="[object Object]"
     fill="currentColor"
     height="1em"
-    preserveAspectRatio="xMidYMid meet"
-    style="vertical-align:middle"
-    viewBox="0 0 40 40"
+    stroke="currentColor"
+    stroke-width="0"
+    viewBox="0 0 24 24"
     width="1em"
   >
-    <g>
-      <path
-        d="m21.6 21.6v-10h-3.2v10h3.2z m0 6.8v-3.4h-3.2v3.4h3.2z m16.8-8.4l-4.1 4.6 0.5 6.2-6 1.3-3.1 5.3-5.7-2.4-5.7 2.4-3.1-5.2-6-1.4 0.5-6.2-4.1-4.6 4.1-4.7-0.5-6.1 6-1.3 3.1-5.3 5.7 2.4 5.7-2.4 3.1 5.3 6 1.3-0.5 6.2z"
-      />
-    </g>
+    <path
+      d="M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12zm-10 5h-2v-2h2v2zm0-4h-2V7h2v6z"
+    />
   </svg>
 </div>
 `;

@@ -25,21 +25,22 @@ const Price: React.SFC<IProps> = ({
   minimumSignificantDigits,
   maximumSignificantDigits,
   value
-}) => (
-  <span className={cn("Price", className)}>
-    <FormattedNumber
-      currency={currency}
-      currencyDisplay={currencyDisplay}
-      style="currency"
-      minimumIntegerDigits={minimumIntegerDigits}
-      minimumFractionDigits={minimumFractionDigits}
-      maximumFractionDigits={maximumFractionDigits}
-      minimumSignificantDigits={minimumSignificantDigits}
-      maximumSignificantDigits={maximumSignificantDigits}
-      value={value}
-    />
-  </span>
-);
+}) =>
+  (
+    <span className={cn("Price", className)}>
+      <FormattedNumber
+        currency={currency}
+        currencyDisplay={currencyDisplay}
+        style="currency"
+        minimumIntegerDigits={minimumIntegerDigits}
+        minimumFractionDigits={minimumFractionDigits}
+        maximumFractionDigits={maximumFractionDigits}
+        minimumSignificantDigits={minimumSignificantDigits}
+        maximumSignificantDigits={maximumSignificantDigits}
+        value={value}
+      />
+    </span>
+  ) as React.ReactElement<any>;
 
 Price.defaultProps = {
   currency: "NZD",

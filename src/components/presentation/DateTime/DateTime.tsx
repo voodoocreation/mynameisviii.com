@@ -22,29 +22,30 @@ const DateTime: React.SFC<IProps> = ({
   updateInterval,
   value,
   ...props
-}) => (
-  <time
-    className={cn("DateTime", className)}
-    dateTime={value}
-    title={
-      isDateOnly
-        ? intl.formatDate(moment(value).toDate(), options)
-        : intl.formatTime(moment(value).toDate(), options)
-    }
-  >
-    {isRelative ? (
-      <FormattedRelative
-        updateInterval={updateInterval}
-        value={moment(value).toDate()}
-        {...props}
-      />
-    ) : isDateOnly ? (
-      intl.formatDate(moment(value).toDate(), options)
-    ) : (
-      intl.formatTime(moment(value).toDate(), options)
-    )}
-  </time>
-);
+}) =>
+  (
+    <time
+      className={cn("DateTime", className)}
+      dateTime={value}
+      title={
+        isDateOnly
+          ? intl.formatDate(moment(value).toDate(), options)
+          : intl.formatTime(moment(value).toDate(), options)
+      }
+    >
+      {isRelative ? (
+        <FormattedRelative
+          updateInterval={updateInterval}
+          value={moment(value).toDate()}
+          {...props}
+        />
+      ) : isDateOnly ? (
+        intl.formatDate(moment(value).toDate(), options)
+      ) : (
+        intl.formatTime(moment(value).toDate(), options)
+      )}
+    </time>
+  ) as React.ReactElement<any>;
 
 DateTime.defaultProps = {
   isDateOnly: false,

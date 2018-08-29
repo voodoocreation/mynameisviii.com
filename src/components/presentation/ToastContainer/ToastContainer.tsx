@@ -6,8 +6,10 @@ interface IProps {
 }
 
 const ToastContainer: React.SFC<IProps> = ({ children, className }) =>
-  !children ? null : (
-    <div className={cn("ToastContainer", className)}>{children}</div>
-  );
+  !children
+    ? null
+    : ((
+        <div className={cn("ToastContainer", className)}>{children}</div>
+      ) as React.ReactElement<any>);
 
 export default ToastContainer;

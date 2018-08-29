@@ -6,7 +6,7 @@ import {
   MdDateRange,
   MdFormatListNumbered,
   MdMusicNote
-} from "react-icons/lib/md";
+} from "react-icons/md";
 import { FormattedMessage, InjectedIntl, injectIntl } from "react-intl";
 
 import Schema from "../../schema/Release";
