@@ -38,7 +38,7 @@ export default (initialState = {}, _?: any, api?: {}) => {
   // Redux store
   // const offlineStorage = createOfflineStorage();
   const ports = createPortsWith({
-    apiUrl: "http://localhost:5000/mock-api" // https://api.mynameisviii.com"
+    apiUrl: "https://api.mynameisviii.com"
   });
   const store: TStore = createStore(
     rootReducer,
