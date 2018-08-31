@@ -158,8 +158,8 @@ export default class extends Document {
               __html: `document.documentElement.classList.add("isClientRendered");`
             }}
           />
+          <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDq9jm6VYSElEEKYVQOp_qiX5V2s-oyXuk" />
           <AnalyticsHead />
-          <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDPZBC30DN_SjkhZRMd1AX8MscrqdVsQbE" />
 
           <Meta />
 

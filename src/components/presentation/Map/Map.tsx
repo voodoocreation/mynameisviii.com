@@ -25,12 +25,10 @@ const ConnectedMap: React.SFC<IProps> = ({
     <Map
       {...props}
       containerElement={
-        (
-          <div className={cn("Map-container", className)} />
-        ) as React.ReactElement<any>
+        <div className={cn("Map-container", className)} /> as any
       }
       defaultOptions={merge({ styles }, defaultOptions)}
-      mapElement={<div className="Map" /> as React.ReactElement<any>}
+      mapElement={<div className="Map" /> as any}
     >
       {children}
     </Map>

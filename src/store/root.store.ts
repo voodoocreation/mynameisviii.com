@@ -5,7 +5,6 @@ import { isServer } from "../helpers/dom";
 import rootReducer from "../reducers/root.reducers";
 import rootSaga from "../sagas/root.sagas";
 import { createApiWith, createPortsWith } from "../services/configureApi";
-// import createOfflineStorage from "../services/configureOfflineStorage";
 
 type TStore = Store & {
   sagaTask?: Task;
@@ -36,7 +35,6 @@ export default (initialState = {}, _?: any, api?: {}) => {
   }
 
   // Redux store
-  // const offlineStorage = createOfflineStorage();
   const ports = createPortsWith({
     apiUrl: "https://api.mynameisviii.com"
   });
