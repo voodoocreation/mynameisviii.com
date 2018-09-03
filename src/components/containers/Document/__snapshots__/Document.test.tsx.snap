@@ -28,6 +28,14 @@ Array [
     name="viewport"
   />,
   <meta
+    content="218519344943411"
+    property="fb:page_id"
+  />,
+  <meta
+    content="278225392903510"
+    property="fb:app_id"
+  />,
+  <meta
     content="#160f20"
     name="theme-color"
   />,
@@ -152,6 +160,14 @@ Array [
   <meta
     content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
     name="viewport"
+  />,
+  <meta
+    content="218519344943411"
+    property="fb:page_id"
+  />,
+  <meta
+    content="278225392903510"
+    property="fb:app_id"
   />,
   <meta
     content="#160f20"

@@ -22,7 +22,6 @@ import en from "react-intl/locale-data/en";
 addLocaleData([...en]);
 
 // @TODO: add install prompt
-// @TODO: add facebook app
 
 type NextPageComponent = React.ComponentType<any> & {
   getInitialProps: (props: any) => any;
