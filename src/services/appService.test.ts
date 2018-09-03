@@ -134,7 +134,7 @@ describe("[service] App service worker", () => {
       const mockCall = g.workbox.routing.registerRoute.mock.calls[2];
 
       expect(mockCall[0].test("https://maps.googleapis.com/test")).toBe(true);
-      expect(mockCall[1]).toBe("networkFirst");
+      expect(mockCall[1]).toBe("networkOnly");
     });
 
     it("sets up app CDN handler correctly", () => {

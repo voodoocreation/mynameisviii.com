@@ -1,6 +1,6 @@
 import cn from "classnames";
+import { Marker } from "google-maps-react";
 import * as React from "react";
-import { Marker } from "react-google-maps";
 import { MdAccessTime, MdDateRange, MdPeople, MdPlace } from "react-icons/md";
 import { FormattedMessage, InjectedIntl, injectIntl } from "react-intl";
 
@@ -207,11 +207,7 @@ class Appearance extends React.Component<IProps, IState> {
 
               <Map
                 className="Appearance-map-googleMap"
-                defaultCenter={locationLatLng}
-                defaultOptions={{
-                  disableDefaultUI: true,
-                  zoomControl: true
-                }}
+                initialCenter={locationLatLng}
               >
                 <Marker position={locationLatLng} />
               </Map>

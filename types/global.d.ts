@@ -13,6 +13,8 @@ declare module "redux-saga-tester";
 declare module "serviceworker-webpack-plugin/lib/runtime";
 declare module "service-worker-mock";
 
+declare module "google-maps-react";
+
 type TInputEvent = React.FormEvent<HTMLInputElement>;
 
 // tslint:disable-next-line

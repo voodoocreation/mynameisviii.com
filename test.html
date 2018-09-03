@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Test page</title>
+    <meta charset="UTF-8" />
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDq9jm6VYSElEEKYVQOp_qiX5V2s-oyXuk"></script>
+
+    <style>
+      #map {
+        width: 800px;
+        height: 800px;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div id="map"></div>
+
+    <script defer>
+      const map = new google.maps.Map(document.querySelector("#map"), {
+        center: { lat: -41.2906736, lng: 174.7725892 },
+        zoom: 7
+      });
+    </script>
+  </body>
+</html>

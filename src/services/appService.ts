@@ -81,9 +81,8 @@ g.workbox.routing.registerRoute(
 // Dynamic content requests from Google APIs
 g.workbox.routing.registerRoute(
   new RegExp("https://(?:maps).(?:googleapis|gstatic).com/(.*)"),
-  g.workbox.strategies.networkFirst({
+  g.workbox.strategies.networkOnly({
     cacheName: g.cacheNames.googleApis,
-    matchOptions: { ignoreSearch: true },
     plugins: [
       new g.workbox.cacheableResponse.Plugin({
         statuses: [0, 200]

@@ -10,6 +10,9 @@ MockDate.set("2018-01-01T00:00:00", 0);
 global.dataLayer = [];
 global.google = {
   maps: {
+    event: {
+      trigger: jest.fn()
+    },
     Geocoder: jest.fn(() => ({
       geocode: jest.fn((_, callback) =>
         callback(
@@ -28,12 +31,16 @@ global.google = {
       OK: "OK",
       REQUEST_DENIED: "REQUEST_DENIED"
     },
+    LatLng: jest.fn(() => ({ lat: () => 51.54057, lng: () => -0.14334 })),
     Map: jest.fn(() => ({
+      addListener: jest.fn(),
       setCenter: jest.fn(),
       setOptions: jest.fn(),
-      setZoom: jest.fn()
+      setZoom: jest.fn(),
+      trigger: jest.fn()
     })),
     Marker: jest.fn(() => ({
+      addListener: jest.fn(),
       setMap: jest.fn(),
       setPosition: jest.fn()
     }))

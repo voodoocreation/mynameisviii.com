@@ -1289,12 +1289,18 @@ exports[`[presentation] <Appearance /> renders correctly with all props 1`] = `
         </span>
       </h2>
       <div
-        class="Map-container Appearance-map-googleMap"
+        class="Map"
       >
         <div
-          class="Map"
-        />
-        <div />
+          class="Map-element Appearance-map-googleMap"
+          style="position:absolute;width:100%;height:100%"
+        >
+          <div
+            style="position:absolute;left:0;right:0;bottom:0;top:0;display:inherit"
+          >
+            Loading map...
+          </div>
+        </div>
       </div>
     </section>
   </div>

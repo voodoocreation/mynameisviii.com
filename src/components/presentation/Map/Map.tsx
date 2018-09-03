@@ -1,41 +1,36 @@
 import cn from "classnames";
-import merge from "lodash.merge";
+import { Map } from "google-maps-react";
 import * as React from "react";
-import { GoogleMap, GoogleMapProps, withGoogleMap } from "react-google-maps";
 
 import styles from "./styles.json";
 
-interface IProps extends GoogleMapProps {
+interface IProps {
   children?: React.ReactNode | React.ReactNode[];
   className?: string;
+  disableDefaultUI?: boolean;
+  initialCenter: ILatLng;
+  zoom?: number;
+  zoomControl?: boolean;
 }
 
-const Map = withGoogleMap(
-  ({ children, ...props }: IProps) =>
-    <GoogleMap {...props}>{children}</GoogleMap> as React.ReactElement<any>
-);
-
-const ConnectedMap: React.SFC<IProps> = ({
-  children,
-  className,
-  defaultOptions,
-  ...props
-}) =>
+const ConnectedMap: React.SFC<IProps> = ({ children, className, ...props }) =>
   (
-    <Map
-      {...props}
-      containerElement={
-        <div className={cn("Map-container", className)} /> as any
-      }
-      defaultOptions={merge({ styles }, defaultOptions)}
-      mapElement={<div className="Map" /> as any}
-    >
-      {children}
-    </Map>
+    <div className="Map">
+      <Map
+        google={window.google}
+        className={cn("Map-element", className)}
+        styles={styles}
+        {...props}
+      >
+        {children}
+      </Map>
+    </div>
   ) as React.ReactElement<any>;
 
 ConnectedMap.defaultProps = {
-  defaultZoom: 17
+  disableDefaultUI: true,
+  zoom: 17,
+  zoomControl: true
 };
 
 export default ConnectedMap;
