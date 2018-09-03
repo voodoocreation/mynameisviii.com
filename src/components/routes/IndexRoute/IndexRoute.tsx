@@ -62,7 +62,7 @@ class IndexRoute extends React.Component<IProps> {
           <meta property="og:title" content={pageTitle} />
           <meta property="og:description" content={pageDescription} />
           <meta property="og:url" content={absUrl("/")} />
-
+          <meta property="og:type" content="website" />
           <meta
             property="og:image"
             content="https://s3.amazonaws.com/mynameisviii-static/homepage-og.jpg"

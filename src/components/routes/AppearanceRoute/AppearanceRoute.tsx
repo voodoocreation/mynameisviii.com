@@ -77,6 +77,7 @@ class AppearanceRoute extends React.Component<IProps> {
             property="og:url"
             content={absUrl(`/appearances/${appearance.slug}`)}
           />
+          <meta property="og:type" content="website" />
           <meta property="og:image" content={appearance.ogImageUrl} />
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />
