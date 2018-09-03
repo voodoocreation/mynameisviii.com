@@ -21,8 +21,8 @@ const Meta: React.SFC<{}> = () =>
         name="viewport"
       />
 
-      <meta property="fb:page_id" content="218519344943411" />
       <meta property="fb:app_id" content="278225392903510" />
+      <meta property="fb:page_id" content="218519344943411" />
 
       <meta name="theme-color" content="#160f20" />
       <meta name="msapplication-TileColor" content="#160f20" />
