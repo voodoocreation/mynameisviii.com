@@ -1,7 +1,8 @@
 {
   "name": "The official Viii website",
   "short_name": "Viii",
-  "display": "minimal-ui",
+  "start_url": "/?utm_source=homescreen",
+  "display": "standalone",
   "theme_color": "#160f20",
   "background_color": "#160f20",
   "description": "The official website of Viii - the artist, singer, songwriter, musician, producer and engineer.",

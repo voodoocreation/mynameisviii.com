@@ -1,4 +1,5 @@
 {
+  "ADD_TO_HOME_SCREEN": "Would you like to install the Viii app?",
   "ALBUM": "Album",
   "ALBUMS": "Albums",
   "AMAZON": "Amazon",
@@ -52,6 +53,7 @@
   "INDEX_DESCRIPTION": "The official website of Viii - the artist, singer, songwriter, musician, producer and engineer.",
   "INDEX_TITLE": "Home",
   "INSTAGRAM": "Instagram",
+  "INSTALL": "Install",
   "ITUNES": "iTunes",
   "LATEST_NEWS": "Latest news",
   "LENGTH": "Length",

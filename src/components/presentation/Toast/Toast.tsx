@@ -9,6 +9,7 @@ interface IProps {
   hasAutoDismiss: boolean;
   intl: InjectedIntl;
   isVisible?: boolean;
+  onClose?: () => void;
 }
 
 interface IState {
@@ -99,6 +100,10 @@ class Toast extends React.Component<IProps, IState> {
 
   private onClose = () => {
     this.toggleVisibility(false);
+
+    if (this.props.onClose) {
+      this.props.onClose();
+    }
   };
 }
 
