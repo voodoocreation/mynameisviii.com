@@ -8,7 +8,6 @@ import Banner from "../../presentation/Banner/Banner";
 import Loader from "../../presentation/Loader/Loader";
 import OnlineStatusToast from "../../presentation/OnlineStatusToast/OnlineStatusToast";
 import ToastContainer from "../../presentation/ToastContainer/ToastContainer";
-import InstallPromptToast from "../InstallPromptToast/InstallPromptToast";
 
 import * as selectors from "../../../selectors/root.selectors";
 
@@ -53,7 +52,6 @@ class Shell extends React.Component<IProps> {
 
         <ToastContainer>
           <OnlineStatusToast isOnline={isOnline} />
-          <InstallPromptToast />
         </ToastContainer>
       </article>
     );

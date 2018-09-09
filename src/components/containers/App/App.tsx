@@ -96,6 +96,11 @@ class Application extends App {
     if (!isServer()) {
       const { store } = this.props as IProps;
 
+      window.addEventListener(
+        "beforeinstallprompt",
+        this.onBeforeInstallPrompt
+      );
+
       store.dispatch(actions.updateOnlineStatus(navigator.onLine));
       store.dispatch(actions.setCurrentRoute(routes.Router.route));
 
@@ -109,6 +114,11 @@ class Application extends App {
   }
 
   public componentWillUnmount() {
+    window.removeEventListener(
+      "beforeinstallprompt",
+      this.onBeforeInstallPrompt
+    );
+
     if (this.serviceWorkerContainer) {
       window.removeEventListener("offline", this.onOnlineStatusChange);
       window.removeEventListener("online", this.onOnlineStatusChange);
@@ -134,6 +144,25 @@ class Application extends App {
       </Container>
     );
   }
+
+  private onBeforeInstallPrompt = async (event: any) => {
+    const { store } = this.props as IProps;
+
+    store.dispatch(
+      actions.trackEvent({
+        event: "addToHomeScreen.prompted"
+      })
+    );
+
+    const { outcome } = await event.userChoice;
+
+    store.dispatch(
+      actions.trackEvent({
+        event: "addToHomeScreen.outcome",
+        outcome
+      })
+    );
+  };
 
   private onOnlineStatusChange = (event: Event) => {
     const { store } = this.props as IProps;

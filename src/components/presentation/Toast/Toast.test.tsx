@@ -36,7 +36,10 @@ describe("[presentation] <Toast />", () => {
   });
 
   it("closes when close button is clicked, then reopens when new props are passed", () => {
-    const { actual } = setup(mount, { isVisible: true, hasAutoDismiss: false });
+    const { actual } = setup(mount, {
+      hasAutoDismiss: false,
+      isVisible: true
+    });
 
     expect(actual.find(".Toast")).toHaveLength(1);
 
@@ -45,6 +48,34 @@ describe("[presentation] <Toast />", () => {
 
     actual.setProps({ isVisible: true });
     expect(actual.find(".Toast")).toHaveLength(1);
+  });
+
+  it("calls `onClose` prop when it's defined when the close button is clicked", () => {
+    const { actual, props } = setup(mount, {
+      hasAutoDismiss: false,
+      isVisible: true,
+      onClose: jest.fn()
+    });
+
+    actual.find(".Toast-closeButton").simulate("click");
+    expect(props.onClose).toHaveBeenCalled();
+  });
+
+  it("doesn't throw an error when `onClose` prop isn't defined when the close button is clicked", () => {
+    let isPassing = true;
+
+    try {
+      const { actual } = setup(mount, {
+        hasAutoDismiss: false,
+        isVisible: true
+      });
+
+      actual.find(".Toast-closeButton").simulate("click");
+    } catch (error) {
+      isPassing = false;
+    }
+
+    expect(isPassing).toBe(true);
   });
 
   it("dismisses automatically when hasAutoDismiss=true", () => {

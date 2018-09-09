@@ -142,6 +142,48 @@ describe("[containers] <App />", () => {
     });
   });
 
+  describe("beforeinstallprompt event", () => {
+    it("handles dismissed outcome correctly", async () => {
+      let isPassing = true;
+
+      try {
+        const { actual } = await setup(mount);
+
+        const event: any = new Event("beforeinstallprompt");
+        event.userChoice = new Promise(resolve =>
+          resolve({ outcome: "dismissed" })
+        );
+        await window.dispatchEvent(event);
+
+        actual.unmount();
+      } catch (error) {
+        isPassing = false;
+      }
+
+      expect(isPassing).toBe(true);
+    });
+
+    it("handles accepted outcome correctly", async () => {
+      let isPassing = true;
+
+      try {
+        const { actual } = await setup(mount);
+
+        const event: any = new Event("beforeinstallprompt");
+        event.userChoice = new Promise(resolve =>
+          resolve({ outcome: "accepted" })
+        );
+        await window.dispatchEvent(event);
+
+        actual.unmount();
+      } catch (error) {
+        isPassing = false;
+      }
+
+      expect(isPassing).toBe(true);
+    });
+  });
+
   describe("service worker", () => {
     const addEventListener = g.addEventListener;
     const removeEventListener = g.removeEventListener;
