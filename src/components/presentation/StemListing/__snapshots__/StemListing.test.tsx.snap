@@ -9,6 +9,7 @@ exports[`[presentation] <StemListing /> renders correctly 1`] = `
     href="url"
     rel="noopener"
     target="_blank"
+    title="Download stems for 'title'"
   >
     <div
       class="StemListing-details"
@@ -192,6 +193,7 @@ exports[`[presentation] <StemListing /> updates \`isImageLoaded\` state when ima
     href="url"
     rel="noopener"
     target="_blank"
+    title="Download stems for 'title'"
   >
     <div
       class="StemListing-details"
@@ -364,6 +366,7 @@ exports[`[presentation] <StemListing /> updates \`isRendered\` state after image
     href="url"
     rel="noopener"
     target="_blank"
+    title="Download stems for 'title'"
   >
     <div
       class="StemListing-details"

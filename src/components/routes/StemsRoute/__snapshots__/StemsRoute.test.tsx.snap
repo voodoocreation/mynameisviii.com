@@ -22,6 +22,7 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
         href="https://www.dropbox.com/s/qzf7a8ps2mrbflc/Threadfear.rar?dl=0"
         rel="noopener"
         target="_blank"
+        title="Download stems for 'threadfear'"
       >
         <div
           class="StemListing-details"
@@ -202,6 +203,7 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
         href="https://www.dropbox.com/s/qzf7a8ps2mrbflc/Threadfear.rar?dl=0"
         rel="noopener"
         target="_blank"
+        title="Download stems for 'Ask Me To Stay'"
       >
         <div
           class="StemListing-details"

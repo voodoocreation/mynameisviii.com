@@ -37,6 +37,7 @@
   "DATE": "Date",
   "DEMO": "Demo",
   "DISC_NUMBER": "Disc {number}",
+  "DOWNLOAD_STEMS_FOR": "Download stems for '{title}'",
   "EP": "EP",
   "EPS": "EPs",
   "ERROR_404_MESSAGE": "This page does not exist - please use the site navigation to find what you're looking for.",

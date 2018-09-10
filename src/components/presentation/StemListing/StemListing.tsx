@@ -34,7 +34,15 @@ class StemListing extends React.Component<IProps, IState> {
 
     return (
       <article className={cn("StemListing", { isRendered })}>
-        <Link href={stem.url} isExternal={true} className="StemListing-link">
+        <Link
+          className="StemListing-link"
+          href={stem.url}
+          isExternal={true}
+          title={formatMessage(
+            { id: "DOWNLOAD_STEMS_FOR" },
+            { title: stem.title }
+          )}
+        >
           <div className="StemListing-details">
             <header className="StemListing-header">
               <h2>
