@@ -25,6 +25,7 @@ const DateTime: React.SFC<IProps> = ({
 }) =>
   (
     <time
+      {...props}
       className={cn("DateTime", className)}
       dateTime={value}
       title={
@@ -37,7 +38,6 @@ const DateTime: React.SFC<IProps> = ({
         <FormattedRelative
           updateInterval={updateInterval}
           value={moment(value).toDate()}
-          {...props}
         />
       ) : isDateOnly ? (
         intl.formatDate(moment(value).toDate(), options)

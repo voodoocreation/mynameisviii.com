@@ -1,6 +1,8 @@
 {
   "/appearances/find*": "/appearances",
   "/appearances/:slug": "/appearance",
+  "/galleries/find*": "/galleries",
+  "/galleries/:slug": "/gallery",
   "/news/find*": "/news",
   "/news/:slug": "/newsArticle",
   "/releases/find*": "/releases",

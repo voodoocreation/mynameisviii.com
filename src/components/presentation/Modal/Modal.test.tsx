@@ -93,7 +93,7 @@ describe("[presentation] <Modal />", () => {
   it("triggers `onClose` prop when escape key is pressed", () => {
     const { props } = setup(mount);
 
-    window.dispatchEvent(new KeyboardEvent("keypress", { key: "Escape" }));
+    window.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape" }));
     expect(props.onClose).toHaveBeenCalled();
   });
 
@@ -140,7 +140,7 @@ describe("[presentation] <Modal />", () => {
       setup(mount);
 
       expect(g.findMockCall(g.addEventListener, "focus")).toBeDefined();
-      expect(g.findMockCall(g.addEventListener, "keypress")).toBeDefined();
+      expect(g.findMockCall(g.addEventListener, "keydown")).toBeDefined();
     });
 
     it("doesn't bind focus event when hasFocusRestriction=false onShow", () => {
@@ -153,12 +153,12 @@ describe("[presentation] <Modal />", () => {
       const { actual } = setup(mount);
 
       expect(g.findMockCall(g.addEventListener, "focus")).toBeDefined();
-      expect(g.findMockCall(g.addEventListener, "keypress")).toBeDefined();
+      expect(g.findMockCall(g.addEventListener, "keydown")).toBeDefined();
 
       actual.unmount();
 
       expect(g.findMockCall(g.removeEventListener, "focus")).toBeDefined();
-      expect(g.findMockCall(g.removeEventListener, "keypress")).toBeDefined();
+      expect(g.findMockCall(g.removeEventListener, "keydown")).toBeDefined();
     });
 
     it("doesn't unbind focus event when component unmounts when hasFocusRestriction=false", () => {
@@ -175,7 +175,7 @@ describe("[presentation] <Modal />", () => {
       actual.unmount();
 
       expect(g.findMockCall(g.removeEventListener, "focus")).toBeUndefined();
-      expect(g.findMockCall(g.removeEventListener, "keypress")).toBeUndefined();
+      expect(g.findMockCall(g.removeEventListener, "keydown")).toBeUndefined();
     });
   });
 });

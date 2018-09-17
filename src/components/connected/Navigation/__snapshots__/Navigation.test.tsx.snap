@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[containers] <Navigation /> renders correctly 1`] = `
+<nav
+  class="Navigation"
+  role="navigation"
+>
+  <button>
+    <span>
+      Menu
+    </span>
+  </button>
+  <ul>
+    <li>
+      <a
+        href="/news"
+      >
+        <span>
+          News
+        </span>
+      </a>
+    </li>
+    <li>
+      <a
+        href="/releases"
+      >
+        <span>
+          Releases
+        </span>
+      </a>
+    </li>
+    <li>
+      <a
+        href="/galleries"
+      >
+        <span>
+          Galleries
+        </span>
+      </a>
+    </li>
+    <li>
+      <a
+        href="/stems"
+      >
+        <span>
+          Stems
+        </span>
+      </a>
+    </li>
+    <li>
+      <a
+        href="/appearances"
+      >
+        <span>
+          Appearances
+        </span>
+      </a>
+    </li>
+  </ul>
+</nav>
+`;

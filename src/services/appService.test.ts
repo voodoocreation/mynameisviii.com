@@ -71,7 +71,7 @@ describe("[service] App service worker", () => {
     });
 
     it("doesn't set up precaching", () => {
-      expect(g.workbox.routing.registerRoute.mock.calls[4]).toBeUndefined();
+      expect(g.workbox.routing.registerRoute.mock.calls[5]).toBeUndefined();
     });
 
     it("doesn't set up local cache-first handler", () => {
@@ -146,10 +146,21 @@ describe("[service] App service worker", () => {
       expect(mockCall[1]).toBe("cacheFirst");
     });
 
-    it("sets up app API handler correctly", () => {
+    it("sets up app API handler for listings correctly", () => {
       const mockCall = g.workbox.routing.registerRoute.mock.calls[4];
 
-      expect(mockCall[0].test("https://api.mynameisviii.com/test")).toBe(true);
+      expect(mockCall[0].test("https://api.mynameisviii.com/test/find")).toBe(
+        true
+      );
+      expect(mockCall[1]).toBe("cacheFirst");
+    });
+
+    it("sets up app API handler for entities correctly", () => {
+      const mockCall = g.workbox.routing.registerRoute.mock.calls[5];
+
+      expect(mockCall[0].test("https://api.mynameisviii.com/test/slug-1")).toBe(
+        true
+      );
       expect(mockCall[1]).toBe("cacheFirst");
     });
   });

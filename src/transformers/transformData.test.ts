@@ -165,4 +165,14 @@ describe("[transformers] Data", () => {
       );
     });
   });
+
+  describe("toTitleCase()", () => {
+    it("converts string to title case correctly", () => {
+      expect(data.toTitleCase("title case string")).toBe("Title Case String");
+    });
+
+    it("converts string to title case correctly with custom delimiter", () => {
+      expect(data.toTitleCase("title-case-slug", "-")).toBe("Title Case Slug");
+    });
+  });
 });

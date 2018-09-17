@@ -11,7 +11,7 @@ interface IProps {
   hasOverlayClick?: boolean;
   isOpen?: boolean;
   onClose: () => void;
-  onKeyPress?: (event: KeyboardEvent) => void;
+  onKeyDown?: (event: KeyboardEvent) => void;
   usePortal?: boolean;
 }
 
@@ -111,19 +111,19 @@ export default class Modal extends React.Component<IProps, IState> {
     this.props.onClose();
   };
 
-  private onKeyPress = (event: KeyboardEvent) => {
+  private onKeyDown = (event: KeyboardEvent) => {
     if (event.key === "Escape") {
       this.onClose();
     }
 
-    if (this.props.onKeyPress) {
-      this.props.onKeyPress(event);
+    if (this.props.onKeyDown) {
+      this.props.onKeyDown(event);
     }
   };
 
   private onShow = () => {
     const modalRef = this.modalRef.current as HTMLDivElement;
-    window.addEventListener("keypress", this.onKeyPress);
+    window.addEventListener("keydown", this.onKeyDown);
 
     if (this.props.hasFocusRestriction) {
       window.addEventListener("focus", this.onFocus, true);
@@ -137,7 +137,7 @@ export default class Modal extends React.Component<IProps, IState> {
   };
 
   private onHide = () => {
-    window.removeEventListener("keypress", this.onKeyPress);
+    window.removeEventListener("keydown", this.onKeyDown);
 
     if (this.props.hasFocusRestriction) {
       window.removeEventListener("focus", this.onFocus, true);

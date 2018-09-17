@@ -15,6 +15,8 @@ declare module "service-worker-mock";
 
 declare module "google-maps-react";
 
+// region System
+
 type TInputEvent = React.FormEvent<HTMLInputElement>;
 
 // tslint:disable-next-line
@@ -54,6 +56,10 @@ interface IStorePorts {
     [index: string]: any;
   };
 }
+
+// endregion System
+
+// region Generic
 
 interface IError {
   message: string;
@@ -144,6 +150,10 @@ interface IBuyStreamLink {
   url: string;
 }
 
+// endregion Generic
+
+// region Entities
+
 interface IAppearance {
   acts: IPerformer[];
   audience?: string;
@@ -161,6 +171,20 @@ interface IAppearance {
   status: string;
   title: string;
   type: string;
+}
+
+interface IGallery {
+  description?: string;
+  images?: IGalleryImage[];
+  imageUrl: string;
+  modifiedAt: string;
+  slug: string;
+  title: string;
+}
+
+interface IGalleryImage {
+  imageUrl: string;
+  modifiedAt: string;
 }
 
 interface INewsArticle {
@@ -212,3 +236,5 @@ interface IStem {
   title: string;
   url: string;
 }
+
+// endregion Entities

@@ -74,3 +74,17 @@ export const absUrl = (path: string) =>
       }${path}`;
 
 export const extractDomain = (url: string) => url.split("/")[2];
+
+export const toTitleCase = (str: string, delimiter = " ") =>
+  str
+    .split(delimiter)
+    .map((word: string) =>
+      word
+        .split("")
+        .map(
+          (letter: string, index: number) =>
+            index < 1 ? letter.toUpperCase() : letter
+        )
+        .join("")
+    )
+    .join(" ");

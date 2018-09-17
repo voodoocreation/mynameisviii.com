@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[presentation] <ImageGallery /> renders correctly with minimum props 1`] = `
+<div
+  class="ImageGallery TestGallery"
+>
+  <div
+    class="Image-1"
+  />
+  <div
+    class="Image-2"
+  />
+  <div
+    class="Image-3"
+  />
+</div>
+`;

@@ -1,0 +1,253 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[containers] <Shell /> renders correctly 1`] = `
+<article
+  class="Page TestClassName"
+>
+  <header
+    class="Banner"
+    role="banner"
+  >
+    <a
+      class="Brand"
+      href="/"
+    >
+      <span>
+        My name is Viii: a painter of frequencies and thoughts
+      </span>
+      <svg />
+      <svg />
+    </a>
+    <nav
+      class="Navigation"
+      role="navigation"
+    >
+      <button>
+        <span>
+          Menu
+        </span>
+      </button>
+      <ul>
+        <li>
+          <a
+            href="/news"
+          >
+            <span>
+              News
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="/releases"
+          >
+            <span>
+              Releases
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="/galleries"
+          >
+            <span>
+              Galleries
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="/stems"
+          >
+            <span>
+              Stems
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="/appearances"
+          >
+            <span>
+              Appearances
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main
+    class="Page-body"
+    role="main"
+  />
+  <div
+    class="ToastContainer"
+  >
+    <div
+      class="Toast OnlineStatusToast isHidden"
+    >
+      <div
+        class="Toast-content"
+      >
+        <div
+          class="Toast-message"
+        >
+          <span>
+            You are offline. Some data and external links will be unavailable until you reconnect.
+          </span>
+        </div>
+        <button
+          class="Toast-closeButton"
+          title="Close"
+        >
+          <svg
+            attr="[object Object]"
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            width="1em"
+          >
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</article>
+`;
+
+exports[`[containers] <Shell /> renders correctly when loading 1`] = `
+<article
+  class="Page isLoading TestClassName"
+>
+  <header
+    class="Banner"
+    role="banner"
+  >
+    <a
+      class="Brand"
+      href="/"
+    >
+      <span>
+        My name is Viii: a painter of frequencies and thoughts
+      </span>
+      <svg />
+      <svg />
+    </a>
+    <nav
+      class="Navigation"
+      role="navigation"
+    >
+      <button>
+        <span>
+          Menu
+        </span>
+      </button>
+      <ul>
+        <li>
+          <a
+            href="/news"
+          >
+            <span>
+              News
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="/releases"
+          >
+            <span>
+              Releases
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="/galleries"
+          >
+            <span>
+              Galleries
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="/stems"
+          >
+            <span>
+              Stems
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="/appearances"
+          >
+            <span>
+              Appearances
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main
+    class="Page-body"
+    role="main"
+  >
+    <span
+      class="Loader PageLoader"
+    >
+      <div
+        class="Loader-animation"
+      >
+        <span />
+        <span />
+        <span />
+      </div>
+    </span>
+  </main>
+  <div
+    class="ToastContainer"
+  >
+    <div
+      class="Toast OnlineStatusToast isHidden"
+    >
+      <div
+        class="Toast-content"
+      >
+        <div
+          class="Toast-message"
+        >
+          <span>
+            You are offline. Some data and external links will be unavailable until you reconnect.
+          </span>
+        </div>
+        <button
+          class="Toast-closeButton"
+          title="Close"
+        >
+          <svg
+            attr="[object Object]"
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            width="1em"
+          >
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</article>
+`;

@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[routes] <GalleriesRoute /> renders correctly 1`] = `
+<article
+  class="GalleriesRoute"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1>
+      <span>
+        Galleries
+      </span>
+    </h1>
+  </header>
+  <section
+    class="GalleryListings"
+  >
+    <article
+      class="GalleryListing"
+    >
+      <a
+        href="/galleries/dark-spaces-i"
+      >
+        <header
+          class="GalleryListing-header"
+        >
+          <h2>
+            Dark Spaces I
+          </h2>
+        </header>
+        <figure
+          class="Image GalleryListing-image isLoading"
+        >
+          <div
+            class="Image-wrapper"
+          >
+            <img
+              alt="Dark Spaces I"
+              src="https://s3.amazonaws.com/mynameisviii-static/galleries/dark-spaces-i/04.jpg"
+            />
+            <span
+              class="Loader"
+            >
+              <div
+                class="Loader-animation"
+              >
+                <span />
+                <span />
+                <span />
+              </div>
+            </span>
+          </div>
+        </figure>
+      </a>
+    </article>
+    <article
+      class="GalleryListing"
+    >
+      <a
+        href="/galleries/test-gallery"
+      >
+        <header
+          class="GalleryListing-header"
+        >
+          <h2 />
+        </header>
+      </a>
+    </article>
+  </section>
+</article>
+`;
+
+exports[`[routes] <GalleriesRoute /> renders with an error correctly 1`] = `
+<article
+  class="GalleriesRoute hasLoadedAllListings"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1>
+      <span>
+        Galleries
+      </span>
+    </h1>
+  </header>
+  <div
+    class="ButtonBar"
+  >
+    <button
+      class="Button LoadButton"
+      type="button"
+    >
+      <span
+        class="Button-content"
+      >
+        <span>
+          Try again
+        </span>
+      </span>
+    </button>
+  </div>
+</article>
+`;

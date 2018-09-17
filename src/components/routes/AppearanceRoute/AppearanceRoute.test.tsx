@@ -90,7 +90,7 @@ describe("[routes] <AppearanceRoute />", () => {
     const { actual } = setup(mount);
 
     actual
-      .find("Gallery Image")
+      .find("ImageGallery Image")
       .last()
       .simulate("click");
 

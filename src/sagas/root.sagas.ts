@@ -2,6 +2,7 @@ import { all, fork } from "redux-saga/effects";
 
 import * as analytics from "./analytics.sagas";
 import * as appearances from "./appearances.sagas";
+import * as galleries from "./galleries.sagas";
 import * as news from "./news.sagas";
 import * as releases from "./releases.sagas";
 import * as serviceWorker from "./serviceWorker.sagas";
@@ -19,6 +20,7 @@ export default (ports: IStorePorts) =>
       mapSagas(ports, fork)({
         ...analytics,
         ...appearances,
+        ...galleries,
         ...news,
         ...releases,
         ...serviceWorker,

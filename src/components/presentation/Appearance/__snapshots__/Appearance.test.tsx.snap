@@ -1220,7 +1220,7 @@ exports[`[presentation] <Appearance /> renders correctly with all props 1`] = `
         </span>
       </h2>
       <div
-        class="Gallery Appearance-images-items"
+        class="ImageGallery Appearance-images-items"
       >
         <figure
           class="Image isLoading"

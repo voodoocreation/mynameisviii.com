@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[presentation] <GalleryListing /> renders correctly 1`] = `
+<article
+  class="GalleryListing"
+>
+  <a
+    href="/galleries/slug"
+  >
+    <header
+      class="GalleryListing-header"
+    >
+      <h2>
+        title
+      </h2>
+    </header>
+    <figure
+      class="Image GalleryListing-image isLoading"
+    >
+      <div
+        class="Image-wrapper"
+      >
+        <img
+          alt="title"
+          src="imageUrl"
+        />
+        <span
+          class="Loader"
+        >
+          <div
+            class="Loader-animation"
+          >
+            <span />
+            <span />
+            <span />
+          </div>
+        </span>
+      </div>
+    </figure>
+  </a>
+</article>
+`;
+
+exports[`[presentation] <GalleryListing /> renders correctly when \`imageUrl\` prop is not defined 1`] = `
+<article
+  class="GalleryListing"
+>
+  <a
+    href="/galleries/slug"
+  >
+    <header
+      class="GalleryListing-header"
+    >
+      <h2>
+        title
+      </h2>
+    </header>
+  </a>
+</article>
+`;
+
+exports[`[presentation] <GalleryListing /> updates \`isImageLoaded\` state when image has previously been loaded 1`] = `
+<article
+  class="GalleryListing isRendered"
+>
+  <a
+    href="/galleries/slug"
+  >
+    <header
+      class="GalleryListing-header"
+    >
+      <h2>
+        title
+      </h2>
+    </header>
+    <figure
+      class="Image GalleryListing-image isRendered"
+    >
+      <div
+        class="Image-wrapper"
+      >
+        <img
+          alt="title"
+          src="imageUrl"
+        />
+      </div>
+    </figure>
+  </a>
+</article>
+`;
+
+exports[`[presentation] <GalleryListing /> updates \`isRendered\` state after image has loaded 1`] = `
+<article
+  class="GalleryListing isRendered"
+>
+  <a
+    href="/galleries/slug"
+  >
+    <header
+      class="GalleryListing-header"
+    >
+      <h2>
+        title
+      </h2>
+    </header>
+    <figure
+      class="Image GalleryListing-image isRendered"
+    >
+      <div
+        class="Image-wrapper"
+      >
+        <img
+          alt="title"
+          src="imageUrl"
+        />
+      </div>
+    </figure>
+  </a>
+</article>
+`;

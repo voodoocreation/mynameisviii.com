@@ -1,5 +1,6 @@
 interface IRootReducers {
   appearances: IAppearancesReducers;
+  galleries: IGalleriesReducers;
   news: INewsReducers;
   page: IPageReducers;
   releases: IReleasesReducers;
@@ -19,6 +20,16 @@ interface IAppearancesReducers {
     isActive?: string;
     slug: string;
     startingAt: string;
+  };
+}
+
+interface IGalleriesReducers {
+  currentSlug?: string;
+  error?: IError;
+  hasAllItems: boolean;
+  isLoading: boolean;
+  items: {
+    [index: string]: IGallery;
   };
 }
 

@@ -25,6 +25,18 @@ type PLGeocodeCurrentAppearanceAddressDone = ILatLng;
 type PLGeocodeCurrentAppearanceAddressFailed = IError;
 type PLSetCurrentAppearanceSlug = string;
 
+type PLFetchGalleriesDone = {
+  isTruncated: boolean;
+  items: {
+    [index: string]: IGallery;
+  };
+};
+type PLFetchGalleriesFailed = IError;
+type PLFetchGalleryBySlugStarted = string;
+type PLFetchGalleryBySlugDone = IGallery;
+type PLFetchGalleryBySlugFailed = IError;
+type PLSetCurrentGallerySlug = string;
+
 type PLFetchLatestNewsDone = {
   items: {
     [index: string]: INewsArticle;

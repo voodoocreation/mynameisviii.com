@@ -7,8 +7,8 @@ import { FormattedMessage, InjectedIntl, injectIntl } from "react-intl";
 import Schema from "../../schema/Appearance";
 import ActListing from "../ActListing/ActListing";
 import DateTime from "../DateTime/DateTime";
-import Gallery from "../Gallery/Gallery";
 import Image from "../Image/Image";
+import ImageGallery from "../ImageGallery/ImageGallery";
 import Map from "../Map/Map";
 import Meta from "../Meta/Meta";
 import MetaBar from "../MetaBar/MetaBar";
@@ -180,7 +180,7 @@ class Appearance extends React.Component<IProps, IState> {
                 <FormattedMessage id="PHOTOS" />
               </h2>
 
-              <Gallery
+              <ImageGallery
                 className="Appearance-images-items"
                 onItemClick={this.onGalleryInteraction("itemClick")}
                 onNext={this.onGalleryInteraction("next")}
@@ -195,7 +195,7 @@ class Appearance extends React.Component<IProps, IState> {
                     src={image.imageUrl}
                   />
                 ))}
-              </Gallery>
+              </ImageGallery>
             </section>
           ) : null}
 

@@ -10,7 +10,6 @@ import NewsArticleRoute from "./NewsArticleRoute";
 
 import news from "../../../../server/mocks/news.json";
 import { arrayToAssoc } from "../../../transformers/transformData";
-import AppearanceRoute from "../AppearanceRoute/AppearanceRoute";
 
 const mockData: any = camelizeKeys(news);
 
@@ -134,7 +133,7 @@ describe("[routes] <NewsArticleRoute />", () => {
         store.getState()
       );
 
-      await AppearanceRoute.getInitialProps({
+      await NewsArticleRoute.getInitialProps({
         ctx: {
           query: { slug: mockData.items[0].slug },
           store

@@ -1,17 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[presentation] <Gallery /> renders correctly with minimum props 1`] = `
-<div
-  class="Gallery TestGallery"
+exports[`[presentation] <Gallery /> renders correctly 1`] = `
+<article
+  class="Gallery"
 >
+  <header
+    class="PageHeader"
+  >
+    <h1>
+      title
+    </h1>
+  </header>
   <div
-    class="Image-1"
-  />
-  <div
-    class="Image-2"
-  />
-  <div
-    class="Image-3"
-  />
-</div>
+    class="Gallery-description"
+  >
+    <p>
+      description
+    </p>
+  </div>
+  <section
+    class="Gallery-images"
+  >
+    <div
+      class="ImageGallery"
+    />
+  </section>
+</article>
 `;

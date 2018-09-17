@@ -105,8 +105,9 @@ g.workbox.routing.registerRoute(
 );
 
 // App API requests
+// Listings - cache for 2 hours
 g.workbox.routing.registerRoute(
-  new RegExp("https://api.mynameisviii.com/(.*)"),
+  new RegExp("https://api.mynameisviii.com/(.*)/find(.*)"),
   g.workbox.strategies.cacheFirst({
     cacheName: g.cacheNames.api,
     plugins: [
@@ -115,6 +116,21 @@ g.workbox.routing.registerRoute(
       }),
       new g.workbox.expiration.Plugin({
         maxAgeSeconds: 2 * 60 * 60
+      })
+    ]
+  })
+);
+// Entities - cache for a week
+g.workbox.routing.registerRoute(
+  new RegExp("https://api.mynameisviii.com/(.*)/[^find](.*)"),
+  g.workbox.strategies.cacheFirst({
+    cacheName: g.cacheNames.api,
+    plugins: [
+      new g.workbox.cacheableResponse.Plugin({
+        statuses: [0, 200]
+      }),
+      new g.workbox.expiration.Plugin({
+        maxAgeSeconds: 7 * 24 * 60 * 60
       })
     ]
   })
