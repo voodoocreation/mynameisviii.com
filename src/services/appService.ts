@@ -14,6 +14,7 @@ g.cacheNames = {
 g.precacheUrls = [
   "/",
   "/appearances",
+  "/galleries",
   "/news",
   "/releases",
   "/stems",
