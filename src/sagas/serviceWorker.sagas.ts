@@ -1,4 +1,4 @@
-import { call, takeLatest } from "redux-saga/effects";
+import { call, put, takeLatest } from "redux-saga/effects";
 
 import * as actions from "../actions/root.actions";
 
@@ -8,7 +8,7 @@ export const cachePageOnTransitionSaga = () =>
       type: string;
       payload: { params: PLChangeRouteStarted; result: PLChangeRouteDone };
     }) {
-      if ("serviceWorker" in navigator) {
+      if ("serviceWorker" in navigator && navigator.serviceWorker) {
         const serviceWorker = navigator.serviceWorker.controller;
 
         if (serviceWorker && serviceWorker.state === "activated") {
@@ -17,6 +17,20 @@ export const cachePageOnTransitionSaga = () =>
             type: "changeRoute"
           });
         }
+      }
+    });
+  };
+
+export const receiveServiceWorkerMessageSaga = () =>
+  function*() {
+    yield takeLatest(actions.receiveServiceWorkerMessage, function*(action: {
+      type: string;
+      payload: PLReceiveServiceWorkerMessage;
+    }) {
+      switch (action.payload.type) {
+        case "serviceWorker.activate":
+          yield put(actions.setHasNewVersion(true));
+          break;
       }
     });
   };

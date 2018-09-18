@@ -49,4 +49,12 @@ describe("[reducers] Page", () => {
     expect(state1.isNavOpen).toBe(true);
     expect(state2.isNavOpen).toEqual(false);
   });
+
+  it("actions.setHasNewVersion is handled", () => {
+    const state1 = reducer(model, actions.setHasNewVersion(true));
+    const state2 = reducer(state1, actions.setHasNewVersion(false));
+
+    expect(state1.hasNewVersion).toBe(true);
+    expect(state2.hasNewVersion).toEqual(false);
+  });
 });

@@ -51,6 +51,7 @@ interface INewsReducers {
 interface IPageReducers {
   currentRoute?: string;
   error?: IError;
+  hasNewVersion: boolean;
   isLoading: boolean;
   isNavOpen: boolean;
   isOnline: boolean;

@@ -2,30 +2,17 @@ import setupSagas from "../helpers/setupSagas";
 
 import * as actions from "../actions/root.actions";
 
-const actualServiceWorker = navigator.serviceWorker;
-
 describe("[sagas] Service worker", () => {
   describe("takeLatest(actions.changeRoute.done)", () => {
-    afterAll(() => {
-      Object.defineProperty(navigator, "serviceWorker", {
-        value: actualServiceWorker,
-        writable: true
-      });
+    afterEach(() => {
+      jest.clearAllMocks();
     });
 
     it("call(serviceWorker.postMessage) when service worker is available", async () => {
-      const newRoute = "/test";
-      Object.defineProperty(navigator, "serviceWorker", {
-        value: {
-          controller: {
-            postMessage: jest.fn(),
-            state: "activated"
-          }
-        },
-        writable: true
-      });
-      const { dispatch } = setupSagas();
       const serviceWorker = navigator.serviceWorker.controller as ServiceWorker;
+      const newRoute = "/test";
+
+      const { dispatch } = setupSagas();
 
       dispatch(actions.changeRoute.done({ params: newRoute }));
 
@@ -37,17 +24,12 @@ describe("[sagas] Service worker", () => {
 
     it("doesn't attempt to call(serviceWorker.postMessage) when service worker isn't ready", async () => {
       const newRoute = "/test";
-      Object.defineProperty(navigator, "serviceWorker", {
-        value: {
-          controller: {
-            postMessage: jest.fn(),
-            state: "installing"
-          }
-        },
-        writable: true
-      });
-      const { dispatch } = setupSagas();
       const serviceWorker = navigator.serviceWorker.controller as ServiceWorker;
+
+      // @ts-ignore-next-line
+      serviceWorker.state = "installing";
+
+      const { dispatch } = setupSagas();
 
       let isPassing = true;
       try {
@@ -61,12 +43,9 @@ describe("[sagas] Service worker", () => {
     });
 
     it("doesn't throw an error when service worker doesn't exist", async () => {
-      Object.defineProperty(navigator, "serviceWorker", {
-        value: {
-          controller: null
-        },
-        writable: true
-      });
+      // @ts-ignore-next-line
+      navigator.serviceWorker = undefined;
+
       const { dispatch } = setupSagas();
 
       let isPassing = true;

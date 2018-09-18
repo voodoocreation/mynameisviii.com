@@ -1,4 +1,4 @@
-import { render } from "enzyme";
+import { mount, render } from "enzyme";
 import merge from "lodash.merge";
 import * as React from "react";
 import { Provider } from "react-redux";
@@ -44,5 +44,22 @@ describe("[containers] <Shell />", () => {
       }
     );
     expect(actual).toMatchSnapshot();
+  });
+
+  it("renders new version toast and refreshes page when refresh button is clicked", () => {
+    window.location.reload = jest.fn();
+    const { actual } = setup(
+      mount,
+      {},
+      {
+        page: { hasNewVersion: true }
+      }
+    );
+
+    const toast = actual.find("Toast.HasNewVersionToast");
+    expect(toast).toHaveLength(1);
+
+    toast.find("Button.HasNewVersionToast-refreshButton").simulate("click");
+    expect(window.location.reload).toHaveBeenCalledWith(true);
   });
 });

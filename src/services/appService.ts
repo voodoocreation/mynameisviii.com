@@ -137,17 +137,29 @@ g.workbox.routing.registerRoute(
   })
 );
 
-// Cleanup redundant cache
-self.addEventListener("activate", (event: any) => {
+self.addEventListener("activate", async (event: any) => {
+  // Cleanup redundant caches
   event.waitUntil(
-    caches.keys().then(keys =>
+    caches.keys().then(async keys => {
+      let hasDeletedCaches = false;
       keys.forEach(key => {
         if (!isCacheValid(key)) {
           caches.delete(key);
           indexedDB.deleteDatabase(key);
+          hasDeletedCaches = true;
         }
-      })
-    )
+      });
+
+      // Notify client that a new version is available, when an old version exists
+      if (hasDeletedCaches) {
+        const clients = await s.clients.matchAll();
+        clients.forEach((client: any) => {
+          client.postMessage({
+            type: "serviceWorker.activate"
+          });
+        });
+      }
+    })
   );
 });
 

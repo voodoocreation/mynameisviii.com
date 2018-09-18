@@ -8,6 +8,10 @@ export const updateOnlineStatus = actionCreator<PLUpdateOnlineStatus>(
   "UPDATE_ONLINE_STATUS"
 );
 
+export const setHasNewVersion = actionCreator<PLSetHasNewVersion>(
+  "SET_HAS_NEW_VERSION"
+);
+
 export const setCurrentRoute = actionCreator<PLSetCurrentRoute>(
   "SET_CURRENT_ROUTE"
 );

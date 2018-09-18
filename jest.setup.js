@@ -50,6 +50,39 @@ global.location.assign = jest.fn();
 global.requestAnimationFrame = callback => setTimeout(callback, 0);
 global.scrollTo = jest.fn();
 
+const serviceWorkerEvents = {};
+Object.defineProperty(navigator, "serviceWorker", {
+  value: {
+    addEventListener: jest.fn((event, handler) => {
+      if (!serviceWorkerEvents[event]) {
+        serviceWorkerEvents[event] = [];
+      }
+      serviceWorkerEvents[event].push(handler);
+    }),
+    controller: {
+      postMessage: jest.fn(),
+      state: "activated"
+    },
+    dispatchEvent: jest.fn(event => {
+      if (serviceWorkerEvents[event.type]) {
+        serviceWorkerEvents[event.type].forEach(handler => {
+          handler(event);
+        });
+      }
+    }),
+    removeEventListener: jest.fn((event, handler) => {
+      if (serviceWorkerEvents[event]) {
+        serviceWorkerEvents[event].forEach((boundHandler, index) => {
+          if (handler === boundHandler) {
+            serviceWorkerEvents[event].splice(index, 1);
+          }
+        });
+      }
+    })
+  },
+  writable: true
+});
+
 global.findMockCall = (mockFn, ...args) =>
   mockFn.mock.calls.find(call =>
     args.reduce((acc, curr, index) => acc && call[index] === curr, true)

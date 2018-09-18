@@ -6312,9 +6312,9 @@ next-routes@^1.4.2:
   dependencies:
     path-to-regexp "^2.1.0"
 
-next@^7.0.0-canary.18:
-  version "7.0.0-canary.18"
-  resolved "https://registry.yarnpkg.com/next/-/next-7.0.0-canary.18.tgz#7811b8511232ae96b71e34663ed20f4d41fa87af"
+next@^7.0.0-canary.15:
+  version "7.0.0-canary.20"
+  resolved "https://registry.yarnpkg.com/next/-/next-7.0.0-canary.20.tgz#43363883ef2f8276d9d45617003776cc8226ceb0"
   dependencies:
     "@babel/core" "7.0.0"
     "@babel/plugin-proposal-class-properties" "7.0.0"

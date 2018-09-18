@@ -51,9 +51,16 @@ const setup = async (fn: any, fromTestProps?: any) => {
 };
 
 const g: any = global;
-const actualServiceWorker = navigator.serviceWorker;
 
 describe("[containers] <App />", () => {
+  const addEventListener = g.addEventListener;
+  const removeEventListener = g.removeEventListener;
+
+  beforeAll(() => {
+    g.addEventListener = jest.fn((...args) => addEventListener(...args));
+    g.removeEventListener = jest.fn((...args) => removeEventListener(...args));
+  });
+
   beforeEach(() => {
     g.isServer = false;
     g.__NEXT_DATA__ = {
@@ -67,6 +74,12 @@ describe("[containers] <App />", () => {
 
   afterEach(() => {
     g.__NEXT_DATA__ = undefined;
+    jest.clearAllMocks();
+  });
+
+  afterAll(() => {
+    g.addEventListener = addEventListener;
+    g.removeEventListener = removeEventListener;
   });
 
   it("mounts application correctly on the server", async () => {
@@ -106,31 +119,37 @@ describe("[containers] <App />", () => {
     const test = "Test";
     const Component: any = () => <div className="PageComponent" />;
     Component.getInitialProps = async () => ({ test });
-    const { props } = await setup(mount, { Component });
+    const { actual, props } = await setup(mount, { Component });
 
     expect(props.initialProps.pageProps).toEqual({ test });
+
+    actual.unmount();
   });
 
   describe("router events", async () => {
     it("onRouteChangeStart is handled correctly", async () => {
-      const { props } = await setup(mount);
+      const { actual, props } = await setup(mount);
 
       routes.Router.onRouteChangeStart("/");
 
       expect(props.store.getState().page.transitioningTo).toBe("/");
+
+      actual.unmount();
     });
 
     it("onRouteChangeComplete is handled correctly", async () => {
-      const { props } = await setup(mount);
+      const { actual, props } = await setup(mount);
 
       routes.Router.onRouteChangeComplete("/");
 
       expect(props.store.getState().page.transitioningTo).toBeUndefined();
       expect(props.store.getState().page.currentRoute).toBe("/");
+
+      actual.unmount();
     });
 
     it("onRouteChangeStart is handled correctly", async () => {
-      const { props } = await setup(mount);
+      const { actual, props } = await setup(mount);
 
       routes.Router.onRouteChangeError(new Error("Server error"), "/");
 
@@ -139,6 +158,8 @@ describe("[containers] <App />", () => {
         message: "Error: Server error",
         status: 500
       });
+
+      actual.unmount();
     });
   });
 
@@ -185,40 +206,6 @@ describe("[containers] <App />", () => {
   });
 
   describe("service worker", () => {
-    const addEventListener = g.addEventListener;
-    const removeEventListener = g.removeEventListener;
-
-    beforeAll(() => {
-      g.addEventListener = jest.fn((...args) => addEventListener(...args));
-      g.removeEventListener = jest.fn((...args) =>
-        removeEventListener(...args)
-      );
-
-      Object.defineProperty(navigator, "serviceWorker", {
-        value: {
-          controller: {
-            postMessage: jest.fn(),
-            state: "activated"
-          }
-        },
-        writable: true
-      });
-    });
-
-    afterEach(() => {
-      jest.clearAllMocks();
-    });
-
-    afterAll(() => {
-      g.addEventListener = addEventListener;
-      g.removeEventListener = removeEventListener;
-
-      Object.defineProperty(navigator, "serviceWorker", {
-        value: actualServiceWorker,
-        writable: true
-      });
-    });
-
     it("registers when browser support exists", async () => {
       const { actual } = await setup(mount);
       const { serviceWorkerContainer } = actual.find("App").instance();
@@ -249,6 +236,28 @@ describe("[containers] <App />", () => {
 
       window.dispatchEvent(new Event("offline"));
       expect(props.store.getState().page.isOnline).toBe(true);
+    });
+
+    it("receives messages from service worker correctly", async () => {
+      const { actual, props } = await setup(mount);
+
+      expect(
+        g.findMockCall(navigator.serviceWorker.addEventListener, "message")
+      ).toBeDefined();
+
+      const event = new MessageEvent("message", {
+        data: { type: "serviceWorker.activate" }
+      });
+      navigator.serviceWorker.dispatchEvent(event);
+      expect(props.store.getState().page.hasNewVersion).toBe(true);
+
+      actual.unmount();
+      expect(
+        g.findMockCall(navigator.serviceWorker.removeEventListener, "message")
+      ).toBeDefined();
+
+      navigator.serviceWorker.dispatchEvent(event);
+      expect(props.store.getState().page.hasNewVersion).toBe(true);
     });
   });
 });

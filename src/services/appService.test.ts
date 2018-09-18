@@ -190,6 +190,38 @@ describe("[service] App service worker", () => {
     });
   });
 
+  describe("sending messages to the application", () => {
+    it("notifies the application when a new version is available and an old version exists", async () => {
+      const staleCaches = [
+        "mynameisviii.com-precache-stale",
+        "mynameisviii.com-local-stale"
+      ];
+      const validCaches: string[] = Object.values(g.cacheNames);
+      for (const cache of [...staleCaches, ...validCaches]) {
+        await s.caches.open(cache);
+      }
+
+      const client = await s.clients.openWindow("/");
+      client.postMessage = jest.fn();
+      await s.trigger("activate");
+
+      expect(client.postMessage).toHaveBeenCalledWith({ type: "serviceWorker.activate" });
+    });
+
+    it("doesn't notify the application when a new version is available and an old version doesn't exist", async () => {
+      const validCaches: string[] = Object.values(g.cacheNames);
+      for (const cache of validCaches) {
+        await s.caches.open(cache);
+      }
+
+      const client = await s.clients.openWindow("/");
+      client.postMessage = jest.fn();
+      await s.trigger("activate");
+
+      expect(client.postMessage).not.toHaveBeenCalled();
+    });
+  });
+
   describe("receiving messages from the application", () => {
     it("handles routeChange message correctly", async () => {
       const payload = "/test";

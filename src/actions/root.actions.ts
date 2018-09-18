@@ -4,4 +4,5 @@ export * from "./galleries.actions";
 export * from "./news.actions";
 export * from "./page.actions";
 export * from "./releases.actions";
+export * from "./serviceWorker.actions";
 export * from "./stems.actions";

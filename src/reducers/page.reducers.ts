@@ -5,6 +5,7 @@ import * as actions from "../actions/root.actions";
 export const initialState: IPageReducers = {
   currentRoute: undefined,
   error: undefined,
+  hasNewVersion: false,
   isLoading: false,
   isNavOpen: false,
   isOnline: true,
@@ -15,6 +16,11 @@ export default reducerWithInitialState(initialState)
   .case(actions.updateOnlineStatus, (state, payload) => ({
     ...state,
     isOnline: payload
+  }))
+
+  .case(actions.setHasNewVersion, (state, payload) => ({
+    ...state,
+    hasNewVersion: payload
   }))
 
   .case(actions.toggleNavigation, state => ({

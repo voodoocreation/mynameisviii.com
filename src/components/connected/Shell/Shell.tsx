@@ -1,17 +1,20 @@
 import cn from "classnames";
 import Head from "next/head";
 import * as React from "react";
-import { InjectedIntl, injectIntl } from "react-intl";
+import { FormattedMessage, InjectedIntl, injectIntl } from "react-intl";
 import { connect } from "react-redux";
 
 import Banner from "../../presentation/Banner/Banner";
+import Button from "../../presentation/Button/Button";
 import Loader from "../../presentation/Loader/Loader";
 import OnlineStatusToast from "../../presentation/OnlineStatusToast/OnlineStatusToast";
+import Toast from "../../presentation/Toast/Toast";
 import ToastContainer from "../../presentation/ToastContainer/ToastContainer";
 
 import * as selectors from "../../../selectors/root.selectors";
 
 interface IStoreProps {
+  hasNewVersion: boolean;
   isLoading: boolean;
   isOnline: boolean;
 }
@@ -32,7 +35,7 @@ class Shell extends React.Component<IProps> {
   }
 
   public render() {
-    const { children, className, isLoading, isOnline } = this.props;
+    const { children, className, hasNewVersion, isLoading, isOnline } = this.props;
     const { formatMessage } = this.props.intl;
 
     return (
@@ -52,13 +55,29 @@ class Shell extends React.Component<IProps> {
 
         <ToastContainer>
           <OnlineStatusToast isOnline={isOnline} />
+
+          <Toast
+            className="HasNewVersionToast"
+            hasAutoDismiss={false}
+            isVisible={hasNewVersion}
+          >
+            <FormattedMessage id="NEW_VERSION_AVAILABLE" />
+            <Button className="HasNewVersionToast-refreshButton" onClick={this.onRefreshClick}>
+              <FormattedMessage id="REFRESH" />
+            </Button>
+          </Toast>
         </ToastContainer>
       </article>
     );
   }
+
+  private onRefreshClick = () => {
+    window.location.reload(true);
+  }
 }
 
 const mapStateToProps = (state: any) => ({
+  hasNewVersion: selectors.hasNewVersion(state),
   isLoading: selectors.getPageIsLoading(state),
   isOnline: selectors.isOnline(state)
 });

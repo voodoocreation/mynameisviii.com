@@ -91,33 +91,41 @@ class Application extends App {
   }
 
   public componentDidMount() {
-    if (!isServer()) {
-      const { store } = this.props as IProps;
+    const { store } = this.props as IProps;
+
+    store.dispatch(actions.updateOnlineStatus(navigator.onLine));
+    store.dispatch(actions.setCurrentRoute(routes.Router.route));
+
+    if (this.serviceWorkerContainer) {
+      navigator.serviceWorker.addEventListener(
+        "message",
+        this.onReceiveServiceWorkerPostMessage
+      );
 
       window.addEventListener(
         "beforeinstallprompt",
         this.onBeforeInstallPrompt
       );
 
-      store.dispatch(actions.updateOnlineStatus(navigator.onLine));
-      store.dispatch(actions.setCurrentRoute(routes.Router.route));
-
-      if (this.serviceWorkerContainer) {
-        this.serviceWorkerContainer.register({ scope: "/" }).then(() => {
-          window.addEventListener("offline", this.onOnlineStatusChange);
-          window.addEventListener("online", this.onOnlineStatusChange);
-        });
-      }
+      this.serviceWorkerContainer.register({ scope: "/" }).then(() => {
+        window.addEventListener("offline", this.onOnlineStatusChange);
+        window.addEventListener("online", this.onOnlineStatusChange);
+      });
     }
   }
 
   public componentWillUnmount() {
-    window.removeEventListener(
-      "beforeinstallprompt",
-      this.onBeforeInstallPrompt
-    );
-
     if (this.serviceWorkerContainer) {
+      navigator.serviceWorker.removeEventListener(
+        "message",
+        this.onReceiveServiceWorkerPostMessage
+      );
+
+      window.removeEventListener(
+        "beforeinstallprompt",
+        this.onBeforeInstallPrompt
+      );
+
       window.removeEventListener("offline", this.onOnlineStatusChange);
       window.removeEventListener("online", this.onOnlineStatusChange);
     }
@@ -142,6 +150,12 @@ class Application extends App {
       </Container>
     );
   }
+
+  private onReceiveServiceWorkerPostMessage = (event: any) => {
+    const { store } = this.props as IProps;
+
+    store.dispatch(actions.receiveServiceWorkerMessage(event.data));
+  };
 
   private onBeforeInstallPrompt = async (event: any) => {
     const { store } = this.props as IProps;

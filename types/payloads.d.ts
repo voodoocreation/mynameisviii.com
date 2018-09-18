@@ -2,6 +2,8 @@
 
 type PLUpdateOnlineStatus = boolean;
 
+type PLSetHasNewVersion = boolean;
+
 type PLSetCurrentRoute = string;
 type PLChangeRouteStarted = string;
 type PLChangeRouteDone = undefined;
@@ -80,6 +82,11 @@ type PLFetchStemsDone = {
   };
 };
 type PLFetchStemsFailed = IError;
+
+type PLReceiveServiceWorkerMessage = {
+  type: string;
+  payload?: any;
+};
 
 type PLTrackEvent = {
   event: string;
