@@ -15,7 +15,6 @@ exports[`[routes] <ReleaseRoute /> renders 404 error page when no release exists
     class="ErrorPage-content"
   >
     <svg
-      attr="[object Object]"
       fill="currentColor"
       height="1em"
       stroke="currentColor"
@@ -49,7 +48,6 @@ exports[`[routes] <ReleaseRoute /> renders 500 error page when slug isn't in the
     class="ErrorPage-content"
   >
     <svg
-      attr="[object Object]"
       fill="currentColor"
       height="1em"
       stroke="currentColor"
@@ -100,7 +98,6 @@ exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
       class="Meta Release-type"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -134,7 +131,6 @@ exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
       class="Meta Release-releasedOn"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -172,7 +168,6 @@ exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
       class="Meta Release-length"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -204,7 +199,6 @@ exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
       class="Meta Release-genre"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -236,7 +230,6 @@ exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
       class="Meta Release-tracks"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -434,7 +427,6 @@ exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
               title="Stream 'lovedecay / lovesong' on Spotify"
             >
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -460,7 +452,6 @@ exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
               title="Stream 'lovedecay / lovesong' on Apple Music"
             >
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -486,7 +477,6 @@ exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
               title="Stream 'lovedecay / lovesong' on Tidal"
             >
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -512,7 +502,6 @@ exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
               title="Stream 'lovedecay / lovesong' on SoundCloud"
             >
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -551,7 +540,6 @@ exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
               title="Buy 'lovedecay / lovesong' from iTunes"
             >
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -577,7 +565,6 @@ exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
               title="Buy 'lovedecay / lovesong' from Amazon"
             >
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -603,7 +590,6 @@ exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
               title="Buy 'lovedecay / lovesong' from Google Play"
             >
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"

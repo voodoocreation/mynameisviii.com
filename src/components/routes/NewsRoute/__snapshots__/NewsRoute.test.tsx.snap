@@ -31,7 +31,6 @@ exports[`[routes] <NewsRoute /> renders correctly 1`] = `
               title="News"
             >
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -94,7 +93,6 @@ exports[`[routes] <NewsRoute /> renders correctly 1`] = `
               title="Release"
             >
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -157,7 +155,6 @@ exports[`[routes] <NewsRoute /> renders correctly 1`] = `
               title="Release"
             >
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -220,7 +217,6 @@ exports[`[routes] <NewsRoute /> renders correctly 1`] = `
               title="Release"
             >
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -283,7 +279,6 @@ exports[`[routes] <NewsRoute /> renders correctly 1`] = `
               title="Release"
             >
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"

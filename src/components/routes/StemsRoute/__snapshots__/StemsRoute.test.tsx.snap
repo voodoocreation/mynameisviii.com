@@ -82,7 +82,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
               title="Licenced under the Creative Commons Attribution-NonCommercial-ShareAlike licence (CC BY-NC-SA)"
             >
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -95,7 +94,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
                 />
               </svg>
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -108,7 +106,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
                 />
               </svg>
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -121,7 +118,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
                 />
               </svg>
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -179,7 +175,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
             class="StemListing-downloadIcon"
           >
             <svg
-              attr="[object Object]"
               fill="currentColor"
               height="1em"
               stroke="currentColor"
@@ -263,7 +258,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
               title="Licenced under the Creative Commons Attribution-NonCommercial-ShareAlike licence (CC BY-NC-SA)"
             >
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -276,7 +270,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
                 />
               </svg>
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -289,7 +282,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
                 />
               </svg>
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -302,7 +294,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
                 />
               </svg>
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -360,7 +351,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
             class="StemListing-downloadIcon"
           >
             <svg
-              attr="[object Object]"
               fill="currentColor"
               height="1em"
               stroke="currentColor"
@@ -444,7 +434,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
               title="Licenced under the Creative Commons Attribution-NonCommercial-ShareAlike licence (CC BY-NC-SA)"
             >
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -457,7 +446,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
                 />
               </svg>
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -470,7 +458,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
                 />
               </svg>
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -483,7 +470,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
                 />
               </svg>
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -541,7 +527,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
             class="StemListing-downloadIcon"
           >
             <svg
-              attr="[object Object]"
               fill="currentColor"
               height="1em"
               stroke="currentColor"
@@ -625,7 +610,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
               title="Licenced under the Creative Commons Attribution-NonCommercial-ShareAlike licence (CC BY-NC-SA)"
             >
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -638,7 +622,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
                 />
               </svg>
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -651,7 +634,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
                 />
               </svg>
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -664,7 +646,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
                 />
               </svg>
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -722,7 +703,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
             class="StemListing-downloadIcon"
           >
             <svg
-              attr="[object Object]"
               fill="currentColor"
               height="1em"
               stroke="currentColor"
@@ -806,7 +786,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
               title="Licenced under the Creative Commons Attribution-NonCommercial-ShareAlike licence (CC BY-NC-SA)"
             >
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -819,7 +798,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
                 />
               </svg>
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -832,7 +810,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
                 />
               </svg>
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -845,7 +822,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
                 />
               </svg>
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -903,7 +879,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
             class="StemListing-downloadIcon"
           >
             <svg
-              attr="[object Object]"
               fill="currentColor"
               height="1em"
               stroke="currentColor"
@@ -987,7 +962,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
               title="Licenced under the Creative Commons Attribution-NonCommercial-ShareAlike licence (CC BY-NC-SA)"
             >
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -1000,7 +974,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
                 />
               </svg>
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -1013,7 +986,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
                 />
               </svg>
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -1026,7 +998,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
                 />
               </svg>
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -1084,7 +1055,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
             class="StemListing-downloadIcon"
           >
             <svg
-              attr="[object Object]"
               fill="currentColor"
               height="1em"
               stroke="currentColor"
@@ -1168,7 +1138,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
               title="Licenced under the Creative Commons Attribution-NonCommercial-ShareAlike licence (CC BY-NC-SA)"
             >
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -1181,7 +1150,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
                 />
               </svg>
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -1194,7 +1162,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
                 />
               </svg>
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -1207,7 +1174,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
                 />
               </svg>
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -1265,7 +1231,6 @@ exports[`[routes] <StemsRoute /> renders correctly 1`] = `
             class="StemListing-downloadIcon"
           >
             <svg
-              attr="[object Object]"
               fill="currentColor"
               height="1em"
               stroke="currentColor"

@@ -15,7 +15,6 @@ exports[`[routes] <GalleryRoute /> renders 404 error page when no gallery exists
     class="ErrorPage-content"
   >
     <svg
-      attr="[object Object]"
       fill="currentColor"
       height="1em"
       stroke="currentColor"
@@ -49,7 +48,6 @@ exports[`[routes] <GalleryRoute /> renders 500 error page when slug isn't in the
     class="ErrorPage-content"
   >
     <svg
-      attr="[object Object]"
       fill="currentColor"
       height="1em"
       stroke="currentColor"

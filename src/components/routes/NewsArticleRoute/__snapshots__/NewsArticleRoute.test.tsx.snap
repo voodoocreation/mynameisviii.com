@@ -15,7 +15,6 @@ exports[`[routes] <NewsArticleRoute /> renders 404 error page when no news artic
     class="ErrorPage-content"
   >
     <svg
-      attr="[object Object]"
       fill="currentColor"
       height="1em"
       stroke="currentColor"
@@ -49,7 +48,6 @@ exports[`[routes] <NewsArticleRoute /> renders 500 error page when slug isn't in
     class="ErrorPage-content"
   >
     <svg
-      attr="[object Object]"
       fill="currentColor"
       height="1em"
       stroke="currentColor"
@@ -126,7 +124,6 @@ exports[`[routes] <NewsArticleRoute /> renders correctly 1`] = `
         class="NewsArticle-posted"
       >
         <svg
-          attr="[object Object]"
           fill="currentColor"
           height="1em"
           stroke="currentColor"
@@ -162,7 +159,6 @@ exports[`[routes] <NewsArticleRoute /> renders correctly 1`] = `
         class="Type Type-news"
       >
         <svg
-          attr="[object Object]"
           fill="currentColor"
           height="1em"
           stroke="currentColor"

@@ -45,7 +45,6 @@ exports[`[routes] <AppearancesRoute /> renders correctly 1`] = `
                 class="Meta AppearanceListing-date"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -83,7 +82,6 @@ exports[`[routes] <AppearancesRoute /> renders correctly 1`] = `
                 class="Meta AppearanceListing-time"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -122,7 +120,6 @@ exports[`[routes] <AppearancesRoute /> renders correctly 1`] = `
                 title="Meow - 9 Edward Street, Te Aro, Wellington 6011"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -154,7 +151,6 @@ exports[`[routes] <AppearancesRoute /> renders correctly 1`] = `
                 class="Meta AppearanceListing-audience"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -265,7 +261,6 @@ exports[`[routes] <AppearancesRoute /> renders correctly 1`] = `
                 class="Meta AppearanceListing-date"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -303,7 +298,6 @@ exports[`[routes] <AppearancesRoute /> renders correctly 1`] = `
                 class="Meta AppearanceListing-time"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -342,7 +336,6 @@ exports[`[routes] <AppearancesRoute /> renders correctly 1`] = `
                 title="Meow - 9 Edward Street, Te Aro, Wellington 6011"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -374,7 +367,6 @@ exports[`[routes] <AppearancesRoute /> renders correctly 1`] = `
                 class="Meta AppearanceListing-audience"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -506,7 +498,6 @@ exports[`[routes] <AppearancesRoute /> renders correctly 1`] = `
                 class="Meta AppearanceListing-date"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -544,7 +535,6 @@ exports[`[routes] <AppearancesRoute /> renders correctly 1`] = `
                 class="Meta AppearanceListing-time"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -583,7 +573,6 @@ exports[`[routes] <AppearancesRoute /> renders correctly 1`] = `
                 title="Meow - 9 Edward Street, Te Aro, Wellington 6011"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -615,7 +604,6 @@ exports[`[routes] <AppearancesRoute /> renders correctly 1`] = `
                 class="Meta AppearanceListing-audience"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"

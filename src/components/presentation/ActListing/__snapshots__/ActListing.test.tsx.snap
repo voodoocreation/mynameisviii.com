@@ -23,7 +23,6 @@ exports[`[presentation] <ActListing /> renders correctly 1`] = `
           class="Meta ActListing-genre"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -55,7 +54,6 @@ exports[`[presentation] <ActListing /> renders correctly 1`] = `
           class="Meta ActListing-location"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -120,7 +118,6 @@ exports[`[presentation] <ActListing /> updates \`isRendered\` state after image 
           class="Meta ActListing-genre"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -152,7 +149,6 @@ exports[`[presentation] <ActListing /> updates \`isRendered\` state after image 
           class="Meta ActListing-location"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -217,7 +213,6 @@ exports[`[presentation] <ActListing /> updates \`isRendered\` state and triggers
           class="Meta ActListing-genre"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -249,7 +244,6 @@ exports[`[presentation] <ActListing /> updates \`isRendered\` state and triggers
           class="Meta ActListing-location"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"

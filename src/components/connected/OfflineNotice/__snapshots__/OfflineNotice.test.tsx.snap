@@ -5,7 +5,6 @@ exports[`[containers] <OfflineNotice /> renders correctly when offline 1`] = `
   class="OfflineNotice"
 >
   <svg
-    attr="[object Object]"
     fill="currentColor"
     height="1em"
     stroke="currentColor"

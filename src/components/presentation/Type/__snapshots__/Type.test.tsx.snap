@@ -5,7 +5,6 @@ exports[`[presentation] <Type /> renders correctly when value=appearance 1`] = `
   class="Type Type-appearance TestType"
 >
   <svg
-    attr="[object Object]"
     fill="currentColor"
     height="1em"
     stroke="currentColor"
@@ -26,7 +25,6 @@ exports[`[presentation] <Type /> renders correctly when value=release 1`] = `
   class="Type Type-release TestType"
 >
   <svg
-    attr="[object Object]"
     fill="currentColor"
     height="1em"
     stroke="currentColor"
@@ -47,7 +45,6 @@ exports[`[presentation] <Type /> renders correctly with minimum props 1`] = `
   class="Type Type-news TestType"
 >
   <svg
-    attr="[object Object]"
     fill="currentColor"
     height="1em"
     stroke="currentColor"
@@ -69,7 +66,6 @@ exports[`[presentation] <Type /> renders correctly without label 1`] = `
   title="News"
 >
   <svg
-    attr="[object Object]"
     fill="currentColor"
     height="1em"
     stroke="currentColor"

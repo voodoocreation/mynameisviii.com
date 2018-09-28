@@ -15,7 +15,6 @@ exports[`[routes] <ErrorRoute /> renders correctly 1`] = `
     class="ErrorPage-content"
   >
     <svg
-      attr="[object Object]"
       fill="currentColor"
       height="1em"
       stroke="currentColor"
@@ -49,7 +48,6 @@ exports[`[routes] <ErrorRoute /> renders correctly with custom error message 1`]
     class="ErrorPage-content"
   >
     <svg
-      attr="[object Object]"
       fill="currentColor"
       height="1em"
       stroke="currentColor"

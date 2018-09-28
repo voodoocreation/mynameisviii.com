@@ -49,7 +49,6 @@ exports[`[routes] <ReleasesRoute /> renders correctly 1`] = `
                 class="Meta ReleaseListing-releasedOn"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -87,7 +86,6 @@ exports[`[routes] <ReleasesRoute /> renders correctly 1`] = `
                 class="Meta ReleaseListing-length"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -119,7 +117,6 @@ exports[`[routes] <ReleasesRoute /> renders correctly 1`] = `
                 class="Meta ReleaseListing-genre"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -151,7 +148,6 @@ exports[`[routes] <ReleasesRoute /> renders correctly 1`] = `
                 class="Meta ReleaseListing-tracks"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -225,7 +221,6 @@ exports[`[routes] <ReleasesRoute /> renders correctly 1`] = `
                 class="Meta ReleaseListing-releasedOn"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -263,7 +258,6 @@ exports[`[routes] <ReleasesRoute /> renders correctly 1`] = `
                 class="Meta ReleaseListing-length"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -295,7 +289,6 @@ exports[`[routes] <ReleasesRoute /> renders correctly 1`] = `
                 class="Meta ReleaseListing-genre"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -327,7 +320,6 @@ exports[`[routes] <ReleasesRoute /> renders correctly 1`] = `
                 class="Meta ReleaseListing-tracks"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -401,7 +393,6 @@ exports[`[routes] <ReleasesRoute /> renders correctly 1`] = `
                 class="Meta ReleaseListing-releasedOn"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -439,7 +430,6 @@ exports[`[routes] <ReleasesRoute /> renders correctly 1`] = `
                 class="Meta ReleaseListing-length"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -471,7 +461,6 @@ exports[`[routes] <ReleasesRoute /> renders correctly 1`] = `
                 class="Meta ReleaseListing-genre"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -503,7 +492,6 @@ exports[`[routes] <ReleasesRoute /> renders correctly 1`] = `
                 class="Meta ReleaseListing-tracks"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -577,7 +565,6 @@ exports[`[routes] <ReleasesRoute /> renders correctly 1`] = `
                 class="Meta ReleaseListing-releasedOn"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -615,7 +602,6 @@ exports[`[routes] <ReleasesRoute /> renders correctly 1`] = `
                 class="Meta ReleaseListing-length"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -647,7 +633,6 @@ exports[`[routes] <ReleasesRoute /> renders correctly 1`] = `
                 class="Meta ReleaseListing-genre"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -679,7 +664,6 @@ exports[`[routes] <ReleasesRoute /> renders correctly 1`] = `
                 class="Meta ReleaseListing-tracks"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"

@@ -205,7 +205,9 @@ describe("[service] App service worker", () => {
       client.postMessage = jest.fn();
       await s.trigger("activate");
 
-      expect(client.postMessage).toHaveBeenCalledWith({ type: "serviceWorker.activate" });
+      expect(client.postMessage).toHaveBeenCalledWith({
+        type: "serviceWorker.activate"
+      });
     });
 
     it("doesn't notify the application when a new version is available and an old version doesn't exist", async () => {

@@ -44,7 +44,6 @@ exports[`[presentation] <NewsArticle /> renders action with internal route corre
         class="NewsArticle-posted"
       >
         <svg
-          attr="[object Object]"
           fill="currentColor"
           height="1em"
           stroke="currentColor"
@@ -80,7 +79,6 @@ exports[`[presentation] <NewsArticle /> renders action with internal route corre
         class="Type Type-type"
       >
         <svg
-          attr="[object Object]"
           fill="currentColor"
           height="1em"
           stroke="currentColor"
@@ -164,7 +162,6 @@ exports[`[presentation] <NewsArticle /> renders action with internal route corre
         class="NewsArticle-posted"
       >
         <svg
-          attr="[object Object]"
           fill="currentColor"
           height="1em"
           stroke="currentColor"
@@ -200,7 +197,6 @@ exports[`[presentation] <NewsArticle /> renders action with internal route corre
         class="Type Type-type"
       >
         <svg
-          attr="[object Object]"
           fill="currentColor"
           height="1em"
           stroke="currentColor"
@@ -286,7 +282,6 @@ exports[`[presentation] <NewsArticle /> renders correctly 1`] = `
         class="NewsArticle-posted"
       >
         <svg
-          attr="[object Object]"
           fill="currentColor"
           height="1em"
           stroke="currentColor"
@@ -322,7 +317,6 @@ exports[`[presentation] <NewsArticle /> renders correctly 1`] = `
         class="Type Type-type"
       >
         <svg
-          attr="[object Object]"
           fill="currentColor"
           height="1em"
           stroke="currentColor"
@@ -385,7 +379,6 @@ exports[`[presentation] <NewsArticle /> updates \`isImageLoaded\` state when ima
         class="NewsArticle-posted"
       >
         <svg
-          attr="[object Object]"
           fill="currentColor"
           height="1em"
           stroke="currentColor"
@@ -421,7 +414,6 @@ exports[`[presentation] <NewsArticle /> updates \`isImageLoaded\` state when ima
         class="Type Type-type"
       >
         <svg
-          attr="[object Object]"
           fill="currentColor"
           height="1em"
           stroke="currentColor"
@@ -484,7 +476,6 @@ exports[`[presentation] <NewsArticle /> updates \`isImageLoaded\` state when ima
         class="NewsArticle-posted"
       >
         <svg
-          attr="[object Object]"
           fill="currentColor"
           height="1em"
           stroke="currentColor"
@@ -520,7 +511,6 @@ exports[`[presentation] <NewsArticle /> updates \`isImageLoaded\` state when ima
         class="Type Type-type"
       >
         <svg
-          attr="[object Object]"
           fill="currentColor"
           height="1em"
           stroke="currentColor"

@@ -4,6 +4,7 @@ import * as React from "react";
 import { FormattedMessage, InjectedIntl, injectIntl } from "react-intl";
 import { connect } from "react-redux";
 
+import { isServer } from "../../../helpers/dom";
 import Banner from "../../presentation/Banner/Banner";
 import Button from "../../presentation/Button/Button";
 import Loader from "../../presentation/Loader/Loader";
@@ -26,16 +27,20 @@ interface IProps extends IStoreProps {
 
 class Shell extends React.Component<IProps> {
   public componentWillMount() {
-    if (
-      typeof document !== "undefined" &&
-      !document.documentElement.classList.contains("isClientRendered")
-    ) {
-      document.documentElement.classList.add("isClientRendered");
+    if (!isServer()) {
+      const html = document.documentElement as HTMLHtmlElement;
+      html.classList.add("isClientRendered");
     }
   }
 
   public render() {
-    const { children, className, hasNewVersion, isLoading, isOnline } = this.props;
+    const {
+      children,
+      className,
+      hasNewVersion,
+      isLoading,
+      isOnline
+    } = this.props;
     const { formatMessage } = this.props.intl;
 
     return (
@@ -62,7 +67,10 @@ class Shell extends React.Component<IProps> {
             isVisible={hasNewVersion}
           >
             <FormattedMessage id="NEW_VERSION_AVAILABLE" />
-            <Button className="HasNewVersionToast-refreshButton" onClick={this.onRefreshClick}>
+            <Button
+              className="HasNewVersionToast-refreshButton"
+              onClick={this.onRefreshClick}
+            >
               <FormattedMessage id="REFRESH" />
             </Button>
           </Toast>
@@ -73,7 +81,7 @@ class Shell extends React.Component<IProps> {
 
   private onRefreshClick = () => {
     window.location.reload(true);
-  }
+  };
 }
 
 const mapStateToProps = (state: any) => ({

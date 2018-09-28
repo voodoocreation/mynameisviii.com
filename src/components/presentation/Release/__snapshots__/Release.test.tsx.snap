@@ -18,7 +18,6 @@ exports[`[presentation] <Release /> renders correctly when productionType=compil
       class="Meta Release-type"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -52,7 +51,6 @@ exports[`[presentation] <Release /> renders correctly when productionType=compil
       class="Meta Release-releasedOn"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -90,7 +88,6 @@ exports[`[presentation] <Release /> renders correctly when productionType=compil
       class="Meta Release-length"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -122,7 +119,6 @@ exports[`[presentation] <Release /> renders correctly when productionType=compil
       class="Meta Release-genre"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -154,7 +150,6 @@ exports[`[presentation] <Release /> renders correctly when productionType=compil
       class="Meta Release-tracks"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -287,7 +282,6 @@ exports[`[presentation] <Release /> renders correctly when productionType=demo 1
       class="Meta Release-type"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -321,7 +315,6 @@ exports[`[presentation] <Release /> renders correctly when productionType=demo 1
       class="Meta Release-releasedOn"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -359,7 +352,6 @@ exports[`[presentation] <Release /> renders correctly when productionType=demo 1
       class="Meta Release-length"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -391,7 +383,6 @@ exports[`[presentation] <Release /> renders correctly when productionType=demo 1
       class="Meta Release-genre"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -423,7 +414,6 @@ exports[`[presentation] <Release /> renders correctly when productionType=demo 1
       class="Meta Release-tracks"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -556,7 +546,6 @@ exports[`[presentation] <Release /> renders correctly when productionType=live 1
       class="Meta Release-type"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -590,7 +579,6 @@ exports[`[presentation] <Release /> renders correctly when productionType=live 1
       class="Meta Release-releasedOn"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -628,7 +616,6 @@ exports[`[presentation] <Release /> renders correctly when productionType=live 1
       class="Meta Release-length"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -660,7 +647,6 @@ exports[`[presentation] <Release /> renders correctly when productionType=live 1
       class="Meta Release-genre"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -692,7 +678,6 @@ exports[`[presentation] <Release /> renders correctly when productionType=live 1
       class="Meta Release-tracks"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -825,7 +810,6 @@ exports[`[presentation] <Release /> renders correctly when productionType=remix 
       class="Meta Release-type"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -859,7 +843,6 @@ exports[`[presentation] <Release /> renders correctly when productionType=remix 
       class="Meta Release-releasedOn"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -897,7 +880,6 @@ exports[`[presentation] <Release /> renders correctly when productionType=remix 
       class="Meta Release-length"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -929,7 +911,6 @@ exports[`[presentation] <Release /> renders correctly when productionType=remix 
       class="Meta Release-genre"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -961,7 +942,6 @@ exports[`[presentation] <Release /> renders correctly when productionType=remix 
       class="Meta Release-tracks"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -1094,7 +1074,6 @@ exports[`[presentation] <Release /> renders correctly when productionType=soundt
       class="Meta Release-type"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -1128,7 +1107,6 @@ exports[`[presentation] <Release /> renders correctly when productionType=soundt
       class="Meta Release-releasedOn"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -1166,7 +1144,6 @@ exports[`[presentation] <Release /> renders correctly when productionType=soundt
       class="Meta Release-length"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -1198,7 +1175,6 @@ exports[`[presentation] <Release /> renders correctly when productionType=soundt
       class="Meta Release-genre"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -1230,7 +1206,6 @@ exports[`[presentation] <Release /> renders correctly when productionType=soundt
       class="Meta Release-tracks"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -1363,7 +1338,6 @@ exports[`[presentation] <Release /> renders correctly when type=ep 1`] = `
       class="Meta Release-type"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -1397,7 +1371,6 @@ exports[`[presentation] <Release /> renders correctly when type=ep 1`] = `
       class="Meta Release-releasedOn"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -1435,7 +1408,6 @@ exports[`[presentation] <Release /> renders correctly when type=ep 1`] = `
       class="Meta Release-length"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -1467,7 +1439,6 @@ exports[`[presentation] <Release /> renders correctly when type=ep 1`] = `
       class="Meta Release-genre"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -1499,7 +1470,6 @@ exports[`[presentation] <Release /> renders correctly when type=ep 1`] = `
       class="Meta Release-tracks"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -1632,7 +1602,6 @@ exports[`[presentation] <Release /> renders correctly when type=single 1`] = `
       class="Meta Release-type"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -1666,7 +1635,6 @@ exports[`[presentation] <Release /> renders correctly when type=single 1`] = `
       class="Meta Release-releasedOn"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -1704,7 +1672,6 @@ exports[`[presentation] <Release /> renders correctly when type=single 1`] = `
       class="Meta Release-length"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -1736,7 +1703,6 @@ exports[`[presentation] <Release /> renders correctly when type=single 1`] = `
       class="Meta Release-genre"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -1768,7 +1734,6 @@ exports[`[presentation] <Release /> renders correctly when type=single 1`] = `
       class="Meta Release-tracks"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -1901,7 +1866,6 @@ exports[`[presentation] <Release /> renders correctly with all props 1`] = `
       class="Meta Release-type"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -1935,7 +1899,6 @@ exports[`[presentation] <Release /> renders correctly with all props 1`] = `
       class="Meta Release-releasedOn"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -1973,7 +1936,6 @@ exports[`[presentation] <Release /> renders correctly with all props 1`] = `
       class="Meta Release-length"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -2005,7 +1967,6 @@ exports[`[presentation] <Release /> renders correctly with all props 1`] = `
       class="Meta Release-genre"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -2037,7 +1998,6 @@ exports[`[presentation] <Release /> renders correctly with all props 1`] = `
       class="Meta Release-tracks"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -2272,7 +2232,6 @@ exports[`[presentation] <Release /> renders correctly with all props 1`] = `
               title="Stream 'title' on Spotify"
             >
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -2311,7 +2270,6 @@ exports[`[presentation] <Release /> renders correctly with all props 1`] = `
               title="Buy 'title' from iTunes"
             >
               <svg
-                attr="[object Object]"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -2361,7 +2319,6 @@ exports[`[presentation] <Release /> renders correctly with minimum props 1`] = `
       class="Meta Release-type"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -2395,7 +2352,6 @@ exports[`[presentation] <Release /> renders correctly with minimum props 1`] = `
       class="Meta Release-releasedOn"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -2433,7 +2389,6 @@ exports[`[presentation] <Release /> renders correctly with minimum props 1`] = `
       class="Meta Release-length"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -2465,7 +2420,6 @@ exports[`[presentation] <Release /> renders correctly with minimum props 1`] = `
       class="Meta Release-genre"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -2497,7 +2451,6 @@ exports[`[presentation] <Release /> renders correctly with minimum props 1`] = `
       class="Meta Release-tracks"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -2630,7 +2583,6 @@ exports[`[presentation] <Release /> updates \`isImageLoaded\` state when image h
       class="Meta Release-type"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -2664,7 +2616,6 @@ exports[`[presentation] <Release /> updates \`isImageLoaded\` state when image h
       class="Meta Release-releasedOn"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -2702,7 +2653,6 @@ exports[`[presentation] <Release /> updates \`isImageLoaded\` state when image h
       class="Meta Release-length"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -2734,7 +2684,6 @@ exports[`[presentation] <Release /> updates \`isImageLoaded\` state when image h
       class="Meta Release-genre"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -2766,7 +2715,6 @@ exports[`[presentation] <Release /> updates \`isImageLoaded\` state when image h
       class="Meta Release-tracks"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -2887,7 +2835,6 @@ exports[`[presentation] <Release /> updates \`isImageLoaded\` state when image h
       class="Meta Release-type"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -2921,7 +2868,6 @@ exports[`[presentation] <Release /> updates \`isImageLoaded\` state when image h
       class="Meta Release-releasedOn"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -2959,7 +2905,6 @@ exports[`[presentation] <Release /> updates \`isImageLoaded\` state when image h
       class="Meta Release-length"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -2991,7 +2936,6 @@ exports[`[presentation] <Release /> updates \`isImageLoaded\` state when image h
       class="Meta Release-genre"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -3023,7 +2967,6 @@ exports[`[presentation] <Release /> updates \`isImageLoaded\` state when image h
       class="Meta Release-tracks"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"

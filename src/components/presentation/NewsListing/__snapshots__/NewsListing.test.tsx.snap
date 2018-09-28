@@ -16,7 +16,6 @@ exports[`[presentation] <NewsListing /> renders correctly 1`] = `
           title="News"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -82,7 +81,6 @@ exports[`[presentation] <NewsListing /> renders correctly when \`isCondensed\` p
           title="News"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -148,7 +146,6 @@ exports[`[presentation] <NewsListing /> updates \`isImageLoaded\` state when ima
           title="News"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -203,7 +200,6 @@ exports[`[presentation] <NewsListing /> updates \`isRendered\` state after image
           title="News"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"

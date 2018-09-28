@@ -1,5 +1,6 @@
 import { IncomingMessage } from "http";
 import Document, {
+  DocumentProps,
   Head,
   Main,
   NextDocumentContext as Context,
@@ -130,8 +131,14 @@ const AnalyticsBody: React.SFC<{}> = () =>
     </noscript>
   ) as React.ReactElement<any>;
 
-export default class extends Document {
+interface IProps extends DocumentProps {
+  locale: string;
+}
+
+// @ts-ignore-next-line
+export default class extends Document<IProps> {
   public static async getInitialProps(context: Context) {
+    const initialProps = await Document.getInitialProps(context);
     const props = await context.renderPage();
     const req = context.req as IncomingMessage & {
       intlMessages: {};
@@ -139,6 +146,7 @@ export default class extends Document {
     };
 
     return {
+      ...initialProps,
       ...props,
       intlMessages: req.intlMessages,
       locale: req.locale

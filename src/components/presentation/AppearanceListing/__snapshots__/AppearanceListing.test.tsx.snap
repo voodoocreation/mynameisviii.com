@@ -43,7 +43,6 @@ exports[`[presentation] <AppearanceListing /> renders correctly when status=Even
           class="Meta AppearanceListing-date"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -81,7 +80,6 @@ exports[`[presentation] <AppearanceListing /> renders correctly when status=Even
           class="Meta AppearanceListing-time"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -120,7 +118,6 @@ exports[`[presentation] <AppearanceListing /> renders correctly when status=Even
           title="location name - undefined"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -236,7 +233,6 @@ exports[`[presentation] <AppearanceListing /> renders correctly when status=Even
           class="Meta AppearanceListing-date"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -274,7 +270,6 @@ exports[`[presentation] <AppearanceListing /> renders correctly when status=Even
           class="Meta AppearanceListing-time"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -313,7 +308,6 @@ exports[`[presentation] <AppearanceListing /> renders correctly when status=Even
           title="location name - undefined"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -408,7 +402,6 @@ exports[`[presentation] <AppearanceListing /> renders correctly with all props 1
           class="Meta AppearanceListing-date"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -446,7 +439,6 @@ exports[`[presentation] <AppearanceListing /> renders correctly with all props 1
           class="Meta AppearanceListing-time"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -485,7 +477,6 @@ exports[`[presentation] <AppearanceListing /> renders correctly with all props 1
           title="undefined - location address"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -515,7 +506,6 @@ exports[`[presentation] <AppearanceListing /> renders correctly with all props 1
           class="Meta AppearanceListing-audience"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -618,7 +608,6 @@ exports[`[presentation] <AppearanceListing /> renders correctly with minimum pro
           class="Meta AppearanceListing-date"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -656,7 +645,6 @@ exports[`[presentation] <AppearanceListing /> renders correctly with minimum pro
           class="Meta AppearanceListing-time"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -695,7 +683,6 @@ exports[`[presentation] <AppearanceListing /> renders correctly with minimum pro
           title="location name - undefined"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -790,7 +777,6 @@ exports[`[presentation] <AppearanceListing /> updates \`isRendered\` state after
           class="Meta AppearanceListing-date"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -828,7 +814,6 @@ exports[`[presentation] <AppearanceListing /> updates \`isRendered\` state after
           class="Meta AppearanceListing-time"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -867,7 +852,6 @@ exports[`[presentation] <AppearanceListing /> updates \`isRendered\` state after
           title="location name - undefined"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -951,7 +935,6 @@ exports[`[presentation] <AppearanceListing /> updates \`isRendered\` state and t
           class="Meta AppearanceListing-date"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -989,7 +972,6 @@ exports[`[presentation] <AppearanceListing /> updates \`isRendered\` state and t
           class="Meta AppearanceListing-time"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -1028,7 +1010,6 @@ exports[`[presentation] <AppearanceListing /> updates \`isRendered\` state and t
           title="location name - undefined"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"

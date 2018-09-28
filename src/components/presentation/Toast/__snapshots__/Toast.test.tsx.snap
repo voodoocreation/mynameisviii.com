@@ -17,7 +17,6 @@ exports[`[presentation] <Toast /> renders correctly 1`] = `
       title="Close"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"

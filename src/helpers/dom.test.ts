@@ -3,7 +3,7 @@ import * as dom from "./dom";
 const g: any = global;
 const sWidth = 1920;
 const sHeight = 1080;
-const html = document.documentElement;
+const html = document.documentElement as HTMLHtmlElement;
 const { body } = document;
 
 describe("[helpers] DOM", () => {

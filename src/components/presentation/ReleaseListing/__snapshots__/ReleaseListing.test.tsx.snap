@@ -26,7 +26,6 @@ exports[`[presentation] <ReleaseListing /> renders correctly with all props 1`] 
           class="Meta ReleaseListing-releasedOn"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -64,7 +63,6 @@ exports[`[presentation] <ReleaseListing /> renders correctly with all props 1`] 
           class="Meta ReleaseListing-length"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -96,7 +94,6 @@ exports[`[presentation] <ReleaseListing /> renders correctly with all props 1`] 
           class="Meta ReleaseListing-genre"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -128,7 +125,6 @@ exports[`[presentation] <ReleaseListing /> renders correctly with all props 1`] 
           class="Meta ReleaseListing-tracks"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -205,7 +201,6 @@ exports[`[presentation] <ReleaseListing /> renders correctly with minimum props 
           class="Meta ReleaseListing-releasedOn"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -243,7 +238,6 @@ exports[`[presentation] <ReleaseListing /> renders correctly with minimum props 
           class="Meta ReleaseListing-length"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -275,7 +269,6 @@ exports[`[presentation] <ReleaseListing /> renders correctly with minimum props 
           class="Meta ReleaseListing-genre"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -307,7 +300,6 @@ exports[`[presentation] <ReleaseListing /> renders correctly with minimum props 
           class="Meta ReleaseListing-tracks"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -384,7 +376,6 @@ exports[`[presentation] <ReleaseListing /> updates \`isImageLoaded\` state when 
           class="Meta ReleaseListing-releasedOn"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -422,7 +413,6 @@ exports[`[presentation] <ReleaseListing /> updates \`isImageLoaded\` state when 
           class="Meta ReleaseListing-length"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -454,7 +444,6 @@ exports[`[presentation] <ReleaseListing /> updates \`isImageLoaded\` state when 
           class="Meta ReleaseListing-genre"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -486,7 +475,6 @@ exports[`[presentation] <ReleaseListing /> updates \`isImageLoaded\` state when 
           class="Meta ReleaseListing-tracks"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -552,7 +540,6 @@ exports[`[presentation] <ReleaseListing /> updates \`isRendered\` state after im
           class="Meta ReleaseListing-releasedOn"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -590,7 +577,6 @@ exports[`[presentation] <ReleaseListing /> updates \`isRendered\` state after im
           class="Meta ReleaseListing-length"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -622,7 +608,6 @@ exports[`[presentation] <ReleaseListing /> updates \`isRendered\` state after im
           class="Meta ReleaseListing-genre"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
@@ -654,7 +639,6 @@ exports[`[presentation] <ReleaseListing /> updates \`isRendered\` state after im
           class="Meta ReleaseListing-tracks"
         >
           <svg
-            attr="[object Object]"
             fill="currentColor"
             height="1em"
             stroke="currentColor"

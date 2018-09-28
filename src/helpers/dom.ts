@@ -7,10 +7,11 @@ export const isInViewport = (element?: HTMLElement | null) => {
     return false;
   }
 
+  const html = document.documentElement as HTMLHtmlElement;
   const bounds = element.getBoundingClientRect();
   const viewport = {
-    height: window.innerHeight || document.documentElement.clientHeight,
-    width: window.innerWidth || document.documentElement.clientWidth
+    height: window.innerHeight || html.clientHeight,
+    width: window.innerWidth || html.clientWidth
   };
 
   return (
@@ -29,10 +30,11 @@ export const isAlmostInViewport = (
     return false;
   }
 
+  const html = document.documentElement as HTMLHtmlElement;
   const bounds = element.getBoundingClientRect();
   const viewport = {
-    height: window.innerHeight || document.documentElement.clientHeight,
-    width: window.innerWidth || document.documentElement.clientWidth
+    height: window.innerHeight || html.clientHeight,
+    width: window.innerWidth || html.clientWidth
   };
 
   return (
@@ -55,7 +57,7 @@ export const lockScroll = () => {
   }
 
   const { body } = document;
-  const html = document.documentElement;
+  const html = document.documentElement as HTMLHtmlElement;
 
   scrollState.count += 1;
 
@@ -86,7 +88,7 @@ export const unlockScroll = () => {
   }
 
   const { body } = document;
-  const html = document.documentElement;
+  const html = document.documentElement as HTMLHtmlElement;
 
   if (scrollState.count <= 1 && html.classList.contains("isLocked")) {
     body.style.paddingRight = "";

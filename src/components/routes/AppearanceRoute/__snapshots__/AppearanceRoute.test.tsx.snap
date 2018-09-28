@@ -15,7 +15,6 @@ exports[`[routes] <AppearanceRoute /> renders 404 error page when no appearance 
     class="ErrorPage-content"
   >
     <svg
-      attr="[object Object]"
       fill="currentColor"
       height="1em"
       stroke="currentColor"
@@ -49,7 +48,6 @@ exports[`[routes] <AppearanceRoute /> renders 500 error page when slug isn't in 
     class="ErrorPage-content"
   >
     <svg
-      attr="[object Object]"
       fill="currentColor"
       height="1em"
       stroke="currentColor"
@@ -100,7 +98,6 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
       class="Meta Appearance-date"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -138,7 +135,6 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
       class="Meta Appearance-time"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -185,7 +181,6 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
       title="Meow - 9 Edward Street, Te Aro, Wellington 6011"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -217,7 +212,6 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
       class="Meta Appearance-audience"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -315,7 +309,6 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
                     class="Meta ActListing-genre"
                   >
                     <svg
-                      attr="[object Object]"
                       fill="currentColor"
                       height="1em"
                       stroke="currentColor"
@@ -347,7 +340,6 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
                     class="Meta ActListing-location"
                   >
                     <svg
-                      attr="[object Object]"
                       fill="currentColor"
                       height="1em"
                       stroke="currentColor"
@@ -413,7 +405,6 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
                 class="SaleListing-icon"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -446,7 +437,6 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
                     class="Meta SaleListing-website"
                   >
                     <svg
-                      attr="[object Object]"
                       fill="currentColor"
                       height="1em"
                       stroke="currentColor"
@@ -488,7 +478,6 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
                 class="SaleListing-icon"
               >
                 <svg
-                  attr="[object Object]"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"

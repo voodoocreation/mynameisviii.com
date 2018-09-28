@@ -35,7 +35,6 @@ exports[`[presentation] <Modal /> renders correctly 1`] = `
         class="Modal-closeButton"
       >
         <svg
-          attr="[object Object]"
           fill="currentColor"
           height="1em"
           stroke="currentColor"
@@ -87,7 +86,6 @@ exports[`[presentation] <Modal /> renders correctly when usePortal=true 1`] = `
       class="Modal-closeButton"
     >
       <svg
-        attr="[object Object]"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
