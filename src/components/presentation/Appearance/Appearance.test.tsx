@@ -55,6 +55,13 @@ describe("[presentation] <Appearance />", () => {
     expect(actual).toMatchSnapshot();
   });
 
+  it("renders correctly when `rsvpUrl` prop is defined", () => {
+    const { actual } = setup(render, { rsvpUrl: "rsvpUrl" });
+
+    expect(actual.find(".Appearance-rsvp")).toHaveLength(1);
+    expect(actual).toMatchSnapshot();
+  });
+
   it("renders correctly when status=EventCancelled", () => {
     const { actual } = setup(render, {
       status: "EventCancelled"

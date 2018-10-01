@@ -183,8 +183,77 @@
       "Status": "EventScheduled",
       "Title": "Nothing But Yet Another Test Gig",
       "Type": "MusicEvent"
+    },
+    {
+      "Acts": [
+        {
+          "ImageUrl": "https://s3.amazonaws.com/mynameisviii-static/acts/slow.jpg",
+          "Genre": "Goth Rock",
+          "Location": {
+            "Name": "Wellington",
+            "Type": "City"
+          },
+          "Name": "Slow",
+          "Type": "MusicGroup",
+          "Url": "https://www.facebook.com/eternallyslow"
+        },
+        {
+          "ImageUrl": "https://s3.amazonaws.com/mynameisviii-static/acts/keller-kinder.jpg",
+          "Genre": "Goth",
+          "Location": {
+            "Name": "Wellington",
+            "Type": "City"
+          },
+          "Name": "Keller Kinder",
+          "Type": "MusicGroup",
+          "Url": "https://kellerkinder.co.nz/"
+        },
+        {
+          "Genre": "Goth/Electronic",
+          "ImageUrl": "https://s3.amazonaws.com/mynameisviii-static/viii-profile.jpg",
+          "Location": {
+            "Name": "Wellington",
+            "Type": "City"
+          },
+          "Name": "Viii",
+          "Type": "MusicGroup",
+          "Url": "https://mynameisviii.com"
+        }
+      ],
+      "Audience": "18+",
+      "Description": "Wellington's premier goth music event, Shadowplay, is back for its summer installment! Viii will be making their live debut, alongside Slow and Keller Kinder at Vallhalla. This event will also mark the debut of the first lineup of Viii's band, The Anomalies.",
+      "FinishingAt": "2018-12-16T00:00:00",
+      "Images": [],
+      "ImageUrl": "https://s3.amazonaws.com/mynameisviii-static/appearances/shadowplay-summer-2018.jpg",
+      "IsActive": "n",
+      "Location": {
+        "Address": "154 Vivian Street, Te Aro, Wellington 6011",
+        "Name": "Valhalla",
+        "Type": "MusicVenue"
+      },
+      "OgImageUrl": "https://s3.amazonaws.com/mynameisviii-static/appearances/shadowplay-summer-2018.jpg",
+      "Organizer": {
+        "Logo": "https://scontent.fakl3-1.fna.fbcdn.net/v/t1.0-9/11169875_459373687562362_5466933650123279468_n.jpg?_nc_cat=104&oh=705cac7b3e5c56dfa14c2abed5687f6c&oe=5C148A28",
+        "Name": "Shadowplay",
+        "Type": "Organization"
+      },
+      "RsvpUrl": "https://www.facebook.com/events/310691539519399",
+      "Sales": [
+        {
+          "Availability": "LimitedAvailability",
+          "Name": "Door sales",
+          "Price": 10,
+          "PriceCurrency": "NZD",
+          "ValidFrom": "2018-12-15T20:30:00"
+        }
+      ],
+      "Slug": "shadowplay-summer-2018",
+      "StartingAt": "2018-12-15T20:30:00",
+      "Status": "EventScheduled",
+      "Title": "Shadowplay Summer 2018",
+      "Type": "MusicEvent"
     }
   ],
-  "Count": 3,
-  "ScannedCount": 3
+  "Count": 4,
+  "ScannedCount": 4
 }

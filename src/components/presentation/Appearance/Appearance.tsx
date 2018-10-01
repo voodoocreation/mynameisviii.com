@@ -1,6 +1,7 @@
 import cn from "classnames";
 import { Marker } from "google-maps-react";
 import * as React from "react";
+import { FaFacebookSquare } from "react-icons/fa";
 import { MdAccessTime, MdDateRange, MdPeople, MdPlace } from "react-icons/md";
 import { FormattedMessage, InjectedIntl, injectIntl } from "react-intl";
 
@@ -9,6 +10,7 @@ import ActListing from "../ActListing/ActListing";
 import DateTime from "../DateTime/DateTime";
 import Image from "../Image/Image";
 import ImageGallery from "../ImageGallery/ImageGallery";
+import Link from "../Link/Link";
 import Map from "../Map/Map";
 import Meta from "../Meta/Meta";
 import MetaBar from "../MetaBar/MetaBar";
@@ -143,6 +145,19 @@ class Appearance extends React.Component<IProps, IState> {
             <section className="Appearance-description">
               <p>{appearance.description}</p>
             </section>
+
+            {appearance.rsvpUrl ? (
+              <section className="Appearance-rsvp">
+                <Link
+                  className="Button"
+                  href={appearance.rsvpUrl}
+                  isExternal={true}
+                >
+                  <FaFacebookSquare />{" "}
+                  <FormattedMessage id="RSVP_ON_FACEBOOK" />
+                </Link>
+              </section>
+            ) : null}
 
             <section className="Appearance-acts">
               <h2>

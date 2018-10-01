@@ -21,6 +21,11 @@
     .Loader {
       padding-top: 141.5%;
     }
+
+    &.isRendered {
+      display: flex;
+      align-items: center;
+    }
   }
 
   .Meta-label {

@@ -120,6 +120,13 @@
     }
   }
 
+  @include screen-below($screen-xs-max) {
+    &-rsvp .Button {
+      display: block;
+      width: 100%;
+    }
+  }
+
   @include screen-between(450px, $screen-xxs-max) {
     &-tickets-items > * {
       flex-basis: 50%;

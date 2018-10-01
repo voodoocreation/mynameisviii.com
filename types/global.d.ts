@@ -165,6 +165,7 @@ interface IAppearance {
   location: ILocation;
   ogImageUrl: string;
   organizer: IOrganization;
+  rsvpUrl?: string;
   sales: IOffer[];
   slug: string;
   startingAt: string;
