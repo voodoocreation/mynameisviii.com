@@ -4,8 +4,10 @@ import * as apiMethods from "./api/root.api";
 import { createApiWith, createPortsWith } from "./configureApi";
 
 describe("[services] API", () => {
+  const portsConfig = { apiUrl: "" };
+
   it("creates API instance correctly", () => {
-    const api = createApiWith(createPortsWith({}));
+    const api = createApiWith(createPortsWith(portsConfig));
 
     expect(Object.keys(api).length).toBe(Object.keys(apiMethods).length);
     Object.keys(api).forEach((method: any) => {
@@ -20,7 +22,7 @@ describe("[services] API", () => {
         status: 200
       });
     });
-    const request = createPortsWith({}, client);
+    const request = createPortsWith(portsConfig, client);
     const response = await request({ url: "/api/test", method: "POST" });
 
     expect(client).toHaveBeenCalled();
@@ -38,7 +40,7 @@ describe("[services] API", () => {
         }
       });
     });
-    const request = createPortsWith({}, client);
+    const request = createPortsWith(portsConfig, client);
     let serverError;
 
     try {
@@ -62,7 +64,7 @@ describe("[services] API", () => {
         }
       });
     });
-    const request = createPortsWith({}, client);
+    const request = createPortsWith(portsConfig, client);
     let requestError;
 
     try {
@@ -81,7 +83,7 @@ describe("[services] API", () => {
     const client = createMockHttpClient((_, reject) => {
       reject(new Error("Request setup failed"));
     });
-    const request = createPortsWith({}, client);
+    const request = createPortsWith(portsConfig, client);
     let clientError;
 
     try {
@@ -94,5 +96,20 @@ describe("[services] API", () => {
     expect(client.mock.calls[0][0].method).toBe("GET");
     expect(client.mock.calls[0][0].url).toBe("/api/test");
     expect(clientError.message).toBe("Request setup failed");
+  });
+
+  it("`baseUrl` defaults to prod API URL", async () => {
+    const client = createMockHttpClient(resolve => {
+      resolve({
+        data: { TestData: "test" },
+        status: 200
+      });
+    });
+    const request = createPortsWith({}, client);
+    await request({ url: "/api/test" });
+
+    expect(client.mock.calls[0][0].baseURL).toBe(
+      "https://api.mynameisviii.com"
+    );
   });
 });

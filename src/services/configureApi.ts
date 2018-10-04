@@ -14,8 +14,12 @@ const mapApi = (methods: any, ports: any) =>
 
 export const createApiWith = (ports: any) => mapApi(api, ports);
 
+const defaultConfig = {
+  baseURL: "https://api.mynameisviii.com"
+};
+
 export const createPortsWith = (
-  config: any,
+  config?: any,
   client: (config: any) => Promise<any> = axios
 ) => ({
   body,
@@ -29,7 +33,8 @@ export const createPortsWith = (
   url: string;
 }) =>
   client({
-    baseURL: config.apiUrl,
+    ...defaultConfig,
+    ...config,
     data: body,
     method,
     params,

@@ -35,9 +35,7 @@ export default (initialState = {}, _?: any, api?: {}) => {
   }
 
   // Redux store
-  const ports = createPortsWith({
-    apiUrl: "https://api.mynameisviii.com"
-  });
+  const ports = createPortsWith();
   const store: TStore = createStore(
     rootReducer,
     initialState,

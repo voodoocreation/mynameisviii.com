@@ -22,6 +22,7 @@ interface IStoreProps {
 
 interface IDispatchProps {
   fetchGalleryBySlug: ActionCreator<PLFetchGalleryBySlugStarted>;
+  trackEvent: ActionCreator<PLTrackEvent>;
 }
 
 interface IProps extends IStoreProps, IDispatchProps {
@@ -75,10 +76,20 @@ class GalleryRoute extends React.Component<IProps> {
           <meta property="og:image" content={gallery.imageUrl} />
         </Head>
 
-        <Gallery {...gallery} />
+        <Gallery
+          {...gallery}
+          onGalleryInteraction={this.onGalleryInteraction}
+        />
       </React.Fragment>
     );
   }
+
+  private onGalleryInteraction = (type: string, index?: number) => {
+    this.props.trackEvent({
+      event: `gallery.gallery.${type}`,
+      index
+    });
+  };
 }
 
 const mapStateToProps = (state: any) => ({
@@ -90,7 +101,8 @@ const mapStateToProps = (state: any) => ({
 const mapDispatchToProps = (dispatch: Dispatch) =>
   bindActionCreators(
     {
-      fetchGalleryBySlug: actions.fetchGalleryBySlug.started
+      fetchGalleryBySlug: actions.fetchGalleryBySlug.started,
+      trackEvent: actions.trackEvent
     },
     dispatch
   );

@@ -5,32 +5,50 @@ import Image from "../Image/Image";
 import ImageGallery from "../ImageGallery/ImageGallery";
 import PageHeader from "../PageHeader/PageHeader";
 
-const Gallery: React.SFC<IGallery> = gallery =>
-  (
-    <article className="Gallery">
-      <PageHeader>{gallery.title}</PageHeader>
+interface IProps extends IGallery {
+  onGalleryInteraction?: (type: string, index?: number) => void;
+}
 
-      <div className="Gallery-description">
-        <p>{gallery.description}</p>
-      </div>
+export default class Gallery extends React.Component<IProps> {
+  public render() {
+    const { onGalleryInteraction, ...gallery } = this.props;
 
-      <section className="Gallery-images">
-        <ImageGallery>
-          {!gallery.images
-            ? null
-            : gallery.images.map(image => (
-                <Image
-                  alt={gallery.title}
-                  className="Gallery-image"
-                  key={image.imageUrl}
-                  src={image.imageUrl}
-                />
-              ))}
-        </ImageGallery>
-      </section>
+    return (
+      <article className="Gallery">
+        <PageHeader>{gallery.title}</PageHeader>
 
-      <Schema {...gallery} />
-    </article>
-  ) as React.ReactElement<any>;
+        <div className="Gallery-description">
+          <p>{gallery.description}</p>
+        </div>
 
-export default Gallery;
+        <section className="Gallery-images">
+          <ImageGallery
+            onItemClick={this.onGalleryInteraction("itemClick")}
+            onNext={this.onGalleryInteraction("next")}
+            onPrevious={this.onGalleryInteraction("previous")}
+            onModalClose={this.onGalleryInteraction("modalClose")}
+          >
+            {!gallery.images
+              ? null
+              : gallery.images.map((image, index) => (
+                  <Image
+                    alt={`${gallery.title} - ${index + 1}`}
+                    className="Gallery-image"
+                    key={image.imageUrl}
+                    src={image.imageUrl}
+                  />
+                ))}
+          </ImageGallery>
+        </section>
+
+        <Schema {...gallery} />
+      </article>
+    );
+  }
+
+  private onGalleryInteraction = (type: string) => (index?: number) => {
+    if (this.props.onGalleryInteraction) {
+      this.props.onGalleryInteraction(type, index);
+    }
+  };
+}

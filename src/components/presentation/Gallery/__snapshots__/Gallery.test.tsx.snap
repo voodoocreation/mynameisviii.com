@@ -23,7 +23,83 @@ exports[`[presentation] <Gallery /> renders correctly 1`] = `
   >
     <div
       class="ImageGallery"
-    />
+    >
+      <figure
+        class="Image Gallery-image isLoading"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="Image-wrapper"
+        >
+          <img
+            alt="title - 1"
+            src="images 1 imageUrl"
+          />
+          <span
+            class="Loader"
+          >
+            <div
+              class="Loader-animation"
+            >
+              <span />
+              <span />
+              <span />
+            </div>
+          </span>
+        </div>
+      </figure>
+      <figure
+        class="Image Gallery-image isLoading"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="Image-wrapper"
+        >
+          <img
+            alt="title - 2"
+            src="images 2 imageUrl"
+          />
+          <span
+            class="Loader"
+          >
+            <div
+              class="Loader-animation"
+            >
+              <span />
+              <span />
+              <span />
+            </div>
+          </span>
+        </div>
+      </figure>
+      <figure
+        class="Image Gallery-image isLoading"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="Image-wrapper"
+        >
+          <img
+            alt="title - 3"
+            src="images 3 imageUrl"
+          />
+          <span
+            class="Loader"
+          >
+            <div
+              class="Loader-animation"
+            >
+              <span />
+              <span />
+              <span />
+            </div>
+          </span>
+        </div>
+      </figure>
+    </div>
   </section>
 </article>
 `;

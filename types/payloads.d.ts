@@ -71,6 +71,18 @@ type PLFetchReleaseBySlugDone = IRelease;
 type PLFetchReleaseBySlugFailed = IError;
 type PLSetCurrentReleaseSlug = string;
 
+type PLFetchResourcesDone = {
+  items: {
+    [index: string]: IResource;
+  };
+  lastEvaluatedKey?: {
+    isActive: string;
+    createdAt: string;
+    slug: string;
+  };
+};
+type PLFetchResourcesFailed = IError;
+
 type PLFetchStemsDone = {
   items: {
     [index: string]: IStem;

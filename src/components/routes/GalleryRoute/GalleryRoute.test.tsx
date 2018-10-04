@@ -92,6 +92,24 @@ describe("[routes] <GalleryRoute />", () => {
     expect(actual.render()).toMatchSnapshot();
   });
 
+  it("tracks gallery interactions correctly", () => {
+    const { actual } = setup(mount, {
+      galleries: {
+        items: {
+          [mockData.slug]: mockData
+        }
+      }
+    });
+
+    actual
+      .find("ImageGallery Image")
+      .last()
+      .simulate("click");
+
+    expect(window.dataLayer[0].event).toBe("gallery.gallery.itemClick");
+    expect(window.dataLayer[0].index).toBe(17);
+  });
+
   describe("getInitialProps()", () => {
     it("sets `currentSlug` from URL", async () => {
       const { store } = setup(render);

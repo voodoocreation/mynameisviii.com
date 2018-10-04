@@ -5,6 +5,7 @@ import galleries from "./galleries.reducers";
 import news from "./news.reducers";
 import page from "./page.reducers";
 import releases from "./releases.reducers";
+import resources from "./resources.reducers";
 import stems from "./stems.reducers";
 
 export default combineReducers({
@@ -13,5 +14,6 @@ export default combineReducers({
   news,
   page,
   releases,
+  resources,
   stems
 });

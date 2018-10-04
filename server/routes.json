@@ -7,5 +7,6 @@
   "/news/:slug": "/newsArticle",
   "/releases/find*": "/releases",
   "/releases/:slug": "/release",
+  "/resources/find": "/resources",
   "/stems/find*": "/stems"
 }

@@ -48,6 +48,15 @@ exports[`[containers] <App /> mounts application correctly on the client 1`] = `
         </li>
         <li>
           <a
+            href="/appearances"
+          >
+            <span>
+              Appearances
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
             href="/galleries"
           >
             <span>
@@ -66,10 +75,10 @@ exports[`[containers] <App /> mounts application correctly on the client 1`] = `
         </li>
         <li>
           <a
-            href="/appearances"
+            href="/resources"
           >
             <span>
-              Appearances
+              Resources
             </span>
           </a>
         </li>
@@ -138,6 +147,15 @@ exports[`[containers] <App /> mounts application correctly on the server 1`] = `
         </li>
         <li>
           <a
+            href="/appearances"
+          >
+            <span>
+              Appearances
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
             href="/galleries"
           >
             <span>
@@ -156,10 +174,10 @@ exports[`[containers] <App /> mounts application correctly on the server 1`] = `
         </li>
         <li>
           <a
-            href="/appearances"
+            href="/resources"
           >
             <span>
-              Appearances
+              Resources
             </span>
           </a>
         </li>

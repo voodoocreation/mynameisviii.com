@@ -4,6 +4,10 @@
     transition: opacity 600ms ease-out;
   }
 
+  &-wrapper {
+    width: 100%;
+  }
+
   .Loader {
     position: relative;
     background: $panel-color-2;

@@ -48,6 +48,15 @@ exports[`[containers] <Shell /> renders correctly on the client 1`] = `
         </li>
         <li>
           <a
+            href="/appearances"
+          >
+            <span>
+              Appearances
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
             href="/galleries"
           >
             <span>
@@ -66,10 +75,10 @@ exports[`[containers] <Shell /> renders correctly on the client 1`] = `
         </li>
         <li>
           <a
-            href="/appearances"
+            href="/resources"
           >
             <span>
-              Appearances
+              Resources
             </span>
           </a>
         </li>
@@ -211,6 +220,15 @@ exports[`[containers] <Shell /> renders correctly on the server 1`] = `
         </li>
         <li>
           <a
+            href="/appearances"
+          >
+            <span>
+              Appearances
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
             href="/galleries"
           >
             <span>
@@ -229,10 +247,10 @@ exports[`[containers] <Shell /> renders correctly on the server 1`] = `
         </li>
         <li>
           <a
-            href="/appearances"
+            href="/resources"
           >
             <span>
-              Appearances
+              Resources
             </span>
           </a>
         </li>
@@ -374,6 +392,15 @@ exports[`[containers] <Shell /> renders correctly when loading 1`] = `
         </li>
         <li>
           <a
+            href="/appearances"
+          >
+            <span>
+              Appearances
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
             href="/galleries"
           >
             <span>
@@ -392,10 +419,10 @@ exports[`[containers] <Shell /> renders correctly when loading 1`] = `
         </li>
         <li>
           <a
-            href="/appearances"
+            href="/resources"
           >
             <span>
-              Appearances
+              Resources
             </span>
           </a>
         </li>

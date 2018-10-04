@@ -4,6 +4,7 @@ interface IRootReducers {
   news: INewsReducers;
   page: IPageReducers;
   releases: IReleasesReducers;
+  resources: IResourcesReducers;
   stems: IStemsReducers;
 }
 
@@ -68,6 +69,20 @@ interface IReleasesReducers {
   };
   lastEvaluatedKey?: {
     releasedOn: string;
+    isActive?: string;
+    slug: string;
+  };
+}
+
+interface IResourcesReducers {
+  error?: IError;
+  hasAllItems: boolean;
+  isLoading: boolean;
+  items: {
+    [index: string]: IResource;
+  };
+  lastEvaluatedKey?: {
+    createdAt: string;
     isActive?: string;
     slug: string;
   };

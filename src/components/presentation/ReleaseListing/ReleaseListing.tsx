@@ -14,13 +14,13 @@ import Image from "../Image/Image";
 import Link from "../Link/Link";
 import Meta from "../Meta/Meta";
 
-interface IState {
-  isRendered: boolean;
-}
-
 interface IProps extends IRelease {
   intl: InjectedIntl;
   onLoad?: (slug: string) => void;
+}
+
+interface IState {
+  isRendered: boolean;
 }
 
 class ReleaseListing extends React.Component<IProps, IState> {

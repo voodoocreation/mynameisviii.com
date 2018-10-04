@@ -166,7 +166,7 @@ exports[`[presentation] <Appearance /> renders correctly when \`rsvpUrl\` prop i
         class="Appearance-rsvp"
       >
         <a
-          class="Button"
+          class="Appearance-rsvpLink Button"
           href="rsvpUrl"
           rel="noopener"
           target="_blank"

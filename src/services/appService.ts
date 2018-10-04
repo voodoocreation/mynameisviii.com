@@ -17,6 +17,7 @@ g.precacheUrls = [
   "/galleries",
   "/news",
   "/releases",
+  "/resources",
   "/stems",
   ...assets,
   ...staticFiles

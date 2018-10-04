@@ -149,7 +149,7 @@ class Appearance extends React.Component<IProps, IState> {
             {appearance.rsvpUrl ? (
               <section className="Appearance-rsvp">
                 <Link
-                  className="Button"
+                  className="Appearance-rsvpLink Button"
                   href={appearance.rsvpUrl}
                   isExternal={true}
                 >

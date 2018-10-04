@@ -226,6 +226,17 @@ interface IReleaseTrack {
   url: string;
 }
 
+interface IResource {
+  createdAt: string;
+  description: string;
+  imageUrl: string;
+  isActive: boolean;
+  slug: string;
+  title: string;
+  type: string;
+  url: string;
+}
+
 interface IStem {
   audioFormat: string;
   createdAt: string;

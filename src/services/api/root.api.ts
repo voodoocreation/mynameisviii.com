@@ -6,4 +6,5 @@ export * from "./fetchLatestNews.api";
 export * from "./fetchNewsArticleBySlug.api";
 export * from "./fetchReleaseBySlug.api";
 export * from "./fetchReleases.api";
+export * from "./fetchResources.api";
 export * from "./fetchStems.api";

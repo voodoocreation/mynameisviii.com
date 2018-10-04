@@ -1,15 +1,15 @@
 import { camelizeKeys } from "humps";
 
-import stems from "../../server/mocks/stems.json";
-import transformStem from "./transformStem";
+import resources from "../../server/mocks/resources.json";
+import transformResource from "./transformResource";
 
-describe("[transformers] Stem", () => {
+describe("[transformers] Resource", () => {
   it("transforms API data correctly", () => {
     let isPassing = true;
     let transformed;
 
     try {
-      transformed = transformStem(camelizeKeys(stems.Items[0]));
+      transformed = transformResource(camelizeKeys(resources.Items[0]));
     } catch (error) {
       isPassing = false;
     }
@@ -19,17 +19,17 @@ describe("[transformers] Stem", () => {
   });
 
   it("sets isActive to true correctly when 'y' is passed", () => {
-    const transformed = transformStem({ isActive: "y" });
+    const transformed = transformResource({ isActive: "y" });
     expect(transformed.isActive).toEqual(true);
   });
 
   it("sets isActive to false correctly when 'n' is passed", () => {
-    const transformed = transformStem({ isActive: "n" });
+    const transformed = transformResource({ isActive: "n" });
     expect(transformed.isActive).toEqual(false);
   });
 
   it("sets isActive to false correctly when undefined", () => {
-    const transformed = transformStem({});
+    const transformed = transformResource({});
     expect(transformed.isActive).toEqual(false);
   });
 });

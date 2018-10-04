@@ -38,9 +38,10 @@ class Navigation extends React.Component<IProps> {
         <ul>
           {this.renderNavItem("/news", "NEWS_TITLE")}
           {this.renderNavItem("/releases", "RELEASES_TITLE")}
+          {this.renderNavItem("/appearances", "APPEARANCES_TITLE")}
           {this.renderNavItem("/galleries", "GALLERIES_TITLE")}
           {this.renderNavItem("/stems", "STEMS_TITLE")}
-          {this.renderNavItem("/appearances", "APPEARANCES_TITLE")}
+          {this.renderNavItem("/resources", "RESOURCES_TITLE")}
         </ul>
       </nav>
     );

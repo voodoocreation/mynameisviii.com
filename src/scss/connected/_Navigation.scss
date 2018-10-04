@@ -39,7 +39,7 @@
     flex-grow: 1;
     text-align: center;
     list-style: none;
-    line-height: 1.5;
+    line-height: 1.2;
     margin: 0;
     padding: 0;
   }
@@ -96,49 +96,7 @@
     }
   }
 
-  @include screen-between($screen-mobile-nav-min, $screen-xs-max) {
-    ul {
-      $line-size: 16px;
-
-      display: flex;
-      position: relative;
-      padding-right: ($spacing / 2) + ($spacing / 3);
-
-      &::before,
-      &::after {
-        top: 50%;
-        right: 0;
-        width: 1px;
-        height: $line-size;
-        transform: translate3d(0, -50%, 0);
-      }
-
-      &::after {
-        right: ($spacing / 3);
-      }
-    }
-
-    li {
-      margin: 0 ($spacing / 2);
-
-      &::before,
-      &::after {
-        top: $spacing;
-        transform: translate3d(-50%, 0, 0) rotate(45deg);
-      }
-
-      &::after {
-        transform: translate3d(-50%, 0, 0) rotate(-45deg);
-      }
-
-      &.isSelected::before,
-      &.isSelected::after {
-        width: $banner-size-small;
-      }
-    }
-  }
-
-  @include screen-below($screen-mobile-nav-max) {
+  @include screen-below($screen-xs-max) {
     ul {
       flex-direction: column;
       position: fixed;
@@ -146,6 +104,7 @@
       right: $spacing;
       bottom: $spacing;
       left: 0;
+      line-height: 0.9;
       padding: $spacing;
       background: $panel-color;
       opacity: 0;
@@ -163,7 +122,7 @@
 
     li {
       &::before {
-        top: 22px;
+        top: 14px;
         transform: translate3d(-50%, 0, 0);
       }
 
@@ -202,12 +161,6 @@
       button::after {
         width: $banner-size-small;
       }
-    }
-  }
-
-  @include screen-above($screen-mobile-nav-min) {
-    button {
-      display: none;
     }
   }
 
@@ -255,7 +208,7 @@
 
     li {
       &::before {
-        top: 18px;
+        top: 14px;
         background: $text-color;
         transform: translate3d(-50%, 0, 0);
       }
@@ -264,6 +217,10 @@
         width: $banner-size-medium - ($spacing * 2);
       }
     }
+
+    button {
+      display: none;
+    }
   }
 
   @include screen-between($screen-sm-min, $screen-sm-max) {
@@ -271,11 +228,11 @@
   }
 
   @include screen-above($screen-md-min) {
-    padding: ($spacing * 3) $spacing;
+    padding: ($spacing * 2) $spacing;
 
     li {
       &::before {
-        top: 22px;
+        top: 17px;
       }
 
       &.isSelected::before {
