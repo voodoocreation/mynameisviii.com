@@ -126,7 +126,42 @@ describe("[containers] <App />", () => {
     actual.unmount();
   });
 
-  describe("router events", async () => {
+  describe("feature events", () => {
+    it("handles single feature correctly", async () => {
+      const { actual, props } = await setup(mount);
+
+      window.dispatchEvent(
+        new CustomEvent("feature", { detail: "has-test-feature" })
+      );
+
+      expect(props.store.getState().features.items).toContain(
+        "has-test-feature"
+      );
+
+      actual.unmount();
+    });
+
+    it("handles multiple features correctly", async () => {
+      const { actual, props } = await setup(mount);
+
+      window.dispatchEvent(
+        new CustomEvent("feature", {
+          detail: ["has-test-feature-1", "has-test-feature-2"]
+        })
+      );
+
+      expect(props.store.getState().features.items).toContain(
+        "has-test-feature-1"
+      );
+      expect(props.store.getState().features.items).toContain(
+        "has-test-feature-2"
+      );
+
+      actual.unmount();
+    });
+  });
+
+  describe("router events", () => {
     it("onRouteChangeStart is handled correctly", async () => {
       const { actual, props } = await setup(mount);
 

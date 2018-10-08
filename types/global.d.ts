@@ -29,6 +29,7 @@ interface Window {
   __NEXT_REDUX_STORE__: any;
   __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: (...args: any[]) => any;
   dataLayer: Array<{ [index: string]: any }>;
+  features?: [];
   google: {
     maps: any;
     [index: string]: any;

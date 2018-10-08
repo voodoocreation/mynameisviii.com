@@ -11,6 +11,7 @@
     flex-flow: row-reverse wrap;
     position: relative;
     background: $panel-color-2;
+    overflow: hidden;
   }
 
   &-image {
@@ -32,15 +33,13 @@
     @include hide-visually();
   }
 
-  &-header {
-    &::after {
-      @include bg-light();
+  &-header::after {
+    @include bg-light();
 
-      display: block;
-      height: 1px;
-      content: "";
-      margin-bottom: $spacing;
-    }
+    display: block;
+    height: 1px;
+    content: "";
+    margin-bottom: $spacing;
   }
 
   &-details {
@@ -74,6 +73,12 @@
 
       width: ($spacing * 2);
       background: $panel-color;
+    }
+  }
+
+  &.isCondensed {
+    .AppearanceListing-header::after {
+      display: none;
     }
   }
 
@@ -153,6 +158,36 @@
 
   @include screen-above($screen-lg-min) {
     flex-basis: 50%;
+  }
+
+  @include screen-above(1300px) {
+    &.isCondensed {
+      .AppearanceListing-image {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 250%;
+        opacity: 0.2;
+        transform: translate3d(-50%, -50%, 0);
+        transition: width 200ms ease-out, opacity 200ms ease-out;
+      }
+
+      .AppearanceListing-details {
+        position: relative;
+        z-index: 1;
+      }
+
+      a:hover .AppearanceListing-image {
+        width: 270%;
+        opacity: 0.25;
+      }
+    }
+  }
+
+  @include screen-between(1300px, 1500px) {
+    &.isCondensed .AppearanceListing-details {
+      font-size: 14px;
+    }
   }
 
   @include screen-between($screen-lg-min, 1678px) {

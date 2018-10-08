@@ -1,5 +1,6 @@
 interface IRootReducers {
   appearances: IAppearancesReducers;
+  features: IFeaturesReducers;
   galleries: IGalleriesReducers;
   news: INewsReducers;
   page: IPageReducers;
@@ -22,6 +23,10 @@ interface IAppearancesReducers {
     slug: string;
     startingAt: string;
   };
+}
+
+interface IFeaturesReducers {
+  items: string[];
 }
 
 interface IGalleriesReducers {

@@ -1,3 +1,4 @@
+import cn from "classnames";
 import Head from "next/head";
 import * as React from "react";
 import {
@@ -22,12 +23,18 @@ import WebsiteListing from "../../presentation/WebsiteListing/WebsiteListing";
 
 import * as actions from "../../../actions/root.actions";
 import * as selectors from "../../../selectors/root.selectors";
+import AppearanceListing from "../../presentation/AppearanceListing/AppearanceListing";
 
 interface IStoreProps {
   articles: INewsArticle[];
+  hasAllAppearances: boolean;
+  hasAppearancesSection: boolean;
+  isAppearancesLoading: boolean;
+  upcomingAppearances: IAppearance[];
 }
 
 interface IDispatchProps {
+  fetchAppearances: ActionCreator<{}>;
   fetchLatestNews: ActionCreator<{}>;
 }
 
@@ -46,8 +53,32 @@ class IndexRoute extends React.Component<IProps> {
     }
   }
 
+  public componentDidMount() {
+    if (
+      this.props.hasAppearancesSection &&
+      !this.props.hasAllAppearances &&
+      !this.props.isAppearancesLoading
+    ) {
+      this.props.fetchAppearances({});
+    }
+  }
+
+  public componentDidUpdate() {
+    if (
+      this.props.hasAppearancesSection &&
+      !this.props.hasAllAppearances &&
+      !this.props.isAppearancesLoading
+    ) {
+      this.props.fetchAppearances({});
+    }
+  }
+
   public render() {
     const { formatMessage } = this.props.intl;
+
+    const hasAppearancesSection =
+      this.props.hasAppearancesSection &&
+      this.props.upcomingAppearances.length > 0;
 
     const pageTitle = formatMessage({ id: "BRAND_NAME" });
     const pageDescription = formatMessage({ id: "INDEX_DESCRIPTION" });
@@ -75,8 +106,9 @@ class IndexRoute extends React.Component<IProps> {
           <FormattedMessage id="BRAND_NAME" />
         </PageHeader>
 
-        <div className="Home">
+        <div className={cn("Home", { hasAppearancesSection })}>
           {this.renderNewsSection()}
+          {hasAppearancesSection ? this.renderAppearancesSection() : null}
           {this.renderBioSection()}
           {this.renderConnectSection()}
         </div>
@@ -98,6 +130,23 @@ class IndexRoute extends React.Component<IProps> {
         </div>
       </section>
     );
+
+  private renderAppearancesSection = () => (
+    <section className="Home-appearances">
+      <div className="Home-appearances-content">
+        <h2>
+          <FormattedMessage id="NEXT_APPEARANCE" />
+        </h2>
+
+        <div className="Home-appearances-items">
+          <AppearanceListing
+            isCondensed={true}
+            {...this.props.upcomingAppearances[0]}
+          />
+        </div>
+      </div>
+    </section>
+  );
 
   private renderBioSection = () => (
     <section className="Home-bio">
@@ -196,12 +245,17 @@ class IndexRoute extends React.Component<IProps> {
 }
 
 const mapStateToProps = (state: any) => ({
-  articles: selectors.getNewsArticlesAsArray(state)
+  articles: selectors.getNewsArticlesAsArray(state),
+  hasAllAppearances: selectors.getHasAllAppearances(state),
+  hasAppearancesSection: selectors.getFeature(state, "has-appearances-section"),
+  isAppearancesLoading: selectors.getAppearancesIsLoading(state),
+  upcomingAppearances: selectors.getUpcomingAppearances(state)
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) =>
   bindActionCreators(
     {
+      fetchAppearances: actions.fetchAppearances.started,
       fetchLatestNews: actions.fetchLatestNews.started
     },
     dispatch

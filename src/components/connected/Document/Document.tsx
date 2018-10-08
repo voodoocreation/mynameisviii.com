@@ -164,13 +164,13 @@ export default class extends Document<IProps> {
     return (
       <html lang={this.props.locale}>
         <Head>
+          <AnalyticsHead />
           <script
             dangerouslySetInnerHTML={{
               __html: `document.documentElement.classList.add("isClientRendered");`
             }}
           />
           <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDq9jm6VYSElEEKYVQOp_qiX5V2s-oyXuk" />
-          <AnalyticsHead />
 
           <Meta />
 

@@ -97,6 +97,11 @@ class Application extends App {
     store.dispatch(actions.updateOnlineStatus(navigator.onLine));
     store.dispatch(actions.setCurrentRoute(routes.Router.route));
 
+    if (!isServer()) {
+      window.addEventListener("feature", this.onReceiveFeature);
+      store.dispatch(actions.trackEvent({ event: "optimize.activate" }));
+    }
+
     if (this.serviceWorkerContainer) {
       navigator.serviceWorker.addEventListener(
         "message",
@@ -116,6 +121,8 @@ class Application extends App {
   }
 
   public componentWillUnmount() {
+    window.removeEventListener("feature", this.onReceiveFeature);
+
     if (this.serviceWorkerContainer) {
       navigator.serviceWorker.removeEventListener(
         "message",
@@ -151,6 +158,16 @@ class Application extends App {
       </Container>
     );
   }
+
+  private onReceiveFeature = (event: any) => {
+    const { store } = this.props as IProps;
+
+    if (typeof event.detail === "string") {
+      store.dispatch(actions.addFeature(event.detail));
+    } else {
+      store.dispatch(actions.addFeatures(event.detail));
+    }
+  };
 
   private onReceiveServiceWorkerPostMessage = (event: any) => {
     const { store } = this.props as IProps;

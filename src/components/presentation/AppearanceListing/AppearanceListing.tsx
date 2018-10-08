@@ -18,16 +18,21 @@ interface IState {
 
 interface IProps extends IAppearance {
   intl: InjectedIntl;
+  isCondensed?: boolean;
   onLoad?: (slug: string) => void;
 }
 
 class AppearanceListing extends React.Component<IProps, IState> {
+  public static defaultProps = {
+    isCondensed: false
+  };
+
   public state = {
     isRendered: false
   };
 
   public render() {
-    const { intl, onLoad, ...appearance } = this.props;
+    const { intl, isCondensed, onLoad, ...appearance } = this.props;
     const { isRendered } = this.state;
 
     const isCancelled = appearance.status === "EventCancelled";
@@ -43,6 +48,7 @@ class AppearanceListing extends React.Component<IProps, IState> {
         className={cn(
           "AppearanceListing",
           { isRendered },
+          { isCondensed },
           { isCancelled },
           { isPostponed },
           { isFinished }

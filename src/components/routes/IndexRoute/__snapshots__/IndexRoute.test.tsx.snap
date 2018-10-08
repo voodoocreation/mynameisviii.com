@@ -1,6 +1,793 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[routes] <IndexRoute /> renders correctly with news results 1`] = `
+exports[`[routes] <IndexRoute /> appearances section renders correctly with appearances 1`] = `
+Array [
+  <header
+    class="PageHeader"
+  >
+    <h1>
+      <span>
+        My name is Viii: a painter of frequencies and thoughts
+      </span>
+    </h1>
+  </header>,
+  <div
+    class="Home hasAppearancesSection"
+  >
+    <section
+      class="Home-appearances"
+    >
+      <div
+        class="Home-appearances-content"
+      >
+        <h2>
+          <span>
+            Next appearance
+          </span>
+        </h2>
+        <div
+          class="Home-appearances-items"
+        >
+          <article
+            class="AppearanceListing isCondensed"
+          >
+            <a
+              href="/appearances/nothing-but-yet-another-test-gig-2018-11-13"
+            >
+              <div
+                class="AppearanceListing-details"
+              >
+                <header
+                  class="AppearanceListing-header"
+                >
+                  <h3>
+                    Nothing But Yet Another Test Gig
+                  </h3>
+                </header>
+                <section
+                  class="AppearanceListing-meta"
+                >
+                  <div
+                    class="Meta AppearanceListing-date"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 24 24"
+                      width="1em"
+                    >
+                      <path
+                        d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"
+                      />
+                    </svg>
+                     
+                    <span
+                      class="Meta-label"
+                    >
+                      <span>
+                        Date
+                      </span>
+                      :
+                    </span>
+                     
+                    <span
+                      class="Meta-value"
+                    >
+                      <time
+                        class="DateTime"
+                        datetime="2018-01-20T20:00:00"
+                        title="January 20, 2018"
+                      >
+                        January 20, 2018
+                      </time>
+                    </span>
+                  </div>
+                  <div
+                    class="Meta AppearanceListing-time"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 24 24"
+                      width="1em"
+                    >
+                      <path
+                        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
+                      />
+                    </svg>
+                     
+                    <span
+                      class="Meta-label"
+                    >
+                      <span>
+                        Time
+                      </span>
+                      :
+                    </span>
+                     
+                    <span
+                      class="Meta-value"
+                    >
+                      <time
+                        class="DateTime"
+                        datetime="2018-01-20T20:00:00"
+                        title="8:00 PM"
+                      >
+                        8:00 PM
+                      </time>
+                    </span>
+                  </div>
+                  <div
+                    class="Meta AppearanceListing-location"
+                    title="Meow - 9 Edward Street, Te Aro, Wellington 6011"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 24 24"
+                      width="1em"
+                    >
+                      <path
+                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                      />
+                    </svg>
+                     
+                    <span
+                      class="Meta-label"
+                    >
+                      <span>
+                        Location
+                      </span>
+                      :
+                    </span>
+                     
+                    <span
+                      class="Meta-value"
+                    >
+                      Meow
+                    </span>
+                  </div>
+                  <div
+                    class="Meta AppearanceListing-audience"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 24 24"
+                      width="1em"
+                    >
+                      <path
+                        d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"
+                      />
+                    </svg>
+                     
+                    <span
+                      class="Meta-label"
+                    >
+                      <span>
+                        Audience
+                      </span>
+                      :
+                    </span>
+                     
+                    <span
+                      class="Meta-value"
+                    >
+                      All ages
+                    </span>
+                  </div>
+                  <div
+                    class="Meta AppearanceListing-price"
+                  >
+                     
+                    <span
+                      class="Meta-label"
+                    >
+                      <span>
+                        Price
+                      </span>
+                      :
+                    </span>
+                     
+                    <span
+                      class="Meta-value"
+                    >
+                      <span
+                        class="Price PriceRange-min"
+                      >
+                        <span>
+                          NZ$5
+                        </span>
+                      </span>
+                      –
+                      <span
+                        class="Price PriceRange-max"
+                      >
+                        <span>
+                          NZ$20
+                        </span>
+                      </span>
+                    </span>
+                  </div>
+                </section>
+              </div>
+              <figure
+                class="Image AppearanceListing-image isLoading"
+              >
+                <div
+                  class="Image-wrapper"
+                >
+                  <img
+                    alt="Nothing But Yet Another Test Gig"
+                    src="https://s3.amazonaws.com/mynameisviii-static/appearances/nothing-but-a-test-gig-2018-10-20.jpg"
+                  />
+                  <span
+                    class="Loader"
+                  >
+                    <div
+                      class="Loader-animation"
+                    >
+                      <span />
+                      <span />
+                      <span />
+                    </div>
+                  </span>
+                </div>
+              </figure>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section
+      class="Home-bio"
+    >
+      <div
+        class="Home-bio-content"
+      >
+        <h2>
+          <span>
+            Biography
+          </span>
+        </h2>
+        <p>
+          <span>
+            Viii is a New Zealand-born singer, songwriter, multi-instramentalist and producer. Known for his ability to take characteristics from his eclectic musical background to create a broad palette to paint an interesting and unique canvas.
+          </span>
+        </p>
+        <p>
+          <span>
+            Drawing from influences such as ✝✝✝ (Crosses), Nine Inch Nails, Puscifer, Banks, Etta Bond, Massive Attack, Portishead and many more, creating a colourful source of inspiration.
+          </span>
+        </p>
+        <p>
+          <span>
+            Lyrically, Viii has a distinct common ground of self-reflection and understanding, often abstracting the subject in some form – either writing symbolically or from an alternate perspective about personal life experiences or abstract thoughts.
+          </span>
+        </p>
+        <p>
+          <span>
+            Outside of the music, Viii also handles his own artistic direction and other aspects surrounding performances, such as photography, graphic design, makeup artistry and fashion.
+          </span>
+        </p>
+        <p>
+          <span>
+            Viii currently releases music under his own independent label, Voodoo Creation Records.
+          </span>
+        </p>
+      </div>
+    </section>
+    <section
+      class="Home-connect"
+    >
+      <div
+        class="Home-connect-content"
+      >
+        <h2>
+          <span>
+            Connect with Viii
+          </span>
+        </h2>
+        <div
+          class="Home-connect-websites"
+        >
+          <article
+            class="WebsiteListing"
+          >
+            <a
+              href="https://open.spotify.com/artist/59s4iD384WECjyZyUmZ18G?si=rlWWtIUNS1uvdLD5BzqxvQ"
+              rel="noopener"
+              target="_blank"
+              title="Connect with Viii on Spotify"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 496 512"
+                width="1em"
+              >
+                <path
+                  d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"
+                />
+              </svg>
+              <span
+                class="WebsiteListing-title"
+              >
+                <span>
+                  Spotify
+                </span>
+              </span>
+            </a>
+          </article>
+          <article
+            class="WebsiteListing"
+          >
+            <a
+              href="https://facebook.com/mynameisviii"
+              rel="noopener"
+              target="_blank"
+              title="Connect with Viii on Facebook"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 448 512"
+                width="1em"
+              >
+                <path
+                  d="M448 80v352c0 26.5-21.5 48-48 48h-85.3V302.8h60.6l8.7-67.6h-69.3V192c0-19.6 5.4-32.9 33.5-32.9H384V98.7c-6.2-.8-27.4-2.7-52.2-2.7-51.6 0-87 31.5-87 89.4v49.9H184v67.6h60.9V480H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48z"
+                />
+              </svg>
+              <span
+                class="WebsiteListing-title"
+              >
+                <span>
+                  Facebook
+                </span>
+              </span>
+            </a>
+          </article>
+          <article
+            class="WebsiteListing"
+          >
+            <a
+              href="https://twitter.com/mynameisviii"
+              rel="noopener"
+              target="_blank"
+              title="Connect with Viii on Twitter"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+              >
+                <path
+                  d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
+                />
+              </svg>
+              <span
+                class="WebsiteListing-title"
+              >
+                <span>
+                  Twitter
+                </span>
+              </span>
+            </a>
+          </article>
+          <article
+            class="WebsiteListing"
+          >
+            <a
+              href="https://instagram.com/mynameisviii"
+              rel="noopener"
+              target="_blank"
+              title="Connect with Viii on Instagram"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 448 512"
+                width="1em"
+              >
+                <path
+                  d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
+                />
+              </svg>
+              <span
+                class="WebsiteListing-title"
+              >
+                <span>
+                  Instagram
+                </span>
+              </span>
+            </a>
+          </article>
+          <article
+            class="WebsiteListing"
+          >
+            <a
+              href="https://soundcloud.com/iamviii"
+              rel="noopener"
+              target="_blank"
+              title="Connect with Viii on SoundCloud"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 640 512"
+                width="1em"
+              >
+                <path
+                  d="M111.4 256.3l5.8 65-5.8 68.3c-.3 2.5-2.2 4.4-4.4 4.4s-4.2-1.9-4.2-4.4l-5.6-68.3 5.6-65c0-2.2 1.9-4.2 4.2-4.2 2.2 0 4.1 2 4.4 4.2zm21.4-45.6c-2.8 0-4.7 2.2-5 5l-5 105.6 5 68.3c.3 2.8 2.2 5 5 5 2.5 0 4.7-2.2 4.7-5l5.8-68.3-5.8-105.6c0-2.8-2.2-5-4.7-5zm25.5-24.1c-3.1 0-5.3 2.2-5.6 5.3l-4.4 130 4.4 67.8c.3 3.1 2.5 5.3 5.6 5.3 2.8 0 5.3-2.2 5.3-5.3l5.3-67.8-5.3-130c0-3.1-2.5-5.3-5.3-5.3zM7.2 283.2c-1.4 0-2.2 1.1-2.5 2.5L0 321.3l4.7 35c.3 1.4 1.1 2.5 2.5 2.5s2.2-1.1 2.5-2.5l5.6-35-5.6-35.6c-.3-1.4-1.1-2.5-2.5-2.5zm23.6-21.9c-1.4 0-2.5 1.1-2.5 2.5l-6.4 57.5 6.4 56.1c0 1.7 1.1 2.8 2.5 2.8s2.5-1.1 2.8-2.5l7.2-56.4-7.2-57.5c-.3-1.4-1.4-2.5-2.8-2.5zm25.3-11.4c-1.7 0-3.1 1.4-3.3 3.3L47 321.3l5.8 65.8c.3 1.7 1.7 3.1 3.3 3.1 1.7 0 3.1-1.4 3.1-3.1l6.9-65.8-6.9-68.1c0-1.9-1.4-3.3-3.1-3.3zm25.3-2.2c-1.9 0-3.6 1.4-3.6 3.6l-5.8 70 5.8 67.8c0 2.2 1.7 3.6 3.6 3.6s3.6-1.4 3.9-3.6l6.4-67.8-6.4-70c-.3-2.2-2-3.6-3.9-3.6zm241.4-110.9c-1.1-.8-2.8-1.4-4.2-1.4-2.2 0-4.2.8-5.6 1.9-1.9 1.7-3.1 4.2-3.3 6.7v.8l-3.3 176.7 1.7 32.5 1.7 31.7c.3 4.7 4.2 8.6 8.9 8.6s8.6-3.9 8.6-8.6l3.9-64.2-3.9-177.5c-.4-3-2-5.8-4.5-7.2zm-26.7 15.3c-1.4-.8-2.8-1.4-4.4-1.4s-3.1.6-4.4 1.4c-2.2 1.4-3.6 3.9-3.6 6.7l-.3 1.7-2.8 160.8s0 .3 3.1 65.6v.3c0 1.7.6 3.3 1.7 4.7 1.7 1.9 3.9 3.1 6.4 3.1 2.2 0 4.2-1.1 5.6-2.5 1.7-1.4 2.5-3.3 2.5-5.6l.3-6.7 3.1-58.6-3.3-162.8c-.3-2.8-1.7-5.3-3.9-6.7zm-111.4 22.5c-3.1 0-5.8 2.8-5.8 6.1l-4.4 140.6 4.4 67.2c.3 3.3 2.8 5.8 5.8 5.8 3.3 0 5.8-2.5 6.1-5.8l5-67.2-5-140.6c-.2-3.3-2.7-6.1-6.1-6.1zm376.7 62.8c-10.8 0-21.1 2.2-30.6 6.1-6.4-70.8-65.8-126.4-138.3-126.4-17.8 0-35 3.3-50.3 9.4-6.1 2.2-7.8 4.4-7.8 9.2v249.7c0 5 3.9 8.6 8.6 9.2h218.3c43.3 0 78.6-35 78.6-78.3.1-43.6-35.2-78.9-78.5-78.9zm-296.7-60.3c-4.2 0-7.5 3.3-7.8 7.8l-3.3 136.7 3.3 65.6c.3 4.2 3.6 7.5 7.8 7.5 4.2 0 7.5-3.3 7.5-7.5l3.9-65.6-3.9-136.7c-.3-4.5-3.3-7.8-7.5-7.8zm-53.6-7.8c-3.3 0-6.4 3.1-6.4 6.7l-3.9 145.3 3.9 66.9c.3 3.6 3.1 6.4 6.4 6.4 3.6 0 6.4-2.8 6.7-6.4l4.4-66.9-4.4-145.3c-.3-3.6-3.1-6.7-6.7-6.7zm26.7 3.4c-3.9 0-6.9 3.1-6.9 6.9L227 321.3l3.9 66.4c.3 3.9 3.1 6.9 6.9 6.9s6.9-3.1 6.9-6.9l4.2-66.4-4.2-141.7c0-3.9-3-6.9-6.9-6.9z"
+                />
+              </svg>
+              <span
+                class="WebsiteListing-title"
+              >
+                <span>
+                  SoundCloud
+                </span>
+              </span>
+            </a>
+          </article>
+          <article
+            class="WebsiteListing"
+          >
+            <a
+              href="https://genius.com/artists/Viii"
+              rel="noopener"
+              target="_blank"
+              title="Connect with Viii on Genius"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                preserveAspectRatio="xMidYMid meet"
+                style="vertical-align:middle"
+                viewBox="0 0 40 40"
+                width="1em"
+              >
+                <g>
+                  <path
+                    d="M9.9,10.1c-0.1,0.1-0.1,0.1-0.2,0.2C8,11.9,7,14.2,7,16.8c0,2.5,1,4.9,2.7,6.5c0.4,0.4,0.9,0.8,1.5,1.2l0,0c0,0,0.1,0,0.1,0 c0.2,0,0.3-0.1,0.3-0.3c0,0,0-0.1,0-0.1l0,0C11.2,23.1,11,22,11,20.8c0-2.7,1.1-5.1,2.8-6.9c0,0,0,0,0,0c0,0,0,0,0,0l0,0 c0,0,0.1-0.1,0.1-0.2c0,0,0,0,0,0h0v-3.5c0-0.2-0.1-0.3-0.3-0.3h-3.5l0,0C10,10,10,10,9.9,10.1z"
+                  />
+                  <path
+                    d="M20.9,10.3v2.3v0.7v0.5v0l0,0c0,1.9-1.4,3.4-3.2,3.5l0,0c-0.1,0-0.3,0.1-0.3,0.3c0,0,0,0,0,0l0,0c0,0,0,0,0,0c0,0,0,0,0,0 c0.1,0.8,0.4,1.5,0.9,2c0,0,0,0,0,0c0,0,0.1,0.1,0.1,0.1c0,0,0,0,0,0c0,0,0.1,0.1,0.1,0.1c0,0,0,0,0,0c0,0,0.1,0.1,0.1,0.1 c0,0,0,0,0,0c0,0,0.1,0,0.1,0.1c0,0,0,0,0,0c0,0,0.1,0,0.1,0.1c0,0,0,0,0.1,0c0,0,0.1,0,0.1,0.1c0,0,0,0,0.1,0c0,0,0.1,0,0.1,0 c0,0,0,0,0.1,0c0,0,0.1,0,0.1,0c0,0,0,0,0.1,0c0,0,0.1,0,0.1,0c0,0,0,0,0.1,0c0,0,0.1,0,0.1,0c0,0,0.1,0,0.1,0c0,0,0.1,0,0.1,0 c0,0,0.1,0,0.1,0c0,0,0.1,0,0.1,0c0,0,0.1,0,0.1,0c0,0,0,0,0.1,0c0,0,0.1,0,0.1,0c0,0,0,0,0.1,0c0,0,0.1,0,0.1,0c0,0,0,0,0.1,0 c0,0,0.1,0,0.1,0c0,0,0,0,0.1,0c0,0,0.1,0,0.1,0c0,0,0,0,0,0c0.1,0,0.1,0,0.2,0c0,0,0,0,0,0c0,0,0,0,0,0c0,0,0,0,0.1,0 c1.9,0,3.4-1.6,3.4-3.5v-1.7v-0.8c0-0.2,0.1-0.3,0.3-0.3h1c0.2,0,0.3-0.1,0.3-0.3c0,0,0,0,0-0.1c-0.3-1.5-1-2.9-1.9-4l0,0 C23.9,10,23.8,10,23.8,10c0,0,0,0,0,0l0,0h-1.2h-0.2h-1.1C21,10,20.9,10.1,20.9,10.3z"
+                  />
+                  <path
+                    d="M31.3,10.4C31.3,10.5,31.3,10.5,31.3,10.4L31.3,10.4c0,0.1,0,0.1,0,0.1c0,0,0,0,0,0c0.7,1.8,1.1,3.8,1.1,5.8 c0,8.9-7.2,16-16,16c-2.1,0-4-0.4-5.8-1.1l0,0c0,0-0.1,0-0.1,0c-0.2,0-0.3,0.1-0.3,0.3c0,0.1,0,0.2,0.1,0.2l0,0 C13,34.4,16.7,36,20.8,36C29.2,36,36,29.2,36,20.8c0-4.1-1.6-7.8-4.2-10.5l0,0c-0.1-0.1-0.1-0.1-0.2-0.1 C31.4,10.2,31.3,10.3,31.3,10.4z"
+                  />
+                </g>
+              </svg>
+              <span
+                class="WebsiteListing-title"
+              >
+                <span>
+                  Genius
+                </span>
+              </span>
+            </a>
+          </article>
+        </div>
+        <div
+          class="Home-connect-press"
+        >
+          <p>
+            <span>
+              For booking and press enquiries, contact
+            </span>
+             
+            <a
+              href="mailto:mgmt@mynameisviii.com"
+            >
+              mgmt@mynameisviii.com
+            </a>
+            .
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>,
+]
+`;
+
+exports[`[routes] <IndexRoute /> appearances section renders correctly with no appearances 1`] = `
+Array [
+  <header
+    class="PageHeader"
+  >
+    <h1>
+      <span>
+        My name is Viii: a painter of frequencies and thoughts
+      </span>
+    </h1>
+  </header>,
+  <div
+    class="Home"
+  >
+    <section
+      class="Home-bio"
+    >
+      <div
+        class="Home-bio-content"
+      >
+        <h2>
+          <span>
+            Biography
+          </span>
+        </h2>
+        <p>
+          <span>
+            Viii is a New Zealand-born singer, songwriter, multi-instramentalist and producer. Known for his ability to take characteristics from his eclectic musical background to create a broad palette to paint an interesting and unique canvas.
+          </span>
+        </p>
+        <p>
+          <span>
+            Drawing from influences such as ✝✝✝ (Crosses), Nine Inch Nails, Puscifer, Banks, Etta Bond, Massive Attack, Portishead and many more, creating a colourful source of inspiration.
+          </span>
+        </p>
+        <p>
+          <span>
+            Lyrically, Viii has a distinct common ground of self-reflection and understanding, often abstracting the subject in some form – either writing symbolically or from an alternate perspective about personal life experiences or abstract thoughts.
+          </span>
+        </p>
+        <p>
+          <span>
+            Outside of the music, Viii also handles his own artistic direction and other aspects surrounding performances, such as photography, graphic design, makeup artistry and fashion.
+          </span>
+        </p>
+        <p>
+          <span>
+            Viii currently releases music under his own independent label, Voodoo Creation Records.
+          </span>
+        </p>
+      </div>
+    </section>
+    <section
+      class="Home-connect"
+    >
+      <div
+        class="Home-connect-content"
+      >
+        <h2>
+          <span>
+            Connect with Viii
+          </span>
+        </h2>
+        <div
+          class="Home-connect-websites"
+        >
+          <article
+            class="WebsiteListing"
+          >
+            <a
+              href="https://open.spotify.com/artist/59s4iD384WECjyZyUmZ18G?si=rlWWtIUNS1uvdLD5BzqxvQ"
+              rel="noopener"
+              target="_blank"
+              title="Connect with Viii on Spotify"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 496 512"
+                width="1em"
+              >
+                <path
+                  d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"
+                />
+              </svg>
+              <span
+                class="WebsiteListing-title"
+              >
+                <span>
+                  Spotify
+                </span>
+              </span>
+            </a>
+          </article>
+          <article
+            class="WebsiteListing"
+          >
+            <a
+              href="https://facebook.com/mynameisviii"
+              rel="noopener"
+              target="_blank"
+              title="Connect with Viii on Facebook"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 448 512"
+                width="1em"
+              >
+                <path
+                  d="M448 80v352c0 26.5-21.5 48-48 48h-85.3V302.8h60.6l8.7-67.6h-69.3V192c0-19.6 5.4-32.9 33.5-32.9H384V98.7c-6.2-.8-27.4-2.7-52.2-2.7-51.6 0-87 31.5-87 89.4v49.9H184v67.6h60.9V480H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48z"
+                />
+              </svg>
+              <span
+                class="WebsiteListing-title"
+              >
+                <span>
+                  Facebook
+                </span>
+              </span>
+            </a>
+          </article>
+          <article
+            class="WebsiteListing"
+          >
+            <a
+              href="https://twitter.com/mynameisviii"
+              rel="noopener"
+              target="_blank"
+              title="Connect with Viii on Twitter"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+              >
+                <path
+                  d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
+                />
+              </svg>
+              <span
+                class="WebsiteListing-title"
+              >
+                <span>
+                  Twitter
+                </span>
+              </span>
+            </a>
+          </article>
+          <article
+            class="WebsiteListing"
+          >
+            <a
+              href="https://instagram.com/mynameisviii"
+              rel="noopener"
+              target="_blank"
+              title="Connect with Viii on Instagram"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 448 512"
+                width="1em"
+              >
+                <path
+                  d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
+                />
+              </svg>
+              <span
+                class="WebsiteListing-title"
+              >
+                <span>
+                  Instagram
+                </span>
+              </span>
+            </a>
+          </article>
+          <article
+            class="WebsiteListing"
+          >
+            <a
+              href="https://soundcloud.com/iamviii"
+              rel="noopener"
+              target="_blank"
+              title="Connect with Viii on SoundCloud"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 640 512"
+                width="1em"
+              >
+                <path
+                  d="M111.4 256.3l5.8 65-5.8 68.3c-.3 2.5-2.2 4.4-4.4 4.4s-4.2-1.9-4.2-4.4l-5.6-68.3 5.6-65c0-2.2 1.9-4.2 4.2-4.2 2.2 0 4.1 2 4.4 4.2zm21.4-45.6c-2.8 0-4.7 2.2-5 5l-5 105.6 5 68.3c.3 2.8 2.2 5 5 5 2.5 0 4.7-2.2 4.7-5l5.8-68.3-5.8-105.6c0-2.8-2.2-5-4.7-5zm25.5-24.1c-3.1 0-5.3 2.2-5.6 5.3l-4.4 130 4.4 67.8c.3 3.1 2.5 5.3 5.6 5.3 2.8 0 5.3-2.2 5.3-5.3l5.3-67.8-5.3-130c0-3.1-2.5-5.3-5.3-5.3zM7.2 283.2c-1.4 0-2.2 1.1-2.5 2.5L0 321.3l4.7 35c.3 1.4 1.1 2.5 2.5 2.5s2.2-1.1 2.5-2.5l5.6-35-5.6-35.6c-.3-1.4-1.1-2.5-2.5-2.5zm23.6-21.9c-1.4 0-2.5 1.1-2.5 2.5l-6.4 57.5 6.4 56.1c0 1.7 1.1 2.8 2.5 2.8s2.5-1.1 2.8-2.5l7.2-56.4-7.2-57.5c-.3-1.4-1.4-2.5-2.8-2.5zm25.3-11.4c-1.7 0-3.1 1.4-3.3 3.3L47 321.3l5.8 65.8c.3 1.7 1.7 3.1 3.3 3.1 1.7 0 3.1-1.4 3.1-3.1l6.9-65.8-6.9-68.1c0-1.9-1.4-3.3-3.1-3.3zm25.3-2.2c-1.9 0-3.6 1.4-3.6 3.6l-5.8 70 5.8 67.8c0 2.2 1.7 3.6 3.6 3.6s3.6-1.4 3.9-3.6l6.4-67.8-6.4-70c-.3-2.2-2-3.6-3.9-3.6zm241.4-110.9c-1.1-.8-2.8-1.4-4.2-1.4-2.2 0-4.2.8-5.6 1.9-1.9 1.7-3.1 4.2-3.3 6.7v.8l-3.3 176.7 1.7 32.5 1.7 31.7c.3 4.7 4.2 8.6 8.9 8.6s8.6-3.9 8.6-8.6l3.9-64.2-3.9-177.5c-.4-3-2-5.8-4.5-7.2zm-26.7 15.3c-1.4-.8-2.8-1.4-4.4-1.4s-3.1.6-4.4 1.4c-2.2 1.4-3.6 3.9-3.6 6.7l-.3 1.7-2.8 160.8s0 .3 3.1 65.6v.3c0 1.7.6 3.3 1.7 4.7 1.7 1.9 3.9 3.1 6.4 3.1 2.2 0 4.2-1.1 5.6-2.5 1.7-1.4 2.5-3.3 2.5-5.6l.3-6.7 3.1-58.6-3.3-162.8c-.3-2.8-1.7-5.3-3.9-6.7zm-111.4 22.5c-3.1 0-5.8 2.8-5.8 6.1l-4.4 140.6 4.4 67.2c.3 3.3 2.8 5.8 5.8 5.8 3.3 0 5.8-2.5 6.1-5.8l5-67.2-5-140.6c-.2-3.3-2.7-6.1-6.1-6.1zm376.7 62.8c-10.8 0-21.1 2.2-30.6 6.1-6.4-70.8-65.8-126.4-138.3-126.4-17.8 0-35 3.3-50.3 9.4-6.1 2.2-7.8 4.4-7.8 9.2v249.7c0 5 3.9 8.6 8.6 9.2h218.3c43.3 0 78.6-35 78.6-78.3.1-43.6-35.2-78.9-78.5-78.9zm-296.7-60.3c-4.2 0-7.5 3.3-7.8 7.8l-3.3 136.7 3.3 65.6c.3 4.2 3.6 7.5 7.8 7.5 4.2 0 7.5-3.3 7.5-7.5l3.9-65.6-3.9-136.7c-.3-4.5-3.3-7.8-7.5-7.8zm-53.6-7.8c-3.3 0-6.4 3.1-6.4 6.7l-3.9 145.3 3.9 66.9c.3 3.6 3.1 6.4 6.4 6.4 3.6 0 6.4-2.8 6.7-6.4l4.4-66.9-4.4-145.3c-.3-3.6-3.1-6.7-6.7-6.7zm26.7 3.4c-3.9 0-6.9 3.1-6.9 6.9L227 321.3l3.9 66.4c.3 3.9 3.1 6.9 6.9 6.9s6.9-3.1 6.9-6.9l4.2-66.4-4.2-141.7c0-3.9-3-6.9-6.9-6.9z"
+                />
+              </svg>
+              <span
+                class="WebsiteListing-title"
+              >
+                <span>
+                  SoundCloud
+                </span>
+              </span>
+            </a>
+          </article>
+          <article
+            class="WebsiteListing"
+          >
+            <a
+              href="https://genius.com/artists/Viii"
+              rel="noopener"
+              target="_blank"
+              title="Connect with Viii on Genius"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                preserveAspectRatio="xMidYMid meet"
+                style="vertical-align:middle"
+                viewBox="0 0 40 40"
+                width="1em"
+              >
+                <g>
+                  <path
+                    d="M9.9,10.1c-0.1,0.1-0.1,0.1-0.2,0.2C8,11.9,7,14.2,7,16.8c0,2.5,1,4.9,2.7,6.5c0.4,0.4,0.9,0.8,1.5,1.2l0,0c0,0,0.1,0,0.1,0 c0.2,0,0.3-0.1,0.3-0.3c0,0,0-0.1,0-0.1l0,0C11.2,23.1,11,22,11,20.8c0-2.7,1.1-5.1,2.8-6.9c0,0,0,0,0,0c0,0,0,0,0,0l0,0 c0,0,0.1-0.1,0.1-0.2c0,0,0,0,0,0h0v-3.5c0-0.2-0.1-0.3-0.3-0.3h-3.5l0,0C10,10,10,10,9.9,10.1z"
+                  />
+                  <path
+                    d="M20.9,10.3v2.3v0.7v0.5v0l0,0c0,1.9-1.4,3.4-3.2,3.5l0,0c-0.1,0-0.3,0.1-0.3,0.3c0,0,0,0,0,0l0,0c0,0,0,0,0,0c0,0,0,0,0,0 c0.1,0.8,0.4,1.5,0.9,2c0,0,0,0,0,0c0,0,0.1,0.1,0.1,0.1c0,0,0,0,0,0c0,0,0.1,0.1,0.1,0.1c0,0,0,0,0,0c0,0,0.1,0.1,0.1,0.1 c0,0,0,0,0,0c0,0,0.1,0,0.1,0.1c0,0,0,0,0,0c0,0,0.1,0,0.1,0.1c0,0,0,0,0.1,0c0,0,0.1,0,0.1,0.1c0,0,0,0,0.1,0c0,0,0.1,0,0.1,0 c0,0,0,0,0.1,0c0,0,0.1,0,0.1,0c0,0,0,0,0.1,0c0,0,0.1,0,0.1,0c0,0,0,0,0.1,0c0,0,0.1,0,0.1,0c0,0,0.1,0,0.1,0c0,0,0.1,0,0.1,0 c0,0,0.1,0,0.1,0c0,0,0.1,0,0.1,0c0,0,0.1,0,0.1,0c0,0,0,0,0.1,0c0,0,0.1,0,0.1,0c0,0,0,0,0.1,0c0,0,0.1,0,0.1,0c0,0,0,0,0.1,0 c0,0,0.1,0,0.1,0c0,0,0,0,0.1,0c0,0,0.1,0,0.1,0c0,0,0,0,0,0c0.1,0,0.1,0,0.2,0c0,0,0,0,0,0c0,0,0,0,0,0c0,0,0,0,0.1,0 c1.9,0,3.4-1.6,3.4-3.5v-1.7v-0.8c0-0.2,0.1-0.3,0.3-0.3h1c0.2,0,0.3-0.1,0.3-0.3c0,0,0,0,0-0.1c-0.3-1.5-1-2.9-1.9-4l0,0 C23.9,10,23.8,10,23.8,10c0,0,0,0,0,0l0,0h-1.2h-0.2h-1.1C21,10,20.9,10.1,20.9,10.3z"
+                  />
+                  <path
+                    d="M31.3,10.4C31.3,10.5,31.3,10.5,31.3,10.4L31.3,10.4c0,0.1,0,0.1,0,0.1c0,0,0,0,0,0c0.7,1.8,1.1,3.8,1.1,5.8 c0,8.9-7.2,16-16,16c-2.1,0-4-0.4-5.8-1.1l0,0c0,0-0.1,0-0.1,0c-0.2,0-0.3,0.1-0.3,0.3c0,0.1,0,0.2,0.1,0.2l0,0 C13,34.4,16.7,36,20.8,36C29.2,36,36,29.2,36,20.8c0-4.1-1.6-7.8-4.2-10.5l0,0c-0.1-0.1-0.1-0.1-0.2-0.1 C31.4,10.2,31.3,10.3,31.3,10.4z"
+                  />
+                </g>
+              </svg>
+              <span
+                class="WebsiteListing-title"
+              >
+                <span>
+                  Genius
+                </span>
+              </span>
+            </a>
+          </article>
+        </div>
+        <div
+          class="Home-connect-press"
+        >
+          <p>
+            <span>
+              For booking and press enquiries, contact
+            </span>
+             
+            <a
+              href="mailto:mgmt@mynameisviii.com"
+            >
+              mgmt@mynameisviii.com
+            </a>
+            .
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>,
+]
+`;
+
+exports[`[routes] <IndexRoute /> news section renders correctly with news results 1`] = `
 Array [
   <header
     class="PageHeader"
@@ -356,7 +1143,7 @@ Array [
 ]
 `;
 
-exports[`[routes] <IndexRoute /> renders correctly with no news results 1`] = `
+exports[`[routes] <IndexRoute /> news section renders correctly with no news results 1`] = `
 Array [
   <header
     class="PageHeader"
