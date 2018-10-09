@@ -8,6 +8,10 @@ describe("[reducers] Features", () => {
     const state = reducer(model, actions.addFeature(feature));
 
     expect(state.items).toContain(feature);
+    expect(state.items).toHaveLength(1);
+
+    const state2 = reducer(state, actions.addFeature(feature));
+    expect(state2.items).toHaveLength(1);
   });
 
   it("actions.addFeatures is handled", () => {
@@ -15,6 +19,9 @@ describe("[reducers] Features", () => {
     const state = reducer(model, actions.addFeatures(features));
 
     expect(state.items).toEqual(features);
+
+    const state2 = reducer(state, actions.addFeatures(features));
+    expect(state2.items).toEqual(features);
   });
 
   it("actions.removeFeature is handled", () => {

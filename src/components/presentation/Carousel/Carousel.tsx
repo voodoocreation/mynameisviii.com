@@ -24,13 +24,13 @@ class Carousel extends React.Component<IProps, IState> {
     };
   }
 
-  public componentWillReceiveProps(nextProps: IProps) {
+  public componentDidUpdate(_: IProps, prevState: IState) {
     if (
-      nextProps.currentIndex !== undefined &&
-      nextProps.currentIndex !== this.state.currentIndex
+      this.props.currentIndex !== undefined &&
+      this.props.currentIndex !== prevState.currentIndex
     ) {
       this.setState({
-        currentIndex: nextProps.currentIndex
+        currentIndex: this.props.currentIndex
       });
     }
   }

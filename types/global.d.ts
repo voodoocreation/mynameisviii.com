@@ -29,7 +29,7 @@ interface Window {
   __NEXT_REDUX_STORE__: any;
   __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: (...args: any[]) => any;
   dataLayer: Array<{ [index: string]: any }>;
-  features?: [];
+  features: string[];
   google: {
     maps: any;
     [index: string]: any;
@@ -49,10 +49,11 @@ type TPromiseExecutor = (
 ) => void;
 
 interface IStorePorts {
-  dataLayer: Array<{}>;
   api: {
     [index: string]: any;
   };
+  dataLayer: Array<{}>;
+  features: string[];
   maps: {
     [index: string]: any;
   };

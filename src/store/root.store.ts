@@ -20,6 +20,10 @@ export default (initialState = {}, _?: any, api?: {}) => {
     typeof window.google.maps !== "undefined";
   const isDev = process.env.NODE_ENV === "development";
 
+  if (!isServer()) {
+    window.features = [];
+  }
+
   // Middleware
   const sagaMiddleware = createSagaMiddleware();
   const middleware = [sagaMiddleware];
@@ -44,6 +48,7 @@ export default (initialState = {}, _?: any, api?: {}) => {
   const saga = rootSaga({
     api: api ? api : createApiWith(ports),
     dataLayer: hasGA ? window.dataLayer : [],
+    features: !isServer() ? window.features : [],
     maps: hasMaps ? window.google.maps : undefined
   });
   store.runSagaTask = () => {

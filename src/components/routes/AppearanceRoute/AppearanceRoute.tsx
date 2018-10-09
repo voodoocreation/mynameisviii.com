@@ -42,9 +42,11 @@ class AppearanceRoute extends React.Component<IProps> {
     }
   }
 
-  public componentWillMount() {
-    if (this.props.appearance && !this.props.currentLocation) {
-      this.props.geocodeCurrentAppearanceAddress({});
+  constructor(props: IProps) {
+    super(props);
+
+    if (props.appearance && !props.currentLocation) {
+      props.geocodeCurrentAppearanceAddress({});
     }
   }
 

@@ -12,6 +12,7 @@ export default (fromTestStore = {}, fromTestPorts = {}) => {
     {
       api: {},
       dataLayer: g.dataLayer,
+      features: g.features,
       maps: g.google.maps
     },
     fromTestPorts

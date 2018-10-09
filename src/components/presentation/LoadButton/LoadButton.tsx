@@ -23,8 +23,10 @@ export default class LoadButton extends React.Component<IProps> {
 
   private buttonRef: React.RefObject<Button> = React.createRef();
 
-  public componentWillMount() {
-    if (!isServer() && this.props.isScrollLoadEnabled) {
+  constructor(props: IProps) {
+    super(props);
+
+    if (!isServer() && props.isScrollLoadEnabled) {
       window.addEventListener("scroll", this.onWindowScroll);
     }
   }
@@ -33,19 +35,17 @@ export default class LoadButton extends React.Component<IProps> {
     this.tryLoad();
   }
 
-  public componentWillReceiveProps(nextProps: IProps) {
+  public componentDidUpdate(prevProps: IProps) {
     if (!isServer()) {
-      if (!this.props.isScrollLoadEnabled && nextProps.isScrollLoadEnabled) {
+      if (!prevProps.isScrollLoadEnabled && this.props.isScrollLoadEnabled) {
         window.addEventListener("scroll", this.onWindowScroll);
       }
 
-      if (this.props.isScrollLoadEnabled && !nextProps.isScrollLoadEnabled) {
+      if (prevProps.isScrollLoadEnabled && !this.props.isScrollLoadEnabled) {
         window.removeEventListener("scroll", this.onWindowScroll);
       }
     }
-  }
 
-  public componentDidUpdate() {
     this.tryLoad();
   }
 

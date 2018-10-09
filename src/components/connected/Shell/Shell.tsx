@@ -26,7 +26,9 @@ interface IProps extends IStoreProps {
 }
 
 class Shell extends React.Component<IProps> {
-  public componentWillMount() {
+  constructor(props: IProps) {
+    super(props);
+
     if (!isServer()) {
       const html = document.documentElement as HTMLHtmlElement;
       html.classList.add("isClientRendered");

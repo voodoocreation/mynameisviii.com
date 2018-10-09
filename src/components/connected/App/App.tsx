@@ -73,9 +73,11 @@ class Application extends App {
     return { pageProps, intlProps };
   }
 
-  private serviceWorkerContainer: any = undefined;
+  private readonly serviceWorkerContainer: any = undefined;
 
-  public componentWillMount() {
+  constructor(props: IProps) {
+    super(props);
+
     if (
       !isServer() &&
       "serviceWorker" in navigator &&

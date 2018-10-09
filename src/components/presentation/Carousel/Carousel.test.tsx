@@ -42,7 +42,7 @@ describe("[presentation] <Carousel />", () => {
     const { actual } = setup(mount, { onSlideChange: jest.fn() });
 
     expect(actual.find(".Carousel-page.isSelected").text()).toBe("1");
-    actual.setProps({ currentIndex: 1 });
+    actual.setProps({ currentIndex: 1 }).update();
     expect(actual.find(".Carousel-slides").prop("style").transform).toBe(
       "translate3d(-100%, 0, 0)"
     );
