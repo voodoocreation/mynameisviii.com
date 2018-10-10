@@ -247,7 +247,7 @@ class IndexRoute extends React.Component<IProps> {
 const mapStateToProps = (state: any) => ({
   articles: selectors.getNewsArticlesAsArray(state),
   hasAllAppearances: selectors.getHasAllAppearances(state),
-  hasAppearancesSection: selectors.getFeature(state, "has-appearances-section"),
+  hasAppearancesSection: selectors.hasFeature(state, "has-appearances-section"),
   isAppearancesLoading: selectors.getAppearancesIsLoading(state),
   upcomingAppearances: selectors.getUpcomingAppearances(state)
 });
