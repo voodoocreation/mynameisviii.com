@@ -553,7 +553,7 @@ exports[`[presentation] <AppearanceListing /> renders correctly with all props 1
               class="Price PriceRange-min"
             >
               <span>
-                NaN
+                NZ$10
               </span>
             </span>
           </span>

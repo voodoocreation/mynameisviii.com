@@ -243,7 +243,10 @@ describe("[containers] <App />", () => {
   describe("service worker", () => {
     it("registers when browser support exists", async () => {
       const { actual } = await setup(mount);
-      const { serviceWorkerContainer } = actual.find("App").instance();
+      const { serviceWorkerContainer } = actual
+        .childAt(0)
+        .childAt(0)
+        .instance();
 
       expect(serviceWorkerContainer).toBeDefined();
       expect(serviceWorkerContainer.register).toHaveBeenCalledWith({

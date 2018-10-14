@@ -91,7 +91,7 @@ describe("[presentation] <AppearanceListing />", () => {
         {
           availability: "sales 1 availability",
           name: "sales 1 name",
-          price: "sales 1 price",
+          price: 10,
           priceCurrency: "NZD"
         }
       ]

@@ -4,7 +4,7 @@ exports[`[containers] <Document /> renders correctly when NODE_ENV=development 1
 Array [
   <link
     as="script"
-    href="/assetPrefix/_next/static/buildId/pagespathname.js"
+    href="/assetPrefix/_next/static/buildId/pages/index.js"
     rel="preload"
   />,
   <link
@@ -135,7 +135,7 @@ exports[`[containers] <Document /> renders currectly when NODE_ENV=production 1`
 Array [
   <link
     as="script"
-    href="/assetPrefix/_next/static/buildId/pagespathname.js"
+    href="/assetPrefix/_next/static/buildId/pages/index.js"
     rel="preload"
   />,
   <link

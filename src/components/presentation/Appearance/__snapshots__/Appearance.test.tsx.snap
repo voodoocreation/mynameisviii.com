@@ -1470,7 +1470,7 @@ exports[`[presentation] <Appearance /> renders correctly with all props 1`] = `
                     class="Price"
                   >
                     <span>
-                      NaN
+                      NZ$10
                     </span>
                   </span>
                 </h3>
