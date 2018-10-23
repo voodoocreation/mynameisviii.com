@@ -13,12 +13,13 @@
   a {
     display: flex;
     flex-direction: column;
-    background: $panel-color-2;
-    border: $link-color 1px solid;
+    color: $body-color;
     border-radius: $radius;
+    background: rgba($text-color, 0.4);
+    transition: background-color 200ms ease-out;
 
     &:hover {
-      border-color: $link-color-hover;
+      background: $text-color;
     }
   }
 

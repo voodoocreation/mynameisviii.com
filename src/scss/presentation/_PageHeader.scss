@@ -1,17 +1,17 @@
 .PageHeader {
+  @include panel-1();
   @include flag-left();
 
   display: flex;
   align-items: center;
   margin: 0 (0 - $spacing) $spacing 0;
-  padding-top: $spacing / 2;
+  padding-top: ($spacing / 2);
   padding-right: $spacing;
-  padding-bottom: $spacing / 2;
-  background: $panel-color;
+  padding-bottom: ($spacing / 2);
   overflow: hidden;
 
   &::before {
-    @include bg-light();
+    @include bg-2();
     @include logo-symbol();
 
     display: inline-block;

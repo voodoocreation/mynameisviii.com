@@ -1,10 +1,11 @@
 .Button {
+  @include panel-1();
+
   display: inline-block;
   position: relative;
   padding: ($spacing / 2) $spacing;
   border: $text-color 1px solid;
   border-radius: $radius;
-  background: $panel-color;
 
   &.isLoading .Button-content {
     opacity: 0;
@@ -25,6 +26,6 @@
   }
 
   &:hover {
-    background: $panel-color-2;
+    @include panel-2();
   }
 }

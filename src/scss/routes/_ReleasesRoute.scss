@@ -1,7 +1,8 @@
 .ReleaseListings {
+  @include panel-1();
+
   margin-bottom: $spacing;
   padding: $spacing;
-  background: $panel-color;
 
   h2 {
     @include line-before-after();

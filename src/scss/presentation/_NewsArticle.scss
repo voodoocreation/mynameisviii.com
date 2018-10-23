@@ -10,9 +10,10 @@
   }
 
   &-body {
+    @include panel-1();
+
     position: relative;
     margin-bottom: $spacing;
-    background: $panel-color;
   }
 
   &-meta {
@@ -25,8 +26,12 @@
     overflow: hidden;
   }
 
-  &-contentText a {
-    text-decoration: underline;
+  &-contentText {
+    padding: $spacing 0;
+
+    a {
+      text-decoration: underline;
+    }
   }
 
   &-action {
@@ -35,9 +40,10 @@
 
   @include screen-above($screen-sm-min) {
     &-meta {
+      @include panel-2();
+
       position: absolute;
       padding: ($spacing / 2) $spacing;
-      background: $panel-color-2;
       transform: translate3d(0, -100%, 0);
 
       > * {
@@ -49,10 +55,10 @@
       }
 
       &::before {
+        @include panel-2();
         @include angle-after-bottom();
 
         width: ($spacing * 2);
-        background: $panel-color-2;
       }
     }
   }

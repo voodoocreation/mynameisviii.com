@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[containers] <Shell /> renders correctly on the client 1`] = `
+exports[`[connected] <Shell /> renders correctly on the client 1`] = `
 <article
   class="Page TestClassName"
 >
@@ -172,7 +172,7 @@ exports[`[containers] <Shell /> renders correctly on the client 1`] = `
 </article>
 `;
 
-exports[`[containers] <Shell /> renders correctly on the server 1`] = `
+exports[`[connected] <Shell /> renders correctly on the server 1`] = `
 <article
   class="Page TestClassName"
 >
@@ -344,7 +344,7 @@ exports[`[containers] <Shell /> renders correctly on the server 1`] = `
 </article>
 `;
 
-exports[`[containers] <Shell /> renders correctly when loading 1`] = `
+exports[`[connected] <Shell /> renders correctly when loading 1`] = `
 <article
   class="Page isLoading TestClassName"
 >

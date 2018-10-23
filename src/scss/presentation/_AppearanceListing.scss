@@ -7,10 +7,11 @@
   }
 
   a {
+    @include panel-2();
+
     display: flex;
     flex-flow: row-reverse wrap;
     position: relative;
-    background: $panel-color-2;
     overflow: hidden;
   }
 
@@ -34,7 +35,7 @@
   }
 
   &-header::after {
-    @include bg-light();
+    @include bg-2();
 
     display: block;
     height: 1px;
@@ -61,18 +62,19 @@
   }
 
   &-price {
+    @include panel-1();
+
     position: absolute;
     bottom: 0;
     right: 0;
     font-size: 24px;
     padding: ($spacing / 2) ($spacing / 2) ($spacing / 2) ($spacing / 4);
-    background: $panel-color;
 
     &::before {
+      @include panel-1();
       @include angle-before();
 
       width: ($spacing * 2);
-      background: $panel-color;
     }
   }
 

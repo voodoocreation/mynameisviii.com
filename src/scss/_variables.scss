@@ -1,15 +1,18 @@
 $aws-url: "https://s3.amazonaws.com/mynameisviii-static";
 
-$body-color: #160f20;
-$text-color: #e7ffdc;
-$link-color: #e1ffd5;
-$link-color-hover: darken($link-color, 10%);
+$body-color: #ffeaea;
+$text-color: #540008;
+$link-color: #bc1922;
+$link-color-hover: darken($text-color, 10%);
 $link-decoration: none;
-$panel-color: rgba(darken($body-color, 4%), 0.9);
-$panel-color-2: rgba($body-color, 0.95);
+$panel-base-color: #ffeaea;
+$panel-1-bg: rgba($panel-base-color, 0.6);
+$panel-1-text: $text-color;
+$panel-2-bg: rgba($panel-base-color, 0.95);
+$panel-2-text: $text-color;
 
-$bg-dark: $body-color url("#{$aws-url}/bg-dark.jpg") 0 0 fixed no-repeat;
-$bg-light: $text-color url("#{$aws-url}/bg-light.jpg") 0 0 fixed no-repeat;
+$bg-1: $body-color url("#{$aws-url}/theme/heart/sky-day.jpg") 0 0 fixed no-repeat;
+$bg-2: $text-color url("#{$aws-url}/theme/heart/heart-texture.jpg") 0 0 fixed no-repeat;
 
 $spacing: 20px;
 $radius: 3px;

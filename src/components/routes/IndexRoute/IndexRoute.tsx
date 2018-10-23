@@ -28,7 +28,6 @@ import AppearanceListing from "../../presentation/AppearanceListing/AppearanceLi
 interface IStoreProps {
   articles: INewsArticle[];
   hasAllAppearances: boolean;
-  hasAppearancesSection: boolean;
   isAppearancesLoading: boolean;
   upcomingAppearances: IAppearance[];
 }
@@ -51,34 +50,16 @@ class IndexRoute extends React.Component<IProps> {
     if (isServer || !selectors.getHasAllNewsArticles(state)) {
       store.dispatch(actions.fetchLatestNews.started({}));
     }
-  }
 
-  public componentDidMount() {
-    if (
-      this.props.hasAppearancesSection &&
-      !this.props.hasAllAppearances &&
-      !this.props.isAppearancesLoading
-    ) {
-      this.props.fetchAppearances({});
-    }
-  }
-
-  public componentDidUpdate() {
-    if (
-      this.props.hasAppearancesSection &&
-      !this.props.hasAllAppearances &&
-      !this.props.isAppearancesLoading
-    ) {
-      this.props.fetchAppearances({});
+    if (isServer || !selectors.getHasAllAppearances(state)) {
+      store.dispatch(actions.fetchAppearances.started({}));
     }
   }
 
   public render() {
     const { formatMessage } = this.props.intl;
 
-    const hasAppearancesSection =
-      this.props.hasAppearancesSection &&
-      this.props.upcomingAppearances.length > 0;
+    const hasAppearancesSection = this.props.upcomingAppearances.length > 0;
 
     const pageTitle = formatMessage({ id: "BRAND_NAME" });
     const pageDescription = formatMessage({ id: "INDEX_DESCRIPTION" });
@@ -247,7 +228,6 @@ class IndexRoute extends React.Component<IProps> {
 const mapStateToProps = (state: any) => ({
   articles: selectors.getNewsArticlesAsArray(state),
   hasAllAppearances: selectors.getHasAllAppearances(state),
-  hasAppearancesSection: selectors.hasFeature(state, "has-appearances-section"),
   isAppearancesLoading: selectors.getAppearancesIsLoading(state),
   upcomingAppearances: selectors.getUpcomingAppearances(state)
 });

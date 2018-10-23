@@ -9,8 +9,9 @@
   }
 
   .Loader {
+    @include panel-2();
+
     position: relative;
-    background: $panel-color-2;
 
     > * {
       position: absolute;

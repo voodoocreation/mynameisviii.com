@@ -17,12 +17,13 @@ html {
 }
 
 body {
-  @include bg-dark();
+  @include bg-1();
 
   width: 100%;
   height: 100%;
   font-family: "Poiret One", sans-serif;
   font-size: 16px;
+  font-weight: 600;
   color: $text-color;
   margin: 0;
   padding: $spacing;
@@ -35,14 +36,14 @@ body {
     bottom: 0;
     left: 0;
     content: "";
-    background: url("/static/img/bg-texture.gif") fixed 50% 50% repeat;
-    opacity: 0.3;
+    background: url("/static/img/bg-texture-light.gif") fixed 50% 50% repeat;
+    opacity: 0.2;
     z-index: -1;
     pointer-events: none;
   }
 
   &::after {
-    @include bg-dark();
+    @include bg-1();
 
     display: block;
     position: fixed;

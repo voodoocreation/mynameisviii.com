@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[containers] <Navigation /> renders correctly 1`] = `
+exports[`[connected] <Navigation /> renders correctly 1`] = `
 <nav
   class="Navigation"
   role="navigation"

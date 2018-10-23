@@ -22,7 +22,7 @@ const setup = (fn: any) => {
   };
 };
 
-describe("[containers] <Navigation />", () => {
+describe("[connected] <Navigation />", () => {
   it("renders correctly", () => {
     const { actual } = setup(render);
     expect(actual).toMatchSnapshot();

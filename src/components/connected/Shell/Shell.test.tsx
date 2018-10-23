@@ -29,7 +29,7 @@ const setup = (fn: any, fromTestProps?: any, fromTestStore?: any) => {
   };
 };
 
-describe("[containers] <Shell />", () => {
+describe("[connected] <Shell />", () => {
   it("renders correctly on the client", () => {
     const { actual } = setup(render);
     expect(actual).toMatchSnapshot();

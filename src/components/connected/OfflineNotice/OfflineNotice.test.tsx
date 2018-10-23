@@ -23,7 +23,7 @@ const setup = (fn: any, fromTestStore = {}) => {
   };
 };
 
-describe("[containers] <OfflineNotice />", () => {
+describe("[connected] <OfflineNotice />", () => {
   it("renders correctly when offline", () => {
     const { actual } = setup(render);
     expect(actual).toMatchSnapshot();
