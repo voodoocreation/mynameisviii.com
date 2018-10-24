@@ -35,66 +35,14 @@ Array [
     content="218519344943411"
     property="fb:page_id"
   />,
-  <meta
-    content="#160f20"
-    name="theme-color"
-  />,
-  <meta
-    content="#160f20"
-    name="msapplication-TileColor"
-  />,
-  <meta
-    content="/static/favicon/mstile-150x150.png"
-    name="msapplication-TileImage"
-  />,
   <link
-    href="/static/favicon/favicon.ico"
-    rel="icon"
+    href="/static/manifest.json"
+    rel="manifest"
   />,
   <link
     href="/static/favicon/apple-touch-icon.png"
     rel="apple-touch-icon"
     sizes="180x180"
-  />,
-  <link
-    href="/static/favicon/apple-touch-icon-152x152.png"
-    rel="apple-touch-icon"
-    sizes="152x152"
-  />,
-  <link
-    href="/static/favicon/apple-touch-icon-144x144.png"
-    rel="apple-touch-icon"
-    sizes="144x144"
-  />,
-  <link
-    href="/static/favicon/apple-touch-icon-120x120.png"
-    rel="apple-touch-icon"
-    sizes="120x120"
-  />,
-  <link
-    href="/static/favicon/apple-touch-icon-114x114.png"
-    rel="apple-touch-icon"
-    sizes="114x114"
-  />,
-  <link
-    href="/static/favicon/apple-touch-icon-76x76.png"
-    rel="apple-touch-icon"
-    sizes="76x76"
-  />,
-  <link
-    href="/static/favicon/apple-touch-icon-72x72.png"
-    rel="apple-touch-icon"
-    sizes="72x72"
-  />,
-  <link
-    href="/static/favicon/apple-touch-icon-60x60.png"
-    rel="apple-touch-icon"
-    sizes="60x60"
-  />,
-  <link
-    href="/static/favicon/apple-touch-icon-57x57.png"
-    rel="apple-touch-icon"
-    sizes="57x57"
   />,
   <link
     href="/static/favicon/favicon-32x32.png"
@@ -109,13 +57,21 @@ Array [
     type="image/png"
   />,
   <link
-    color="#160f20"
+    color="#540008"
     href="/static/favicon/safari-pinned-tab.svg"
     rel="mask-icon"
   />,
   <link
-    href="/static/manifest.json"
-    rel="manifest"
+    href="/static/favicon/favicon.ico"
+    rel="shortcut icon"
+  />,
+  <meta
+    content="#540008"
+    name="msapplication-TileColor"
+  />,
+  <meta
+    content="#ffeaea"
+    name="theme-color"
   />,
   null,
   <noscript>
@@ -166,66 +122,14 @@ Array [
     content="218519344943411"
     property="fb:page_id"
   />,
-  <meta
-    content="#160f20"
-    name="theme-color"
-  />,
-  <meta
-    content="#160f20"
-    name="msapplication-TileColor"
-  />,
-  <meta
-    content="/static/favicon/mstile-150x150.png"
-    name="msapplication-TileImage"
-  />,
   <link
-    href="/static/favicon/favicon.ico"
-    rel="icon"
+    href="/static/manifest.json"
+    rel="manifest"
   />,
   <link
     href="/static/favicon/apple-touch-icon.png"
     rel="apple-touch-icon"
     sizes="180x180"
-  />,
-  <link
-    href="/static/favicon/apple-touch-icon-152x152.png"
-    rel="apple-touch-icon"
-    sizes="152x152"
-  />,
-  <link
-    href="/static/favicon/apple-touch-icon-144x144.png"
-    rel="apple-touch-icon"
-    sizes="144x144"
-  />,
-  <link
-    href="/static/favicon/apple-touch-icon-120x120.png"
-    rel="apple-touch-icon"
-    sizes="120x120"
-  />,
-  <link
-    href="/static/favicon/apple-touch-icon-114x114.png"
-    rel="apple-touch-icon"
-    sizes="114x114"
-  />,
-  <link
-    href="/static/favicon/apple-touch-icon-76x76.png"
-    rel="apple-touch-icon"
-    sizes="76x76"
-  />,
-  <link
-    href="/static/favicon/apple-touch-icon-72x72.png"
-    rel="apple-touch-icon"
-    sizes="72x72"
-  />,
-  <link
-    href="/static/favicon/apple-touch-icon-60x60.png"
-    rel="apple-touch-icon"
-    sizes="60x60"
-  />,
-  <link
-    href="/static/favicon/apple-touch-icon-57x57.png"
-    rel="apple-touch-icon"
-    sizes="57x57"
   />,
   <link
     href="/static/favicon/favicon-32x32.png"
@@ -240,13 +144,21 @@ Array [
     type="image/png"
   />,
   <link
-    color="#160f20"
+    color="#540008"
     href="/static/favicon/safari-pinned-tab.svg"
     rel="mask-icon"
   />,
   <link
-    href="/static/manifest.json"
-    rel="manifest"
+    href="/static/favicon/favicon.ico"
+    rel="shortcut icon"
+  />,
+  <meta
+    content="#540008"
+    name="msapplication-TileColor"
+  />,
+  <meta
+    content="#ffeaea"
+    name="theme-color"
   />,
   <link
     href="/assets/main.css"
