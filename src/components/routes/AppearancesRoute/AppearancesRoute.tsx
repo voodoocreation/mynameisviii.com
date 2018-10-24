@@ -107,7 +107,7 @@ class AppearancesRoute extends React.Component<IProps, IState> {
           <meta property="og:type" content="website" />
           <meta
             property="og:image"
-            content="https://s3.amazonaws.com/mynameisviii-static/appearances-og.jpg"
+            content="https://s3.amazonaws.com/mynameisviii-static/theme/heart/og/appearances.jpg"
           />
           <meta property="og:url" content={absUrl("/appearances")} />
         </Head>

@@ -25,76 +25,15 @@ const Meta: React.SFC<{}> = () =>
       <meta property="fb:app_id" content="278225392903510" />
       <meta property="fb:page_id" content="218519344943411" />
 
-      <meta name="theme-color" content="#160f20" />
-      <meta name="msapplication-TileColor" content="#160f20" />
-      <meta
-        name="msapplication-TileImage"
-        content="/static/favicon/mstile-150x150.png"
-      />
-      <link rel="icon" href="/static/favicon/favicon.ico" />
-      <link
-        rel="apple-touch-icon"
-        sizes="180x180"
-        href="/static/favicon/apple-touch-icon.png"
-      />
-      <link
-        rel="apple-touch-icon"
-        sizes="152x152"
-        href="/static/favicon/apple-touch-icon-152x152.png"
-      />
-      <link
-        rel="apple-touch-icon"
-        sizes="144x144"
-        href="/static/favicon/apple-touch-icon-144x144.png"
-      />
-      <link
-        rel="apple-touch-icon"
-        sizes="120x120"
-        href="/static/favicon/apple-touch-icon-120x120.png"
-      />
-      <link
-        rel="apple-touch-icon"
-        sizes="114x114"
-        href="/static/favicon/apple-touch-icon-114x114.png"
-      />
-      <link
-        rel="apple-touch-icon"
-        sizes="76x76"
-        href="/static/favicon/apple-touch-icon-76x76.png"
-      />
-      <link
-        rel="apple-touch-icon"
-        sizes="72x72"
-        href="/static/favicon/apple-touch-icon-72x72.png"
-      />
-      <link
-        rel="apple-touch-icon"
-        sizes="60x60"
-        href="/static/favicon/apple-touch-icon-60x60.png"
-      />
-      <link
-        rel="apple-touch-icon"
-        sizes="57x57"
-        href="/static/favicon/apple-touch-icon-57x57.png"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="32x32"
-        href="/static/favicon/favicon-32x32.png"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="16x16"
-        href="/static/favicon/favicon-16x16.png"
-      />
-      <link
-        rel="mask-icon"
-        href="/static/favicon/safari-pinned-tab.svg"
-        color="#160f20"
-      />
       <link rel="manifest" href="/static/manifest.json" />
+
+      <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png" />
+      <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png" />
+      <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#540008" />
+      <link rel="shortcut icon" href="/static/favicon/favicon.ico" />
+      <meta name="msapplication-TileColor" content="#540008" />
+      <meta name="theme-color" content="#ffeaea" />
     </React.Fragment>
   ) as React.ReactElement<any>;
 

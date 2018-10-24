@@ -77,7 +77,7 @@ class IndexRoute extends React.Component<IProps> {
           <meta property="og:type" content="website" />
           <meta
             property="og:image"
-            content="https://s3.amazonaws.com/mynameisviii-static/homepage-og.jpg"
+            content="https://s3.amazonaws.com/mynameisviii-static/theme/heart/og/home.jpg"
           />
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />

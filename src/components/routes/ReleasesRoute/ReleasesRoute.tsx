@@ -101,7 +101,7 @@ class ReleasesRoute extends React.Component<IProps, IState> {
           <meta property="og:type" content="website" />
           <meta
             property="og:image"
-            content="https://s3.amazonaws.com/mynameisviii-static/releases-og.jpg"
+            content="https://s3.amazonaws.com/mynameisviii-static/theme/heart/og/releases.jpg"
           />
           <meta property="og:url" content={absUrl("/releases")} />
         </Head>

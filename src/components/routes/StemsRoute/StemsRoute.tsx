@@ -99,7 +99,7 @@ class StemsRoute extends React.Component<IProps, IState> {
           <meta property="og:type" content="website" />
           <meta
             property="og:image"
-            content="https://s3.amazonaws.com/mynameisviii-static/stems-og.jpg"
+            content="https://s3.amazonaws.com/mynameisviii-static/theme/heart/og/stems.jpg"
           />
           <meta property="og:url" content={absUrl("/stems")} />
         </Head>
