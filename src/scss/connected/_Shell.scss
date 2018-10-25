@@ -5,16 +5,20 @@
   &-body {
     height: 100%;
   }
+}
 
-  .PageLoader {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate3d(-50%, -50%, 0);
+.PageLoader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
 
-    .Loader-animation {
-      width: 60px;
-      height: 60px;
-    }
+  .Loader-animation {
+    width: 60px;
+    height: 60px;
+  }
+
+  span {
+    @include panel-1();
   }
 }

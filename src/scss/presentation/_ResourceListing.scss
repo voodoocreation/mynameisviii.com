@@ -11,15 +11,16 @@
   }
 
   a {
+    @include panel-2();
+
     display: flex;
     flex-direction: column;
     color: $body-color;
     border-radius: $radius;
-    background: rgba($text-color, 0.4);
     transition: background-color 200ms ease-out;
 
     &:hover {
-      background: $text-color;
+      background: $panel-base-color;
     }
   }
 

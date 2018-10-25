@@ -99,7 +99,7 @@
 
   @include screen-below($screen-xs-max) {
     ul {
-      @include panel-2();
+      @include panel-1();
 
       flex-direction: column;
       position: fixed;

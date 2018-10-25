@@ -5,8 +5,6 @@
   z-index: 1;
 
   @include screen-below($screen-xs-max) {
-    @include panel-2();
-
     display: flex;
     align-items: center;
     top: $spacing;
@@ -15,7 +13,7 @@
     padding: ($spacing / 2) ($spacing / 2) ($spacing / 2) $spacing;
 
     &::after {
-      @include panel-2();
+      @include panel-1();
 
       display: block;
       position: absolute;

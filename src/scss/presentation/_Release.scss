@@ -93,11 +93,11 @@
       }
 
       &:nth-child(odd) {
-        background: darken($panel-2-bg, 2%);
+        @include panel-1();
       }
 
       &:nth-child(even) {
-        background: $panel-2-bg;
+        @include panel-2();
       }
     }
 
