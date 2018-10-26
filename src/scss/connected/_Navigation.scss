@@ -99,8 +99,6 @@
 
   @include screen-below($screen-xs-max) {
     ul {
-      @include panel-1();
-
       flex-direction: column;
       position: fixed;
       top: $banner-size-small + ($spacing * 2);
@@ -109,6 +107,7 @@
       left: 0;
       line-height: 0.9;
       padding: $spacing;
+      background: rgba($panel-base-color, 0.8);
       opacity: 0;
       transform: translate3d(-120%, 0, 0);
       transition: transform 200ms ease-out, opacity 200ms ease-out;

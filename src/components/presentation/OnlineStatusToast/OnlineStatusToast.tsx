@@ -21,6 +21,13 @@ class OnlineStatusToast extends React.Component<IProps, IState> {
     };
   }
 
+  public shouldComponentUpdate(nextProps: IProps, nextState: IState) {
+    return (
+      nextProps.isOnline !== this.props.isOnline ||
+      nextState.isVisible !== this.state.isVisible
+    );
+  }
+
   public componentDidUpdate(prevProps: IProps) {
     if (this.props.isOnline !== prevProps.isOnline) {
       this.setState({
