@@ -19,13 +19,24 @@ export const getReleasesAsArray = createSelector(getReleases, releases =>
 );
 
 export const getReleasesByType = createSelector(getReleasesAsArray, releases =>
-  releases.reduce((acc: { [index: string]: any }, curr: IRelease) => {
+  releases.reduce((acc: { [index: string]: IRelease[] }, curr: IRelease) => {
     if (!acc[curr.type]) {
       acc[curr.type] = [];
     }
     acc[curr.type].push(curr);
     return acc;
   }, {})
+);
+
+export const getSortedReleasesByType = createSelector(
+  getReleasesByType,
+  ({ album, ep, single, remix }) => ({
+    album,
+    ep,
+    single,
+    // tslint:disable-next-line
+    remix
+  })
 );
 
 export const getCurrentReleaseSlug = (state: IRootReducers) =>

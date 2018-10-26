@@ -21,7 +21,7 @@ describe("[api] fetchResources()", () => {
       limit: 1
     });
     expect(response.ok).toBe(true);
-    expect(response.data.items).toHaveLength(6);
+    expect(response.data.items).toHaveLength(resources.Items.length);
   });
 
   it("handles request failure correctly", async () => {

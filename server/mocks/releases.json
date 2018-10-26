@@ -289,8 +289,100 @@
         }
       ],
       "Length": "9:41"
+    },
+    {
+      "Artist": {
+        "Name": "Viii",
+        "Url": "https://open.spotify.com/artist/59s4iD384WECjyZyUmZ18G?si=YB4Ap1yuQHmQgOue6MrSTQ"
+      },
+      "BuyList": [
+        {
+          "Platform": "itunes",
+          "Url": "https://itunes.apple.com/album/lovedecay-lovesong-single/1212550755?app=itunes"
+        },
+        {
+          "Platform": "amazon",
+          "Url": "http://a.co/81x0jZT"
+        },
+        {
+          "Platform": "google",
+          "Url": "https://play.google.com/store/music/album/Viii_Lovedecay_Lovesong?id=Bw6ti5fc6x5q5mrtp257ouieocy"
+        }
+      ],
+      "Description": "<p><em>HEART</em> is the debut EP, and first in a trilogy of three EPs.</p><p>This collection of songs is a journey through different experiences of relationships and heartbreak, told from varying points of view. Musically, <em>HEART</em> has a dynamic sonic palette with contrasting elements, influenced by a multitude of genres</p>",
+      "Genre": "Goth/Electronic",
+      "Images": [
+        {
+          "ImageUrl": "https://s3.amazonaws.com/mynameisviii-static/releases/heart-front.jpg",
+          "Title": "Front artwork"
+        },
+        {
+          "ImageUrl": "https://s3.amazonaws.com/mynameisviii-static/releases/heart-back.jpg",
+          "Title": "Rear artwork with tracklist"
+        }
+      ],
+      "IsActive": "y",
+      "Length": "22:09",
+      "ProductionType": "studio",
+      "RecordLabel": "Voodoo Creation Records",
+      "ReleasedOn": "2018-11-15",
+      "Slug": "heart",
+      "StreamList": [
+        {
+          "Platform": "spotify",
+          "Url": "https://open.spotify.com/album/6RcNsy2Ubn4tAvOVsBvqYr?si=PVnCiQAbQA2obLlBBKYNIw"
+        },
+        {
+          "Platform": "apple",
+          "Url": "https://itunes.apple.com/album/lovedecay-lovesong-single/1212550755?app=music"
+        },
+        {
+          "Platform": "tidal",
+          "Url": "https://tidal.com/album/71082088"
+        },
+        {
+          "Platform": "soundcloud",
+          "Url": "https://soundcloud.com/iamviii/sets/lovedecay-lovesong"
+        }
+      ],
+      "Title": "HEART",
+      "Tracklist": [
+        [
+          {
+            "Genre": "Goth/Electronic",
+            "Length": "4:12",
+            "Title": "i. lovedecay",
+            "Url": "https://open.spotify.com/track/5ryHpwWacwJvgec1muco8t?si=Vug891EJSvK_SwcjzCnxMQ"
+          },
+          {
+            "Genre": "Goth/Electronic",
+            "Length": "4:20",
+            "Title": "ii. witchlust",
+            "Url": "https://open.spotify.com/track/7tjnvja6pQUfmIAyT8FVRB?si=Aq2F8YySRpCaUtLZiYN7XQ"
+          },
+          {
+            "Genre": "Goth/Rock",
+            "Length": "4:28",
+            "Title": "iii. threadfear",
+            "Url": "https://open.spotify.com/track/7tjnvja6pQUfmIAyT8FVRB?si=Aq2F8YySRpCaUtLZiYN7XQ"
+          },
+          {
+            "Genre": "Goth/Electronic",
+            "Length": "4:06",
+            "Title": "iv. lostparasite",
+            "Url": "https://open.spotify.com/track/7tjnvja6pQUfmIAyT8FVRB?si=Aq2F8YySRpCaUtLZiYN7XQ"
+          },
+          {
+            "Genre": "Goth/Electronic",
+            "Length": "5:01",
+            "Title": "v. heartpieces",
+            "Url": "https://open.spotify.com/track/7tjnvja6pQUfmIAyT8FVRB?si=Aq2F8YySRpCaUtLZiYN7XQ"
+          }
+        ]
+      ],
+      "Type": "ep"
     }
   ],
-  "Count": 4,
-  "ScannedCount": 4
+  "Count": 5,
+  "ScannedCount": 5
 }

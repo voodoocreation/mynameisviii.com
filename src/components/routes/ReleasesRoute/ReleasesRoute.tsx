@@ -129,7 +129,7 @@ class ReleasesRoute extends React.Component<IProps, IState> {
     );
   }
 
-  private renderListingsForType = (type: string) => (
+  private renderListingsForType = (type: string) => this.props.releases[type] ? (
     <section
       className={cn("ReleaseListings", `ReleaseListings-${type}`)}
       key={type}
@@ -148,7 +148,7 @@ class ReleasesRoute extends React.Component<IProps, IState> {
         ))}
       </div>
     </section>
-  );
+  ) : null;
 
   private onListingLoad = (slug: string) => {
     this.setState({
@@ -168,7 +168,7 @@ const mapStateToProps = (state: any) => ({
   error: selectors.getReleasesError(state),
   hasAllReleases: selectors.getHasAllReleases(state),
   isLoading: selectors.getReleasesIsLoading(state),
-  releases: selectors.getReleasesByType(state),
+  releases: selectors.getSortedReleasesByType(state),
   releasesCount: selectors.getReleasesCount(state)
 });
 

@@ -20,7 +20,7 @@ describe("[api] fetchGalleries()", () => {
       startAfter: "test"
     });
     expect(response.ok).toBe(true);
-    expect(response.data.items).toHaveLength(2);
+    expect(response.data.items).toHaveLength(galleries.Items.length);
   });
 
   it("handles request failure correctly", async () => {
