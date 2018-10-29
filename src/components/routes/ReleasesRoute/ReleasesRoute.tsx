@@ -129,26 +129,27 @@ class ReleasesRoute extends React.Component<IProps, IState> {
     );
   }
 
-  private renderListingsForType = (type: string) => this.props.releases[type] ? (
-    <section
-      className={cn("ReleaseListings", `ReleaseListings-${type}`)}
-      key={type}
-    >
-      <h2>
-        <FormattedMessage id={`${type.toUpperCase()}S`} />
-      </h2>
+  private renderListingsForType = (type: string) =>
+    this.props.releases[type] ? (
+      <section
+        className={cn("ReleaseListings", `ReleaseListings-${type}`)}
+        key={type}
+      >
+        <h2>
+          <FormattedMessage id={`${type.toUpperCase()}S`} />
+        </h2>
 
-      <div className="ReleaseListings-items">
-        {this.props.releases[type].map((release: IRelease) => (
-          <ReleaseListing
-            {...release}
-            key={release.slug}
-            onLoad={this.onListingLoad}
-          />
-        ))}
-      </div>
-    </section>
-  ) : null;
+        <div className="ReleaseListings-items">
+          {this.props.releases[type].map((release: IRelease) => (
+            <ReleaseListing
+              {...release}
+              key={release.slug}
+              onLoad={this.onListingLoad}
+            />
+          ))}
+        </div>
+      </section>
+    ) : null;
 
   private onListingLoad = (slug: string) => {
     this.setState({
