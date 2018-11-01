@@ -15,7 +15,7 @@ class ErrorRoute extends React.Component<IProps> {
   public static getInitialProps({ ctx }: any) {
     const res = ctx.res;
     const err = ctx.err as Error & { statusCode: string };
-    const statusCode = res ? res.statusCode : err.statusCode;
+    const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
     const message = err && err.message ? err.message : undefined;
 
     return { message, statusCode };

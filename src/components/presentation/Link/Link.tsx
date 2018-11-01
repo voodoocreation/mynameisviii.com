@@ -9,6 +9,7 @@ interface IProps extends WithRouterProps {
   isExternal?: boolean;
   params?: {};
   prefetch?: boolean;
+  route?: string;
   [index: string]: any;
 }
 

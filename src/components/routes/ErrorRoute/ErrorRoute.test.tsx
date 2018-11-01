@@ -62,5 +62,13 @@ describe("[routes] <ErrorRoute />", () => {
       expect(props.message).toBe("Error");
       expect(props.statusCode).toBe(undefined);
     });
+
+    it("defaults to 404 when no response or error is defined", async () => {
+      const props = await ErrorRoute.getInitialProps({
+        ctx: {}
+      });
+
+      expect(props.statusCode).toBe(404);
+    });
   });
 });

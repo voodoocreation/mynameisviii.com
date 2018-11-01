@@ -3,6 +3,7 @@ import * as React from "react";
 import { MdErrorOutline } from "react-icons/md";
 import { InjectedIntl, injectIntl } from "react-intl";
 
+import { absUrl } from "../../../transformers/transformData";
 import PageHeader from "../../presentation/PageHeader/PageHeader";
 
 interface IProps {
@@ -27,6 +28,16 @@ class ErrorPage extends React.Component<IProps> {
               id: "BRAND_NAME"
             })}`}
           </title>
+
+          <meta content={this.getMessage()} name="description" />
+          <meta property="og:title" content={this.getTitle()} />
+          <meta property="og:description" content={this.getMessage()} />
+          <meta property="og:type" content="website" />
+          <meta
+            property="og:image"
+            content="https://s3.amazonaws.com/mynameisviii-static/error-og.jpg"
+          />
+          <meta property="og:url" content={absUrl("/symbol")} />
         </Head>
 
         <article className="ErrorPage">
