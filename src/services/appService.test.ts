@@ -229,7 +229,9 @@ describe("[service] App service worker", () => {
       const payload = "/test";
 
       await s.onmessage(
-        new MessageEvent("worker", { type: "changeRoute", payload } as any)
+        new MessageEvent("worker", {
+          data: { type: "changeRoute", payload }
+        } as any)
       );
 
       const cache = s.snapshot().caches[g.cacheNames.local];
