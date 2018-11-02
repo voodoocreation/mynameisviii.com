@@ -118,7 +118,7 @@ button {
 
 @include screen-above($screen-md-min) {
   body {
-    font-size: 18px;
+    font-size: 21px;
     padding-left: ($banner-size + $spacing + $spacing);
   }
 
