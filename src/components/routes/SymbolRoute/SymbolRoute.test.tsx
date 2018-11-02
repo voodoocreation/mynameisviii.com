@@ -5,9 +5,7 @@ import SymbolRoute from "./SymbolRoute";
 
 const setup = (fn: any) => {
   return {
-    actual: fn(
-      <SymbolRoute />
-    )
+    actual: fn(<SymbolRoute />)
   };
 };
 

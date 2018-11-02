@@ -19,6 +19,7 @@ g.precacheUrls = [
   "/releases",
   "/resources",
   "/stems",
+  "/symbol",
   ...assets,
   ...staticFiles
 ];
