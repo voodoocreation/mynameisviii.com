@@ -35,7 +35,7 @@ class ErrorPage extends React.Component<IProps> {
           <meta property="og:type" content="website" />
           <meta
             property="og:image"
-            content="https://s3.amazonaws.com/mynameisviii-static/error-og.jpg"
+            content="https://s3.amazonaws.com/mynameisviii-static/theme/heart/og/error.jpg"
           />
           <meta property="og:url" content={absUrl("/symbol")} />
         </Head>

@@ -2748,6 +2748,7 @@ exports[`[presentation] <Release /> updates \`isImageLoaded\` state when image h
       >
         <div
           class="Carousel-slides"
+          style="transform: translate3d(-0%, 0, 0);"
         >
           <figure
             class="Image Release-image isRendered"
@@ -3000,6 +3001,7 @@ exports[`[presentation] <Release /> updates \`isImageLoaded\` state when image h
       >
         <div
           class="Carousel-slides"
+          style="transform: translate3d(-0%, 0, 0);"
         >
           <figure
             class="Image Release-image isRendered"
