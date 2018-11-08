@@ -6,11 +6,7 @@ import createStore from "../../../store/root.store";
 import Navigation from "./Navigation";
 
 const setup = (fn: any) => {
-  const store = createStore({
-    page: {
-      isNavOpen: false
-    }
-  });
+  const store = createStore();
 
   return {
     actual: fn(

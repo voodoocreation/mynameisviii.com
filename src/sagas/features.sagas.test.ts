@@ -7,11 +7,7 @@ describe("[sagas] Features", () => {
     it("call(window.features.push)", async () => {
       const feature = "test-feature-1";
       window.features = [];
-      const { dispatch } = setupSagas({
-        features: {
-          items: []
-        }
-      });
+      const { dispatch } = setupSagas();
 
       dispatch(actions.addFeature(feature));
       expect(window.features).toEqual([feature]);
@@ -25,11 +21,7 @@ describe("[sagas] Features", () => {
     it("call(window.features.push)", async () => {
       const features = ["test-feature-1", "test-feature-2"];
       window.features = [];
-      const { dispatch } = setupSagas({
-        features: {
-          items: []
-        }
-      });
+      const { dispatch } = setupSagas();
 
       dispatch(actions.addFeatures(features));
       expect(window.features).toEqual(features);
@@ -43,11 +35,7 @@ describe("[sagas] Features", () => {
     it("call(window.features.splice)", async () => {
       const feature = "test-feature-1";
       window.features = ["test-feature-1", "test-feature-2"];
-      const { dispatch } = setupSagas({
-        features: {
-          items: []
-        }
-      });
+      const { dispatch } = setupSagas();
 
       dispatch(actions.removeFeature(feature));
       expect(window.features).toEqual(["test-feature-2"]);
@@ -58,11 +46,7 @@ describe("[sagas] Features", () => {
     it("call(window.features.splice)", async () => {
       const features = ["test-feature-1", "test-feature-2"];
       window.features = ["test-feature-1", "test-feature-2", "test-feature-3"];
-      const { dispatch } = setupSagas({
-        features: {
-          items: []
-        }
-      });
+      const { dispatch } = setupSagas();
 
       dispatch(actions.removeFeatures(features));
       expect(window.features).toEqual(["test-feature-3"]);

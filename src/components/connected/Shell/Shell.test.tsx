@@ -1,5 +1,4 @@
 import { mount, render } from "enzyme";
-import merge from "lodash.merge";
 import * as React from "react";
 import { Provider } from "react-redux";
 
@@ -11,12 +10,7 @@ const setup = (fn: any, fromTestProps?: any, fromTestStore?: any) => {
     className: "TestClassName",
     ...fromTestProps
   };
-  const store = createStore(
-    merge({
-      page: { isLoading: false },
-      ...fromTestStore
-    })
-  );
+  const store = createStore(fromTestStore);
 
   return {
     actual: fn(
@@ -49,6 +43,7 @@ describe("[connected] <Shell />", () => {
         page: { isLoading: true }
       }
     );
+    expect(actual.find(".Loader")).toHaveLength(1);
     expect(actual).toMatchSnapshot();
   });
 

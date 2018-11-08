@@ -26,6 +26,8 @@ const setup = (fn: any, fromTestStore = {}) => {
 describe("[connected] <OfflineNotice />", () => {
   it("renders correctly when offline", () => {
     const { actual } = setup(render);
+
+    expect(actual).toHaveLength(1);
     expect(actual).toMatchSnapshot();
   });
 
@@ -35,6 +37,8 @@ describe("[connected] <OfflineNotice />", () => {
         isOnline: true
       }
     });
+
+    expect(actual).toHaveLength(0);
     expect(actual).toMatchSnapshot();
   });
 });

@@ -17,17 +17,7 @@ const mockNewsData: any = camelizeKeys(news);
 
 const setup = (fn: any, fromTestStore = {}, fromTestApi?: {}) => {
   const store = createStore(
-    merge(
-      {
-        appearances: {
-          items: {}
-        },
-        news: {
-          items: {}
-        }
-      },
-      fromTestStore
-    ),
+    fromTestStore,
     {},
     merge(
       {

@@ -1,13 +1,15 @@
 import merge from "lodash.merge";
 import SagaTester from "redux-saga-tester";
 
-import rootReducer from "../reducers/root.reducers";
+import rootReducer, {
+  initialState as rootInitialState
+} from "../reducers/root.reducers";
 import rootSaga from "../sagas/root.sagas";
 
 const g: any = global;
 
 export default (fromTestStore = {}, fromTestPorts = {}) => {
-  const initialState = merge({}, fromTestStore);
+  const initialState = merge({}, rootInitialState, fromTestStore);
   const ports = merge(
     {
       api: {},
