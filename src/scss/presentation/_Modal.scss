@@ -5,10 +5,14 @@
   bottom: 0;
   left: 0;
   outline: none;
-  background: $panel-color;
+  background: rgba(#000, 0.8);
   overflow: auto;
   transition: opacity 200ms ease-out;
   z-index: $modal-index;
+
+  button {
+    color: #fff;
+  }
 
   &-overlay {
     position: absolute;

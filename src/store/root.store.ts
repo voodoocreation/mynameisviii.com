@@ -1,8 +1,11 @@
+import merge from "lodash.merge";
 import { applyMiddleware, compose, createStore, Store } from "redux";
 import createSagaMiddleware, { Task } from "redux-saga";
 
 import { isServer } from "../helpers/dom";
-import rootReducer from "../reducers/root.reducers";
+import rootReducer, {
+  initialState as rootInitialState
+} from "../reducers/root.reducers";
 import rootSaga from "../sagas/root.sagas";
 import { createApiWith, createPortsWith } from "../services/configureApi";
 
@@ -42,7 +45,7 @@ export default (initialState = {}, _?: any, api?: {}) => {
   const ports = createPortsWith();
   const store: TStore = createStore(
     rootReducer,
-    initialState,
+    merge({}, rootInitialState, initialState),
     composeEnhancers(applyMiddleware(...middleware))
   );
   const saga = rootSaga({

@@ -1,6 +1,22 @@
 {
   "Items": [
     {
+      "Action": {
+        "Route": "/releases/heart",
+        "Text": "View 'HEART'"
+      },
+      "Author": "Viii",
+      "Content": "<p></p>",
+      "CreatedAt": "2018-11-15T00:00:00",
+      "Excerpt": "The debut EP 'HEART' has now been released.",
+      "ImageUrl": "https://s3.amazonaws.com/mynameisviii-static/news/debut-ep-heart-released.jpg",
+      "IsActive": "y",
+      "OgImageUrl": "https://s3.amazonaws.com/mynameisviii-static/news/og/debut-ep-heart-released.jpg",
+      "Slug": "debut-ep-heart-released",
+      "Title": "Debut EP 'HEART' released",
+      "Type": "release"
+    },
+    {
       "Title": "New website launched",
       "Author": "Viii",
       "Excerpt": "The new official Viii website is now live!",
@@ -77,6 +93,6 @@
       "CreatedAt": "2017-03-24T00:00:00"
     }
   ],
-  "Count": 5,
-  "ScannedCount": 5
+  "Count": 6,
+  "ScannedCount": 6
 }

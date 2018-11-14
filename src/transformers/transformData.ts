@@ -81,9 +81,8 @@ export const toTitleCase = (str: string, delimiter = " ") =>
     .map((word: string) =>
       word
         .split("")
-        .map(
-          (letter: string, index: number) =>
-            index < 1 ? letter.toUpperCase() : letter
+        .map((letter: string, index: number) =>
+          index < 1 ? letter.toUpperCase() : letter
         )
         .join("")
     )

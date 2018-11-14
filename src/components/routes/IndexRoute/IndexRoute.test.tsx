@@ -4,7 +4,6 @@ import merge from "lodash.merge";
 import * as React from "react";
 import { Provider } from "react-redux";
 
-import * as actions from "../../../actions/root.actions";
 import * as selectors from "../../../selectors/root.selectors";
 import createStore from "../../../store/root.store";
 import IndexRoute from "./IndexRoute";
@@ -18,19 +17,25 @@ const mockNewsData: any = camelizeKeys(news);
 
 const setup = (fn: any, fromTestStore = {}, fromTestApi?: {}) => {
   const store = createStore(
+    fromTestStore,
+    {},
     merge(
       {
-        appearances: {
-          items: {}
-        },
-        news: {
-          items: {}
-        }
+        fetchAppearances: () => ({
+          data: {
+            items: []
+          },
+          ok: true
+        }),
+        fetchLatestNews: () => ({
+          data: {
+            items: []
+          },
+          ok: true
+        })
       },
-      fromTestStore
-    ),
-    {},
-    fromTestApi
+      fromTestApi
+    )
   );
 
   return {
@@ -114,7 +119,7 @@ describe("[routes] <IndexRoute />", () => {
       expect(selectors.getNewsArticlesAsArray(store.getState())).toEqual(items);
     });
 
-    it("doesn't fetch latest news when all news is in store", async () => {
+    it("doesn't fetch latest news when all news is in the store", async () => {
       const { store } = setup(render, {
         news: {
           hasAllItems: true,
@@ -167,18 +172,10 @@ describe("[routes] <IndexRoute />", () => {
       expect(actual).toMatchSnapshot();
     });
 
-    it("fetches appearances when the user has the feature and the store is empty", () => {
+    it("fetches appearances when rendering on the server", async () => {
       const { store } = setup(
         mount,
-        {
-          appearances: {
-            hasAllItems: false,
-            items: {}
-          },
-          features: {
-            items: ["has-appearances-section"]
-          }
-        },
+        {},
         {
           fetchAppearances: () => ({
             data: { items },
@@ -187,21 +184,20 @@ describe("[routes] <IndexRoute />", () => {
         }
       );
 
+      await IndexRoute.getInitialProps({
+        ctx: {
+          isServer: true,
+          store
+        }
+      });
+
       expect(selectors.getAppearancesAsArray(store.getState())).toEqual(items);
     });
 
-    it("fetches appearances when the feature is enabled after initial mount and the store is empty", () => {
+    it("fetches appearances when the store is empty", async () => {
       const { store } = setup(
         mount,
-        {
-          appearances: {
-            hasAllItems: false,
-            items: {}
-          },
-          features: {
-            items: []
-          }
-        },
+        {},
         {
           fetchAppearances: () => ({
             data: { items },
@@ -210,21 +206,30 @@ describe("[routes] <IndexRoute />", () => {
         }
       );
 
-      store.dispatch(actions.addFeature("has-appearances-section"));
+      await IndexRoute.getInitialProps({
+        ctx: {
+          isServer: false,
+          store
+        }
+      });
 
       expect(selectors.getAppearancesAsArray(store.getState())).toEqual(items);
     });
 
-    it("doesn't fetch appearances when the user has the feature and all appearances are in the store", () => {
+    it("doesn't fetch appearances when all appearances are in the store", async () => {
       const { store } = setup(mount, {
         appearances: {
           hasAllItems: true,
           items: {
             "test-1": items[0]
           }
-        },
-        features: {
-          items: ["has-appearances-section"]
+        }
+      });
+
+      await IndexRoute.getInitialProps({
+        ctx: {
+          isServer: false,
+          store
         }
       });
 

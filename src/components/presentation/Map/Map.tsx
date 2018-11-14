@@ -29,7 +29,7 @@ const ConnectedMap: React.SFC<IProps> = ({ children, className, ...props }) =>
 
 ConnectedMap.defaultProps = {
   disableDefaultUI: true,
-  zoom: 17,
+  zoom: 14,
   zoomControl: true
 };
 

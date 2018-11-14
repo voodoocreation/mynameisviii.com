@@ -21,7 +21,7 @@ describe("[api] fetchStems()", () => {
       limit: 1
     });
     expect(response.ok).toBe(true);
-    expect(response.data.items).toHaveLength(7);
+    expect(response.data.items).toHaveLength(stems.Items.length);
   });
 
   it("handles request failure correctly", async () => {

@@ -8,10 +8,11 @@
   }
 
   &-body {
+    @include panel-1();
+
     display: flex;
     flex-flow: row wrap;
     margin-bottom: $spacing;
-    background: $panel-color;
   }
 
   &-status {
@@ -109,7 +110,7 @@
   &.isCancelled {
     .Appearance-date::after,
     .Appearance-time::after {
-      @include bg-light();
+      @include bg-2();
 
       display: block;
       position: absolute;

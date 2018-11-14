@@ -11,14 +11,16 @@
   }
 
   a {
+    @include panel-2();
+
     display: flex;
     flex-direction: column;
-    background: $panel-color-2;
-    border: $link-color 1px solid;
+    color: $body-color;
     border-radius: $radius;
+    transition: background-color 200ms ease-out;
 
     &:hover {
-      border-color: $link-color-hover;
+      background: $panel-base-color;
     }
   }
 

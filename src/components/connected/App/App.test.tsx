@@ -52,7 +52,7 @@ const setup = async (fn: any, fromTestProps?: any) => {
 
 const g: any = global;
 
-describe("[containers] <App />", () => {
+describe("[connected] <App />", () => {
   const addEventListener = g.addEventListener;
   const removeEventListener = g.removeEventListener;
 

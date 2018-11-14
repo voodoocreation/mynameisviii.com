@@ -230,7 +230,10 @@ describe("[service] App service worker", () => {
 
       await s.onmessage(
         new MessageEvent("worker", {
-          data: { type: "changeRoute", payload }
+          data: {
+            payload,
+            type: "changeRoute"
+          }
         } as any)
       );
 

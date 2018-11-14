@@ -21,7 +21,7 @@ describe("[api] fetchAppearances()", () => {
       limit: 1
     });
     expect(response.ok).toBe(true);
-    expect(response.data.items).toHaveLength(4);
+    expect(response.data.items).toHaveLength(appearances.Items.length);
   });
 
   it("handles request failure correctly", async () => {

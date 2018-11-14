@@ -60,6 +60,7 @@
 
   a {
     display: block;
+    color: $text-color;
     transform: scale3d(1, 1, 1);
     transition: transform 200ms ease-in-out;
 
@@ -106,7 +107,7 @@
       left: 0;
       line-height: 0.9;
       padding: $spacing;
-      background: $panel-color;
+      background: rgba($panel-base-color, 0.8);
       opacity: 0;
       transform: translate3d(-120%, 0, 0);
       transition: transform 200ms ease-out, opacity 200ms ease-out;

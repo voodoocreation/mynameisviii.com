@@ -100,7 +100,7 @@ class NewsRoute extends React.Component<IProps, IState> {
           <meta property="og:type" content="website" />
           <meta
             property="og:image"
-            content="https://s3.amazonaws.com/mynameisviii-static/news-og.jpg"
+            content="https://s3.amazonaws.com/mynameisviii-static/theme/heart/og/news.jpg"
           />
           <meta property="og:url" content={absUrl("/news")} />
         </Head>

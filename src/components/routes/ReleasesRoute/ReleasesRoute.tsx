@@ -101,7 +101,7 @@ class ReleasesRoute extends React.Component<IProps, IState> {
           <meta property="og:type" content="website" />
           <meta
             property="og:image"
-            content="https://s3.amazonaws.com/mynameisviii-static/releases-og.jpg"
+            content="https://s3.amazonaws.com/mynameisviii-static/theme/heart/og/releases.jpg"
           />
           <meta property="og:url" content={absUrl("/releases")} />
         </Head>
@@ -129,26 +129,27 @@ class ReleasesRoute extends React.Component<IProps, IState> {
     );
   }
 
-  private renderListingsForType = (type: string) => (
-    <section
-      className={cn("ReleaseListings", `ReleaseListings-${type}`)}
-      key={type}
-    >
-      <h2>
-        <FormattedMessage id={`${type.toUpperCase()}S`} />
-      </h2>
+  private renderListingsForType = (type: string) =>
+    this.props.releases[type] ? (
+      <section
+        className={cn("ReleaseListings", `ReleaseListings-${type}`)}
+        key={type}
+      >
+        <h2>
+          <FormattedMessage id={`${type.toUpperCase()}S`} />
+        </h2>
 
-      <div className="ReleaseListings-items">
-        {this.props.releases[type].map((release: IRelease) => (
-          <ReleaseListing
-            {...release}
-            key={release.slug}
-            onLoad={this.onListingLoad}
-          />
-        ))}
-      </div>
-    </section>
-  );
+        <div className="ReleaseListings-items">
+          {this.props.releases[type].map((release: IRelease) => (
+            <ReleaseListing
+              {...release}
+              key={release.slug}
+              onLoad={this.onListingLoad}
+            />
+          ))}
+        </div>
+      </section>
+    ) : null;
 
   private onListingLoad = (slug: string) => {
     this.setState({
@@ -168,7 +169,7 @@ const mapStateToProps = (state: any) => ({
   error: selectors.getReleasesError(state),
   hasAllReleases: selectors.getHasAllReleases(state),
   isLoading: selectors.getReleasesIsLoading(state),
-  releases: selectors.getReleasesByType(state),
+  releases: selectors.getSortedReleasesByType(state),
   releasesCount: selectors.getReleasesCount(state)
 });
 

@@ -6,11 +6,7 @@ import createStore from "../../../store/root.store";
 import Navigation from "./Navigation";
 
 const setup = (fn: any) => {
-  const store = createStore({
-    page: {
-      isNavOpen: false
-    }
-  });
+  const store = createStore();
 
   return {
     actual: fn(
@@ -22,7 +18,7 @@ const setup = (fn: any) => {
   };
 };
 
-describe("[containers] <Navigation />", () => {
+describe("[connected] <Navigation />", () => {
   it("renders correctly", () => {
     const { actual } = setup(render);
     expect(actual).toMatchSnapshot();

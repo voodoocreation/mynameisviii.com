@@ -1,6 +1,5 @@
 import { mount, render } from "enzyme";
 import { camelizeKeys } from "humps";
-import merge from "lodash.merge";
 import * as React from "react";
 import { Provider } from "react-redux";
 
@@ -14,23 +13,8 @@ import { arrayToAssoc } from "../../../transformers/transformData";
 
 const mockData: any = camelizeKeys(news);
 
-Object.defineProperty(dom, "isAlmostInViewport", {
-  value: jest.fn(() => false)
-});
-
 const setup = (fn: any, fromTestStore = {}, fromTestApi?: {}) => {
-  const store = createStore(
-    merge(
-      {
-        news: {
-          items: {}
-        }
-      },
-      fromTestStore
-    ),
-    {},
-    fromTestApi
-  );
+  const store = createStore(fromTestStore, {}, fromTestApi);
 
   return {
     actual: fn(
@@ -43,6 +27,12 @@ const setup = (fn: any, fromTestStore = {}, fromTestApi?: {}) => {
 };
 
 describe("[routes] <NewsRoute />", () => {
+  beforeAll(() => {
+    Object.defineProperty(dom, "isAlmostInViewport", {
+      value: jest.fn(() => false)
+    });
+  });
+
   it("renders correctly", () => {
     const { actual } = setup(render, {
       news: {

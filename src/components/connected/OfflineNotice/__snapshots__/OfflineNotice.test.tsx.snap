@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[containers] <OfflineNotice /> renders correctly when offline 1`] = `
+exports[`[connected] <OfflineNotice /> renders correctly when offline 1`] = `
 <div
   class="OfflineNotice"
 >
@@ -24,4 +24,4 @@ exports[`[containers] <OfflineNotice /> renders correctly when offline 1`] = `
 </div>
 `;
 
-exports[`[containers] <OfflineNotice /> renders null when online 1`] = `null`;
+exports[`[connected] <OfflineNotice /> renders null when online 1`] = `null`;

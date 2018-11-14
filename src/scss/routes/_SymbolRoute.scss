@@ -4,9 +4,10 @@
   }
 
   section {
+    @include panel-1();
+
     margin-bottom: $spacing;
     padding: ($spacing / 2) $spacing;
-    background: $panel-color;
     overflow: hidden;
   }
 
@@ -15,7 +16,7 @@
     margin: auto;
 
     &::before {
-      @include bg-light();
+      @include bg-1();
       @include logo-symbol();
 
       display: block;

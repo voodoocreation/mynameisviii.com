@@ -99,7 +99,7 @@ class ResourcesRoute extends React.Component<IProps, IState> {
           <meta property="og:type" content="website" />
           <meta
             property="og:image"
-            content="https://s3.amazonaws.com/mynameisviii-static/resources-og.jpg"
+            content="https://s3.amazonaws.com/mynameisviii-static/theme/heart/og/resources.jpg"
           />
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />

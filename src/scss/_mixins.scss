@@ -9,15 +9,25 @@
   clip: rect(0 0 0 0);
 }
 
-@mixin bg-light {
-  background: $bg-light;
-  background-size: cover;
+@mixin bg-2 {
+  background: $bg-2;
+  background-size: contain;
   animation: pan-left infinite 90s ease-in-out;
 }
 
-@mixin bg-dark {
-  background: $bg-dark;
+@mixin bg-1 {
+  background: $bg-1;
   background-size: cover;
+}
+
+@mixin panel-1 {
+  background: $panel-1-bg;
+  color: $panel-1-text;
+}
+
+@mixin panel-2 {
+  background: $panel-2-bg;
+  color: $panel-2-text;
 }
 
 @mixin logo-name {

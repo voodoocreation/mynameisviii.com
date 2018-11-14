@@ -5,12 +5,11 @@
 
   &::before,
   &::after {
-    @include bg-light();
-
     display: block;
     content: "";
     flex-grow: 1;
     height: 1px;
+    background: $text-color;
   }
 
   .Button {

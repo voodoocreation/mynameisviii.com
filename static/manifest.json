@@ -1,11 +1,11 @@
 {
-  "name": "The official Viii website",
+  "name": "The official home of Viii",
   "short_name": "Viii",
   "start_url": "/?utm_source=homescreen&utm_medium=app&utm_campaign=homescreen",
   "display": "standalone",
-  "theme_color": "#160f20",
-  "background_color": "#160f20",
-  "description": "The official website of Viii - the artist, singer, songwriter, musician, producer and engineer.",
+  "theme_color": "#ffeaea",
+  "background_color": "#ffeaea",
+  "description": "The official home of Viii - the artist, singer, songwriter, musician, producer and engineer.",
   "icons": [
     {
       "src": "/static/favicon/android-chrome-192x192.png",

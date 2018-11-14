@@ -10,13 +10,14 @@
   }
 
   figcaption {
+    @include panel-2();
+
     position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
     text-align: center;
     padding: ($spacing / 2) $spacing;
-    background: $panel-color-2;
     transform: translate3d(0, 100%, 0);
     transition: transform 200ms ease-out;
   }
@@ -26,11 +27,12 @@
   }
 
   &-body {
+    @include panel-1();
+
     display: flex;
     flex-wrap: wrap;
     margin-bottom: $spacing;
     padding: $spacing;
-    background: $panel-color;
   }
 
   &-images {
@@ -91,11 +93,11 @@
       }
 
       &:nth-child(odd) {
-        background: darken($panel-color-2, 2%);
+        @include panel-1();
       }
 
       &:nth-child(even) {
-        background: $panel-color-2;
+        @include panel-2();
       }
     }
 
@@ -141,7 +143,7 @@
 
   @include screen-below($screen-xxs-max) {
     &-images::after {
-      @include bg-light();
+      @include bg-2();
 
       display: block;
       height: 1px;
@@ -191,7 +193,7 @@
   @include screen-above($screen-md-min) {
     &-description,
     &-tracklist {
-      font-size: 20px;
+      font-size: 18px;
     }
 
     &-tracklist-genre {
