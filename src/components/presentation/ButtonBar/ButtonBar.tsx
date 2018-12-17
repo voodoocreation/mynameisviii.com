@@ -5,11 +5,9 @@ interface IProps {
   className?: string;
 }
 
-const ButtonBar: React.SFC<IProps> = ({ children, className }) =>
-  !children
-    ? null
-    : ((
-        <div className={cn("ButtonBar", className)}>{children}</div>
-      ) as React.ReactElement<any>);
+const ButtonBar: React.FC<IProps> = ({ children, className }) =>
+  !children ? null : (
+    <div className={cn("ButtonBar", className)}>{children}</div>
+  );
 
 export default ButtonBar;

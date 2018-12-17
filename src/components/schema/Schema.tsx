@@ -7,20 +7,23 @@ interface IProps {
   [index: string]: any;
 }
 
-const Schema: React.SFC<IProps> = ({ isPretty, ...props }) =>
-  (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify(props, null, isPretty ? "  " : undefined)
-      }}
-    />
-  ) as React.ReactElement<any>;
+export default class Schema extends React.Component<IProps> {
+  public static defaultProps = {
+    "@context": "http://schema.org/",
+    "@type": "Thing",
+    isPretty: false
+  };
 
-Schema.defaultProps = {
-  "@context": "http://schema.org/",
-  "@type": "Thing",
-  isPretty: false
-};
+  public render() {
+    const { isPretty, ...props } = this.props;
 
-export default Schema;
+    return (
+      <script
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(props, null, isPretty ? "  " : undefined)
+        }}
+        type="application/ld+json"
+      />
+    );
+  }
+}
