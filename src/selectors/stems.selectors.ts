@@ -12,8 +12,10 @@ export const getStemsCount = createSelector(
   stems => Object.keys(stems).length
 );
 
-export const getStemsAsArray = createSelector(getStems, stems =>
-  assocToArray(stems).sort((a: IStem, b: IStem) => a.createdAt > b.createdAt)
+export const getStemsAsArray = createSelector(
+  getStems,
+  stems =>
+    assocToArray(stems).sort((a: IStem, b: IStem) => a.createdAt > b.createdAt)
 );
 
 export const getStemsLastEvaluatedKey = (state: IRootReducers) =>

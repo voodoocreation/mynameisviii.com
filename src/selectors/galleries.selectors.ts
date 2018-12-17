@@ -13,10 +13,12 @@ export const getGalleriesCount = createSelector(
   galleries => Object.keys(galleries).length
 );
 
-export const getGalleriesAsArray = createSelector(getGalleries, galleries =>
-  assocToArray(galleries).sort(
-    (a: IGallery, b: IGallery) => a.modifiedAt < b.modifiedAt
-  )
+export const getGalleriesAsArray = createSelector(
+  getGalleries,
+  galleries =>
+    assocToArray(galleries).sort(
+      (a: IGallery, b: IGallery) => a.modifiedAt < b.modifiedAt
+    )
 );
 
 export const getCurrentGallerySlug = (state: IRootReducers) =>

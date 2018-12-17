@@ -146,7 +146,7 @@ class Appearance extends React.Component<IProps, IState> {
               <p>{appearance.description}</p>
             </section>
 
-            {appearance.rsvpUrl ? (
+            {!isFinished && appearance.rsvpUrl ? (
               <section className="Appearance-rsvp">
                 <Link
                   className="Appearance-rsvpLink Button"

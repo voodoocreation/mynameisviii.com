@@ -13,10 +13,12 @@ export const getResourcesCount = createSelector(
   resources => Object.keys(resources).length
 );
 
-export const getResourcesAsArray = createSelector(getResources, resources =>
-  assocToArray(resources).sort(
-    (a: IResource, b: IResource) => a.createdAt > b.createdAt
-  )
+export const getResourcesAsArray = createSelector(
+  getResources,
+  resources =>
+    assocToArray(resources).sort(
+      (a: IResource, b: IResource) => a.createdAt > b.createdAt
+    )
 );
 
 export const getResourcesByType = createSelector(

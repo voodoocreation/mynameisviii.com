@@ -16,6 +16,8 @@ jest.mock("../../../../next.routes", () => ({
 
 import routes from "../../../../next.routes";
 
+import * as selectors from "../../../selectors/root.selectors";
+
 const setup = async (fn: any, fromTestProps?: any) => {
   const Component = () => <div className="PageComponent" />;
   const appProps = merge(
@@ -134,9 +136,9 @@ describe("[connected] <App />", () => {
         new CustomEvent("feature", { detail: "has-test-feature" })
       );
 
-      expect(props.store.getState().features.items).toContain(
-        "has-test-feature"
-      );
+      expect(
+        selectors.hasFeature(props.ctx.store.getState(), "has-test-feature")
+      ).toBe(true);
 
       actual.unmount();
     });
@@ -150,12 +152,12 @@ describe("[connected] <App />", () => {
         })
       );
 
-      expect(props.store.getState().features.items).toContain(
-        "has-test-feature-1"
-      );
-      expect(props.store.getState().features.items).toContain(
-        "has-test-feature-2"
-      );
+      expect(
+        selectors.hasFeature(props.ctx.store.getState(), "has-test-feature-1")
+      ).toBe(true);
+      expect(
+        selectors.hasFeature(props.ctx.store.getState(), "has-test-feature-2")
+      ).toBe(true);
 
       actual.unmount();
     });
@@ -167,7 +169,7 @@ describe("[connected] <App />", () => {
 
       routes.Router.onRouteChangeStart("/");
 
-      expect(props.store.getState().page.transitioningTo).toBe("/");
+      expect(props.ctx.store.getState().page.transitioningTo).toBe("/");
 
       actual.unmount();
     });
@@ -177,8 +179,8 @@ describe("[connected] <App />", () => {
 
       routes.Router.onRouteChangeComplete("/");
 
-      expect(props.store.getState().page.transitioningTo).toBeUndefined();
-      expect(props.store.getState().page.currentRoute).toBe("/");
+      expect(props.ctx.store.getState().page.transitioningTo).toBeUndefined();
+      expect(props.ctx.store.getState().page.currentRoute).toBe("/");
 
       actual.unmount();
     });
@@ -188,8 +190,8 @@ describe("[connected] <App />", () => {
 
       routes.Router.onRouteChangeError(new Error("Server error"), "/");
 
-      expect(props.store.getState().page.transitioningTo).toBeUndefined();
-      expect(props.store.getState().page.error).toEqual({
+      expect(props.ctx.store.getState().page.transitioningTo).toBeUndefined();
+      expect(props.ctx.store.getState().page.error).toEqual({
         message: "Error: Server error",
         status: 500
       });
@@ -263,17 +265,17 @@ describe("[connected] <App />", () => {
       expect(g.findMockCall(g.addEventListener, "online")).toBeDefined();
 
       g.dispatchEvent(new Event("offline"));
-      expect(props.store.getState().page.isOnline).toBe(false);
+      expect(props.ctx.store.getState().page.isOnline).toBe(false);
 
       g.dispatchEvent(new Event("online"));
-      expect(props.store.getState().page.isOnline).toBe(true);
+      expect(props.ctx.store.getState().page.isOnline).toBe(true);
 
       actual.unmount();
       expect(g.findMockCall(g.removeEventListener, "offline")).toBeDefined();
       expect(g.findMockCall(g.removeEventListener, "online")).toBeDefined();
 
       window.dispatchEvent(new Event("offline"));
-      expect(props.store.getState().page.isOnline).toBe(true);
+      expect(props.ctx.store.getState().page.isOnline).toBe(true);
     });
 
     it("receives messages from service worker correctly", async () => {
@@ -287,7 +289,7 @@ describe("[connected] <App />", () => {
         data: { type: "serviceWorker.activate" }
       });
       navigator.serviceWorker.dispatchEvent(event);
-      expect(props.store.getState().page.hasNewVersion).toBe(true);
+      expect(props.ctx.store.getState().page.hasNewVersion).toBe(true);
 
       actual.unmount();
       expect(
@@ -295,7 +297,7 @@ describe("[connected] <App />", () => {
       ).toBeDefined();
 
       navigator.serviceWorker.dispatchEvent(event);
-      expect(props.store.getState().page.hasNewVersion).toBe(true);
+      expect(props.ctx.store.getState().page.hasNewVersion).toBe(true);
     });
   });
 });

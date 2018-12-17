@@ -12,20 +12,24 @@ export const getReleasesCount = createSelector(
   releases => Object.keys(releases).length
 );
 
-export const getReleasesAsArray = createSelector(getReleases, releases =>
-  assocToArray(releases).sort(
-    (a: IRelease, b: IRelease) => a.releasedOn > b.releasedOn
-  )
+export const getReleasesAsArray = createSelector(
+  getReleases,
+  releases =>
+    assocToArray(releases).sort(
+      (a: IRelease, b: IRelease) => a.releasedOn > b.releasedOn
+    )
 );
 
-export const getReleasesByType = createSelector(getReleasesAsArray, releases =>
-  releases.reduce((acc: { [index: string]: IRelease[] }, curr: IRelease) => {
-    if (!acc[curr.type]) {
-      acc[curr.type] = [];
-    }
-    acc[curr.type].push(curr);
-    return acc;
-  }, {})
+export const getReleasesByType = createSelector(
+  getReleasesAsArray,
+  releases =>
+    releases.reduce((acc: { [index: string]: IRelease[] }, curr: IRelease) => {
+      if (!acc[curr.type]) {
+        acc[curr.type] = [];
+      }
+      acc[curr.type].push(curr);
+      return acc;
+    }, {})
 );
 
 export const getSortedReleasesByType = createSelector(
