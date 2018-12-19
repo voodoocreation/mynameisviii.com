@@ -1,5 +1,7 @@
 import merge from "lodash.merge";
+import { AnyAction } from "redux";
 import SagaTester from "redux-saga-tester";
+import { ActionCreator } from "typescript-fsa";
 
 import rootReducer, {
   initialState as rootInitialState
@@ -15,7 +17,7 @@ export default (fromTestStore = {}, fromTestPorts = {}) => {
       api: {},
       dataLayer: g.dataLayer,
       features: g.features,
-      maps: g.google.maps
+      maps: { ...g.google.maps }
     },
     fromTestPorts
   );
@@ -27,11 +29,12 @@ export default (fromTestStore = {}, fromTestPorts = {}) => {
   sagaTester.start(rootSaga(ports));
 
   return {
-    dispatch: (action: any) => sagaTester.dispatch(action),
-    findAction: (actionFromTest: any) =>
+    dispatch: (action: AnyAction) => sagaTester.dispatch(action),
+    filterAction: (actionFromTest: ActionCreator<any>) =>
       sagaTester
         .getCalledActions()
-        .find((action: any) => action.type === actionFromTest().type),
+        .filter(action => action.type === actionFromTest.type),
+    ports,
     sagaTester,
     store: () => sagaTester.getState()
   };

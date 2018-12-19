@@ -9,7 +9,7 @@ describe("[sagas] Galleries", () => {
 
   describe("takeLatest(actions.fetchGalleries.started)", () => {
     it("put(actions.fetchGalleries.done)", async () => {
-      const { dispatch, findAction, store } = setupSagas(
+      const { dispatch, filterAction, store } = setupSagas(
         {},
         {
           api: {
@@ -22,14 +22,13 @@ describe("[sagas] Galleries", () => {
       );
 
       dispatch(actions.fetchGalleries.started({}));
-      const doneAction = findAction(actions.fetchGalleries.done);
 
-      expect(doneAction).toBeDefined();
+      expect(filterAction(actions.fetchGalleries.done)).toHaveLength(1);
       expect(assocToArray(store().galleries.items)).toEqual(items);
     });
 
     it("put(actions.fetchGalleries.failed)", async () => {
-      const { dispatch, findAction } = setupSagas(
+      const { dispatch, filterAction } = setupSagas(
         {},
         {
           api: {
@@ -42,16 +41,16 @@ describe("[sagas] Galleries", () => {
       );
 
       dispatch(actions.fetchGalleries.started({}));
-      const failedAction = findAction(actions.fetchGalleries.failed);
+      const failedActions = filterAction(actions.fetchGalleries.failed);
 
-      expect(failedAction).toBeDefined();
-      expect(failedAction.payload.error).toBe("Bad request");
+      expect(failedActions).toHaveLength(1);
+      expect(failedActions[0].payload.error).toBe("Bad request");
     });
   });
 
   describe("takeLatest(actions.fetchMoreGalleries.started)", () => {
     it("put(actions.fetchMoreGalleries.done)", async () => {
-      const { dispatch, findAction, store } = setupSagas(
+      const { dispatch, filterAction, store } = setupSagas(
         {
           galleries: {
             items: arrayToAssoc(existingItems, "slug")
@@ -68,12 +67,11 @@ describe("[sagas] Galleries", () => {
       );
 
       dispatch(actions.fetchMoreGalleries.started({}));
-      const doneAction = findAction(actions.fetchMoreGalleries.done);
-      const trackEventAction = findAction(actions.trackEvent);
+      const trackEventActions = filterAction(actions.trackEvent);
 
-      expect(doneAction).toBeDefined();
-      expect(trackEventAction).toBeDefined();
-      expect(trackEventAction.payload).toEqual({
+      expect(filterAction(actions.fetchMoreGalleries.done)).toHaveLength(1);
+      expect(trackEventActions).toHaveLength(1);
+      expect(trackEventActions[0].payload).toEqual({
         event: "galleries.fetchedMore",
         itemCount: 2
       });
@@ -84,7 +82,7 @@ describe("[sagas] Galleries", () => {
     });
 
     it("put(actions.fetchMoreGalleries.failed)", async () => {
-      const { dispatch, findAction } = setupSagas(
+      const { dispatch, filterAction } = setupSagas(
         {
           galleries: {
             items: arrayToAssoc(existingItems, "slug")
@@ -101,16 +99,16 @@ describe("[sagas] Galleries", () => {
       );
 
       dispatch(actions.fetchMoreGalleries.started({}));
-      const failedAction = findAction(actions.fetchMoreGalleries.failed);
+      const failedActions = filterAction(actions.fetchMoreGalleries.failed);
 
-      expect(failedAction).toBeDefined();
-      expect(failedAction.payload.error).toBe("Bad request");
+      expect(failedActions).toHaveLength(1);
+      expect(failedActions[0].payload.error).toBe("Bad request");
     });
   });
 
   describe("takeLatest(actions.fetchGalleryBySlug.started)", () => {
     it("put(actions.fetchGalleryBySlug.done)", async () => {
-      const { dispatch, findAction, store } = setupSagas(
+      const { dispatch, filterAction, store } = setupSagas(
         {},
         {
           api: {
@@ -123,14 +121,13 @@ describe("[sagas] Galleries", () => {
       );
 
       dispatch(actions.fetchGalleryBySlug.started("test"));
-      const doneAction = findAction(actions.fetchGalleryBySlug.done);
 
-      expect(doneAction).toBeDefined();
+      expect(filterAction(actions.fetchGalleryBySlug.done)).toHaveLength(1);
       expect(assocToArray(store().galleries.items)).toEqual(items);
     });
 
     it("put(actions.fetchGalleryBySlug.failed)", async () => {
-      const { dispatch, findAction } = setupSagas(
+      const { dispatch, filterAction } = setupSagas(
         {},
         {
           api: {
@@ -143,10 +140,10 @@ describe("[sagas] Galleries", () => {
       );
 
       dispatch(actions.fetchGalleryBySlug.started("test"));
-      const failedAction = findAction(actions.fetchGalleryBySlug.failed);
+      const failedActions = filterAction(actions.fetchGalleryBySlug.failed);
 
-      expect(failedAction).toBeDefined();
-      expect(failedAction.payload.error).toBe("Bad request");
+      expect(failedActions).toHaveLength(1);
+      expect(failedActions[0].payload.error).toBe("Bad request");
     });
   });
 });

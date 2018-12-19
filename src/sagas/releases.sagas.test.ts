@@ -9,7 +9,7 @@ describe("[sagas] Releases", () => {
 
   describe("takeLatest(actions.fetchReleases.started)", () => {
     it("put(actions.fetchReleases.done)", async () => {
-      const { dispatch, findAction, store } = setupSagas(
+      const { dispatch, filterAction, store } = setupSagas(
         {},
         {
           api: {
@@ -22,14 +22,13 @@ describe("[sagas] Releases", () => {
       );
 
       dispatch(actions.fetchReleases.started({}));
-      const doneAction = findAction(actions.fetchReleases.done);
 
-      expect(doneAction).toBeDefined();
+      expect(filterAction(actions.fetchReleases.done)).toHaveLength(1);
       expect(assocToArray(store().releases.items)).toEqual(items);
     });
 
     it("put(actions.fetchReleases.failed)", async () => {
-      const { dispatch, findAction } = setupSagas(
+      const { dispatch, filterAction } = setupSagas(
         {},
         {
           api: {
@@ -42,16 +41,16 @@ describe("[sagas] Releases", () => {
       );
 
       dispatch(actions.fetchReleases.started({}));
-      const failedAction = findAction(actions.fetchReleases.failed);
+      const failedActions = filterAction(actions.fetchReleases.failed);
 
-      expect(failedAction).toBeDefined();
-      expect(failedAction.payload.error).toBe("Bad request");
+      expect(failedActions).toHaveLength(1);
+      expect(failedActions[0].payload.error).toBe("Bad request");
     });
   });
 
   describe("takeLatest(actions.fetchMoreReleases.started)", () => {
     it("put(actions.fetchMoreReleases.done)", async () => {
-      const { dispatch, findAction, store } = setupSagas(
+      const { dispatch, filterAction, store } = setupSagas(
         {
           releases: {
             items: arrayToAssoc(existingItems, "slug"),
@@ -73,12 +72,11 @@ describe("[sagas] Releases", () => {
       );
 
       dispatch(actions.fetchMoreReleases.started({}));
-      const doneAction = findAction(actions.fetchMoreReleases.done);
-      const trackEventAction = findAction(actions.trackEvent);
+      const trackEventActions = filterAction(actions.trackEvent);
 
-      expect(doneAction).toBeDefined();
-      expect(trackEventAction).toBeDefined();
-      expect(trackEventAction.payload).toEqual({
+      expect(filterAction(actions.fetchMoreReleases.done)).toHaveLength(1);
+      expect(trackEventActions).toHaveLength(1);
+      expect(trackEventActions[0].payload).toEqual({
         event: "releases.fetchedMore",
         itemCount: 2
       });
@@ -89,7 +87,7 @@ describe("[sagas] Releases", () => {
     });
 
     it("put(actions.fetchMoreReleases.failed)", async () => {
-      const { dispatch, findAction } = setupSagas(
+      const { dispatch, filterAction } = setupSagas(
         {
           releases: {
             items: arrayToAssoc(existingItems, "slug")
@@ -106,16 +104,16 @@ describe("[sagas] Releases", () => {
       );
 
       dispatch(actions.fetchMoreReleases.started({}));
-      const failedAction = findAction(actions.fetchMoreReleases.failed);
+      const failedActions = filterAction(actions.fetchMoreReleases.failed);
 
-      expect(failedAction).toBeDefined();
-      expect(failedAction.payload.error).toBe("Bad request");
+      expect(failedActions).toHaveLength(1);
+      expect(failedActions[0].payload.error).toBe("Bad request");
     });
   });
 
   describe("takeLatest(actions.fetchReleaseBySlug.started)", () => {
     it("put(actions.fetchReleaseBySlug.done)", async () => {
-      const { dispatch, findAction, store } = setupSagas(
+      const { dispatch, filterAction, store } = setupSagas(
         {},
         {
           api: {
@@ -128,14 +126,13 @@ describe("[sagas] Releases", () => {
       );
 
       dispatch(actions.fetchReleaseBySlug.started("test"));
-      const doneAction = findAction(actions.fetchReleaseBySlug.done);
 
-      expect(doneAction).toBeDefined();
+      expect(filterAction(actions.fetchReleaseBySlug.done)).toHaveLength(1);
       expect(assocToArray(store().releases.items)).toEqual(items);
     });
 
     it("put(actions.fetchReleaseBySlug.failed)", async () => {
-      const { dispatch, findAction } = setupSagas(
+      const { dispatch, filterAction } = setupSagas(
         {},
         {
           api: {
@@ -148,10 +145,10 @@ describe("[sagas] Releases", () => {
       );
 
       dispatch(actions.fetchReleaseBySlug.started("test"));
-      const failedAction = findAction(actions.fetchReleaseBySlug.failed);
+      const failedActions = filterAction(actions.fetchReleaseBySlug.failed);
 
-      expect(failedAction).toBeDefined();
-      expect(failedAction.payload.error).toBe("Bad request");
+      expect(failedActions).toHaveLength(1);
+      expect(failedActions[0].payload.error).toBe("Bad request");
     });
   });
 });

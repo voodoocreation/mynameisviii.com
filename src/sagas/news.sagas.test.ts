@@ -9,7 +9,7 @@ describe("[sagas] News", () => {
 
   describe("takeLatest(actions.fetchLatestNews.started)", () => {
     it("put(actions.fetchLatestNews.done)", async () => {
-      const { dispatch, findAction, store } = setupSagas(
+      const { dispatch, filterAction, store } = setupSagas(
         {},
         {
           api: {
@@ -22,14 +22,13 @@ describe("[sagas] News", () => {
       );
 
       dispatch(actions.fetchLatestNews.started({}));
-      const doneAction = findAction(actions.fetchLatestNews.done);
 
-      expect(doneAction).toBeDefined();
+      expect(filterAction(actions.fetchLatestNews.done)).toHaveLength(1);
       expect(assocToArray(store().news.items)).toEqual(items);
     });
 
     it("put(actions.fetchLatestNews.failed)", async () => {
-      const { dispatch, findAction } = setupSagas(
+      const { dispatch, filterAction } = setupSagas(
         {},
         {
           api: {
@@ -42,16 +41,16 @@ describe("[sagas] News", () => {
       );
 
       dispatch(actions.fetchLatestNews.started({}));
-      const failedAction = findAction(actions.fetchLatestNews.failed);
+      const failedActions = filterAction(actions.fetchLatestNews.failed);
 
-      expect(failedAction).toBeDefined();
-      expect(failedAction.payload.error).toBe("Bad request");
+      expect(failedActions).toHaveLength(1);
+      expect(failedActions[0].payload.error).toBe("Bad request");
     });
   });
 
   describe("takeLatest(actions.fetchMoreLatestNews.started)", () => {
     it("put(actions.fetchMoreLatestNews.done)", async () => {
-      const { dispatch, findAction, store } = setupSagas(
+      const { dispatch, filterAction, store } = setupSagas(
         {
           news: {
             items: arrayToAssoc(existingItems, "slug"),
@@ -73,12 +72,11 @@ describe("[sagas] News", () => {
       );
 
       dispatch(actions.fetchMoreLatestNews.started({}));
-      const doneAction = findAction(actions.fetchMoreLatestNews.done);
-      const trackEventAction = findAction(actions.trackEvent);
+      const trackEventActions = filterAction(actions.trackEvent);
 
-      expect(doneAction).toBeDefined();
-      expect(trackEventAction).toBeDefined();
-      expect(trackEventAction.payload).toEqual({
+      expect(filterAction(actions.fetchMoreLatestNews.done)).toHaveLength(1);
+      expect(trackEventActions).toHaveLength(1);
+      expect(trackEventActions[0].payload).toEqual({
         event: "news.fetchedMore",
         itemCount: 2
       });
@@ -89,7 +87,7 @@ describe("[sagas] News", () => {
     });
 
     it("put(actions.fetchMoreLatestNews.failed)", async () => {
-      const { dispatch, findAction } = setupSagas(
+      const { dispatch, filterAction } = setupSagas(
         {
           news: {
             items: arrayToAssoc(existingItems, "slug")
@@ -106,16 +104,16 @@ describe("[sagas] News", () => {
       );
 
       dispatch(actions.fetchMoreLatestNews.started({}));
-      const failedAction = findAction(actions.fetchMoreLatestNews.failed);
+      const failedActions = filterAction(actions.fetchMoreLatestNews.failed);
 
-      expect(failedAction).toBeDefined();
-      expect(failedAction.payload.error).toBe("Bad request");
+      expect(failedActions).toHaveLength(1);
+      expect(failedActions[0].payload.error).toBe("Bad request");
     });
   });
 
   describe("takeLatest(actions.fetchNewsArticleBySlug.started)", () => {
     it("put(actions.fetchNewsArticleBySlug.done)", async () => {
-      const { dispatch, findAction, store } = setupSagas(
+      const { dispatch, filterAction, store } = setupSagas(
         {},
         {
           api: {
@@ -128,14 +126,13 @@ describe("[sagas] News", () => {
       );
 
       dispatch(actions.fetchNewsArticleBySlug.started("test"));
-      const doneAction = findAction(actions.fetchNewsArticleBySlug.done);
 
-      expect(doneAction).toBeDefined();
+      expect(filterAction(actions.fetchNewsArticleBySlug.done)).toHaveLength(1);
       expect(assocToArray(store().news.items)).toEqual(items);
     });
 
     it("put(actions.fetchNewsArticleBySlug.failed)", async () => {
-      const { dispatch, findAction } = setupSagas(
+      const { dispatch, filterAction } = setupSagas(
         {},
         {
           api: {
@@ -148,10 +145,10 @@ describe("[sagas] News", () => {
       );
 
       dispatch(actions.fetchNewsArticleBySlug.started("test"));
-      const failedAction = findAction(actions.fetchNewsArticleBySlug.failed);
+      const failedActions = filterAction(actions.fetchNewsArticleBySlug.failed);
 
-      expect(failedAction).toBeDefined();
-      expect(failedAction.payload.error).toBe("Bad request");
+      expect(failedActions).toHaveLength(1);
+      expect(failedActions[0].payload.error).toBe("Bad request");
     });
   });
 });

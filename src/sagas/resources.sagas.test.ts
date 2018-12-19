@@ -9,7 +9,7 @@ describe("[sagas] Resources", () => {
 
   describe("takeLatest(actions.fetchResources.started)", () => {
     it("put(actions.fetchResources.done)", async () => {
-      const { dispatch, findAction, store } = setupSagas(
+      const { dispatch, filterAction, store } = setupSagas(
         {},
         {
           api: {
@@ -22,14 +22,13 @@ describe("[sagas] Resources", () => {
       );
 
       dispatch(actions.fetchResources.started({}));
-      const doneAction = findAction(actions.fetchResources.done);
 
-      expect(doneAction).toBeDefined();
+      expect(filterAction(actions.fetchResources.done)).toHaveLength(1);
       expect(assocToArray(store().resources.items)).toEqual(items);
     });
 
     it("put(actions.fetchResources.failed)", async () => {
-      const { dispatch, findAction } = setupSagas(
+      const { dispatch, filterAction } = setupSagas(
         {},
         {
           api: {
@@ -42,16 +41,16 @@ describe("[sagas] Resources", () => {
       );
 
       dispatch(actions.fetchResources.started({}));
-      const failedAction = findAction(actions.fetchResources.failed);
+      const failedActions = filterAction(actions.fetchResources.failed);
 
-      expect(failedAction).toBeDefined();
-      expect(failedAction.payload.error).toBe("Bad request");
+      expect(failedActions).toHaveLength(1);
+      expect(failedActions[0].payload.error).toBe("Bad request");
     });
   });
 
   describe("takeLatest(actions.fetchMoreResources.started)", () => {
     it("put(actions.fetchMoreResources.done)", async () => {
-      const { dispatch, findAction, store } = setupSagas(
+      const { dispatch, filterAction, store } = setupSagas(
         {
           resources: {
             items: arrayToAssoc(existingItems, "slug"),
@@ -73,12 +72,11 @@ describe("[sagas] Resources", () => {
       );
 
       dispatch(actions.fetchMoreResources.started({}));
-      const doneAction = findAction(actions.fetchMoreResources.done);
-      const trackEventAction = findAction(actions.trackEvent);
+      const trackEventActions = filterAction(actions.trackEvent);
 
-      expect(doneAction).toBeDefined();
-      expect(trackEventAction).toBeDefined();
-      expect(trackEventAction.payload).toEqual({
+      expect(filterAction(actions.fetchMoreResources.done)).toHaveLength(1);
+      expect(trackEventActions).toHaveLength(1);
+      expect(trackEventActions[0].payload).toEqual({
         event: "resources.fetchedMore",
         itemCount: 2
       });
@@ -89,7 +87,7 @@ describe("[sagas] Resources", () => {
     });
 
     it("put(actions.fetchMoreResources.failed)", async () => {
-      const { dispatch, findAction } = setupSagas(
+      const { dispatch, filterAction } = setupSagas(
         {
           resources: {
             items: arrayToAssoc(existingItems, "slug")
@@ -106,10 +104,10 @@ describe("[sagas] Resources", () => {
       );
 
       dispatch(actions.fetchMoreResources.started({}));
-      const failedAction = findAction(actions.fetchMoreResources.failed);
+      const failedActions = filterAction(actions.fetchMoreResources.failed);
 
-      expect(failedAction).toBeDefined();
-      expect(failedAction.payload.error).toBe("Bad request");
+      expect(failedActions).toHaveLength(1);
+      expect(failedActions[0].payload.error).toBe("Bad request");
     });
   });
 });

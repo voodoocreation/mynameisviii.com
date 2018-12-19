@@ -14,7 +14,7 @@ global.google = {
       trigger: jest.fn()
     },
     Geocoder: jest.fn(() => ({
-      geocode: jest.fn((_, callback) =>
+      geocode: (_, callback) =>
         callback(
           [
             {
@@ -25,7 +25,6 @@ global.google = {
           ],
           "OK"
         )
-      )
     })),
     GeocoderStatus: {
       OK: "OK",
@@ -82,6 +81,11 @@ Object.defineProperty(navigator, "serviceWorker", {
   },
   writable: true
 });
+
+global.mockWithData = data => jest.fn(() => ({ data, ok: true }));
+global.mockWithError = message => jest.fn(() => ({ message, ok: false }));
+global.mockWithPayload = () =>
+  jest.fn(payload => ({ data: payload, ok: true }));
 
 global.findMockCall = (mockFn, ...args) =>
   mockFn.mock.calls.find(call =>

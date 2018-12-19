@@ -9,7 +9,7 @@ describe("[sagas] Stems", () => {
 
   describe("takeLatest(actions.fetchStems.started)", () => {
     it("put(actions.fetchStems.done)", async () => {
-      const { dispatch, findAction, store } = setupSagas(
+      const { dispatch, filterAction, store } = setupSagas(
         {},
         {
           api: {
@@ -22,14 +22,13 @@ describe("[sagas] Stems", () => {
       );
 
       dispatch(actions.fetchStems.started({}));
-      const doneAction = findAction(actions.fetchStems.done);
 
-      expect(doneAction).toBeDefined();
+      expect(filterAction(actions.fetchStems.done)).toHaveLength(1);
       expect(assocToArray(store().stems.items)).toEqual(items);
     });
 
     it("put(actions.fetchStems.failed)", async () => {
-      const { dispatch, findAction } = setupSagas(
+      const { dispatch, filterAction } = setupSagas(
         {},
         {
           api: {
@@ -42,16 +41,16 @@ describe("[sagas] Stems", () => {
       );
 
       dispatch(actions.fetchStems.started({}));
-      const failedAction = findAction(actions.fetchStems.failed);
+      const failedActions = filterAction(actions.fetchStems.failed);
 
-      expect(failedAction).toBeDefined();
-      expect(failedAction.payload.error).toBe("Bad request");
+      expect(failedActions).toHaveLength(1);
+      expect(failedActions[0].payload.error).toBe("Bad request");
     });
   });
 
   describe("takeLatest(actions.fetchMoreStems.started)", () => {
     it("put(actions.fetchMoreStems.done)", async () => {
-      const { dispatch, findAction, store } = setupSagas(
+      const { dispatch, filterAction, store } = setupSagas(
         {
           stems: {
             items: arrayToAssoc(existingItems, "slug"),
@@ -73,12 +72,11 @@ describe("[sagas] Stems", () => {
       );
 
       dispatch(actions.fetchMoreStems.started({}));
-      const doneAction = findAction(actions.fetchMoreStems.done);
-      const trackEventAction = findAction(actions.trackEvent);
+      const trackEventActions = filterAction(actions.trackEvent);
 
-      expect(doneAction).toBeDefined();
-      expect(trackEventAction).toBeDefined();
-      expect(trackEventAction.payload).toEqual({
+      expect(filterAction(actions.fetchMoreStems.done)).toHaveLength(1);
+      expect(trackEventActions).toHaveLength(1);
+      expect(trackEventActions[0].payload).toEqual({
         event: "stems.fetchedMore",
         itemCount: 2
       });
@@ -89,7 +87,7 @@ describe("[sagas] Stems", () => {
     });
 
     it("put(actions.fetchMoreStems.failed)", async () => {
-      const { dispatch, findAction } = setupSagas(
+      const { dispatch, filterAction } = setupSagas(
         {
           stems: {
             items: arrayToAssoc(existingItems, "slug")
@@ -106,10 +104,10 @@ describe("[sagas] Stems", () => {
       );
 
       dispatch(actions.fetchMoreStems.started({}));
-      const failedAction = findAction(actions.fetchMoreStems.failed);
+      const failedActions = filterAction(actions.fetchMoreStems.failed);
 
-      expect(failedAction).toBeDefined();
-      expect(failedAction.payload.error).toBe("Bad request");
+      expect(failedActions).toHaveLength(1);
+      expect(failedActions[0].payload.error).toBe("Bad request");
     });
   });
 });
