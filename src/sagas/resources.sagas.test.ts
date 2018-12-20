@@ -1,55 +1,64 @@
 import setupSagas from "../helpers/setupSagas";
-import { arrayToAssoc, assocToArray } from "../transformers/transformData";
+import { arrayToAssoc } from "../transformers/transformData";
 
 import * as actions from "../actions/root.actions";
+import * as selectors from "../selectors/root.selectors";
+
+const g: any = global;
 
 describe("[sagas] Resources", () => {
   const existingItems = [{ slug: "existing-test" }];
   const items = [{ slug: "test" }];
 
   describe("takeLatest(actions.fetchResources.started)", () => {
-    it("put(actions.fetchResources.done)", async () => {
+    describe("when fetching resources, with a successful response", () => {
       const { dispatch, filterAction, store } = setupSagas(
         {},
         {
           api: {
-            fetchResources: () => ({
-              data: { items },
-              ok: true
-            })
+            fetchResources: g.mockWithData({ items })
           }
         }
       );
 
-      dispatch(actions.fetchResources.started({}));
+      it("dispatches actions.fetchResources.started", () => {
+        dispatch(actions.fetchResources.started({}));
+      });
 
-      expect(filterAction(actions.fetchResources.done)).toHaveLength(1);
-      expect(assocToArray(store().resources.items)).toEqual(items);
+      it("dispatches actions.fetchResources.done", () => {
+        expect(filterAction(actions.fetchResources.done)).toHaveLength(1);
+      });
+
+      it("has the data from the response in the store", () => {
+        expect(selectors.getResourcesAsArray(store())).toEqual(items);
+      });
     });
 
-    it("put(actions.fetchResources.failed)", async () => {
+    describe("when fetching resources, with a failed response", () => {
       const { dispatch, filterAction } = setupSagas(
         {},
         {
           api: {
-            fetchResources: () => ({
-              message: "Bad request",
-              ok: false
-            })
+            fetchResources: g.mockWithError("Bad request")
           }
         }
       );
 
-      dispatch(actions.fetchResources.started({}));
-      const failedActions = filterAction(actions.fetchResources.failed);
+      it("dispatches actions.fetchResources.started", () => {
+        dispatch(actions.fetchResources.started({}));
+      });
 
-      expect(failedActions).toHaveLength(1);
-      expect(failedActions[0].payload.error).toBe("Bad request");
+      it("dispatches actions.fetchResources.failed with expected error", () => {
+        const failedActions = filterAction(actions.fetchResources.failed);
+
+        expect(failedActions).toHaveLength(1);
+        expect(failedActions[0].payload.error).toBe("Bad request");
+      });
     });
   });
 
   describe("takeLatest(actions.fetchMoreResources.started)", () => {
-    it("put(actions.fetchMoreResources.done)", async () => {
+    describe("when fetching more resources, with a successful response", () => {
       const { dispatch, filterAction, store } = setupSagas(
         {
           resources: {
@@ -63,30 +72,38 @@ describe("[sagas] Resources", () => {
         },
         {
           api: {
-            fetchResources: () => ({
-              data: { items },
-              ok: true
-            })
+            fetchResources: g.mockWithData({ items })
           }
         }
       );
 
-      dispatch(actions.fetchMoreResources.started({}));
-      const trackEventActions = filterAction(actions.trackEvent);
-
-      expect(filterAction(actions.fetchMoreResources.done)).toHaveLength(1);
-      expect(trackEventActions).toHaveLength(1);
-      expect(trackEventActions[0].payload).toEqual({
-        event: "resources.fetchedMore",
-        itemCount: 2
+      it("dispatches actions.fetchMoreResources.started", () => {
+        dispatch(actions.fetchMoreResources.started({}));
       });
-      expect(assocToArray(store().resources.items)).toEqual([
-        ...existingItems,
-        ...items
-      ]);
+
+      it("dispatches actions.fetchMoreResources.done", () => {
+        expect(filterAction(actions.fetchMoreResources.done)).toHaveLength(1);
+      });
+
+      it("dispatches actions.trackEvent with expected payload", () => {
+        const trackEventActions = filterAction(actions.trackEvent);
+
+        expect(trackEventActions).toHaveLength(1);
+        expect(trackEventActions[0].payload).toEqual({
+          event: "resources.fetchedMore",
+          itemCount: 2
+        });
+      });
+
+      it("has the data from the response in the store", () => {
+        expect(selectors.getResourcesAsArray(store())).toEqual([
+          ...existingItems,
+          ...items
+        ]);
+      });
     });
 
-    it("put(actions.fetchMoreResources.failed)", async () => {
+    describe("when fetching more resources, with a failed response", () => {
       const { dispatch, filterAction } = setupSagas(
         {
           resources: {
@@ -95,19 +112,21 @@ describe("[sagas] Resources", () => {
         },
         {
           api: {
-            fetchResources: () => ({
-              message: "Bad request",
-              ok: false
-            })
+            fetchResources: g.mockWithError("Bad request")
           }
         }
       );
 
-      dispatch(actions.fetchMoreResources.started({}));
-      const failedActions = filterAction(actions.fetchMoreResources.failed);
+      it("dispatches actions.fetchMoreResources.started", () => {
+        dispatch(actions.fetchMoreResources.started({}));
+      });
 
-      expect(failedActions).toHaveLength(1);
-      expect(failedActions[0].payload.error).toBe("Bad request");
+      it("dispatches actions.fetchMoreResources.failed with expected error", () => {
+        const failedActions = filterAction(actions.fetchMoreResources.failed);
+
+        expect(failedActions).toHaveLength(1);
+        expect(failedActions[0].payload.error).toBe("Bad request");
+      });
     });
   });
 });
