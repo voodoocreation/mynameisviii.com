@@ -1,55 +1,64 @@
 import setupSagas from "../helpers/setupSagas";
-import { arrayToAssoc, assocToArray } from "../transformers/transformData";
+import { arrayToAssoc } from "../transformers/transformData";
 
 import * as actions from "../actions/root.actions";
+import * as selectors from "../selectors/root.selectors";
+
+const g: any = global;
 
 describe("[sagas] News", () => {
   const existingItems = [{ slug: "existing-test" }];
   const items = [{ slug: "test" }];
 
   describe("takeLatest(actions.fetchLatestNews.started)", () => {
-    it("put(actions.fetchLatestNews.done)", async () => {
+    describe("when fetching latest news, with a successful response", () => {
       const { dispatch, filterAction, store } = setupSagas(
         {},
         {
           api: {
-            fetchLatestNews: () => ({
-              data: { items },
-              ok: true
-            })
+            fetchLatestNews: g.mockWithData({ items })
           }
         }
       );
 
-      dispatch(actions.fetchLatestNews.started({}));
+      it("dispatches actions.fetchLatestNews.started", () => {
+        dispatch(actions.fetchLatestNews.started({}));
+      });
 
-      expect(filterAction(actions.fetchLatestNews.done)).toHaveLength(1);
-      expect(assocToArray(store().news.items)).toEqual(items);
+      it("dispatches actions.fetchLatestNews.done", () => {
+        expect(filterAction(actions.fetchLatestNews.done)).toHaveLength(1);
+      });
+
+      it("has the data from the response in the store", () => {
+        expect(selectors.getNewsArticlesAsArray(store())).toEqual(items);
+      });
     });
 
-    it("put(actions.fetchLatestNews.failed)", async () => {
+    describe("when fetching latest news, with a failed response", () => {
       const { dispatch, filterAction } = setupSagas(
         {},
         {
           api: {
-            fetchLatestNews: () => ({
-              message: "Bad request",
-              ok: false
-            })
+            fetchLatestNews: g.mockWithError("Bad request")
           }
         }
       );
 
-      dispatch(actions.fetchLatestNews.started({}));
-      const failedActions = filterAction(actions.fetchLatestNews.failed);
+      it("dispatches actions.fetchLatestNews.started", () => {
+        dispatch(actions.fetchLatestNews.started({}));
+      });
 
-      expect(failedActions).toHaveLength(1);
-      expect(failedActions[0].payload.error).toBe("Bad request");
+      it("dispatches actions.fetchLatestNews.failed with expected error", () => {
+        const failedActions = filterAction(actions.fetchLatestNews.failed);
+
+        expect(failedActions).toHaveLength(1);
+        expect(failedActions[0].payload.error).toBe("Bad request");
+      });
     });
   });
 
   describe("takeLatest(actions.fetchMoreLatestNews.started)", () => {
-    it("put(actions.fetchMoreLatestNews.done)", async () => {
+    describe("when fetching more latest news, with a successful response", () => {
       const { dispatch, filterAction, store } = setupSagas(
         {
           news: {
@@ -63,30 +72,38 @@ describe("[sagas] News", () => {
         },
         {
           api: {
-            fetchLatestNews: () => ({
-              data: { items },
-              ok: true
-            })
+            fetchLatestNews: g.mockWithData({ items })
           }
         }
       );
 
-      dispatch(actions.fetchMoreLatestNews.started({}));
-      const trackEventActions = filterAction(actions.trackEvent);
-
-      expect(filterAction(actions.fetchMoreLatestNews.done)).toHaveLength(1);
-      expect(trackEventActions).toHaveLength(1);
-      expect(trackEventActions[0].payload).toEqual({
-        event: "news.fetchedMore",
-        itemCount: 2
+      it("dispatches actions.fetchMoreLatestNews.started", () => {
+        dispatch(actions.fetchMoreLatestNews.started({}));
       });
-      expect(assocToArray(store().news.items)).toEqual([
-        ...existingItems,
-        ...items
-      ]);
+
+      it("dispatches actions.fetchMoreLatestNews.done", () => {
+        expect(filterAction(actions.fetchMoreLatestNews.done)).toHaveLength(1);
+      });
+
+      it("dispatches actions.trackEvent with expected payload", () => {
+        const trackEventActions = filterAction(actions.trackEvent);
+
+        expect(trackEventActions).toHaveLength(1);
+        expect(trackEventActions[0].payload).toEqual({
+          event: "news.fetchedMore",
+          itemCount: 2
+        });
+      });
+
+      it("has the data from the response in the store", () => {
+        expect(selectors.getNewsArticlesAsArray(store())).toEqual([
+          ...existingItems,
+          ...items
+        ]);
+      });
     });
 
-    it("put(actions.fetchMoreLatestNews.failed)", async () => {
+    describe("when fetching more latest news, with a failed response", () => {
       const { dispatch, filterAction } = setupSagas(
         {
           news: {
@@ -95,43 +112,51 @@ describe("[sagas] News", () => {
         },
         {
           api: {
-            fetchLatestNews: () => ({
-              message: "Bad request",
-              ok: false
-            })
+            fetchLatestNews: g.mockWithError("Bad request")
           }
         }
       );
 
-      dispatch(actions.fetchMoreLatestNews.started({}));
-      const failedActions = filterAction(actions.fetchMoreLatestNews.failed);
+      it("dispatches actions.fetchMoreLatestNews.started", () => {
+        dispatch(actions.fetchMoreLatestNews.started({}));
+      });
 
-      expect(failedActions).toHaveLength(1);
-      expect(failedActions[0].payload.error).toBe("Bad request");
+      it("dispatches actions.fetchMoreLatestNews.failed with expected error", () => {
+        const failedActions = filterAction(actions.fetchMoreLatestNews.failed);
+
+        expect(failedActions).toHaveLength(1);
+        expect(failedActions[0].payload.error).toBe("Bad request");
+      });
     });
   });
 
   describe("takeLatest(actions.fetchNewsArticleBySlug.started)", () => {
-    it("put(actions.fetchNewsArticleBySlug.done)", async () => {
+    describe("when fetching a news article by slug, with a successful response", () => {
       const { dispatch, filterAction, store } = setupSagas(
         {},
         {
           api: {
-            fetchNewsArticleBySlug: () => ({
-              data: items[0],
-              ok: true
-            })
+            fetchNewsArticleBySlug: g.mockWithData(items[0])
           }
         }
       );
 
-      dispatch(actions.fetchNewsArticleBySlug.started("test"));
+      it("dispatches actions.fetchNewsArticleBySlug.started", () => {
+        dispatch(actions.fetchNewsArticleBySlug.started("test"));
+      });
 
-      expect(filterAction(actions.fetchNewsArticleBySlug.done)).toHaveLength(1);
-      expect(assocToArray(store().news.items)).toEqual(items);
+      it("dispatches actions.fetchNewsArticleBySlug.done", () => {
+        expect(filterAction(actions.fetchNewsArticleBySlug.done)).toHaveLength(
+          1
+        );
+      });
+
+      it("has the data from the response in the store", () => {
+        expect(selectors.getNewsArticlesAsArray(store())).toEqual(items);
+      });
     });
 
-    it("put(actions.fetchNewsArticleBySlug.failed)", async () => {
+    describe("when fetching a news article by slug, with a failed response", () => {
       const { dispatch, filterAction } = setupSagas(
         {},
         {
@@ -144,11 +169,18 @@ describe("[sagas] News", () => {
         }
       );
 
-      dispatch(actions.fetchNewsArticleBySlug.started("test"));
-      const failedActions = filterAction(actions.fetchNewsArticleBySlug.failed);
+      it("dispatches actions.fetchNewsArticleBySlug.started", () => {
+        dispatch(actions.fetchNewsArticleBySlug.started("test"));
+      });
 
-      expect(failedActions).toHaveLength(1);
-      expect(failedActions[0].payload.error).toBe("Bad request");
+      it("dispatches actions.fetchNewsArticleBySlug.failed with expected error", () => {
+        const failedActions = filterAction(
+          actions.fetchNewsArticleBySlug.failed
+        );
+
+        expect(failedActions).toHaveLength(1);
+        expect(failedActions[0].payload.error).toBe("Bad request");
+      });
     });
   });
 });

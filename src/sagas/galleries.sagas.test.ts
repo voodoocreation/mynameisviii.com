@@ -76,6 +76,10 @@ describe("[sagas] Galleries", () => {
         dispatch(actions.fetchMoreGalleries.started({}));
       });
 
+      it("dispatches actions.fetchMoreGalleries.done", () => {
+        expect(filterAction(actions.fetchMoreGalleries.done)).toHaveLength(1);
+      });
+
       it("dispatches actions.trackEvent with expected payload", () => {
         const trackEventActions = filterAction(actions.trackEvent);
 
@@ -84,10 +88,6 @@ describe("[sagas] Galleries", () => {
           event: "galleries.fetchedMore",
           itemCount: 2
         });
-      });
-
-      it("dispatches actions.fetchMoreGalleries.done", () => {
-        expect(filterAction(actions.fetchMoreGalleries.done)).toHaveLength(1);
       });
 
       it("has the data from the response in the store", () => {
@@ -154,10 +154,7 @@ describe("[sagas] Galleries", () => {
         {},
         {
           api: {
-            fetchGalleryBySlug: () => ({
-              message: "Bad request",
-              ok: false
-            })
+            fetchGalleryBySlug: g.mockWithError("Bad request")
           }
         }
       );
