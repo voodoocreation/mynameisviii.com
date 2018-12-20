@@ -161,10 +161,7 @@ describe("[sagas] News", () => {
         {},
         {
           api: {
-            fetchNewsArticleBySlug: () => ({
-              message: "Bad request",
-              ok: false
-            })
+            fetchNewsArticleBySlug: g.mockWithError("Bad request")
           }
         }
       );
