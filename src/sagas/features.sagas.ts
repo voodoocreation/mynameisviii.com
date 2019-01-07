@@ -1,13 +1,13 @@
 import { call, takeLatest } from "redux-saga/effects";
+import { Action } from "typescript-fsa";
 
 import * as actions from "../actions/root.actions";
 
 export const addFeaturesSaga = (ports: IStorePorts) =>
   function*() {
-    yield takeLatest(actions.addFeatures, function*(action: {
-      type: string;
-      payload: PLAddFeatures;
-    }) {
+    yield takeLatest(actions.addFeatures, function*(
+      action: Action<PLAddFeatures>
+    ) {
       const featuresToAdd =
         typeof action.payload === "string" ? [action.payload] : action.payload;
 
@@ -22,10 +22,9 @@ export const addFeaturesSaga = (ports: IStorePorts) =>
 
 export const removeFeaturesSaga = (ports: IStorePorts) =>
   function*() {
-    yield takeLatest(actions.removeFeatures, function*(action: {
-      type: string;
-      payload: PLRemoveFeatures;
-    }) {
+    yield takeLatest(actions.removeFeatures, function*(
+      action: Action<PLRemoveFeatures>
+    ) {
       const featuresToRemove =
         typeof action.payload === "string" ? [action.payload] : action.payload;
 
