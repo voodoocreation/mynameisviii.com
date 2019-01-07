@@ -4,52 +4,78 @@ import * as actions from "../actions/root.actions";
 
 describe("[sagas] Features", () => {
   describe("takeLatest(actions.addFeature)", () => {
-    it("call(window.features.push)", async () => {
-      const feature = "test-feature-1";
-      window.features = [];
-      const { dispatch } = setupSagas();
+    describe("when adding features", () => {
+      const feature1 = "test-feature-1";
+      const feature2 = "test-feature-2";
+      const feature3 = "test-feature-3";
+      const { dispatch, ports } = setupSagas(
+        {},
+        {
+          features: []
+        }
+      );
 
-      dispatch(actions.addFeature(feature));
-      expect(window.features).toEqual([feature]);
+      it("has correct initial state", () => {
+        expect(ports.features).toEqual([]);
+      });
 
-      dispatch(actions.addFeature(feature));
-      expect(window.features).toEqual([feature]);
-    });
-  });
+      it("dispatches actions.addFeature with a single feature", () => {
+        dispatch(actions.addFeatures(feature1));
+      });
 
-  describe("takeLatest(actions.addFeatures)", () => {
-    it("call(window.features.push)", async () => {
-      const features = ["test-feature-1", "test-feature-2"];
-      window.features = [];
-      const { dispatch } = setupSagas();
+      it("adds the feature to the `window.features` array", () => {
+        expect(ports.features).toEqual([feature1]);
+      });
 
-      dispatch(actions.addFeatures(features));
-      expect(window.features).toEqual(features);
+      it("dispatches actions.addFeature a second time with the same feature", () => {
+        dispatch(actions.addFeatures(feature1));
+      });
 
-      dispatch(actions.addFeatures(features));
-      expect(window.features).toEqual(features);
-    });
-  });
+      it("doesn't duplicate the feature in the `window.features` array", () => {
+        expect(ports.features).toEqual([feature1]);
+      });
 
-  describe("takeLatest(actions.removeFeature)", () => {
-    it("call(window.features.splice)", async () => {
-      const feature = "test-feature-1";
-      window.features = ["test-feature-1", "test-feature-2"];
-      const { dispatch } = setupSagas();
+      it("dispatches actions.addFeature with two features", () => {
+        dispatch(actions.addFeatures([feature2, feature3]));
+      });
 
-      dispatch(actions.removeFeature(feature));
-      expect(window.features).toEqual(["test-feature-2"]);
+      it("has all three features in the `window.features` array", () => {
+        expect(ports.features).toEqual([feature1, feature2, feature3]);
+      });
     });
   });
 
   describe("takeLatest(actions.removeFeatures)", () => {
-    it("call(window.features.splice)", async () => {
-      const features = ["test-feature-1", "test-feature-2"];
-      window.features = ["test-feature-1", "test-feature-2", "test-feature-3"];
-      const { dispatch } = setupSagas();
+    describe("when removing features", () => {
+      const feature1 = "test-feature-1";
+      const feature2 = "test-feature-2";
+      const feature3 = "test-feature-3";
+      const { dispatch, ports } = setupSagas(
+        {},
+        {
+          features: [feature1, feature2, feature3]
+        }
+      );
 
-      dispatch(actions.removeFeatures(features));
-      expect(window.features).toEqual(["test-feature-3"]);
+      it("has correct initial state", () => {
+        expect(ports.features).toEqual([feature1, feature2, feature3]);
+      });
+
+      it("dispatches actions.removeFeatures with a single feature", () => {
+        dispatch(actions.removeFeatures(feature1));
+      });
+
+      it("removes the feature from the `window.features` array", () => {
+        expect(ports.features).toEqual([feature2, feature3]);
+      });
+
+      it("dispatches actions.removeFeatures with two features", () => {
+        dispatch(actions.removeFeatures([feature2, feature3]));
+      });
+
+      it("removes the remaining features from the `window.features` array", () => {
+        expect(ports.features).toEqual([]);
+      });
     });
   });
 });

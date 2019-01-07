@@ -1,57 +1,65 @@
 import setupSagas from "../helpers/setupSagas";
-import { arrayToAssoc, assocToArray } from "../transformers/transformData";
+import { arrayToAssoc } from "../transformers/transformData";
 
 import * as actions from "../actions/root.actions";
+import * as selectors from "../selectors/root.selectors";
+
+const g: any = global;
 
 describe("[sagas] Releases", () => {
   const existingItems = [{ slug: "existing-test" }];
   const items = [{ slug: "test" }];
 
   describe("takeLatest(actions.fetchReleases.started)", () => {
-    it("put(actions.fetchReleases.done)", async () => {
-      const { dispatch, findAction, store } = setupSagas(
+    describe("when fetching releases, with a successful response", () => {
+      const { dispatch, filterAction, store } = setupSagas(
         {},
         {
           api: {
-            fetchReleases: () => ({
-              data: { items },
-              ok: true
-            })
+            fetchReleases: g.mockWithData({ items })
           }
         }
       );
 
-      dispatch(actions.fetchReleases.started({}));
-      const doneAction = findAction(actions.fetchReleases.done);
+      it("dispatches actions.fetchReleases.started", () => {
+        dispatch(actions.fetchReleases.started({}));
+      });
 
-      expect(doneAction).toBeDefined();
-      expect(assocToArray(store().releases.items)).toEqual(items);
+      it("dispatches actions.fetchReleases.done", () => {
+        expect(filterAction(actions.fetchReleases.done)).toHaveLength(1);
+      });
+
+      it("has the data from the response in the store", () => {
+        expect(selectors.getReleasesAsArray(store())).toEqual(items);
+      });
     });
 
-    it("put(actions.fetchReleases.failed)", async () => {
-      const { dispatch, findAction } = setupSagas(
+    describe("when fetching releases, with a failed response", () => {
+      const { dispatch, filterAction } = setupSagas(
         {},
         {
           api: {
-            fetchReleases: () => ({
-              message: "Bad request",
-              ok: false
-            })
+            fetchReleases: g.mockWithError("Bad request")
           }
         }
       );
 
-      dispatch(actions.fetchReleases.started({}));
-      const failedAction = findAction(actions.fetchReleases.failed);
+      it("dispatches actions.fetchReleases.started", () => {
+        dispatch(actions.fetchReleases.started({}));
+      });
 
-      expect(failedAction).toBeDefined();
-      expect(failedAction.payload.error).toBe("Bad request");
+      it("dispatches actions.fetchReleases.failed with expected error", () => {
+        const failedActions = filterAction(actions.fetchReleases.failed);
+
+        expect(failedActions).toHaveLength(1);
+        expect(failedActions[0].payload.error).toBe("Bad request");
+      });
     });
   });
 
   describe("takeLatest(actions.fetchMoreReleases.started)", () => {
-    it("put(actions.fetchMoreReleases.done)", async () => {
-      const { dispatch, findAction, store } = setupSagas(
+    describe("when fetching more releases, with a successful response", () => {
+      const { dispatch, filterAction, store } = setupSagas(
         {
           releases: {
             items: arrayToAssoc(existingItems, "slug"),
@@ -64,32 +72,39 @@ describe("[sagas] Releases", () => {
         },
         {
           api: {
-            fetchReleases: () => ({
-              data: { items },
-              ok: true
-            })
+            fetchReleases: g.mockWithData({ items })
           }
         }
       );
 
-      dispatch(actions.fetchMoreReleases.started({}));
-      const doneAction = findAction(actions.fetchMoreReleases.done);
-      const trackEventAction = findAction(actions.trackEvent);
-
-      expect(doneAction).toBeDefined();
-      expect(trackEventAction).toBeDefined();
-      expect(trackEventAction.payload).toEqual({
-        event: "releases.fetchedMore",
-        itemCount: 2
+      it("dispatches actions.fetchMoreReleases.started", () => {
+        dispatch(actions.fetchMoreReleases.started({}));
       });
-      expect(assocToArray(store().releases.items)).toEqual([
-        ...existingItems,
-        ...items
-      ]);
+
+      it("dispatches actions.fetchMoreReleases.done", () => {
+        expect(filterAction(actions.fetchMoreReleases.done)).toHaveLength(1);
+      });
+
+      it("dispatches actions.trackEvent with expected payload", () => {
+        const trackEventActions = filterAction(actions.trackEvent);
+
+        expect(trackEventActions).toHaveLength(1);
+        expect(trackEventActions[0].payload).toEqual({
+          event: "releases.fetchedMore",
+          itemCount: 2
+        });
+      });
+
+      it("has the data from the response in the store", () => {
+        expect(selectors.getReleasesAsArray(store())).toEqual([
+          ...existingItems,
+          ...items
+        ]);
+      });
     });
 
-    it("put(actions.fetchMoreReleases.failed)", async () => {
-      const { dispatch, findAction } = setupSagas(
+    describe("when fetching more releases, with a failed response", () => {
+      const { dispatch, filterAction } = setupSagas(
         {
           releases: {
             items: arrayToAssoc(existingItems, "slug")
@@ -97,61 +112,68 @@ describe("[sagas] Releases", () => {
         },
         {
           api: {
-            fetchReleases: () => ({
-              message: "Bad request",
-              ok: false
-            })
+            fetchReleases: g.mockWithError("Bad request")
           }
         }
       );
 
-      dispatch(actions.fetchMoreReleases.started({}));
-      const failedAction = findAction(actions.fetchMoreReleases.failed);
+      it("dispatches actions.fetchMoreReleases.started", () => {
+        dispatch(actions.fetchMoreReleases.started({}));
+      });
 
-      expect(failedAction).toBeDefined();
-      expect(failedAction.payload.error).toBe("Bad request");
+      it("dispatches actions.fetchMoreReleases.failed with expected error", () => {
+        const failedActions = filterAction(actions.fetchMoreReleases.failed);
+
+        expect(failedActions).toHaveLength(1);
+        expect(failedActions[0].payload.error).toBe("Bad request");
+      });
     });
   });
 
   describe("takeLatest(actions.fetchReleaseBySlug.started)", () => {
-    it("put(actions.fetchReleaseBySlug.done)", async () => {
-      const { dispatch, findAction, store } = setupSagas(
+    describe("when fetching a release by slug, with a successful response", () => {
+      const { dispatch, filterAction, store } = setupSagas(
         {},
         {
           api: {
-            fetchReleaseBySlug: () => ({
-              data: items[0],
-              ok: true
-            })
+            fetchReleaseBySlug: g.mockWithData(items[0])
           }
         }
       );
 
-      dispatch(actions.fetchReleaseBySlug.started("test"));
-      const doneAction = findAction(actions.fetchReleaseBySlug.done);
+      it("dispatches actions.fetchReleaseBySlug.started", () => {
+        dispatch(actions.fetchReleaseBySlug.started("test"));
+      });
 
-      expect(doneAction).toBeDefined();
-      expect(assocToArray(store().releases.items)).toEqual(items);
+      it("dispatches actions.fetchReleaseBySlug.done", () => {
+        expect(filterAction(actions.fetchReleaseBySlug.done)).toHaveLength(1);
+      });
+
+      it("has the data from the response in the store", () => {
+        expect(selectors.getReleasesAsArray(store())).toEqual(items);
+      });
     });
 
-    it("put(actions.fetchReleaseBySlug.failed)", async () => {
-      const { dispatch, findAction } = setupSagas(
+    describe("when fetching a release by slug, with a failed response", () => {
+      const { dispatch, filterAction } = setupSagas(
         {},
         {
           api: {
-            fetchReleaseBySlug: () => ({
-              message: "Bad request",
-              ok: false
-            })
+            fetchReleaseBySlug: g.mockWithError("Bad request")
           }
         }
       );
 
-      dispatch(actions.fetchReleaseBySlug.started("test"));
-      const failedAction = findAction(actions.fetchReleaseBySlug.failed);
+      it("dispatches actions.fetchReleaseBySlug.started", () => {
+        dispatch(actions.fetchReleaseBySlug.started("test"));
+      });
 
-      expect(failedAction).toBeDefined();
-      expect(failedAction.payload.error).toBe("Bad request");
+      it("dispatches actions.fetchReleaseBySlug.failed with expected error", () => {
+        const failedActions = filterAction(actions.fetchReleaseBySlug.failed);
+
+        expect(failedActions).toHaveLength(1);
+        expect(failedActions[0].payload.error).toBe("Bad request");
+      });
     });
   });
 });

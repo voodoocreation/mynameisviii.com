@@ -4,58 +4,106 @@ import * as actions from "../actions/root.actions";
 
 describe("[sagas] Service worker", () => {
   describe("takeLatest(actions.changeRoute.done)", () => {
-    afterEach(() => {
-      jest.clearAllMocks();
-    });
+    describe("when the service worker is available", () => {
+      afterAll(() => {
+        jest.clearAllMocks();
+      });
 
-    it("call(serviceWorker.postMessage) when service worker is available", async () => {
-      const serviceWorker = navigator.serviceWorker.controller as ServiceWorker;
       const newRoute = "/test";
-
       const { dispatch } = setupSagas();
 
-      dispatch(actions.changeRoute.done({ params: newRoute }));
+      it("has a service worker in an 'activated' state", () => {
+        const { state } = navigator.serviceWorker.controller as ServiceWorker;
 
-      expect(serviceWorker.postMessage).toHaveBeenCalledWith({
-        payload: newRoute,
-        type: "changeRoute"
+        expect(navigator.serviceWorker).toBeDefined();
+        expect(state).toBe("activated");
+      });
+
+      it("dispatches actions.changeRoute.done", () => {
+        dispatch(actions.changeRoute.done({ params: newRoute }));
+      });
+
+      it("calls serviceWorker.postMessage with expected payload", () => {
+        const { postMessage } = navigator.serviceWorker
+          .controller as ServiceWorker;
+
+        expect(postMessage).toHaveBeenCalledWith({
+          payload: newRoute,
+          type: "changeRoute"
+        });
       });
     });
 
-    it("doesn't attempt to call(serviceWorker.postMessage) when service worker isn't ready", async () => {
-      const newRoute = "/test";
-      const serviceWorker = navigator.serviceWorker.controller as ServiceWorker;
+    describe("when the service worker isn't ready", () => {
+      beforeAll(() => {
+        // @ts-ignore-next-line
+        navigator.serviceWorker.controller.state = "installing";
+      });
 
-      // @ts-ignore-next-line
-      serviceWorker.state = "installing";
+      afterAll(() => {
+        jest.clearAllMocks();
+      });
+
+      const newRoute = "/test";
 
       const { dispatch } = setupSagas();
-
       let isPassing = true;
-      try {
-        dispatch(actions.changeRoute.done({ params: newRoute }));
-      } catch (error) {
-        isPassing = false;
-      }
 
-      expect(isPassing).toBe(true);
-      expect(serviceWorker.postMessage).not.toHaveBeenCalled();
+      it("has a service worker in an 'installing' state", () => {
+        const { state } = navigator.serviceWorker.controller as ServiceWorker;
+
+        expect(navigator.serviceWorker).toBeDefined();
+        expect(state).toBe("installing");
+      });
+
+      it("dispatches actions.changeRoute.done", () => {
+        try {
+          dispatch(actions.changeRoute.done({ params: newRoute }));
+        } catch (error) {
+          isPassing = false;
+        }
+      });
+
+      it("doesn't throw an error", () => {
+        expect(isPassing).toBe(true);
+      });
+
+      it("doesn't call serviceWorker.postMessage", () => {
+        const { postMessage } = navigator.serviceWorker
+          .controller as ServiceWorker;
+
+        expect(postMessage).not.toHaveBeenCalled();
+      });
     });
 
-    it("doesn't throw an error when service worker doesn't exist", async () => {
-      // @ts-ignore-next-line
-      navigator.serviceWorker = undefined;
+    describe("when the service worker doesn't exist", () => {
+      beforeAll(() => {
+        // @ts-ignore-next-line
+        navigator.serviceWorker = undefined;
+      });
+
+      afterAll(() => {
+        jest.clearAllMocks();
+      });
 
       const { dispatch } = setupSagas();
-
       let isPassing = true;
-      try {
-        dispatch(actions.changeRoute.done({ params: "/test" }));
-      } catch (error) {
-        isPassing = false;
-      }
 
-      expect(isPassing).toBe(true);
+      it("dispatches actions.changeRoute.done", () => {
+        try {
+          dispatch(actions.changeRoute.done({ params: "/test" }));
+        } catch (error) {
+          isPassing = false;
+        }
+      });
+
+      it("has no service worker available", () => {
+        expect(navigator.serviceWorker).toBeUndefined();
+      });
+
+      it("fails silently without throwing an error", () => {
+        expect(isPassing).toBe(true);
+      });
     });
   });
 });

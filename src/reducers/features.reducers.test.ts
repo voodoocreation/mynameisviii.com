@@ -3,41 +3,39 @@ import reducer, { initialState as model } from "./features.reducers";
 import * as actions from "../actions/root.actions";
 
 describe("[reducers] Features", () => {
-  it("actions.addFeature is handled", () => {
-    const feature = "has-test-feature";
-    const state = reducer(model, actions.addFeature(feature));
-
-    expect(state.items).toContain(feature);
-    expect(state.items).toHaveLength(1);
-
-    const state2 = reducer(state, actions.addFeature(feature));
-    expect(state2.items).toHaveLength(1);
-  });
-
   it("actions.addFeatures is handled", () => {
-    const features = ["has-test-feature-1", "has-test-feature-2"];
-    const state = reducer(model, actions.addFeatures(features));
+    const feature1 = "test-feature-1";
+    const feature2 = "test-feature-2";
+    const feature3 = "test-feature-3";
 
-    expect(state.items).toEqual(features);
+    const state = reducer(model, actions.addFeatures(feature1));
+    expect(state.items).toEqual([feature1]);
 
-    const state2 = reducer(state, actions.addFeatures(features));
-    expect(state2.items).toEqual(features);
-  });
+    const state2 = reducer(state, actions.addFeatures(feature1));
+    expect(state2.items).toEqual([feature1]);
 
-  it("actions.removeFeature is handled", () => {
-    const feature = "has-test-feature";
-    const state = reducer({ items: [feature] }, actions.removeFeature(feature));
-
-    expect(state.items).toHaveLength(0);
+    const state3 = reducer(state, actions.addFeatures([feature2, feature3]));
+    expect(state3.items).toEqual([feature1, feature2, feature3]);
   });
 
   it("actions.removeFeatures is handled", () => {
-    const features = ["has-test-feature-1", "has-test-feature-2"];
-    const state = reducer(
-      { items: features },
-      actions.removeFeatures(features)
-    );
+    const feature1 = "test-feature-1";
+    const feature2 = "test-feature-2";
+    const feature3 = "test-feature-3";
 
-    expect(state.items).toHaveLength(0);
+    const state = reducer(
+      { items: [feature1, feature2, feature3] },
+      actions.removeFeatures(feature1)
+    );
+    expect(state.items).toEqual([feature2, feature3]);
+
+    const state2 = reducer(state, actions.removeFeatures(feature1));
+    expect(state2.items).toEqual([feature2, feature3]);
+
+    const state3 = reducer(
+      state2,
+      actions.removeFeatures([feature2, feature3])
+    );
+    expect(state3.items).toEqual([]);
   });
 });

@@ -1,57 +1,65 @@
 import setupSagas from "../helpers/setupSagas";
-import { arrayToAssoc, assocToArray } from "../transformers/transformData";
+import { arrayToAssoc } from "../transformers/transformData";
 
 import * as actions from "../actions/root.actions";
+import * as selectors from "../selectors/root.selectors";
+
+const g: any = global;
 
 describe("[sagas] Galleries", () => {
   const existingItems = [{ slug: "existing-test" }];
   const items = [{ slug: "test" }];
 
   describe("takeLatest(actions.fetchGalleries.started)", () => {
-    it("put(actions.fetchGalleries.done)", async () => {
-      const { dispatch, findAction, store } = setupSagas(
+    describe("when fetching galleries, with a successful response", () => {
+      const { dispatch, filterAction, store } = setupSagas(
         {},
         {
           api: {
-            fetchGalleries: () => ({
-              data: { items },
-              ok: true
-            })
+            fetchGalleries: g.mockWithData({ items })
           }
         }
       );
 
-      dispatch(actions.fetchGalleries.started({}));
-      const doneAction = findAction(actions.fetchGalleries.done);
+      it("dispatches actions.fetchGalleries.started", () => {
+        dispatch(actions.fetchGalleries.started({}));
+      });
 
-      expect(doneAction).toBeDefined();
-      expect(assocToArray(store().galleries.items)).toEqual(items);
+      it("dispatches actions.fetchGalleries.done", () => {
+        expect(filterAction(actions.fetchGalleries.done)).toHaveLength(1);
+      });
+
+      it("has the data from the response in the store", () => {
+        expect(selectors.getGalleriesAsArray(store())).toEqual(items);
+      });
     });
 
-    it("put(actions.fetchGalleries.failed)", async () => {
-      const { dispatch, findAction } = setupSagas(
+    describe("when fetching galleries, with a failed response", () => {
+      const { dispatch, filterAction } = setupSagas(
         {},
         {
           api: {
-            fetchGalleries: () => ({
-              message: "Bad request",
-              ok: false
-            })
+            fetchGalleries: g.mockWithError("Bad request")
           }
         }
       );
 
-      dispatch(actions.fetchGalleries.started({}));
-      const failedAction = findAction(actions.fetchGalleries.failed);
+      it("dispatches actions.fetchGalleries.started", () => {
+        dispatch(actions.fetchGalleries.started({}));
+      });
 
-      expect(failedAction).toBeDefined();
-      expect(failedAction.payload.error).toBe("Bad request");
+      it("dispatches actions.fetchGalleries.failed with expected error", () => {
+        const failedActions = filterAction(actions.fetchGalleries.failed);
+
+        expect(failedActions).toHaveLength(1);
+        expect(failedActions[0].payload.error).toBe("Bad request");
+      });
     });
   });
 
   describe("takeLatest(actions.fetchMoreGalleries.started)", () => {
-    it("put(actions.fetchMoreGalleries.done)", async () => {
-      const { dispatch, findAction, store } = setupSagas(
+    describe("when fetching more galleries, with a successful response", () => {
+      const { dispatch, filterAction, store } = setupSagas(
         {
           galleries: {
             items: arrayToAssoc(existingItems, "slug")
@@ -59,32 +67,39 @@ describe("[sagas] Galleries", () => {
         },
         {
           api: {
-            fetchGalleries: () => ({
-              data: { items },
-              ok: true
-            })
+            fetchGalleries: g.mockWithData({ items })
           }
         }
       );
 
-      dispatch(actions.fetchMoreGalleries.started({}));
-      const doneAction = findAction(actions.fetchMoreGalleries.done);
-      const trackEventAction = findAction(actions.trackEvent);
-
-      expect(doneAction).toBeDefined();
-      expect(trackEventAction).toBeDefined();
-      expect(trackEventAction.payload).toEqual({
-        event: "galleries.fetchedMore",
-        itemCount: 2
+      it("dispatches actions.fetchMoreGalleries.started", () => {
+        dispatch(actions.fetchMoreGalleries.started({}));
       });
-      expect(assocToArray(store().galleries.items)).toEqual([
-        ...existingItems,
-        ...items
-      ]);
+
+      it("dispatches actions.fetchMoreGalleries.done", () => {
+        expect(filterAction(actions.fetchMoreGalleries.done)).toHaveLength(1);
+      });
+
+      it("dispatches actions.trackEvent with expected payload", () => {
+        const trackEventActions = filterAction(actions.trackEvent);
+
+        expect(trackEventActions).toHaveLength(1);
+        expect(trackEventActions[0].payload).toEqual({
+          event: "galleries.fetchedMore",
+          itemCount: 2
+        });
+      });
+
+      it("has the data from the response in the store", () => {
+        expect(selectors.getGalleriesAsArray(store())).toEqual([
+          ...existingItems,
+          ...items
+        ]);
+      });
     });
 
-    it("put(actions.fetchMoreGalleries.failed)", async () => {
-      const { dispatch, findAction } = setupSagas(
+    describe("when fetching more galleries, with a failed response", () => {
+      const { dispatch, filterAction } = setupSagas(
         {
           galleries: {
             items: arrayToAssoc(existingItems, "slug")
@@ -92,61 +107,68 @@ describe("[sagas] Galleries", () => {
         },
         {
           api: {
-            fetchGalleries: () => ({
-              message: "Bad request",
-              ok: false
-            })
+            fetchGalleries: g.mockWithError("Bad request")
           }
         }
       );
 
-      dispatch(actions.fetchMoreGalleries.started({}));
-      const failedAction = findAction(actions.fetchMoreGalleries.failed);
+      it("dispatches actions.fetchMoreGalleries.started", () => {
+        dispatch(actions.fetchMoreGalleries.started({}));
+      });
 
-      expect(failedAction).toBeDefined();
-      expect(failedAction.payload.error).toBe("Bad request");
+      it("dispatches actions.fetchMoreGalleries.failed with expected error", () => {
+        const failedActions = filterAction(actions.fetchMoreGalleries.failed);
+
+        expect(failedActions).toHaveLength(1);
+        expect(failedActions[0].payload.error).toBe("Bad request");
+      });
     });
   });
 
   describe("takeLatest(actions.fetchGalleryBySlug.started)", () => {
-    it("put(actions.fetchGalleryBySlug.done)", async () => {
-      const { dispatch, findAction, store } = setupSagas(
+    describe("when fetching a gallery by slug, with a successful response", () => {
+      const { dispatch, filterAction, store } = setupSagas(
         {},
         {
           api: {
-            fetchGalleryBySlug: () => ({
-              data: items[0],
-              ok: true
-            })
+            fetchGalleryBySlug: g.mockWithData(items[0])
           }
         }
       );
 
-      dispatch(actions.fetchGalleryBySlug.started("test"));
-      const doneAction = findAction(actions.fetchGalleryBySlug.done);
+      it("dispatches actions.fetchGalleryBySlug.started", () => {
+        dispatch(actions.fetchGalleryBySlug.started("test"));
+      });
 
-      expect(doneAction).toBeDefined();
-      expect(assocToArray(store().galleries.items)).toEqual(items);
+      it("dispatches actions.fetchGalleryBySlug.done", () => {
+        expect(filterAction(actions.fetchGalleryBySlug.done)).toHaveLength(1);
+      });
+
+      it("has the data from the response in the store", () => {
+        expect(selectors.getGalleriesAsArray(store())).toEqual(items);
+      });
     });
 
-    it("put(actions.fetchGalleryBySlug.failed)", async () => {
-      const { dispatch, findAction } = setupSagas(
+    describe("when fetching a gallery by slug, with a failed response", () => {
+      const { dispatch, filterAction } = setupSagas(
         {},
         {
           api: {
-            fetchGalleryBySlug: () => ({
-              message: "Bad request",
-              ok: false
-            })
+            fetchGalleryBySlug: g.mockWithError("Bad request")
           }
         }
       );
 
-      dispatch(actions.fetchGalleryBySlug.started("test"));
-      const failedAction = findAction(actions.fetchGalleryBySlug.failed);
+      it("dispatches actions.fetchGalleryBySlug.started", () => {
+        dispatch(actions.fetchGalleryBySlug.started("test"));
+      });
 
-      expect(failedAction).toBeDefined();
-      expect(failedAction.payload.error).toBe("Bad request");
+      it("dispatches actions.fetchGalleryBySlug.failed with expected error", () => {
+        const failedActions = filterAction(actions.fetchGalleryBySlug.failed);
+
+        expect(failedActions).toHaveLength(1);
+        expect(failedActions[0].payload.error).toBe("Bad request");
+      });
     });
   });
 });

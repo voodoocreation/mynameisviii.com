@@ -164,11 +164,7 @@ class Application extends App {
   private onReceiveFeature = (event: any) => {
     const { store } = this.props as IProps;
 
-    if (typeof event.detail === "string") {
-      store.dispatch(actions.addFeature(event.detail));
-    } else {
-      store.dispatch(actions.addFeatures(event.detail));
-    }
+    store.dispatch(actions.addFeatures(event.detail));
   };
 
   private onReceiveServiceWorkerPostMessage = (event: any) => {

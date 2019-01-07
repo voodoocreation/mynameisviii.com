@@ -105,9 +105,7 @@ type PLTrackEvent = {
   [index: string]: any;
 };
 
-type PLAddFeature = string;
-type PLAddFeatures = string[];
-type PLRemoveFeature = string;
-type PLRemoveFeatures = string[];
+type PLAddFeatures = string | string[];
+type PLRemoveFeatures = string | string[];
 
 /* tslint:enable:interface-over-type-literal */

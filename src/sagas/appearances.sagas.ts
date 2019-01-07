@@ -1,4 +1,5 @@
 import { call, put, select, takeLatest } from "redux-saga/effects";
+import { Action } from "typescript-fsa";
 
 import { arrayToAssoc, tryParseJson } from "../transformers/transformData";
 
@@ -82,10 +83,7 @@ export const fetchAppearanceBySlugSaga = (ports: IStorePorts) =>
   function*() {
     yield takeLatest(actions.fetchAppearanceBySlug.started, function*({
       payload
-    }: {
-      payload: PLFetchAppearanceBySlugStarted;
-      type: string;
-    }) {
+    }: Action<PLFetchAppearanceBySlugStarted>) {
       const response = yield call(ports.api.fetchAppearanceBySlug, payload);
 
       if (response.ok) {

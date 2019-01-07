@@ -7,28 +7,19 @@ export const initialState: IFeaturesReducers = {
 };
 
 export default reducerWithInitialState(initialState)
-  .case(actions.addFeature, (state, payload) => ({
-    ...state,
-    items: [
-      ...state.items,
-      ...[payload].filter(item => !state.items.includes(item))
-    ]
-  }))
-
   .case(actions.addFeatures, (state, payload) => ({
     ...state,
     items: [
       ...state.items,
-      ...payload.filter(item => !state.items.includes(item))
+      ...(typeof payload === "string"
+        ? [payload].filter(item => !state.items.includes(item))
+        : payload.filter(item => !state.items.includes(item)))
     ]
-  }))
-
-  .case(actions.removeFeature, (state, payload) => ({
-    ...state,
-    items: state.items.filter(item => item !== payload)
   }))
 
   .case(actions.removeFeatures, (state, payload) => ({
     ...state,
-    items: state.items.filter(item => !payload.includes(item))
+    items: state.items.filter(
+      item => item !== payload && !payload.includes(item)
+    )
   }));

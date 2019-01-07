@@ -3,8 +3,8 @@
   "short_name": "Viii",
   "start_url": "/?utm_source=homescreen&utm_medium=app&utm_campaign=homescreen",
   "display": "standalone",
-  "theme_color": "#ffeaea",
-  "background_color": "#ffeaea",
+  "theme_color": "#000000",
+  "background_color": "#000000",
   "description": "The official home of Viii - the artist, singer, songwriter, musician, producer and engineer.",
   "icons": [
     {

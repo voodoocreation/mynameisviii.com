@@ -14,7 +14,7 @@ global.google = {
       trigger: jest.fn()
     },
     Geocoder: jest.fn(() => ({
-      geocode: jest.fn((_, callback) =>
+      geocode: (_, callback) =>
         callback(
           [
             {
@@ -25,7 +25,6 @@ global.google = {
           ],
           "OK"
         )
-      )
     })),
     GeocoderStatus: {
       OK: "OK",
@@ -51,37 +50,45 @@ global.requestAnimationFrame = callback => setTimeout(callback, 0);
 global.scrollTo = jest.fn();
 
 const serviceWorkerEvents = {};
-Object.defineProperty(navigator, "serviceWorker", {
-  value: {
-    addEventListener: jest.fn((event, handler) => {
-      if (!serviceWorkerEvents[event]) {
-        serviceWorkerEvents[event] = [];
-      }
-      serviceWorkerEvents[event].push(handler);
-    }),
-    controller: {
-      postMessage: jest.fn(),
-      state: "activated"
+beforeAll(() => {
+  Object.defineProperty(global.navigator, "serviceWorker", {
+    value: {
+      addEventListener: jest.fn((event, handler) => {
+        if (!serviceWorkerEvents[event]) {
+          serviceWorkerEvents[event] = [];
+        }
+        serviceWorkerEvents[event].push(handler);
+      }),
+      controller: {
+        postMessage: jest.fn(),
+        state: "activated"
+      },
+      dispatchEvent: jest.fn(event => {
+        if (serviceWorkerEvents[event.type]) {
+          serviceWorkerEvents[event.type].forEach(handler => {
+            handler(event);
+          });
+        }
+      }),
+      register: jest.fn(),
+      removeEventListener: jest.fn((event, handler) => {
+        if (serviceWorkerEvents[event]) {
+          serviceWorkerEvents[event].forEach((boundHandler, index) => {
+            if (handler === boundHandler) {
+              serviceWorkerEvents[event].splice(index, 1);
+            }
+          });
+        }
+      })
     },
-    dispatchEvent: jest.fn(event => {
-      if (serviceWorkerEvents[event.type]) {
-        serviceWorkerEvents[event.type].forEach(handler => {
-          handler(event);
-        });
-      }
-    }),
-    removeEventListener: jest.fn((event, handler) => {
-      if (serviceWorkerEvents[event]) {
-        serviceWorkerEvents[event].forEach((boundHandler, index) => {
-          if (handler === boundHandler) {
-            serviceWorkerEvents[event].splice(index, 1);
-          }
-        });
-      }
-    })
-  },
-  writable: true
+    writable: true
+  });
 });
+
+global.mockWithData = data => jest.fn(() => ({ data, ok: true }));
+global.mockWithError = message => jest.fn(() => ({ message, ok: false }));
+global.mockWithPayload = () =>
+  jest.fn(payload => ({ data: payload, ok: true }));
 
 global.findMockCall = (mockFn, ...args) =>
   mockFn.mock.calls.find(call =>
