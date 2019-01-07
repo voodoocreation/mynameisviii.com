@@ -47,11 +47,12 @@ const Meta: React.SFC<{}> = () =>
       <link
         rel="mask-icon"
         href="/static/favicon/safari-pinned-tab.svg"
-        color="#540008"
+        color="#000000"
       />
       <link rel="shortcut icon" href="/static/favicon/favicon.ico" />
-      <meta name="msapplication-TileColor" content="#540008" />
-      <meta name="theme-color" content="#ffeaea" />
+      <meta name="msapplication-TileColor" content="#000000" />
+      <meta name="msapplication-config" content="/static/browserconfig.xml" />
+      <meta name="theme-color" content="#ffffff" />
     </React.Fragment>
   ) as React.ReactElement<any>;
 
