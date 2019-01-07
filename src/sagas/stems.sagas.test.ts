@@ -1,55 +1,64 @@
 import setupSagas from "../helpers/setupSagas";
-import { arrayToAssoc, assocToArray } from "../transformers/transformData";
+import { arrayToAssoc } from "../transformers/transformData";
 
 import * as actions from "../actions/root.actions";
+import * as selectors from "../selectors/root.selectors";
+
+const g: any = global;
 
 describe("[sagas] Stems", () => {
   const existingItems = [{ slug: "existing-test" }];
   const items = [{ slug: "test" }];
 
   describe("takeLatest(actions.fetchStems.started)", () => {
-    it("put(actions.fetchStems.done)", async () => {
+    describe("when fetching stems, with a successful response", () => {
       const { dispatch, filterAction, store } = setupSagas(
         {},
         {
           api: {
-            fetchStems: () => ({
-              data: { items },
-              ok: true
-            })
+            fetchStems: g.mockWithData({ items })
           }
         }
       );
 
-      dispatch(actions.fetchStems.started({}));
+      it("dispatches actions.fetchStems.started", () => {
+        dispatch(actions.fetchStems.started({}));
+      });
 
-      expect(filterAction(actions.fetchStems.done)).toHaveLength(1);
-      expect(assocToArray(store().stems.items)).toEqual(items);
+      it("dispatches actions.fetchStems.done", () => {
+        expect(filterAction(actions.fetchStems.done)).toHaveLength(1);
+      });
+
+      it("has the data from the response in the store", () => {
+        expect(selectors.getStemsAsArray(store())).toEqual(items);
+      });
     });
 
-    it("put(actions.fetchStems.failed)", async () => {
+    describe("when fetching stems, with a failed response", () => {
       const { dispatch, filterAction } = setupSagas(
         {},
         {
           api: {
-            fetchStems: () => ({
-              message: "Bad request",
-              ok: false
-            })
+            fetchStems: g.mockWithError("Bad request")
           }
         }
       );
 
-      dispatch(actions.fetchStems.started({}));
-      const failedActions = filterAction(actions.fetchStems.failed);
+      it("dispatches actions.fetchStems.started", () => {
+        dispatch(actions.fetchStems.started({}));
+      });
 
-      expect(failedActions).toHaveLength(1);
-      expect(failedActions[0].payload.error).toBe("Bad request");
+      it("dispatches actions.fetchStems.failed with expected error", () => {
+        const failedActions = filterAction(actions.fetchStems.failed);
+
+        expect(failedActions).toHaveLength(1);
+        expect(failedActions[0].payload.error).toBe("Bad request");
+      });
     });
   });
 
   describe("takeLatest(actions.fetchMoreStems.started)", () => {
-    it("put(actions.fetchMoreStems.done)", async () => {
+    describe("when fetching more stems, with a successful response", () => {
       const { dispatch, filterAction, store } = setupSagas(
         {
           stems: {
@@ -63,30 +72,38 @@ describe("[sagas] Stems", () => {
         },
         {
           api: {
-            fetchStems: () => ({
-              data: { items },
-              ok: true
-            })
+            fetchStems: g.mockWithData({ items })
           }
         }
       );
 
-      dispatch(actions.fetchMoreStems.started({}));
-      const trackEventActions = filterAction(actions.trackEvent);
-
-      expect(filterAction(actions.fetchMoreStems.done)).toHaveLength(1);
-      expect(trackEventActions).toHaveLength(1);
-      expect(trackEventActions[0].payload).toEqual({
-        event: "stems.fetchedMore",
-        itemCount: 2
+      it("dispatches actions.fetchMoreStems.started", () => {
+        dispatch(actions.fetchMoreStems.started({}));
       });
-      expect(assocToArray(store().stems.items)).toEqual([
-        ...existingItems,
-        ...items
-      ]);
+
+      it("dispatches actions.fetchMoreStems.done", () => {
+        expect(filterAction(actions.fetchMoreStems.done)).toHaveLength(1);
+      });
+
+      it("dispatches actions.trackEvent with expected payload", () => {
+        const trackEventActions = filterAction(actions.trackEvent);
+
+        expect(trackEventActions).toHaveLength(1);
+        expect(trackEventActions[0].payload).toEqual({
+          event: "stems.fetchedMore",
+          itemCount: 2
+        });
+      });
+
+      it("has the data from the response in the store", () => {
+        expect(selectors.getStemsAsArray(store())).toEqual([
+          ...existingItems,
+          ...items
+        ]);
+      });
     });
 
-    it("put(actions.fetchMoreStems.failed)", async () => {
+    describe("when fetching more stems, with a failed response", () => {
       const { dispatch, filterAction } = setupSagas(
         {
           stems: {
@@ -95,19 +112,21 @@ describe("[sagas] Stems", () => {
         },
         {
           api: {
-            fetchStems: () => ({
-              message: "Bad request",
-              ok: false
-            })
+            fetchStems: g.mockWithError("Bad request")
           }
         }
       );
 
-      dispatch(actions.fetchMoreStems.started({}));
-      const failedActions = filterAction(actions.fetchMoreStems.failed);
+      it("dispatches actions.fetchMoreStems.started", () => {
+        dispatch(actions.fetchMoreStems.started({}));
+      });
 
-      expect(failedActions).toHaveLength(1);
-      expect(failedActions[0].payload.error).toBe("Bad request");
+      it("dispatches actions.fetchMoreStems.failed with expected error", () => {
+        const failedActions = filterAction(actions.fetchMoreStems.failed);
+
+        expect(failedActions).toHaveLength(1);
+        expect(failedActions[0].payload.error).toBe("Bad request");
+      });
     });
   });
 });
