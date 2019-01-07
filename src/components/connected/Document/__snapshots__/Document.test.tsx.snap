@@ -57,7 +57,7 @@ Array [
     type="image/png"
   />,
   <link
-    color="#540008"
+    color="#000000"
     href="/static/favicon/safari-pinned-tab.svg"
     rel="mask-icon"
   />,
@@ -66,11 +66,15 @@ Array [
     rel="shortcut icon"
   />,
   <meta
-    content="#540008"
+    content="#000000"
     name="msapplication-TileColor"
   />,
   <meta
-    content="#ffeaea"
+    content="/static/browserconfig.xml"
+    name="msapplication-config"
+  />,
+  <meta
+    content="#ffffff"
     name="theme-color"
   />,
   null,
@@ -144,7 +148,7 @@ Array [
     type="image/png"
   />,
   <link
-    color="#540008"
+    color="#000000"
     href="/static/favicon/safari-pinned-tab.svg"
     rel="mask-icon"
   />,
@@ -153,11 +157,15 @@ Array [
     rel="shortcut icon"
   />,
   <meta
-    content="#540008"
+    content="#000000"
     name="msapplication-TileColor"
   />,
   <meta
-    content="#ffeaea"
+    content="/static/browserconfig.xml"
+    name="msapplication-config"
+  />,
+  <meta
+    content="#ffffff"
     name="theme-color"
   />,
   <link
