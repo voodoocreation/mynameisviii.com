@@ -12,14 +12,6 @@ g.cacheNames = {
 };
 
 g.precacheUrls = [
-  "/",
-  "/appearances",
-  "/galleries",
-  "/news",
-  "/releases",
-  "/resources",
-  "/stems",
-  "/symbol",
   ...assets,
   ...staticFiles
 ];
@@ -58,6 +50,9 @@ if (buildId !== "development") {
       plugins: [
         new g.workbox.cacheableResponse.Plugin({
           statuses: [0, 200]
+        }),
+        new g.workbox.expiration.Plugin({
+          maxAgeSeconds: 2 * 60 * 60
         })
       ]
     })
