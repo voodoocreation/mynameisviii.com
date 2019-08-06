@@ -2,7 +2,7 @@ import Head from "next/head";
 import * as React from "react";
 import { FormattedMessage, InjectedIntlProps } from "react-intl";
 
-import { absUrl } from "../../../helpers/dataTransformers";
+import { absoluteUrl } from "../../../helpers/dataTransformers";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import ButtonBar from "../../presentation/ButtonBar/ButtonBar";
 import Image from "../../presentation/Image/Image";
@@ -37,7 +37,7 @@ class SymbolRoute extends React.Component<IProps> {
             property="og:image"
             content="https://s3.amazonaws.com/mynameisviii-static/theme/heart/og/symbol.jpg"
           />
-          <meta property="og:url" content={absUrl("/symbol")} />
+          <meta property="og:url" content={absoluteUrl("/symbol")} />
         </Head>
 
         <PageHeader>{pageTitle}</PageHeader>

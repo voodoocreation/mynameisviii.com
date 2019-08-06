@@ -1,13 +1,13 @@
 import * as React from "react";
 
-import { absUrl } from "../../helpers/dataTransformers";
+import { absoluteUrl } from "../../helpers/dataTransformers";
 import { IGallery } from "../../models/root.models";
 import Schema from "./Schema";
 
 const Gallery: React.FC<IGallery> = props => (
   <Schema
     {...{
-      "@id": absUrl(`/galleries/${props.slug}`),
+      "@id": absoluteUrl(`/galleries/${props.slug}`),
       "@type": "ImageGallery",
       associatedMedia:
         props.images && props.images.length > 0

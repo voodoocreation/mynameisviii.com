@@ -5,7 +5,7 @@ import { FormattedMessage, InjectedIntlProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 
-import { absUrl } from "../../../helpers/dataTransformers";
+import { absoluteUrl } from "../../../helpers/dataTransformers";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { INewsArticle } from "../../../models/root.models";
 import { TStoreState } from "../../../reducers/root.reducers";
@@ -88,7 +88,7 @@ class NewsRoute extends React.Component<IProps, IState> {
             property="og:image"
             content="https://s3.amazonaws.com/mynameisviii-static/theme/heart/og/news.jpg"
           />
-          <meta property="og:url" content={absUrl("/news")} />
+          <meta property="og:url" content={absoluteUrl("/news")} />
         </Head>
 
         <PageHeader>

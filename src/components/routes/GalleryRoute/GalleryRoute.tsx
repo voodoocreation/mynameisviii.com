@@ -4,7 +4,7 @@ import { InjectedIntlProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 
-import { absUrl } from "../../../helpers/dataTransformers";
+import { absoluteUrl } from "../../../helpers/dataTransformers";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { IGallery } from "../../../models/root.models";
 import { TStoreState } from "../../../reducers/root.reducers";
@@ -64,7 +64,7 @@ class GalleryRoute extends React.Component<IProps> {
           <meta property="og:description" content={gallery.description} />
           <meta
             property="og:url"
-            content={absUrl(`/galleries/${gallery.slug}`)}
+            content={absoluteUrl(`/galleries/${gallery.slug}`)}
           />
           <meta property="og:type" content="website" />
           <meta property="og:image" content={gallery.imageUrl} />

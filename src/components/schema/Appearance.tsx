@@ -1,7 +1,7 @@
 import * as React from "react";
 import { InjectedIntlProps, injectIntl } from "react-intl";
 
-import { absUrl } from "../../helpers/dataTransformers";
+import { absoluteUrl } from "../../helpers/dataTransformers";
 import { IAppearance } from "../../models/appearance.models";
 import Schema from "./Schema";
 
@@ -10,7 +10,7 @@ interface IProps extends IAppearance, InjectedIntlProps {}
 const Appearance = ({ intl, ...props }: IProps) => (
   <Schema
     {...{
-      "@id": absUrl(`/appearances/${props.slug}`),
+      "@id": absoluteUrl(`/appearances/${props.slug}`),
       "@type": props.type,
       description: props.description,
       doorTime: new Date(props.startingAt).toLocaleTimeString(intl.locale),
@@ -60,7 +60,7 @@ const Appearance = ({ intl, ...props }: IProps) => (
       })),
       startDate: props.startingAt,
       typicalAgeRange: props.audience,
-      url: absUrl(`/appearances/${props.slug}`)
+      url: absoluteUrl(`/appearances/${props.slug}`)
     }}
   />
 );

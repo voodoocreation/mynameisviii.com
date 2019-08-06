@@ -1,7 +1,7 @@
 import * as React from "react";
 import stripTags from "striptags";
 
-import { absUrl, lengthToDuration } from "../../helpers/dataTransformers";
+import { absoluteUrl, lengthToDuration } from "../../helpers/dataTransformers";
 import { IRelease, IReleaseTrack } from "../../models/root.models";
 import Schema from "./Schema";
 
@@ -16,7 +16,7 @@ const getFlatTracklist = (tracklist: IReleaseTrack[][]) => {
 const Release: React.FC<IRelease> = props => (
   <Schema
     {...{
-      "@id": absUrl(`/releases/${props.slug}`),
+      "@id": absoluteUrl(`/releases/${props.slug}`),
       "@type": "MusicAlbum",
       albumProductionType: `http://schema.org/${props.productionType}`,
       albumRelease: {
@@ -34,7 +34,7 @@ const Release: React.FC<IRelease> = props => (
       description: stripTags(props.description).replace(/\n/g, ""),
       image: props.images[0].imageUrl,
       mainEntityOfPage: {
-        "@id": absUrl(`/releases/${props.slug}`)
+        "@id": absoluteUrl(`/releases/${props.slug}`)
       },
       name: props.title,
       track: {

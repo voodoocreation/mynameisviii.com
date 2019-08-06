@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { absUrl } from "../../helpers/dataTransformers";
+import { absoluteUrl } from "../../helpers/dataTransformers";
 import { INewsArticle, organization } from "../../models/root.models";
 import Schema from "./Schema";
 
@@ -14,7 +14,7 @@ const publisher = organization({
 const NewsArticle: React.FC<INewsArticle> = props => (
   <Schema
     {...{
-      "@id": absUrl(`/news/${props.slug}`),
+      "@id": absoluteUrl(`/news/${props.slug}`),
       "@type": "NewsArticle",
       articleBody: props.content,
       author: {
@@ -27,7 +27,7 @@ const NewsArticle: React.FC<INewsArticle> = props => (
       headline: props.title,
       image: props.imageUrl,
       mainEntityOfPage: {
-        "@id": absUrl(`/news/${props.slug}`)
+        "@id": absoluteUrl(`/news/${props.slug}`)
       },
       name: props.title,
       publisher: {

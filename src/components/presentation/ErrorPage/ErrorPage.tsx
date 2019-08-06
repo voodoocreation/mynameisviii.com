@@ -3,7 +3,7 @@ import * as React from "react";
 import { MdErrorOutline } from "react-icons/md";
 import { InjectedIntlProps, injectIntl } from "react-intl";
 
-import { absUrl } from "../../../helpers/dataTransformers";
+import { absoluteUrl } from "../../../helpers/dataTransformers";
 import PageHeader from "../../presentation/PageHeader/PageHeader";
 
 import "./ErrorPage.scss";
@@ -38,7 +38,7 @@ class ErrorPage extends React.Component<IProps> {
             property="og:image"
             content="https://s3.amazonaws.com/mynameisviii-static/theme/heart/og/error.jpg"
           />
-          <meta property="og:url" content={absUrl("/symbol")} />
+          <meta property="og:url" content={absoluteUrl("/symbol")} />
         </Head>
 
         <article className="ErrorPage">

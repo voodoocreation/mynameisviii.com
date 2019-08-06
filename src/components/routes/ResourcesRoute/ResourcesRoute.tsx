@@ -5,7 +5,7 @@ import { FormattedMessage, InjectedIntlProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 
-import { absUrl } from "../../../helpers/dataTransformers";
+import { absoluteUrl } from "../../../helpers/dataTransformers";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { IResource } from "../../../models/root.models";
 import { TStoreState } from "../../../reducers/root.reducers";
@@ -78,7 +78,7 @@ class ResourcesRoute extends React.Component<IProps, IState> {
 
           <meta property="og:title" content={pageTitle} />
           <meta property="og:description" content={pageDescription} />
-          <meta property="og:url" content={absUrl("/resources")} />
+          <meta property="og:url" content={absoluteUrl("/resources")} />
           <meta property="og:type" content="website" />
           <meta
             property="og:image"

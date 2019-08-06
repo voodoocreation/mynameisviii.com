@@ -5,7 +5,7 @@ import { FormattedMessage, InjectedIntlProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 
-import { absUrl } from "../../../helpers/dataTransformers";
+import { absoluteUrl } from "../../../helpers/dataTransformers";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { IStem } from "../../../models/root.models";
 import { TStoreState } from "../../../reducers/root.reducers";
@@ -82,7 +82,7 @@ class StemsRoute extends React.Component<IProps, IState> {
             property="og:image"
             content="https://s3.amazonaws.com/mynameisviii-static/theme/heart/og/stems.jpg"
           />
-          <meta property="og:url" content={absUrl("/stems")} />
+          <meta property="og:url" content={absoluteUrl("/stems")} />
         </Head>
 
         <PageHeader>{pageTitle}</PageHeader>

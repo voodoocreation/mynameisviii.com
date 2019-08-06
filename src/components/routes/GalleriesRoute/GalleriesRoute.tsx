@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 
 import * as actions from "../../../actions/root.actions";
-import { absUrl } from "../../../helpers/dataTransformers";
+import { absoluteUrl } from "../../../helpers/dataTransformers";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { IGallery } from "../../../models/root.models";
 import { TStoreState } from "../../../reducers/root.reducers";
@@ -82,7 +82,7 @@ class GalleriesRoute extends React.Component<IProps, IState> {
             property="og:image"
             content="https://s3.amazonaws.com/mynameisviii-static/theme/heart/og/galleries.jpg"
           />
-          <meta property="og:url" content={absUrl("/galleries")} />
+          <meta property="og:url" content={absoluteUrl("/galleries")} />
         </Head>
 
         <PageHeader>

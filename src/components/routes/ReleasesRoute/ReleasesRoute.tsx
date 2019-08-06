@@ -5,7 +5,7 @@ import { FormattedMessage, InjectedIntlProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 
-import { absUrl } from "../../../helpers/dataTransformers";
+import { absoluteUrl } from "../../../helpers/dataTransformers";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { IRelease } from "../../../models/root.models";
 import { TStoreState } from "../../../reducers/root.reducers";
@@ -82,7 +82,7 @@ class ReleasesRoute extends React.Component<IProps, IState> {
             property="og:image"
             content="https://s3.amazonaws.com/mynameisviii-static/theme/heart/og/releases.jpg"
           />
-          <meta property="og:url" content={absUrl("/releases")} />
+          <meta property="og:url" content={absoluteUrl("/releases")} />
         </Head>
 
         <PageHeader>

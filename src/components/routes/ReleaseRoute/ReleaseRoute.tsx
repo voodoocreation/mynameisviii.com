@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import stripTags from "striptags";
 
-import { absUrl } from "../../../helpers/dataTransformers";
+import { absoluteUrl } from "../../../helpers/dataTransformers";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { IRelease, IReleaseTrack } from "../../../models/root.models";
 import { TStoreState } from "../../../reducers/root.reducers";
@@ -70,7 +70,7 @@ class ReleaseRoute extends React.Component<IProps> {
           />
           <meta
             property="og:url"
-            content={absUrl(`/releases/${release.slug}`)}
+            content={absoluteUrl(`/releases/${release.slug}`)}
           />
           <meta property="og:type" content="music.album" />
           <meta property="music:release_date" content={release.releasedOn} />

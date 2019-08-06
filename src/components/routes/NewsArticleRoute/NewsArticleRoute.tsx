@@ -4,7 +4,7 @@ import { InjectedIntlProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 
-import { absUrl } from "../../../helpers/dataTransformers";
+import { absoluteUrl } from "../../../helpers/dataTransformers";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { INewsArticle } from "../../../models/root.models";
 import { TStoreState } from "../../../reducers/root.reducers";
@@ -60,7 +60,10 @@ class NewsArticleRoute extends React.Component<IProps> {
 
           <meta property="og:title" content={article.title} />
           <meta property="og:description" content={article.excerpt} />
-          <meta property="og:url" content={absUrl(`/news/${article.slug}`)} />
+          <meta
+            property="og:url"
+            content={absoluteUrl(`/news/${article.slug}`)}
+          />
           <meta property="og:type" content="article" />
           <meta property="article:published_time" content={article.createdAt} />
           <meta property="article:author" content={article.author} />
