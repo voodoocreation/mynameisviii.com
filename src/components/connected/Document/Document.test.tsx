@@ -4,7 +4,7 @@ import * as React from "react";
 
 import Document from "./Document";
 
-const setup = async (fn: any, fromTestProps?: any) => {
+const setup = async (fromTestProps?: any) => {
   const context = merge(
     {
       __NEXT_DATA__: {
@@ -31,40 +31,48 @@ const setup = async (fn: any, fromTestProps?: any) => {
 
   return {
     props,
-    wrapper: fn(<Document {...props} />)
+    wrapper: render(<Document {...props} />)
   };
 };
-
-const g: any = global;
 
 describe("[connected] <Document />", () => {
   beforeEach(() => {
     // @ts-ignore-next-line
     process.env.NODE_ENV = "development";
-    g.isServer = true;
+
+    Object.defineProperty(window, "isServer", {
+      value: true,
+      writable: true
+    });
+
+    Object.defineProperty(Date, "now", {
+      value: () => "NOW"
+    });
   });
 
   it("renders correctly when NODE_ENV=development", async () => {
     // @ts-ignore-next-line
     process.env.NODE_ENV = "development";
-    const { wrapper } = await setup(render);
 
-    expect(wrapper).toMatchSnapshot();
+    expect(async () => {
+      await setup();
+    }).not.toThrowError();
   });
 
   it("renders currectly when NODE_ENV=production", async () => {
     // @ts-ignore-next-line
     process.env.NODE_ENV = "production";
-    const { wrapper } = await setup(render);
 
-    expect(wrapper).toMatchSnapshot();
+    expect(async () => {
+      await setup();
+    }).not.toThrowError();
   });
 
   it("renders currectly when locale is missing", async () => {
-    const { wrapper } = await setup(render, {
-      req: { locale: "" }
-    });
-
-    expect(wrapper).toMatchSnapshot();
+    expect(async () => {
+      await setup({
+        req: { locale: "" }
+      });
+    }).not.toThrowError();
   });
 });

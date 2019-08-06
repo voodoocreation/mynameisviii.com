@@ -69,7 +69,7 @@ class Release extends React.Component<IProps> {
     return (
       <MetaBar className="Release--meta">
         <Meta className="Release--type" icon={<MdAlbum />} labelIntlId="TYPE">
-          <FormattedMessage id={type.toUpperCase()} />
+          <FormattedMessage id={type.toUpperCase()} values={{ count: 1 }} />
         </Meta>
 
         <Meta

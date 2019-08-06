@@ -40,7 +40,7 @@ exports[`[presentation] <Release /> when all props are defined, with multiple di
       <span
         class="Meta--value"
       >
-        {count, plural, one {Album} other {Albums}}
+        Album
       </span>
     </div>
     <div
@@ -415,7 +415,7 @@ exports[`[presentation] <Release /> when the minimum props are defined, with onl
       <span
         class="Meta--value"
       >
-        {count, plural, one {Album} other {Albums}}
+        Album
       </span>
     </div>
     <div

@@ -124,7 +124,7 @@ class ResourcesRoute extends React.Component<IProps, IState> {
       key={type}
     >
       <h2>
-        <FormattedMessage id={type.toUpperCase()} />
+        <FormattedMessage id={type.toUpperCase()} values={{ count: 2 }} />
       </h2>
 
       <p>

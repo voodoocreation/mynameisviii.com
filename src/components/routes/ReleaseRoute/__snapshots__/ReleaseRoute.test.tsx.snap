@@ -38,7 +38,7 @@ exports[`[routes] <ReleaseRoute /> matches snapshot 1`] = `
       <span
         class="Meta--value"
       >
-        {count, plural, one {Album} other {Albums}}
+        Album
       </span>
     </div>
     <div
