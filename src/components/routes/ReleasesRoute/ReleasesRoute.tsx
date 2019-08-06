@@ -123,10 +123,7 @@ class ReleasesRoute extends React.Component<IProps, IState> {
         key={type}
       >
         <h2>
-          <FormattedMessage
-            id={type.toUpperCase()}
-            values={{ count: this.props.releases[type].length }}
-          />
+          <FormattedMessage id={type.toUpperCase()} values={{ count: 2 }} />
         </h2>
 
         <div className="ReleasesRoute--listings--items">

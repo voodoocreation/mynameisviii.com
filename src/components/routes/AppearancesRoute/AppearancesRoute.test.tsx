@@ -7,7 +7,7 @@ import ComponentTester from "../../../utilities/ComponentTester";
 import MockPageContext from "../../../utilities/MockPageContext";
 import AppearancesRoute from "./AppearancesRoute";
 
-const pastItem = appearance({
+const pastItem1 = appearance({
   finishingAt: dayjs()
     .subtract(3, "day")
     .toISOString(),
@@ -17,7 +17,17 @@ const pastItem = appearance({
     .subtract(4, "day")
     .toISOString()
 });
-const upcomingItem = appearance({
+const pastItem2 = appearance({
+  finishingAt: dayjs()
+    .subtract(4, "day")
+    .toISOString(),
+  isActive: BOOLEAN.TRUE,
+  slug: "past-2",
+  startingAt: dayjs()
+    .subtract(5, "day")
+    .toISOString()
+});
+const upcomingItem1 = appearance({
   finishingAt: dayjs()
     .add(4, "day")
     .toISOString(),
@@ -25,6 +35,16 @@ const upcomingItem = appearance({
   slug: "upcoming-1",
   startingAt: dayjs()
     .add(3, "day")
+    .toISOString()
+});
+const upcomingItem2 = appearance({
+  finishingAt: dayjs()
+    .add(5, "day")
+    .toISOString(),
+  isActive: BOOLEAN.TRUE,
+  slug: "upcoming-2",
+  startingAt: dayjs()
+    .add(4, "day")
     .toISOString()
 });
 
@@ -57,7 +77,7 @@ describe("[routes] <AppearancesRoute />", () => {
             appearances: {
               hasAllItems: false,
               items: {
-                [upcomingItem.slug]: upcomingItem
+                [upcomingItem1.slug]: upcomingItem1
               }
             }
           })
@@ -76,7 +96,7 @@ describe("[routes] <AppearancesRoute />", () => {
             appearances: {
               hasAllItems: true,
               items: {
-                [upcomingItem.slug]: upcomingItem
+                [upcomingItem1.slug]: upcomingItem1
               }
             }
           })
@@ -98,23 +118,27 @@ describe("[routes] <AppearancesRoute />", () => {
         appearances: {
           hasAllItems: true,
           items: {
-            [pastItem.slug]: pastItem,
-            [upcomingItem.slug]: upcomingItem
+            [pastItem1.slug]: pastItem1,
+            [pastItem2.slug]: pastItem2,
+            [upcomingItem1.slug]: upcomingItem1,
+            [upcomingItem2.slug]: upcomingItem2
           }
         }
       })
       .mount();
 
-    it("renders the upcoming section", () => {
+    it("renders the upcoming section correctly", () => {
       expect(wrapper.find(".AppearancesRoute--upcoming")).toHaveLength(1);
+      expect(
+        wrapper.find(".AppearancesRoute--upcoming AppearanceListing")
+      ).toHaveLength(2);
     });
 
-    it("renders the past section", () => {
+    it("renders the past section correctly", () => {
       expect(wrapper.find(".AppearancesRoute--past")).toHaveLength(1);
-    });
-
-    it("renders all listings", () => {
-      expect(wrapper.find("AppearanceListing")).toHaveLength(2);
+      expect(
+        wrapper.find(".AppearancesRoute--past AppearanceListing")
+      ).toHaveLength(2);
     });
 
     it("matches snapshot", () => {
@@ -163,7 +187,7 @@ describe("[routes] <AppearancesRoute />", () => {
         appearances: {
           hasAllItems: false,
           items: {
-            [upcomingItem.slug]: upcomingItem
+            [upcomingItem1.slug]: upcomingItem1
           }
         }
       })
@@ -199,7 +223,7 @@ describe("[routes] <AppearancesRoute />", () => {
       .withReduxState({
         appearances: {
           items: {
-            [upcomingItem.slug]: upcomingItem
+            [upcomingItem1.slug]: upcomingItem1
           }
         }
       })

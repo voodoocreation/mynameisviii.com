@@ -20,7 +20,7 @@ export const getReleasesAsArray = createSelector(
   releases =>
     Object.values(releases).sort(
       (a, b) =>
-        new Date(b.releasedOn).getTime() - new Date(a.releasedOn).getTime()
+        new Date(a.releasedOn).getTime() - new Date(b.releasedOn).getTime()
     )
 );
 

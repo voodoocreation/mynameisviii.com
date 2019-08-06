@@ -16,27 +16,29 @@ export const getAppearancesCount = createSelector(
 
 export const getAppearancesAsArray = createSelector(
   getAppearances,
-  appearances =>
-    Object.values(appearances).sort(
-      (a, b) =>
-        new Date(b.startingAt).getTime() - new Date(a.startingAt).getTime()
-    )
+  appearances => Object.values(appearances)
 );
 
 export const getUpcomingAppearances = createSelector(
   getAppearancesAsArray,
   appearances =>
-    appearances.filter(
-      appearance => appearance.finishingAt > new Date().toISOString()
-    )
+    appearances
+      .filter(appearance => appearance.finishingAt > new Date().toISOString())
+      .sort(
+        (a, b) =>
+          new Date(a.startingAt).getTime() - new Date(b.startingAt).getTime()
+      )
 );
 
 export const getPastAppearances = createSelector(
   getAppearancesAsArray,
   appearances =>
-    appearances.filter(
-      appearance => appearance.finishingAt <= new Date().toISOString()
-    )
+    appearances
+      .filter(appearance => appearance.finishingAt <= new Date().toISOString())
+      .sort(
+        (a, b) =>
+          new Date(b.startingAt).getTime() - new Date(a.startingAt).getTime()
+      )
 );
 
 export const getCurrentAppearanceSlug = (state: TStoreState) =>
