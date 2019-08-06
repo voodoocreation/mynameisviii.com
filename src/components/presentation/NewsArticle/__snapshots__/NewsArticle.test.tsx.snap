@@ -209,7 +209,7 @@ exports[`[presentation] <NewsArticle /> when the action is defined, with a route
         class="ButtonBar NewsArticle--action"
       >
         <a
-          class="Button"
+          class="Button isStyled"
           href="/"
         >
           Action
@@ -324,7 +324,7 @@ exports[`[presentation] <NewsArticle /> when the action is defined, with a url m
         class="ButtonBar NewsArticle--action"
       >
         <a
-          class="Button"
+          class="Button isStyled"
           href="/"
           rel="noopener"
           target="_blank"
