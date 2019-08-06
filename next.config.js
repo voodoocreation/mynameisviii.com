@@ -68,7 +68,7 @@ module.exports = withSass({
       }),
 
       new ServiceWorkerPlugin({
-        entry: path.join(__dirname, "src/services/appService.ts"),
+        entry: path.join(__dirname, "appService.js"),
         filename: "appService.js",
         transformOptions: swOptions => ({
           ...swOptions,

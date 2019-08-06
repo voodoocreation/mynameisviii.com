@@ -96,7 +96,7 @@ exports[`[presentation] <ErrorPage /> when status is 500 matches snapshot 1`] = 
       />
     </svg>
     <p>
-      An error has occurred; please try again.
+      An error has occurred, please try again.
     </p>
   </div>
 </article>

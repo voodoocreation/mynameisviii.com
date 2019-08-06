@@ -21,7 +21,7 @@ exports[`[routes] <SymbolRoute /> renders correctly 1`] = `
       class="SymbolRoute--symbol"
     />
     <p>
-      Aside from being an embodiment of the artist known as Viii (pronounced 'Vee'); it also represents the different sides of identity...
+      Aside from being an embodiment of the artist known as Viii (pronounced 'Vee'), it also represents the different sides of identity...
     </p>
     <p>
       Each of the points of the triangle represent the start of a field of vision – three different perspectives of an individual:
@@ -38,10 +38,10 @@ exports[`[routes] <SymbolRoute /> renders correctly 1`] = `
       </li>
     </ul>
     <p>
-      The open eye in the centre of the triangle represents the individual themselves; with them being fully self-aware and mindful of these perspectives.
+      The open eye in the centre of the triangle represents the individual themselves, with them being fully self-aware and mindful of these perspectives.
     </p>
     <p>
-      The name 'Viii' also correlates to the meanings behind the symbol; with 'V' symbolising the viewpoint/triangle; with three of the letter 'i' representing each 'identity' perspective.
+      The name 'Viii' also correlates to the meanings behind the symbol, with 'V' symbolising the viewpoint/triangle, with three of the letter 'i' representing each 'identity' perspective.
     </p>
   </section>
   <section
@@ -74,10 +74,10 @@ exports[`[routes] <SymbolRoute /> renders correctly 1`] = `
       </div>
     </figure>
     <p>
-      Viii is a New Zealand-born singer; songwriter; instramentalist and record producer. This website serves as a means to release the different forms of creative information such as music releases; photoshoots; upcoming shows; design resources; and even song stems for other producers to use to create remixes.
+      Viii is a New Zealand-born singer, songwriter, instramentalist and record producer. This website serves as a means to release the different forms of creative information such as music releases, photoshoots, upcoming shows, design resources, and even song stems for other producers to use to create remixes.
     </p>
     <p>
-      Outside of the music; Viii also handles their own artistic direction and other aspects surrounding releases and performances; such as photography; graphic design; software development; makeup artistry and fashion.
+      Outside of the music, Viii also handles their own artistic direction and other aspects surrounding releases and performances, such as photography, graphic design, software development, makeup artistry and fashion.
     </p>
     <p>
       Consider this discovery as an open invitation to explore the rest of this website and listen to the music that has been released to date.

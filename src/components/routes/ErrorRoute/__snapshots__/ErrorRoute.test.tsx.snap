@@ -28,7 +28,7 @@ exports[`[routes] <ErrorRoute /> matches snapshot 1`] = `
       />
     </svg>
     <p>
-      An error has occurred; please try again.
+      An error has occurred, please try again.
     </p>
   </div>
 </article>

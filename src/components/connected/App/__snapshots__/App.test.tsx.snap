@@ -141,7 +141,7 @@ exports[`[connected] <App /> when mounting on the client matches snapshot 1`] = 
           You are offline. Some data and external links will be unavailable until you reconnect.
         </div>
         <button
-          class="Button Toast--closeButton isStyled"
+          class="Button Toast--closeButton"
           title="Close"
           type="button"
         >
@@ -175,7 +175,7 @@ exports[`[connected] <App /> when mounting on the client matches snapshot 1`] = 
           class="Toast--message"
         >
           <p>
-            A new version of the site is available; refresh to see it.
+            A new version of the site is available, refresh to see it.
           </p>
           <button
             class="Button NewVersionToast--refreshButton isStyled"
@@ -189,7 +189,7 @@ exports[`[connected] <App /> when mounting on the client matches snapshot 1`] = 
           </button>
         </div>
         <button
-          class="Button Toast--closeButton isStyled"
+          class="Button Toast--closeButton"
           title="Close"
           type="button"
         >
