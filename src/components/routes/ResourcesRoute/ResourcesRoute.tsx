@@ -68,7 +68,11 @@ class ResourcesRoute extends React.Component<IProps, IState> {
     return (
       <article className={cn("ResourcesRoute", { hasLoadedAllListings })}>
         <Head>
-          <title>{pageTitle}</title>
+          <title>
+            {pageTitle}
+            {" · "}
+            {formatMessage({ id: "BRAND_NAME" })}
+          </title>
 
           <meta content={pageDescription} name="description" />
 
