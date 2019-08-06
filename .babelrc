@@ -20,7 +20,6 @@
       "presets": ["next/babel"]
     },
     "test": {
-      "plugins": ["@babel/proposal-class-properties"],
       "presets": [
         [
           "next/babel",
