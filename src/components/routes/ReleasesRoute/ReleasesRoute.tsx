@@ -93,11 +93,7 @@ class ReleasesRoute extends React.Component<IProps, IState> {
           : null}
 
         {hasAllReleases && releasesCount === 0 ? (
-          <NoResults>
-            <p>
-              <FormattedMessage id="NO_RELEASES" />
-            </p>
-          </NoResults>
+          <NoResults entityIntlId="RELEASE" />
         ) : null}
 
         <ButtonBar>

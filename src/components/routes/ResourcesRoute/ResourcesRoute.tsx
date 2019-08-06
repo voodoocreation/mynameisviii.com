@@ -94,11 +94,7 @@ class ResourcesRoute extends React.Component<IProps, IState> {
           : null}
 
         {hasAllResources && resourcesCount === 0 ? (
-          <NoResults>
-            <p>
-              <FormattedMessage id="NO_RESOURCES" />
-            </p>
-          </NoResults>
+          <NoResults entityIntlId="RESOURCE" />
         ) : null}
 
         <ButtonBar>

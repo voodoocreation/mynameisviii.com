@@ -107,11 +107,7 @@ class NewsRoute extends React.Component<IProps, IState> {
         ) : null}
 
         {hasAllNewsArticles && articlesCount === 0 ? (
-          <NoResults>
-            <p>
-              <FormattedMessage id="NO_NEWS" />
-            </p>
-          </NoResults>
+          <NoResults entityIntlId="ARTICLE" />
         ) : null}
 
         <ButtonBar>

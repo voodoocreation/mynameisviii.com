@@ -44,11 +44,18 @@ class NewsArticle extends React.Component<IProps, IState> {
 
           <section className="NewsArticle--meta">
             <div className="NewsArticle--posted">
-              <MdAccessTime /> <FormattedMessage id="POSTED" />{" "}
-              <DateTime value={article.createdAt} updateInterval={300000} />{" "}
+              <MdAccessTime />{" "}
               <FormattedMessage
-                id="BY_NAME"
-                values={{ name: article.author }}
+                id="POSTED_ON_DATE_BY_AUTHOR"
+                values={{
+                  author: article.author,
+                  date: (
+                    <DateTime
+                      value={article.createdAt}
+                      updateInterval={300000}
+                    />
+                  )
+                }}
               />
             </div>
 

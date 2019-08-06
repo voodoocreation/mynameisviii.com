@@ -1,5 +1,4 @@
 import { TYPE } from "../../../constants/news.constants";
-import * as messages from "../../../locales/en-NZ";
 import ComponentTester from "../../../utilities/ComponentTester";
 import NewsArticleType from "./NewsArticleType";
 
@@ -10,7 +9,7 @@ describe("[presentation] <NewsArticleType />", () => {
     const { wrapper } = component.withProps({ hasLabel: false }).render();
 
     it("uses the label for the title attribute", () => {
-      expect(wrapper.attr("title")).toBe(messages.NEWS);
+      expect(wrapper.attr("title")).toBe("News");
     });
 
     it("doesn't render the label", () => {
@@ -38,9 +37,7 @@ describe("[presentation] <NewsArticleType />", () => {
     });
 
     it("renders the correct label", () => {
-      expect(wrapper.find(".NewsArticleType--label").text()).toBe(
-        messages.NEWS
-      );
+      expect(wrapper.find(".NewsArticleType--label").text()).toBe("News");
     });
   });
 
@@ -52,9 +49,7 @@ describe("[presentation] <NewsArticleType />", () => {
     });
 
     it("renders the correct label", () => {
-      expect(wrapper.find(".NewsArticleType--label").text()).toBe(
-        messages.RELEASE
-      );
+      expect(wrapper.find(".NewsArticleType--label").text()).toBe("Release");
     });
   });
 
@@ -66,9 +61,7 @@ describe("[presentation] <NewsArticleType />", () => {
     });
 
     it("renders the correct label", () => {
-      expect(wrapper.find(".NewsArticleType--label").text()).toBe(
-        messages.APPEARANCE
-      );
+      expect(wrapper.find(".NewsArticleType--label").text()).toBe("Appearance");
     });
   });
 });

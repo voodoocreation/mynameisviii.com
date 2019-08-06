@@ -101,11 +101,7 @@ class GalleriesRoute extends React.Component<IProps, IState> {
         ) : null}
 
         {hasAllGalleries && galleriesCount === 0 ? (
-          <NoResults>
-            <p>
-              <FormattedMessage id="NO_GALLERIES" />
-            </p>
-          </NoResults>
+          <NoResults entityIntlId="GALLERY" />
         ) : null}
 
         <ButtonBar>

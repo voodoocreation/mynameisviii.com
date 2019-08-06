@@ -129,11 +129,7 @@ class AppearancesRoute extends React.Component<IProps, IState> {
         ) : null}
 
         {hasAllAppearances && appearancesCount === 0 ? (
-          <NoResults>
-            <p>
-              <FormattedMessage id="NO_APPEARANCES" />
-            </p>
-          </NoResults>
+          <NoResults entityIntlId="APPEARANCE" />
         ) : null}
 
         <ButtonBar>

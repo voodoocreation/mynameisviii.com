@@ -6,7 +6,12 @@ import {
   MdFormatListNumbered,
   MdMusicNote
 } from "react-icons/md";
-import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl";
+import {
+  FormattedDate,
+  FormattedMessage,
+  InjectedIntlProps,
+  injectIntl
+} from "react-intl";
 
 import { IRelease } from "../../../models/root.models";
 import Schema from "../../schema/Release";
@@ -50,7 +55,7 @@ class Release extends React.Component<IProps> {
 
             <section className="Release--copyright">
               <p>
-                ℗© {new Date(release.releasedOn).getFullYear()}{" "}
+                ℗© <FormattedDate value={release.releasedOn} year="numeric" />{" "}
                 {release.recordLabel}
               </p>
             </section>
@@ -175,9 +180,12 @@ class Release extends React.Component<IProps> {
                 isExternal={true}
                 title={this.props.intl.formatMessage(
                   {
-                    id: `STREAM_ON_${link.platform.toUpperCase()}`
+                    id: `STREAM_ON_PLATFORM`
                   },
                   {
+                    platform: this.props.intl.formatMessage({
+                      id: link.platform.toUpperCase()
+                    }),
                     title: this.props.title
                   }
                 )}
@@ -206,9 +214,12 @@ class Release extends React.Component<IProps> {
                 isExternal={true}
                 title={this.props.intl.formatMessage(
                   {
-                    id: `BUY_FROM_${link.platform.toUpperCase()}`
+                    id: `BUY_FROM_PLATFORM`
                   },
                   {
+                    platform: this.props.intl.formatMessage({
+                      id: link.platform.toUpperCase()
+                    }),
                     title: this.props.title
                   }
                 )}

@@ -1,7 +1,7 @@
 import cn from "classnames";
 import Head from "next/head";
 import * as React from "react";
-import { FormattedMessage, InjectedIntlProps } from "react-intl";
+import { InjectedIntlProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 
@@ -99,11 +99,7 @@ class StemsRoute extends React.Component<IProps, IState> {
         )}
 
         {hasAllStems && stemsCount === 0 ? (
-          <NoResults>
-            <p>
-              <FormattedMessage id="NO_STEMS" />
-            </p>
-          </NoResults>
+          <NoResults entityIntlId="STEM" />
         ) : null}
 
         <ButtonBar>

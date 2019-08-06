@@ -2,11 +2,12 @@ export const ADD_TO_HOME_SCREEN = "Would you like to install the Viii app?";
 export const ALBUM = "{count, plural, one {Album} other {Albums}}";
 export const AMAZON = "Amazon";
 export const APPLE = "Apple Music";
-export const API_DATA = "API data";
-export const APPEARANCE = "Appearance";
+export const APPEARANCE =
+  "{count, plural, one {Appearance} other {Appearances}}";
 export const APPEARANCES_DESCRIPTION =
   "Where Viii will be at for performances at gigs, shows and other appearances.";
 export const APPEARANCES_TITLE = "Appearances";
+export const ARTICLE = "{count, plural, one {Article} other {Articles}}";
 export const AUDIENCE = "Audience";
 export const AUDIO_FORMAT = "Audio format";
 export const BIOGRAPHY = "Biography";
@@ -25,10 +26,7 @@ export const BOOKING_AND_PRESS_CONTACT =
 export const BRAND_NAME =
   "My name is Viii: a painter of frequencies and thoughts";
 export const BUY = "Buy";
-export const BUY_FROM_AMAZON = "Buy '{title}' from Amazon";
-export const BUY_FROM_ITUNES = "Buy '{title}' from iTunes";
-export const BUY_FROM_GOOGLE = "Buy '{title}' from Google Play";
-export const BY_NAME = "by {name}";
+export const BUY_FROM_PLATFORM = "Buy '{title}' from {platform}";
 export const CANCELLED = "Cancelled";
 export const CLOSE = "Close";
 export const COMPILATION = "Compilation";
@@ -59,6 +57,7 @@ export const FETCH_API_DATA = "Fetch API data";
 export const GALLERIES_TITLE = "Galleries";
 export const GALLERIES_DESCRIPTION =
   "Galleries of photoshoots where Viii is either behind or in front of the camera";
+export const GALLERY = "{count, plural, one {Gallery} other {Galleries}}";
 export const GENIUS = "Genius";
 export const GENRE = "Genre";
 export const GET_TICKETS = "Get tickets";
@@ -76,7 +75,6 @@ export const LICENCED_UNDER_CC_REMIX =
   "Licenced under the Creative Commons Attribution-NonCommercial-ShareAlike licence (CC BY-NC-SA)";
 export const LIVE = "Live";
 export const LOAD_MORE = "Load more";
-export const LOCAL_DATA = "Local data";
 export const LOCATION = "Location";
 export const MENU = "Menu";
 export const NEW_VERSION_AVAILABLE =
@@ -88,24 +86,21 @@ export const NEWS_TITLE = "News";
 export const NEXT_APPEARANCE = "Next appearance";
 export const NO_APPEARANCES =
   "There are no upcoming appearances to show at this time.";
-export const NO_GALLERIES = "There are no galleries to show at this time.";
-export const NO_NEWS = "There are no news articles to show at this time.";
-export const NO_RELEASES = "There are no releases to show at this time.";
-export const NO_RESOURCES = "There are no resources to show at this time.";
-export const NO_STEMS = "There are no stems to show at this time.";
+export const NO_RESULTS = "There are no {entities} to show at this time.";
 export const PAST = "Past";
 export const PHOTOS = "Photos";
-export const POSTED = "Posted";
+export const POSTED_ON_DATE_BY_AUTHOR = "Posted {date} by {author}";
 export const POSTPONED = "Postponed";
 export const PACKAGE_FORMAT = "Package format";
 export const PRICE = "Price";
 export const REFRESH = "Refresh";
-export const RELEASE = "Release";
+export const RELEASE = "{count, plural, one {Release} other {Releases}}";
 export const RELEASED = "Released";
 export const RELEASES_DESCRIPTION =
   "The latest album, EP, single and remix releases from Viii.";
 export const RELEASES_TITLE = "Releases";
 export const REMIX = "{count, plural, one {Remix} other {Remixes}}";
+export const RESOURCE = "{count, plural, one {Resource} other {Resources}}";
 export const RESOURCES_DESCRIPTION =
   "Resources for designers and press, such as artwork and branding.";
 export const RESOURCES_DESIGN_DESCRIPTION =
@@ -117,15 +112,12 @@ export const SOUNDCLOUD = "SoundCloud";
 export const SOUNDTRACK = "Soundtrack";
 export const SPOTIFY = "Spotify";
 export const STATUS = "Status";
+export const STEM = "{count, plural, one {Stem} other {Stems}}";
 export const STEMS_DESCRIPTION =
   "A collection of song stems for producers to create their own remixes with.";
 export const STEMS_TITLE = "Stems";
 export const STREAM = "Stream";
-export const STREAM_ON_AMAZON = "Stream '{title}' on Amazon Music Unlimited";
-export const STREAM_ON_APPLE = "Stream '{title}' on Apple Music";
-export const STREAM_ON_SOUNDCLOUD = "Stream '{title}' on SoundCloud";
-export const STREAM_ON_SPOTIFY = "Stream '{title}' on Spotify";
-export const STREAM_ON_TIDAL = "Stream '{title}' on Tidal";
+export const STREAM_ON_PLATFORM = "Stream '{title}' on {platform}";
 export const SYMBOL_ABOUT_CONTENT_1 =
   "Viii is a New Zealand-born singer, songwriter, instramentalist and record producer. This website serves as a means to release the different forms of creative information such as music releases, photoshoots, upcoming shows, design resources, and even song stems for other producers to use to create remixes.";
 export const SYMBOL_ABOUT_CONTENT_2 =

@@ -23,12 +23,12 @@ const NewsArticleType: React.FC<IProps> = ({
   switch (value) {
     case TYPE.RELEASE:
       icon = <MdAlbum />;
-      label = intl.formatMessage({ id: "RELEASE" });
+      label = intl.formatMessage({ id: "RELEASE" }, { count: 1 });
       break;
 
     case TYPE.APPEARANCE:
       icon = <MdEvent />;
-      label = intl.formatMessage({ id: "APPEARANCE" });
+      label = intl.formatMessage({ id: "APPEARANCE" }, { count: 1 });
       break;
 
     default:
