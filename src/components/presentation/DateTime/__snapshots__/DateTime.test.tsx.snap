@@ -4,9 +4,9 @@ exports[`[presentation] <DateTime /> when isRelative is false and isDateOnly is 
 <time
   class="DateTime TestDateTime"
   datetime="2018-10-20T20:00:00"
-  title="Saturday, 20 October 2018, 8:00 PM"
+  title="Saturday, 20 October 2018, 8:00 pm"
 >
-  Saturday, 20 October 2018, 8:00 PM
+  Saturday, 20 October 2018, 8:00 pm
 </time>
 `;
 
@@ -24,9 +24,9 @@ exports[`[presentation] <DateTime /> when isRelative is false and only time opti
 <time
   class="DateTime TestDateTime"
   datetime="2018-10-20T20:00:00"
-  title="8:00 PM"
+  title="8:00 pm"
 >
-  8:00 PM
+  8:00 pm
 </time>
 `;
 

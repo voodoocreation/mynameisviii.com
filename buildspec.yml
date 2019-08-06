@@ -2,15 +2,15 @@ version: 0.2
 phases:
   install:
     commands:
-      - curl -sL https://deb.nodesource.com/setup_10.x | bash -
-      - apt-get install -y nodejs
-      - npm install -g yarn
+      - "curl -sL https://deb.nodesource.com/setup_10.x | bash -"
+      - "apt-get install -y nodejs"
+      - "npm install -g yarn"
   pre_build:
     commands:
-      - yarn install
+      - "yarn install --force"
   build:
     commands:
-      - "yarn tsc"
+      - "yarn typecheck"
       - "yarn lint"
       - "yarn test --coverage"
       - "yarn build"

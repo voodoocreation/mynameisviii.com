@@ -76,17 +76,17 @@ exports[`[routes] <AppearanceRoute /> matches snapshot 1`] = `
         <time
           class="DateTime"
           datetime="2018-01-01T00:00:00"
-          title="12:00 AM"
+          title="12:00 am"
         >
-          12:00 AM
+          12:00 am
         </time>
         –
         <time
           class="DateTime"
           datetime="2018-01-01T00:00:00"
-          title="12:00 AM"
+          title="12:00 am"
         >
-          12:00 AM
+          12:00 am
         </time>
       </span>
     </div>

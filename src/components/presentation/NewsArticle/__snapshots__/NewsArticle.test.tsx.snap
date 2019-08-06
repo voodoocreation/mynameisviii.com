@@ -60,7 +60,7 @@ exports[`[presentation] <NewsArticle /> when no action is defined matches snapsh
         <time
           class="DateTime"
           datetime="2017-10-10T18:00:00"
-          title="Tuesday, 10 October 2017, 6:00 PM"
+          title="Tuesday, 10 October 2017, 6:00 pm"
         >
           3 months ago
         </time>
@@ -165,7 +165,7 @@ exports[`[presentation] <NewsArticle /> when the action is defined, with a route
         <time
           class="DateTime"
           datetime="2017-10-10T18:00:00"
-          title="Tuesday, 10 October 2017, 6:00 PM"
+          title="Tuesday, 10 October 2017, 6:00 pm"
         >
           3 months ago
         </time>
@@ -280,7 +280,7 @@ exports[`[presentation] <NewsArticle /> when the action is defined, with a url m
         <time
           class="DateTime"
           datetime="2017-10-10T18:00:00"
-          title="Tuesday, 10 October 2017, 6:00 PM"
+          title="Tuesday, 10 October 2017, 6:00 pm"
         >
           3 months ago
         </time>

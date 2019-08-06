@@ -82,9 +82,9 @@ exports[`[presentation] <AppearanceListing /> when all props are defined matches
             <time
               class="DateTime"
               datetime="2018-01-04T00:00:00"
-              title="12:00 AM"
+              title="12:00 am"
             >
-              12:00 AM
+              12:00 am
             </time>
           </span>
         </div>
@@ -304,9 +304,9 @@ exports[`[presentation] <AppearanceListing /> when cancelled matches snapshot 1`
             <time
               class="DateTime"
               datetime="2018-01-04T00:00:00"
-              title="12:00 AM"
+              title="12:00 am"
             >
-              12:00 AM
+              12:00 am
             </time>
           </span>
         </div>
@@ -471,9 +471,9 @@ exports[`[presentation] <AppearanceListing /> when only the required props are d
             <time
               class="DateTime"
               datetime="2018-01-04T00:00:00"
-              title="12:00 AM"
+              title="12:00 am"
             >
-              12:00 AM
+              12:00 am
             </time>
           </span>
         </div>
@@ -648,9 +648,9 @@ exports[`[presentation] <AppearanceListing /> when postponed matches snapshot 1`
             <time
               class="DateTime"
               datetime="2018-01-04T00:00:00"
-              title="12:00 AM"
+              title="12:00 am"
             >
-              12:00 AM
+              12:00 am
             </time>
           </span>
         </div>
@@ -815,9 +815,9 @@ exports[`[presentation] <AppearanceListing /> when there are no sales matches sn
             <time
               class="DateTime"
               datetime="2018-01-04T00:00:00"
-              title="12:00 AM"
+              title="12:00 am"
             >
-              12:00 AM
+              12:00 am
             </time>
           </span>
         </div>
@@ -976,9 +976,9 @@ exports[`[presentation] <AppearanceListing /> when there are three sales matches
             <time
               class="DateTime"
               datetime="2018-01-04T00:00:00"
-              title="12:00 AM"
+              title="12:00 am"
             >
-              12:00 AM
+              12:00 am
             </time>
           </span>
         </div>
@@ -1153,9 +1153,9 @@ exports[`[presentation] <AppearanceListing /> when there are two sales matches s
             <time
               class="DateTime"
               datetime="2018-01-04T00:00:00"
-              title="12:00 AM"
+              title="12:00 am"
             >
-              12:00 AM
+              12:00 am
             </time>
           </span>
         </div>
@@ -1330,9 +1330,9 @@ exports[`[presentation] <AppearanceListing /> when there is only one sale matche
             <time
               class="DateTime"
               datetime="2018-01-04T00:00:00"
-              title="12:00 AM"
+              title="12:00 am"
             >
-              12:00 AM
+              12:00 am
             </time>
           </span>
         </div>

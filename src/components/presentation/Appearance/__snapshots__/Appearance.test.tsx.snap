@@ -76,17 +76,17 @@ exports[`[presentation] <Appearance /> when all props are defined matches snapsh
         <time
           class="DateTime"
           datetime="2018-01-04T00:00:00"
-          title="12:00 AM"
+          title="12:00 am"
         >
-          12:00 AM
+          12:00 am
         </time>
         –
         <time
           class="DateTime"
           datetime="2018-01-05T00:00:00"
-          title="12:00 AM"
+          title="12:00 am"
         >
-          12:00 AM
+          12:00 am
         </time>
       </span>
     </div>
@@ -540,17 +540,17 @@ exports[`[presentation] <Appearance /> when cancelled matches snapshot 1`] = `
         <time
           class="DateTime"
           datetime="2018-01-04T00:00:00"
-          title="12:00 AM"
+          title="12:00 am"
         >
-          12:00 AM
+          12:00 am
         </time>
         –
         <time
           class="DateTime"
           datetime="2018-01-05T00:00:00"
-          title="12:00 AM"
+          title="12:00 am"
         >
-          12:00 AM
+          12:00 am
         </time>
       </span>
     </div>
@@ -827,17 +827,17 @@ exports[`[presentation] <Appearance /> when finishingAt is in the past matches s
         <time
           class="DateTime"
           datetime="2018-01-04T00:00:00"
-          title="12:00 AM"
+          title="12:00 am"
         >
-          12:00 AM
+          12:00 am
         </time>
         –
         <time
           class="DateTime"
           datetime="2017-12-31T00:00:00"
-          title="12:00 AM"
+          title="12:00 am"
         >
-          12:00 AM
+          12:00 am
         </time>
       </span>
     </div>
@@ -1098,17 +1098,17 @@ exports[`[presentation] <Appearance /> when only the required props are defined 
         <time
           class="DateTime"
           datetime="2018-01-04T00:00:00"
-          title="12:00 AM"
+          title="12:00 am"
         >
-          12:00 AM
+          12:00 am
         </time>
         –
         <time
           class="DateTime"
           datetime="2018-01-05T00:00:00"
-          title="12:00 AM"
+          title="12:00 am"
         >
-          12:00 AM
+          12:00 am
         </time>
       </span>
     </div>
@@ -1369,17 +1369,17 @@ exports[`[presentation] <Appearance /> when postponed matches snapshot 1`] = `
         <time
           class="DateTime"
           datetime="2018-01-04T00:00:00"
-          title="12:00 AM"
+          title="12:00 am"
         >
-          12:00 AM
+          12:00 am
         </time>
         –
         <time
           class="DateTime"
           datetime="2018-01-05T00:00:00"
-          title="12:00 AM"
+          title="12:00 am"
         >
-          12:00 AM
+          12:00 am
         </time>
       </span>
     </div>

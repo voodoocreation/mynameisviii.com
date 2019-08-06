@@ -45,11 +45,11 @@ describe("[presentation] <DateTime />", () => {
     });
 
     it("renders with the correct title attribute", () => {
-      expect(wrapper.attr("title")).toBe("Saturday, 20 October 2018, 8:00 PM");
+      expect(wrapper.attr("title")).toBe("Saturday, 20 October 2018, 8:00 pm");
     });
 
     it("renders with the correct text content", () => {
-      expect(wrapper.text()).toBe("Saturday, 20 October 2018, 8:00 PM");
+      expect(wrapper.text()).toBe("Saturday, 20 October 2018, 8:00 pm");
     });
 
     it("matches snapshot", () => {
@@ -99,11 +99,11 @@ describe("[presentation] <DateTime />", () => {
     });
 
     it("renders with the correct title attribute", () => {
-      expect(wrapper.attr("title")).toBe("8:00 PM");
+      expect(wrapper.attr("title")).toBe("8:00 pm");
     });
 
     it("renders with the correct text content", () => {
-      expect(wrapper.text()).toBe("8:00 PM");
+      expect(wrapper.text()).toBe("8:00 pm");
     });
 
     it("matches snapshot", () => {
