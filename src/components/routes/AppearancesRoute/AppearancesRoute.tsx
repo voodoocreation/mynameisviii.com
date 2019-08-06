@@ -5,7 +5,7 @@ import { FormattedMessage, InjectedIntlProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 
-import { absoluteUrl } from "../../../helpers/dataTransformers";
+import { absoluteUrl, s3ThemeUrl } from "../../../helpers/dataTransformers";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { IAppearance } from "../../../models/root.models";
 import { TStoreState } from "../../../reducers/root.reducers";
@@ -87,7 +87,7 @@ class AppearancesRoute extends React.Component<IProps, IState> {
           <meta property="og:type" content="website" />
           <meta
             property="og:image"
-            content="https://s3.amazonaws.com/mynameisviii-static/theme/heart/og/appearances.jpg"
+            content={s3ThemeUrl("/og/appearances.jpg")}
           />
           <meta property="og:url" content={absoluteUrl("/appearances")} />
         </Head>

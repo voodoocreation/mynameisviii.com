@@ -21,6 +21,6 @@
   }
 
   span {
-    @include panel-1();
+    background: $text-color;
   }
 }

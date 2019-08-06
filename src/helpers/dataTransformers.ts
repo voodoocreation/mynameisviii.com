@@ -61,6 +61,9 @@ export const absoluteUrl = (path: string) =>
           : window.location.host
       }${path}`;
 
+export const s3ThemeUrl = (path: string) =>
+  `https://s3.amazonaws.com/mynameisviii-static/theme/heart-dark${path}`;
+
 export const extractDomain = (url: string) => url.split("/")[2];
 
 export const toTitleCase = (str: string, delimiter = " ") =>

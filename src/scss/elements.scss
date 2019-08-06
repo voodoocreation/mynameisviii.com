@@ -38,8 +38,8 @@ body {
     bottom: 0;
     left: 0;
     content: "";
-    background: url("/static/img/bg-texture-light.gif") fixed 50% 50% repeat;
-    opacity: 0.3;
+    background: url("/static/img/bg-texture-dark.gif") fixed 50% 50% repeat;
+    opacity: 0.5;
     z-index: -1;
     pointer-events: none;
   }

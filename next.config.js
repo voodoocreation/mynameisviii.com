@@ -36,6 +36,7 @@ const getFiles = (dir, files = []) => {
 
 module.exports = withSass({
   distDir: "dist",
+  exportTrailingSlash: true,
   poweredByHeader: false,
   exportPathMap: async (_, { distDir, outDir }) => {
     if (outDir) {

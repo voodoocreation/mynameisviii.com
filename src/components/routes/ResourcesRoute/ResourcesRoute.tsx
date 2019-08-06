@@ -5,7 +5,7 @@ import { FormattedMessage, InjectedIntlProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 
-import { absoluteUrl } from "../../../helpers/dataTransformers";
+import { absoluteUrl, s3ThemeUrl } from "../../../helpers/dataTransformers";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { IResource } from "../../../models/root.models";
 import { TStoreState } from "../../../reducers/root.reducers";
@@ -80,12 +80,7 @@ class ResourcesRoute extends React.Component<IProps, IState> {
           <meta property="og:description" content={pageDescription} />
           <meta property="og:url" content={absoluteUrl("/resources")} />
           <meta property="og:type" content="website" />
-          <meta
-            property="og:image"
-            content="https://s3.amazonaws.com/mynameisviii-static/theme/heart/og/resources.jpg"
-          />
-          <meta property="og:image:width" content="1200" />
-          <meta property="og:image:height" content="630" />
+          <meta property="og:image" content={s3ThemeUrl("/og/resources.jpg")} />
         </Head>
 
         <PageHeader>
