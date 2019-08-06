@@ -1,84 +1,70 @@
-import { mount } from "enzyme";
 import * as React from "react";
 
+import ComponentTester from "../../../utilities/ComponentTester";
 import Portal from "./Portal";
 
-jest.mock("react-dom", () => ({
-  createPortal: (component: any) => component
-}));
-
-const g: any = global;
-
-const setup = (fn: any, fromTestProps?: any) => {
-  const props = {
-    ...fromTestProps
-  };
-
-  return {
-    actual: fn(
-      <Portal {...props}>
-        <div className="TestPortalComponent" />
-      </Portal>
-    ),
-    props
-  };
-};
+const component = new ComponentTester(Portal)
+  .withDefaultProps({ className: "TestPortal" })
+  .withDefaultChildren(<div className="TestPortalComponent" />);
 
 describe("[presentation] <Portal />", () => {
-  beforeEach(() => {
-    g.isServer = false;
-    document.body.innerHTML = "";
+  describe("when mounting on the server", () => {
+    Object.defineProperty(window, "isServer", {
+      value: true,
+      writable: true
+    });
+
+    const { wrapper } = component.mount();
+
+    it("renders in-place", () => {
+      expect(
+        wrapper.find(".Portal--inPlace .TestPortalComponent")
+      ).toHaveLength(1);
+    });
+
+    it("matches snapshot", () => {
+      expect(wrapper.render()).toMatchSnapshot();
+    });
+
+    it("unmounts component", () => {
+      wrapper.unmount();
+    });
   });
 
-  it("renders correctly on the client", () => {
-    const { actual } = setup(mount);
+  describe("when mounting on the client", () => {
+    Object.defineProperty(window, "isServer", {
+      value: false,
+      writable: true
+    });
 
-    expect(actual.render()).toMatchSnapshot();
-  });
+    const { wrapper } = component.mount();
 
-  it("renders correctly on the server", () => {
-    g.isServer = true;
-    const { actual } = setup(mount);
+    it("creates the portal node", () => {
+      expect(document.querySelectorAll(".Portal")).toHaveLength(1);
+    });
 
-    expect(actual.render()).toMatchSnapshot();
-  });
+    it("creates the instance container with the defined class", () => {
+      expect(document.querySelectorAll(".Portal .TestPortal")).toHaveLength(1);
+    });
 
-  it("mounts and unmounts without throwing any errors on the client", () => {
-    let isPassing = true;
+    it("doesn't render in-place", () => {
+      expect(wrapper.find(".Portal--inPlace")).toHaveLength(0);
+    });
 
-    try {
-      const { actual } = setup(mount);
-      actual.unmount();
-    } catch (error) {
-      isPassing = false;
-    }
+    it("renders the children", () => {
+      expect(wrapper.find(".TestPortalComponent")).toHaveLength(1);
+    });
 
-    expect(isPassing).toBe(true);
-  });
+    it("matches snapshot", () => {
+      expect(wrapper.render()).toMatchSnapshot();
+    });
 
-  it("mounts and unmounts without throwing any errors on the server", () => {
-    let isPassing = true;
-    g.isServer = true;
+    it("unmounts component", () => {
+      wrapper.unmount();
+    });
 
-    try {
-      const { actual } = setup(mount);
-      actual.unmount();
-    } catch (error) {
-      isPassing = false;
-    }
-
-    expect(isPassing).toBe(true);
-  });
-
-  it("appends portal container to document portal on mount and removes it on unmount", () => {
-    const portal = document.createElement("div");
-    portal.className = "Portal";
-    document.body.appendChild(portal);
-
-    const { actual, props } = setup(mount, { className: "TestPortal" });
-    expect(portal.querySelectorAll(`.${props.className}`)).toHaveLength(1);
-
-    actual.unmount();
-    expect(portal.querySelectorAll(`.${props.className}`)).toHaveLength(0);
+    it("removes the instance container from the DOM", () => {
+      expect(document.querySelectorAll(".Portal *")).toHaveLength(0);
+    });
   });
 });

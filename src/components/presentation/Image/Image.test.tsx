@@ -1,74 +1,163 @@
-import { mount, render } from "enzyme";
-import * as React from "react";
-
+import ComponentTester from "../../../utilities/ComponentTester";
 import Image from "./Image";
 
-const g: any = global;
+const component = new ComponentTester(Image);
 
-const setup = (fn: any, fromTestProps?: any) => {
-  const props = {
-    className: "TestImage",
-    ...fromTestProps
-  };
-
-  return {
-    actual: fn(<Image {...props} />),
-    props
-  };
+const defaultProps = {
+  alt: "Alt",
+  caption: "Caption",
+  className: "Classname",
+  onClick: jest.fn(),
+  onLoad: jest.fn(),
+  src: "Image URL",
+  title: "Title"
 };
 
 describe("[presentation] <Image />", () => {
-  beforeEach(() => {
-    Object.defineProperty(g.Image.prototype, "complete", {
-      value: false
+  jest.useFakeTimers();
+
+  it("doesn't render anything when src isn't defined", () => {
+    const { wrapper } = component
+      .withProps({
+        ...defaultProps,
+        src: undefined
+      })
+      .render();
+
+    expect(wrapper.html()).toBeNull();
+  });
+
+  it("doesn't render the caption when it's not defined", () => {
+    const { wrapper } = component
+      .withProps({
+        ...defaultProps,
+        caption: undefined
+      })
+      .render();
+
+    expect(wrapper.find("figcaption")).toHaveLength(0);
+  });
+
+  describe("when all props are defined", () => {
+    const { props, wrapper } = component.withProps(defaultProps).mount();
+
+    it("renders with isLoading class initially", () => {
+      expect(wrapper.find(".isLoading")).toHaveLength(1);
+    });
+
+    it("doesn't render with isRendered class instantly", () => {
+      expect(wrapper.find(".isRendered")).toHaveLength(0);
+    });
+
+    it("renders a Loader", () => {
+      expect(wrapper.find("Loader")).toHaveLength(1);
+    });
+
+    it("loads the image", () => {
+      wrapper.find("img").simulate("load");
+    });
+
+    it("removes isLoading class", () => {
+      expect(wrapper.find(".isLoading")).toHaveLength(0);
+    });
+
+    it("adds isRendered class", () => {
+      expect(wrapper.find(".isRendered")).toHaveLength(1);
+    });
+
+    it("removes the Loader", () => {
+      expect(wrapper.find("Loader")).toHaveLength(0);
+    });
+
+    it("calls the onLoad prop", () => {
+      expect(props.onLoad).toHaveBeenCalled();
+    });
+
+    it("renders the caption", () => {
+      expect(wrapper.find("figcaption")).toHaveLength(1);
+    });
+
+    it("has the clickable attributes defined", () => {
+      expect(wrapper.find("figure").props()).toMatchObject({
+        role: "button",
+        tabIndex: 0
+      });
+    });
+
+    it("clicks the image", () => {
+      wrapper.simulate("click");
+    });
+
+    it("calls the onClick prop", () => {
+      expect(props.onClick).toHaveBeenCalledTimes(1);
+    });
+
+    it("presses enter on the image", () => {
+      wrapper.simulate("keypress", { key: "Enter" });
+    });
+
+    it("calls the onClick prop again", () => {
+      expect(props.onClick).toHaveBeenCalledTimes(2);
+    });
+
+    it("presses a different key on the image", () => {
+      wrapper.simulate("keypress", { key: "Space" });
+    });
+
+    it("doesn't call the onClick prop again", () => {
+      expect(props.onClick).toHaveBeenCalledTimes(2);
+    });
+
+    it("matches snapshot", () => {
+      expect(wrapper.render()).toMatchSnapshot();
     });
   });
 
-  it("renders correctly with minimum props", () => {
-    const { actual } = setup(render);
-
-    expect(actual.find(".Loader")).toHaveLength(1);
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("triggers `onClick` prop when `Enter` key is pressed on focused image", () => {
-    const { actual, props } = setup(mount, { onClick: jest.fn() });
-
-    actual.simulate("keypress", { key: "Enter" });
-
-    expect(props.onClick).toHaveBeenCalled();
-  });
-
-  it("doesn't trigger `onClick` prop when a key other than `Enter` is pressed on focused image", () => {
-    const { actual, props } = setup(mount, { onClick: jest.fn() });
-
-    actual.simulate("keypress", { key: "ArrowLeft" });
-
-    expect(props.onClick).not.toHaveBeenCalled();
-  });
-
-  it("updates `isRendered` state and triggers `onLoad` prop after image has loaded", () => {
-    const { actual, props } = setup(mount, {
-      onLoad: jest.fn()
+  describe("when image has already loaded", () => {
+    // @ts-ignore-next-line
+    Object.defineProperty(global.Image.prototype, "complete", {
+      value: true,
+      writable: true
     });
 
-    actual.find("img").simulate("load");
+    const { wrapper } = component
+      .withProps({
+        ...defaultProps,
+        onLoad: undefined
+      })
+      .mount();
 
-    expect(props.onLoad).toHaveBeenCalled();
-    expect(actual.find("Loader")).toHaveLength(0);
-    expect(actual.render()).toMatchSnapshot();
-  });
-
-  it("updates `isRendered` state when image has previously been loaded", () => {
-    Object.defineProperty(g.Image.prototype, "complete", {
-      value: true
+    it("waits for the 1ms timeout", () => {
+      jest.runTimersToTime(1);
+      wrapper.update();
     });
 
-    const { actual } = setup(mount);
+    it("doesn't render with isLoading class initially", () => {
+      expect(wrapper.find(".isLoading")).toHaveLength(0);
+    });
 
-    actual.find("img").simulate("load");
+    it("renders with isRendered class instantly", () => {
+      expect(wrapper.find(".isRendered")).toHaveLength(1);
+    });
 
-    expect(actual.find("Loader")).toHaveLength(0);
-    expect(actual.render()).toMatchSnapshot();
+    it("doesn't render a Loader", () => {
+      expect(wrapper.find("Loader")).toHaveLength(0);
+    });
+  });
+
+  describe("when onClick isn't defined", () => {
+    const { wrapper } = component
+      .withProps({
+        ...defaultProps,
+        onClick: undefined
+      })
+      .mount();
+
+    it("doesn't have the clickable attributes defined", () => {
+      expect(wrapper.find("figure").props()).not.toMatchObject({
+        role: "button",
+        tabIndex: 0
+      });
+    });
   });
 });

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[routes] <ResourcesRoute /> renders correctly 1`] = `
+exports[`[routes] <ResourcesRoute /> when all data is in the store matches snapshot 1`] = `
 <article
   class="ResourcesRoute"
 >
@@ -8,318 +8,46 @@ exports[`[routes] <ResourcesRoute /> renders correctly 1`] = `
     class="PageHeader"
   >
     <h1>
-      <span>
-        Resources
-      </span>
+      Resources
     </h1>
   </header>
   <section
-    class="ResourceListings ResourceListings-design"
+    class="ResourcesRoute--listings ResourcesRoute--listings-design"
   >
     <h2>
-      <span>
-        Design
-      </span>
+      Design
     </h2>
     <p>
-      <span>
-        Designers can utilise the following files for their promotional material that may mention Viii. Wherever possible, vector artwork is provided and should be used. When using any of the vector resources - their fill should be altered to match the colour scheme of the design.
-      </span>
+      Designers can utilise the following files for their promotional material that may mention Viii. Wherever possible; vector artwork is provided and should be used. When using any of the vector resources - their fill should be altered to match the colour scheme of the design.
     </p>
     <div
-      class="ResourceListings-items"
+      class="ResourcesRoute--listings--items"
     >
       <article
         class="ResourceListing"
       >
-        <a
-          href="https://www.dropbox.com/s/vtht3hip5t6eegu/viii-logo-text-in-circle.svg?dl=0"
-          rel="noopener"
-          target="_blank"
-        >
-          <figure
-            class="Image ResourceListing-image isLoading"
-          >
-            <div
-              class="Image-wrapper"
-            >
-              <img
-                alt="Text logo (within circle device)"
-                src="https://s3.amazonaws.com/mynameisviii-static/resources/viii-logo-text-in-circle.png"
-              />
-              <span
-                class="Loader"
-              >
-                <div
-                  class="Loader-animation"
-                >
-                  <span />
-                  <span />
-                  <span />
-                </div>
-              </span>
-            </div>
-          </figure>
+        <span>
           <div
-            class="ResourceListing-details"
+            class="ResourceListing--details"
           >
-            <h3>
-              Text logo (within circle device)
-            </h3>
-            <p>
-              The Viii logo variant displaying the branded text within the painted circle device.
-            </p>
+            <h3 />
+            <p />
           </div>
-        </a>
+        </span>
       </article>
       <article
         class="ResourceListing"
       >
-        <a
-          href="https://www.dropbox.com/s/1vbklerzh9yygit/viii-symbol.svg?dl=0"
-          rel="noopener"
-          target="_blank"
-        >
-          <figure
-            class="Image ResourceListing-image isLoading"
-          >
-            <div
-              class="Image-wrapper"
-            >
-              <img
-                alt="Symbol"
-                src="https://s3.amazonaws.com/mynameisviii-static/resources/viii-symbol.png"
-              />
-              <span
-                class="Loader"
-              >
-                <div
-                  class="Loader-animation"
-                >
-                  <span />
-                  <span />
-                  <span />
-                </div>
-              </span>
-            </div>
-          </figure>
+        <span>
           <div
-            class="ResourceListing-details"
+            class="ResourceListing--details"
           >
-            <h3>
-              Symbol
-            </h3>
-            <p>
-              The Viii symbol, depicting an eye within a triangle within a circle.
-            </p>
+            <h3 />
+            <p />
           </div>
-        </a>
-      </article>
-      <article
-        class="ResourceListing"
-      >
-        <a
-          href="https://www.dropbox.com/s/3q09a3r70nzv388/vii-logo-text.svg?dl=0"
-          rel="noopener"
-          target="_blank"
-        >
-          <figure
-            class="Image ResourceListing-image isLoading"
-          >
-            <div
-              class="Image-wrapper"
-            >
-              <img
-                alt="Text logo (standalone)"
-                src="https://s3.amazonaws.com/mynameisviii-static/resources/viii-logo-text.png"
-              />
-              <span
-                class="Loader"
-              >
-                <div
-                  class="Loader-animation"
-                >
-                  <span />
-                  <span />
-                  <span />
-                </div>
-              </span>
-            </div>
-          </figure>
-          <div
-            class="ResourceListing-details"
-          >
-            <h3>
-              Text logo (standalone)
-            </h3>
-            <p>
-              The Viii logo variant displaying only the branded text.
-            </p>
-          </div>
-        </a>
-      </article>
-      <article
-        class="ResourceListing"
-      >
-        <a
-          href="https://www.dropbox.com/s/yixue32q96yel1y/viii-circle-device.svg?dl=0"
-          rel="noopener"
-          target="_blank"
-        >
-          <figure
-            class="Image ResourceListing-image isLoading"
-          >
-            <div
-              class="Image-wrapper"
-            >
-              <img
-                alt="Circle device"
-                src="https://s3.amazonaws.com/mynameisviii-static/resources/viii-circle-device.png"
-              />
-              <span
-                class="Loader"
-              >
-                <div
-                  class="Loader-animation"
-                >
-                  <span />
-                  <span />
-                  <span />
-                </div>
-              </span>
-            </div>
-          </figure>
-          <div
-            class="ResourceListing-details"
-          >
-            <h3>
-              Circle device
-            </h3>
-            <p>
-              The painted circle device - most commonly used as part of the 'text within circle' logo variant.
-            </p>
-          </div>
-        </a>
-      </article>
-      <article
-        class="ResourceListing"
-      >
-        <a
-          href="https://www.dropbox.com/s/c599ysb05jp0h2b/sky-day.jpg?dl=0"
-          rel="noopener"
-          target="_blank"
-        >
-          <figure
-            class="Image ResourceListing-image isLoading"
-          >
-            <div
-              class="Image-wrapper"
-            >
-              <img
-                alt="Sky (day)"
-                src="https://s3.amazonaws.com/mynameisviii-static/resources/sky-day.jpg"
-              />
-              <span
-                class="Loader"
-              >
-                <div
-                  class="Loader-animation"
-                >
-                  <span />
-                  <span />
-                  <span />
-                </div>
-              </span>
-            </div>
-          </figure>
-          <div
-            class="ResourceListing-details"
-          >
-            <h3>
-              Sky (day)
-            </h3>
-            <p>
-              Raster image of the daytime sky, often used in official Viii promotional material.
-            </p>
-          </div>
-        </a>
-      </article>
-      <article
-        class="ResourceListing"
-      >
-        <a
-          href="https://www.dropbox.com/s/mpiagnepdq3nla6/sky-night.jpg?dl=0"
-          rel="noopener"
-          target="_blank"
-        >
-          <figure
-            class="Image ResourceListing-image isLoading"
-          >
-            <div
-              class="Image-wrapper"
-            >
-              <img
-                alt="Sky (night)"
-                src="https://s3.amazonaws.com/mynameisviii-static/resources/sky-night.jpg"
-              />
-              <span
-                class="Loader"
-              >
-                <div
-                  class="Loader-animation"
-                >
-                  <span />
-                  <span />
-                  <span />
-                </div>
-              </span>
-            </div>
-          </figure>
-          <div
-            class="ResourceListing-details"
-          >
-            <h3>
-              Sky (night)
-            </h3>
-            <p>
-              Raster image of the night sky, often used in official Viii promotional material.
-            </p>
-          </div>
-        </a>
+        </span>
       </article>
     </div>
   </section>
-</article>
-`;
-
-exports[`[routes] <ResourcesRoute /> renders with an error correctly 1`] = `
-<article
-  class="ResourcesRoute hasLoadedAllListings"
->
-  <header
-    class="PageHeader"
-  >
-    <h1>
-      <span>
-        Resources
-      </span>
-    </h1>
-  </header>
-  <div
-    class="ButtonBar"
-  >
-    <button
-      class="Button LoadButton"
-      type="button"
-    >
-      <span
-        class="Button-content"
-      >
-        <span>
-          Try again
-        </span>
-      </span>
-    </button>
-  </div>
 </article>
 `;

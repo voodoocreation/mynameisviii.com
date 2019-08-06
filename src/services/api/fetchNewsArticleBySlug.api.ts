@@ -1,19 +1,19 @@
-import transformNewsArticle from "../../transformers/transformNewsArticle";
+import {
+  failure,
+  IRawNewsArticle,
+  newsArticle,
+  success
+} from "../../models/root.models";
+import { TRequest } from "../configureHttpClient";
 
-export const fetchNewsArticleBySlug = (request: any) => async (
+export const fetchNewsArticleBySlug = (request: TRequest) => async (
   slug: string
 ) => {
   try {
-    const response = await request({ url: `/news/${slug}` });
+    const response: IRawNewsArticle = await request({ url: `/news/${slug}` });
 
-    return {
-      data: transformNewsArticle(response),
-      ok: true
-    };
+    return success(newsArticle(response));
   } catch (error) {
-    return {
-      message: error.message,
-      ok: false
-    };
+    return failure(error);
   }
 };

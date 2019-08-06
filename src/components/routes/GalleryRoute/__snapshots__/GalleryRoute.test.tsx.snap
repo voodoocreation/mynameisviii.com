@@ -1,109 +1,76 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[routes] <GalleryRoute /> renders 404 error page when no gallery exists 1`] = `
-<article
-  class="ErrorPage"
->
-  <header
-    class="PageHeader"
-  >
-    <h1>
-      Page not found
-    </h1>
-  </header>
-  <div
-    class="ErrorPage-content"
-  >
-    <svg
-      fill="currentColor"
-      height="1em"
-      stroke="currentColor"
-      stroke-width="0"
-      viewBox="0 0 24 24"
-      width="1em"
-    >
-      <path
-        d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-      />
-    </svg>
-    <p>
-      This page does not exist - please use the site navigation to find what you're looking for.
-    </p>
-  </div>
-</article>
-`;
-
-exports[`[routes] <GalleryRoute /> renders 500 error page when slug isn't in the store 1`] = `
-<article
-  class="ErrorPage"
->
-  <header
-    class="PageHeader"
-  >
-    <h1>
-      An error has occurred
-    </h1>
-  </header>
-  <div
-    class="ErrorPage-content"
-  >
-    <svg
-      fill="currentColor"
-      height="1em"
-      stroke="currentColor"
-      stroke-width="0"
-      viewBox="0 0 24 24"
-      width="1em"
-    >
-      <path
-        d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-      />
-    </svg>
-    <p>
-      An error has occurred, please try again.
-    </p>
-  </div>
-</article>
-`;
-
-exports[`[routes] <GalleryRoute /> renders a loader when item is being fetched 1`] = `
-<span
-  class="Loader PageLoader"
->
-  <div
-    class="Loader-animation"
-  >
-    <span />
-    <span />
-    <span />
-  </div>
-</span>
-`;
-
-exports[`[routes] <GalleryRoute /> renders correctly 1`] = `
+exports[`[routes] <GalleryRoute /> matches snapshot 1`] = `
 <article
   class="Gallery"
 >
   <header
     class="PageHeader"
   >
-    <h1>
-      Dark Spaces I
-    </h1>
+    <h1 />
   </header>
   <div
-    class="Gallery-description"
+    class="Gallery--description"
   >
-    <p>
-      A self-shot photography series, captured in a dark space.
-    </p>
+    <p />
   </div>
   <section
-    class="Gallery-images"
+    class="Gallery--images"
   >
     <div
       class="ImageGallery"
-    />
+    >
+      <figure
+        class="Image Gallery--image isLoading"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="Image--wrapper"
+        >
+          <img
+            alt=" - 1"
+            src="1"
+          />
+          <span
+            class="Loader"
+          >
+            <div
+              class="Loader--animation"
+            >
+              <span />
+              <span />
+              <span />
+            </div>
+          </span>
+        </div>
+      </figure>
+      <figure
+        class="Image Gallery--image isLoading"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="Image--wrapper"
+        >
+          <img
+            alt=" - 2"
+            src="2"
+          />
+          <span
+            class="Loader"
+          >
+            <div
+              class="Loader--animation"
+            >
+              <span />
+              <span />
+              <span />
+            </div>
+          </span>
+        </div>
+      </figure>
+    </div>
   </section>
 </article>
 `;

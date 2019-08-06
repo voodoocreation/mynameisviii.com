@@ -1,11 +1,21 @@
 import { reducerWithInitialState } from "typescript-fsa-reducers";
 
 import * as actions from "../actions/root.actions";
+import { INewsArticle, TLastEvaluatedKey } from "../models/root.models";
 
-export const initialState: INewsReducers = {
+interface IState {
+  currentSlug?: string;
+  hasAllItems: boolean;
+  hasError: boolean;
+  isLoading: boolean;
+  items: Record<string, INewsArticle>;
+  lastEvaluatedKey?: TLastEvaluatedKey<"createdAt">;
+}
+
+export const initialState: IState = {
   currentSlug: undefined,
-  error: undefined,
   hasAllItems: false,
+  hasError: false,
   isLoading: false,
   items: {},
   lastEvaluatedKey: undefined
@@ -18,16 +28,16 @@ export default reducerWithInitialState(initialState)
       actions.fetchMoreLatestNews.failed,
       actions.fetchNewsArticleBySlug.failed
     ],
-    (state, { error }) => ({
+    state => ({
       ...state,
-      error,
+      hasError: true,
       isLoading: false
     })
   )
 
   .case(actions.fetchLatestNews.started, state => ({
     ...state,
-    error: undefined,
+    hasError: false,
     isLoading: true,
     items: {}
   }))
@@ -42,7 +52,7 @@ export default reducerWithInitialState(initialState)
 
   .case(actions.fetchMoreLatestNews.started, state => ({
     ...state,
-    error: undefined,
+    hasError: false,
     isLoading: true
   }))
 
@@ -64,7 +74,7 @@ export default reducerWithInitialState(initialState)
 
   .case(actions.fetchNewsArticleBySlug.started, state => ({
     ...state,
-    error: undefined,
+    hasError: false,
     isLoading: true
   }))
 

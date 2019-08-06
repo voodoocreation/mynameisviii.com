@@ -1,22 +1,23 @@
+import { SagaIterator } from "redux-saga";
 import { call, put, select, takeLatest } from "redux-saga/effects";
-import { Action } from "typescript-fsa";
 
-import { arrayToAssoc, tryParseJson } from "../transformers/transformData";
+import { IPorts } from "../services/configurePorts";
 
 import * as actions from "../actions/root.actions";
 import * as selectors from "../selectors/root.selectors";
 
-export const fetchReleasesSaga = (ports: IStorePorts) =>
-  function*() {
-    yield takeLatest(actions.fetchReleases.started, function*() {
+export const fetchReleasesSaga = (ports: IPorts) =>
+  function*(): SagaIterator {
+    yield takeLatest(actions.fetchReleases.started, function*(): SagaIterator {
       const response = yield call(ports.api.fetchReleases);
 
       if (response.ok) {
-        const result = {
-          ...response.data,
-          items: arrayToAssoc(response.data.items, "slug")
-        };
-        yield put(actions.fetchReleases.done({ result, params: {} }));
+        yield put(
+          actions.fetchReleases.done({
+            params: {},
+            result: response.data
+          })
+        );
       } else {
         yield put(
           actions.fetchReleases.failed({ error: response.message, params: {} })
@@ -25,48 +26,52 @@ export const fetchReleasesSaga = (ports: IStorePorts) =>
     });
   };
 
-export const fetchMoreReleasesSaga = (ports: IStorePorts) =>
-  function*() {
-    yield takeLatest(actions.fetchMoreReleases.started, function*() {
-      const lastEvaluatedKey = yield select(
-        selectors.getReleasesLastEvaluatedKeyAsString
-      );
-      const response = yield call(
-        ports.api.fetchReleases,
-        undefined,
-        lastEvaluatedKey
-      );
-
-      if (response.ok) {
-        const result = {
-          ...response.data,
-          items: arrayToAssoc(response.data.items, "slug")
-        };
-        yield put(actions.fetchMoreReleases.done({ result, params: {} }));
-
-        const itemCount = yield select(selectors.getReleasesCount);
-        yield put(
-          actions.trackEvent({
-            event: "releases.fetchedMore",
-            itemCount
-          })
+export const fetchMoreReleasesSaga = (ports: IPorts) =>
+  function*(): SagaIterator {
+    yield takeLatest(
+      actions.fetchMoreReleases.started,
+      function*(): SagaIterator {
+        const lastEvaluatedKey = yield select(
+          selectors.getReleasesLastEvaluatedKeyAsString
         );
-      } else {
-        yield put(
-          actions.fetchMoreReleases.failed({
-            error: response.message,
-            params: {}
-          })
+        const response = yield call(
+          ports.api.fetchReleases,
+          undefined,
+          lastEvaluatedKey
         );
+
+        if (response.ok) {
+          yield put(
+            actions.fetchMoreReleases.done({
+              params: {},
+              result: response.data
+            })
+          );
+
+          const itemCount = yield select(selectors.getReleasesCount);
+          yield put(
+            actions.trackEvent({
+              event: "releases.fetchedMore",
+              itemCount
+            })
+          );
+        } else {
+          yield put(
+            actions.fetchMoreReleases.failed({
+              error: response.message,
+              params: {}
+            })
+          );
+        }
       }
-    });
+    );
   };
 
-export const fetchReleaseBySlugSaga = (ports: IStorePorts) =>
-  function*() {
+export const fetchReleaseBySlugSaga = (ports: IPorts) =>
+  function*(): SagaIterator {
     yield takeLatest(actions.fetchReleaseBySlug.started, function*({
       payload
-    }: Action<PLFetchReleaseBySlugStarted>) {
+    }): SagaIterator {
       const response = yield call(ports.api.fetchReleaseBySlug, payload);
 
       if (response.ok) {
@@ -79,7 +84,7 @@ export const fetchReleaseBySlugSaga = (ports: IStorePorts) =>
       } else {
         yield put(
           actions.fetchReleaseBySlug.failed({
-            error: tryParseJson(response.message),
+            error: response.message,
             params: payload
           })
         );

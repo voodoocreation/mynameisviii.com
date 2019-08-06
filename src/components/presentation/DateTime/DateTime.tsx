@@ -1,19 +1,24 @@
 import cn from "classnames";
-import moment from "moment";
+import dayjs from "dayjs";
 import * as React from "react";
-import { FormattedRelative, InjectedIntl, injectIntl } from "react-intl";
+import {
+  FormattedDate,
+  FormattedRelative,
+  FormattedTime,
+  InjectedIntlProps,
+  injectIntl
+} from "react-intl";
 
-interface IProps {
+interface IProps extends InjectedIntlProps {
   className?: string;
-  intl: InjectedIntl;
   isDateOnly?: boolean;
   isRelative?: boolean;
   options?: Intl.DateTimeFormatOptions;
   updateInterval?: number;
-  value: string;
+  value: Date | string | number;
 }
 
-const DateTime: React.SFC<IProps> = ({
+const DateTime: React.FC<IProps> = ({
   className,
   intl,
   isDateOnly,
@@ -22,30 +27,30 @@ const DateTime: React.SFC<IProps> = ({
   updateInterval,
   value,
   ...props
-}) =>
-  (
-    <time
-      {...props}
-      className={cn("DateTime", className)}
-      dateTime={value}
-      title={
-        isDateOnly
-          ? intl.formatDate(moment(value).toDate(), options)
-          : intl.formatTime(moment(value).toDate(), options)
-      }
-    >
-      {isRelative ? (
-        <FormattedRelative
-          updateInterval={updateInterval}
-          value={moment(value).toDate()}
-        />
-      ) : isDateOnly ? (
-        intl.formatDate(moment(value).toDate(), options)
-      ) : (
-        intl.formatTime(moment(value).toDate(), options)
-      )}
-    </time>
-  ) as React.ReactElement<any>;
+}) => (
+  <time
+    {...props}
+    className={cn("DateTime", className)}
+    dateTime={
+      isDateOnly
+        ? dayjs(value).format("YYYY-MM-DD")
+        : dayjs(value).format("YYYY-MM-DDTHH:mm:ss")
+    }
+    title={
+      isDateOnly
+        ? intl.formatDate(value, options)
+        : intl.formatTime(value, options)
+    }
+  >
+    {isRelative ? (
+      <FormattedRelative updateInterval={updateInterval} value={value} />
+    ) : isDateOnly ? (
+      <FormattedDate value={value} {...options} />
+    ) : (
+      <FormattedTime value={value} {...options} />
+    )}
+  </time>
+);
 
 DateTime.defaultProps = {
   isDateOnly: false,
@@ -58,4 +63,4 @@ DateTime.defaultProps = {
   }
 };
 
-export default injectIntl<any>(DateTime);
+export default injectIntl(DateTime);

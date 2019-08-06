@@ -1,182 +1,211 @@
-import setupSagas from "../helpers/setupSagas";
-import { arrayToAssoc } from "../transformers/transformData";
+import { dynamoResponse, newsArticle } from "../models/root.models";
+import { mockWithFailure, mockWithSuccess } from "../utilities/mocks";
+import SagaTester from "../utilities/SagaTester";
 
 import * as actions from "../actions/root.actions";
-import * as selectors from "../selectors/root.selectors";
-
-const g: any = global;
 
 describe("[sagas] News", () => {
-  const existingItems = [{ slug: "existing-test" }];
-  const items = [{ slug: "test" }];
+  const item = newsArticle({
+    slug: "item-1"
+  });
+  const data = dynamoResponse({
+    items: [item]
+  });
 
-  describe("takeLatest(actions.fetchLatestNews.started)", () => {
+  describe("fetchLatestNewsSaga", () => {
     describe("when fetching latest news, with a successful response", () => {
-      const { dispatch, filterAction, store } = setupSagas(
+      const saga = new SagaTester(
         {},
         {
           api: {
-            fetchLatestNews: g.mockWithData({ items })
+            fetchNewsArticles: mockWithSuccess(data)
           }
         }
       );
 
       it("dispatches actions.fetchLatestNews.started", () => {
-        dispatch(actions.fetchLatestNews.started({}));
+        saga.dispatch(actions.fetchLatestNews.started({}));
       });
 
-      it("dispatches actions.fetchLatestNews.done", () => {
-        expect(filterAction(actions.fetchLatestNews.done)).toHaveLength(1);
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchNewsArticles).toHaveBeenCalledTimes(1);
       });
 
-      it("has the data from the response in the store", () => {
-        expect(selectors.getNewsArticlesAsArray(store())).toEqual(items);
+      it("dispatches actions.fetchLatestNews.done with the expected result", () => {
+        const matchingActions = saga.history.filter(
+          actions.fetchLatestNews.done.match
+        );
+
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.result).toEqual(data);
       });
     });
 
     describe("when fetching latest news, with a failed response", () => {
-      const { dispatch, filterAction } = setupSagas(
+      const saga = new SagaTester(
         {},
         {
           api: {
-            fetchLatestNews: g.mockWithError("Bad request")
+            fetchNewsArticles: mockWithFailure("Bad request")
           }
         }
       );
 
       it("dispatches actions.fetchLatestNews.started", () => {
-        dispatch(actions.fetchLatestNews.started({}));
+        saga.dispatch(actions.fetchLatestNews.started({}));
+      });
+
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchNewsArticles).toHaveBeenCalledTimes(1);
       });
 
       it("dispatches actions.fetchLatestNews.failed with expected error", () => {
-        const failedActions = filterAction(actions.fetchLatestNews.failed);
+        const matchingActions = saga.history.filter(
+          actions.fetchLatestNews.failed.match
+        );
 
-        expect(failedActions).toHaveLength(1);
-        expect(failedActions[0].payload.error).toBe("Bad request");
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.error).toBe("Bad request");
       });
     });
   });
 
-  describe("takeLatest(actions.fetchMoreLatestNews.started)", () => {
+  describe("fetchMoreLatestNewsSaga", () => {
     describe("when fetching more latest news, with a successful response", () => {
-      const { dispatch, filterAction, store } = setupSagas(
+      const saga = new SagaTester(
         {
           news: {
-            items: arrayToAssoc(existingItems, "slug"),
+            items: {
+              "existing-item": {
+                ...item,
+                slug: "existing-item"
+              }
+            },
             lastEvaluatedKey: {
-              createdAt: "",
+              createdAt: "2019-01-01T00:00:00",
               isActive: "y",
-              slug: ""
+              slug: "existing-item"
             }
           }
         },
         {
           api: {
-            fetchLatestNews: g.mockWithData({ items })
+            fetchNewsArticles: mockWithSuccess(data)
           }
         }
       );
 
       it("dispatches actions.fetchMoreLatestNews.started", () => {
-        dispatch(actions.fetchMoreLatestNews.started({}));
+        saga.dispatch(actions.fetchMoreLatestNews.started({}));
       });
 
-      it("dispatches actions.fetchMoreLatestNews.done", () => {
-        expect(filterAction(actions.fetchMoreLatestNews.done)).toHaveLength(1);
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchNewsArticles).toHaveBeenCalledTimes(1);
+      });
+
+      it("dispatches actions.fetchMoreLatestNews.done with expected result", () => {
+        const matchingActions = saga.history.filter(
+          actions.fetchMoreLatestNews.done.match
+        );
+
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.result).toEqual(data);
       });
 
       it("dispatches actions.trackEvent with expected payload", () => {
-        const trackEventActions = filterAction(actions.trackEvent);
+        const matchingActions = saga.history.filter(actions.trackEvent.match);
 
-        expect(trackEventActions).toHaveLength(1);
-        expect(trackEventActions[0].payload).toEqual({
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload).toEqual({
           event: "news.fetchedMore",
           itemCount: 2
         });
       });
-
-      it("has the data from the response in the store", () => {
-        expect(selectors.getNewsArticlesAsArray(store())).toEqual([
-          ...existingItems,
-          ...items
-        ]);
-      });
     });
 
     describe("when fetching more latest news, with a failed response", () => {
-      const { dispatch, filterAction } = setupSagas(
-        {
-          news: {
-            items: arrayToAssoc(existingItems, "slug")
-          }
-        },
+      const saga = new SagaTester(
+        {},
         {
           api: {
-            fetchLatestNews: g.mockWithError("Bad request")
+            fetchNewsArticles: mockWithFailure("Bad request")
           }
         }
       );
 
       it("dispatches actions.fetchMoreLatestNews.started", () => {
-        dispatch(actions.fetchMoreLatestNews.started({}));
+        saga.dispatch(actions.fetchMoreLatestNews.started({}));
+      });
+
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchNewsArticles).toHaveBeenCalledTimes(1);
       });
 
       it("dispatches actions.fetchMoreLatestNews.failed with expected error", () => {
-        const failedActions = filterAction(actions.fetchMoreLatestNews.failed);
+        const matchingActions = saga.history.filter(
+          actions.fetchMoreLatestNews.failed.match
+        );
 
-        expect(failedActions).toHaveLength(1);
-        expect(failedActions[0].payload.error).toBe("Bad request");
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.error).toBe("Bad request");
       });
     });
   });
 
-  describe("takeLatest(actions.fetchNewsArticleBySlug.started)", () => {
-    describe("when fetching a news article by slug, with a successful response", () => {
-      const { dispatch, filterAction, store } = setupSagas(
+  describe("fetchNewsArticleBySlugSaga", () => {
+    describe("when fetching an article by slug, with a successful response", () => {
+      const saga = new SagaTester(
         {},
         {
           api: {
-            fetchNewsArticleBySlug: g.mockWithData(items[0])
+            fetchNewsArticleBySlug: mockWithSuccess(item)
           }
         }
       );
 
       it("dispatches actions.fetchNewsArticleBySlug.started", () => {
-        dispatch(actions.fetchNewsArticleBySlug.started("test"));
+        saga.dispatch(actions.fetchNewsArticleBySlug.started(item.slug));
       });
 
-      it("dispatches actions.fetchNewsArticleBySlug.done", () => {
-        expect(filterAction(actions.fetchNewsArticleBySlug.done)).toHaveLength(
-          1
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchNewsArticleBySlug).toHaveBeenCalledTimes(1);
+      });
+
+      it("dispatches actions.fetchNewsArticleBySlug.done with expected result", () => {
+        const matchingActions = saga.history.filter(
+          actions.fetchNewsArticleBySlug.done.match
         );
-      });
 
-      it("has the data from the response in the store", () => {
-        expect(selectors.getNewsArticlesAsArray(store())).toEqual(items);
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.result).toEqual(item);
       });
     });
 
-    describe("when fetching a news article by slug, with a failed response", () => {
-      const { dispatch, filterAction } = setupSagas(
+    describe("when fetching an article by slug, with a failed response", () => {
+      const saga = new SagaTester(
         {},
         {
           api: {
-            fetchNewsArticleBySlug: g.mockWithError("Bad request")
+            fetchNewsArticleBySlug: mockWithFailure("Bad request")
           }
         }
       );
 
       it("dispatches actions.fetchNewsArticleBySlug.started", () => {
-        dispatch(actions.fetchNewsArticleBySlug.started("test"));
+        saga.dispatch(actions.fetchNewsArticleBySlug.started(item.slug));
+      });
+
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchNewsArticleBySlug).toHaveBeenCalledTimes(1);
       });
 
       it("dispatches actions.fetchNewsArticleBySlug.failed with expected error", () => {
-        const failedActions = filterAction(
-          actions.fetchNewsArticleBySlug.failed
+        const matchingActions = saga.history.filter(
+          actions.fetchNewsArticleBySlug.failed.match
         );
 
-        expect(failedActions).toHaveLength(1);
-        expect(failedActions[0].payload.error).toBe("Bad request");
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.error).toBe("Bad request");
       });
     });
   });

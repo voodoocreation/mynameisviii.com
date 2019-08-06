@@ -1,10 +1,11 @@
 import { createSelector, defaultMemoize } from "reselect";
-import { assocToArray } from "../transformers/transformData";
 
-export const getStemsError = (state: IRootReducers) => state.stems.error;
+import { TStoreState } from "../reducers/root.reducers";
+
+export const hasStemsError = (state: TStoreState) => state.stems.hasError;
 
 export const getStems = defaultMemoize(
-  (state: IRootReducers) => state.stems.items
+  (state: TStoreState) => state.stems.items
 );
 
 export const getStemsCount = createSelector(
@@ -15,10 +16,13 @@ export const getStemsCount = createSelector(
 export const getStemsAsArray = createSelector(
   getStems,
   stems =>
-    assocToArray(stems).sort((a: IStem, b: IStem) => a.createdAt > b.createdAt)
+    Object.values(stems).sort(
+      (a, b) =>
+        new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+    )
 );
 
-export const getStemsLastEvaluatedKey = (state: IRootReducers) =>
+export const getStemsLastEvaluatedKey = (state: TStoreState) =>
   state.stems.lastEvaluatedKey;
 
 export const getStemsLastEvaluatedKeyAsString = createSelector(
@@ -37,7 +41,6 @@ export const getStemsLastEvaluatedKeyAsString = createSelector(
         )
 );
 
-export const getHasAllStems = (state: IRootReducers) => state.stems.hasAllItems;
+export const getHasAllStems = (state: TStoreState) => state.stems.hasAllItems;
 
-export const getStemsIsLoading = (state: IRootReducers) =>
-  state.stems.isLoading;
+export const getStemsIsLoading = (state: TStoreState) => state.stems.isLoading;

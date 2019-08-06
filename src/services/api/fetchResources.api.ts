@@ -1,28 +1,33 @@
-import transformResource from "../../transformers/transformResource";
+import {
+  dynamoResponse,
+  failure,
+  IRawDynamoResponse,
+  IRawResource,
+  resource,
+  success
+} from "../../models/root.models";
+import { TRequest } from "../configureHttpClient";
 
-const transformResources = (stems: any) => stems.map(transformResource);
-
-export const fetchResources = (request: any) => async (
+export const fetchResources = (request: TRequest) => async (
   limit?: number,
   exclusiveStartKey?: string
 ) => {
   try {
-    const response = await request({
+    const response: IRawDynamoResponse<
+      IRawResource,
+      "createdAt"
+    > = await request({
       params: { exclusiveStartKey, limit },
       url: `/resources/find`
     });
 
-    return {
-      data: {
+    return success(
+      dynamoResponse({
         ...response,
-        items: transformResources(response.items)
-      },
-      ok: true
-    };
+        items: response.items.map(resource)
+      })
+    );
   } catch (error) {
-    return {
-      message: error.message,
-      ok: false
-    };
+    return failure(error);
   }
 };

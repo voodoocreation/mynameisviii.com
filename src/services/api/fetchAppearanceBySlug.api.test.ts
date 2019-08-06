@@ -1,42 +1,39 @@
-import createMockHttpClient from "../../helpers/createMockHttpClient";
-import { tryParseJson } from "../../transformers/transformData";
-import { createPortsWith } from "../configureApi";
+import { BOOLEAN } from "../../constants/api.constants";
+import { appearance, failure, success } from "../../models/root.models";
+import {
+  mockWithRejectedPromise,
+  mockWithResolvedPromise
+} from "../../utilities/mocks";
 import { fetchAppearanceBySlug } from "./fetchAppearanceBySlug.api";
 
-describe("[api] fetchAppearanceBySlug()", () => {
-  it("handles successful request correctly", async () => {
-    const client = createMockHttpClient(resolve => {
-      resolve({
-        data: { IsActive: "y", Name: "test" }
-      });
-    });
-    const fetch = fetchAppearanceBySlug(createPortsWith({}, client));
-    const response = await fetch("test-1");
+describe("[api] fetchAppearanceBySlug", () => {
+  describe("when the request succeeds", () => {
+    const data = {
+      isActive: BOOLEAN.TRUE,
+      slug: "test-1"
+    };
+    const request = mockWithResolvedPromise(data);
+    const method = fetchAppearanceBySlug(request);
 
-    expect(client).toHaveBeenCalled();
-    expect(client.mock.calls[0][0].url).toBe("/appearances/test-1");
-    expect(response.ok).toBe(true);
-    expect(response.data).toEqual({ isActive: true, name: "test" });
+    it("returns a success response with the model-parsed data", async () => {
+      expect(await method("test-1")).toEqual(success(appearance(data)));
+    });
+
+    it("makes the request correctly", () => {
+      expect(request).toHaveBeenCalledWith({ url: "/appearances/test-1" });
+    });
   });
 
-  it("handles request failure correctly", async () => {
-    const client = createMockHttpClient((_, reject) => {
-      reject({
-        response: {
-          data: { message: "Not found" },
-          status: 404
-        }
-      });
-    });
-    const fetch = fetchAppearanceBySlug(createPortsWith({}, client));
-    const response = await fetch("test-1");
+  describe("when the request fails", () => {
+    const request = mockWithRejectedPromise("Fetch failed");
+    const method = fetchAppearanceBySlug(request);
 
-    expect(client).toHaveBeenCalled();
-    expect(client.mock.calls[0][0].url).toBe("/appearances/test-1");
-    expect(response.ok).toBe(false);
-    expect(tryParseJson(response.message)).toEqual({
-      message: "Not found",
-      status: 404
+    it("returns a failure response with the expected error", async () => {
+      expect(await method("test-1")).toEqual(failure("Fetch failed"));
+    });
+
+    it("makes the request correctly", () => {
+      expect(request).toHaveBeenCalledWith({ url: "/appearances/test-1" });
     });
   });
 });

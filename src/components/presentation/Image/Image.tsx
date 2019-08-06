@@ -3,6 +3,8 @@ import * as React from "react";
 
 import Loader from "../Loader/Loader";
 
+import "./Image.scss";
+
 interface IProps {
   alt: string;
   caption?: string;
@@ -22,7 +24,7 @@ export default class Image extends React.Component<IProps, IState> {
     isRendered: false
   };
 
-  private imageRef: React.RefObject<HTMLImageElement> = React.createRef();
+  private imageRef = React.createRef<HTMLImageElement>();
 
   public componentDidMount() {
     if (this.imageRef.current && this.imageRef.current.complete) {
@@ -41,6 +43,11 @@ export default class Image extends React.Component<IProps, IState> {
       title,
       ...props
     } = this.props;
+
+    if (!src) {
+      return null;
+    }
+
     const { isRendered } = this.state;
 
     const clickableProps = onClick
@@ -63,12 +70,11 @@ export default class Image extends React.Component<IProps, IState> {
         {...clickableProps}
         {...props}
       >
-        <div className="Image-wrapper">
+        <div className="Image--wrapper">
           <img
             src={src}
             alt={alt}
             onLoad={this.onLoad}
-            onError={this.onLoad}
             ref={this.imageRef}
             title={title}
           />

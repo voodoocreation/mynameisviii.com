@@ -1,59 +1,125 @@
-import { mount } from "enzyme";
-import * as React from "react";
-
+import ComponentTester from "../../../utilities/ComponentTester";
 import Link from "./Link";
 
-const setup = (fn: any, fromTestProps?: any) => {
-  const props = {
+const component = new ComponentTester(Link)
+  .withDefaultProps({
     router: {
-      components: { test: "test" }
-    },
-    ...fromTestProps
-  };
-
-  return {
-    actual: fn(<Link {...props}>Link</Link>),
-    props
-  };
-};
+      components: {
+        test: ""
+      }
+    }
+  } as any)
+  .withDefaultChildren("Link text");
 
 describe("[presentation] <Link />", () => {
-  it("renders <Routes.Link /> when router is available and `href` prop is passed", () => {
-    const { actual } = setup(mount, { href: "/" });
+  describe("when the router is available and route is defined", () => {
+    const { wrapper } = component.withProps({ route: "/" }).mount();
 
-    expect(actual.find("Link")).toHaveLength(2);
-    expect(actual.find("a")).toHaveLength(1);
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("renders <NextLink /> when router is available and `route` prop is passed", () => {
-    const { actual } = setup(mount, { route: "/" });
-
-    expect(actual.find("LinkRoutes")).toHaveLength(1);
-    expect(actual.find("Link")).toHaveLength(2);
-    expect(actual.find("a")).toHaveLength(1);
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("renders <a /> when router is unavailable", () => {
-    const { actual } = setup(mount, {
-      href: "/",
-      router: {
-        components: {}
-      }
+    it("renders with LinkRoutes", () => {
+      expect(wrapper.find("LinkRoutes")).toHaveLength(1);
     });
 
-    expect(actual.find("Link")).toHaveLength(1);
-    expect(actual.find("a")).toHaveLength(1);
-    expect(actual).toMatchSnapshot();
+    it("renders with Next.js Link", () => {
+      expect(wrapper.find("Link")).toHaveLength(2);
+    });
+
+    it("renders an <a>", () => {
+      expect(wrapper.find("a")).toHaveLength(1);
+    });
+
+    it("matches snapshot", () => {
+      expect(wrapper.render()).toMatchSnapshot();
+    });
   });
 
-  it("renders <span /> when `href` and `route` props are undefined", () => {
-    const { actual } = setup(mount);
+  describe("when the router is available and href is defined", () => {
+    const { wrapper } = component.withProps({ href: "/" }).mount();
 
-    expect(actual.find("Link")).toHaveLength(1);
-    expect(actual.find("a")).toHaveLength(0);
-    expect(actual.find("span")).toHaveLength(1);
-    expect(actual).toMatchSnapshot();
+    it("doesn't render with LinkRoutes", () => {
+      expect(wrapper.find("LinkRoutes")).toHaveLength(0);
+    });
+
+    it("renders with Next.js Link", () => {
+      expect(wrapper.find("Link")).toHaveLength(2);
+    });
+
+    it("renders an <a>", () => {
+      expect(wrapper.find("a")).toHaveLength(1);
+    });
+
+    it("matches snapshot", () => {
+      expect(wrapper.render()).toMatchSnapshot();
+    });
+  });
+
+  describe("when the router is unavailable and href is defined", () => {
+    const { props, wrapper } = component
+      .withProps({
+        href: "/",
+        router: null
+      } as any)
+      .mount();
+
+    it("doesn't render with LinkRoutes", () => {
+      expect(wrapper.find("LinkRoutes")).toHaveLength(0);
+    });
+
+    it("doesn't render with Next.js Link", () => {
+      expect(wrapper.find("Link")).toHaveLength(1);
+    });
+
+    it("renders an <a>", () => {
+      expect(wrapper.find("a")).toHaveLength(1);
+    });
+
+    it("<a> href is the href value", () => {
+      expect(wrapper.find("a").prop("href")).toBe(props.href);
+    });
+
+    it("matches snapshot", () => {
+      expect(wrapper.render()).toMatchSnapshot();
+    });
+  });
+
+  describe("when isExternal is true", () => {
+    const { wrapper } = component
+      .withProps({
+        isExternal: true,
+        route: "/",
+        router: null
+      } as any)
+      .mount();
+
+    it("external attributes are defined on the <a>", () => {
+      expect(wrapper.find("a").props()).toMatchObject({
+        rel: "noopener",
+        target: "_blank"
+      });
+    });
+
+    it("matches snapshot", () => {
+      expect(wrapper.render()).toMatchSnapshot();
+    });
+  });
+
+  describe("when both href and route are undefined", () => {
+    const { wrapper } = component
+      .withProps({
+        href: undefined,
+        route: undefined
+      })
+      .mount();
+
+    it("doesn't render an <a>", () => {
+      expect(wrapper.find("a")).toHaveLength(0);
+    });
+
+    it("renders a <span>", () => {
+      expect(wrapper.find("span")).toHaveLength(1);
+    });
+
+    it("matches snapshot", () => {
+      expect(wrapper.render()).toMatchSnapshot();
+    });
   });
 });

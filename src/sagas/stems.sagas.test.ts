@@ -1,131 +1,151 @@
-import setupSagas from "../helpers/setupSagas";
-import { arrayToAssoc } from "../transformers/transformData";
+import { dynamoResponse, stem } from "../models/root.models";
+import { mockWithFailure, mockWithSuccess } from "../utilities/mocks";
+import SagaTester from "../utilities/SagaTester";
 
 import * as actions from "../actions/root.actions";
-import * as selectors from "../selectors/root.selectors";
-
-const g: any = global;
 
 describe("[sagas] Stems", () => {
-  const existingItems = [{ slug: "existing-test" }];
-  const items = [{ slug: "test" }];
+  const item = stem({ slug: "item-1" });
+  const data = dynamoResponse({
+    items: [item]
+  });
 
-  describe("takeLatest(actions.fetchStems.started)", () => {
+  describe("fetchStemsSaga", () => {
     describe("when fetching stems, with a successful response", () => {
-      const { dispatch, filterAction, store } = setupSagas(
+      const saga = new SagaTester(
         {},
         {
           api: {
-            fetchStems: g.mockWithData({ items })
+            fetchStems: mockWithSuccess(data)
           }
         }
       );
 
       it("dispatches actions.fetchStems.started", () => {
-        dispatch(actions.fetchStems.started({}));
+        saga.dispatch(actions.fetchStems.started({}));
       });
 
-      it("dispatches actions.fetchStems.done", () => {
-        expect(filterAction(actions.fetchStems.done)).toHaveLength(1);
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchStems).toHaveBeenCalledTimes(1);
       });
 
-      it("has the data from the response in the store", () => {
-        expect(selectors.getStemsAsArray(store())).toEqual(items);
+      it("dispatches actions.fetchStems.done with the expected result", () => {
+        const matchingActions = saga.history.filter(
+          actions.fetchStems.done.match
+        );
+
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.result).toEqual(data);
       });
     });
 
     describe("when fetching stems, with a failed response", () => {
-      const { dispatch, filterAction } = setupSagas(
+      const saga = new SagaTester(
         {},
         {
           api: {
-            fetchStems: g.mockWithError("Bad request")
+            fetchStems: mockWithFailure("Bad request")
           }
         }
       );
 
       it("dispatches actions.fetchStems.started", () => {
-        dispatch(actions.fetchStems.started({}));
+        saga.dispatch(actions.fetchStems.started({}));
+      });
+
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchStems).toHaveBeenCalledTimes(1);
       });
 
       it("dispatches actions.fetchStems.failed with expected error", () => {
-        const failedActions = filterAction(actions.fetchStems.failed);
+        const matchingActions = saga.history.filter(
+          actions.fetchStems.failed.match
+        );
 
-        expect(failedActions).toHaveLength(1);
-        expect(failedActions[0].payload.error).toBe("Bad request");
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.error).toBe("Bad request");
       });
     });
   });
 
-  describe("takeLatest(actions.fetchMoreStems.started)", () => {
+  describe("fetchMoreStemsSaga", () => {
     describe("when fetching more stems, with a successful response", () => {
-      const { dispatch, filterAction, store } = setupSagas(
+      const saga = new SagaTester(
         {
           stems: {
-            items: arrayToAssoc(existingItems, "slug"),
+            items: {
+              "existing-item": {
+                ...item,
+                slug: "existing-item"
+              }
+            },
             lastEvaluatedKey: {
+              createdAt: "2019-01-01T00:00:00",
               isActive: "y",
-              releasedOn: "",
-              slug: ""
+              slug: "existing-item"
             }
           }
         },
         {
           api: {
-            fetchStems: g.mockWithData({ items })
+            fetchStems: mockWithSuccess(data)
           }
         }
       );
 
       it("dispatches actions.fetchMoreStems.started", () => {
-        dispatch(actions.fetchMoreStems.started({}));
+        saga.dispatch(actions.fetchMoreStems.started({}));
       });
 
-      it("dispatches actions.fetchMoreStems.done", () => {
-        expect(filterAction(actions.fetchMoreStems.done)).toHaveLength(1);
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchStems).toHaveBeenCalledTimes(1);
+      });
+
+      it("dispatches actions.fetchMoreStems.done with expected result", () => {
+        const matchingActions = saga.history.filter(
+          actions.fetchMoreStems.done.match
+        );
+
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.result).toEqual(data);
       });
 
       it("dispatches actions.trackEvent with expected payload", () => {
-        const trackEventActions = filterAction(actions.trackEvent);
+        const matchingActions = saga.history.filter(actions.trackEvent.match);
 
-        expect(trackEventActions).toHaveLength(1);
-        expect(trackEventActions[0].payload).toEqual({
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload).toEqual({
           event: "stems.fetchedMore",
           itemCount: 2
         });
       });
-
-      it("has the data from the response in the store", () => {
-        expect(selectors.getStemsAsArray(store())).toEqual([
-          ...existingItems,
-          ...items
-        ]);
-      });
     });
 
     describe("when fetching more stems, with a failed response", () => {
-      const { dispatch, filterAction } = setupSagas(
-        {
-          stems: {
-            items: arrayToAssoc(existingItems, "slug")
-          }
-        },
+      const saga = new SagaTester(
+        {},
         {
           api: {
-            fetchStems: g.mockWithError("Bad request")
+            fetchStems: mockWithFailure("Bad request")
           }
         }
       );
 
       it("dispatches actions.fetchMoreStems.started", () => {
-        dispatch(actions.fetchMoreStems.started({}));
+        saga.dispatch(actions.fetchMoreStems.started({}));
+      });
+
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchStems).toHaveBeenCalledTimes(1);
       });
 
       it("dispatches actions.fetchMoreStems.failed with expected error", () => {
-        const failedActions = filterAction(actions.fetchMoreStems.failed);
+        const matchingActions = saga.history.filter(
+          actions.fetchMoreStems.failed.match
+        );
 
-        expect(failedActions).toHaveLength(1);
-        expect(failedActions[0].payload.error).toBe("Bad request");
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.error).toBe("Bad request");
       });
     });
   });

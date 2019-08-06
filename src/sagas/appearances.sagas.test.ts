@@ -1,261 +1,313 @@
-import setupSagas from "../helpers/setupSagas";
-import { arrayToAssoc } from "../transformers/transformData";
+import { appearance, dynamoResponse } from "../models/root.models";
+import { mockWithFailure, mockWithSuccess } from "../utilities/mocks";
+import SagaTester from "../utilities/SagaTester";
 
 import * as actions from "../actions/root.actions";
-import * as selectors from "../selectors/root.selectors";
-
-const g: any = global;
 
 describe("[sagas] Appearances", () => {
-  const existingItems = [{ slug: "existing-test" }];
-  const items = [{ slug: "test" }];
+  const item = appearance({
+    location: {
+      address: "123 Test Street",
+      name: "Test venue"
+    },
+    slug: "item-1"
+  });
+  const data = dynamoResponse({
+    items: [item]
+  });
 
-  describe("takeLatest(actions.fetchAppearances.started)", () => {
+  describe("fetchAppearancesSaga", () => {
     describe("when fetching appearances, with a successful response", () => {
-      const { dispatch, filterAction, store } = setupSagas(
+      const saga = new SagaTester(
         {},
         {
           api: {
-            fetchAppearances: g.mockWithData({ items })
+            fetchAppearances: mockWithSuccess(data)
           }
         }
       );
 
       it("dispatches actions.fetchAppearances.started", () => {
-        dispatch(actions.fetchAppearances.started({}));
+        saga.dispatch(actions.fetchAppearances.started({}));
       });
 
-      it("dispatches actions.fetchAppearances.done", () => {
-        expect(filterAction(actions.fetchAppearances.done)).toHaveLength(1);
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchAppearances).toHaveBeenCalledTimes(1);
       });
 
-      it("has the data from the response in the store", () => {
-        expect(selectors.getAppearancesAsArray(store())).toEqual(items);
+      it("dispatches actions.fetchAppearances.done with the expected result", () => {
+        const matchingActions = saga.history.filter(
+          actions.fetchAppearances.done.match
+        );
+
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.result).toEqual(data);
       });
     });
 
     describe("when fetching appearances, with a failed response", () => {
-      const { dispatch, filterAction } = setupSagas(
+      const saga = new SagaTester(
         {},
         {
           api: {
-            fetchAppearances: g.mockWithError("Bad request")
+            fetchAppearances: mockWithFailure("Bad request")
           }
         }
       );
 
       it("dispatches actions.fetchAppearances.started", () => {
-        dispatch(actions.fetchAppearances.started({}));
+        saga.dispatch(actions.fetchAppearances.started({}));
+      });
+
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchAppearances).toHaveBeenCalledTimes(1);
       });
 
       it("dispatches actions.fetchAppearances.failed with expected error", () => {
-        const failedActions = filterAction(actions.fetchAppearances.failed);
+        const matchingActions = saga.history.filter(
+          actions.fetchAppearances.failed.match
+        );
 
-        expect(failedActions).toHaveLength(1);
-        expect(failedActions[0].payload.error).toBe("Bad request");
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.error).toBe("Bad request");
       });
     });
   });
 
-  describe("takeLatest(actions.fetchMoreAppearances.started)", () => {
+  describe("fetchMoreAppearancesSaga", () => {
     describe("when fetching more appearances, with a successful response", () => {
-      const { dispatch, filterAction, store } = setupSagas(
+      const saga = new SagaTester(
         {
           appearances: {
-            items: arrayToAssoc(existingItems, "slug"),
+            items: {
+              "existing-item": {
+                ...item,
+                slug: "existing-item"
+              }
+            },
             lastEvaluatedKey: {
               isActive: "y",
-              slug: "",
-              startingAt: ""
+              slug: "existing-item",
+              startingAt: "2019-01-01T00:00:00"
             }
           }
         },
         {
           api: {
-            fetchAppearances: g.mockWithData({ items })
+            fetchAppearances: mockWithSuccess(data)
           }
         }
       );
 
       it("dispatches actions.fetchMoreAppearances.started", () => {
-        dispatch(actions.fetchMoreAppearances.started({}));
+        saga.dispatch(actions.fetchMoreAppearances.started({}));
       });
 
-      it("dispatches actions.fetchMoreAppearances.done", () => {
-        expect(filterAction(actions.fetchMoreAppearances.done)).toHaveLength(1);
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchAppearances).toHaveBeenCalledTimes(1);
+      });
+
+      it("dispatches actions.fetchMoreAppearances.done with expected result", () => {
+        const matchingActions = saga.history.filter(
+          actions.fetchMoreAppearances.done.match
+        );
+
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.result).toEqual(data);
       });
 
       it("dispatches actions.trackEvent with expected payload", () => {
-        const trackEventActions = filterAction(actions.trackEvent);
-        expect(trackEventActions).toHaveLength(1);
-        expect(trackEventActions[0].payload).toEqual({
+        const matchingActions = saga.history.filter(actions.trackEvent.match);
+
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload).toEqual({
           event: "appearances.fetchedMore",
           itemCount: 2
         });
       });
-
-      it("has the data from the response in the store", () => {
-        expect(selectors.getAppearancesAsArray(store())).toEqual([
-          ...existingItems,
-          ...items
-        ]);
-      });
     });
 
     describe("when fetching more appearances, with a failed response", () => {
-      const { dispatch, filterAction } = setupSagas(
-        {
-          appearances: {
-            items: arrayToAssoc(existingItems, "slug")
-          }
-        },
+      const saga = new SagaTester(
+        {},
         {
           api: {
-            fetchAppearances: g.mockWithError("Bad request")
+            fetchAppearances: mockWithFailure("Bad request")
           }
         }
       );
 
       it("dispatches actions.fetchMoreAppearances.started", () => {
-        dispatch(actions.fetchMoreAppearances.started({}));
+        saga.dispatch(actions.fetchMoreAppearances.started({}));
+      });
+
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchAppearances).toHaveBeenCalledTimes(1);
       });
 
       it("dispatches actions.fetchMoreAppearances.failed with expected error", () => {
-        const failedActions = filterAction(actions.fetchMoreAppearances.failed);
+        const matchingActions = saga.history.filter(
+          actions.fetchMoreAppearances.failed.match
+        );
 
-        expect(failedActions).toHaveLength(1);
-        expect(failedActions[0].payload.error).toBe("Bad request");
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.error).toBe("Bad request");
       });
     });
   });
 
-  describe("takeLatest(actions.fetchAppearanceBySlug.started)", () => {
+  describe("fetchAppearanceBySlugSaga", () => {
     describe("when fetching an appearance by slug, with a successful response", () => {
-      const { dispatch, filterAction, store } = setupSagas(
+      const saga = new SagaTester(
         {},
         {
           api: {
-            fetchAppearanceBySlug: g.mockWithData(items[0])
+            fetchAppearanceBySlug: mockWithSuccess(item)
           }
         }
       );
 
       it("dispatches actions.fetchAppearanceBySlug.started", () => {
-        dispatch(actions.fetchAppearanceBySlug.started("test"));
+        saga.dispatch(actions.fetchAppearanceBySlug.started(item.slug));
       });
 
-      it("dispatches actions.fetchAppearanceBySlug.done", () => {
-        expect(filterAction(actions.fetchAppearanceBySlug.done)).toHaveLength(
-          1
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchAppearanceBySlug).toHaveBeenCalledTimes(1);
+      });
+
+      it("dispatches actions.fetchAppearanceBySlug.done with expected result", () => {
+        const matchingActions = saga.history.filter(
+          actions.fetchAppearanceBySlug.done.match
         );
-      });
 
-      it("has the data from the response in the store", () => {
-        expect(selectors.getAppearancesAsArray(store())).toEqual(items);
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.result).toEqual(item);
       });
     });
 
     describe("when fetching an appearance by slug, with a failed response", () => {
-      const { dispatch, filterAction } = setupSagas(
+      const saga = new SagaTester(
         {},
         {
           api: {
-            fetchAppearanceBySlug: g.mockWithError("Bad request")
+            fetchAppearanceBySlug: mockWithFailure("Bad request")
           }
         }
       );
 
       it("dispatches actions.fetchAppearanceBySlug.started", () => {
-        dispatch(actions.fetchAppearanceBySlug.started("test"));
+        saga.dispatch(actions.fetchAppearanceBySlug.started(item.slug));
+      });
+
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchAppearanceBySlug).toHaveBeenCalledTimes(1);
       });
 
       it("dispatches actions.fetchAppearanceBySlug.failed with expected error", () => {
-        const failedActions = filterAction(
-          actions.fetchAppearanceBySlug.failed
+        const matchingActions = saga.history.filter(
+          actions.fetchAppearanceBySlug.failed.match
         );
 
-        expect(failedActions).toHaveLength(1);
-        expect(failedActions[0].payload.error).toBe("Bad request");
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.error).toBe("Bad request");
       });
     });
   });
 
-  describe("takeLatest(actions.geocodeCurrentAppearanceAddress.started", () => {
+  describe("geocodeCurrentAppearanceAddressSaga", () => {
     describe("when geocoding the current appearance's address, when its location.latLng is defined", () => {
-      const latLng = { lat: 0, lng: 0 };
-      const { dispatch, filterAction, ports, store } = setupSagas(
+      beforeAll(() => {
+        jest.clearAllMocks();
+      });
+
+      const saga = new SagaTester(
         {
           appearances: {
-            currentSlug: "test-1",
+            currentSlug: item.slug,
             items: {
-              "test-1": {
+              [item.slug]: {
+                ...item,
                 location: {
-                  address: "address",
-                  latLng,
-                  name: "name"
-                },
-                slug: "test-1"
+                  ...item.location,
+                  latLng: { lat: 0, lng: 0 }
+                }
               }
             }
           }
         },
-        {}
+        {
+          maps: {
+            Geocoder: jest.fn()
+          }
+        }
       );
 
       it("dispatches actions.geocodeCurrentAppearanceAddress.started", () => {
-        dispatch(actions.geocodeCurrentAppearanceAddress.started({}));
+        saga.dispatch(actions.geocodeCurrentAppearanceAddress.started({}));
       });
 
       it("doesn't make a request to the geocoder API", () => {
-        expect(ports.maps.Geocoder).not.toHaveBeenCalled();
+        expect(saga.ports.maps.Geocoder).toHaveBeenCalledTimes(0);
       });
 
-      it("dispatches actions.geocodeCurrentAppearanceAddress.done", () => {
-        expect(
-          filterAction(actions.geocodeCurrentAppearanceAddress.done)
-        ).toHaveLength(1);
-      });
+      it("dispatches actions.geocodeCurrentAppearanceAddress.done with expected result", () => {
+        const matchingActions = saga.history.filter(
+          actions.geocodeCurrentAppearanceAddress.done.match
+        );
 
-      it("current location in the store matches the appearance's location latLng", () => {
-        expect(selectors.getCurrentAppearanceLocation(store())).toEqual(latLng);
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.result).toEqual({ lat: 0, lng: 0 });
       });
     });
 
     describe("when geocoding the current appearance's address, when its location.latLng isn't defined", () => {
-      const { dispatch, filterAction, ports, store } = setupSagas(
+      beforeAll(() => {
+        jest.clearAllMocks();
+      });
+
+      const saga = new SagaTester(
         {
           appearances: {
-            currentSlug: "test-1",
+            currentSlug: item.slug,
             items: {
-              "test-1": {
-                location: {
-                  address: "address",
-                  name: "name"
-                },
-                slug: "test-1"
-              }
+              [item.slug]: item
             }
           }
         },
-        {}
+        {
+          maps: {
+            Geocoder: jest.fn(() => ({
+              geocode: (_: any, callback: any) =>
+                callback(
+                  [
+                    {
+                      geometry: {
+                        location: { lat: () => 51.54057, lng: () => -0.14334 }
+                      }
+                    }
+                  ],
+                  "OK"
+                )
+            }))
+          }
+        }
       );
 
       it("dispatches actions.geocodeCurrentAppearanceAddress.started", () => {
-        dispatch(actions.geocodeCurrentAppearanceAddress.started({}));
+        saga.dispatch(actions.geocodeCurrentAppearanceAddress.started({}));
       });
 
-      it("makes a request to the geocoder API", () => {
-        expect(ports.maps.Geocoder).toHaveBeenCalled();
+      it("makes a single API request", () => {
+        expect(saga.ports.maps.Geocoder).toHaveBeenCalledTimes(1);
       });
 
-      it("dispatches actions.geocodeCurrentAppearanceAddress.done", () => {
-        expect(
-          filterAction(actions.geocodeCurrentAppearanceAddress.done)
-        ).toHaveLength(1);
-      });
+      it("dispatches actions.geocodeCurrentAppearanceAddress.done with expected result", () => {
+        const matchingActions = saga.history.filter(
+          actions.geocodeCurrentAppearanceAddress.done.match
+        );
 
-      it("current location in the store matches the geocoder API response", () => {
-        expect(selectors.getCurrentAppearanceLocation(store())).toEqual({
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.result).toEqual({
           lat: 51.54057,
           lng: -0.14334
         });
@@ -263,18 +315,14 @@ describe("[sagas] Appearances", () => {
     });
 
     describe("when geocoding the current appearance's address, with a geocoder error", () => {
-      const { dispatch, filterAction, ports } = setupSagas(
+      jest.clearAllMocks();
+
+      const saga = new SagaTester(
         {
           appearances: {
-            currentSlug: "test-1",
+            currentSlug: item.slug,
             items: {
-              "test-1": {
-                location: {
-                  address: "address",
-                  name: "name"
-                },
-                slug: "test-1"
-              }
+              [item.slug]: item
             }
           }
         },
@@ -288,38 +336,34 @@ describe("[sagas] Appearances", () => {
       );
 
       it("dispatches actions.geocodeCurrentAppearanceAddress.started", () => {
-        dispatch(actions.geocodeCurrentAppearanceAddress.started({}));
+        saga.dispatch(actions.geocodeCurrentAppearanceAddress.started({}));
       });
 
-      it("makes a request to the geocoder API", () => {
-        expect(ports.maps.Geocoder).toHaveBeenCalled();
+      it("makes a single API request", () => {
+        expect(saga.ports.maps.Geocoder).toHaveBeenCalledTimes(1);
       });
 
       it("dispatches actions.geocodeCurrentAppearanceAddress.failed with expected error", () => {
-        const failedActions = filterAction(
-          actions.geocodeCurrentAppearanceAddress.failed
+        const matchingActions = saga.history.filter(
+          actions.geocodeCurrentAppearanceAddress.failed.match
         );
 
-        expect(failedActions).toHaveLength(1);
-        expect(failedActions[0].payload.error.message).toBe(
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.error).toBe(
           "Geocoder error: REQUEST_DENIED"
         );
       });
     });
 
     describe("when geocoding the current appearance's address, with a rejected geocoder promise", () => {
-      const { dispatch, filterAction, ports } = setupSagas(
+      jest.clearAllMocks();
+
+      const saga = new SagaTester(
         {
           appearances: {
-            currentSlug: "test-1",
+            currentSlug: item.slug,
             items: {
-              "test-1": {
-                location: {
-                  address: "address",
-                  name: "name"
-                },
-                slug: "test-1"
-              }
+              [item.slug]: item
             }
           }
         },
@@ -335,20 +379,20 @@ describe("[sagas] Appearances", () => {
       );
 
       it("dispatches actions.geocodeCurrentAppearanceAddress.started", () => {
-        dispatch(actions.geocodeCurrentAppearanceAddress.started({}));
+        saga.dispatch(actions.geocodeCurrentAppearanceAddress.started({}));
       });
 
       it("makes a request to the geocoder API", () => {
-        expect(ports.maps.Geocoder).toHaveBeenCalled();
+        expect(saga.ports.maps.Geocoder).toHaveBeenCalledTimes(1);
       });
 
       it("dispatches actions.geocodeCurrentAppearanceAddress.failed with expected error", () => {
-        const failedActions = filterAction(
-          actions.geocodeCurrentAppearanceAddress.failed
+        const matchingActions = saga.history.filter(
+          actions.geocodeCurrentAppearanceAddress.failed.match
         );
 
-        expect(failedActions).toHaveLength(1);
-        expect(failedActions[0].payload.error.message).toBe("Failed promise");
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.error).toBe("Failed promise");
       });
     });
   });

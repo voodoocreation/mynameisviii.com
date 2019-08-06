@@ -1,16 +1,15 @@
-import setupSagas from "../helpers/setupSagas";
-
 import * as actions from "../actions/root.actions";
+import SagaTester from "../utilities/SagaTester";
 
 describe("[sagas] Service worker", () => {
-  describe("takeLatest(actions.changeRoute.done)", () => {
+  describe("cachePageOnTransitionSaga", () => {
     describe("when the service worker is available", () => {
       afterAll(() => {
         jest.clearAllMocks();
       });
 
       const newRoute = "/test";
-      const { dispatch } = setupSagas();
+      const saga = new SagaTester();
 
       it("has a service worker in an 'activated' state", () => {
         const { state } = navigator.serviceWorker.controller as ServiceWorker;
@@ -20,7 +19,9 @@ describe("[sagas] Service worker", () => {
       });
 
       it("dispatches actions.changeRoute.done", () => {
-        dispatch(actions.changeRoute.done({ params: newRoute }));
+        saga.dispatch(
+          actions.changeRoute.done({ params: newRoute, result: {} })
+        );
       });
 
       it("calls serviceWorker.postMessage with expected payload", () => {
@@ -46,7 +47,7 @@ describe("[sagas] Service worker", () => {
 
       const newRoute = "/test";
 
-      const { dispatch } = setupSagas();
+      const saga = new SagaTester();
       let isPassing = true;
 
       it("has a service worker in an 'installing' state", () => {
@@ -58,7 +59,9 @@ describe("[sagas] Service worker", () => {
 
       it("dispatches actions.changeRoute.done", () => {
         try {
-          dispatch(actions.changeRoute.done({ params: newRoute }));
+          saga.dispatch(
+            actions.changeRoute.done({ params: newRoute, result: {} })
+          );
         } catch (error) {
           isPassing = false;
         }
@@ -86,12 +89,14 @@ describe("[sagas] Service worker", () => {
         jest.clearAllMocks();
       });
 
-      const { dispatch } = setupSagas();
+      const saga = new SagaTester();
       let isPassing = true;
 
       it("dispatches actions.changeRoute.done", () => {
         try {
-          dispatch(actions.changeRoute.done({ params: "/test" }));
+          saga.dispatch(
+            actions.changeRoute.done({ params: "/test", result: {} })
+          );
         } catch (error) {
           isPassing = false;
         }
@@ -103,6 +108,29 @@ describe("[sagas] Service worker", () => {
 
       it("fails silently without throwing an error", () => {
         expect(isPassing).toBe(true);
+      });
+    });
+  });
+
+  describe("receiveServiceWorkerMessageSaga", () => {
+    describe("when receiving a serviceworker.activate message", () => {
+      const saga = new SagaTester();
+
+      it("dispatches actions.receiveServiceWorkerMessage", () => {
+        saga.dispatch(
+          actions.receiveServiceWorkerMessage({
+            type: "serviceWorker.activate"
+          })
+        );
+      });
+
+      it("dispatches actions.setHasNewVersion with the expected payload", () => {
+        const matchingActions = saga.history.filter(
+          actions.setHasNewVersion.match
+        );
+
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload).toBe(true);
       });
     });
   });

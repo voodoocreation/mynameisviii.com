@@ -1,239 +1,152 @@
-import { mount, render } from "enzyme";
-import { camelizeKeys } from "humps";
-import merge from "lodash.merge";
-import * as React from "react";
-import { Provider } from "react-redux";
+import dayjs from "dayjs";
 
-import * as selectors from "../../../selectors/root.selectors";
-import createStore from "../../../store/root.store";
+import * as actions from "../../../actions/root.actions";
+import { appearance, newsArticle } from "../../../models/root.models";
+import ComponentTester from "../../../utilities/ComponentTester";
+import MockPageContext from "../../../utilities/MockPageContext";
 import IndexRoute from "./IndexRoute";
 
-import appearances from "../../../../server/mocks/appearances.json";
-import news from "../../../../server/mocks/news.json";
-import { arrayToAssoc } from "../../../transformers/transformData";
+const upcomingAppearance = appearance({
+  finishingAt: dayjs()
+    .add(4, "day")
+    .toISOString(),
+  slug: "upcoming-appearance",
+  startingAt: dayjs()
+    .add(3, "day")
+    .toISOString()
+});
+const pastAppearance = appearance({
+  finishingAt: dayjs()
+    .subtract(3, "day")
+    .toISOString(),
+  slug: "past-appearance",
+  startingAt: dayjs()
+    .subtract(4, "day")
+    .toISOString()
+});
+const newsItem = newsArticle({ slug: "news-1" });
 
-const mockAppearancesData: any = camelizeKeys(appearances);
-const mockNewsData: any = camelizeKeys(news);
-
-const setup = (fn: any, fromTestStore = {}, fromTestApi?: {}) => {
-  const store = createStore(
-    fromTestStore,
-    {},
-    merge(
-      {
-        fetchAppearances: () => ({
-          data: {
-            items: []
-          },
-          ok: true
-        }),
-        fetchLatestNews: () => ({
-          data: {
-            items: []
-          },
-          ok: true
-        })
-      },
-      fromTestApi
-    )
-  );
-
-  return {
-    actual: fn(
-      <Provider store={store}>
-        <IndexRoute />
-      </Provider>
-    ),
-    store
-  };
-};
+const component = new ComponentTester(IndexRoute, true);
 
 describe("[routes] <IndexRoute />", () => {
-  describe("news section", () => {
-    const items = [mockNewsData.items[0]];
+  describe("getInitialProps", () => {
+    const context = new MockPageContext();
 
-    it("renders correctly with news results", () => {
-      const { actual } = setup(render, {
-        news: {
-          hasAllItems: true,
-          items: arrayToAssoc(mockNewsData.items, "slug")
-        }
-      });
+    it("fetches latest news and appearances when rendering on the server", async () => {
+      await IndexRoute.getInitialProps(context.toObject(true));
 
-      expect(actual.find(".Home-news")).toHaveLength(1);
-      expect(actual).toMatchSnapshot();
+      expect(
+        context.reduxHistory.filter(actions.fetchLatestNews.started.match)
+      ).toHaveLength(1);
+      expect(
+        context.reduxHistory.filter(actions.fetchAppearances.started.match)
+      ).toHaveLength(1);
     });
 
-    it("renders correctly with no news results", () => {
-      const { actual } = setup(render, {
-        news: {
-          hasAllItems: true
-        }
-      });
+    it("fetches latest news and appearances when the store is empty", async () => {
+      await IndexRoute.getInitialProps(context.toObject());
 
-      expect(actual.find(".Home-news")).toHaveLength(0);
-      expect(actual).toMatchSnapshot();
+      expect(
+        context.reduxHistory.filter(actions.fetchLatestNews.started.match)
+      ).toHaveLength(1);
+      expect(
+        context.reduxHistory.filter(actions.fetchAppearances.started.match)
+      ).toHaveLength(1);
     });
 
-    it("fetches latest news when rendering on the server", async () => {
-      const { store } = setup(
-        render,
-        {},
-        {
-          fetchLatestNews: () => ({
-            data: { items },
-            ok: true
+    it("doesn't fetch latest news or appearances when all items are in the store", async () => {
+      await IndexRoute.getInitialProps(
+        context
+          .withReduxState({
+            appearances: { hasAllItems: true },
+            news: { hasAllItems: true }
           })
-        }
+          .toObject()
       );
 
-      await IndexRoute.getInitialProps({
-        ctx: {
-          isServer: true,
-          store
-        }
-      });
-
-      expect(selectors.getNewsArticlesAsArray(store.getState())).toEqual(items);
-    });
-
-    it("fetches latest news when the store is empty", async () => {
-      const { store } = setup(
-        render,
-        {},
-        {
-          fetchLatestNews: () => ({
-            data: { items },
-            ok: true
-          })
-        }
-      );
-
-      await IndexRoute.getInitialProps({
-        ctx: {
-          isServer: false,
-          store
-        }
-      });
-
-      expect(selectors.getNewsArticlesAsArray(store.getState())).toEqual(items);
-    });
-
-    it("doesn't fetch latest news when all news is in the store", async () => {
-      const { store } = setup(render, {
-        news: {
-          hasAllItems: true,
-          items: {
-            "test-1": items[0]
-          }
-        }
-      });
-
-      await IndexRoute.getInitialProps({
-        ctx: {
-          isServer: false,
-          store
-        }
-      });
-
-      expect(selectors.getNewsArticlesAsArray(store.getState())).toEqual(items);
+      expect(
+        context.reduxHistory.filter(actions.fetchLatestNews.started.match)
+      ).toHaveLength(0);
+      expect(
+        context.reduxHistory.filter(actions.fetchAppearances.started.match)
+      ).toHaveLength(0);
     });
   });
 
-  describe("appearances section", () => {
-    const items = [mockAppearancesData.items[0]];
-
-    it("renders correctly with appearances", () => {
-      const { actual } = setup(render, {
-        appearances: {
-          hasAllItems: true,
-          items: arrayToAssoc(mockAppearancesData.items, "slug")
-        },
-        features: {
-          items: ["has-appearances-section"]
-        }
-      });
-
-      expect(actual.find(".Home-appearances")).toHaveLength(1);
-      expect(actual).toMatchSnapshot();
-    });
-
-    it("renders correctly with no appearances", () => {
-      const { actual } = setup(render, {
-        appearances: {
-          hasAllItems: true
-        },
-        features: {
-          items: ["has-appearances-section"]
-        }
-      });
-
-      expect(actual.find(".Home-appearances")).toHaveLength(0);
-      expect(actual).toMatchSnapshot();
-    });
-
-    it("fetches appearances when rendering on the server", async () => {
-      const { store } = setup(
-        mount,
-        {},
-        {
-          fetchAppearances: () => ({
-            data: { items },
-            ok: true
-          })
-        }
-      );
-
-      await IndexRoute.getInitialProps({
-        ctx: {
-          isServer: true,
-          store
-        }
-      });
-
-      expect(selectors.getAppearancesAsArray(store.getState())).toEqual(items);
-    });
-
-    it("fetches appearances when the store is empty", async () => {
-      const { store } = setup(
-        mount,
-        {},
-        {
-          fetchAppearances: () => ({
-            data: { items },
-            ok: true
-          })
-        }
-      );
-
-      await IndexRoute.getInitialProps({
-        ctx: {
-          isServer: false,
-          store
-        }
-      });
-
-      expect(selectors.getAppearancesAsArray(store.getState())).toEqual(items);
-    });
-
-    it("doesn't fetch appearances when all appearances are in the store", async () => {
-      const { store } = setup(mount, {
-        appearances: {
-          hasAllItems: true,
+  describe("when there are news articles in the store", () => {
+    const { wrapper } = component
+      .withReduxState({
+        news: {
           items: {
-            "test-1": items[0]
+            [newsItem.slug]: newsItem
           }
         }
-      });
+      })
+      .mount();
 
-      await IndexRoute.getInitialProps({
-        ctx: {
-          isServer: false,
-          store
+    it("has the hasNewsSection class on the container", () => {
+      expect(wrapper.find(".Home").hasClass("hasNewsSection")).toBe(true);
+    });
+
+    it("renders the news section", () => {
+      expect(wrapper.find(".Home--news")).toHaveLength(1);
+    });
+  });
+
+  describe("when there are no news articles in the store", () => {
+    const { wrapper } = component.mount();
+
+    it("doesn't have the hasNewsSection class on the container", () => {
+      expect(wrapper.find(".Home").hasClass("hasNewsSection")).toBe(false);
+    });
+
+    it("doesn't render the news section", () => {
+      expect(wrapper.find(".Home--news")).toHaveLength(0);
+    });
+  });
+
+  describe("when there are upcoming appearances in the store", () => {
+    const { wrapper } = component
+      .withReduxState({
+        appearances: {
+          items: {
+            [pastAppearance.slug]: pastAppearance,
+            [upcomingAppearance.slug]: upcomingAppearance
+          }
         }
-      });
+      })
+      .mount();
 
-      expect(selectors.getAppearancesAsArray(store.getState())).toEqual(items);
+    it("has the hasAppearancesSection class on the container", () => {
+      expect(wrapper.find(".Home").hasClass("hasAppearancesSection")).toBe(
+        true
+      );
+    });
+
+    it("renders the appearances section", () => {
+      expect(wrapper.find(".Home--appearances")).toHaveLength(1);
+    });
+  });
+
+  describe("when there are no upcoming appearances in the store", () => {
+    const { wrapper } = component
+      .withReduxState({
+        appearances: {
+          items: {
+            [pastAppearance.slug]: pastAppearance
+          }
+        }
+      })
+      .mount();
+
+    it("doesn't have the hasAppearancesSection class on the container", () => {
+      expect(wrapper.find(".Home").hasClass("hasAppearancesSection")).toBe(
+        false
+      );
+    });
+
+    it("doesn't render the appearances section", () => {
+      expect(wrapper.find(".Home--appearances")).toHaveLength(0);
     });
   });
 });

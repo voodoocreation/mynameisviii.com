@@ -1,189 +1,240 @@
-import { mount, render } from "enzyme";
-import moment from "moment";
-import * as React from "react";
+import dayjs from "dayjs";
 
+import { BOOLEAN } from "../../../constants/api.constants";
+import { STATUS } from "../../../constants/appearance.constants";
+import {
+  appearance,
+  image,
+  location,
+  offer,
+  organization
+} from "../../../models/root.models";
+import ComponentTester from "../../../utilities/ComponentTester";
 import Appearance from "./Appearance";
 
-const g: any = global;
-
-const setup = (fn: any, fromTestProps?: any) => {
-  const props = {
+const component = new ComponentTester(Appearance).withDefaultProps(
+  appearance({
     acts: [
       {
-        genre: "act genre",
-        imageUrl: "act imageUrl",
+        genre: "Genre",
+        imageUrl: "Image URL",
         location: {
-          address: "act location address"
+          address: "City, Country"
         },
-        name: "act name"
+        name: "Act name"
       }
     ],
-    description: "description",
-    finishingAt: "2018-10-10T20:00:00",
-    imageUrl: "imageUrl",
-    images: [],
-    isActive: true,
+    description: "Description",
+    finishingAt: dayjs()
+      .add(4, "day")
+      .toISOString(),
+    imageUrl: "Image URL",
+    isActive: BOOLEAN.TRUE,
     location: {
-      latLng: "location latLng",
-      name: "location name",
-      type: "location type"
+      latLng: {
+        lat: 0,
+        lng: 0
+      },
+      name: "Venue"
     },
     organizer: {
-      name: "organizer name"
+      name: "Organizer"
     },
-    sales: [],
-    startingAt: "2018-10-10T18:00:00",
-    ...fromTestProps
-  };
-
-  return {
-    actual: fn(<Appearance {...props} />),
-    props
-  };
-};
+    startingAt: dayjs()
+      .add(3, "day")
+      .toISOString(),
+    status: STATUS.SCHEDULED
+  })
+);
 
 describe("[presentation] <Appearance />", () => {
-  beforeEach(() => {
-    Object.defineProperty(g.Image.prototype, "complete", {
-      value: false
+  describe("when only the required props are defined", () => {
+    const { wrapper } = component.render();
+
+    it("doesn't render the audience meta item", () => {
+      expect(wrapper.find(".Appearance--audience")).toHaveLength(0);
+    });
+
+    it("doesn't render the status notice", () => {
+      expect(wrapper.find(".Appearance--status")).toHaveLength(0);
+    });
+
+    it("doesn't render the RSVP section", () => {
+      expect(wrapper.find(".Appearance--rsvp")).toHaveLength(0);
+    });
+
+    it("doesn't render the tickets section", () => {
+      expect(wrapper.find(".Appearance--tickets")).toHaveLength(0);
+    });
+
+    it("doesn't render the images section", () => {
+      expect(wrapper.find(".Appearance--images")).toHaveLength(0);
+    });
+
+    it("doesn't render map section", () => {
+      expect(wrapper.find(".Appearance--map")).toHaveLength(0);
+    });
+
+    it("matches snapshot", () => {
+      expect(wrapper).toMatchSnapshot();
     });
   });
 
-  it("renders correctly with minimum props", () => {
-    const { actual } = setup(render);
+  describe("when all props are defined", () => {
+    const { wrapper } = component
+      .withProps({
+        audience: "18+",
+        images: [
+          {
+            imageUrl: "Image URL 1",
+            title: "Title 1"
+          },
+          {
+            imageUrl: "Image URL 2",
+            title: "Title 2"
+          }
+        ],
+        location: location({
+          address: "123 Address",
+          name: "Venue"
+        }),
+        locationLatLng: { lat: 0, lng: 0 },
+        organizer: organization({
+          email: "Email",
+          logo: "Logo",
+          name: "Organizer"
+        }),
+        rsvpUrl: "RSVP",
+        sales: [
+          offer({
+            name: "Name",
+            price: 10
+          })
+        ]
+      })
+      .render();
 
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("renders correctly when `rsvpUrl` prop is defined", () => {
-    const { actual } = setup(render, { rsvpUrl: "rsvpUrl" });
-
-    expect(actual.find(".Appearance-rsvp")).toHaveLength(1);
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("renders correctly when status=EventCancelled", () => {
-    const { actual } = setup(render, {
-      status: "EventCancelled"
+    it("renders the audience meta item", () => {
+      expect(wrapper.find(".Appearance--audience")).toHaveLength(1);
     });
 
-    expect(actual.hasClass("isCancelled")).toBe(true);
-    expect(actual.find(".Appearance-tickets")).toHaveLength(0);
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("renders correctly when status=EventPostponed", () => {
-    const { actual } = setup(render, {
-      status: "EventPostponed"
+    it("renders the RSVP section", () => {
+      expect(wrapper.find(".Appearance--rsvp")).toHaveLength(1);
     });
 
-    expect(actual.hasClass("isPostponed")).toBe(true);
-    expect(actual.find(".Appearance-tickets")).toHaveLength(0);
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("renders correctly when finishingAt < now", () => {
-    const { actual } = setup(render, {
-      finishingAt: moment(new Date())
-        .subtract(1, "days")
-        .format("YYYY-MM-DDTHH:mm:ss")
+    it("renders the tickets section", () => {
+      expect(wrapper.find(".Appearance--tickets")).toHaveLength(1);
     });
 
-    expect(actual.hasClass("isFinished")).toBe(true);
-    expect(actual.find(".Appearance-tickets")).toHaveLength(0);
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("renders correctly with all props", () => {
-    const { actual } = setup(render, {
-      audience: "audience",
-      images: [
-        {
-          imageUrl: "images 1 imageUrl",
-          title: "images 1 title"
-        },
-        {
-          imageUrl: "images 2 imageUrl",
-          title: "images 2 title"
-        }
-      ],
-      location: {
-        address: "location address"
-      },
-      locationLatLng: { lat: "lat", lng: "lng" },
-      organizer: {
-        email: "organizer email",
-        logo: "organizer logo",
-        name: "organizer name"
-      },
-      sales: [
-        {
-          availability: "sales 1 availability",
-          name: "sales 1 name",
-          price: 10,
-          priceCurrency: "NZD"
-        }
-      ]
-    });
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("updates `isImageLoaded` state when image has loaded", () => {
-    const { actual } = setup(mount);
-
-    actual.find(".Appearance-image img").simulate("load");
-    expect(actual.render()).toMatchSnapshot();
-  });
-
-  it("updates `isImageLoaded` state when image has previously been loaded", () => {
-    Object.defineProperty(g.Image.prototype, "complete", {
-      value: true
+    it("renders the images section", () => {
+      expect(wrapper.find(".Appearance--images")).toHaveLength(1);
     });
 
-    const { actual } = setup(mount);
-
-    actual.find(".Appearance-image img").simulate("load");
-    expect(actual.render()).toMatchSnapshot();
-  });
-
-  it("triggers `onGalleryInteraction` prop when interacting with the gallery", () => {
-    const { actual, props } = setup(mount, {
-      images: [
-        {
-          imageUrl: "images 1 imageUrl",
-          title: "images 1 title"
-        }
-      ],
-      onGalleryInteraction: jest.fn()
+    it("renders the map section", () => {
+      expect(wrapper.find(".Appearance--map")).toHaveLength(1);
     });
 
-    actual
-      .find("ImageGallery Image")
-      .first()
-      .simulate("click");
-    expect(props.onGalleryInteraction).toHaveBeenCalledWith("itemClick", 0);
+    it("matches snapshot", () => {
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 
-  it("doesn't throw an error when `onGalleryInteraction` prop is undefined and the gallery is interacted with", () => {
-    let isPassing = true;
-    const { actual } = setup(mount, {
-      images: [
-        {
-          imageUrl: "images 1 imageUrl",
-          title: "images 1 title"
-        }
-      ]
+  describe("when cancelled", () => {
+    const { wrapper } = component
+      .withProps({
+        sales: [offer()],
+        status: STATUS.CANCELLED
+      })
+      .render();
+
+    it("has the isCancelled class", () => {
+      expect(wrapper.hasClass("isCancelled")).toBe(true);
     });
 
-    try {
-      actual
-        .find("ImageGallery Image")
-        .first()
-        .simulate("click");
-    } catch (error) {
-      isPassing = false;
-    }
+    it("renders the status notice with CANCELLED text", () => {
+      expect(wrapper.find(".Appearance--status")).toHaveLength(1);
+    });
 
-    expect(isPassing).toBe(true);
+    it("doesn't render the tickets section", () => {
+      expect(wrapper.find(".Appearance--tickets")).toHaveLength(0);
+    });
+
+    it("matches snapshot", () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+  });
+
+  describe("when postponed", () => {
+    const { wrapper } = component
+      .withProps({
+        sales: [offer()],
+        status: STATUS.POSTPONED
+      })
+      .render();
+
+    it("has the isPostponed class", () => {
+      expect(wrapper.hasClass("isPostponed")).toBe(true);
+    });
+
+    it("renders the status notice with POSTPONED text", () => {
+      expect(wrapper.find(".Appearance--status")).toHaveLength(1);
+    });
+
+    it("doesn't render the tickets section", () => {
+      expect(wrapper.find(".Appearance--tickets")).toHaveLength(0);
+    });
+
+    it("matches snapshot", () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+  });
+
+  describe("when finishingAt is in the past", () => {
+    const { wrapper } = component
+      .withProps({
+        finishingAt: dayjs()
+          .subtract(1, "day")
+          .toISOString()
+      })
+      .render();
+
+    it("has the isFinished class", () => {
+      expect(wrapper.hasClass("isFinished")).toBe(true);
+    });
+
+    it("doesn't render the tickets section", () => {
+      expect(wrapper.find(".Appearance--tickets")).toHaveLength(0);
+    });
+
+    it("matches snapshot", () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+  });
+
+  describe("when interacting with the gallery", () => {
+    const { wrapper, props } = component
+      .withProps({
+        images: [image()],
+        onGalleryInteraction: jest.fn()
+      })
+      .mount();
+
+    it("clicks a gallery image", () => {
+      // @ts-ignore-next-line
+      wrapper.find("ImageGallery").prop("onItemClick")(0);
+    });
+
+    it("calls the onGalleryInteraction prop", () => {
+      expect(props.onGalleryInteraction).toHaveBeenCalledTimes(1);
+    });
+
+    it("sets the onGalleryInteractionProp to be undefined", () => {
+      wrapper.setProps({ onGalleryInteraction: undefined });
+    });
+
+    it("clicks a gallery image", () => {
+      // @ts-ignore-next-line
+      wrapper.find("ImageGallery").prop("onItemClick")(0);
+    });
   });
 });

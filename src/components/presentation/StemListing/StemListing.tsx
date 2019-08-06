@@ -7,15 +7,17 @@ import {
   FaCreativeCommonsSa
 } from "react-icons/fa";
 import { MdCloudDownload } from "react-icons/md";
-import { InjectedIntl, injectIntl } from "react-intl";
+import { InjectedIntlProps, injectIntl } from "react-intl";
 
+import { IStem } from "../../../models/root.models";
 import Image from "../Image/Image";
 import Link from "../Link/Link";
 import Meta from "../Meta/Meta";
 
-interface IProps extends IStem {
-  intl: InjectedIntl;
-  onLoad: (slug: string) => void;
+import "./StemListing.scss";
+
+interface IProps extends IStem, InjectedIntlProps {
+  onLoad: () => void;
 }
 
 interface IState {
@@ -23,7 +25,7 @@ interface IState {
 }
 
 class StemListing extends React.Component<IProps, IState> {
-  public readonly state = {
+  public readonly state: IState = {
     isRendered: false
   };
 
@@ -35,7 +37,7 @@ class StemListing extends React.Component<IProps, IState> {
     return (
       <article className={cn("StemListing", { isRendered })}>
         <Link
-          className="StemListing-link"
+          className="StemListing--link"
           href={stem.url}
           isExternal={true}
           title={formatMessage(
@@ -43,30 +45,30 @@ class StemListing extends React.Component<IProps, IState> {
             { title: stem.title }
           )}
         >
-          <div className="StemListing-details">
-            <header className="StemListing-header">
+          <div className="StemListing--details">
+            <header className="StemListing--header">
               <h2>
                 <span>{stem.title}</span>
               </h2>
             </header>
 
-            <section className="StemListing-meta">
+            <section className="StemListing--meta">
               <Meta
-                className="StemListing-audioFormat"
-                labelConstant="AUDIO_FORMAT"
+                className="StemListing--audioFormat"
+                labelIntlId="AUDIO_FORMAT"
               >
                 {stem.audioFormat}
               </Meta>
 
               <Meta
-                className="StemListing-packageFormat"
-                labelConstant="PACKAGE_FORMAT"
+                className="StemListing--packageFormat"
+                labelIntlId="PACKAGE_FORMAT"
               >
                 {stem.packageFormat}, {stem.size}
               </Meta>
 
               <Meta
-                className="StemListing-licence"
+                className="StemListing--licence"
                 icon={
                   <React.Fragment>
                     <FaCreativeCommons />
@@ -75,21 +77,21 @@ class StemListing extends React.Component<IProps, IState> {
                     <FaCreativeCommonsSa />
                   </React.Fragment>
                 }
-                labelConstant="LICENCED_UNDER_CC_REMIX"
+                labelIntlId="LICENCED_UNDER_CC_REMIX"
                 title={formatMessage({ id: "LICENCED_UNDER_CC_REMIX" })}
               />
             </section>
           </div>
 
-          <div className="StemListing-thumbnail">
+          <div className="StemListing--thumbnail">
             <Image
               alt={stem.title}
-              className="StemListing-image"
+              className="StemListing--image"
               onLoad={this.onLoad}
               src={stem.imageUrl}
             />
 
-            <div className="StemListing-downloadIcon">
+            <div className="StemListing--downloadIcon">
               <MdCloudDownload />
             </div>
           </div>
@@ -104,9 +106,9 @@ class StemListing extends React.Component<IProps, IState> {
     });
 
     if (this.props.onLoad) {
-      this.props.onLoad(this.props.slug);
+      this.props.onLoad();
     }
   };
 }
 
-export default injectIntl<any>(StemListing);
+export default injectIntl(StemListing);

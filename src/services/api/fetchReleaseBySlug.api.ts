@@ -1,17 +1,19 @@
-import transformRelease from "../../transformers/transformRelease";
+import {
+  failure,
+  IRawRelease,
+  release,
+  success
+} from "../../models/root.models";
+import { TRequest } from "../configureHttpClient";
 
-export const fetchReleaseBySlug = (request: any) => async (slug: string) => {
+export const fetchReleaseBySlug = (request: TRequest) => async (
+  slug: string
+) => {
   try {
-    const response = await request({ url: `/releases/${slug}` });
+    const response: IRawRelease = await request({ url: `/releases/${slug}` });
 
-    return {
-      data: transformRelease(response),
-      ok: true
-    };
+    return success(release(response));
   } catch (error) {
-    return {
-      message: error.message,
-      ok: false
-    };
+    return failure(error);
   }
 };

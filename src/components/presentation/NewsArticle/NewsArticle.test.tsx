@@ -1,88 +1,87 @@
-import { mount, render } from "enzyme";
-import * as React from "react";
-
+import { newsArticle } from "../../../models/root.models";
+import ComponentTester from "../../../utilities/ComponentTester";
 import NewsArticle from "./NewsArticle";
 
-const g: any = global;
-
-const setup = (fn: any, fromTestProps?: any) => {
-  const props = {
-    author: "author",
-    content: "<p>content</p>",
+const component = new ComponentTester(NewsArticle).withDefaultProps(
+  newsArticle({
+    author: "Author",
+    content: "<p>Content</p>",
     createdAt: "2017-10-10T18:00:00",
-    excerpt: "excerpt",
-    imageUrl: "imageUrl",
-    isActive: true,
-    slug: "slug",
-    title: "title",
-    type: "type",
-    ...fromTestProps
-  };
-
-  return {
-    actual: fn(<NewsArticle {...props} />),
-    props
-  };
-};
+    excerpt: "Excerpt",
+    imageUrl: "Image URL",
+    slug: "article-1",
+    title: "Title"
+  })
+);
 
 describe("[presentation] <NewsArticle />", () => {
-  beforeEach(() => {
-    Object.defineProperty(g.Image.prototype, "complete", {
-      value: false
+  describe("when no action is defined", () => {
+    const { wrapper } = component.mount();
+
+    it("doesn't render the action", () => {
+      expect(wrapper.find(".NewsArticle--action Link")).toHaveLength(0);
+    });
+
+    it("matches snapshot", () => {
+      expect(wrapper.render()).toMatchSnapshot();
     });
   });
 
-  it("renders correctly", () => {
-    const { actual } = setup(render);
+  describe("when the action is defined, with a route", () => {
+    const { wrapper } = component
+      .withProps({
+        action: {
+          route: "/",
+          text: "Action"
+        }
+      })
+      .mount();
 
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("renders action with internal route correctly", () => {
-    const { actual, props } = setup(render, {
-      action: {
-        route: "route",
-        text: "text"
-      }
-    });
-    const action = actual.find(".NewsArticle-action a");
-
-    expect(action).toHaveLength(1);
-    expect(action.attr("href")).toBe(props.action.route);
-    expect(action.attr("target")).toBeUndefined();
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("renders action with internal route correctly", () => {
-    const { actual, props } = setup(render, {
-      action: {
-        text: "text",
-        url: "url"
-      }
-    });
-    const action = actual.find(".NewsArticle-action a");
-
-    expect(action).toHaveLength(1);
-    expect(action.attr("href")).toBe(props.action.url);
-    expect(action.attr("target")).toBe("_blank");
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("updates `isImageLoaded` state when image has loaded", () => {
-    const { actual } = setup(mount);
-
-    actual.find(".NewsArticle-image img").simulate("load");
-    expect(actual.render()).toMatchSnapshot();
-  });
-
-  it("updates `isImageLoaded` state when image has previously been loaded", () => {
-    Object.defineProperty(g.Image.prototype, "complete", {
-      value: true
+    it("renders the action", () => {
+      expect(
+        wrapper.find(".NewsArticle--action Link[route='/'][prefetch=true]")
+      ).toHaveLength(1);
     });
 
-    const { actual } = setup(mount);
+    it("matches snapshot", () => {
+      expect(wrapper.render()).toMatchSnapshot();
+    });
+  });
 
-    actual.find(".NewsArticle-image img").simulate("load");
-    expect(actual.render()).toMatchSnapshot();
+  describe("when the action is defined, with a url", () => {
+    const { wrapper } = component
+      .withProps({
+        action: {
+          text: "Action",
+          url: "/"
+        }
+      })
+      .mount();
+
+    it("renders the action", () => {
+      expect(
+        wrapper.find(".NewsArticle--action Link[href='/'][isExternal=true]")
+      ).toHaveLength(1);
+    });
+
+    it("matches snapshot", () => {
+      expect(wrapper.render()).toMatchSnapshot();
+    });
+  });
+
+  describe("when loading the image", () => {
+    const { wrapper } = component.mount();
+
+    it("doesn't add the isRendered class initially", () => {
+      expect(wrapper.find(".isRendered")).toHaveLength(0);
+    });
+
+    it("loads the image", () => {
+      wrapper.find("Image.NewsArticle--image").simulate("load");
+    });
+
+    it("adds the isRendered class", () => {
+      expect(wrapper.find(".isRendered")).toHaveLength(1);
+    });
   });
 });

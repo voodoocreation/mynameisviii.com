@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[presentation] <Gallery /> renders correctly 1`] = `
+exports[`[presentation] <Gallery /> when there are images defined matches snapshot 1`] = `
 <article
   class="Gallery"
 >
@@ -8,39 +8,39 @@ exports[`[presentation] <Gallery /> renders correctly 1`] = `
     class="PageHeader"
   >
     <h1>
-      title
+      Title
     </h1>
   </header>
   <div
-    class="Gallery-description"
+    class="Gallery--description"
   >
     <p>
-      description
+      Description
     </p>
   </div>
   <section
-    class="Gallery-images"
+    class="Gallery--images"
   >
     <div
       class="ImageGallery"
     >
       <figure
-        class="Image Gallery-image isLoading"
+        class="Image Gallery--image isLoading"
         role="button"
         tabindex="0"
       >
         <div
-          class="Image-wrapper"
+          class="Image--wrapper"
         >
           <img
-            alt="title - 1"
-            src="images 1 imageUrl"
+            alt="Title - 1"
+            src="Image 1"
           />
           <span
             class="Loader"
           >
             <div
-              class="Loader-animation"
+              class="Loader--animation"
             >
               <span />
               <span />
@@ -50,22 +50,22 @@ exports[`[presentation] <Gallery /> renders correctly 1`] = `
         </div>
       </figure>
       <figure
-        class="Image Gallery-image isLoading"
+        class="Image Gallery--image isLoading"
         role="button"
         tabindex="0"
       >
         <div
-          class="Image-wrapper"
+          class="Image--wrapper"
         >
           <img
-            alt="title - 2"
-            src="images 2 imageUrl"
+            alt="Title - 2"
+            src="Image 2"
           />
           <span
             class="Loader"
           >
             <div
-              class="Loader-animation"
+              class="Loader--animation"
             >
               <span />
               <span />
@@ -75,22 +75,22 @@ exports[`[presentation] <Gallery /> renders correctly 1`] = `
         </div>
       </figure>
       <figure
-        class="Image Gallery-image isLoading"
+        class="Image Gallery--image isLoading"
         role="button"
         tabindex="0"
       >
         <div
-          class="Image-wrapper"
+          class="Image--wrapper"
         >
           <img
-            alt="title - 3"
-            src="images 3 imageUrl"
+            alt="Title - 3"
+            src="Image 3"
           />
           <span
             class="Loader"
           >
             <div
-              class="Loader-animation"
+              class="Loader--animation"
             >
               <span />
               <span />
@@ -101,5 +101,26 @@ exports[`[presentation] <Gallery /> renders correctly 1`] = `
       </figure>
     </div>
   </section>
+</article>
+`;
+
+exports[`[presentation] <Gallery /> when there are no images matches snapshot 1`] = `
+<article
+  class="Gallery"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1>
+      Title
+    </h1>
+  </header>
+  <div
+    class="Gallery--description"
+  >
+    <p>
+      Description
+    </p>
+  </div>
 </article>
 `;

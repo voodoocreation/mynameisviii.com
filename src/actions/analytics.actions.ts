@@ -1,5 +1,8 @@
 import actionCreatorFactory from "typescript-fsa";
 
-const actionCreator = actionCreatorFactory("ANALYTICS");
+const createAction = actionCreatorFactory("ANALYTICS");
 
-export const trackEvent = actionCreator<PLTrackEvent>("TRACK_EVENT");
+export const trackEvent = createAction<{
+  event: string;
+  [index: string]: any;
+}>("TRACK_EVENT");

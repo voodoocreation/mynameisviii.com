@@ -1,43 +1,32 @@
 import cn from "classnames";
 import * as React from "react";
 import { MdAccessTime } from "react-icons/md";
-import { FormattedMessage, InjectedIntl, injectIntl } from "react-intl";
+import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl";
 
+import { INewsArticle } from "../../../models/root.models";
 import Schema from "../../schema/NewsArticle";
 import ButtonBar from "../ButtonBar/ButtonBar";
 import DateTime from "../DateTime/DateTime";
 import Image from "../Image/Image";
 import Link from "../Link/Link";
+import NewsArticleType from "../NewsArticleType/NewsArticleType";
 import PageHeader from "../PageHeader/PageHeader";
-import Type from "../Type/Type";
 
-interface IProps extends INewsArticle {
-  intl: InjectedIntl;
+import "./NewsArticle.scss";
+
+interface IProps extends INewsArticle, InjectedIntlProps {}
+
+interface IState {
+  isImageLoaded: boolean;
 }
 
-class NewsArticle extends React.Component<IProps> {
-  public readonly state = {
+class NewsArticle extends React.Component<IProps, IState> {
+  public readonly state: IState = {
     isImageLoaded: false
   };
 
   public render() {
     const { intl, ...article } = this.props;
-
-    let action = null;
-
-    if (article.action && article.action.route) {
-      action = (
-        <Link className="Button" route={article.action.route} prefetch={true}>
-          {article.action.text}
-        </Link>
-      );
-    } else if (article.action && article.action.url) {
-      action = (
-        <Link className="Button" href={article.action.url} isExternal={true}>
-          {article.action.text}
-        </Link>
-      );
-    }
 
     return (
       <article
@@ -45,31 +34,36 @@ class NewsArticle extends React.Component<IProps> {
       >
         <PageHeader>{article.title}</PageHeader>
 
-        <div className="NewsArticle-body">
+        <div className="NewsArticle--body">
           <Image
             alt={article.title}
-            className="NewsArticle-image"
+            className="NewsArticle--image"
             onLoad={this.onImageLoad}
             src={article.imageUrl}
           />
 
-          <section className="NewsArticle-meta">
-            <div className="NewsArticle-posted">
+          <section className="NewsArticle--meta">
+            <div className="NewsArticle--posted">
               <MdAccessTime /> <FormattedMessage id="POSTED" />{" "}
               <DateTime value={article.createdAt} updateInterval={300000} />{" "}
-              <FormattedMessage id="BY" /> {article.author}
+              <FormattedMessage
+                id="BY_NAME"
+                values={{ name: article.author }}
+              />
             </div>
 
-            <Type value={article.type} />
+            <NewsArticleType value={article.type} />
           </section>
 
-          <section className="NewsArticle-content">
+          <section className="NewsArticle--content">
             <div
-              className="NewsArticle-contentText"
+              className="NewsArticle-content--text"
               dangerouslySetInnerHTML={{ __html: article.content }}
             />
 
-            <ButtonBar className="NewsArticle-action">{action}</ButtonBar>
+            <ButtonBar className="NewsArticle--action">
+              {this.renderAction()}
+            </ButtonBar>
           </section>
         </div>
 
@@ -78,6 +72,28 @@ class NewsArticle extends React.Component<IProps> {
     );
   }
 
+  private renderAction = () => {
+    const { action } = this.props;
+
+    if (action && action.route) {
+      return (
+        <Link className="Button isStyled" route={action.route} prefetch={true}>
+          {action.text}
+        </Link>
+      );
+    }
+
+    if (action && action.url) {
+      return (
+        <Link className="Button isStyled" href={action.url} isExternal={true}>
+          {action.text}
+        </Link>
+      );
+    }
+
+    return null;
+  };
+
   private onImageLoad = () => {
     this.setState({
       isImageLoaded: true
@@ -85,4 +101,4 @@ class NewsArticle extends React.Component<IProps> {
   };
 }
 
-export default injectIntl<any>(NewsArticle);
+export default injectIntl(NewsArticle);

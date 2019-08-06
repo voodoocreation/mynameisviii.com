@@ -1,15 +1,15 @@
-import cn from "classnames";
 import * as React from "react";
 
-interface IProps {
-  className?: string;
-}
+import NewVersionToast from "../../connected/NewVersionToast/NewVersionToast";
+import OnlineStatusToast from "../../connected/OnlineStatusToast/OnlineStatusToast";
 
-const ToastContainer: React.SFC<IProps> = ({ children, className }) =>
-  !children
-    ? null
-    : ((
-        <div className={cn("ToastContainer", className)}>{children}</div>
-      ) as React.ReactElement<any>);
+import "./ToastContainer.scss";
+
+const ToastContainer: React.FC = () => (
+  <section className="ToastContainer">
+    <OnlineStatusToast />
+    <NewVersionToast />
+  </section>
+);
 
 export default ToastContainer;

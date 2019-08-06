@@ -1,18 +1,12 @@
-import { render } from "enzyme";
-import * as React from "react";
-
+import ComponentTester from "../../../utilities/ComponentTester";
 import SymbolRoute from "./SymbolRoute";
 
-const setup = (fn: any) => {
-  return {
-    actual: fn(<SymbolRoute />)
-  };
-};
+const component = new ComponentTester(SymbolRoute, true);
 
 describe("[routes] <SymbolRoute />", () => {
   it("renders correctly", () => {
-    const { actual } = setup(render);
+    const { wrapper } = component.mount();
 
-    expect(actual).toMatchSnapshot();
+    expect(wrapper.render()).toMatchSnapshot();
   });
 });

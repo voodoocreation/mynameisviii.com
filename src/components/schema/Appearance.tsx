@@ -1,12 +1,11 @@
 import * as React from "react";
-import { InjectedIntl, injectIntl } from "react-intl";
+import { InjectedIntlProps, injectIntl } from "react-intl";
 
+import { IAppearance } from "../../models/appearance.models";
 import { absUrl } from "../../transformers/transformData";
 import Schema from "./Schema";
 
-interface IProps extends IAppearance {
-  intl: InjectedIntl;
-}
+interface IProps extends IAppearance, InjectedIntlProps {}
 
 const Appearance = ({ intl, ...props }: IProps) => (
   <Schema
@@ -35,7 +34,7 @@ const Appearance = ({ intl, ...props }: IProps) => (
         validFrom: offer.validFrom
       })),
       organizer: {
-        "@type": props.organizer.type || "Organization",
+        "@type": props.organizer.type,
         email: props.organizer.email,
         logo: !props.organizer.logo
           ? undefined
@@ -46,7 +45,7 @@ const Appearance = ({ intl, ...props }: IProps) => (
         name: props.organizer.name
       },
       performer: props.acts.map(performer => ({
-        "@type": performer.type || "MusicGroup",
+        "@type": performer.type,
         genre: performer.genre,
         image: {
           "@type": "ImageObject",
@@ -66,4 +65,4 @@ const Appearance = ({ intl, ...props }: IProps) => (
   />
 );
 
-export default injectIntl<any>(Appearance);
+export default injectIntl(Appearance);

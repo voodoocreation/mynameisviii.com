@@ -1,44 +1,31 @@
-import { render } from "enzyme";
-import * as React from "react";
-import { Provider } from "react-redux";
-
-import createStore from "../../../store/root.store";
+import ComponentTester from "../../../utilities/ComponentTester";
 import OfflineNotice from "./OfflineNotice";
 
-const setup = (fn: any, fromTestStore = {}) => {
-  const store = createStore({
-    page: {
-      isOnline: false
-    },
-    ...fromTestStore
-  });
-
-  return {
-    actual: fn(
-      <Provider store={store}>
-        <OfflineNotice />
-      </Provider>
-    ),
-    store
-  };
-};
+const component = new ComponentTester(OfflineNotice, true);
 
 describe("[connected] <OfflineNotice />", () => {
   it("renders correctly when offline", () => {
-    const { actual } = setup(render);
+    const { wrapper } = component
+      .withReduxState({
+        app: {
+          isOnline: false
+        }
+      })
+      .mount();
 
-    expect(actual).toHaveLength(1);
-    expect(actual).toMatchSnapshot();
+    expect(wrapper.find(".OfflineNotice")).toHaveLength(1);
+    expect(wrapper.render()).toMatchSnapshot();
   });
 
-  it("renders null when online", () => {
-    const { actual } = setup(render, {
-      page: {
-        isOnline: true
-      }
-    });
+  it("renders nothing when online", () => {
+    const { wrapper } = component
+      .withReduxState({
+        app: {
+          isOnline: true
+        }
+      })
+      .mount();
 
-    expect(actual).toHaveLength(0);
-    expect(actual).toMatchSnapshot();
+    expect(wrapper.find(".OfflineNotice")).toHaveLength(0);
   });
 });

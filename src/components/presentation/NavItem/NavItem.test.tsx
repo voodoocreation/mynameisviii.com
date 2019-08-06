@@ -1,53 +1,58 @@
-import { mount, render } from "enzyme";
-import * as React from "react";
-
+import ComponentTester from "../../../utilities/ComponentTester";
 import NavItem from "./NavItem";
 
-const setup = (fn: any, fromTestProps?: any) => {
-  const props = {
-    href: "/",
-    ...fromTestProps
-  };
+const component = new ComponentTester(NavItem)
+  .withDefaultProps({
+    href: "/"
+  })
+  .withDefaultChildren("Nav item");
 
-  return {
-    actual: fn(<NavItem {...props}>Test nav item</NavItem>),
-    props
-  };
-};
+describe("[connected] <NavItem />", () => {
+  describe("when isSelected is false", () => {
+    const { wrapper } = component
+      .withProps({
+        isSelected: false
+      })
+      .mount();
 
-describe("[containers] <NavItem />", () => {
-  it("renders correctly with minimum props", () => {
-    const { actual } = setup(render);
+    beforeAll(() => {
+      jest.clearAllMocks();
+    });
 
-    expect(actual.find("a")).toHaveLength(1);
-    expect(actual).toMatchSnapshot();
+    it("doesn't add the isSelected class", () => {
+      expect(wrapper.find(".isSelected")).toHaveLength(0);
+    });
+
+    it("renders an Link", () => {
+      expect(wrapper.find("Link")).toHaveLength(1);
+    });
+
+    it("matches snapshot", () => {
+      expect(wrapper.render()).toMatchSnapshot();
+    });
   });
 
-  it("renders correctly when isSelected=true", () => {
-    const { actual } = setup(render, { isSelected: true });
+  describe("when isSelected is true", () => {
+    const { wrapper } = component
+      .withProps({
+        isSelected: true
+      })
+      .mount();
 
-    expect(actual.hasClass("isSelected")).toBe(true);
-    expect(actual.find("a")).toHaveLength(0);
-    expect(actual).toMatchSnapshot();
-  });
+    beforeAll(() => {
+      jest.clearAllMocks();
+    });
 
-  it("triggers `onClick` prop when item is clicked on", () => {
-    const { actual, props } = setup(mount, { onClick: jest.fn() });
+    it("adds the isSelected class", () => {
+      expect(wrapper.find(".isSelected")).toHaveLength(1);
+    });
 
-    actual.simulate("click");
-    expect(props.onClick).toHaveBeenCalled();
-  });
+    it("doesn't render a Link", () => {
+      expect(wrapper.find("Link")).toHaveLength(0);
+    });
 
-  it("doesn't throw an error when `onClick` prop is undefined and item is clicked on", () => {
-    let isPassing = true;
-    const { actual } = setup(mount);
-
-    try {
-      actual.simulate("click");
-    } catch (error) {
-      isPassing = false;
-    }
-
-    expect(isPassing).toBe(true);
+    it("matches snapshot", () => {
+      expect(wrapper.render()).toMatchSnapshot();
+    });
   });
 });

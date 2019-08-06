@@ -1,48 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[presentation] <Image /> renders correctly with minimum props 1`] = `
+exports[`[presentation] <Image /> when all props are defined matches snapshot 1`] = `
 <figure
-  class="Image TestImage isLoading"
+  class="Image Classname isRendered"
+  intl="[object Object]"
+  role="button"
+  tabindex="0"
 >
   <div
-    class="Image-wrapper"
+    class="Image--wrapper"
   >
-    <img />
-    <span
-      class="Loader"
-    >
-      <div
-        class="Loader-animation"
-      >
-        <span />
-        <span />
-        <span />
-      </div>
-    </span>
+    <img
+      alt="Alt"
+      src="Image URL"
+      title="Title"
+    />
   </div>
-</figure>
-`;
-
-exports[`[presentation] <Image /> updates \`isRendered\` state and triggers \`onLoad\` prop after image has loaded 1`] = `
-<figure
-  class="Image TestImage isRendered"
->
-  <div
-    class="Image-wrapper"
-  >
-    <img />
-  </div>
-</figure>
-`;
-
-exports[`[presentation] <Image /> updates \`isRendered\` state when image has previously been loaded 1`] = `
-<figure
-  class="Image TestImage isRendered"
->
-  <div
-    class="Image-wrapper"
-  >
-    <img />
-  </div>
+  <figcaption>
+    Caption
+  </figcaption>
 </figure>
 `;

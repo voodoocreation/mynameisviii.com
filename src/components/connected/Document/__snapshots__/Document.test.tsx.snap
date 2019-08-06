@@ -2,21 +2,6 @@
 
 exports[`[connected] <Document /> renders correctly when NODE_ENV=development 1`] = `
 Array [
-  <link
-    as="script"
-    href="/assetPrefix/_next/static/buildId/pages/index.js"
-    rel="preload"
-  />,
-  <link
-    as="script"
-    href="/assetPrefix/_next/static/buildId/pages/_app.js"
-    rel="preload"
-  />,
-  <link
-    as="script"
-    href="/assetPrefix/_next/static/buildId/pages/_error.js"
-    rel="preload"
-  />,
   null,
   null,
   null,
@@ -77,7 +62,20 @@ Array [
     content="#ffffff"
     name="theme-color"
   />,
-  null,
+  <meta
+    content="0"
+    name="next-head-count"
+  />,
+  <link
+    as="script"
+    href="/assetPrefix/_next/static/buildId/pages/index.js?ts=1514718000000"
+    rel="preload"
+  />,
+  <link
+    as="script"
+    href="/assetPrefix/_next/static/buildId/pages/_app.js?ts=1514718000000"
+    rel="preload"
+  />,
   <noscript>
     &lt;iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJZ52XC&amp;gtm_auth=5N0VfAOq-iEoyMOidFx0kQ&amp;gtm_preview=env-3&amp;gtm_cookies_win=x" height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;
   </noscript>,
@@ -87,27 +85,11 @@ Array [
   null,
   null,
   null,
-  null,
 ]
 `;
 
 exports[`[connected] <Document /> renders currectly when NODE_ENV=production 1`] = `
 Array [
-  <link
-    as="script"
-    href="/assetPrefix/_next/static/buildId/pages/index.js"
-    rel="preload"
-  />,
-  <link
-    as="script"
-    href="/assetPrefix/_next/static/buildId/pages/_app.js"
-    rel="preload"
-  />,
-  <link
-    as="script"
-    href="/assetPrefix/_next/static/buildId/pages/_error.js"
-    rel="preload"
-  />,
   null,
   null,
   null,
@@ -168,9 +150,19 @@ Array [
     content="#ffffff"
     name="theme-color"
   />,
+  <meta
+    content="0"
+    name="next-head-count"
+  />,
   <link
-    href="/assets/main.css"
-    rel="stylesheet"
+    as="script"
+    href="/assetPrefix/_next/static/buildId/pages/index.js"
+    rel="preload"
+  />,
+  <link
+    as="script"
+    href="/assetPrefix/_next/static/buildId/pages/_app.js"
+    rel="preload"
   />,
   <noscript>
     &lt;iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJZ52XC" height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;
@@ -179,6 +171,93 @@ Array [
     id="__next"
   />,
   null,
+  null,
+  null,
+]
+`;
+
+exports[`[connected] <Document /> renders currectly when locale is missing 1`] = `
+Array [
+  null,
+  null,
+  null,
+  <meta
+    charset="UTF-8"
+  />,
+  <meta
+    content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
+    name="viewport"
+  />,
+  <meta
+    content="278225392903510"
+    property="fb:app_id"
+  />,
+  <meta
+    content="218519344943411"
+    property="fb:page_id"
+  />,
+  <link
+    href="/static/manifest.json"
+    rel="manifest"
+  />,
+  <link
+    href="/static/favicon/apple-touch-icon.png"
+    rel="apple-touch-icon"
+    sizes="180x180"
+  />,
+  <link
+    href="/static/favicon/favicon-32x32.png"
+    rel="icon"
+    sizes="32x32"
+    type="image/png"
+  />,
+  <link
+    href="/static/favicon/favicon-16x16.png"
+    rel="icon"
+    sizes="16x16"
+    type="image/png"
+  />,
+  <link
+    color="#000000"
+    href="/static/favicon/safari-pinned-tab.svg"
+    rel="mask-icon"
+  />,
+  <link
+    href="/static/favicon/favicon.ico"
+    rel="shortcut icon"
+  />,
+  <meta
+    content="#000000"
+    name="msapplication-TileColor"
+  />,
+  <meta
+    content="/static/browserconfig.xml"
+    name="msapplication-config"
+  />,
+  <meta
+    content="#ffffff"
+    name="theme-color"
+  />,
+  <meta
+    content="0"
+    name="next-head-count"
+  />,
+  <link
+    as="script"
+    href="/assetPrefix/_next/static/buildId/pages/index.js?ts=1514718000000"
+    rel="preload"
+  />,
+  <link
+    as="script"
+    href="/assetPrefix/_next/static/buildId/pages/_app.js?ts=1514718000000"
+    rel="preload"
+  />,
+  <noscript>
+    &lt;iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJZ52XC&amp;gtm_auth=5N0VfAOq-iEoyMOidFx0kQ&amp;gtm_preview=env-3&amp;gtm_cookies_win=x" height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;
+  </noscript>,
+  <div
+    id="__next"
+  />,
   null,
   null,
   null,

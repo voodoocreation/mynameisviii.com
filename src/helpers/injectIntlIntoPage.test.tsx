@@ -1,15 +1,21 @@
 import { mount } from "enzyme";
 import * as React from "react";
+import { IntlProvider } from "react-intl";
 
+import * as messages from "../locales/en-NZ";
 import injectIntlIntoPage from "./injectIntlIntoPage";
 
-describe("[helpers] injectIntl", () => {
-  it("injects intl into next.js page component correctly when `getInitialProps` is defined", async () => {
+describe("[helpers] injectIntlIntoPage", () => {
+  describe("when `getInitialProps` is defined", () => {
+    let wrapper: any;
+    let initialProps: any;
+    const test = "From getInitialProps()";
+
     class WithInitialProps extends React.Component<{ test: string }> {
       public static defaultProps = { test: "From defaultProps" };
 
       public static async getInitialProps() {
-        return { test: "From getInitialProps()" };
+        return { test };
       }
 
       public render() {
@@ -17,29 +23,71 @@ describe("[helpers] injectIntl", () => {
       }
     }
 
-    const WithInitialPropsWrapped = injectIntlIntoPage(WithInitialProps);
-    const initialProps = await WithInitialPropsWrapped.getInitialProps({});
-    const actual = mount(<WithInitialPropsWrapped {...initialProps} />);
+    it("wraps component correctly", async () => {
+      const WithInitialPropsWrapped = injectIntlIntoPage(WithInitialProps);
 
-    expect(initialProps).toEqual({ test: "From getInitialProps()" });
-    expect(actual.render()).toMatchSnapshot();
+      initialProps = await WithInitialPropsWrapped.getInitialProps({} as any);
+      wrapper = mount(
+        <IntlProvider
+          defaultLocale="en-NZ"
+          locale="en-NZ"
+          messages={messages}
+          textComponent={React.Fragment}
+        >
+          <WithInitialPropsWrapped {...initialProps} />
+        </IntlProvider>
+      );
+    });
+
+    it("defines initialProps correctly", () => {
+      expect(initialProps).toEqual({ test });
+    });
+
+    it("renders wrapped component correctly", () => {
+      expect(wrapper.render().html()).toBe(test);
+    });
   });
 
-  it("injects intl into next.js page component correctly when `getInitialProps` isn't defined", async () => {
+  describe("when `getInitialProps` isn't defined", () => {
+    let wrapper: any;
+    let initialProps: any;
+    const test = "From getInitialProps()";
+
     // tslint:disable-next-line
     class WithoutInitialProps extends React.Component<{ test: string }> {
-      public static defaultProps = { test: "From defaultProps" };
+      public static defaultProps = { test };
 
       public render() {
         return <div>{this.props.test}</div>;
       }
     }
 
-    const WithoutInitialPropsWrapped = injectIntlIntoPage(WithoutInitialProps);
-    const initialProps = await WithoutInitialPropsWrapped.getInitialProps({});
-    const actual = mount(<WithoutInitialPropsWrapped {...initialProps} />);
+    it("wraps component correctly", async () => {
+      const WithoutInitialPropsWrapped = injectIntlIntoPage(
+        WithoutInitialProps
+      );
 
-    expect(initialProps).toEqual({});
-    expect(actual.render()).toMatchSnapshot();
+      initialProps = await WithoutInitialPropsWrapped.getInitialProps(
+        {} as any
+      );
+      wrapper = mount(
+        <IntlProvider
+          defaultLocale="en-NZ"
+          locale="en-NZ"
+          messages={messages}
+          textComponent={React.Fragment}
+        >
+          <WithoutInitialPropsWrapped {...initialProps} />
+        </IntlProvider>
+      );
+    });
+
+    it("defines initialProps correctly", () => {
+      expect(initialProps).toEqual({});
+    });
+
+    it("renders wrapped component correctly", () => {
+      expect(wrapper.render().html()).toBe(test);
+    });
   });
 });

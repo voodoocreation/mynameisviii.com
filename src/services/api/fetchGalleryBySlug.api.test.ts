@@ -1,42 +1,40 @@
-import createMockHttpClient from "../../helpers/createMockHttpClient";
-import { tryParseJson } from "../../transformers/transformData";
-import { createPortsWith } from "../configureApi";
+import { failure, gallery, success } from "../../models/root.models";
+import {
+  mockWithRejectedPromise,
+  mockWithResolvedPromise
+} from "../../utilities/mocks";
 import { fetchGalleryBySlug } from "./fetchGalleryBySlug.api";
 
-describe("[api] fetchGalleryBySlug()", () => {
-  it("handles successful request correctly", async () => {
-    const client = createMockHttpClient(resolve => {
-      resolve({
-        data: { Title: "test" }
-      });
-    });
-    const fetch = fetchGalleryBySlug(createPortsWith({}, client));
-    const response = await fetch("test-1");
+describe("[api] fetchGalleryBySlug", () => {
+  describe("when the request succeeds", () => {
+    const data = {
+      images: [{ imageUrl: "Image URL" }],
+      slug: "test-1",
+      title: "Title"
+    };
 
-    expect(client).toHaveBeenCalled();
-    expect(client.mock.calls[0][0].url).toBe("/galleries/test-1");
-    expect(response.ok).toBe(true);
-    expect(response.data).toEqual({ title: "test" });
+    const request = mockWithResolvedPromise(data);
+    const method = fetchGalleryBySlug(request);
+
+    it("returns a success response with the model-parsed data", async () => {
+      expect(await method("test-1")).toEqual(success(gallery(data)));
+    });
+
+    it("makes the request correctly", () => {
+      expect(request).toHaveBeenCalledWith({ url: "/galleries/test-1" });
+    });
   });
 
-  it("handles request failure correctly", async () => {
-    const client = createMockHttpClient((_, reject) => {
-      reject({
-        response: {
-          data: { message: "Not found" },
-          status: 404
-        }
-      });
-    });
-    const fetch = fetchGalleryBySlug(createPortsWith({}, client));
-    const response = await fetch("test-1");
+  describe("when the request fails", () => {
+    const request = mockWithRejectedPromise("Fetch failed");
+    const method = fetchGalleryBySlug(request);
 
-    expect(client).toHaveBeenCalled();
-    expect(client.mock.calls[0][0].url).toBe("/galleries/test-1");
-    expect(response.ok).toBe(false);
-    expect(tryParseJson(response.message)).toEqual({
-      message: "Not found",
-      status: 404
+    it("returns a failure response with the expected error", async () => {
+      expect(await method("test-1")).toEqual(failure("Fetch failed"));
+    });
+
+    it("makes the request correctly", () => {
+      expect(request).toHaveBeenCalledWith({ url: "/galleries/test-1" });
     });
   });
 });

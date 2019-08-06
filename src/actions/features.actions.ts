@@ -1,7 +1,7 @@
 import actionCreatorFactory from "typescript-fsa";
 
-const actionCreator = actionCreatorFactory("FEATURES");
+const createAction = actionCreatorFactory("FEATURES");
 
-export const addFeatures = actionCreator<PLAddFeatures>("ADD");
+export const addFeatures = createAction<string | string[]>("ADD");
 
-export const removeFeatures = actionCreator<PLRemoveFeatures>("REMOVE");
+export const removeFeatures = createAction<string | string[]>("REMOVE");

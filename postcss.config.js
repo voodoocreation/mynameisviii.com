@@ -7,16 +7,6 @@ module.exports = {
     postcssMqpacker({
       sort: true
     }),
-    poscssEasyImport({ prefix: "_" }),
-    autoprefixer({
-      browsers: [
-        "IE >= 11",
-        "last 5 Chrome versions",
-        "last 5 Firefox versions",
-        "Firefox ESR",
-        "Safari >= 8",
-        "iOS >= 8"
-      ]
-    })
+    autoprefixer()
   ]
 };

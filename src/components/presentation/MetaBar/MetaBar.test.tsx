@@ -1,30 +1,26 @@
-import { render } from "enzyme";
-import * as React from "react";
-
+import ComponentTester from "../../../utilities/ComponentTester";
 import MetaBar from "./MetaBar";
 
-const setup = (fn: any, fromTestProps?: any) => {
-  const props = {
-    className: "TestMetaBar",
-    ...fromTestProps
-  };
-
-  return {
-    actual: fn(<MetaBar {...props} />),
-    props
-  };
-};
+const component = new ComponentTester(MetaBar).withDefaultProps({
+  className: "TestMetaBar"
+});
 
 describe("[presentation] <MetaBar />", () => {
-  it("renders null without children", () => {
-    const { actual } = setup(render);
+  it("doesn't render anything when there are no children", () => {
+    const { wrapper } = component.render();
 
-    expect(actual).toMatchSnapshot();
+    expect(wrapper.html()).toBeNull();
   });
 
-  it("renders correctly with children", () => {
-    const { actual } = setup(render, { children: "Test meta bar" });
+  describe("when children are defined", () => {
+    const { wrapper } = component.withChildren("Child meta").render();
 
-    expect(actual).toMatchSnapshot();
+    it("renders the children within the container", () => {
+      expect(wrapper.html()).toBe("Child meta");
+    });
+
+    it("matches snapshot", () => {
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 });

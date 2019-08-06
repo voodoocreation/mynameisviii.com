@@ -1,185 +1,223 @@
-import { mount, render } from "enzyme";
 import * as React from "react";
 
+import ComponentTester from "../../../utilities/ComponentTester";
 import ImageGallery from "./ImageGallery";
 
-const setup = (fn: any, fromTestProps?: any) => {
-  const props = {
-    className: "TestGallery",
-    usePortal: false,
-    ...fromTestProps
-  };
-
-  return {
-    actual: fn(
-      <ImageGallery {...props}>
-        <div className="Image-1" />
-        <div className="Image-2" />
-        <div className="Image-3" />
-      </ImageGallery>
-    ),
-    props
-  };
-};
+const component = new ComponentTester(ImageGallery)
+  .withDefaultProps({
+    className: "TestImageGallery",
+    usePortal: false
+  })
+  .withDefaultChildren([
+    <div key="image-1" className="Image" id="image-1" />,
+    <div key="image-2" className="Image" id="image-2" />,
+    <div key="image-3" className="Image" id="image-3" />
+  ]);
 
 describe("[presentation] <ImageGallery />", () => {
-  it("renders correctly with minimum props", () => {
-    const { actual } = setup(render);
+  describe("when all props are defined and isLooped is true", () => {
+    const { props, wrapper } = component
+      .withProps({
+        isLooped: true,
+        onGoTo: jest.fn(),
+        onItemClick: jest.fn(),
+        onModalClose: jest.fn(),
+        onNext: jest.fn(),
+        onPrevious: jest.fn()
+      })
+      .mount();
 
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("opens modal and shows correct item when an item is clicked", () => {
-    const { actual } = setup(mount);
-
-    actual.find(".Image-2").simulate("click");
-    expect(actual.state("isOpen")).toBe(true);
-    expect(actual.state("currentIndex")).toBe(1);
-  });
-
-  it("calls `onModalClose` prop when defined and the modal is closed", () => {
-    const { actual, props } = setup(mount, { onModalClose: jest.fn() });
-
-    actual.find(".Image-2").simulate("click");
-    actual.find(".Modal-closeButton").simulate("click");
-    expect(props.onModalClose).toHaveBeenCalled();
-  });
-
-  it("doesn't throw an error when `onModalClose` prop is undefined and the modal is closed", () => {
-    let isPassing = true;
-    const { actual } = setup(mount);
-
-    try {
-      actual.find(".Image-2").simulate("click");
-      actual.find(".Modal-closeButton").simulate("click");
-    } catch (error) {
-      isPassing = false;
-    }
-
-    expect(isPassing).toBe(true);
-  });
-
-  describe("keyboard events", () => {
-    it("left arrow triggers previous() correctly", () => {
-      const { actual } = setup(mount);
-
-      actual.find(".Image-2").simulate("click");
-      window.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowLeft" }));
-      expect(actual.state("currentIndex")).toBe(0);
+    it("matches snapshot when the modal is closed", () => {
+      expect(wrapper.render()).toMatchSnapshot();
     });
 
-    it("right arrow triggers next() correctly", () => {
-      const { actual } = setup(mount);
-
-      actual.find(".Image-1").simulate("click");
-      window.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowRight" }));
-      expect(actual.state("currentIndex")).toBe(1);
-    });
-  });
-
-  describe("goTo()", () => {
-    it("updates `currentIndex` correctly", () => {
-      const { actual } = setup(mount);
-
-      actual.instance().goTo(1);
-      expect(actual.state("currentIndex")).toBe(1);
+    it("renders all images", () => {
+      expect(wrapper.find(".Image")).toHaveLength(3);
     });
 
-    it("doesn't change `currentIndex` when requested item doesn't exist", () => {
-      const { actual } = setup(mount);
-
-      actual.instance().goTo(3);
-      expect(actual.state("currentIndex")).toBeUndefined();
+    it("clicks an image", () => {
+      wrapper
+        .find(".Image")
+        .first()
+        .simulate("click");
     });
 
-    it("calls `onGoTo` prop when defined", () => {
-      const { actual, props } = setup(mount, { onGoTo: jest.fn() });
-
-      actual.instance().goTo(2);
-      expect(actual.state("currentIndex")).toBe(2);
-      expect(props.onGoTo).toHaveBeenCalledWith(2);
-    });
-  });
-
-  describe("previous()", () => {
-    it("updates `currentIndex` correctly", () => {
-      const { actual } = setup(mount);
-
-      actual.instance().goTo(2);
-      actual.instance().previous();
-      expect(actual.state("currentIndex")).toBe(1);
+    it("calls the onItemClick prop with expected payload", () => {
+      expect(props.onItemClick).toHaveBeenCalledTimes(1);
+      expect(props.onItemClick).toHaveBeenCalledWith(0);
     });
 
-    it("goes to first item when `currentIndex` is undefined", () => {
-      const { actual } = setup(mount);
-
-      actual.instance().previous();
-      expect(actual.state("currentIndex")).toBe(0);
+    it("opens the modal", () => {
+      expect(wrapper.find("Modal").prop("isOpen")).toBe(true);
     });
 
-    it("goes to last item when at the first item and isLooped=true", () => {
-      const { actual } = setup(mount);
-
-      actual.instance().goTo(0);
-      actual.instance().previous();
-      expect(actual.state("currentIndex")).toBe(2);
+    it("renders the selected image in the modal", () => {
+      expect(wrapper.find(".ImageGallery--modal--item #image-1")).toHaveLength(
+        1
+      );
     });
 
-    it("doesn't change `currentIndex` when at the first item and isLooped=false", () => {
-      const { actual } = setup(mount, { isLooped: false });
-
-      actual.instance().goTo(0);
-      actual.instance().previous();
-      expect(actual.state("currentIndex")).toBe(0);
+    it("matches snapshot when the modal is open", () => {
+      expect(wrapper.render()).toMatchSnapshot();
     });
 
-    it("calls `onPrevious` prop when defined", () => {
-      const { actual, props } = setup(mount, { onPrevious: jest.fn() });
+    it("clicks the next button", () => {
+      wrapper.find("Button.ImageGallery--modal--nextButton").simulate("click");
+    });
 
-      actual.instance().goTo(1);
-      actual.instance().previous();
+    it("renders the next image in the modal", () => {
+      expect(wrapper.find(".ImageGallery--modal--item #image-2")).toHaveLength(
+        1
+      );
+    });
+
+    it("calls the onNext prop with expected payload", () => {
+      expect(props.onNext).toHaveBeenCalledTimes(1);
+      expect(props.onNext).toHaveBeenCalledWith(1);
+    });
+
+    it("clicks the previous button", () => {
+      wrapper
+        .find("Button.ImageGallery--modal--previousButton")
+        .simulate("click");
+    });
+
+    it("renders the previous image in the modal", () => {
+      expect(wrapper.find(".ImageGallery--modal--item #image-1")).toHaveLength(
+        1
+      );
+    });
+
+    it("calls the onPrevious prop with expected payload", () => {
+      expect(props.onPrevious).toHaveBeenCalledTimes(1);
       expect(props.onPrevious).toHaveBeenCalledWith(0);
     });
+
+    it("clears mocks", () => {
+      jest.clearAllMocks();
+    });
+
+    it("presses the ArrowLeft key", () => {
+      window.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowLeft" }));
+      wrapper.update();
+    });
+
+    it("renders the last image in the modal", () => {
+      expect(wrapper.find(".ImageGallery--modal--item #image-3")).toHaveLength(
+        1
+      );
+    });
+
+    it("calls onPrevious prop with expected payload", () => {
+      expect(props.onPrevious).toHaveBeenCalledTimes(1);
+      expect(props.onPrevious).toHaveBeenCalledWith(2);
+    });
+
+    it("presses the ArrowRight key", () => {
+      window.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowRight" }));
+      wrapper.update();
+    });
+
+    it("renders the first image in the modal", () => {
+      expect(wrapper.find(".ImageGallery--modal--item #image-1")).toHaveLength(
+        1
+      );
+    });
+
+    it("calls onNext prop with expected payload", () => {
+      expect(props.onNext).toHaveBeenCalledTimes(1);
+      expect(props.onNext).toHaveBeenCalledWith(0);
+    });
+
+    it("clears mocks", () => {
+      jest.clearAllMocks();
+    });
+
+    it("calls the public goTo method with an invalid index", () => {
+      // @ts-ignore-next-line
+      wrapper.instance().goTo(5);
+    });
+
+    it("doesn't change the current item", () => {
+      expect(wrapper.find(".ImageGallery--modal--item #image-1")).toHaveLength(
+        1
+      );
+    });
+
+    it("doesn't call the onGoTo prop", () => {
+      expect(props.onGoTo).toHaveBeenCalledTimes(0);
+    });
+
+    it("closes the modal", () => {
+      wrapper.find("Button.Modal--closeButton").simulate("click");
+    });
+
+    it("calls the onModalClose prop", () => {
+      expect(props.onModalClose).toHaveBeenCalledTimes(1);
+    });
   });
 
-  describe("next()", () => {
-    it("updates `currentIndex` correctly", () => {
-      const { actual } = setup(mount);
+  describe("when no event props are defined and isLooped is false", () => {
+    const { wrapper } = component
+      .withProps({
+        isLooped: false
+      })
+      .mount();
 
-      actual.instance().goTo(0);
-      actual.instance().next();
-      expect(actual.state("currentIndex")).toBe(1);
+    it("clicks the first image", () => {
+      wrapper
+        .find(".Image")
+        .first()
+        .simulate("click");
     });
 
-    it("goes to first item when `currentIndex` is undefined", () => {
-      const { actual } = setup(mount);
-
-      actual.instance().next();
-      expect(actual.state("currentIndex")).toBe(0);
+    it("opens the modal", () => {
+      expect(wrapper.find("Modal").prop("isOpen")).toBe(true);
     });
 
-    it("goes to first item when at the last item and isLooped=true", () => {
-      const { actual } = setup(mount);
-
-      actual.instance().goTo(2);
-      actual.instance().next();
-      expect(actual.state("currentIndex")).toBe(0);
+    it("renders the first image in the modal", () => {
+      expect(wrapper.find(".ImageGallery--modal--item #image-1")).toHaveLength(
+        1
+      );
     });
 
-    it("doesn't change `currentIndex` when at the last item and isLooped=false", () => {
-      const { actual } = setup(mount, { isLooped: false });
-
-      actual.instance().goTo(2);
-      actual.instance().next();
-      expect(actual.state("currentIndex")).toBe(2);
+    it("clicks the previous button", () => {
+      wrapper
+        .find("Button.ImageGallery--modal--previousButton")
+        .simulate("click");
     });
 
-    it("calls `onNext` prop when defined", () => {
-      const { actual, props } = setup(mount, { onNext: jest.fn() });
+    it("still has the first image rendered in the modal", () => {
+      expect(wrapper.find(".ImageGallery--modal--item #image-1")).toHaveLength(
+        1
+      );
+    });
 
-      actual.instance().goTo(1);
-      actual.instance().next();
-      expect(props.onNext).toHaveBeenCalledWith(2);
+    it("clicks the next button twice to navigate to the last item", () => {
+      wrapper
+        .find("Button.ImageGallery--modal--nextButton")
+        .simulate("click")
+        .simulate("click");
+    });
+
+    it("renders the last image in the modal", () => {
+      expect(wrapper.find(".ImageGallery--modal--item #image-3")).toHaveLength(
+        1
+      );
+    });
+
+    it("clicks the next button", () => {
+      wrapper.find("Button.ImageGallery--modal--nextButton").simulate("click");
+    });
+
+    it("still has the last image rendered in the modal", () => {
+      expect(wrapper.find(".ImageGallery--modal--item #image-3")).toHaveLength(
+        1
+      );
+    });
+
+    it("closes the modal", () => {
+      wrapper.find("Button.Modal--closeButton").simulate("click");
     });
   });
 });

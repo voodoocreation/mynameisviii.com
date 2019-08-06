@@ -1,85 +1,245 @@
-import { camelizeKeys } from "humps";
-
-import stems from "../../server/mocks/stems.json";
-import { arrayToAssoc } from "../transformers/transformData";
-import reducer, { initialState as model } from "./stems.reducers";
-
 import * as actions from "../actions/root.actions";
+import { BOOLEAN } from "../constants/api.constants";
+import { dynamoResponse, stem } from "../models/root.models";
+import reducer, { initialState } from "./stems.reducers";
 
-const mockData: any = camelizeKeys(stems);
+const item1 = stem({ slug: "test-1" });
+const item2 = stem({ slug: "test-2" });
 
 describe("[reducers] Stems", () => {
-  describe("actions.fetchStems", () => {
-    it("started is handled", () => {
-      const state = reducer(model, actions.fetchStems.started({}));
+  describe("actions.fetchStems.started", () => {
+    const state = reducer(
+      {
+        ...initialState,
+        items: {
+          [item1.slug]: item1
+        }
+      },
+      actions.fetchStems.started({})
+    );
 
+    it("sets isLoading to true", () => {
       expect(state.isLoading).toBe(true);
-      expect(Object.keys(state.items)).toHaveLength(0);
     });
 
-    it("done is handled", () => {
-      const result = {
-        ...mockData,
-        items: arrayToAssoc(mockData.items, "slug")
-      };
+    it("resets items", () => {
+      expect(state.items).toEqual(initialState.items);
+    });
+  });
+
+  describe("actions.fetchStems.done", () => {
+    const result = dynamoResponse({
+      items: [item1],
+      lastEvaluatedKey: {
+        createdAt: item1.createdAt,
+        isActive: BOOLEAN.TRUE,
+        slug: item1.slug
+      }
+    });
+
+    describe("when lastEvaluatedKey is defined", () => {
       const state = reducer(
-        model,
+        {
+          ...initialState,
+          hasAllItems: true,
+          isLoading: true
+        },
         actions.fetchStems.done({ result, params: {} })
       );
 
-      expect(state.isLoading).toBe(false);
-      expect(Object.keys(state.items)).toHaveLength(mockData.count);
+      it("sets hasAllItems to false", () => {
+        expect(state.hasAllItems).toBe(false);
+      });
+
+      it("sets isLoading to false", () => {
+        expect(state.isLoading).toBe(false);
+      });
+
+      it("reduces the items correctly", () => {
+        expect(state.items).toEqual(result.items);
+      });
+
+      it("reduces lastEvaluatedKey correctly", () => {
+        expect(state.lastEvaluatedKey).toEqual(result.lastEvaluatedKey);
+      });
     });
 
-    it("failed is handled", () => {
-      const error = { message: "Error", status: 500 };
+    describe("when lastEvaluatedKey isn't defined", () => {
       const state = reducer(
-        model,
-        actions.fetchStems.failed({ error, params: {} })
+        {
+          ...initialState,
+          hasAllItems: false,
+          isLoading: true,
+          lastEvaluatedKey: {
+            createdAt: item1.createdAt,
+            isActive: BOOLEAN.TRUE,
+            slug: item1.slug
+          }
+        },
+        actions.fetchStems.done({
+          params: {},
+          result: {
+            ...result,
+            lastEvaluatedKey: undefined
+          }
+        })
       );
 
-      expect(state.error).toEqual(error);
+      it("sets isLoading to false", () => {
+        expect(state.isLoading).toBe(false);
+      });
+
+      it("sets hasAllItems to true", () => {
+        expect(state.hasAllItems).toBe(true);
+      });
+
+      it("reduces the items correctly", () => {
+        expect(state.items).toEqual(result.items);
+      });
+
+      it("sets lastEvaluatedKey to be undefined", () => {
+        expect(state.lastEvaluatedKey).toBeUndefined();
+      });
+    });
+  });
+
+  describe("actions.fetchStems.failed", () => {
+    const state = reducer(
+      {
+        ...initialState,
+        isLoading: true
+      },
+      actions.fetchStems.failed({ error: "Error", params: {} })
+    );
+
+    it("sets hasError to true", () => {
+      expect(state.hasError).toBe(true);
+    });
+
+    it("sets isLoading to false", () => {
       expect(state.isLoading).toBe(false);
     });
   });
 
-  describe("actions.fetchMoreStems", () => {
-    const initialState = {
-      ...model,
-      items: {
-        "test-1": mockData.items[0]
-      }
+  describe("actions.fetchMoreStems.started", () => {
+    const items = {
+      [item1.slug]: item1
     };
 
-    it("started is handled", () => {
-      const state = reducer(initialState, actions.fetchMoreStems.started({}));
+    const state = reducer(
+      {
+        ...initialState,
+        items
+      },
+      actions.fetchMoreStems.started({})
+    );
 
+    it("sets isLoading to true", () => {
       expect(state.isLoading).toBe(true);
-      expect(Object.keys(state.items)).toHaveLength(1);
     });
 
-    it("done is handled", () => {
-      const result = {
-        ...mockData,
-        items: arrayToAssoc(mockData.items, "slug")
-      };
+    it("doesn't reset items", () => {
+      expect(state.items).toEqual(items);
+    });
+  });
+
+  describe("actions.fetchMoreStems.done", () => {
+    const result = dynamoResponse({
+      items: [item2],
+      lastEvaluatedKey: {
+        createdAt: item2.createdAt,
+        isActive: BOOLEAN.TRUE,
+        slug: item2.slug
+      }
+    });
+
+    describe("when lastEvaluatedKey is defined", () => {
       const state = reducer(
-        model,
+        {
+          ...initialState,
+          hasAllItems: true,
+          isLoading: true,
+          items: {
+            [item1.slug]: item1
+          }
+        },
         actions.fetchMoreStems.done({ result, params: {} })
       );
 
-      expect(state.isLoading).toBe(false);
-      expect(Object.keys(state.items)).toHaveLength(mockData.count);
+      it("sets hasAllItems to false", () => {
+        expect(state.hasAllItems).toBe(false);
+      });
+
+      it("sets isLoading to false", () => {
+        expect(state.isLoading).toBe(false);
+      });
+
+      it("merges the items from the payload with the ones in the store", () => {
+        expect(state.items).toEqual({
+          [item1.slug]: item1,
+          [item2.slug]: item2
+        });
+      });
+
+      it("reduces lastEvaluatedKey correctly", () => {
+        expect(state.lastEvaluatedKey).toEqual(result.lastEvaluatedKey);
+      });
     });
 
-    it("failed is handled", () => {
-      const error = { message: "Error", status: 500 };
+    describe("when lastEvaluatedKey isn't defined", () => {
       const state = reducer(
-        model,
-        actions.fetchMoreStems.failed({ error, params: {} })
+        {
+          ...initialState,
+          hasAllItems: false,
+          isLoading: true,
+          items: {
+            [item1.slug]: item1
+          }
+        },
+        actions.fetchMoreStems.done({
+          params: {},
+          result: {
+            ...result,
+            lastEvaluatedKey: undefined
+          }
+        })
       );
 
-      expect(state.error).toEqual(error);
+      it("sets hasAllItems to true", () => {
+        expect(state.hasAllItems).toBe(true);
+      });
+
+      it("sets isLoading to false", () => {
+        expect(state.isLoading).toBe(false);
+      });
+
+      it("merges the items from the payload with the ones in the store", () => {
+        expect(state.items).toEqual({
+          [item1.slug]: item1,
+          [item2.slug]: item2
+        });
+      });
+
+      it("sets lastEvaluatedKey to be undefined", () => {
+        expect(state.lastEvaluatedKey).toBeUndefined();
+      });
+    });
+  });
+
+  describe("actions.fetchMoreStems.failed", () => {
+    const state = reducer(
+      {
+        ...initialState,
+        isLoading: true
+      },
+      actions.fetchMoreStems.failed({ error: "Error", params: {} })
+    );
+
+    it("sets hasError to true", () => {
+      expect(state.hasError).toBe(true);
+    });
+
+    it("sets isLoading to false", () => {
       expect(state.isLoading).toBe(false);
     });
   });

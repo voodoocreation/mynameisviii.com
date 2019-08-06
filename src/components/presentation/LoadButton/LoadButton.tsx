@@ -1,11 +1,13 @@
 import cn from "classnames";
 import * as React from "react";
+import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl";
 
 import { isAlmostInViewport, isServer } from "../../../helpers/dom";
 import Button from "../Button/Button";
 
-interface IProps {
+interface IProps extends InjectedIntlProps {
   className?: string;
+  hasError?: boolean;
   isDisabled?: boolean;
   isLoading?: boolean;
   isScrollLoadEnabled?: boolean;
@@ -13,15 +15,16 @@ interface IProps {
   triggerDistance?: number;
 }
 
-export default class LoadButton extends React.Component<IProps> {
+class LoadButton extends React.Component<IProps> {
   public static defaultProps = {
+    hasError: false,
     isDisabled: false,
     isLoading: false,
     isScrollLoadEnabled: true,
     triggerDistance: 50
   };
 
-  private buttonRef: React.RefObject<Button> = React.createRef();
+  private buttonRef = React.createRef<HTMLButtonElement>();
 
   constructor(props: IProps) {
     super(props);
@@ -32,31 +35,37 @@ export default class LoadButton extends React.Component<IProps> {
   }
 
   public componentDidMount() {
-    this.tryLoad();
+    if (!isServer()) {
+      this.tryLoad();
+    }
   }
 
   public componentDidUpdate(prevProps: IProps) {
     if (!isServer()) {
-      if (!prevProps.isScrollLoadEnabled && this.props.isScrollLoadEnabled) {
+      const previouslyEnabled =
+        prevProps.isScrollLoadEnabled && !prevProps.hasError;
+      const shouldBeEnabled =
+        this.props.isScrollLoadEnabled && !this.props.hasError;
+
+      if (!previouslyEnabled && shouldBeEnabled) {
         window.addEventListener("scroll", this.onWindowScroll);
+        this.tryLoad();
       }
 
-      if (prevProps.isScrollLoadEnabled && !this.props.isScrollLoadEnabled) {
+      if (previouslyEnabled && !shouldBeEnabled) {
         window.removeEventListener("scroll", this.onWindowScroll);
       }
     }
-
-    this.tryLoad();
   }
 
   public componentWillUnmount() {
-    if (!isServer() && this.props.isScrollLoadEnabled) {
+    if (!isServer() && this.props.isScrollLoadEnabled && !this.props.hasError) {
       window.removeEventListener("scroll", this.onWindowScroll);
     }
   }
 
   public render() {
-    const { children, className, isLoading, ...props } = this.props;
+    const { children, className, hasError, isLoading, ...props } = this.props;
 
     return (
       <Button
@@ -64,9 +73,15 @@ export default class LoadButton extends React.Component<IProps> {
         className={cn("LoadButton", className)}
         isLoading={isLoading}
         onClick={this.onClick}
-        ref={this.buttonRef}
+        nodeRef={this.buttonRef}
       >
-        {children}
+        {!!children ? (
+          children
+        ) : !hasError ? (
+          <FormattedMessage id="LOAD_MORE" />
+        ) : (
+          <FormattedMessage id="TRY_AGAIN" />
+        )}
       </Button>
     );
   }
@@ -74,13 +89,11 @@ export default class LoadButton extends React.Component<IProps> {
   private tryLoad = () => {
     if (
       this.props.isScrollLoadEnabled &&
+      !this.props.hasError &&
       !this.props.isDisabled &&
       !this.props.isLoading &&
       this.buttonRef.current &&
-      isAlmostInViewport(
-        this.buttonRef.current.buttonNode,
-        this.props.triggerDistance
-      )
+      isAlmostInViewport(this.buttonRef.current, this.props.triggerDistance)
     ) {
       this.props.onLoad();
     }
@@ -94,3 +107,5 @@ export default class LoadButton extends React.Component<IProps> {
     this.props.onLoad();
   };
 }
+
+export default injectIntl(LoadButton);

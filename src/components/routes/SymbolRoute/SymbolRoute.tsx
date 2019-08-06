@@ -1,6 +1,6 @@
 import Head from "next/head";
 import * as React from "react";
-import { FormattedMessage, InjectedIntl } from "react-intl";
+import { FormattedMessage, InjectedIntlProps } from "react-intl";
 
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { absUrl } from "../../../transformers/transformData";
@@ -9,9 +9,9 @@ import Image from "../../presentation/Image/Image";
 import Link from "../../presentation/Link/Link";
 import PageHeader from "../../presentation/PageHeader/PageHeader";
 
-interface IProps {
-  intl: InjectedIntl;
-}
+import "./SymbolRoute.scss";
+
+interface IProps extends InjectedIntlProps {}
 
 class SymbolRoute extends React.Component<IProps> {
   public render() {
@@ -42,11 +42,11 @@ class SymbolRoute extends React.Component<IProps> {
 
         <PageHeader>{pageTitle}</PageHeader>
 
-        <section className="SymbolRoute-meaning">
+        <section className="SymbolRoute--meaning">
           <p>
             <FormattedMessage id="SYMBOL_MEANING_CONTENT_1" />
           </p>
-          <div className="SymbolRoute-symbol" />
+          <div className="SymbolRoute--symbol" />
           <p>
             <FormattedMessage id="SYMBOL_MEANING_CONTENT_2" />
           </p>
@@ -72,7 +72,7 @@ class SymbolRoute extends React.Component<IProps> {
           </p>
         </section>
 
-        <section className="SymbolRoute-about">
+        <section className="SymbolRoute--about">
           <h2>
             <FormattedMessage id="WHO_IS_VIII" />
           </h2>

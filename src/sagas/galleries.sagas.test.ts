@@ -1,173 +1,204 @@
-import setupSagas from "../helpers/setupSagas";
-import { arrayToAssoc } from "../transformers/transformData";
+import { gallery, s3Response } from "../models/root.models";
+import { mockWithFailure, mockWithSuccess } from "../utilities/mocks";
+import SagaTester from "../utilities/SagaTester";
 
 import * as actions from "../actions/root.actions";
-import * as selectors from "../selectors/root.selectors";
-
-const g: any = global;
 
 describe("[sagas] Galleries", () => {
-  const existingItems = [{ slug: "existing-test" }];
-  const items = [{ slug: "test" }];
+  const item = gallery({ slug: "test-1" });
+  const data = s3Response({
+    items: [item]
+  });
 
-  describe("takeLatest(actions.fetchGalleries.started)", () => {
+  describe("fetchGalleriesSaga", () => {
     describe("when fetching galleries, with a successful response", () => {
-      const { dispatch, filterAction, store } = setupSagas(
+      const saga = new SagaTester(
         {},
         {
           api: {
-            fetchGalleries: g.mockWithData({ items })
+            fetchGalleries: mockWithSuccess(data)
           }
         }
       );
 
       it("dispatches actions.fetchGalleries.started", () => {
-        dispatch(actions.fetchGalleries.started({}));
+        saga.dispatch(actions.fetchGalleries.started({}));
       });
 
-      it("dispatches actions.fetchGalleries.done", () => {
-        expect(filterAction(actions.fetchGalleries.done)).toHaveLength(1);
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchGalleries).toHaveBeenCalledTimes(1);
       });
 
-      it("has the data from the response in the store", () => {
-        expect(selectors.getGalleriesAsArray(store())).toEqual(items);
+      it("dispatches actions.fetchGalleries.done with expected result", () => {
+        const matchingActions = saga.history.filter(
+          actions.fetchGalleries.done.match
+        );
+
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.result).toEqual(data);
       });
     });
 
     describe("when fetching galleries, with a failed response", () => {
-      const { dispatch, filterAction } = setupSagas(
+      const saga = new SagaTester(
         {},
         {
           api: {
-            fetchGalleries: g.mockWithError("Bad request")
+            fetchGalleries: mockWithFailure("Bad request")
           }
         }
       );
 
       it("dispatches actions.fetchGalleries.started", () => {
-        dispatch(actions.fetchGalleries.started({}));
+        saga.dispatch(actions.fetchGalleries.started({}));
+      });
+
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchGalleries).toHaveBeenCalledTimes(1);
       });
 
       it("dispatches actions.fetchGalleries.failed with expected error", () => {
-        const failedActions = filterAction(actions.fetchGalleries.failed);
+        const matchingActions = saga.history.filter(
+          actions.fetchGalleries.failed.match
+        );
 
-        expect(failedActions).toHaveLength(1);
-        expect(failedActions[0].payload.error).toBe("Bad request");
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.error).toBe("Bad request");
       });
     });
   });
 
-  describe("takeLatest(actions.fetchMoreGalleries.started)", () => {
+  describe("fetchMoreGalleriesSaga", () => {
     describe("when fetching more galleries, with a successful response", () => {
-      const { dispatch, filterAction, store } = setupSagas(
+      const saga = new SagaTester(
         {
           galleries: {
-            items: arrayToAssoc(existingItems, "slug")
+            items: {
+              "existing-item": {
+                ...item,
+                slug: "existing-item"
+              }
+            }
           }
         },
         {
           api: {
-            fetchGalleries: g.mockWithData({ items })
+            fetchGalleries: mockWithSuccess(data)
           }
         }
       );
 
       it("dispatches actions.fetchMoreGalleries.started", () => {
-        dispatch(actions.fetchMoreGalleries.started({}));
+        saga.dispatch(actions.fetchMoreGalleries.started({}));
       });
 
-      it("dispatches actions.fetchMoreGalleries.done", () => {
-        expect(filterAction(actions.fetchMoreGalleries.done)).toHaveLength(1);
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchGalleries).toHaveBeenCalledTimes(1);
+      });
+
+      it("dispatches actions.fetchMoreGalleries.done with expected result", () => {
+        const matchingActions = saga.history.filter(
+          actions.fetchMoreGalleries.done.match
+        );
+
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.result).toEqual(data);
       });
 
       it("dispatches actions.trackEvent with expected payload", () => {
-        const trackEventActions = filterAction(actions.trackEvent);
+        const matchingActions = saga.history.filter(actions.trackEvent.match);
 
-        expect(trackEventActions).toHaveLength(1);
-        expect(trackEventActions[0].payload).toEqual({
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload).toEqual({
           event: "galleries.fetchedMore",
           itemCount: 2
         });
       });
-
-      it("has the data from the response in the store", () => {
-        expect(selectors.getGalleriesAsArray(store())).toEqual([
-          ...existingItems,
-          ...items
-        ]);
-      });
     });
 
     describe("when fetching more galleries, with a failed response", () => {
-      const { dispatch, filterAction } = setupSagas(
-        {
-          galleries: {
-            items: arrayToAssoc(existingItems, "slug")
-          }
-        },
+      const saga = new SagaTester(
+        {},
         {
           api: {
-            fetchGalleries: g.mockWithError("Bad request")
+            fetchGalleries: mockWithFailure("Bad request")
           }
         }
       );
 
       it("dispatches actions.fetchMoreGalleries.started", () => {
-        dispatch(actions.fetchMoreGalleries.started({}));
+        saga.dispatch(actions.fetchMoreGalleries.started({}));
+      });
+
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchGalleries).toHaveBeenCalledTimes(1);
       });
 
       it("dispatches actions.fetchMoreGalleries.failed with expected error", () => {
-        const failedActions = filterAction(actions.fetchMoreGalleries.failed);
+        const matchingActions = saga.history.filter(
+          actions.fetchMoreGalleries.failed.match
+        );
 
-        expect(failedActions).toHaveLength(1);
-        expect(failedActions[0].payload.error).toBe("Bad request");
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.error).toBe("Bad request");
       });
     });
   });
 
-  describe("takeLatest(actions.fetchGalleryBySlug.started)", () => {
+  describe("fetchGalleryBySlugSaga", () => {
     describe("when fetching a gallery by slug, with a successful response", () => {
-      const { dispatch, filterAction, store } = setupSagas(
+      const saga = new SagaTester(
         {},
         {
           api: {
-            fetchGalleryBySlug: g.mockWithData(items[0])
+            fetchGalleryBySlug: mockWithSuccess(item)
           }
         }
       );
 
       it("dispatches actions.fetchGalleryBySlug.started", () => {
-        dispatch(actions.fetchGalleryBySlug.started("test"));
+        saga.dispatch(actions.fetchGalleryBySlug.started(item.slug));
       });
 
-      it("dispatches actions.fetchGalleryBySlug.done", () => {
-        expect(filterAction(actions.fetchGalleryBySlug.done)).toHaveLength(1);
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchGalleryBySlug).toHaveBeenCalledTimes(1);
       });
 
-      it("has the data from the response in the store", () => {
-        expect(selectors.getGalleriesAsArray(store())).toEqual(items);
+      it("dispatches actions.fetchGalleryBySlug.done with expected result", () => {
+        const matchingActions = saga.history.filter(
+          actions.fetchGalleryBySlug.done.match
+        );
+
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.result).toEqual(item);
       });
     });
 
     describe("when fetching a gallery by slug, with a failed response", () => {
-      const { dispatch, filterAction } = setupSagas(
+      const saga = new SagaTester(
         {},
         {
           api: {
-            fetchGalleryBySlug: g.mockWithError("Bad request")
+            fetchGalleryBySlug: mockWithFailure("Bad request")
           }
         }
       );
 
       it("dispatches actions.fetchGalleryBySlug.started", () => {
-        dispatch(actions.fetchGalleryBySlug.started("test"));
+        saga.dispatch(actions.fetchGalleryBySlug.started(item.slug));
+      });
+
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchGalleryBySlug).toHaveBeenCalledTimes(1);
       });
 
       it("dispatches actions.fetchGalleryBySlug.failed with expected error", () => {
-        const failedActions = filterAction(actions.fetchGalleryBySlug.failed);
+        const matchingActions = saga.history.filter(
+          actions.fetchGalleryBySlug.failed.match
+        );
 
-        expect(failedActions).toHaveLength(1);
-        expect(failedActions[0].payload.error).toBe("Bad request");
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.error).toBe("Bad request");
       });
     });
   });

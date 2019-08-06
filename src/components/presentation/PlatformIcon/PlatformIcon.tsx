@@ -7,31 +7,32 @@ import {
   FaSpotify
 } from "react-icons/fa";
 import { MdPlayCircleFilled } from "react-icons/md";
+import { PLATFORM } from "../../../constants/release.constants";
 
 interface IProps {
   value: string;
 }
 
-const PlatformIcon: React.SFC<IProps> = ({ value }) => {
+const PlatformIcon: React.FC<IProps> = ({ value }) => {
   switch (value) {
     default:
-      return <MdPlayCircleFilled /> as React.ReactElement<any>;
+      return <MdPlayCircleFilled />;
 
-    case "amazon":
-      return <FaAmazon /> as React.ReactElement<any>;
+    case PLATFORM.AMAZON:
+      return <FaAmazon />;
 
-    case "apple":
-    case "itunes":
-      return <FaApple /> as React.ReactElement<any>;
+    case PLATFORM.APPLE:
+    case PLATFORM.ITUNES:
+      return <FaApple />;
 
-    case "google":
-      return <FaGoogle /> as React.ReactElement<any>;
+    case PLATFORM.GOOGLE:
+      return <FaGoogle />;
 
-    case "soundcloud":
-      return <FaSoundcloud /> as React.ReactElement<any>;
+    case PLATFORM.SOUNDCLOUD:
+      return <FaSoundcloud />;
 
-    case "spotify":
-      return <FaSpotify /> as React.ReactElement<any>;
+    case PLATFORM.SPOTIFY:
+      return <FaSpotify />;
   }
 };
 

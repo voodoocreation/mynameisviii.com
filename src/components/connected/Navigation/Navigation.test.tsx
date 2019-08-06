@@ -1,39 +1,25 @@
-import { mount, render } from "enzyme";
-import * as React from "react";
-import { Provider } from "react-redux";
-
-import createStore from "../../../store/root.store";
+import * as actions from "../../../actions/root.actions";
+import ComponentTester from "../../../utilities/ComponentTester";
 import Navigation from "./Navigation";
 
-const setup = (fn: any) => {
-  const store = createStore();
-
-  return {
-    actual: fn(
-      <Provider store={store}>
-        <Navigation />
-      </Provider>
-    ),
-    store
-  };
-};
+const component = new ComponentTester(Navigation, true);
 
 describe("[connected] <Navigation />", () => {
-  it("renders correctly", () => {
-    const { actual } = setup(render);
-    expect(actual).toMatchSnapshot();
-  });
+  describe("when interacting with the component", () => {
+    const { wrapper } = component.mount();
 
-  it("toggles navigation correctly when menu button is clicked", () => {
-    const { actual, store } = setup(mount);
-    const button = actual.find("button");
+    it("clicks the toggle button", () => {
+      wrapper.find("button").simulate("click");
+    });
 
-    button.simulate("click");
-    expect(store.getState().page.isNavOpen).toBe(true);
-    expect(actual.find(".isOpen")).toHaveLength(1);
+    it("dispatches actions.toggleNavigation", () => {
+      expect(
+        component.reduxHistory.filter(actions.toggleNavigation.match)
+      ).toHaveLength(1);
+    });
 
-    button.simulate("click");
-    expect(store.getState().page.isNavOpen).toBe(false);
-    expect(actual.find(".isOpen")).toHaveLength(0);
+    it("matches snapshot", () => {
+      expect(wrapper.render()).toMatchSnapshot();
+    });
   });
 });

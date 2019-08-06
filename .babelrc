@@ -14,22 +14,23 @@
 
   "env": {
     "development": {
-      "presets": ["next/babel", "@zeit/next-typescript/babel"]
+      "presets": ["next/babel"]
     },
     "production": {
-      "presets": ["next/babel", "@zeit/next-typescript/babel"]
+      "presets": ["next/babel"]
     },
     "test": {
+      "plugins": ["@babel/proposal-class-properties"],
       "presets": [
         [
           "next/babel",
           {
             "preset-env": {
+              "targets": { "node": "current" },
               "modules": "commonjs"
             }
           }
-        ],
-        "@zeit/next-typescript/babel"
+        ]
       ]
     }
   }

@@ -1,158 +1,125 @@
-import { mount, render } from "enzyme";
-import { camelizeKeys } from "humps";
-import merge from "lodash.merge";
-import * as React from "react";
-import { Provider } from "react-redux";
-
-import * as selectors from "../../../selectors/root.selectors";
-import createStore from "../../../store/root.store";
+import * as actions from "../../../actions/root.actions";
+import { release } from "../../../models/root.models";
+import ComponentTester from "../../../utilities/ComponentTester";
+import MockPageContext from "../../../utilities/MockPageContext";
 import ReleaseRoute from "./ReleaseRoute";
 
-import releases from "../../../../server/mocks/releases.json";
-import { arrayToAssoc } from "../../../transformers/transformData";
+const item = release({
+  images: [{ imageUrl: "Image URL 1" }, { imageUrl: "Image URL 2" }],
+  slug: "test-1",
+  tracklist: [[{ title: "Disc 1, Track 1" }], [{ title: "Disc 2, Track 1" }]]
+});
 
-const mockData: any = camelizeKeys(releases);
-
-const setup = (fn: any, fromTestStore = {}, fromTestApi?: {}) => {
-  const store = createStore(
-    merge(
-      {
-        releases: {
-          currentSlug: mockData.items[0].slug,
-          items: arrayToAssoc(mockData.items, "slug")
-        }
-      },
-      fromTestStore
-    ),
-    {},
-    fromTestApi
-  );
-
-  return {
-    actual: fn(
-      <Provider store={store}>
-        <ReleaseRoute />
-      </Provider>
-    ),
-    store
-  };
+const defaultState = {
+  releases: {
+    currentSlug: item.slug,
+    items: {
+      [item.slug]: item
+    }
+  }
 };
 
+const component = new ComponentTester(ReleaseRoute, true);
+
 describe("[routes] <ReleaseRoute />", () => {
-  it("renders correctly", () => {
-    const { actual } = setup(render);
+  describe("getInitialProps", () => {
+    const context = new MockPageContext()
+      .withDefaultQuery({
+        slug: item.slug
+      })
+      .withDefaultReduxState(defaultState);
 
-    expect(actual).toMatchSnapshot();
-  });
+    describe("when the release isn't already in the store", () => {
+      const slug = "new-slug";
 
-  it("renders a loader when item is being fetched", () => {
-    const { actual } = setup(render, {
-      releases: { isLoading: true }
+      it("calls getInitialProps method", async () => {
+        await ReleaseRoute.getInitialProps(
+          context.withQuery({ slug }).toObject()
+        );
+      });
+
+      it("dispatches actions.setCurrentReleaseSlug with expected payload", () => {
+        const matchingActions = context.reduxHistory.filter(
+          actions.setCurrentReleaseSlug.match
+        );
+
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload).toBe(slug);
+      });
+
+      it("dispatches actions.fetchReleaseBySlug.started", () => {
+        expect(
+          context.reduxHistory.filter(actions.fetchReleaseBySlug.started.match)
+        ).toHaveLength(1);
+      });
     });
 
-    expect(actual.hasClass("PageLoader")).toBe(true);
-    expect(actual).toMatchSnapshot();
+    describe("when the article is already in the store", () => {
+      it("calls getInitialProps method", async () => {
+        await ReleaseRoute.getInitialProps(context.toObject());
+      });
+
+      it("dispatches actions.setCurrentReleaseSlug", () => {
+        expect(
+          context.reduxHistory.filter(actions.setCurrentReleaseSlug.match)
+        ).toHaveLength(1);
+      });
+
+      it("doesn't dispatch actions.fetchReleaseBySlug.started", () => {
+        expect(
+          context.reduxHistory.filter(actions.fetchReleaseBySlug.started.match)
+        ).toHaveLength(0);
+      });
+    });
   });
 
-  it("renders 404 error page when no release exists", () => {
-    const { actual } = setup(mount, {
-      releases: {
-        currentSlug: "test-1",
-        error: {
-          message: "Not found",
-          status: 404
+  it("matches snapshot", () => {
+    const { wrapper } = component.withReduxState(defaultState).mount();
+
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  it("renders a loader when isLoading is true", () => {
+    const { wrapper } = component
+      .withReduxState({
+        ...defaultState,
+        releases: { isLoading: true }
+      })
+      .mount();
+
+    expect(wrapper.find("Loader")).toHaveLength(1);
+  });
+
+  it("doesn't render anything when no release exists", () => {
+    const { wrapper } = component
+      .withReduxState({
+        news: {
+          currentSlug: undefined,
+          hasError: true,
+          items: {}
         }
-      }
-    });
+      })
+      .mount();
 
-    const ErrorPage = actual.find("ErrorPage");
-
-    expect(ErrorPage).toHaveLength(1);
-    expect(ErrorPage.prop("status")).toBe(404);
-    expect(actual.render()).toMatchSnapshot();
-  });
-
-  it("renders 500 error page when slug isn't in the store", () => {
-    const { actual } = setup(mount, {
-      releases: {
-        currentSlug: null
-      }
-    });
-
-    const ErrorPage = actual.find("ErrorPage");
-
-    expect(ErrorPage).toHaveLength(1);
-    expect(ErrorPage.prop("status")).toBe(500);
-    expect(actual.render()).toMatchSnapshot();
+    expect(wrapper.render().html()).toBeNull();
   });
 
   it("tracks carousel interactions correctly", () => {
-    const { actual } = setup(mount);
+    const { wrapper } = component.withReduxState(defaultState).mount();
 
-    actual
-      .find(".Carousel-page")
+    wrapper
+      .find(".Carousel--pagination--page")
       .last()
       .simulate("click");
 
-    expect(window.dataLayer[0].event).toBe("release.carousel.slideChange");
-    expect(window.dataLayer[0].index).toBe(1);
-  });
+    const matchingActions = component.reduxHistory.filter(
+      actions.trackEvent.match
+    );
 
-  describe("getInitialProps()", () => {
-    it("sets `currentSlug` from URL", async () => {
-      const { store } = setup(render);
-
-      await ReleaseRoute.getInitialProps({
-        ctx: {
-          query: { slug: "test-1" },
-          store
-        }
-      });
-
-      expect(selectors.getCurrentReleaseSlug(store.getState())).toBe("test-1");
-    });
-
-    it("fetches release when it's not already in the store", async () => {
-      const { store } = setup(
-        render,
-        {
-          releases: {
-            items: {}
-          }
-        },
-        {
-          fetchReleaseBySlug: (slug: string) =>
-            mockData.find((item: any) => item.slug === slug)
-        }
-      );
-
-      await ReleaseRoute.getInitialProps({
-        ctx: {
-          query: { slug: mockData.items[0].slug },
-          store
-        }
-      });
-
-      expect(selectors.getCurrentRelease(store.getState())).toBeDefined();
-    });
-
-    it("doesn't fetch release when it's already in the store", async () => {
-      const { store } = setup(render);
-
-      const itemCountBeforeRender = selectors.getReleasesCount(
-        store.getState()
-      );
-
-      await ReleaseRoute.getInitialProps({
-        ctx: {
-          query: { slug: mockData.items[0].slug },
-          store
-        }
-      });
-
-      expect(selectors.getReleasesCount(store.getState())).toBe(
-        itemCountBeforeRender
-      );
+    expect(matchingActions).toHaveLength(1);
+    expect(matchingActions[0].payload).toEqual({
+      event: "release.carousel.slideChange",
+      index: 1
     });
   });
 });

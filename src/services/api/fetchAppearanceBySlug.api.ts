@@ -1,17 +1,21 @@
-import transformAppearance from "../../transformers/transformAppearance";
+import {
+  appearance,
+  failure,
+  IRawAppearance,
+  success
+} from "../../models/root.models";
+import { TRequest } from "../configureHttpClient";
 
-export const fetchAppearanceBySlug = (request: any) => async (slug: string) => {
+export const fetchAppearanceBySlug = (request: TRequest) => async (
+  slug: string
+) => {
   try {
-    const response = await request({ url: `/appearances/${slug}` });
+    const response: IRawAppearance = await request({
+      url: `/appearances/${slug}`
+    });
 
-    return {
-      data: transformAppearance(response),
-      ok: true
-    };
+    return success(appearance(response));
   } catch (error) {
-    return {
-      message: error.message,
-      ok: false
-    };
+    return failure(error);
   }
 };

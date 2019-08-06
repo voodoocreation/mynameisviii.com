@@ -12,67 +12,49 @@ exports[`[routes] <SymbolRoute /> renders correctly 1`] = `
     </h1>
   </header>
   <section
-    class="SymbolRoute-meaning"
+    class="SymbolRoute--meaning"
   >
     <p>
-      <span>
-        It appears you have discovered a Viii symbol out in the world – but what does it mean?
-      </span>
+      It appears you have discovered a Viii symbol out in the world – but what does it mean?
     </p>
     <div
-      class="SymbolRoute-symbol"
+      class="SymbolRoute--symbol"
     />
     <p>
-      <span>
-        Aside from being an embodiment of the artist known as Viii (pronounced 'Vee'), it also represents the different sides of identity...
-      </span>
+      Aside from being an embodiment of the artist known as Viii (pronounced 'Vee'); it also represents the different sides of identity...
     </p>
     <p>
-      <span>
-        Each of the points of the triangle represent the start of a field of vision – three different perspectives of an individual:
-      </span>
+      Each of the points of the triangle represent the start of a field of vision – three different perspectives of an individual:
     </p>
     <ul>
       <li>
-        <span>
-          How they see themselves
-        </span>
+        How they see themselves
       </li>
       <li>
-        <span>
-          How others see them
-        </span>
+        How others see them
       </li>
       <li>
-        <span>
-          How they wish to be seen by others
-        </span>
+        How they wish to be seen by others
       </li>
     </ul>
     <p>
-      <span>
-        The open eye in the centre of the triangle represents the individual themselves, with them being fully self-aware and mindful of these perspectives.
-      </span>
+      The open eye in the centre of the triangle represents the individual themselves; with them being fully self-aware and mindful of these perspectives.
     </p>
     <p>
-      <span>
-        The name 'Viii' also correlates to the meanings behind the symbol, with 'V' symbolising the viewpoint/triangle, with three of the letter 'i' representing each 'identity' perspective.
-      </span>
+      The name 'Viii' also correlates to the meanings behind the symbol; with 'V' symbolising the viewpoint/triangle; with three of the letter 'i' representing each 'identity' perspective.
     </p>
   </section>
   <section
-    class="SymbolRoute-about"
+    class="SymbolRoute--about"
   >
     <h2>
-      <span>
-        Who is Viii?
-      </span>
+      Who is Viii?
     </h2>
     <figure
       class="Image SymbolRoute-photo isLoading"
     >
       <div
-        class="Image-wrapper"
+        class="Image--wrapper"
       >
         <img
           alt="Viii"
@@ -82,7 +64,7 @@ exports[`[routes] <SymbolRoute /> renders correctly 1`] = `
           class="Loader"
         >
           <div
-            class="Loader-animation"
+            class="Loader--animation"
           >
             <span />
             <span />
@@ -92,19 +74,13 @@ exports[`[routes] <SymbolRoute /> renders correctly 1`] = `
       </div>
     </figure>
     <p>
-      <span>
-        Viii is a New Zealand-born singer, songwriter, instramentalist and record producer. This website serves as a means to release the different forms of creative information such as music releases, photoshoots, upcoming shows, design resources, and even song stems for other producers to use to create remixes.
-      </span>
+      Viii is a New Zealand-born singer; songwriter; instramentalist and record producer. This website serves as a means to release the different forms of creative information such as music releases; photoshoots; upcoming shows; design resources; and even song stems for other producers to use to create remixes.
     </p>
     <p>
-      <span>
-        Outside of the music, Viii also handles their own artistic direction and other aspects surrounding releases and performances, such as photography, graphic design, software development, makeup artistry and fashion.
-      </span>
+      Outside of the music; Viii also handles their own artistic direction and other aspects surrounding releases and performances; such as photography; graphic design; software development; makeup artistry and fashion.
     </p>
     <p>
-      <span>
-        Consider this discovery as an open invitation to explore the rest of this website and listen to the music that has been released to date.
-      </span>
+      Consider this discovery as an open invitation to explore the rest of this website and listen to the music that has been released to date.
     </p>
     <div
       class="ButtonBar"
@@ -113,9 +89,7 @@ exports[`[routes] <SymbolRoute /> renders correctly 1`] = `
         class="Button"
         href="/"
       >
-        <span>
-          Explore the rest of the site
-        </span>
+        Explore the rest of the site
       </a>
     </div>
   </section>

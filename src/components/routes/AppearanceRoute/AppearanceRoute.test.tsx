@@ -1,160 +1,128 @@
-import { mount, render } from "enzyme";
-import { camelizeKeys } from "humps";
-import merge from "lodash.merge";
-import * as React from "react";
-import { Provider } from "react-redux";
-
-import * as selectors from "../../../selectors/root.selectors";
-import createStore from "../../../store/root.store";
+import * as actions from "../../../actions/root.actions";
+import { appearance, image } from "../../../models/root.models";
+import ComponentTester from "../../../utilities/ComponentTester";
+import MockPageContext from "../../../utilities/MockPageContext";
 import AppearanceRoute from "./AppearanceRoute";
 
-import appearances from "../../../../server/mocks/appearances.json";
-import { arrayToAssoc } from "../../../transformers/transformData";
+const item = appearance({
+  images: [image({ imageUrl: "1" }), image({ imageUrl: "2" })],
+  slug: "test-1"
+});
 
-const mockData: any = camelizeKeys(appearances);
-
-const setup = (fn: any, fromTestStore = {}, fromTestApi?: {}) => {
-  const store = createStore(
-    merge(
-      {
-        appearances: {
-          currentSlug: mockData.items[0].slug,
-          items: arrayToAssoc(mockData.items, "slug")
-        }
-      },
-      fromTestStore
-    ),
-    {},
-    fromTestApi
-  );
-
-  return {
-    actual: fn(
-      <Provider store={store}>
-        <AppearanceRoute />
-      </Provider>
-    ),
-    store
-  };
+const defaultState = {
+  appearances: {
+    currentSlug: item.slug,
+    items: {
+      [item.slug]: item
+    }
+  }
 };
 
+const component = new ComponentTester(AppearanceRoute, true);
+
 describe("[routes] <AppearanceRoute />", () => {
-  it("renders correctly", () => {
-    const { actual } = setup(render);
+  describe("getInitialProps", () => {
+    const context = new MockPageContext()
+      .withDefaultQuery({
+        slug: item.slug
+      })
+      .withDefaultReduxState(defaultState);
 
-    expect(actual).toMatchSnapshot();
-  });
+    describe("when the appearance isn't already in the store", () => {
+      const slug = "new-slug";
 
-  it("renders a loader when item is being fetched", () => {
-    const { actual } = setup(render, {
-      appearances: { isLoading: true }
+      it("calls getInitialProps method", async () => {
+        await AppearanceRoute.getInitialProps(
+          context.withQuery({ slug }).toObject()
+        );
+      });
+
+      it("dispatches actions.setCurrentAppearanceSlug with expected payload", () => {
+        const matchingActions = context.reduxHistory.filter(
+          actions.setCurrentAppearanceSlug.match
+        );
+
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload).toBe(slug);
+      });
+
+      it("dispatches actions.fetchAppearanceBySlug.started", () => {
+        expect(
+          context.reduxHistory.filter(
+            actions.fetchAppearanceBySlug.started.match
+          )
+        ).toHaveLength(1);
+      });
     });
 
-    expect(actual.hasClass("PageLoader")).toBe(true);
-    expect(actual).toMatchSnapshot();
+    describe("when the appearance is already in the store", () => {
+      it("calls getInitialProps method", async () => {
+        await AppearanceRoute.getInitialProps(context.toObject());
+      });
+
+      it("dispatches actions.setCurrentAppearanceSlug", () => {
+        expect(
+          context.reduxHistory.filter(actions.setCurrentAppearanceSlug.match)
+        ).toHaveLength(1);
+      });
+
+      it("doesn't dispatch actions.fetchAppearanceBySlug.started", () => {
+        expect(
+          context.reduxHistory.filter(
+            actions.fetchAppearanceBySlug.started.match
+          )
+        ).toHaveLength(0);
+      });
+    });
   });
 
-  it("renders 404 error page when no appearance exists", () => {
-    const { actual } = setup(mount, {
-      appearances: {
-        currentSlug: "test-1",
-        error: {
-          message: "Not found",
-          status: 404
+  it("matches snapshot", () => {
+    const { wrapper } = component.withReduxState(defaultState).mount();
+
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  it("renders a loader when isLoading is true", () => {
+    const { wrapper } = component
+      .withReduxState({
+        ...defaultState,
+        appearances: { isLoading: true }
+      })
+      .mount();
+
+    expect(wrapper.find("Loader")).toHaveLength(1);
+  });
+
+  it("doesn't render anything when no appearance exists", () => {
+    const { wrapper } = component
+      .withReduxState({
+        appearances: {
+          currentSlug: undefined,
+          hasError: true,
+          items: {}
         }
-      }
-    });
+      })
+      .mount();
 
-    const ErrorPage = actual.find("ErrorPage");
-
-    expect(ErrorPage).toHaveLength(1);
-    expect(ErrorPage.prop("status")).toBe(404);
-    expect(actual.render()).toMatchSnapshot();
-  });
-
-  it("renders 500 error page when slug isn't in the store", () => {
-    const { actual } = setup(mount, {
-      appearances: {
-        currentSlug: null
-      }
-    });
-
-    const ErrorPage = actual.find("ErrorPage");
-
-    expect(ErrorPage).toHaveLength(1);
-    expect(ErrorPage.prop("status")).toBe(500);
-    expect(actual.render()).toMatchSnapshot();
+    expect(wrapper.render().html()).toBeNull();
   });
 
   it("tracks gallery interactions correctly", () => {
-    const { actual } = setup(mount);
+    const { wrapper } = component.withReduxState(defaultState).mount();
 
-    actual
+    wrapper
       .find("ImageGallery Image")
       .last()
       .simulate("click");
 
-    expect(window.dataLayer[0].event).toBe("appearance.gallery.itemClick");
-    expect(window.dataLayer[0].index).toBe(3);
-  });
+    const matchingActions = component.reduxHistory.filter(
+      actions.trackEvent.match
+    );
 
-  describe("getInitialProps()", () => {
-    it("sets `currentSlug` from URL", async () => {
-      const { store } = setup(render);
-
-      await AppearanceRoute.getInitialProps({
-        ctx: {
-          query: { slug: "test-1" },
-          store
-        }
-      });
-
-      expect(selectors.getCurrentAppearanceSlug(store.getState())).toBe(
-        "test-1"
-      );
-    });
-
-    it("fetches appearance when it's not already in the store", async () => {
-      const { store } = setup(
-        render,
-        {
-          appearances: {
-            items: {}
-          }
-        },
-        {
-          fetchAppearanceBySlug: (slug: string) =>
-            mockData.find((item: any) => item.slug === slug)
-        }
-      );
-
-      await AppearanceRoute.getInitialProps({
-        ctx: {
-          query: { slug: mockData.items[0].slug },
-          store
-        }
-      });
-
-      expect(selectors.getCurrentAppearance(store.getState())).toBeDefined();
-    });
-
-    it("doesn't fetch appearance when it's already in the store", async () => {
-      const { store } = setup(render);
-
-      const itemCountBeforeRender = selectors.getAppearancesCount(
-        store.getState()
-      );
-
-      await AppearanceRoute.getInitialProps({
-        ctx: {
-          query: { slug: mockData.items[0].slug },
-          store
-        }
-      });
-
-      expect(selectors.getAppearancesCount(store.getState())).toBe(
-        itemCountBeforeRender
-      );
+    expect(matchingActions).toHaveLength(1);
+    expect(matchingActions[0].payload).toEqual({
+      event: "appearance.gallery.itemClick",
+      index: 1
     });
   });
 });

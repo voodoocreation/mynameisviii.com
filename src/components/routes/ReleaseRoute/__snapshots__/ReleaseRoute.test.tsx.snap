@@ -1,101 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[routes] <ReleaseRoute /> renders 404 error page when no release exists 1`] = `
-<article
-  class="ErrorPage"
->
-  <header
-    class="PageHeader"
-  >
-    <h1>
-      Page not found
-    </h1>
-  </header>
-  <div
-    class="ErrorPage-content"
-  >
-    <svg
-      fill="currentColor"
-      height="1em"
-      stroke="currentColor"
-      stroke-width="0"
-      viewBox="0 0 24 24"
-      width="1em"
-    >
-      <path
-        d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-      />
-    </svg>
-    <p>
-      This page does not exist - please use the site navigation to find what you're looking for.
-    </p>
-  </div>
-</article>
-`;
-
-exports[`[routes] <ReleaseRoute /> renders 500 error page when slug isn't in the store 1`] = `
-<article
-  class="ErrorPage"
->
-  <header
-    class="PageHeader"
-  >
-    <h1>
-      An error has occurred
-    </h1>
-  </header>
-  <div
-    class="ErrorPage-content"
-  >
-    <svg
-      fill="currentColor"
-      height="1em"
-      stroke="currentColor"
-      stroke-width="0"
-      viewBox="0 0 24 24"
-      width="1em"
-    >
-      <path
-        d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-      />
-    </svg>
-    <p>
-      An error has occurred, please try again.
-    </p>
-  </div>
-</article>
-`;
-
-exports[`[routes] <ReleaseRoute /> renders a loader when item is being fetched 1`] = `
-<span
-  class="Loader PageLoader"
->
-  <div
-    class="Loader-animation"
-  >
-    <span />
-    <span />
-    <span />
-  </div>
-</span>
-`;
-
-exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
+exports[`[routes] <ReleaseRoute /> matches snapshot 1`] = `
 <article
   class="Release"
 >
   <header
     class="PageHeader"
   >
-    <h1>
-      lovedecay / lovesong
-    </h1>
+    <h1 />
   </header>
   <div
-    class="MetaBar Release-meta"
+    class="MetaBar Release--meta"
   >
     <div
-      class="Meta Release-type"
+      class="Meta Release--type"
     >
       <svg
         fill="currentColor"
@@ -104,6 +22,7 @@ exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
         stroke-width="0"
         viewBox="0 0 24 24"
         width="1em"
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5zm0-5.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"
@@ -111,24 +30,19 @@ exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
       </svg>
        
       <span
-        class="Meta-label"
+        class="Meta--label"
       >
-        <span>
-          Type
-        </span>
-        :
+        Type:
       </span>
        
       <span
-        class="Meta-value"
+        class="Meta--value"
       >
-        <span>
-          Single
-        </span>
+        {count, plural, one {Album} other {Albums}}
       </span>
     </div>
     <div
-      class="Meta Release-releasedOn"
+      class="Meta Release--releasedOn"
     >
       <svg
         fill="currentColor"
@@ -137,6 +51,7 @@ exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
         stroke-width="0"
         viewBox="0 0 24 24"
         width="1em"
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"
@@ -144,28 +59,25 @@ exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
       </svg>
        
       <span
-        class="Meta-label"
+        class="Meta--label"
       >
-        <span>
-          Released
-        </span>
-        :
+        Released:
       </span>
        
       <span
-        class="Meta-value"
+        class="Meta--value"
       >
         <time
           class="DateTime"
-          datetime="2017-03-24"
-          title="March 24, 2017"
+          datetime="2018-01-01"
+          title="1 January 2018"
         >
-          March 24, 2017
+          1 January 2018
         </time>
       </span>
     </div>
     <div
-      class="Meta Release-length"
+      class="Meta Release--length"
     >
       <svg
         fill="currentColor"
@@ -174,6 +86,7 @@ exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
         stroke-width="0"
         viewBox="0 0 24 24"
         width="1em"
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
@@ -181,22 +94,19 @@ exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
       </svg>
        
       <span
-        class="Meta-label"
+        class="Meta--label"
       >
-        <span>
-          Length
-        </span>
-        :
+        Length:
       </span>
        
       <span
-        class="Meta-value"
+        class="Meta--value"
       >
-        7:31
+        0:00
       </span>
     </div>
     <div
-      class="Meta Release-genre"
+      class="Meta Release--genre"
     >
       <svg
         fill="currentColor"
@@ -205,6 +115,7 @@ exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
         stroke-width="0"
         viewBox="0 0 24 24"
         width="1em"
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"
@@ -212,22 +123,17 @@ exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
       </svg>
        
       <span
-        class="Meta-label"
+        class="Meta--label"
       >
-        <span>
-          Genre
-        </span>
-        :
+        Genre:
       </span>
        
       <span
-        class="Meta-value"
-      >
-        Goth/Electronic
-      </span>
+        class="Meta--value"
+      />
     </div>
     <div
-      class="Meta Release-tracks"
+      class="Meta Release--tracks"
     >
       <svg
         fill="currentColor"
@@ -236,6 +142,7 @@ exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
         stroke-width="0"
         viewBox="0 0 24 24"
         width="1em"
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M2 17h2v.5H3v1h1v.5H2v1h3v-4H2v1zm1-9h1V4H2v1h1v3zm-1 3h1.8L2 13.1v.9h3v-1H3.2L5 10.9V10H2v1zm5-6v2h14V5H7zm0 14h14v-2H7v2zm0-6h14v-2H7v2z"
@@ -243,43 +150,40 @@ exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
       </svg>
         
       <span
-        class="Meta-value"
+        class="Meta--value"
       >
-        2 
-        <span>
-          tracks
-        </span>
+        2 tracks
       </span>
     </div>
   </div>
   <div
-    class="Release-body"
+    class="Release--body"
   >
     <section
-      class="Release-images"
+      class="Release--images"
     >
       <div
         class="Carousel"
       >
         <div
-          class="Carousel-slides"
-          style="transform:translate3d(-0%, 0, 0)"
+          class="Carousel--slides"
+          style="transform: translate3d(-0%, 0, 0);"
         >
           <figure
-            class="Image Release-image isLoading"
+            class="Image Release--images--image isLoading"
           >
             <div
-              class="Image-wrapper"
+              class="Image--wrapper"
             >
               <img
-                alt="Front cover"
-                src="https://s3.amazonaws.com/mynameisviii-static/releases/lovedecay-lovesong.jpg"
+                alt=""
+                src="Image URL 1"
               />
               <span
                 class="Loader"
               >
                 <div
-                  class="Loader-animation"
+                  class="Loader--animation"
                 >
                   <span />
                   <span />
@@ -287,25 +191,22 @@ exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
                 </div>
               </span>
             </div>
-            <figcaption>
-              Front cover
-            </figcaption>
           </figure>
           <figure
-            class="Image Release-image isLoading"
+            class="Image Release--images--image isLoading"
           >
             <div
-              class="Image-wrapper"
+              class="Image--wrapper"
             >
               <img
-                alt="Back cover"
-                src="https://s3.amazonaws.com/mynameisviii-static/releases/lovedecay-lovesong.jpg"
+                alt=""
+                src="Image URL 2"
               />
               <span
                 class="Loader"
               >
                 <div
-                  class="Loader-animation"
+                  class="Loader--animation"
                 >
                   <span />
                   <span />
@@ -313,307 +214,100 @@ exports[`[routes] <ReleaseRoute /> renders correctly 1`] = `
                 </div>
               </span>
             </div>
-            <figcaption>
-              Back cover
-            </figcaption>
           </figure>
         </div>
         <div
-          class="Carousel-pagination"
+          class="Carousel--pagination"
         >
           <button
-            class="Carousel-page isSelected"
+            class="Button Carousel--pagination--page isSelected"
+            type="button"
           >
-            <span>
-              1
+            <span
+              class="Button--content"
+            >
+              <span>
+                1
+              </span>
             </span>
           </button>
           <button
-            class="Carousel-page"
+            class="Button Carousel--pagination--page"
+            type="button"
           >
-            <span>
-              2
+            <span
+              class="Button--content"
+            >
+              <span>
+                2
+              </span>
             </span>
           </button>
         </div>
       </div>
     </section>
     <div
-      class="Release-details"
+      class="Release--details"
     >
       <section
-        class="Release-description"
-      >
-        <p>
-          Lovedecay is the debut single from the EP 
-          <em>
-            Heart
-          </em>
-          .
-        </p>
-        <p>
-          It also includes the B-side 
-          <em>
-            Lovesong
-          </em>
-          , originally performed by The Cure.
-        </p>
-      </section>
+        class="Release--description"
+      />
       <section
-        class="Release-tracklist"
+        class="Release--tracklist"
       >
         <h2>
-          <span>
-            Tracklist
-          </span>
+          Tracklist
         </h2>
+        <h3>
+          Disc 0
+        </h3>
         <ol>
           <li>
             <span
-              class="Release-tracklist-title"
+              class="Release--tracklist--title"
             >
-              lovedecay
+              Disc 1, Track 1
             </span>
              
             <span
-              class="Release-tracklist-genre"
-            >
-              Goth/Electronic
-            </span>
+              class="Release--tracklist--genre"
+            />
              
             <span
-              class="Release-tracklist-length"
+              class="Release--tracklist--length"
             >
-              4:13
+              0:00
             </span>
           </li>
+        </ol>
+        <h3>
+          Disc 1
+        </h3>
+        <ol>
           <li>
             <span
-              class="Release-tracklist-title"
+              class="Release--tracklist--title"
             >
-              lovesong
+              Disc 2, Track 1
             </span>
              
             <span
-              class="Release-tracklist-genre"
-            >
-              Goth/Electronic
-            </span>
+              class="Release--tracklist--genre"
+            />
              
             <span
-              class="Release-tracklist-length"
+              class="Release--tracklist--length"
             >
-              3:21
+              0:00
             </span>
           </li>
         </ol>
       </section>
       <section
-        class="Release-streamList"
-      >
-        <h2>
-          <span>
-            Stream
-          </span>
-        </h2>
-        <ul
-          class="Release-platformList"
-        >
-          <li>
-            <a
-              href="https://open.spotify.com/album/6RcNsy2Ubn4tAvOVsBvqYr?si=PVnCiQAbQA2obLlBBKYNIw"
-              rel="noopener"
-              target="_blank"
-              title="Stream 'lovedecay / lovesong' on Spotify"
-            >
-              <svg
-                fill="currentColor"
-                height="1em"
-                stroke="currentColor"
-                stroke-width="0"
-                viewBox="0 0 496 512"
-                width="1em"
-              >
-                <path
-                  d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"
-                />
-              </svg>
-               
-              <span>
-                Spotify
-              </span>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://itunes.apple.com/album/lovedecay-lovesong-single/1212550755?app=music"
-              rel="noopener"
-              target="_blank"
-              title="Stream 'lovedecay / lovesong' on Apple Music"
-            >
-              <svg
-                fill="currentColor"
-                height="1em"
-                stroke="currentColor"
-                stroke-width="0"
-                viewBox="0 0 376.5 512"
-                width="1em"
-              >
-                <path
-                  d="M314.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C59.3 141.2 0 184.8 0 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"
-                />
-              </svg>
-               
-              <span>
-                Apple Music
-              </span>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://tidal.com/album/71082088"
-              rel="noopener"
-              target="_blank"
-              title="Stream 'lovedecay / lovesong' on Tidal"
-            >
-              <svg
-                fill="currentColor"
-                height="1em"
-                stroke="currentColor"
-                stroke-width="0"
-                viewBox="0 0 24 24"
-                width="1em"
-              >
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"
-                />
-              </svg>
-               
-              <span>
-                Tidal
-              </span>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://soundcloud.com/iamviii/sets/lovedecay-lovesong"
-              rel="noopener"
-              target="_blank"
-              title="Stream 'lovedecay / lovesong' on SoundCloud"
-            >
-              <svg
-                fill="currentColor"
-                height="1em"
-                stroke="currentColor"
-                stroke-width="0"
-                viewBox="0 0 640 512"
-                width="1em"
-              >
-                <path
-                  d="M111.4 256.3l5.8 65-5.8 68.3c-.3 2.5-2.2 4.4-4.4 4.4s-4.2-1.9-4.2-4.4l-5.6-68.3 5.6-65c0-2.2 1.9-4.2 4.2-4.2 2.2 0 4.1 2 4.4 4.2zm21.4-45.6c-2.8 0-4.7 2.2-5 5l-5 105.6 5 68.3c.3 2.8 2.2 5 5 5 2.5 0 4.7-2.2 4.7-5l5.8-68.3-5.8-105.6c0-2.8-2.2-5-4.7-5zm25.5-24.1c-3.1 0-5.3 2.2-5.6 5.3l-4.4 130 4.4 67.8c.3 3.1 2.5 5.3 5.6 5.3 2.8 0 5.3-2.2 5.3-5.3l5.3-67.8-5.3-130c0-3.1-2.5-5.3-5.3-5.3zM7.2 283.2c-1.4 0-2.2 1.1-2.5 2.5L0 321.3l4.7 35c.3 1.4 1.1 2.5 2.5 2.5s2.2-1.1 2.5-2.5l5.6-35-5.6-35.6c-.3-1.4-1.1-2.5-2.5-2.5zm23.6-21.9c-1.4 0-2.5 1.1-2.5 2.5l-6.4 57.5 6.4 56.1c0 1.7 1.1 2.8 2.5 2.8s2.5-1.1 2.8-2.5l7.2-56.4-7.2-57.5c-.3-1.4-1.4-2.5-2.8-2.5zm25.3-11.4c-1.7 0-3.1 1.4-3.3 3.3L47 321.3l5.8 65.8c.3 1.7 1.7 3.1 3.3 3.1 1.7 0 3.1-1.4 3.1-3.1l6.9-65.8-6.9-68.1c0-1.9-1.4-3.3-3.1-3.3zm25.3-2.2c-1.9 0-3.6 1.4-3.6 3.6l-5.8 70 5.8 67.8c0 2.2 1.7 3.6 3.6 3.6s3.6-1.4 3.9-3.6l6.4-67.8-6.4-70c-.3-2.2-2-3.6-3.9-3.6zm241.4-110.9c-1.1-.8-2.8-1.4-4.2-1.4-2.2 0-4.2.8-5.6 1.9-1.9 1.7-3.1 4.2-3.3 6.7v.8l-3.3 176.7 1.7 32.5 1.7 31.7c.3 4.7 4.2 8.6 8.9 8.6s8.6-3.9 8.6-8.6l3.9-64.2-3.9-177.5c-.4-3-2-5.8-4.5-7.2zm-26.7 15.3c-1.4-.8-2.8-1.4-4.4-1.4s-3.1.6-4.4 1.4c-2.2 1.4-3.6 3.9-3.6 6.7l-.3 1.7-2.8 160.8s0 .3 3.1 65.6v.3c0 1.7.6 3.3 1.7 4.7 1.7 1.9 3.9 3.1 6.4 3.1 2.2 0 4.2-1.1 5.6-2.5 1.7-1.4 2.5-3.3 2.5-5.6l.3-6.7 3.1-58.6-3.3-162.8c-.3-2.8-1.7-5.3-3.9-6.7zm-111.4 22.5c-3.1 0-5.8 2.8-5.8 6.1l-4.4 140.6 4.4 67.2c.3 3.3 2.8 5.8 5.8 5.8 3.3 0 5.8-2.5 6.1-5.8l5-67.2-5-140.6c-.2-3.3-2.7-6.1-6.1-6.1zm376.7 62.8c-10.8 0-21.1 2.2-30.6 6.1-6.4-70.8-65.8-126.4-138.3-126.4-17.8 0-35 3.3-50.3 9.4-6.1 2.2-7.8 4.4-7.8 9.2v249.7c0 5 3.9 8.6 8.6 9.2h218.3c43.3 0 78.6-35 78.6-78.3.1-43.6-35.2-78.9-78.5-78.9zm-296.7-60.3c-4.2 0-7.5 3.3-7.8 7.8l-3.3 136.7 3.3 65.6c.3 4.2 3.6 7.5 7.8 7.5 4.2 0 7.5-3.3 7.5-7.5l3.9-65.6-3.9-136.7c-.3-4.5-3.3-7.8-7.5-7.8zm-53.6-7.8c-3.3 0-6.4 3.1-6.4 6.7l-3.9 145.3 3.9 66.9c.3 3.6 3.1 6.4 6.4 6.4 3.6 0 6.4-2.8 6.7-6.4l4.4-66.9-4.4-145.3c-.3-3.6-3.1-6.7-6.7-6.7zm26.7 3.4c-3.9 0-6.9 3.1-6.9 6.9L227 321.3l3.9 66.4c.3 3.9 3.1 6.9 6.9 6.9s6.9-3.1 6.9-6.9l4.2-66.4-4.2-141.7c0-3.9-3-6.9-6.9-6.9z"
-                />
-              </svg>
-               
-              <span>
-                SoundCloud
-              </span>
-            </a>
-          </li>
-        </ul>
-      </section>
-      <section
-        class="Release-buyList"
-      >
-        <h2>
-          <span>
-            Buy
-          </span>
-        </h2>
-        <ul
-          class="Release-platformList"
-        >
-          <li>
-            <a
-              href="https://itunes.apple.com/album/lovedecay-lovesong-single/1212550755?app=itunes"
-              rel="noopener"
-              target="_blank"
-              title="Buy 'lovedecay / lovesong' from iTunes"
-            >
-              <svg
-                fill="currentColor"
-                height="1em"
-                stroke="currentColor"
-                stroke-width="0"
-                viewBox="0 0 376.5 512"
-                width="1em"
-              >
-                <path
-                  d="M314.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C59.3 141.2 0 184.8 0 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"
-                />
-              </svg>
-               
-              <span>
-                iTunes
-              </span>
-            </a>
-          </li>
-          <li>
-            <a
-              href="http://a.co/81x0jZT"
-              rel="noopener"
-              target="_blank"
-              title="Buy 'lovedecay / lovesong' from Amazon"
-            >
-              <svg
-                fill="currentColor"
-                height="1em"
-                stroke="currentColor"
-                stroke-width="0"
-                viewBox="0 0 448 512"
-                width="1em"
-              >
-                <path
-                  d="M257.2 162.7c-48.7 1.8-169.5 15.5-169.5 117.5 0 109.5 138.3 114 183.5 43.2 6.5 10.2 35.4 37.5 45.3 46.8l56.8-56S341 288.9 341 261.4V114.3C341 89 316.5 32 228.7 32 140.7 32 94 87 94 136.3l73.5 6.8c16.3-49.5 54.2-49.5 54.2-49.5 40.7-.1 35.5 29.8 35.5 69.1zm0 86.8c0 80-84.2 68-84.2 17.2 0-47.2 50.5-56.7 84.2-57.8v40.6zm136 163.5c-7.7 10-70 67-174.5 67S34.2 408.5 9.7 379c-6.8-7.7 1-11.3 5.5-8.3C88.5 415.2 203 488.5 387.7 401c7.5-3.7 13.3 2 5.5 12zm39.8 2.2c-6.5 15.8-16 26.8-21.2 31-5.5 4.5-9.5 2.7-6.5-3.8s19.3-46.5 12.7-55c-6.5-8.3-37-4.3-48-3.2-10.8 1-13 2-14-.3-2.3-5.7 21.7-15.5 37.5-17.5 15.7-1.8 41-.8 46 5.7 3.7 5.1 0 27.1-6.5 43.1z"
-                />
-              </svg>
-               
-              <span>
-                Amazon
-              </span>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://play.google.com/store/music/album/Viii_Lovedecay_Lovesong?id=Bw6ti5fc6x5q5mrtp257ouieocy"
-              rel="noopener"
-              target="_blank"
-              title="Buy 'lovedecay / lovesong' from Google Play"
-            >
-              <svg
-                fill="currentColor"
-                height="1em"
-                stroke="currentColor"
-                stroke-width="0"
-                viewBox="0 0 488 512"
-                width="1em"
-              >
-                <path
-                  d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"
-                />
-              </svg>
-               
-              <span>
-                Google Play
-              </span>
-            </a>
-          </li>
-        </ul>
-      </section>
-      <section
-        class="Release-copyright"
+        class="Release--copyright"
       >
         <p>
-          ℗© 2017 Voodoo Creation Records
+          ℗© 2018 
         </p>
       </section>
     </div>

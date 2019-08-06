@@ -1,11 +1,21 @@
 import { reducerWithInitialState } from "typescript-fsa-reducers";
 
 import * as actions from "../actions/root.actions";
+import { IRelease, TLastEvaluatedKey } from "../models/root.models";
 
-export const initialState: IReleasesReducers = {
+export interface IState {
+  currentSlug?: string;
+  hasAllItems: boolean;
+  hasError: boolean;
+  isLoading: boolean;
+  items: Record<string, IRelease>;
+  lastEvaluatedKey?: TLastEvaluatedKey<"releasedOn">;
+}
+
+export const initialState: IState = {
   currentSlug: undefined,
-  error: undefined,
   hasAllItems: false,
+  hasError: false,
   isLoading: false,
   items: {},
   lastEvaluatedKey: undefined
@@ -18,16 +28,16 @@ export default reducerWithInitialState(initialState)
       actions.fetchMoreReleases.failed,
       actions.fetchReleaseBySlug.failed
     ],
-    (state, { error }) => ({
+    state => ({
       ...state,
-      error,
+      hasError: true,
       isLoading: false
     })
   )
 
   .case(actions.fetchReleases.started, state => ({
     ...state,
-    error: undefined,
+    hasError: false,
     isLoading: true,
     items: {}
   }))
@@ -42,7 +52,7 @@ export default reducerWithInitialState(initialState)
 
   .case(actions.fetchMoreReleases.started, state => ({
     ...state,
-    error: undefined,
+    hasError: false,
     isLoading: true
   }))
 
@@ -64,7 +74,7 @@ export default reducerWithInitialState(initialState)
 
   .case(actions.fetchReleaseBySlug.started, state => ({
     ...state,
-    error: undefined,
+    hasError: false,
     isLoading: true
   }))
 

@@ -1,148 +1,106 @@
-import { mount, render } from "enzyme";
-import { camelizeKeys } from "humps";
-import merge from "lodash.merge";
-import * as React from "react";
-import { Provider } from "react-redux";
-
-import * as selectors from "../../../selectors/root.selectors";
-import createStore from "../../../store/root.store";
+import * as actions from "../../../actions/root.actions";
+import { newsArticle } from "../../../models/root.models";
+import ComponentTester from "../../../utilities/ComponentTester";
+import MockPageContext from "../../../utilities/MockPageContext";
 import NewsArticleRoute from "./NewsArticleRoute";
 
-import news from "../../../../server/mocks/news.json";
-import { arrayToAssoc } from "../../../transformers/transformData";
+const item = newsArticle({ slug: "test-1" });
 
-const mockData: any = camelizeKeys(news);
-
-const setup = (fn: any, fromTestStore = {}, fromTestApi?: {}) => {
-  const store = createStore(
-    merge(
-      {
-        news: {
-          currentSlug: mockData.items[0].slug,
-          items: arrayToAssoc(mockData.items, "slug")
-        }
-      },
-      fromTestStore
-    ),
-    {},
-    fromTestApi
-  );
-
-  return {
-    actual: fn(
-      <Provider store={store}>
-        <NewsArticleRoute />
-      </Provider>
-    ),
-    store
-  };
+const defaultState = {
+  news: {
+    currentSlug: item.slug,
+    items: {
+      [item.slug]: item
+    }
+  }
 };
 
+const component = new ComponentTester(NewsArticleRoute, true);
+
 describe("[routes] <NewsArticleRoute />", () => {
-  it("renders correctly", () => {
-    const { actual } = setup(render);
+  describe("getInitialProps", () => {
+    const context = new MockPageContext()
+      .withDefaultQuery({
+        slug: item.slug
+      })
+      .withDefaultReduxState(defaultState);
 
-    expect(actual).toMatchSnapshot();
-  });
+    describe("when the article isn't already in the store", () => {
+      const slug = "new-slug";
 
-  it("renders a loader when item is being fetched", () => {
-    const { actual } = setup(render, {
-      news: { isLoading: true }
-    });
-
-    expect(actual.hasClass("PageLoader")).toBe(true);
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("renders 404 error page when no news article exists", () => {
-    const { actual } = setup(mount, {
-      news: {
-        currentSlug: "test-1",
-        error: {
-          message: "Not found",
-          status: 404
-        }
-      }
-    });
-
-    const ErrorPage = actual.find("ErrorPage");
-
-    expect(ErrorPage).toHaveLength(1);
-    expect(ErrorPage.prop("status")).toBe(404);
-    expect(actual.render()).toMatchSnapshot();
-  });
-
-  it("renders 500 error page when slug isn't in the store", () => {
-    const { actual } = setup(mount, {
-      news: {
-        currentSlug: null
-      }
-    });
-
-    const ErrorPage = actual.find("ErrorPage");
-
-    expect(ErrorPage).toHaveLength(1);
-    expect(ErrorPage.prop("status")).toBe(500);
-    expect(actual.render()).toMatchSnapshot();
-  });
-
-  describe("getInitialProps()", () => {
-    it("sets `currentSlug` from URL", async () => {
-      const { store } = setup(render);
-
-      await NewsArticleRoute.getInitialProps({
-        ctx: {
-          query: { slug: "test-1" },
-          store
-        }
+      it("calls getInitialProps method", async () => {
+        await NewsArticleRoute.getInitialProps(
+          context.withQuery({ slug }).toObject()
+        );
       });
 
-      expect(selectors.getCurrentNewsArticleSlug(store.getState())).toBe(
-        "test-1"
-      );
-    });
+      it("dispatches actions.setCurrentNewsArticleSlug with expected payload", () => {
+        const matchingActions = context.reduxHistory.filter(
+          actions.setCurrentNewsArticleSlug.match
+        );
 
-    it("fetches news article when it's not already in the store", async () => {
-      const { store } = setup(
-        render,
-        {
-          news: {
-            items: {}
-          }
-        },
-        {
-          fetchNewsArticleBySlug: (slug: string) =>
-            mockData.find((item: any) => item.slug === slug)
-        }
-      );
-
-      await NewsArticleRoute.getInitialProps({
-        ctx: {
-          query: { slug: mockData.items[0].slug },
-          store
-        }
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload).toBe(slug);
       });
 
-      expect(selectors.getCurrentNewsArticle(store.getState())).toBeDefined();
+      it("dispatches actions.fetchNewsArticleBySlug.started", () => {
+        expect(
+          context.reduxHistory.filter(
+            actions.fetchNewsArticleBySlug.started.match
+          )
+        ).toHaveLength(1);
+      });
     });
 
-    it("doesn't fetch news article when it's already in the store", async () => {
-      const { store } = setup(render);
-
-      const itemCountBeforeRender = selectors.getNewsArticlesCount(
-        store.getState()
-      );
-
-      await NewsArticleRoute.getInitialProps({
-        ctx: {
-          query: { slug: mockData.items[0].slug },
-          store
-        }
+    describe("when the article is already in the store", () => {
+      it("calls getInitialProps method", async () => {
+        await NewsArticleRoute.getInitialProps(context.toObject());
       });
 
-      expect(selectors.getNewsArticlesCount(store.getState())).toBe(
-        itemCountBeforeRender
-      );
+      it("dispatches actions.setCurrentNewsArticleSlug", () => {
+        expect(
+          context.reduxHistory.filter(actions.setCurrentNewsArticleSlug.match)
+        ).toHaveLength(1);
+      });
+
+      it("doesn't dispatch actions.fetchNewsArticleBySlug.started", () => {
+        expect(
+          context.reduxHistory.filter(
+            actions.fetchNewsArticleBySlug.started.match
+          )
+        ).toHaveLength(0);
+      });
     });
+  });
+
+  it("matches snapshot", () => {
+    const { wrapper } = component.withReduxState(defaultState).mount();
+
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  it("renders a loader when isLoading is true", () => {
+    const { wrapper } = component
+      .withReduxState({
+        ...defaultState,
+        news: { isLoading: true }
+      })
+      .mount();
+
+    expect(wrapper.find("Loader")).toHaveLength(1);
+  });
+
+  it("doesn't render anything when no article exists", () => {
+    const { wrapper } = component
+      .withReduxState({
+        news: {
+          currentSlug: undefined,
+          hasError: true,
+          items: {}
+        }
+      })
+      .mount();
+
+    expect(wrapper.render().html()).toBeNull();
   });
 });

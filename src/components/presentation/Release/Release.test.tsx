@@ -1,221 +1,139 @@
-import { mount, render } from "enzyme";
-import * as React from "react";
-
+import { PLATFORM } from "../../../constants/release.constants";
+import {
+  image,
+  release,
+  releasePlatformLink,
+  releaseTrack
+} from "../../../models/root.models";
+import ComponentTester from "../../../utilities/ComponentTester";
 import Release from "./Release";
 
-const g: any = global;
-
-const setup = (fn: any, fromTestProps?: any) => {
-  const props = {
+const component = new ComponentTester(Release).withDefaultProps(
+  release({
     artist: {
-      name: "artist name",
-      url: "artist url"
+      name: "Artist Name",
+      url: "URL"
     },
     buyList: [],
-    description: "description",
-    genre: "genre",
+    description: "Description",
+    genre: "Genre",
     images: [
       {
-        imageUrl: "images 1 imageUrl",
-        title: "images 1 title"
+        imageUrl: "Image URL",
+        title: "Image title"
       }
     ],
-    isActive: true,
     length: "5:00",
-    productionType: "productionType",
-    recordLabel: "recordLabel",
+    recordLabel: "Record Label",
     releasedOn: "2017-01-01T00:00:00",
-    slug: "slug",
+    slug: "release-1",
     streamList: [],
-    title: "title",
+    title: "Title",
     tracklist: [
       [
         {
-          genre: "tracklist 1 genre",
+          genre: "Genre",
           length: "5:00",
-          title: "tracklist 1 title",
-          url: "tracklist 1 url"
+          title: "Title",
+          url: "URL"
         }
       ]
-    ],
-    type: "type",
-    ...fromTestProps
-  };
-
-  return {
-    actual: fn(<Release {...props} />),
-    props
-  };
-};
+    ]
+  })
+);
 
 describe("[presentation] <Release />", () => {
-  beforeEach(() => {
-    Object.defineProperty(g.Image.prototype, "complete", {
-      value: false
+  describe("when the minimum props are defined, with only one disc", () => {
+    const { wrapper } = component.render();
+
+    it("doesn't render the disc number heading", () => {
+      expect(wrapper.find(".Release--tracklist h3")).toHaveLength(0);
+    });
+
+    it("doesn't render the stream list section", () => {
+      expect(wrapper.find(".Release--streamList")).toHaveLength(0);
+    });
+
+    it("doesn't render the buy list section", () => {
+      expect(wrapper.find(".Release--buyList")).toHaveLength(0);
+    });
+
+    it("matches snapshot", () => {
+      expect(wrapper).toMatchSnapshot();
     });
   });
 
-  it("renders correctly with minimum props", () => {
-    const { actual } = setup(render);
-
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("renders correctly with all props", () => {
-    const { actual } = setup(render, {
-      buyList: [{ platform: "itunes", url: "buyList 1 url" }],
-      images: [
-        {
-          imageUrl: "images 1 imageUrl",
-          title: "images 1 title"
-        },
-        {
-          imageUrl: "images 2 imageUrl",
-          title: "images 2 title"
-        }
-      ],
-      streamList: [{ platform: "spotify", url: "streamList 1 url" }],
-      tracklist: [
-        [
-          {
-            genre: "tracklist 1.1 genre",
-            length: "5:00",
-            title: "tracklist 1.1 title",
-            url: "tracklist 1.1 url"
-          },
-          {
-            genre: "tracklist 1.2 genre",
-            length: "5:00",
-            title: "tracklist 1.2 title",
-            url: "tracklist 1.2 url"
-          }
+  describe("when all props are defined, with multiple discs", () => {
+    const { wrapper } = component
+      .withProps({
+        buyList: [
+          releasePlatformLink({ platform: PLATFORM.ITUNES, url: "URL" })
         ],
-        [
-          {
-            genre: "tracklist 2.1 genre",
-            length: "5:00",
-            title: "tracklist 2.1 title",
-            url: "tracklist 2.1 url"
-          },
-          {
-            genre: "tracklist 2.2 genre",
-            length: "5:00",
-            title: "tracklist 2.2 title",
-            url: "tracklist 2.2 url"
-          }
+        streamList: [
+          releasePlatformLink({ platform: PLATFORM.SPOTIFY, url: "URL" })
+        ],
+        tracklist: [
+          [
+            releaseTrack({ title: "Disc 1, Track 1" }),
+            releaseTrack({ title: "Disc 1, Track 2" })
+          ],
+          [
+            releaseTrack({ title: "Disc 2, Track 1" }),
+            releaseTrack({ title: "Disc 2, Track 2" })
+          ]
         ]
-      ]
+      })
+      .render();
+
+    it("renders the disc number headings", () => {
+      expect(wrapper.find(".Release--tracklist h3")).toHaveLength(2);
     });
 
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("renders correctly when productionType=compilation", () => {
-    const { actual } = setup(render, { productionType: "compilation" });
-
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("renders correctly when productionType=demo", () => {
-    const { actual } = setup(render, { productionType: "demo" });
-
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("renders correctly when productionType=live", () => {
-    const { actual } = setup(render, { productionType: "live" });
-
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("renders correctly when productionType=remix", () => {
-    const { actual } = setup(render, { productionType: "remix" });
-
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("renders correctly when productionType=soundtrack", () => {
-    const { actual } = setup(render, { productionType: "soundtrack" });
-
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("renders correctly when type=ep", () => {
-    const { actual } = setup(render, { type: "ep" });
-
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("renders correctly when type=single", () => {
-    const { actual } = setup(render, { type: "single" });
-
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("updates `isImageLoaded` state when image has loaded", () => {
-    const { actual } = setup(mount);
-
-    actual.find(".Release-images img").simulate("load");
-    expect(actual.render()).toMatchSnapshot();
-  });
-
-  it("updates `isImageLoaded` state when image has previously been loaded", () => {
-    Object.defineProperty(g.Image.prototype, "complete", {
-      value: true
+    it("renders the stream list section", () => {
+      expect(wrapper.find(".Release--streamList")).toHaveLength(1);
     });
 
-    const { actual } = setup(mount);
-
-    actual.find(".Release-images img").simulate("load");
-    expect(actual.render()).toMatchSnapshot();
-  });
-
-  it("triggers `onCarouselSlideChange` prop when interacting with the carousel", () => {
-    const { actual, props } = setup(mount, {
-      images: [
-        {
-          imageUrl: "images 1 imageUrl",
-          title: "images 1 title"
-        },
-        {
-          imageUrl: "images 2 imageUrl",
-          title: "images 2 title"
-        }
-      ],
-      onCarouselSlideChange: jest.fn()
+    it("renders the buy list section", () => {
+      expect(wrapper.find(".Release--buyList")).toHaveLength(1);
     });
 
-    actual
-      .find(".Carousel-page")
-      .last()
-      .simulate("click");
-    expect(props.onCarouselSlideChange).toHaveBeenCalledWith(1);
+    it("matches snapshot", () => {
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 
-  it("doesn't throw an error when `onCarouselSlideChange` prop is undefined and the carousel is interacted with", () => {
-    let isPassing = true;
-    const { actual } = setup(mount, {
-      images: [
-        {
-          imageUrl: "images 1 imageUrl",
-          title: "images 1 title"
-        },
-        {
-          imageUrl: "images 2 imageUrl",
-          title: "images 2 title"
-        }
-      ]
-    });
+  describe("when interacting with the carousel", () => {
+    const { props, wrapper } = component
+      .withProps({
+        images: [
+          image({ imageUrl: "Image URL", title: "Image 1" }),
+          image({ imageUrl: "Image URL", title: "Image 2" })
+        ],
+        onCarouselSlideChange: jest.fn()
+      })
+      .mount();
 
-    try {
-      actual
-        .find(".Carousel-page")
-        .last()
+    it("navigates to the second image", () => {
+      wrapper
+        .find("Carousel Button.Carousel--pagination--page")
+        .at(1)
         .simulate("click");
-    } catch (error) {
-      isPassing = false;
-    }
+    });
 
-    expect(isPassing).toBe(true);
+    it("calls the onCarouselSlideChange prop with the expected payload", () => {
+      expect(props.onCarouselSlideChange).toHaveBeenCalledTimes(1);
+      expect(props.onCarouselSlideChange).toHaveBeenCalledWith(1);
+    });
+
+    it("sets the onCarouselSlideChange prop to be undefined", () => {
+      wrapper.setProps({ onCarouselSlideChange: undefined });
+    });
+
+    it("navigates to the first image", () => {
+      wrapper
+        .find("Carousel Button.Carousel--pagination--page")
+        .at(0)
+        .simulate("click");
+    });
   });
 });

@@ -1,77 +1,55 @@
-import { mount, render } from "enzyme";
-import * as React from "react";
-
+import { gallery } from "../../../models/root.models";
+import ComponentTester from "../../../utilities/ComponentTester";
 import GalleryListing from "./GalleryListing";
 
-const g: any = global;
-
-const setup = (fn: any, fromTestProps?: any) => {
-  const props = {
-    description: "description",
-    imageUrl: "imageUrl",
-    slug: "slug",
-    title: "title",
-    ...fromTestProps
-  };
-
-  return {
-    actual: fn(<GalleryListing {...props} />),
-    props
-  };
-};
+const component = new ComponentTester(GalleryListing).withDefaultProps(
+  gallery({
+    description: "Description",
+    modifiedAt: "2017-10-10T18:00:00",
+    slug: "test-1",
+    title: "Title"
+  })
+);
 
 describe("[presentation] <GalleryListing />", () => {
-  beforeEach(() => {
-    Object.defineProperty(g.Image.prototype, "complete", {
-      value: false
+  describe("when imageUrl is defined", () => {
+    const { props, wrapper } = component
+      .withProps({
+        imageUrl: "Image URL",
+        onLoad: jest.fn()
+      })
+      .mount();
+
+    it("doesn't render with isRendered class instantly", () => {
+      expect(wrapper.find(".isRendered")).toHaveLength(0);
+    });
+
+    it("doesn't call onLoad prop instantly", () => {
+      expect(props.onLoad).toHaveBeenCalledTimes(0);
+    });
+
+    it("loads the image", () => {
+      wrapper.find("Image").simulate("load");
+    });
+
+    it("adds isRendered class", () => {
+      expect(wrapper.find(".isRendered")).toHaveLength(1);
+    });
+
+    it("calls onLoad prop", () => {
+      expect(props.onLoad).toHaveBeenCalledTimes(1);
+    });
+
+    it("matches snapshot", () => {
+      expect(wrapper.render()).toMatchSnapshot();
     });
   });
 
-  it("renders correctly", () => {
-    const { actual } = setup(render);
+  describe("when imageUrl isn't defined", () => {
+    const { wrapper } = component.withProps({ imageUrl: undefined }).mount();
 
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("renders correctly when `imageUrl` prop is not defined", () => {
-    const { actual } = setup(render, { imageUrl: undefined });
-
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("updates `isRendered` state after image has loaded", () => {
-    const { actual } = setup(mount);
-
-    actual.find("img").simulate("load");
-    expect(actual.render()).toMatchSnapshot();
-  });
-
-  it("triggers `onLoad` prop after image has loaded", () => {
-    const { actual, props } = setup(mount, {
-      onLoad: jest.fn()
+    it("renders with isRendered class instantly", () => {
+      expect(wrapper.find(".isRendered")).toHaveLength(1);
     });
-
-    actual.find("img").simulate("load");
-    expect(props.onLoad).toHaveBeenCalled();
-  });
-
-  it("triggers `onLoad` prop after listing has rendered when `imageUrl` prop is not defined", () => {
-    const { props } = setup(mount, {
-      imageUrl: undefined,
-      onLoad: jest.fn()
-    });
-
-    expect(props.onLoad).toHaveBeenCalled();
-  });
-
-  it("updates `isImageLoaded` state when image has previously been loaded", () => {
-    Object.defineProperty(g.Image.prototype, "complete", {
-      value: true
-    });
-
-    const { actual } = setup(mount);
-
-    actual.find("img").simulate("load");
-    expect(actual.render()).toMatchSnapshot();
   });
 });

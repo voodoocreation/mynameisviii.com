@@ -1,23 +1,24 @@
 import NextLink from "next/link";
-import { withRouter, WithRouterProps } from "next/router";
+import { withRouter } from "next/router";
 import * as React from "react";
 
 import Routes from "../../../../next.routes";
 
-interface IProps extends WithRouterProps {
+export interface IProps extends React.HTMLAttributes<HTMLAnchorElement> {
   href?: string;
   isExternal?: boolean;
   params?: {};
   prefetch?: boolean;
   route?: string;
-  [index: string]: any;
 }
 
-class Link extends React.Component<IProps> {
+class Link extends React.Component<IProps & { router: any }> {
   public static defaultProps = {
     isExternal: false,
     prefetch: false
   };
+
+  public displayName = "Link";
 
   public render() {
     const {
@@ -31,11 +32,11 @@ class Link extends React.Component<IProps> {
       ...props
     } = this.props;
 
-    const externalProps: { target?: string; rel?: string } = {};
+    const externalAttrs: { target?: string; rel?: string } = {};
 
     if (isExternal) {
-      externalProps.target = "_blank";
-      externalProps.rel = "noopener";
+      externalAttrs.target = "_blank";
+      externalAttrs.rel = "noopener";
     }
 
     if (!href && !route) {
@@ -48,7 +49,7 @@ class Link extends React.Component<IProps> {
       Object.keys(router.components).length < 1
     ) {
       return (
-        <a href={route ? route : href} {...externalProps} {...props}>
+        <a href={route ? route : href} {...externalAttrs} {...props}>
           {children}
         </a>
       );
@@ -57,7 +58,7 @@ class Link extends React.Component<IProps> {
     if (route) {
       return (
         <Routes.Link route={route} params={params} prefetch={prefetch}>
-          <a {...externalProps} {...props}>
+          <a {...externalAttrs} {...props}>
             {children}
           </a>
         </Routes.Link>
@@ -66,7 +67,7 @@ class Link extends React.Component<IProps> {
 
     return (
       <NextLink href={href} prefetch={prefetch}>
-        <a {...externalProps} {...props}>
+        <a {...externalAttrs} {...props}>
           {children}
         </a>
       </NextLink>
@@ -74,4 +75,4 @@ class Link extends React.Component<IProps> {
   }
 }
 
-export default withRouter<any>(Link);
+export default withRouter(Link);

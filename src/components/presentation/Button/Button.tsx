@@ -3,29 +3,26 @@ import * as React from "react";
 
 import Loader from "../Loader/Loader";
 
+import "./Button.scss";
+
 interface IProps {
   className?: string;
   isDisabled?: boolean;
   isLoading?: boolean;
+  isStyled?: boolean;
+  title?: string;
   type?: "button" | "submit";
   onClick: () => void;
+  nodeRef?: React.RefObject<HTMLButtonElement>;
 }
 
 export default class Button extends React.Component<IProps> {
   public static defaultProps = {
     isDisabled: false,
     isLoading: false,
+    isStyled: true,
     type: "button"
   };
-
-  public buttonNode: HTMLButtonElement | null = null;
-
-  public shouldComponentUpdate(nextProps: IProps) {
-    return (
-      nextProps.isDisabled !== this.props.isDisabled ||
-      nextProps.isLoading !== this.props.isLoading
-    );
-  }
 
   public render() {
     const {
@@ -33,19 +30,22 @@ export default class Button extends React.Component<IProps> {
       className,
       isDisabled,
       isLoading,
+      isStyled,
       onClick,
+      title,
       type
     } = this.props;
 
     return (
       <button
-        className={cn("Button", className, { isLoading })}
+        className={cn("Button", className, { isLoading }, { isStyled })}
         disabled={isDisabled}
         onClick={!isLoading ? onClick : undefined}
-        ref={el => (this.buttonNode = el)}
+        ref={this.props.nodeRef}
+        title={title}
         type={type}
       >
-        <span className="Button-content">{children}</span>
+        <span className="Button--content">{children}</span>
         {isLoading ? <Loader /> : null}
       </button>
     );

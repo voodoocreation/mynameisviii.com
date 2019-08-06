@@ -1,50 +1,44 @@
 import Head from "next/head";
 import * as React from "react";
-import { InjectedIntl } from "react-intl";
+import { InjectedIntlProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import stripTags from "striptags";
-import { ActionCreator } from "typescript-fsa";
 
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
+import { IRelease, IReleaseTrack } from "../../../models/root.models";
+import { TStoreState } from "../../../reducers/root.reducers";
 import { absUrl } from "../../../transformers/transformData";
-import ErrorPage from "../../presentation/ErrorPage/ErrorPage";
+import { IPageContext } from "../../connected/App/App";
 import Loader from "../../presentation/Loader/Loader";
 import Release from "../../presentation/Release/Release";
 
 import * as actions from "../../../actions/root.actions";
 import * as selectors from "../../../selectors/root.selectors";
 
-interface IStoreProps {
-  error?: IError;
+interface IProps extends InjectedIntlProps {
+  fetchReleaseBySlug: typeof actions.fetchReleaseBySlug.started;
   isLoading: boolean;
   release?: IRelease;
-}
-
-interface IDispatchProps {
-  fetchReleaseBySlug: ActionCreator<PLFetchReleaseBySlugStarted>;
-  trackEvent: ActionCreator<PLTrackEvent>;
-}
-
-interface IProps extends IStoreProps, IDispatchProps {
-  intl: InjectedIntl;
+  trackEvent: typeof actions.trackEvent;
 }
 
 class ReleaseRoute extends React.Component<IProps> {
-  public static async getInitialProps(props: any) {
-    const { query, store } = props.ctx;
+  public static async getInitialProps(context: IPageContext) {
+    const { query, store } = context;
+    const slug = query.slug as string;
 
-    store.dispatch(actions.setCurrentReleaseSlug(query.slug));
+    store.dispatch(actions.setCurrentReleaseSlug(slug));
 
     const state = store.getState();
 
     if (!selectors.getCurrentRelease(state)) {
-      store.dispatch(actions.fetchReleaseBySlug.started(query.slug));
+      store.dispatch(actions.fetchReleaseBySlug.started(slug));
     }
   }
 
   public render() {
-    const { error, isLoading, release } = this.props;
+    const { isLoading, release } = this.props;
     const { formatMessage } = this.props.intl;
 
     if (isLoading) {
@@ -52,7 +46,7 @@ class ReleaseRoute extends React.Component<IProps> {
     }
 
     if (!release) {
-      return <ErrorPage {...error} />;
+      return null;
     }
 
     return (
@@ -118,13 +112,12 @@ class ReleaseRoute extends React.Component<IProps> {
   };
 }
 
-const mapStateToProps = (state: any) => ({
-  error: selectors.getReleasesError(state),
+const mapState = (state: TStoreState) => ({
   isLoading: selectors.getReleasesIsLoading(state),
   release: selectors.getCurrentRelease(state)
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) =>
+const mapActions = (dispatch: Dispatch) =>
   bindActionCreators(
     {
       fetchReleaseBySlug: actions.fetchReleaseBySlug.started,
@@ -134,8 +127,8 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
   );
 
 export default injectIntlIntoPage(
-  connect<IStoreProps, IDispatchProps>(
-    mapStateToProps,
-    mapDispatchToProps
+  connect(
+    mapState,
+    mapActions
   )(ReleaseRoute)
 );

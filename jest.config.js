@@ -12,11 +12,10 @@ module.exports = {
   moduleDirectories: ["node_modules"],
   moduleFileExtensions: ["js", "jsx", "ts", "tsx"],
   moduleNameMapper: {
-    "\\.(scss)$": "<rootDir>/src/__mocks__/dummyMock.js",
-    "\\.(jpg|jpeg|gif|png|svg)$": "<rootDir>/src/__mocks__/dummyMock.js"
+    "\\.(jpg|jpeg|gif|png|svg|scss)$": "<rootDir>/src/__mocks__/dummyMock.ts"
   },
   roots: ["<rootDir>/src"],
-  setupTestFrameworkScriptFile: "<rootDir>/jest.setup.js",
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   snapshotSerializers: ["enzyme-to-json/serializer"],
   testURL: "http://localhost",
   transform: {

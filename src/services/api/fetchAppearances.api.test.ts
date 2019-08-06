@@ -1,47 +1,68 @@
-import appearances from "../../../server/mocks/appearances.json";
-import createMockHttpClient from "../../helpers/createMockHttpClient";
-import { tryParseJson } from "../../transformers/transformData";
-import { createPortsWith } from "../configureApi";
+import { BOOLEAN } from "../../constants/api.constants";
+import {
+  appearance,
+  dynamoResponse,
+  failure,
+  success
+} from "../../models/root.models";
+import {
+  mockWithRejectedPromise,
+  mockWithResolvedPromise
+} from "../../utilities/mocks";
 import { fetchAppearances } from "./fetchAppearances.api";
 
-describe("[api] fetchAppearances()", () => {
-  it("handles successful request correctly", async () => {
-    const client = createMockHttpClient(resolve => {
-      resolve({
-        data: appearances
+describe("[api] fetchAppearances", () => {
+  const params = {
+    exclusiveStartKey: "test",
+    limit: 1
+  };
+
+  describe("when the request succeeds", () => {
+    const data = {
+      items: [{ isActive: BOOLEAN.TRUE, slug: "test-1" }],
+      lastEvaluatedKey: {
+        isActive: BOOLEAN.TRUE,
+        slug: "test-0",
+        startingAt: "2019-01-01T00:00:00"
+      }
+    };
+    const request = mockWithResolvedPromise(data);
+    const method = fetchAppearances(request);
+
+    it("returns a success response with the model-parsed data", async () => {
+      expect(await method(params.limit, params.exclusiveStartKey)).toEqual(
+        success(
+          dynamoResponse({
+            items: data.items.map(appearance),
+            lastEvaluatedKey: data.lastEvaluatedKey
+          })
+        )
+      );
+    });
+
+    it("makes the request correctly", () => {
+      expect(request).toHaveBeenCalledWith({
+        params,
+        url: "/appearances/find"
       });
     });
-    const fetch = fetchAppearances(createPortsWith({}, client));
-    const response = await fetch(1, "test");
-
-    expect(client).toHaveBeenCalled();
-    expect(client.mock.calls[0][0].url).toBe("/appearances/find");
-    expect(client.mock.calls[0][0].params).toEqual({
-      exclusiveStartKey: "test",
-      limit: 1
-    });
-    expect(response.ok).toBe(true);
-    expect(response.data.items).toHaveLength(appearances.Items.length);
   });
 
-  it("handles request failure correctly", async () => {
-    const client = createMockHttpClient((_, reject) => {
-      reject({
-        response: {
-          data: { message: "Server error" },
-          status: 500
-        }
-      });
-    });
-    const fetch = fetchAppearances(createPortsWith({}, client));
-    const response = await fetch();
+  describe("when the request fails", () => {
+    const request = mockWithRejectedPromise("Fetch failed");
+    const method = fetchAppearances(request);
 
-    expect(client).toHaveBeenCalled();
-    expect(client.mock.calls[0][0].url).toBe("/appearances/find");
-    expect(response.ok).toBe(false);
-    expect(tryParseJson(response.message)).toEqual({
-      message: "Server error",
-      status: 500
+    it("returns a failure response with the expected error", async () => {
+      expect(await method(params.limit, params.exclusiveStartKey)).toEqual(
+        failure("Fetch failed")
+      );
+    });
+
+    it("makes the request correctly", () => {
+      expect(request).toHaveBeenCalledWith({
+        params,
+        url: "/appearances/find"
+      });
     });
   });
 });

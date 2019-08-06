@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[presentation] <NewsListing /> renders correctly 1`] = `
+exports[`[presentation] <NewsListing /> when isCondensed is false matches snapshot 1`] = `
 <article
   class="NewsListing"
 >
   <a
-    href="/news/slug"
+    href="/news/article-1"
   >
     <header
-      class="NewsListing-header"
+      class="NewsListing--header"
     >
       <h2>
         <div
-          class="Type Type-undefined"
+          class="NewsArticleType NewsArticleType-news"
           title="News"
         >
           <svg
@@ -22,6 +22,7 @@ exports[`[presentation] <NewsListing /> renders correctly 1`] = `
             stroke-width="0"
             viewBox="0 0 24 24"
             width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
             <path
               d="M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12zm-10 5h-2v-2h2v2zm0-4h-2V7h2v6z"
@@ -29,25 +30,25 @@ exports[`[presentation] <NewsListing /> renders correctly 1`] = `
           </svg>
         </div>
         <span>
-          title
+          Title
         </span>
       </h2>
     </header>
     <figure
-      class="Image NewsListing-image isLoading"
+      class="Image NewsListing--image isLoading"
     >
       <div
-        class="Image-wrapper"
+        class="Image--wrapper"
       >
         <img
-          alt="title"
-          src="imageUrl"
+          alt="Title"
+          src="Image URL"
         />
         <span
           class="Loader"
         >
           <div
-            class="Loader-animation"
+            class="Loader--animation"
           >
             <span />
             <span />
@@ -58,26 +59,26 @@ exports[`[presentation] <NewsListing /> renders correctly 1`] = `
     </figure>
     <p>
       <span>
-        excerpt
+        Excerpt
       </span>
     </p>
   </a>
 </article>
 `;
 
-exports[`[presentation] <NewsListing /> renders correctly when \`isCondensed\` prop is true 1`] = `
+exports[`[presentation] <NewsListing /> when isCondensed is true matches snapshot 1`] = `
 <article
   class="NewsListing isCondensed"
 >
   <a
-    href="/news/slug"
+    href="/news/article-1"
   >
     <header
-      class="NewsListing-header"
+      class="NewsListing--header"
     >
       <h3>
         <div
-          class="Type Type-undefined"
+          class="NewsArticleType NewsArticleType-news"
           title="News"
         >
           <svg
@@ -87,6 +88,7 @@ exports[`[presentation] <NewsListing /> renders correctly when \`isCondensed\` p
             stroke-width="0"
             viewBox="0 0 24 24"
             width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
             <path
               d="M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12zm-10 5h-2v-2h2v2zm0-4h-2V7h2v6z"
@@ -94,25 +96,25 @@ exports[`[presentation] <NewsListing /> renders correctly when \`isCondensed\` p
           </svg>
         </div>
         <span>
-          title
+          Title
         </span>
       </h3>
     </header>
     <figure
-      class="Image NewsListing-image isLoading"
+      class="Image NewsListing--image isLoading"
     >
       <div
-        class="Image-wrapper"
+        class="Image--wrapper"
       >
         <img
-          alt="title"
-          src="imageUrl"
+          alt="Title"
+          src="Image URL"
         />
         <span
           class="Loader"
         >
           <div
-            class="Loader-animation"
+            class="Loader--animation"
           >
             <span />
             <span />
@@ -123,115 +125,7 @@ exports[`[presentation] <NewsListing /> renders correctly when \`isCondensed\` p
     </figure>
     <p>
       <span>
-        excerpt
-      </span>
-    </p>
-  </a>
-</article>
-`;
-
-exports[`[presentation] <NewsListing /> updates \`isImageLoaded\` state when image has previously been loaded 1`] = `
-<article
-  class="NewsListing isRendered"
->
-  <a
-    href="/news/slug"
-  >
-    <header
-      class="NewsListing-header"
-    >
-      <h2>
-        <div
-          class="Type Type-undefined"
-          title="News"
-        >
-          <svg
-            fill="currentColor"
-            height="1em"
-            stroke="currentColor"
-            stroke-width="0"
-            viewBox="0 0 24 24"
-            width="1em"
-          >
-            <path
-              d="M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12zm-10 5h-2v-2h2v2zm0-4h-2V7h2v6z"
-            />
-          </svg>
-        </div>
-        <span>
-          title
-        </span>
-      </h2>
-    </header>
-    <figure
-      class="Image NewsListing-image isRendered"
-    >
-      <div
-        class="Image-wrapper"
-      >
-        <img
-          alt="title"
-          src="imageUrl"
-        />
-      </div>
-    </figure>
-    <p>
-      <span>
-        excerpt
-      </span>
-    </p>
-  </a>
-</article>
-`;
-
-exports[`[presentation] <NewsListing /> updates \`isRendered\` state after image has loaded 1`] = `
-<article
-  class="NewsListing isRendered"
->
-  <a
-    href="/news/slug"
-  >
-    <header
-      class="NewsListing-header"
-    >
-      <h2>
-        <div
-          class="Type Type-undefined"
-          title="News"
-        >
-          <svg
-            fill="currentColor"
-            height="1em"
-            stroke="currentColor"
-            stroke-width="0"
-            viewBox="0 0 24 24"
-            width="1em"
-          >
-            <path
-              d="M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12zm-10 5h-2v-2h2v2zm0-4h-2V7h2v6z"
-            />
-          </svg>
-        </div>
-        <span>
-          title
-        </span>
-      </h2>
-    </header>
-    <figure
-      class="Image NewsListing-image isRendered"
-    >
-      <div
-        class="Image-wrapper"
-      >
-        <img
-          alt="title"
-          src="imageUrl"
-        />
-      </div>
-    </figure>
-    <p>
-      <span>
-        excerpt
+        Excerpt
       </span>
     </p>
   </a>

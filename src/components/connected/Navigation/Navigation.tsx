@@ -1,27 +1,21 @@
 import cn from "classnames";
 import * as React from "react";
-import { FormattedMessage, InjectedIntl, injectIntl } from "react-intl";
+import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl";
 import { connect } from "react-redux";
-import { bindActionCreators, Dispatch } from "redux";
-import { ActionCreator } from "typescript-fsa";
-
-import NavItem from "../../presentation/NavItem/NavItem";
 
 import * as actions from "../../../actions/root.actions";
+import { TStoreState } from "../../../reducers/root.reducers";
 import * as selectors from "../../../selectors/root.selectors";
+import Button from "../../presentation/Button/Button";
+import NavItem from "../../presentation/NavItem/NavItem";
 
-interface IStoreProps {
-  isOpen: boolean;
+import "./Navigation.scss";
+
+interface IProps extends InjectedIntlProps {
   currentRoute?: string;
-}
-
-interface IDispatchProps {
-  setCurrentRoute: ActionCreator<PLSetCurrentRoute>;
-  toggleNavigation: ActionCreator<{}>;
-}
-
-interface IProps extends IStoreProps, IDispatchProps {
-  intl: InjectedIntl;
+  isOpen: boolean;
+  setCurrentRoute: typeof actions.setCurrentRoute;
+  toggleNavigation: typeof actions.toggleNavigation;
 }
 
 class Navigation extends React.Component<IProps> {
@@ -31,9 +25,9 @@ class Navigation extends React.Component<IProps> {
         className={cn("Navigation", { isOpen: this.props.isOpen })}
         role="navigation"
       >
-        <button onClick={this.onMenuButtonClick}>
+        <Button isStyled={false} onClick={this.onMenuButtonClick}>
           <FormattedMessage id="MENU" />
-        </button>
+        </Button>
 
         <ul>
           {this.renderNavItem("/news", "NEWS_TITLE")}
@@ -48,7 +42,7 @@ class Navigation extends React.Component<IProps> {
   }
 
   private onMenuButtonClick = () => {
-    this.props.toggleNavigation({});
+    this.props.toggleNavigation();
   };
 
   private renderNavItem = (route: string, messageId: string) => (
@@ -58,23 +52,14 @@ class Navigation extends React.Component<IProps> {
   );
 }
 
-const mapStateToProps = (state: any) => ({
+const mapState = (state: TStoreState) => ({
   currentRoute: selectors.getCurrentRoute(state),
   isOpen: selectors.isNavOpen(state)
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) =>
-  bindActionCreators(
-    {
-      setCurrentRoute: actions.setCurrentRoute,
-      toggleNavigation: actions.toggleNavigation
-    },
-    dispatch
-  );
-
-export default injectIntl<any>(
-  connect<IStoreProps, IDispatchProps>(
-    mapStateToProps,
-    mapDispatchToProps
+export default injectIntl(
+  connect(
+    mapState,
+    actions
   )(Navigation)
 );

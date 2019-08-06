@@ -1,12 +1,22 @@
 const fs = require("fs");
-const glob = require("glob");
 const path = require("path");
-const webpack = require("webpack");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const ServiceWorkerPlugin = require("serviceworker-webpack-plugin");
-const withTypescript = require("@zeit/next-typescript");
+const withSass = require("@zeit/next-sass");
 const PluginLodashModuleReplacement = require("lodash-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const FilterWarningsPlugin = require("webpack-filter-warnings-plugin");
+
+const getPages = () => {
+  return {
+    "/": { page: "/" },
+    "/appearances": { page: "/appearances" },
+    "/galleries": { page: "/galleries" },
+    "/news": { page: "/news" },
+    "/releases": { page: "/releases" },
+    "/resources": { page: "/resources" },
+    "/stems": { page: "/stems" },
+    "/symbol": { page: "/symbol" }
+  };
+};
 
 const getFiles = (dir, files = []) => {
   const list = fs.readdirSync(dir);
@@ -24,37 +34,22 @@ const getFiles = (dir, files = []) => {
   }, files);
 };
 
-const configCSSLoaders = env => {
-  let cssLoader = { loader: "css-loader" };
-  const postcssLoader = { loader: "postcss-loader" };
-  const sassLoader = {
-    loader: "sass-loader",
-    options: {
-      includePaths: ["src/scss", "node_modules"]
-        .map(d => path.join(__dirname, d))
-        .map(g => glob.sync(g))
-        .reduce((acc, cur) => acc.concat(cur), [])
-    }
-  };
-
-  if (env === "production") {
-    cssLoader = {
-      loader: "css-loader"
-    };
-  }
-
-  return [cssLoader, postcssLoader, sassLoader];
-};
-
-module.exports = withTypescript({
+module.exports = withSass({
   distDir: "dist",
   poweredByHeader: false,
+  exportPathMap: async (_, { distDir, outDir }) => {
+    if (outDir) {
+      await util.promisify(fs.copyFile)(
+        path.join(distDir, "appService.js"),
+        path.join(outDir, "appService.js")
+      );
+    }
+    return getPages();
+  },
   webpack: (config, { buildId, dev }) => {
+    config.output.globalObject = "this";
+
     config.module.rules.push(
-      {
-        test: /\.css$/,
-        use: ["babel-loader", "raw-loader", "postcss-loader"]
-      },
       {
         test: /\.(svg)$/,
         use: "svg-loader"
@@ -68,7 +63,9 @@ module.exports = withTypescript({
     config.plugins.push(
       new PluginLodashModuleReplacement(),
 
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      new FilterWarningsPlugin({
+        exclude: /Conflicting order between:/
+      }),
 
       new ServiceWorkerPlugin({
         entry: path.join(__dirname, "src/services/appService.ts"),
@@ -86,43 +83,6 @@ module.exports = withTypescript({
         })
       })
     );
-
-    if (!dev) {
-      config.module.rules.push({
-        test: /\.s(a|c)ss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: configCSSLoaders(process.env.NODE_ENV)
-        })
-      });
-
-      config.plugins.push(
-        new ExtractTextPlugin({
-          filename: "/assets/main.css",
-          allChunks: true
-        }),
-
-        new OptimizeCSSAssetsPlugin({})
-      );
-    } else {
-      config.module.rules.push({
-        test: /\.s(a|c)ss$/,
-        use: [
-          "babel-loader",
-          "raw-loader",
-          "postcss-loader",
-          {
-            loader: "sass-loader",
-            options: {
-              includePaths: ["src/scss", "node_modules"]
-                .map(d => path.join(__dirname, d))
-                .map(g => glob.sync(g))
-                .reduce((acc, cur) => acc.concat(cur), [])
-            }
-          }
-        ]
-      });
-    }
 
     return config;
   }

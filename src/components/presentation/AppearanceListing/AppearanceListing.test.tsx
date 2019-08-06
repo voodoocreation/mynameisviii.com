@@ -1,131 +1,275 @@
-import { mount, render } from "enzyme";
-import * as React from "react";
+import dayjs from "dayjs";
 
+import { BOOLEAN } from "../../../constants/api.constants";
+import { STATUS } from "../../../constants/appearance.constants";
+import {
+  appearance,
+  location,
+  offer,
+  organization
+} from "../../../models/root.models";
+import ComponentTester from "../../../utilities/ComponentTester";
 import AppearanceListing from "./AppearanceListing";
 
-const g: any = global;
-
-const setup = (fn: any, fromTestProps?: any) => {
-  const props = {
+const component = new ComponentTester(AppearanceListing).withDefaultProps(
+  appearance({
     acts: [
       {
-        genre: "act genre",
-        imageUrl: "act imageUrl",
+        genre: "Genre",
+        imageUrl: "Image URL",
         location: {
-          address: "act location address"
+          address: "City, Country"
         },
-        name: "act name"
+        name: "Act name"
       }
     ],
-    description: "description",
-    finishingAt: "2018-10-10T20:00:00",
-    imageUrl: "imageUrl",
-    images: [],
-    isActive: true,
+    description: "Description",
+    finishingAt: dayjs()
+      .add(4, "day")
+      .toISOString(),
+    imageUrl: "Image URL",
+    isActive: BOOLEAN.TRUE,
     location: {
-      latLng: "location latLng",
-      name: "location name",
-      type: "location type"
+      latLng: {
+        lat: 0,
+        lng: 0
+      },
+      name: "Venue"
     },
     organizer: {
-      name: "organizer name"
+      name: "Organizer"
     },
-    sales: [],
-    startingAt: "2018-10-10T18:00:00",
-    ...fromTestProps
-  };
-
-  return {
-    actual: fn(<AppearanceListing {...props} />),
-    props
-  };
-};
+    startingAt: dayjs()
+      .add(3, "day")
+      .toISOString(),
+    status: STATUS.SCHEDULED
+  })
+);
 
 describe("[presentation] <AppearanceListing />", () => {
-  beforeEach(() => {
-    g.isServer = false;
+  describe("when only the required props are defined", () => {
+    const { wrapper } = component.render();
 
-    Object.defineProperty(g.Image.prototype, "complete", {
-      value: false
+    it("doesn't have the isCondensed class", () => {
+      expect(wrapper.hasClass("isCondensed")).toBe(false);
+    });
+
+    it("doesn't render the status notice", () => {
+      expect(wrapper.find(".AppearanceListing--status")).toHaveLength(0);
+    });
+
+    it("doesn't render the audience meta item", () => {
+      expect(wrapper.find(".AppearanceListing--audience")).toHaveLength(0);
+    });
+
+    it("matches snapshot", () => {
+      expect(wrapper).toMatchSnapshot();
     });
   });
 
-  it("renders correctly with minimum props", () => {
-    const { actual } = setup(render);
+  describe("when all props are defined", () => {
+    const { wrapper } = component
+      .withProps({
+        audience: "18+",
+        images: [
+          {
+            imageUrl: "Image URL 1",
+            title: "Title 1"
+          },
+          {
+            imageUrl: "Image URL 2",
+            title: "Title 2"
+          }
+        ],
+        isCondensed: true,
+        location: location({
+          address: "123 Address",
+          name: "Venue"
+        }),
+        organizer: organization({
+          email: "Email",
+          logo: "Logo",
+          name: "Organizer"
+        }),
+        rsvpUrl: "RSVP",
+        sales: [
+          offer({
+            name: "Price 1",
+            price: 40
+          }),
+          offer({
+            name: "Price 2",
+            price: 20
+          }),
+          offer({
+            name: "Price 3",
+            price: 25
+          })
+        ]
+      })
+      .render();
 
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("renders correctly when status=EventCancelled", () => {
-    const { actual } = setup(render, {
-      status: "EventCancelled"
+    it("has the isCondensed class", () => {
+      expect(wrapper.hasClass("isCondensed")).toBe(true);
     });
 
-    expect(actual.hasClass("isCancelled")).toBe(true);
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("renders correctly when status=EventPostponed", () => {
-    const { actual } = setup(render, {
-      status: "EventPostponed"
+    it("renders the audience meta item", () => {
+      expect(wrapper.find(".AppearanceListing--audience")).toHaveLength(1);
     });
 
-    expect(actual.hasClass("isPostponed")).toBe(true);
-    expect(actual).toMatchSnapshot();
+    it("matches snapshot", () => {
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 
-  it("renders correctly with all props", () => {
-    const { actual } = setup(render, {
-      audience: "audience",
-      images: [
-        {
-          imageUrl: "images 1 imageUrl",
-          title: "images 1 title"
-        }
-      ],
-      location: {
-        address: "location address"
-      },
-      locationLatLng: { lat: "lat", lng: "lng" },
-      sales: [
-        {
-          availability: "sales 1 availability",
-          name: "sales 1 name",
-          price: 10,
-          priceCurrency: "NZD"
-        }
-      ]
+  describe("when there are no sales", () => {
+    const { wrapper } = component
+      .withProps({
+        sales: []
+      })
+      .render();
+
+    it("matches snapshot", () => {
+      expect(wrapper).toMatchSnapshot();
     });
-    expect(actual).toMatchSnapshot();
   });
 
-  it("updates `isRendered` state after image has loaded", () => {
-    const { actual } = setup(mount);
+  describe("when there is only one sale", () => {
+    const { wrapper } = component
+      .withProps({
+        sales: [
+          offer({
+            name: "Price",
+            price: 5
+          })
+        ]
+      })
+      .render();
 
-    actual.find("img").simulate("load");
-    expect(actual.render()).toMatchSnapshot();
+    it("matches snapshot", () => {
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 
-  it("triggers onLoad prop after image has loaded", () => {
-    const { actual, props } = setup(mount, {
-      onLoad: jest.fn()
-    });
+  describe("when there are two sales", () => {
+    const { wrapper } = component
+      .withProps({
+        sales: [
+          offer({
+            name: "Price 1",
+            price: 5
+          }),
+          offer({
+            name: "Price 2",
+            price: 10
+          })
+        ]
+      })
+      .render();
 
-    actual.find("img").simulate("load");
-    expect(props.onLoad).toHaveBeenCalled();
+    it("matches snapshot", () => {
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 
-  it("updates `isRendered` state and triggers onLoad prop when image has previously been loaded", () => {
-    Object.defineProperty(g.Image.prototype, "complete", {
-      value: true
+  describe("when there are three sales", () => {
+    const { wrapper } = component
+      .withProps({
+        sales: [
+          offer({
+            name: "Price 1",
+            price: 5
+          }),
+          offer({
+            name: "Price 2",
+            price: 10
+          }),
+          offer({
+            name: "Price 2",
+            price: 10
+          })
+        ]
+      })
+      .render();
+
+    it("matches snapshot", () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+  });
+
+  describe("when cancelled", () => {
+    const { wrapper } = component
+      .withProps({
+        sales: [offer()],
+        status: STATUS.CANCELLED
+      })
+      .render();
+
+    it("has the isCancelled class", () => {
+      expect(wrapper.hasClass("isCancelled")).toBe(true);
     });
 
-    const { actual, props } = setup(mount, {
-      onLoad: jest.fn()
+    it("renders the status notice with CANCELLED text", () => {
+      expect(wrapper.find(".AppearanceListing--status")).toHaveLength(1);
     });
 
-    actual.find("img").simulate("load");
-    expect(props.onLoad).toHaveBeenCalled();
-    expect(actual.render()).toMatchSnapshot();
+    it("matches snapshot", () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+  });
+
+  describe("when postponed", () => {
+    const { wrapper } = component
+      .withProps({
+        sales: [offer()],
+        status: STATUS.POSTPONED
+      })
+      .render();
+
+    it("has the isPostponed class", () => {
+      expect(wrapper.hasClass("isPostponed")).toBe(true);
+    });
+
+    it("renders the status notice with POSTPONED text", () => {
+      expect(wrapper.find(".AppearanceListing--status")).toHaveLength(1);
+    });
+
+    it("matches snapshot", () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+  });
+
+  describe("when the image loads", () => {
+    describe("when the onLoad prop isn't defined", () => {
+      const { wrapper } = component.mount();
+
+      it("triggers image load", () => {
+        wrapper.find("img").simulate("load");
+      });
+
+      it("has the isRendered class", () => {
+        expect(wrapper.render().hasClass("isRendered")).toBe(true);
+      });
+    });
+
+    describe("when the onLoad prop is defined", () => {
+      const { props, wrapper } = component
+        .withProps({
+          onLoad: jest.fn()
+        })
+        .mount();
+
+      it("triggers image load", () => {
+        wrapper.find("img").simulate("load");
+      });
+
+      it("calls the onLoad prop", () => {
+        expect(props.onLoad).toHaveBeenCalled();
+      });
+
+      it("has the isRendered class", () => {
+        expect(wrapper.render().hasClass("isRendered")).toBe(true);
+      });
+    });
   });
 });

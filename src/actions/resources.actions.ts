@@ -1,15 +1,15 @@
 import actionCreatorFactory from "typescript-fsa";
 
-const actionCreator = actionCreatorFactory("RESOURCES");
+import { IDynamoResponse, IResource } from "../models/root.models";
 
-export const fetchResources = actionCreator.async<
+const createAction = actionCreatorFactory("RESOURCES");
+
+export const fetchResources = createAction.async<
   {},
-  PLFetchResourcesDone,
-  PLFetchResourcesFailed
+  IDynamoResponse<IResource, "createdAt">
 >("FETCH");
 
-export const fetchMoreResources = actionCreator.async<
+export const fetchMoreResources = createAction.async<
   {},
-  PLFetchResourcesDone,
-  PLFetchResourcesFailed
+  IDynamoResponse<IResource, "createdAt">
 >("FETCH_MORE");

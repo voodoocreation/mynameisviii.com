@@ -1,139 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[presentation] <Link /> renders <NextLink /> when router is available and \`route\` prop is passed 1`] = `
-<withRouter(Link)
-  route="/"
-  router={
-    Object {
-      "components": Object {
-        "test": "test",
-      },
-    }
-  }
+exports[`[presentation] <Link /> when both href and route are undefined matches snapshot 1`] = `
+<span
+  intl="[object Object]"
 >
-  <Link
-    isExternal={false}
-    prefetch={false}
-    route="/"
-    router={
-      Object {
-        "components": Object {
-          "test": "test",
-        },
-      }
-    }
-  >
-    <LinkRoutes
-      prefetch={false}
-      route="/"
-    >
-      <Link
-        as="/"
-        href="/"
-        prefetch={false}
-      >
-        <a
-          href="/"
-          onClick={[Function]}
-        >
-          Link
-        </a>
-      </Link>
-    </LinkRoutes>
-  </Link>
-</withRouter(Link)>
+  Link text
+</span>
 `;
 
-exports[`[presentation] <Link /> renders <Routes.Link /> when router is available and \`href\` prop is passed 1`] = `
-<withRouter(Link)
+exports[`[presentation] <Link /> when isExternal is true matches snapshot 1`] = `
+<a
   href="/"
-  router={
-    Object {
-      "components": Object {
-        "test": "test",
-      },
-    }
-  }
+  intl="[object Object]"
+  rel="noopener"
+  target="_blank"
 >
-  <Link
-    href="/"
-    isExternal={false}
-    prefetch={false}
-    router={
-      Object {
-        "components": Object {
-          "test": "test",
-        },
-      }
-    }
-  >
-    <Link
-      href="/"
-      prefetch={false}
-    >
-      <a
-        href="/"
-        onClick={[Function]}
-      >
-        Link
-      </a>
-    </Link>
-  </Link>
-</withRouter(Link)>
+  Link text
+</a>
 `;
 
-exports[`[presentation] <Link /> renders <a /> when router is unavailable 1`] = `
-<withRouter(Link)
+exports[`[presentation] <Link /> when the router is available and href is defined matches snapshot 1`] = `
+<a
   href="/"
-  router={
-    Object {
-      "components": Object {},
-    }
-  }
+  intl="[object Object]"
 >
-  <Link
-    href="/"
-    isExternal={false}
-    prefetch={false}
-    router={
-      Object {
-        "components": Object {},
-      }
-    }
-  >
-    <a
-      href="/"
-    >
-      Link
-    </a>
-  </Link>
-</withRouter(Link)>
+  Link text
+</a>
 `;
 
-exports[`[presentation] <Link /> renders <span /> when \`href\` and \`route\` props are undefined 1`] = `
-<withRouter(Link)
-  router={
-    Object {
-      "components": Object {
-        "test": "test",
-      },
-    }
-  }
+exports[`[presentation] <Link /> when the router is available and route is defined matches snapshot 1`] = `
+<a
+  href="/"
+  intl="[object Object]"
 >
-  <Link
-    isExternal={false}
-    prefetch={false}
-    router={
-      Object {
-        "components": Object {
-          "test": "test",
-        },
-      }
-    }
-  >
-    <span>
-      Link
-    </span>
-  </Link>
-</withRouter(Link)>
+  Link text
+</a>
+`;
+
+exports[`[presentation] <Link /> when the router is unavailable and href is defined matches snapshot 1`] = `
+<a
+  href="/"
+  intl="[object Object]"
+>
+  Link text
+</a>
 `;

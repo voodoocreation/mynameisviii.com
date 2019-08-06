@@ -1,13 +1,15 @@
 import cn from "classnames";
 import Head from "next/head";
 import * as React from "react";
-import { FormattedMessage, InjectedIntl } from "react-intl";
+import { FormattedMessage, InjectedIntlProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
-import { ActionCreator } from "typescript-fsa";
 
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
+import { INewsArticle } from "../../../models/root.models";
+import { TStoreState } from "../../../reducers/root.reducers";
 import { absUrl } from "../../../transformers/transformData";
+import { IPageContext } from "../../connected/App/App";
 import OfflineNotice from "../../connected/OfflineNotice/OfflineNotice";
 import ButtonBar from "../../presentation/ButtonBar/ButtonBar";
 import LoadButton from "../../presentation/LoadButton/LoadButton";
@@ -18,32 +20,25 @@ import PageHeader from "../../presentation/PageHeader/PageHeader";
 import * as actions from "../../../actions/root.actions";
 import * as selectors from "../../../selectors/root.selectors";
 
-interface IStoreProps {
+import "./NewsRoute.scss";
+
+interface IProps extends InjectedIntlProps {
   articles: INewsArticle[];
   articlesCount: number;
-  error?: IError;
+  hasError: boolean;
+  fetchLatestNews: typeof actions.fetchLatestNews.started;
+  fetchMoreLatestNews: typeof actions.fetchMoreLatestNews.started;
   hasAllNewsArticles: boolean;
   isLoading: boolean;
 }
 
-interface IDispatchProps {
-  fetchLatestNews: ActionCreator<{}>;
-  fetchMoreLatestNews: ActionCreator<{}>;
-}
-
-interface IProps extends IStoreProps, IDispatchProps {
-  intl: InjectedIntl;
-}
-
 interface IState {
-  loadedListings: {
-    [index: string]: boolean;
-  };
+  loadedListings: Record<string, boolean>;
 }
 
 class NewsRoute extends React.Component<IProps, IState> {
-  public static async getInitialProps(props: any) {
-    const { isServer, store } = props.ctx;
+  public static async getInitialProps(context: IPageContext) {
+    const { isServer, store } = context;
 
     const state = store.getState();
 
@@ -54,32 +49,23 @@ class NewsRoute extends React.Component<IProps, IState> {
     }
   }
 
-  public readonly state = {
+  public readonly state: IState = {
     loadedListings: {}
   };
 
   public render() {
-    const { articles, articlesCount, error, hasAllNewsArticles } = this.props;
+    const {
+      articles,
+      articlesCount,
+      hasAllNewsArticles,
+      hasError
+    } = this.props;
     const { formatMessage } = this.props.intl;
 
     const hasLoadedAllListings =
       articlesCount === Object.keys(this.state.loadedListings).length;
 
     const isLoading = this.props.isLoading || !hasLoadedAllListings;
-
-    const loadMoreButton = hasAllNewsArticles ? null : (
-      <LoadButton
-        isLoading={isLoading}
-        isScrollLoadEnabled={!error}
-        onLoad={this.onLoadMore}
-      >
-        {!error ? (
-          <FormattedMessage id="LOAD_MORE" />
-        ) : (
-          <FormattedMessage id="TRY_AGAIN" />
-        )}
-      </LoadButton>
-    );
 
     const pageTitle = formatMessage({ id: "NEWS_TITLE" });
     const pageDescription = formatMessage({ id: "NEWS_DESCRIPTION" });
@@ -109,15 +95,15 @@ class NewsRoute extends React.Component<IProps, IState> {
           <FormattedMessage id="NEWS_TITLE" />
         </PageHeader>
 
-        {error ? <OfflineNotice /> : null}
+        {hasError ? <OfflineNotice /> : null}
 
         {articlesCount > 0 ? (
-          <section className="NewsListings">
+          <section className="NewsRoute--listings">
             {articles.map(article => (
               <NewsListing
                 {...article}
                 key={article.slug}
-                onLoad={this.onListingLoad}
+                onLoad={this.onListingLoad(article)}
               />
             ))}
           </section>
@@ -131,16 +117,24 @@ class NewsRoute extends React.Component<IProps, IState> {
           </NoResults>
         ) : null}
 
-        <ButtonBar>{loadMoreButton}</ButtonBar>
+        <ButtonBar>
+          {!hasAllNewsArticles ? (
+            <LoadButton
+              hasError={hasError}
+              isLoading={isLoading}
+              onLoad={this.onLoadMore}
+            />
+          ) : null}
+        </ButtonBar>
       </article>
     );
   }
 
-  private onListingLoad = (slug: string) => {
+  private onListingLoad = (article: INewsArticle) => () => {
     this.setState({
       loadedListings: {
         ...this.state.loadedListings,
-        [slug]: true
+        [article.slug]: true
       }
     });
   };
@@ -150,15 +144,15 @@ class NewsRoute extends React.Component<IProps, IState> {
   };
 }
 
-const mapStateToProps = (state: any) => ({
+const mapState = (state: TStoreState) => ({
   articles: selectors.getNewsArticlesAsArray(state),
   articlesCount: selectors.getNewsArticlesCount(state),
-  error: selectors.getNewsError(state),
   hasAllNewsArticles: selectors.getHasAllNewsArticles(state),
+  hasError: selectors.hasNewsError(state),
   isLoading: selectors.getNewsIsLoading(state)
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) =>
+const mapActions = (dispatch: Dispatch) =>
   bindActionCreators(
     {
       fetchLatestNews: actions.fetchLatestNews.started,
@@ -168,8 +162,8 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
   );
 
 export default injectIntlIntoPage(
-  connect<IStoreProps, IDispatchProps>(
-    mapStateToProps,
-    mapDispatchToProps
+  connect(
+    mapState,
+    mapActions
   )(NewsRoute)
 );

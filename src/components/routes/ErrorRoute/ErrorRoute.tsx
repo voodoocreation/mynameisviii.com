@@ -1,20 +1,21 @@
 import * as React from "react";
-import { InjectedIntl } from "react-intl";
+import { InjectedIntlProps } from "react-intl";
 
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
+import { IPageContext } from "../../connected/App/App";
 import ErrorPage from "../../presentation/ErrorPage/ErrorPage";
 
-interface IProps {
+interface IProps extends InjectedIntlProps {
   err: {};
-  intl: InjectedIntl;
   message?: string;
-  statusCode: number | string;
+  statusCode: number;
 }
 
 class ErrorRoute extends React.Component<IProps> {
-  public static getInitialProps({ ctx }: any) {
-    const res = ctx.res;
-    const err = ctx.err as Error & { statusCode: string };
+  public static getInitialProps(context: IPageContext) {
+    const res = context.res;
+    const err = context.err;
+
     const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
     const message = err && err.message ? err.message : undefined;
 

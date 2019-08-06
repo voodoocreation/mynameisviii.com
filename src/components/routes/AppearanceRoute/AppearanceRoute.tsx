@@ -1,44 +1,38 @@
 import Head from "next/head";
 import * as React from "react";
-import { InjectedIntl } from "react-intl";
+import { InjectedIntlProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
-import { ActionCreator } from "typescript-fsa";
 
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
+import { IAppearance, ILatLng } from "../../../models/root.models";
+import { TStoreState } from "../../../reducers/root.reducers";
 import { absUrl } from "../../../transformers/transformData";
+import { IPageContext } from "../../connected/App/App";
 import Appearance from "../../presentation/Appearance/Appearance";
-import ErrorPage from "../../presentation/ErrorPage/ErrorPage";
 import Loader from "../../presentation/Loader/Loader";
 
 import * as actions from "../../../actions/root.actions";
 import * as selectors from "../../../selectors/root.selectors";
 
-interface IStoreProps {
+interface IProps extends InjectedIntlProps {
   appearance?: IAppearance;
   currentLocation?: ILatLng;
-  error?: IError;
+  fetchAppearanceBySlug: typeof actions.fetchAppearanceBySlug.started;
+  geocodeCurrentAppearanceAddress: typeof actions.geocodeCurrentAppearanceAddress.started;
   isLoading: boolean;
-}
-
-interface IDispatchProps {
-  fetchAppearanceBySlug: ActionCreator<PLFetchAppearanceBySlugStarted>;
-  geocodeCurrentAppearanceAddress: ActionCreator<{}>;
-  trackEvent: ActionCreator<PLTrackEvent>;
-}
-
-interface IProps extends IStoreProps, IDispatchProps {
-  intl: InjectedIntl;
+  trackEvent: typeof actions.trackEvent;
 }
 
 class AppearanceRoute extends React.Component<IProps> {
-  public static async getInitialProps(props: any) {
-    const { query, store } = props.ctx;
+  public static async getInitialProps(context: IPageContext) {
+    const { query, store } = context;
+    const slug = query.slug as string;
 
-    store.dispatch(actions.setCurrentAppearanceSlug(query.slug));
+    store.dispatch(actions.setCurrentAppearanceSlug(slug));
 
     if (!selectors.getCurrentAppearance(store.getState())) {
-      store.dispatch(actions.fetchAppearanceBySlug.started(query.slug));
+      store.dispatch(actions.fetchAppearanceBySlug.started(slug));
     }
   }
 
@@ -51,7 +45,7 @@ class AppearanceRoute extends React.Component<IProps> {
   }
 
   public render() {
-    const { appearance, currentLocation, error, isLoading } = this.props;
+    const { appearance, currentLocation, isLoading } = this.props;
     const { formatMessage } = this.props.intl;
 
     if (isLoading) {
@@ -59,7 +53,7 @@ class AppearanceRoute extends React.Component<IProps> {
     }
 
     if (!appearance) {
-      return <ErrorPage {...error} />;
+      return null;
     }
 
     return (
@@ -102,14 +96,13 @@ class AppearanceRoute extends React.Component<IProps> {
   };
 }
 
-const mapStateToProps = (state: any) => ({
+const mapState = (state: TStoreState) => ({
   appearance: selectors.getCurrentAppearance(state),
   currentLocation: selectors.getCurrentAppearanceLocation(state),
-  error: selectors.getAppearancesError(state),
   isLoading: selectors.getAppearancesIsLoading(state)
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) =>
+const mapActions = (dispatch: Dispatch) =>
   bindActionCreators(
     {
       fetchAppearanceBySlug: actions.fetchAppearanceBySlug.started,
@@ -121,8 +114,8 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
   );
 
 export default injectIntlIntoPage(
-  connect<IStoreProps, IDispatchProps>(
-    mapStateToProps,
-    mapDispatchToProps
+  connect(
+    mapState,
+    mapActions
   )(AppearanceRoute)
 );

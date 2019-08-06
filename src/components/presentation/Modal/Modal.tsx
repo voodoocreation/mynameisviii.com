@@ -3,7 +3,10 @@ import * as React from "react";
 import { MdClose } from "react-icons/md";
 
 import { isInPortal, lockScroll, unlockScroll } from "../../../helpers/dom";
+import Button from "../Button/Button";
 import Portal from "../Portal/Portal";
+
+import "./Modal.scss";
 
 interface IProps {
   className?: string;
@@ -30,7 +33,7 @@ export default class Modal extends React.Component<IProps, IState> {
     isVisible: false
   };
 
-  private modalRef: React.RefObject<HTMLDivElement> = React.createRef();
+  private modalRef = React.createRef<HTMLDivElement>();
 
   public componentDidMount() {
     if (this.props.isOpen) {
@@ -43,6 +46,14 @@ export default class Modal extends React.Component<IProps, IState> {
       this.onHide();
     } else if (!prevProps.isOpen && this.props.isOpen) {
       this.onShow();
+    }
+
+    if (prevProps.hasFocusRestriction !== this.props.hasFocusRestriction) {
+      if (this.props.hasFocusRestriction) {
+        window.addEventListener("focus", this.onFocus, true);
+      } else {
+        window.removeEventListener("focus", this.onFocus, true);
+      }
     }
   }
 
@@ -63,7 +74,7 @@ export default class Modal extends React.Component<IProps, IState> {
     const { isVisible } = this.state;
 
     return !isOpen ? null : (
-      <Portal className="ModalPortal" isRenderingInPlace={!usePortal}>
+      <Portal className="Modal--portal" isRenderingInPlace={!usePortal}>
         <div
           aria-hidden={!isOpen}
           aria-modal={true}
@@ -73,16 +84,20 @@ export default class Modal extends React.Component<IProps, IState> {
           tabIndex={isVisible ? 0 : -1}
         >
           <div
-            className="Modal-overlay"
+            className="Modal--overlay"
             onClick={hasOverlayClick ? this.onClose : undefined}
           />
 
-          <div className="Modal-content">
-            <div className="Modal-body">{children}</div>
+          <div className="Modal--content">
+            <div className="Modal--body">{children}</div>
 
-            <button className="Modal-closeButton" onClick={this.onClose}>
+            <Button
+              className="Modal--closeButton"
+              isStyled={false}
+              onClick={this.onClose}
+            >
               <MdClose />
-            </button>
+            </Button>
           </div>
         </div>
       </Portal>
@@ -90,17 +105,15 @@ export default class Modal extends React.Component<IProps, IState> {
   }
 
   private onFocus = (event: FocusEvent) => {
-    const { hasFocusRestriction, isOpen, usePortal } = this.props;
-    const modalRef = this.modalRef.current as HTMLDivElement;
+    const { usePortal } = this.props;
+    const modalRef = this.modalRef.current;
 
     if (
       modalRef &&
       event.target &&
-      isOpen &&
-      hasFocusRestriction &&
       (event.target === window ||
         (usePortal && !isInPortal(event.target as HTMLElement)) ||
-        (!usePortal && modalRef.contains(event.target as Node)))
+        (!usePortal && !modalRef.contains(event.target as Node)))
     ) {
       event.stopPropagation();
       modalRef.focus();

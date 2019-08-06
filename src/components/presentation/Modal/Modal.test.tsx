@@ -1,181 +1,439 @@
-import { mount } from "enzyme";
 import * as React from "react";
 
-import * as dom from "../../../helpers/dom";
+import ComponentTester from "../../../utilities/ComponentTester";
+import { filterMockCalls } from "../../../utilities/mocks";
 import Modal from "./Modal";
 
-jest.mock("react-dom", () => ({
-  createPortal: (component: any) => component
-}));
-
-let isInPortalValue = true;
-Object.defineProperty(dom, "isInPortal", {
-  value: jest.fn(() => isInPortalValue)
-});
-
-const setup = (fn: any, fromTestProps?: any) => {
-  const props = {
+const component = new ComponentTester(Modal)
+  .withDefaultProps({
     className: "TestModal",
+    hasFocusRestriction: true,
     isOpen: true,
     onClose: jest.fn(),
-    usePortal: false,
-    ...fromTestProps
-  };
-
-  return {
-    actual: fn(
-      <Modal {...props}>
-        <div className="Modal-testContent">
-          <span>Modal content</span>
-          <button>Modal button</button>
-        </div>
-      </Modal>
-    ),
-    props
-  };
-};
-
-const g: any = global;
-const addEventListener = g.addEventListener;
-const removeEventListener = g.removeEventListener;
+    usePortal: false
+  })
+  .withDefaultChildren(
+    <div className="Modal--testContent">
+      <input id="Modal--input" />
+    </div>
+  );
 
 describe("[presentation] <Modal />", () => {
-  beforeAll(() => {
-    g.addEventListener = jest.fn((...args) => addEventListener(...args));
-    g.removeEventListener = jest.fn((...args) => removeEventListener(...args));
+  jest.spyOn(window, "addEventListener");
+  jest.spyOn(window, "removeEventListener");
+
+  it("doesn't render anything when isOpen is false", () => {
+    const { wrapper } = component.withProps({ isOpen: false }).mount();
+
+    expect(wrapper.render().html()).toBeNull();
   });
 
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
+  describe("when toggling the isOpen prop", () => {
+    let result: ReturnType<typeof component.mount>;
 
-  afterAll(() => {
-    g.addEventListener = addEventListener;
-    g.removeEventListener = removeEventListener;
-  });
-
-  it("renders correctly", () => {
-    const { actual } = setup(mount);
-
-    expect(actual.find(".Portal-inPlace")).toHaveLength(1);
-    expect(actual.render()).toMatchSnapshot();
-  });
-
-  it("renders correctly when usePortal=true", () => {
-    const { actual } = setup(mount, { usePortal: true });
-
-    expect(actual.render()).toMatchSnapshot();
-  });
-
-  it("renders correctly when isOpen=false", () => {
-    const { actual } = setup(mount, { isOpen: false });
-
-    expect(actual.find("div")).toHaveLength(0);
-    expect(actual.render()).toMatchSnapshot();
-  });
-
-  it("triggers `onClose` prop when hasOverlayClick=true and overlay is clicked on", () => {
-    const { actual, props } = setup(mount);
-
-    actual.find(".Modal-overlay").simulate("click");
-    expect(props.onClose).toHaveBeenCalled();
-  });
-
-  it("doesn't trigger `onClose` prop when hasOverlayClick=false and overlay is clicked on", () => {
-    const { actual, props } = setup(mount, {
-      hasOverlayClick: false
+    beforeAll(() => {
+      jest.clearAllMocks();
     });
 
-    actual.find(".Modal-overlay").simulate("click");
-    expect(props.onClose).not.toHaveBeenCalled();
-  });
-
-  it("triggers `onClose` prop when escape key is pressed", () => {
-    const { props } = setup(mount);
-
-    window.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape" }));
-    expect(props.onClose).toHaveBeenCalled();
-  });
-
-  describe("focus restriction", () => {
-    it("prevents elements outside of the modal from gaining focus when hasFocusRestriction=true", () => {
-      isInPortalValue = false;
-      setup(mount, { usePortal: true });
-      const event = new FocusEvent("focus");
-      event.stopPropagation = jest.fn();
-
-      expect(g.findMockCall(g.addEventListener, "focus")).toBeDefined();
-      document.body.dispatchEvent(event);
-      expect(event.stopPropagation).toHaveBeenCalled();
+    afterAll(() => {
+      result.wrapper.unmount();
     });
 
-    it("allows elements within the modal to gain focus when hasFocusRestriction=true", () => {
-      isInPortalValue = true;
-      const { actual } = setup(mount, { usePortal: true });
-      const event = new FocusEvent("focus");
-      Object.defineProperty(event, "target", {
-        value: actual.find(".Modal-testContent button").getDOMNode()
+    it("mounts the component", () => {
+      result = component.mount();
+    });
+
+    it("renders the modal", () => {
+      expect(result.wrapper.find(".Modal")).toHaveLength(1);
+    });
+
+    it("matches snapshot when open", () => {
+      expect(result.wrapper.render()).toMatchSnapshot();
+    });
+
+    it("renders the children in the body element", () => {
+      expect(
+        result.wrapper.find(".Modal--body .Modal--testContent")
+      ).toHaveLength(1);
+    });
+
+    it("sets the isOpen prop to false", () => {
+      result.wrapper.setProps({ isOpen: false });
+    });
+
+    it("doesn't render anything", () => {
+      expect(result.wrapper.render().html()).toBeNull();
+    });
+
+    it("sets the isOpen prop to true again", () => {
+      result.wrapper.setProps({ isOpen: true });
+    });
+
+    it("renders the modal", () => {
+      expect(result.wrapper.find(".Modal")).toHaveLength(1);
+    });
+
+    it("sets the isOpen prop to false", () => {
+      result.wrapper.setProps({ isOpen: false });
+    });
+  });
+
+  describe("when interacting with the close button", () => {
+    let result: ReturnType<typeof component.mount>;
+
+    beforeAll(() => {
+      jest.clearAllMocks();
+    });
+
+    afterAll(() => {
+      result.wrapper.unmount();
+    });
+
+    it("mounts the component", () => {
+      result = component.mount();
+    });
+
+    it("clicks the close button", () => {
+      result.wrapper.find("Button.Modal--closeButton").simulate("click");
+    });
+
+    it("calls the onClose prop", () => {
+      expect(result.props.onClose).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe("when interacting with the overlay", () => {
+    let result: ReturnType<typeof component.mount>;
+
+    beforeAll(() => {
+      jest.clearAllMocks();
+    });
+
+    afterAll(() => {
+      result.wrapper.unmount();
+    });
+
+    it("mounts the component", () => {
+      result = component.mount();
+    });
+
+    it("clicks the overlay", () => {
+      result.wrapper.find(".Modal--overlay").simulate("click");
+    });
+
+    it("calls the onClose prop", () => {
+      expect(result.props.onClose).toHaveBeenCalledTimes(1);
+    });
+
+    it("sets the hasOverlayClick prop to false", () => {
+      result.wrapper.setProps({ hasOverlayClick: false });
+    });
+
+    it("clicks the overlay", () => {
+      result.wrapper.find(".Modal--overlay").simulate("click");
+    });
+
+    it("doesn't call the onClose prop", () => {
+      expect(result.props.onClose).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe("when interacting with the keyboard", () => {
+    let result: ReturnType<typeof component.mount>;
+
+    beforeAll(() => {
+      jest.clearAllMocks();
+    });
+
+    it("mounts the component", () => {
+      result = component
+        .withProps({
+          onKeyDown: jest.fn()
+        })
+        .mount();
+    });
+
+    it("binds keydown event handler", () => {
+      expect(filterMockCalls(window.addEventListener, "keydown")).toHaveLength(
+        1
+      );
+    });
+
+    it("presses the Escape key", () => {
+      window.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape" }));
+    });
+
+    it("calls the onClose prop", () => {
+      expect(result.props.onClose).toHaveBeenCalledTimes(1);
+    });
+
+    it("calls the onKeyDown prop", () => {
+      expect(result.props.onKeyDown).toHaveBeenCalledTimes(1);
+    });
+
+    it("presses a key other than Escape", () => {
+      window.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowLeft" }));
+    });
+
+    it("doesn't call the onClose prop", () => {
+      expect(result.props.onClose).toHaveBeenCalledTimes(1);
+    });
+
+    it("calls the onKeyDown prop", () => {
+      expect(result.props.onKeyDown).toHaveBeenCalledTimes(2);
+    });
+
+    it("sets the onKeyDown prop to be undefined", () => {
+      result.wrapper.setProps({ onKeyDown: undefined });
+    });
+
+    it("presses the Escape key", () => {
+      window.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape" }));
+    });
+
+    it("calls the onClose prop", () => {
+      expect(result.props.onClose).toHaveBeenCalledTimes(2);
+    });
+
+    it("sets the isOpen prop to false", () => {
+      result.wrapper.setProps({ isOpen: false });
+    });
+
+    it("unbinds keydown event handler", () => {
+      expect(
+        filterMockCalls(window.removeEventListener, "keydown")
+      ).toHaveLength(1);
+    });
+
+    it("sets the isOpen prop to true", () => {
+      result.wrapper.setProps({ isOpen: true });
+    });
+
+    it("binds keydown event handler", () => {
+      expect(filterMockCalls(window.addEventListener, "keydown")).toHaveLength(
+        2
+      );
+    });
+
+    it("unmounts component", () => {
+      result.wrapper.unmount();
+    });
+
+    it("unbinds keydown event handler", () => {
+      expect(
+        filterMockCalls(window.removeEventListener, "keydown")
+      ).toHaveLength(2);
+    });
+  });
+
+  describe("Focus management", () => {
+    describe("when binding the focus event handler", () => {
+      let result: ReturnType<typeof component.mount>;
+
+      beforeAll(() => {
+        jest.clearAllMocks();
       });
-      event.stopPropagation = jest.fn();
 
-      expect(g.findMockCall(g.addEventListener, "focus")).toBeDefined();
-      window.dispatchEvent(event);
-      expect(event.stopPropagation).not.toHaveBeenCalled();
+      afterAll(() => {
+        result.wrapper.unmount();
+      });
+
+      it("mounts the component", () => {
+        result = component
+          .withProps({
+            hasFocusRestriction: true
+          })
+          .mount();
+      });
+
+      it("binds focus event handler", () => {
+        expect(filterMockCalls(window.addEventListener, "focus")).toHaveLength(
+          1
+        );
+      });
+
+      it("sets the isOpen prop to false", () => {
+        result.wrapper.setProps({ isOpen: false });
+      });
+
+      it("unbinds focus event handler", () => {
+        expect(
+          filterMockCalls(window.removeEventListener, "focus")
+        ).toHaveLength(1);
+      });
+
+      it("sets the isOpen prop to true", () => {
+        result.wrapper.setProps({ isOpen: true });
+      });
+
+      it("binds focus event handler", () => {
+        expect(filterMockCalls(window.addEventListener, "focus")).toHaveLength(
+          2
+        );
+      });
+
+      it("sets the hasFocusRestriction prop to false", () => {
+        result.wrapper.setProps({ hasFocusRestriction: false });
+      });
+
+      it("unbinds focus event handler", () => {
+        expect(
+          filterMockCalls(window.removeEventListener, "focus")
+        ).toHaveLength(2);
+      });
+
+      it("sets the isOpen prop to false", () => {
+        result.wrapper.setProps({ isOpen: false });
+      });
+
+      it("doesn't unbind the focus event handler", () => {
+        expect(
+          filterMockCalls(window.removeEventListener, "focus")
+        ).toHaveLength(2);
+      });
+
+      it("sets the isOpen prop to true", () => {
+        result.wrapper.setProps({ isOpen: true });
+      });
+
+      it("doesn't bind the focus event handler", () => {
+        expect(
+          filterMockCalls(window.removeEventListener, "focus")
+        ).toHaveLength(2);
+      });
+
+      it("sets the hasFocusRestriction prop to true", () => {
+        result.wrapper.setProps({ hasFocusRestriction: true });
+      });
+
+      it("binds focus event handler", () => {
+        expect(filterMockCalls(window.addEventListener, "focus")).toHaveLength(
+          3
+        );
+      });
     });
 
-    it("doesn't attempt to manage focus after `hasFocusRestriction` has been changed from true to false", () => {
-      const { actual } = setup(mount, { usePortal: true });
-      const event = new FocusEvent("focus");
-      event.stopPropagation = jest.fn();
+    describe("when dispatching focus events", () => {
+      const stopPropagationMock = jest.fn();
 
-      expect(g.findMockCall(g.addEventListener, "focus")).toBeDefined();
-      actual.setProps({ hasFocusRestriction: false });
-      document.body.dispatchEvent(event);
-      expect(event.stopPropagation).not.toHaveBeenCalled();
-    });
-  });
+      const bodyEvent = new FocusEvent("focus");
+      Object.defineProperties(bodyEvent, {
+        stopPropagation: { value: stopPropagationMock },
+        target: { value: document.body }
+      });
 
-  describe("window event binding", () => {
-    it("binds all events onShow", () => {
-      setup(mount);
+      const inputNode = document.createElement("input");
+      document.body.appendChild(inputNode);
 
-      expect(g.findMockCall(g.addEventListener, "focus")).toBeDefined();
-      expect(g.findMockCall(g.addEventListener, "keydown")).toBeDefined();
-    });
+      const outsideInputEvent = new FocusEvent("focus");
+      Object.defineProperties(outsideInputEvent, {
+        stopPropagation: { value: stopPropagationMock },
+        target: { value: inputNode }
+      });
 
-    it("doesn't bind focus event when hasFocusRestriction=false onShow", () => {
-      setup(mount, { hasFocusRestriction: false });
+      describe("when usePortal is false", () => {
+        let result: ReturnType<typeof component.mount>;
 
-      expect(g.findMockCall(g.addEventListener, "focus")).toBeUndefined();
-    });
+        beforeAll(() => {
+          jest.clearAllMocks();
+        });
 
-    it("unbinds all events when component unmounts", () => {
-      const { actual } = setup(mount);
+        afterAll(() => {
+          result.wrapper.unmount();
+        });
 
-      expect(g.findMockCall(g.addEventListener, "focus")).toBeDefined();
-      expect(g.findMockCall(g.addEventListener, "keydown")).toBeDefined();
+        it("mounts the component", () => {
+          result = component.mount();
+        });
 
-      actual.unmount();
+        it("dispatches a focus event from the body element", () => {
+          window.dispatchEvent(bodyEvent);
+        });
 
-      expect(g.findMockCall(g.removeEventListener, "focus")).toBeDefined();
-      expect(g.findMockCall(g.removeEventListener, "keydown")).toBeDefined();
-    });
+        it("prevents the focus event from proceeding", () => {
+          expect(stopPropagationMock).toHaveBeenCalledTimes(1);
+        });
 
-    it("doesn't unbind focus event when component unmounts when hasFocusRestriction=false", () => {
-      const { actual } = setup(mount, { hasFocusRestriction: false });
+        it("dispatches a focus event from an input element outside the modal", () => {
+          window.dispatchEvent(outsideInputEvent);
+        });
 
-      actual.unmount();
+        it("prevents the focus event from proceeding", () => {
+          expect(stopPropagationMock).toHaveBeenCalledTimes(2);
+        });
 
-      expect(g.findMockCall(g.removeEventListener, "focus")).toBeUndefined();
-    });
+        it("dispatches a focus event from an input element within the modal", () => {
+          const modalInput = result.wrapper.find("#Modal--input").instance();
+          const event = new FocusEvent("focus");
+          Object.defineProperties(event, {
+            stopPropagation: { value: stopPropagationMock },
+            target: { value: modalInput }
+          });
+          window.dispatchEvent(event);
+        });
 
-    it("doesn't unbind anything when component unmounts when modal isn't open", () => {
-      const { actual } = setup(mount, { isOpen: false });
+        it("doesn't prevent the focus event from proceeding", () => {
+          expect(stopPropagationMock).toHaveBeenCalledTimes(2);
+        });
 
-      actual.unmount();
+        it("clears stopPropagationMock", () => {
+          stopPropagationMock.mockClear();
+        });
+      });
 
-      expect(g.findMockCall(g.removeEventListener, "focus")).toBeUndefined();
-      expect(g.findMockCall(g.removeEventListener, "keydown")).toBeUndefined();
+      describe("when usePortal is true", () => {
+        let result: ReturnType<typeof component.mount>;
+
+        beforeAll(() => {
+          jest.clearAllMocks();
+        });
+
+        afterAll(() => {
+          result.wrapper.unmount();
+        });
+
+        it("mounts the component", () => {
+          result = component
+            .withProps({
+              usePortal: true
+            })
+            .mount();
+        });
+
+        it("dispatches a focus event from the body element", () => {
+          window.dispatchEvent(bodyEvent);
+        });
+
+        it("prevents the focus event from proceeding", () => {
+          expect(stopPropagationMock).toHaveBeenCalledTimes(1);
+        });
+
+        it("dispatches a focus event from an input element outside the modal", () => {
+          window.dispatchEvent(outsideInputEvent);
+        });
+
+        it("prevents the focus event from proceeding", () => {
+          expect(stopPropagationMock).toHaveBeenCalledTimes(2);
+        });
+
+        it("dispatches a focus event from an input element within the modal", () => {
+          const modalInput = result.wrapper.find("#Modal--input").instance();
+          const event = new FocusEvent("focus");
+          Object.defineProperties(event, {
+            stopPropagation: { value: stopPropagationMock },
+            target: { value: modalInput }
+          });
+          window.dispatchEvent(event);
+        });
+
+        it("doesn't prevent the focus event from proceeding", () => {
+          expect(stopPropagationMock).toHaveBeenCalledTimes(2);
+        });
+
+        it("clears stopPropagationMock", () => {
+          stopPropagationMock.mockClear();
+        });
+      });
     });
   });
 });

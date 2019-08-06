@@ -1,13 +1,18 @@
 import { mount } from "enzyme";
-import merge from "lodash.merge";
 import * as React from "react";
 
-import App from "./App";
+import * as actions from "../../../actions/root.actions";
+import { error } from "../../../models/root.models";
+import MockPageContext from "../../../utilities/MockPageContext";
+import {
+  findMockCall,
+  mockWithResolvedPromise
+} from "../../../utilities/mocks";
+import { App } from "./App";
 
 jest.mock("serviceworker-webpack-plugin/lib/runtime", () => ({
-  register: jest.fn(() => new Promise(resolve => resolve()))
+  register: mockWithResolvedPromise({})
 }));
-
 jest.mock("../../../../next.routes", () => ({
   Router: {
     route: ""
@@ -16,288 +21,399 @@ jest.mock("../../../../next.routes", () => ({
 
 import routes from "../../../../next.routes";
 
-import * as selectors from "../../../selectors/root.selectors";
+class MockPageComponent extends React.Component {
+  public static async getInitialProps() {
+    return {
+      mockPageComponentProp: "test"
+    };
+  }
 
-const setup = async (fn: any, fromTestProps?: any) => {
-  const Component = () => <div className="PageComponent" />;
-  const appProps = merge(
-    {
-      Component,
-      asPath: "",
-      ctx: {
-        isServer: false,
-        pathname: "",
-        query: {},
-        req: {
-          intlMessages: {},
-          locale: "en-NZ"
-        },
-        res: {}
+  public render() {
+    return <div className="MockPageComponent" />;
+  }
+}
+
+const defineGlobals = (isServer: boolean, locale?: string) => {
+  Object.defineProperties(global, {
+    __NEXT_DATA__: {
+      value: {
+        props: {
+          initialProps: {
+            intlProps: {
+              locale
+            }
+          }
+        }
       },
-      router: {
-        pathname: ""
+      writable: true
+    },
+    isServer: {
+      value: isServer,
+      writable: true
+    }
+  });
+};
+
+const setup = async (context: any, Component: any, locale?: string) => {
+  const appContext: any = {
+    Component,
+    ctx: {
+      ...context,
+      req: {
+        locale
       }
     },
-    fromTestProps
-  );
-  const initialProps = await App.getInitialProps(appProps);
+    router: {
+      pathname: ""
+    },
+    store: context.store
+  };
+
+  const initialProps = await App.getInitialProps(appContext);
   const props = {
-    ...appProps,
+    ...appContext,
     ...initialProps
   };
 
   return {
-    actual: fn(<App {...props} />),
-    props
+    props,
+    wrapper: mount(<App {...props} />)
   };
 };
 
-const g: any = global;
-
 describe("[connected] <App />", () => {
-  const addEventListener = g.addEventListener;
-  const removeEventListener = g.removeEventListener;
+  describe("getInitialProps", () => {
+    const context = new MockPageContext();
 
-  beforeAll(() => {
-    g.addEventListener = jest.fn((...args) => addEventListener(...args));
-    g.removeEventListener = jest.fn((...args) => removeEventListener(...args));
-  });
+    describe("when on the server", () => {
+      let props: any;
+      const locale = "en-US";
 
-  beforeEach(() => {
-    g.isServer = false;
-    g.__NEXT_DATA__ = {
-      props: {
-        initialProps: {
-          intlProps: {}
-        }
-      }
-    };
-  });
+      const ctx = context
+        .withReduxState({
+          app: {
+            error: error({ message: "Error", status: 404 })
+          }
+        })
+        .toObject(true);
 
-  afterEach(() => {
-    g.__NEXT_DATA__ = undefined;
-    jest.clearAllMocks();
-  });
+      const appContext: any = {
+        Component: MockPageComponent,
+        ctx: {
+          ...ctx,
+          req: {
+            locale
+          },
+          res: {
+            statusCode: 200
+          }
+        },
+        router: {
+          pathname: ""
+        },
+        store: ctx.store
+      };
 
-  afterAll(() => {
-    g.addEventListener = addEventListener;
-    g.removeEventListener = removeEventListener;
-  });
-
-  it("mounts application correctly on the server", async () => {
-    g.isServer = true;
-    let isPassing = true;
-
-    try {
-      const { actual } = await setup(mount, {
-        ctx: { isServer: g.isServer }
+      beforeAll(() => {
+        defineGlobals(true, locale);
       });
 
-      expect(actual.render()).toMatchSnapshot();
-      actual.unmount();
-    } catch (error) {
-      isPassing = false;
-    }
+      it("calls getInitialProps method", async () => {
+        props = await App.getInitialProps(appContext);
+      });
 
-    expect(isPassing).toBe(true);
-  });
+      it("defines pageProps correctly", async () => {
+        expect(props.pageProps).toEqual(
+          await MockPageComponent.getInitialProps()
+        );
+      });
 
-  it("mounts application correctly on the client", async () => {
-    let isPassing = true;
+      it("defines the response's statusCode correctly", () => {
+        ctx.store.dispatch({ type: "ANY" });
 
-    try {
-      const { actual } = await setup(mount);
+        expect(appContext.ctx.res.statusCode).toBe(404);
+      });
 
-      expect(actual.render()).toMatchSnapshot();
-      actual.unmount();
-    } catch (error) {
-      isPassing = false;
-    }
-
-    expect(isPassing).toBe(true);
-  });
-
-  it("gets `initialProps` from component correctly", async () => {
-    const test = "Test";
-    const Component: any = () => <div className="PageComponent" />;
-    Component.getInitialProps = async () => ({ test });
-    const { actual, props } = await setup(mount, { Component });
-
-    expect(props.initialProps.pageProps).toEqual({ test });
-
-    actual.unmount();
-  });
-
-  describe("feature events", () => {
-    it("handles single feature correctly", async () => {
-      const { actual, props } = await setup(mount);
-
-      window.dispatchEvent(
-        new CustomEvent("feature", { detail: "has-test-feature" })
-      );
-
-      expect(
-        selectors.hasFeature(props.ctx.store.getState(), "has-test-feature")
-      ).toBe(true);
-
-      actual.unmount();
+      it("defines locale correctly", () => {
+        expect(props.intlProps.locale).toBe(locale);
+      });
     });
 
-    it("handles multiple features correctly", async () => {
-      const { actual, props } = await setup(mount);
+    describe("when on the client", () => {
+      const locale = "en-US";
+
+      beforeAll(() => {
+        defineGlobals(false, locale);
+      });
+
+      let props: any;
+
+      const ctx = context.toObject(false);
+
+      const appContext: any = {
+        Component: MockPageComponent,
+        ctx: {
+          ...ctx,
+          req: {
+            locale: "en-US"
+          }
+        },
+        router: {
+          pathname: ""
+        },
+        store: ctx.store
+      };
+
+      it("calls getInitialProps method", async () => {
+        props = await App.getInitialProps(appContext);
+      });
+
+      it("defines pageProps correctly", async () => {
+        expect(props.pageProps).toEqual(
+          await MockPageComponent.getInitialProps()
+        );
+      });
+
+      it("defines locale correctly", () => {
+        expect(props.intlProps.locale).toBe(locale);
+      });
+    });
+  });
+
+  describe("when mounting on the server", () => {
+    const context = new MockPageContext();
+
+    let result: any;
+    const locale = "en-US";
+
+    beforeEach(() => {
+      defineGlobals(true, locale);
+    });
+
+    it("mounts the component", async () => {
+      result = await setup(context.toObject(true), MockPageComponent, locale);
+    });
+
+    it("dispatches actions.initApp.started with expected payload", () => {
+      const matchingActions = context.reduxHistory.filter(
+        actions.initApp.started.match
+      );
+
+      expect(matchingActions).toHaveLength(1);
+      expect(matchingActions[0].payload).toEqual({
+        locale
+      });
+    });
+
+    it("matches snapshot", () => {
+      expect(result.wrapper.render()).toMatchSnapshot();
+    });
+
+    it("unmounts correctly", () => {
+      result.wrapper.unmount();
+    });
+  });
+
+  describe("when mounting on the client", () => {
+    let result: any;
+    const context = new MockPageContext();
+
+    const locale = "en-US";
+
+    beforeAll(() => {
+      jest.spyOn(window, "removeEventListener");
+
+      defineGlobals(false, locale);
+    });
+
+    it("mounts the component", async () => {
+      result = await setup(context.toObject(false), MockPageComponent, locale);
+    });
+
+    it("dispatch actions.setOnlineStatus", () => {
+      expect(
+        context.reduxHistory.filter(actions.setOnlineStatus.match)
+      ).toHaveLength(1);
+    });
+
+    it("dispatch actions.setCurrentRoute", () => {
+      expect(
+        context.reduxHistory.filter(actions.setCurrentRoute.match)
+      ).toHaveLength(1);
+    });
+
+    it("dispatches actions.trackEvent.started with optimize.activate", () => {
+      const matchingActions = context.reduxHistory.filter(
+        actions.trackEvent.match
+      );
+
+      expect(matchingActions).toHaveLength(1);
+      expect(matchingActions[0].payload).toEqual({
+        event: "optimize.activate"
+      });
+    });
+
+    it("dispatches actions.initApp.started with expected payload", () => {
+      const matchingActions = context.reduxHistory.filter(
+        actions.initApp.started.match
+      );
+
+      expect(matchingActions).toHaveLength(1);
+      expect(matchingActions[0].payload).toEqual({
+        locale
+      });
+    });
+
+    it("handles feature event correctly", () => {
+      const features = ["test"];
 
       window.dispatchEvent(
         new CustomEvent("feature", {
-          detail: ["has-test-feature-1", "has-test-feature-2"]
+          detail: features
         })
       );
 
-      expect(
-        selectors.hasFeature(props.ctx.store.getState(), "has-test-feature-1")
-      ).toBe(true);
-      expect(
-        selectors.hasFeature(props.ctx.store.getState(), "has-test-feature-2")
-      ).toBe(true);
+      const matchingEvents = context.reduxHistory.filter(
+        actions.addFeatures.match
+      );
 
-      actual.unmount();
-    });
-  });
-
-  describe("router events", () => {
-    it("onRouteChangeStart is handled correctly", async () => {
-      const { actual, props } = await setup(mount);
-
-      routes.Router.onRouteChangeStart("/");
-
-      expect(props.ctx.store.getState().page.transitioningTo).toBe("/");
-
-      actual.unmount();
+      expect(matchingEvents).toHaveLength(1);
+      expect(matchingEvents[0].payload).toEqual(features);
     });
 
-    it("onRouteChangeComplete is handled correctly", async () => {
-      const { actual, props } = await setup(mount);
+    it("handles service worker message events correctly", () => {
+      const data = { type: "serviceWorker.activate" };
 
-      routes.Router.onRouteChangeComplete("/");
+      navigator.serviceWorker.dispatchEvent(
+        new MessageEvent("message", { data })
+      );
 
-      expect(props.ctx.store.getState().page.transitioningTo).toBeUndefined();
-      expect(props.ctx.store.getState().page.currentRoute).toBe("/");
+      const matchingEvents = context.reduxHistory.filter(
+        actions.receiveServiceWorkerMessage.match
+      );
 
-      actual.unmount();
+      expect(matchingEvents).toHaveLength(1);
+      expect(matchingEvents[0].payload).toEqual(data);
     });
 
-    it("onRouteChangeStart is handled correctly", async () => {
-      const { actual, props } = await setup(mount);
+    it("handles beforeinstallprompt event correctly", async () => {
+      const outcome = "dismissed";
 
-      routes.Router.onRouteChangeError(new Error("Server error"), "/");
+      const event: any = new Event("beforeinstallprompt");
+      event.userChoice = { outcome: "dismissed" };
+      await window.dispatchEvent(event);
 
-      expect(props.ctx.store.getState().page.transitioningTo).toBeUndefined();
-      expect(props.ctx.store.getState().page.error).toEqual({
-        message: "Error: Server error",
-        status: 500
+      const matchingActions = context.reduxHistory.filter(
+        actions.trackEvent.match
+      );
+
+      expect(matchingActions).toHaveLength(3);
+      expect(matchingActions[1].payload).toEqual({
+        event: "addToHomeScreen.prompted"
       });
-
-      actual.unmount();
-    });
-  });
-
-  describe("beforeinstallprompt event", () => {
-    it("handles dismissed outcome correctly", async () => {
-      let isPassing = true;
-
-      try {
-        const { actual } = await setup(mount);
-
-        const event: any = new Event("beforeinstallprompt");
-        event.userChoice = new Promise(resolve =>
-          resolve({ outcome: "dismissed" })
-        );
-        await window.dispatchEvent(event);
-
-        actual.unmount();
-      } catch (error) {
-        isPassing = false;
-      }
-
-      expect(isPassing).toBe(true);
-    });
-
-    it("handles accepted outcome correctly", async () => {
-      let isPassing = true;
-
-      try {
-        const { actual } = await setup(mount);
-
-        const event: any = new Event("beforeinstallprompt");
-        event.userChoice = new Promise(resolve =>
-          resolve({ outcome: "accepted" })
-        );
-        await window.dispatchEvent(event);
-
-        actual.unmount();
-      } catch (error) {
-        isPassing = false;
-      }
-
-      expect(isPassing).toBe(true);
-    });
-  });
-
-  describe("service worker", () => {
-    it("registers when browser support exists", async () => {
-      const { actual } = await setup(mount);
-      const { serviceWorkerContainer } = actual
-        .childAt(0)
-        .childAt(0)
-        .instance();
-
-      expect(serviceWorkerContainer).toBeDefined();
-      expect(serviceWorkerContainer.register).toHaveBeenCalledWith({
-        scope: "/"
+      expect(matchingActions[2].payload).toEqual({
+        event: "addToHomeScreen.outcome",
+        outcome
       });
-
-      actual.unmount();
     });
 
-    it("updates online status correctly", async () => {
-      const { actual, props } = await setup(mount);
+    it("handles online event correctly", () => {
+      window.dispatchEvent(new Event("online"));
 
-      expect(g.findMockCall(g.addEventListener, "offline")).toBeDefined();
-      expect(g.findMockCall(g.addEventListener, "online")).toBeDefined();
+      const matchingActions = context.reduxHistory.filter(
+        actions.setOnlineStatus.match
+      );
 
-      g.dispatchEvent(new Event("offline"));
-      expect(props.ctx.store.getState().page.isOnline).toBe(false);
+      expect(matchingActions).toHaveLength(2);
+      expect(matchingActions[1].payload).toBe(true);
+    });
 
-      g.dispatchEvent(new Event("online"));
-      expect(props.ctx.store.getState().page.isOnline).toBe(true);
-
-      actual.unmount();
-      expect(g.findMockCall(g.removeEventListener, "offline")).toBeDefined();
-      expect(g.findMockCall(g.removeEventListener, "online")).toBeDefined();
-
+    it("handles offline event correctly", () => {
       window.dispatchEvent(new Event("offline"));
-      expect(props.ctx.store.getState().page.isOnline).toBe(true);
+
+      const matchingActions = context.reduxHistory.filter(
+        actions.setOnlineStatus.match
+      );
+
+      expect(matchingActions).toHaveLength(3);
+      expect(matchingActions[2].payload).toBe(false);
     });
 
-    it("receives messages from service worker correctly", async () => {
-      const { actual, props } = await setup(mount);
+    describe("routing events", () => {
+      const route = "/";
 
-      expect(
-        g.findMockCall(navigator.serviceWorker.addEventListener, "message")
-      ).toBeDefined();
-
-      const event = new MessageEvent("message", {
-        data: { type: "serviceWorker.activate" }
+      it("triggers onRouteChangeStart", () => {
+        routes.Router.onRouteChangeStart(route);
       });
-      navigator.serviceWorker.dispatchEvent(event);
-      expect(props.ctx.store.getState().page.hasNewVersion).toBe(true);
 
-      actual.unmount();
+      it("dispatches actions.changeRoute.started with expected payload", () => {
+        const matchingActions = context.reduxHistory.filter(
+          actions.changeRoute.started.match
+        );
+
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload).toBe(route);
+      });
+
+      it("triggers onRouteChangeComplete", async () => {
+        routes.Router.onRouteChangeComplete(route);
+      });
+
+      it("dispatches actions.changeRoute.done with expected payload", async () => {
+        const matchingActions = context.reduxHistory.filter(
+          actions.changeRoute.done.match
+        );
+
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.params).toBe(route);
+      });
+
+      it("triggers onRouteChangeError", async () => {
+        routes.Router.onRouteChangeError(new Error("Server error"), route);
+      });
+
+      it("dispatches actions.changeRoute.failed with expected error", async () => {
+        const matchingActions = context.reduxHistory.filter(
+          actions.changeRoute.failed.match
+        );
+
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.error).toBe("Server error");
+      });
+    });
+
+    it("matches snapshot", () => {
+      expect(result.wrapper.render()).toMatchSnapshot();
+    });
+
+    it("unmounts correctly", () => {
+      result.wrapper.unmount();
+
+      expect(findMockCall(window.removeEventListener, "feature")).toBeDefined();
       expect(
-        g.findMockCall(navigator.serviceWorker.removeEventListener, "message")
+        findMockCall(window.removeEventListener, "beforeinstallprompt")
       ).toBeDefined();
+      expect(findMockCall(window.removeEventListener, "online")).toBeDefined();
+      expect(findMockCall(window.removeEventListener, "offline")).toBeDefined();
+    });
+  });
 
-      navigator.serviceWorker.dispatchEvent(event);
-      expect(props.ctx.store.getState().page.hasNewVersion).toBe(true);
+  describe("when mounting when the page has no getInitialProps method", () => {
+    let result: any;
+    const context = new MockPageContext();
+
+    it("mounts the component", async () => {
+      result = await setup(context.toObject(false), () => (
+        <div className="MockPageComponent" />
+      ));
+    });
+
+    it("matches snapshot", () => {
+      expect(result.wrapper.render()).toMatchSnapshot();
+    });
+
+    it("unmounts correctly", () => {
+      result.wrapper.unmount();
     });
   });
 });

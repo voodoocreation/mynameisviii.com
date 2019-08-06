@@ -1,131 +1,267 @@
-import { mount, render, shallow } from "enzyme";
-import * as React from "react";
-
+import * as messages from "../../../locales/en-NZ";
+import ComponentTester from "../../../utilities/ComponentTester";
+import { createMockElement, findMockCall } from "../../../utilities/mocks";
 import LoadButton from "./LoadButton";
 
-const setup = (fn: any, fromTestProps?: any) => {
-  const props = {
-    className: "TestLoadButton",
-    onLoad: jest.fn(),
-    ...fromTestProps
-  };
-
-  return {
-    actual: fn(<LoadButton {...props}>Load button</LoadButton>),
-    props
-  };
-};
-
-const g: any = global;
 const screenWidth = 1920;
 const screenHeight = 1080;
-const addEventListener = g.addEventListener;
-const removeEventListener = g.removeEventListener;
+
+const component = new ComponentTester(LoadButton).withDefaultProps({
+  className: "TestLoadButton",
+  onLoad: jest.fn()
+});
 
 describe("[presentation] <LoadButton />", () => {
-  beforeEach(() => {
-    g.innerWidth = screenWidth;
-    g.innerHeight = screenHeight;
-    g.isServer = false;
-    g.addEventListener = jest.fn((...args) => addEventListener(...args));
-    g.removeEventListener = jest.fn((...args) => removeEventListener(...args));
+  jest.spyOn(window, "addEventListener");
+  jest.spyOn(window, "removeEventListener");
+
+  Object.defineProperties(window, {
+    innerHeight: {
+      value: screenHeight,
+      writable: true
+    },
+    innerWidth: {
+      value: screenWidth,
+      writable: true
+    },
+    isServer: {
+      value: false,
+      writable: true
+    }
   });
 
-  it("renders correctly with minimum props", () => {
-    const { actual } = setup(render);
+  describe("when mounting on the client and isScrollLoadEnabled is false", () => {
+    let result: ReturnType<typeof component.mount>;
 
-    expect(actual).toMatchSnapshot();
+    beforeAll(() => {
+      jest.clearAllMocks();
+
+      result = component
+        .withProps({
+          isScrollLoadEnabled: false
+        })
+        .mount();
+    });
+
+    it("doesn't bind scroll event listener", () => {
+      expect(findMockCall(window.addEventListener, "scroll")).toBeUndefined();
+    });
+
+    it("doesn't call the onLoad prop", () => {
+      expect(result.props.onLoad).toHaveBeenCalledTimes(0);
+    });
+
+    it("clicks the button", () => {
+      result.wrapper.simulate("click");
+    });
+
+    it("calls the onLoad prop", () => {
+      expect(result.props.onLoad).toHaveBeenCalledTimes(1);
+    });
+
+    it("unmounts component", () => {
+      result.wrapper.unmount();
+    });
+
+    it("doesn't unbind scroll event listener", () => {
+      expect(
+        findMockCall(window.removeEventListener, "scroll")
+      ).toBeUndefined();
+    });
   });
 
-  it("triggers `onLoad` prop when button is clicked", () => {
-    const { actual, props } = setup(shallow, { isScrollLoadEnabled: false });
+  describe("when mounting on the client and isScrollLoadEnabled is true", () => {
+    let result: ReturnType<typeof component.mount>;
 
-    actual.simulate("click");
+    beforeAll(() => {
+      jest.clearAllMocks();
 
-    expect(props.onLoad).toHaveBeenCalledTimes(1);
+      result = component
+        .withProps({
+          isScrollLoadEnabled: true,
+          triggerDistance: 200
+        })
+        .mount();
+    });
+
+    it("binds scroll event listener", () => {
+      expect(findMockCall(window.addEventListener, "scroll")).toBeDefined();
+    });
+
+    it("calls the onLoad prop instantly", () => {
+      expect(result.props.onLoad).toHaveBeenCalledTimes(1);
+    });
+
+    it("clears mocks", () => {
+      jest.clearAllMocks();
+    });
+
+    it("simulate positioning the button off the screen", () => {
+      result.wrapper
+        .find("LoadButton")
+        // @ts-ignore-next-line
+        .instance().buttonRef.current = createMockElement(
+        100,
+        100,
+        screenHeight + result.props.triggerDistance,
+        0
+      );
+    });
+
+    it("dispatches a scroll event", () => {
+      window.dispatchEvent(new UIEvent("scroll"));
+    });
+
+    it("doesn't call the onLoad prop", () => {
+      expect(result.props.onLoad).toHaveBeenCalledTimes(0);
+    });
+
+    it("simulate positioning the button within the trigger distance of the screen", () => {
+      result.wrapper
+        .find("LoadButton")
+        // @ts-ignore-next-line
+        .instance().buttonRef.current = createMockElement(
+        100,
+        100,
+        screenHeight + result.props.triggerDistance - 1,
+        0
+      );
+    });
+
+    it("dispatches a scroll event", () => {
+      window.dispatchEvent(new UIEvent("scroll"));
+    });
+
+    it("calls the onLoad prop", () => {
+      expect(result.props.onLoad).toHaveBeenCalledTimes(1);
+    });
+
+    it("clears mocks", () => {
+      jest.clearAllMocks();
+    });
+
+    it("updates the props to set isScrollLoadEnabled to false", () => {
+      result.wrapper.setProps({
+        isScrollLoadEnabled: false
+      });
+    });
+
+    it("unbinds the scroll event listener", () => {
+      expect(findMockCall(window.removeEventListener, "scroll")).toBeDefined();
+    });
+
+    it("updates the props to set isScrollLoadEnabled to true again", () => {
+      result.wrapper.setProps({
+        isScrollLoadEnabled: true
+      });
+    });
+
+    it("unbinds the scroll event listener", () => {
+      expect(findMockCall(window.addEventListener, "scroll")).toBeDefined();
+    });
+
+    it("calls the onLoad prop", () => {
+      expect(result.props.onLoad).toHaveBeenCalledTimes(1);
+    });
+
+    it("clears mocks", () => {
+      jest.clearAllMocks();
+    });
+
+    it("unmounts component", () => {
+      result.wrapper.unmount();
+    });
+
+    it("unbinds scroll event listener", () => {
+      expect(findMockCall(window.removeEventListener, "scroll")).toBeDefined();
+    });
   });
 
-  it("attempts automatic load on window scroll when the button is almost in view", () => {
-    const { actual, props } = setup(mount);
+  describe("when mounting on the server and isScrollLoadEnabled is true", () => {
+    let result: ReturnType<typeof component.mount>;
 
-    actual.instance().buttonRef.current.buttonNode = g.mockElement(
-      100,
-      100,
-      0,
-      0
-    );
-    g.dispatchEvent(new UIEvent("scroll"));
+    beforeAll(() => {
+      jest.clearAllMocks();
 
-    expect(props.onLoad).toHaveBeenCalledTimes(2);
+      Object.defineProperty(window, "isServer", {
+        value: true,
+        writable: true
+      });
+
+      result = component
+        .withProps({
+          isScrollLoadEnabled: true,
+          triggerDistance: 200
+        })
+        .mount();
+    });
+
+    it("doesn't bind scroll event listener", () => {
+      expect(findMockCall(window.addEventListener, "scroll")).toBeUndefined();
+    });
+
+    it("doesn't call the onLoad prop instantly", () => {
+      expect(result.props.onLoad).toHaveBeenCalledTimes(0);
+    });
+
+    it("updates the props to set isScrollLoadEnabled to false", () => {
+      result.wrapper.setProps({
+        isScrollLoadEnabled: false
+      });
+    });
+
+    it("doesn't unbind the scroll event listener", () => {
+      expect(
+        findMockCall(window.removeEventListener, "scroll")
+      ).toBeUndefined();
+    });
+
+    it("updates the props to set isScrollLoadEnabled to true again", () => {
+      result.wrapper.setProps({
+        isScrollLoadEnabled: true
+      });
+    });
+
+    it("doesn't unbind the scroll event listener", () => {
+      expect(findMockCall(window.addEventListener, "scroll")).toBeUndefined();
+    });
   });
 
-  it("doesn't attempt automatic load on window scroll when the button isn't almost in view", () => {
-    const { actual, props } = setup(mount, { isScrollLoadEnabled: false });
+  it("renders children within the button when they're defined", () => {
+    const { wrapper } = component.withChildren("Load button").render();
 
-    actual.instance().buttonRef.current.buttonNode = g.mockElement(
-      100,
-      100,
-      screenHeight + 50,
-      0
-    );
-    actual.setProps({ isScrollLoadEnabled: true });
-    g.dispatchEvent(new UIEvent("scroll"));
-
-    expect(props.onLoad).not.toHaveBeenCalledTimes(1);
+    expect(wrapper.text()).toBe("Load button");
   });
 
-  describe("window scroll event binding", () => {
-    it("binds when isScrollLoadEnabled=true", () => {
-      setup(shallow);
+  it("renders LOAD_MORE within the button when no children are defined and hasError is false", () => {
+    const { wrapper } = component
+      .withProps({
+        hasError: false,
+        isLoading: false
+      })
+      .render();
 
-      expect(g.findMockCall(g.addEventListener, "scroll")).toBeDefined();
-    });
+    expect(wrapper.text()).toBe(messages.LOAD_MORE);
+  });
 
-    it("doesn't bind when isScrollLoadEnabled=false", () => {
-      setup(shallow, { isScrollLoadEnabled: false });
+  it("renders TRY_AGAIN within the button when no children are defined and hasError is true", () => {
+    const { wrapper } = component
+      .withProps({
+        hasError: true,
+        isLoading: false
+      })
+      .render();
 
-      expect(g.findMockCall(g.addEventListener, "scroll")).toBeUndefined();
-    });
+    expect(wrapper.text()).toBe(messages.TRY_AGAIN);
+  });
 
-    it("binds when `isScrollLoadEnabled` changes from false to true", () => {
-      const { actual } = setup(shallow, { isScrollLoadEnabled: false });
+  it("renders a Loader when isLoading is true", () => {
+    const { wrapper } = component
+      .withProps({
+        isLoading: true
+      })
+      .mount();
 
-      expect(g.findMockCall(g.addEventListener, "scroll")).toBeUndefined();
-      actual.setProps({ isScrollLoadEnabled: true });
-      expect(g.findMockCall(g.addEventListener, "scroll")).toBeDefined();
-    });
-
-    it("unbinds when `isScrollLoadEnabled` changes from true to false", () => {
-      const { actual } = setup(shallow, { isScrollLoadEnabled: true });
-
-      expect(g.findMockCall(g.addEventListener, "scroll")).toBeDefined();
-      actual.setProps({ isScrollLoadEnabled: false });
-      expect(g.findMockCall(g.removeEventListener, "scroll")).toBeDefined();
-    });
-
-    it("unbinds when component unmounts", () => {
-      const { actual } = setup(shallow);
-
-      expect(g.findMockCall(g.addEventListener, "scroll")).toBeDefined();
-      actual.unmount();
-      expect(g.findMockCall(g.removeEventListener, "scroll")).toBeDefined();
-    });
-
-    it("doesn't unbind when component unmounts and isScrollLoadEnabled=false", () => {
-      const { actual } = setup(shallow, { isScrollLoadEnabled: false });
-
-      expect(g.findMockCall(g.addEventListener, "scroll")).toBeUndefined();
-      actual.unmount();
-      expect(g.findMockCall(g.removeEventListener, "scroll")).toBeUndefined();
-    });
-
-    it("doesn't try to bind/unbind when rendering on the server", () => {
-      g.isServer = true;
-      const { actual } = setup(shallow, { isScrollLoadEnabled: false });
-
-      expect(g.findMockCall(g.addEventListener, "scroll")).toBeUndefined();
-      actual.setProps({ isScrollLoadEnabled: true });
-      expect(g.findMockCall(g.addEventListener, "scroll")).toBeUndefined();
-    });
+    expect(wrapper.find("Loader")).toHaveLength(1);
   });
 });

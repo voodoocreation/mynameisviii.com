@@ -2,10 +2,10 @@ import cn from "classnames";
 import { Map } from "google-maps-react";
 import * as React from "react";
 
+import { ILatLng } from "../../../models/root.models";
 import styles from "./styles.json";
 
 interface IProps {
-  children?: React.ReactNode | React.ReactNode[];
   className?: string;
   disableDefaultUI?: boolean;
   initialCenter: ILatLng;
@@ -13,19 +13,18 @@ interface IProps {
   zoomControl?: boolean;
 }
 
-const ConnectedMap: React.SFC<IProps> = ({ children, className, ...props }) =>
-  (
-    <div className="Map">
-      <Map
-        google={window.google}
-        className={cn("Map-element", className)}
-        styles={styles}
-        {...props}
-      >
-        {children}
-      </Map>
-    </div>
-  ) as React.ReactElement<any>;
+const ConnectedMap: React.FC<IProps> = ({ children, className, ...props }) => (
+  <div className="Map">
+    <Map
+      google={window.google}
+      className={cn("Map-element", className)}
+      styles={styles}
+      {...props}
+    >
+      {children}
+    </Map>
+  </div>
+);
 
 ConnectedMap.defaultProps = {
   disableDefaultUI: true,

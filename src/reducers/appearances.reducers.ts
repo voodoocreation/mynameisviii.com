@@ -1,12 +1,23 @@
 import { reducerWithInitialState } from "typescript-fsa-reducers";
 
 import * as actions from "../actions/root.actions";
+import { IAppearance, ILatLng, TLastEvaluatedKey } from "../models/root.models";
 
-export const initialState: IAppearancesReducers = {
+export interface IState {
+  currentLocation?: ILatLng;
+  currentSlug?: string;
+  hasError: boolean;
+  hasAllItems: boolean;
+  isLoading: boolean;
+  items: Record<string, IAppearance>;
+  lastEvaluatedKey?: TLastEvaluatedKey<"startingAt">;
+}
+
+export const initialState: IState = {
   currentLocation: undefined,
   currentSlug: undefined,
-  error: undefined,
   hasAllItems: false,
+  hasError: false,
   isLoading: false,
   items: {},
   lastEvaluatedKey: undefined
@@ -19,18 +30,18 @@ export default reducerWithInitialState(initialState)
       actions.fetchMoreAppearances.failed,
       actions.fetchAppearanceBySlug.failed
     ],
-    (state, { error }) => ({
+    state => ({
       ...state,
-      error,
+      hasError: true,
       isLoading: false
     })
   )
 
   .case(actions.fetchAppearances.started, state => ({
     ...state,
-    error: undefined,
+    hasError: false,
     isLoading: true,
-    items: {}
+    items: initialState.items
   }))
 
   .case(actions.fetchAppearances.done, (state, { result }) => ({
@@ -41,11 +52,17 @@ export default reducerWithInitialState(initialState)
     lastEvaluatedKey: result.lastEvaluatedKey
   }))
 
-  .case(actions.fetchMoreAppearances.started, state => ({
-    ...state,
-    error: undefined,
-    isLoading: true
-  }))
+  .cases(
+    [
+      actions.fetchMoreAppearances.started,
+      actions.fetchAppearanceBySlug.started
+    ],
+    state => ({
+      ...state,
+      hasError: false,
+      isLoading: true
+    })
+  )
 
   .case(actions.fetchMoreAppearances.done, (state, { result }) => ({
     ...state,
@@ -60,13 +77,8 @@ export default reducerWithInitialState(initialState)
 
   .case(actions.setCurrentAppearanceSlug, (state, payload) => ({
     ...state,
+    currentLocation: undefined,
     currentSlug: payload
-  }))
-
-  .case(actions.fetchAppearanceBySlug.started, state => ({
-    ...state,
-    error: undefined,
-    isLoading: true
   }))
 
   .case(actions.fetchAppearanceBySlug.done, (state, { result }) => ({
@@ -78,16 +90,10 @@ export default reducerWithInitialState(initialState)
     }
   }))
 
-  .cases(
-    [
-      actions.setCurrentAppearanceSlug,
-      actions.geocodeCurrentAppearanceAddress.started
-    ],
-    state => ({
-      ...state,
-      currentLocation: undefined
-    })
-  )
+  .case(actions.geocodeCurrentAppearanceAddress.started, state => ({
+    ...state,
+    currentLocation: undefined
+  }))
 
   .case(actions.geocodeCurrentAppearanceAddress.done, (state, { result }) => ({
     ...state,

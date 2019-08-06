@@ -1,93 +1,77 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[presentation] <Carousel /> renders correctly with minimum props 1`] = `
+exports[`[presentation] <Carousel /> when there are several children matches snapshot 1`] = `
 <div
-  class="Carousel TestCarousel"
+  class="Carousel"
 >
   <div
-    class="Carousel-slides"
-    style="transform:translate3d(-0%, 0, 0)"
+    class="Carousel--slides"
+    style="transform: translate3d(-200%, 0, 0);"
   >
     <div
-      class="Slide-1"
+      class="Slide"
     />
     <div
-      class="Slide-2"
+      class="Slide"
     />
     <div
-      class="Slide-3"
+      class="Slide"
     />
   </div>
   <div
-    class="Carousel-pagination"
+    class="Carousel--pagination"
   >
     <button
-      class="Carousel-page isSelected"
+      class="Button Carousel--pagination--page"
+      type="button"
     >
-      <span>
-        1
+      <span
+        class="Button--content"
+      >
+        <span>
+          1
+        </span>
       </span>
     </button>
     <button
-      class="Carousel-page"
+      class="Button Carousel--pagination--page"
+      type="button"
     >
-      <span>
-        2
+      <span
+        class="Button--content"
+      >
+        <span>
+          2
+        </span>
       </span>
     </button>
     <button
-      class="Carousel-page"
+      class="Button Carousel--pagination--page isSelected"
+      type="button"
     >
-      <span>
-        3
+      <span
+        class="Button--content"
+      >
+        <span>
+          3
+        </span>
       </span>
     </button>
   </div>
 </div>
 `;
 
-exports[`[presentation] <Carousel /> selects correct initial slide when \`currentIndex\` prop is passed 1`] = `
+exports[`[presentation] <Carousel /> when there's only one child matches snapshot 1`] = `
 <div
-  class="Carousel TestCarousel"
+  class="Carousel"
 >
   <div
-    class="Carousel-slides"
-    style="transform:translate3d(-100%, 0, 0)"
+    class="Carousel--slides"
+    style="transform:translate3d(-0%, 0, 0)"
   >
     <div
-      class="Slide-1"
+      class="Slide"
     />
-    <div
-      class="Slide-2"
-    />
-    <div
-      class="Slide-3"
-    />
-  </div>
-  <div
-    class="Carousel-pagination"
-  >
-    <button
-      class="Carousel-page"
-    >
-      <span>
-        1
-      </span>
-    </button>
-    <button
-      class="Carousel-page isSelected"
-    >
-      <span>
-        2
-      </span>
-    </button>
-    <button
-      class="Carousel-page"
-    >
-      <span>
-        3
-      </span>
-    </button>
   </div>
 </div>
 `;

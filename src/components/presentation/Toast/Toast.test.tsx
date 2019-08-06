@@ -1,89 +1,129 @@
-import { mount, render } from "enzyme";
-import * as React from "react";
+import ComponentTester from "../../../utilities/ComponentTester";
 
 import Toast from "./Toast";
 
-const setup = (fn: any, fromTestProps?: any) => {
-  const props = {
-    className: "TestToast",
-    ...fromTestProps
-  };
-
-  return {
-    actual: fn(<Toast {...props}>Test</Toast>),
-    props
-  };
-};
+const component = new ComponentTester(Toast);
 
 describe("[presentation] <Toast />", () => {
-  beforeEach(() => {
-    window.setTimeout = jest.fn((fn: any) => {
-      fn();
-      return 1;
-    });
-    window.clearTimeout = jest.fn();
-    jest.clearAllMocks();
-  });
+  jest.useFakeTimers();
 
-  afterAll(() => {
-    jest.resetAllMocks();
-  });
+  describe("when hasAutoDismiss prop is true", () => {
+    const { props, wrapper } = component
+      .withProps({
+        hasAutoDismiss: true,
+        onClose: jest.fn()
+      })
+      .mount();
 
-  it("renders correctly", () => {
-    const { actual } = setup(render);
-
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("closes when close button is clicked, then reopens when new props are passed", () => {
-    const { actual } = setup(mount, {
-      hasAutoDismiss: false,
-      isVisible: true
+    it("renders correctly when visible", () => {
+      expect(wrapper.find(".Toast")).toHaveLength(1);
     });
 
-    expect(actual.find(".Toast")).toHaveLength(1);
-
-    actual.find(".Toast-closeButton").simulate("click");
-    expect(actual.find(".Toast")).toHaveLength(0);
-
-    actual.setProps({ isVisible: true });
-    expect(actual.find(".Toast")).toHaveLength(1);
-  });
-
-  it("calls `onClose` prop when it's defined when the close button is clicked", () => {
-    const { actual, props } = setup(mount, {
-      hasAutoDismiss: false,
-      isVisible: true,
-      onClose: jest.fn()
+    it("waits for the auto dismiss delay length", () => {
+      jest.runTimersToTime(props.autoDismissDelay);
     });
 
-    actual.find(".Toast-closeButton").simulate("click");
-    expect(props.onClose).toHaveBeenCalled();
+    it("doesn't unrender yet", () => {
+      expect(wrapper.find(".Toast")).toHaveLength(1);
+    });
+
+    it("calls the onClose prop", () => {
+      expect(props.onClose).toHaveBeenCalledTimes(1);
+    });
+
+    it("doesn't render anything after the delay has passed", () => {
+      wrapper.update();
+      expect(wrapper.find(".Toast")).toHaveLength(0);
+    });
   });
 
-  it("doesn't throw an error when `onClose` prop isn't defined when the close button is clicked", () => {
-    let isPassing = true;
-
-    try {
-      const { actual } = setup(mount, {
+  describe("when hasAutoDismiss prop is false", () => {
+    const { props, wrapper } = component
+      .withProps({
         hasAutoDismiss: false,
-        isVisible: true
-      });
+        onClose: jest.fn()
+      })
+      .mount();
 
-      actual.find(".Toast-closeButton").simulate("click");
-    } catch (error) {
-      isPassing = false;
-    }
+    it("renders correctly when visible", () => {
+      expect(wrapper.find(".Toast")).toHaveLength(1);
+    });
 
-    expect(isPassing).toBe(true);
+    it("clicks the close button twice in quick succession", () => {
+      wrapper.find("Button.Toast--closeButton").simulate("click");
+      wrapper.find("Button.Toast--closeButton").simulate("click");
+    });
+
+    it("doesn't unrender yet", () => {
+      expect(wrapper.find(".Toast")).toHaveLength(1);
+    });
+
+    it("calls the onClose prop", () => {
+      expect(props.onClose).toHaveBeenCalledTimes(2);
+    });
+
+    it("doesn't render anything after the delay has passed", () => {
+      jest.runTimersToTime(200);
+      wrapper.update();
+      expect(wrapper.find(".Toast")).toHaveLength(0);
+    });
   });
 
-  it("dismisses automatically when hasAutoDismiss=true", () => {
-    const { actual } = setup(mount, { isVisible: true });
+  describe("when passing isVisible prop", () => {
+    const { props, wrapper } = component
+      .withProps({
+        hasAutoDismiss: true,
+        isVisible: true
+      })
+      .mount();
 
-    actual.setProps({ isVisible: true });
+    it("renders the toast when visible", () => {
+      expect(wrapper.find(".Toast")).toHaveLength(1);
+    });
 
-    expect(window.setTimeout).toHaveBeenCalledTimes(6);
-    expect(window.clearTimeout).toHaveBeenCalledTimes(3);
+    it("waits for the auto dismiss delay length", () => {
+      jest.runTimersToTime(props.autoDismissDelay);
+    });
+
+    it("doesn't unrender yet", () => {
+      expect(wrapper.find(".Toast")).toHaveLength(1);
+    });
+
+    it("doesn't render anything after the delay has passed", () => {
+      jest.runTimersToTime(200);
+      wrapper.update();
+      expect(wrapper.find(".Toast")).toHaveLength(0);
+    });
+
+    it("passes isVisible prop as true again", () => {
+      wrapper.setProps({ isVisible: true });
+    });
+
+    it("renders the toast again", () => {
+      expect(wrapper.find(".Toast")).toHaveLength(1);
+    });
+
+    it("waits for the auto dismiss delay length again", () => {
+      jest.runTimersToTime(props.autoDismissDelay);
+    });
+
+    it("doesn't unrender yet", () => {
+      expect(wrapper.find(".Toast")).toHaveLength(1);
+    });
+
+    it("doesn't render anything after the delay has passed again", () => {
+      jest.runTimersToTime(200);
+      wrapper.update();
+
+      expect(wrapper.find(".Toast")).toHaveLength(0);
+    });
+
+    it("passes isVisible prop as false after it's already hidden", () => {
+      wrapper.setProps({ isVisible: false });
+    });
+
+    it("still doesn't render anything", () => {
+      expect(wrapper.find(".Toast")).toHaveLength(0);
+    });
   });
 });

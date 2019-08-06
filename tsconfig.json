@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "allowJs": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "lib": ["dom", "esnext"],
     "target": "es6",
     "module": "esnext",
@@ -15,7 +15,12 @@
     "strict": true,
     "skipLibCheck": true,
     "baseUrl": ".",
-    "outDir": "dist"
+    "outDir": "dist",
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
   },
-  "exclude": ["**/dist/*", "**/locales/*", "**/node_modules/*"]
+  "exclude": ["**/coverage/*", "**/dist/*", "**/out/*", "**/node_modules/*"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }

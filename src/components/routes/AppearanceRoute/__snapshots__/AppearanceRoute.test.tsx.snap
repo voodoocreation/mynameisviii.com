@@ -1,101 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[routes] <AppearanceRoute /> renders 404 error page when no appearance exists 1`] = `
-<article
-  class="ErrorPage"
->
-  <header
-    class="PageHeader"
-  >
-    <h1>
-      Page not found
-    </h1>
-  </header>
-  <div
-    class="ErrorPage-content"
-  >
-    <svg
-      fill="currentColor"
-      height="1em"
-      stroke="currentColor"
-      stroke-width="0"
-      viewBox="0 0 24 24"
-      width="1em"
-    >
-      <path
-        d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-      />
-    </svg>
-    <p>
-      This page does not exist - please use the site navigation to find what you're looking for.
-    </p>
-  </div>
-</article>
-`;
-
-exports[`[routes] <AppearanceRoute /> renders 500 error page when slug isn't in the store 1`] = `
-<article
-  class="ErrorPage"
->
-  <header
-    class="PageHeader"
-  >
-    <h1>
-      An error has occurred
-    </h1>
-  </header>
-  <div
-    class="ErrorPage-content"
-  >
-    <svg
-      fill="currentColor"
-      height="1em"
-      stroke="currentColor"
-      stroke-width="0"
-      viewBox="0 0 24 24"
-      width="1em"
-    >
-      <path
-        d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-      />
-    </svg>
-    <p>
-      An error has occurred, please try again.
-    </p>
-  </div>
-</article>
-`;
-
-exports[`[routes] <AppearanceRoute /> renders a loader when item is being fetched 1`] = `
-<span
-  class="Loader PageLoader"
->
-  <div
-    class="Loader-animation"
-  >
-    <span />
-    <span />
-    <span />
-  </div>
-</span>
-`;
-
-exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
+exports[`[routes] <AppearanceRoute /> matches snapshot 1`] = `
 <article
   class="Appearance"
 >
   <header
     class="PageHeader"
   >
-    <h1>
-      Nothing But a Test Gig
-    </h1>
+    <h1 />
   </header>
   <div
-    class="MetaBar Appearance-meta"
+    class="MetaBar Appearance--meta"
   >
     <div
-      class="Meta Appearance-date"
+      class="Meta Appearance--date"
     >
       <svg
         fill="currentColor"
@@ -104,6 +22,7 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
         stroke-width="0"
         viewBox="0 0 24 24"
         width="1em"
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"
@@ -111,28 +30,25 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
       </svg>
        
       <span
-        class="Meta-label"
+        class="Meta--label"
       >
-        <span>
-          Date
-        </span>
-        :
+        Date:
       </span>
        
       <span
-        class="Meta-value"
+        class="Meta--value"
       >
         <time
           class="DateTime"
-          datetime="2018-10-20T20:00:00"
-          title="Saturday, October 20, 2018"
+          datetime="2018-01-01"
+          title="Monday, 1 January 2018"
         >
-          Saturday, October 20, 2018
+          Monday, 1 January 2018
         </time>
       </span>
     </div>
     <div
-      class="Meta Appearance-time"
+      class="Meta Appearance--time"
     >
       <svg
         fill="currentColor"
@@ -141,6 +57,7 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
         stroke-width="0"
         viewBox="0 0 24 24"
         width="1em"
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
@@ -148,37 +65,34 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
       </svg>
        
       <span
-        class="Meta-label"
+        class="Meta--label"
       >
-        <span>
-          Time
-        </span>
-        :
+        Time:
       </span>
        
       <span
-        class="Meta-value"
+        class="Meta--value"
       >
         <time
           class="DateTime"
-          datetime="2018-10-20T20:00:00"
-          title="8:00 PM"
+          datetime="2018-01-01T00:00:00"
+          title="12:00 AM"
         >
-          8:00 PM
+          12:00 AM
         </time>
         –
         <time
           class="DateTime"
-          datetime="2018-10-21T01:00:00"
-          title="1:00 AM"
+          datetime="2018-01-01T00:00:00"
+          title="12:00 AM"
         >
-          1:00 AM
+          12:00 AM
         </time>
       </span>
     </div>
     <div
-      class="Meta Appearance-location"
-      title="Meow - 9 Edward Street, Te Aro, Wellington 6011"
+      class="Meta Appearance--location"
+      title=" - undefined"
     >
       <svg
         fill="currentColor"
@@ -187,6 +101,7 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
         stroke-width="0"
         viewBox="0 0 24 24"
         width="1em"
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
@@ -194,334 +109,46 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
       </svg>
        
       <span
-        class="Meta-label"
+        class="Meta--label"
       >
-        <span>
-          Location
-        </span>
-        :
+        Location:
       </span>
        
       <span
-        class="Meta-value"
-      >
-        Meow
-      </span>
-    </div>
-    <div
-      class="Meta Appearance-audience"
-    >
-      <svg
-        fill="currentColor"
-        height="1em"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 24 24"
-        width="1em"
-      >
-        <path
-          d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"
-        />
-      </svg>
-       
-      <span
-        class="Meta-label"
-      >
-        <span>
-          Audience
-        </span>
-        :
-      </span>
-       
-      <span
-        class="Meta-value"
-      >
-        18+
-      </span>
+        class="Meta--value"
+      />
     </div>
   </div>
   <div
-    class="Appearance-body"
+    class="Appearance--body"
   >
-    <figure
-      class="Image Appearance-image isLoading"
-    >
-      <div
-        class="Image-wrapper"
-      >
-        <img
-          alt="Nothing But a Test Gig"
-          src="https://s3.amazonaws.com/mynameisviii-static/appearances/nothing-but-a-test-gig-2018-10-20.jpg"
-        />
-        <span
-          class="Loader"
-        >
-          <div
-            class="Loader-animation"
-          >
-            <span />
-            <span />
-            <span />
-          </div>
-        </span>
-      </div>
-    </figure>
     <div
-      class="Appearance-details"
+      class="Appearance--details"
     >
       <section
-        class="Appearance-description"
+        class="Appearance--description"
       >
-        <p>
-          This is nothing but a test gig. It's not a real event or anything, so don't come.
-        </p>
+        <p />
       </section>
       <section
-        class="Appearance-acts"
+        class="Appearance--acts"
       >
         <h2>
-          <span>
-            Featured acts
-          </span>
+          Featured acts
         </h2>
         <div
-          class="Appearance-acts-items"
-        >
-          <article
-            class="ActListing"
-          >
-            <a
-              class="ActListing-link"
-              href="https://mynameisviii.com"
-              rel="noopener"
-              target="_blank"
-            >
-              <div
-                class="ActListing-details"
-              >
-                <h3>
-                  Viii
-                </h3>
-                <section
-                  class="ActListing-meta"
-                >
-                  <div
-                    class="Meta ActListing-genre"
-                  >
-                    <svg
-                      fill="currentColor"
-                      height="1em"
-                      stroke="currentColor"
-                      stroke-width="0"
-                      viewBox="0 0 24 24"
-                      width="1em"
-                    >
-                      <path
-                        d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"
-                      />
-                    </svg>
-                     
-                    <span
-                      class="Meta-label"
-                    >
-                      <span>
-                        Genre
-                      </span>
-                      :
-                    </span>
-                     
-                    <span
-                      class="Meta-value"
-                    >
-                      Goth/Electronic
-                    </span>
-                  </div>
-                  <div
-                    class="Meta ActListing-location"
-                  >
-                    <svg
-                      fill="currentColor"
-                      height="1em"
-                      stroke="currentColor"
-                      stroke-width="0"
-                      viewBox="0 0 24 24"
-                      width="1em"
-                    >
-                      <path
-                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-                      />
-                    </svg>
-                     
-                    <span
-                      class="Meta-label"
-                    >
-                      <span>
-                        Location
-                      </span>
-                      :
-                    </span>
-                     
-                    <span
-                      class="Meta-value"
-                    >
-                      Wellington
-                    </span>
-                  </div>
-                </section>
-              </div>
-              <figure
-                class="ActListing-image"
-              >
-                <img
-                  alt="Viii"
-                  src="https://s3.amazonaws.com/mynameisviii-static/viii-profile.jpg"
-                />
-              </figure>
-            </a>
-          </article>
-        </div>
-      </section>
-      <section
-        class="Appearance-tickets"
-      >
-        <h2>
-          <span>
-            Get tickets
-          </span>
-        </h2>
-        <div
-          class="Appearance-tickets-items"
-        >
-          <article
-            class="SaleListing"
-          >
-            <a
-              class="SaleListing-link"
-              href="http://ticketek.co.nz/"
-              rel="noopener"
-              target="_blank"
-            >
-              <div
-                class="SaleListing-icon"
-              >
-                <svg
-                  fill="currentColor"
-                  height="1em"
-                  stroke="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 576 512"
-                  width="1em"
-                >
-                  <path
-                    d="M128 160h320v192H128V160zm400 96c0 26.51 21.49 48 48 48v96c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48v-96c26.51 0 48-21.49 48-48s-21.49-48-48-48v-96c0-26.51 21.49-48 48-48h480c26.51 0 48 21.49 48 48v96c-26.51 0-48 21.49-48 48zm-48-104c0-13.255-10.745-24-24-24H120c-13.255 0-24 10.745-24 24v208c0 13.255 10.745 24 24 24h336c13.255 0 24-10.745 24-24V152z"
-                  />
-                </svg>
-              </div>
-              <div
-                class="SaleListing-details"
-              >
-                <h3>
-                  Tickets: 
-                  <span
-                    class="Price"
-                  >
-                    <span>
-                      NZ$10
-                    </span>
-                  </span>
-                </h3>
-                <section
-                  class="SaleListing-meta"
-                >
-                  <div
-                    class="Meta SaleListing-website"
-                  >
-                    <svg
-                      fill="currentColor"
-                      height="1em"
-                      stroke="currentColor"
-                      stroke-width="0"
-                      viewBox="0 0 24 24"
-                      width="1em"
-                    >
-                      <path
-                        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"
-                      />
-                    </svg>
-                     
-                    <span
-                      class="Meta-label"
-                    >
-                      <span>
-                        Website
-                      </span>
-                      :
-                    </span>
-                     
-                    <span
-                      class="Meta-value"
-                    >
-                      ticketek.co.nz
-                    </span>
-                  </div>
-                </section>
-              </div>
-            </a>
-          </article>
-          <article
-            class="SaleListing"
-          >
-            <span
-              class="SaleListing-link"
-            >
-              <div
-                class="SaleListing-icon"
-              >
-                <svg
-                  fill="currentColor"
-                  height="1em"
-                  stroke="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 576 512"
-                  width="1em"
-                >
-                  <path
-                    d="M128 160h320v192H128V160zm400 96c0 26.51 21.49 48 48 48v96c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48v-96c26.51 0 48-21.49 48-48s-21.49-48-48-48v-96c0-26.51 21.49-48 48-48h480c26.51 0 48 21.49 48 48v96c-26.51 0-48 21.49-48 48zm-48-104c0-13.255-10.745-24-24-24H120c-13.255 0-24 10.745-24 24v208c0 13.255 10.745 24 24 24h336c13.255 0 24-10.745 24-24V152z"
-                  />
-                </svg>
-              </div>
-              <div
-                class="SaleListing-details"
-              >
-                <h3>
-                  Door sales: 
-                  <span
-                    class="Price"
-                  >
-                    <span>
-                      NZ$20
-                    </span>
-                  </span>
-                </h3>
-                <section
-                  class="SaleListing-meta"
-                />
-              </div>
-            </span>
-          </article>
-        </div>
+          class="Appearance--acts--items"
+        />
       </section>
     </div>
     <section
-      class="Appearance-images"
+      class="Appearance--images"
     >
       <h2>
-        <span>
-          Photos
-        </span>
+        Photos
       </h2>
       <div
-        class="ImageGallery Appearance-images-items"
+        class="ImageGallery Appearance--images--items"
       >
         <figure
           class="Image isLoading"
@@ -529,17 +156,17 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
           tabindex="0"
         >
           <div
-            class="Image-wrapper"
+            class="Image--wrapper"
           >
             <img
-              alt="Test"
-              src="https://scontent-syd2-1.cdninstagram.com/vp/54127bb2824cd7fdc53b16529d2cbf66/5B9DCAA5/t51.2885-15/s640x640/sh0.08/e35/22071123_377597075993359_300443987536248832_n.jpg"
+              alt=""
+              src="1"
             />
             <span
               class="Loader"
             >
               <div
-                class="Loader-animation"
+                class="Loader--animation"
               >
                 <span />
                 <span />
@@ -547,9 +174,6 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
               </div>
             </span>
           </div>
-          <figcaption>
-            Test
-          </figcaption>
         </figure>
         <figure
           class="Image isLoading"
@@ -557,17 +181,17 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
           tabindex="0"
         >
           <div
-            class="Image-wrapper"
+            class="Image--wrapper"
           >
             <img
-              alt="Test 2"
-              src="https://scontent-syd2-1.cdninstagram.com/vp/6948ffd2ec1841a230fd4a2951d9682b/5BB16229/t51.2885-15/s640x640/sh0.08/e35/22071185_120049202025917_3641908262988677120_n.jpg"
+              alt=""
+              src="2"
             />
             <span
               class="Loader"
             >
               <div
-                class="Loader-animation"
+                class="Loader--animation"
               >
                 <span />
                 <span />
@@ -575,65 +199,6 @@ exports[`[routes] <AppearanceRoute /> renders correctly 1`] = `
               </div>
             </span>
           </div>
-          <figcaption>
-            Test 2
-          </figcaption>
-        </figure>
-        <figure
-          class="Image isLoading"
-          role="button"
-          tabindex="0"
-        >
-          <div
-            class="Image-wrapper"
-          >
-            <img
-              alt="Test 3"
-              src="https://scontent-syd2-1.cdninstagram.com/vp/ca18e3e0d39573400c30b9f0fffac979/5B9E448A/t51.2885-15/s640x640/sh0.08/e35/21985087_1131650620300022_6079660459575738368_n.jpg"
-            />
-            <span
-              class="Loader"
-            >
-              <div
-                class="Loader-animation"
-              >
-                <span />
-                <span />
-                <span />
-              </div>
-            </span>
-          </div>
-          <figcaption>
-            Test 3
-          </figcaption>
-        </figure>
-        <figure
-          class="Image isLoading"
-          role="button"
-          tabindex="0"
-        >
-          <div
-            class="Image-wrapper"
-          >
-            <img
-              alt="Test 4"
-              src="https://scontent-syd2-1.cdninstagram.com/vp/3d5a511d89df625d3aedf6a39d62b734/5BA72356/t51.2885-15/e35/28429228_1781197762175359_1584060036995350528_n.jpg"
-            />
-            <span
-              class="Loader"
-            >
-              <div
-                class="Loader-animation"
-              >
-                <span />
-                <span />
-                <span />
-              </div>
-            </span>
-          </div>
-          <figcaption>
-            Test 4
-          </figcaption>
         </figure>
       </div>
     </section>

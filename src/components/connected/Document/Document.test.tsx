@@ -5,7 +5,7 @@ import * as React from "react";
 import Document from "./Document";
 
 const setup = async (fn: any, fromTestProps?: any) => {
-  const documentProps = merge(
+  const context = merge(
     {
       __NEXT_DATA__: {
         buildId: "buildId",
@@ -13,28 +13,25 @@ const setup = async (fn: any, fromTestProps?: any) => {
         pathname: "pathname"
       },
       assetPrefix: "/assetPrefix",
-      ctx: {
-        isServer: true,
-        renderPage: async () => ({}),
-        req: {
-          intlMessages: {},
-          locale: "en-NZ"
-        }
-      },
       dynamicImports: [],
-      files: []
+      files: [],
+      isServer: true,
+      renderPage: async () => ({}),
+      req: {
+        locale: "en-NZ"
+      }
     },
     fromTestProps
   );
-  const initialProps = await Document.getInitialProps(documentProps.ctx);
+  const initialProps = await Document.getInitialProps(context);
   const props = {
-    ...documentProps,
+    ...context,
     ...initialProps
   };
 
   return {
-    actual: fn(<Document {...props} />),
-    props
+    props,
+    wrapper: fn(<Document {...props} />)
   };
 };
 
@@ -42,21 +39,32 @@ const g: any = global;
 
 describe("[connected] <Document />", () => {
   beforeEach(() => {
-    process.env.NODE_ENV = "test";
+    // @ts-ignore-next-line
+    process.env.NODE_ENV = "development";
     g.isServer = true;
   });
 
   it("renders correctly when NODE_ENV=development", async () => {
+    // @ts-ignore-next-line
     process.env.NODE_ENV = "development";
-    const { actual } = await setup(render);
+    const { wrapper } = await setup(render);
 
-    expect(actual).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("renders currectly when NODE_ENV=production", async () => {
+    // @ts-ignore-next-line
     process.env.NODE_ENV = "production";
-    const { actual } = await setup(render);
+    const { wrapper } = await setup(render);
 
-    expect(actual).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it("renders currectly when locale is missing", async () => {
+    const { wrapper } = await setup(render, {
+      req: { locale: "" }
+    });
+
+    expect(wrapper).toMatchSnapshot();
   });
 });

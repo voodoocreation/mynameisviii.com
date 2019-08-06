@@ -1,178 +1,209 @@
-import setupSagas from "../helpers/setupSagas";
-import { arrayToAssoc } from "../transformers/transformData";
+import { dynamoResponse, release } from "../models/root.models";
+import { mockWithFailure, mockWithSuccess } from "../utilities/mocks";
+import SagaTester from "../utilities/SagaTester";
 
 import * as actions from "../actions/root.actions";
-import * as selectors from "../selectors/root.selectors";
-
-const g: any = global;
 
 describe("[sagas] Releases", () => {
-  const existingItems = [{ slug: "existing-test" }];
-  const items = [{ slug: "test" }];
+  const item = release({ slug: "item-1" });
+  const data = dynamoResponse({
+    items: [item]
+  });
 
-  describe("takeLatest(actions.fetchReleases.started)", () => {
+  describe("fetchReleasesSaga", () => {
     describe("when fetching releases, with a successful response", () => {
-      const { dispatch, filterAction, store } = setupSagas(
+      const saga = new SagaTester(
         {},
         {
           api: {
-            fetchReleases: g.mockWithData({ items })
+            fetchReleases: mockWithSuccess(data)
           }
         }
       );
 
       it("dispatches actions.fetchReleases.started", () => {
-        dispatch(actions.fetchReleases.started({}));
+        saga.dispatch(actions.fetchReleases.started({}));
       });
 
-      it("dispatches actions.fetchReleases.done", () => {
-        expect(filterAction(actions.fetchReleases.done)).toHaveLength(1);
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchReleases).toHaveBeenCalledTimes(1);
       });
 
-      it("has the data from the response in the store", () => {
-        expect(selectors.getReleasesAsArray(store())).toEqual(items);
+      it("dispatches actions.fetchReleases.done with the expected result", () => {
+        const matchingActions = saga.history.filter(
+          actions.fetchReleases.done.match
+        );
+
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.result).toEqual(data);
       });
     });
 
     describe("when fetching releases, with a failed response", () => {
-      const { dispatch, filterAction } = setupSagas(
+      const saga = new SagaTester(
         {},
         {
           api: {
-            fetchReleases: g.mockWithError("Bad request")
+            fetchReleases: mockWithFailure("Bad request")
           }
         }
       );
 
       it("dispatches actions.fetchReleases.started", () => {
-        dispatch(actions.fetchReleases.started({}));
+        saga.dispatch(actions.fetchReleases.started({}));
+      });
+
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchReleases).toHaveBeenCalledTimes(1);
       });
 
       it("dispatches actions.fetchReleases.failed with expected error", () => {
-        const failedActions = filterAction(actions.fetchReleases.failed);
+        const matchingActions = saga.history.filter(
+          actions.fetchReleases.failed.match
+        );
 
-        expect(failedActions).toHaveLength(1);
-        expect(failedActions[0].payload.error).toBe("Bad request");
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.error).toBe("Bad request");
       });
     });
   });
 
-  describe("takeLatest(actions.fetchMoreReleases.started)", () => {
+  describe("fetchMoreReleasesSaga", () => {
     describe("when fetching more releases, with a successful response", () => {
-      const { dispatch, filterAction, store } = setupSagas(
+      const saga = new SagaTester(
         {
           releases: {
-            items: arrayToAssoc(existingItems, "slug"),
+            items: {
+              "existing-item": {
+                ...item,
+                slug: "existing-item"
+              }
+            },
             lastEvaluatedKey: {
               isActive: "y",
-              releasedOn: "",
-              slug: ""
+              releasedOn: "2019-01-01",
+              slug: "existing-item"
             }
           }
         },
         {
           api: {
-            fetchReleases: g.mockWithData({ items })
+            fetchReleases: mockWithSuccess(data)
           }
         }
       );
 
       it("dispatches actions.fetchMoreReleases.started", () => {
-        dispatch(actions.fetchMoreReleases.started({}));
+        saga.dispatch(actions.fetchMoreReleases.started({}));
       });
 
-      it("dispatches actions.fetchMoreReleases.done", () => {
-        expect(filterAction(actions.fetchMoreReleases.done)).toHaveLength(1);
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchReleases).toHaveBeenCalledTimes(1);
+      });
+
+      it("dispatches actions.fetchMoreReleases.done with expected result", () => {
+        const matchingActions = saga.history.filter(
+          actions.fetchMoreReleases.done.match
+        );
+
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.result).toEqual(data);
       });
 
       it("dispatches actions.trackEvent with expected payload", () => {
-        const trackEventActions = filterAction(actions.trackEvent);
+        const matchingActions = saga.history.filter(actions.trackEvent.match);
 
-        expect(trackEventActions).toHaveLength(1);
-        expect(trackEventActions[0].payload).toEqual({
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload).toEqual({
           event: "releases.fetchedMore",
           itemCount: 2
         });
       });
-
-      it("has the data from the response in the store", () => {
-        expect(selectors.getReleasesAsArray(store())).toEqual([
-          ...existingItems,
-          ...items
-        ]);
-      });
     });
 
     describe("when fetching more releases, with a failed response", () => {
-      const { dispatch, filterAction } = setupSagas(
-        {
-          releases: {
-            items: arrayToAssoc(existingItems, "slug")
-          }
-        },
+      const saga = new SagaTester(
+        {},
         {
           api: {
-            fetchReleases: g.mockWithError("Bad request")
+            fetchReleases: mockWithFailure("Bad request")
           }
         }
       );
 
       it("dispatches actions.fetchMoreReleases.started", () => {
-        dispatch(actions.fetchMoreReleases.started({}));
+        saga.dispatch(actions.fetchMoreReleases.started({}));
+      });
+
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchReleases).toHaveBeenCalledTimes(1);
       });
 
       it("dispatches actions.fetchMoreReleases.failed with expected error", () => {
-        const failedActions = filterAction(actions.fetchMoreReleases.failed);
+        const matchingActions = saga.history.filter(
+          actions.fetchMoreReleases.failed.match
+        );
 
-        expect(failedActions).toHaveLength(1);
-        expect(failedActions[0].payload.error).toBe("Bad request");
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.error).toBe("Bad request");
       });
     });
   });
 
-  describe("takeLatest(actions.fetchReleaseBySlug.started)", () => {
+  describe("fetchReleaseBySlugSaga", () => {
     describe("when fetching a release by slug, with a successful response", () => {
-      const { dispatch, filterAction, store } = setupSagas(
+      const saga = new SagaTester(
         {},
         {
           api: {
-            fetchReleaseBySlug: g.mockWithData(items[0])
+            fetchReleaseBySlug: mockWithSuccess(item)
           }
         }
       );
 
       it("dispatches actions.fetchReleaseBySlug.started", () => {
-        dispatch(actions.fetchReleaseBySlug.started("test"));
+        saga.dispatch(actions.fetchReleaseBySlug.started(item.slug));
       });
 
-      it("dispatches actions.fetchReleaseBySlug.done", () => {
-        expect(filterAction(actions.fetchReleaseBySlug.done)).toHaveLength(1);
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchReleaseBySlug).toHaveBeenCalledTimes(1);
       });
 
-      it("has the data from the response in the store", () => {
-        expect(selectors.getReleasesAsArray(store())).toEqual(items);
+      it("dispatches actions.fetchReleaseBySlug.done with expected result", () => {
+        const matchingActions = saga.history.filter(
+          actions.fetchReleaseBySlug.done.match
+        );
+
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.result).toEqual(item);
       });
     });
 
     describe("when fetching a release by slug, with a failed response", () => {
-      const { dispatch, filterAction } = setupSagas(
+      const saga = new SagaTester(
         {},
         {
           api: {
-            fetchReleaseBySlug: g.mockWithError("Bad request")
+            fetchReleaseBySlug: mockWithFailure("Bad request")
           }
         }
       );
 
       it("dispatches actions.fetchReleaseBySlug.started", () => {
-        dispatch(actions.fetchReleaseBySlug.started("test"));
+        saga.dispatch(actions.fetchReleaseBySlug.started(item.slug));
+      });
+
+      it("makes a single API request", () => {
+        expect(saga.ports.api.fetchReleaseBySlug).toHaveBeenCalledTimes(1);
       });
 
       it("dispatches actions.fetchReleaseBySlug.failed with expected error", () => {
-        const failedActions = filterAction(actions.fetchReleaseBySlug.failed);
+        const matchingActions = saga.history.filter(
+          actions.fetchReleaseBySlug.failed.match
+        );
 
-        expect(failedActions).toHaveLength(1);
-        expect(failedActions[0].payload.error).toBe("Bad request");
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload.error).toBe("Bad request");
       });
     });
   });

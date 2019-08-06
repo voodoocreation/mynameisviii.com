@@ -1,11 +1,14 @@
 import cn from "classnames";
 import * as React from "react";
 
+import { IResource } from "../../../models/root.models";
 import Image from "../Image/Image";
 import Link from "../Link/Link";
 
+import "./ResourceListing.scss";
+
 interface IProps extends IResource {
-  onLoad: (slug: string) => void;
+  onLoad: () => void;
 }
 
 interface IState {
@@ -25,13 +28,13 @@ class ResourceListing extends React.Component<IProps, IState> {
       <article className={cn("ResourceListing", { isRendered })}>
         <Link href={resource.url} isExternal={true}>
           <Image
-            className="ResourceListing-image"
+            className="ResourceListing--image"
             alt={resource.title}
             src={resource.imageUrl}
             onLoad={this.onLoad}
           />
 
-          <div className="ResourceListing-details">
+          <div className="ResourceListing--details">
             <h3>{resource.title}</h3>
             <p>{resource.description}</p>
           </div>
@@ -46,7 +49,7 @@ class ResourceListing extends React.Component<IProps, IState> {
     });
 
     if (this.props.onLoad) {
-      this.props.onLoad(this.props.slug);
+      this.props.onLoad();
     }
   };
 }

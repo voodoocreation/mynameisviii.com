@@ -1,139 +1,73 @@
-import { mount, render } from "enzyme";
-import * as React from "react";
-
+import { release } from "../../../models/root.models";
+import ComponentTester from "../../../utilities/ComponentTester";
 import ReleaseListing from "./ReleaseListing";
 
-const g: any = global;
-
-const setup = (fn: any, fromTestProps?: any) => {
-  const props = {
+const component = new ComponentTester(ReleaseListing).withDefaultProps(
+  release({
     artist: {
-      name: "artist name",
-      url: "artist url"
+      name: "Artist Name",
+      url: "URL"
     },
     buyList: [],
-    description: "description",
-    genre: "genre",
+    description: "Description",
+    genre: "Genre",
     images: [
       {
-        imageUrl: "images 1 imageUrl",
-        title: "images 1 title"
+        imageUrl: "Image URL",
+        title: "Image title"
       }
     ],
-    isActive: true,
     length: "5:00",
-    productionType: "productionType",
-    recordLabel: "recordLabel",
+    recordLabel: "Record Label",
     releasedOn: "2017-01-01T00:00:00",
-    slug: "slug",
+    slug: "release-1",
     streamList: [],
-    title: "title",
+    title: "Title",
     tracklist: [
       [
         {
-          genre: "tracklist 1 genre",
+          genre: "Genre",
           length: "5:00",
-          title: "tracklist 1 title",
-          url: "tracklist 1 url"
+          title: "Title",
+          url: "URL"
         }
       ]
-    ],
-    type: "type",
-    ...fromTestProps
-  };
-
-  return {
-    actual: fn(<ReleaseListing {...props} />),
-    props
-  };
-};
+    ]
+  })
+);
 
 describe("[presentation] <ReleaseListing />", () => {
-  beforeEach(() => {
-    Object.defineProperty(g.Image.prototype, "complete", {
-      value: false
-    });
-  });
-
-  it("renders correctly with minimum props", () => {
-    const { actual } = setup(render);
-
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("renders correctly with all props", () => {
-    const { actual } = setup(render, {
-      buyList: [{ platform: "itunes", url: "buyList 1 url" }],
-      images: [
-        {
-          imageUrl: "images 1 imageUrl",
-          title: "images 1 title"
-        },
-        {
-          imageUrl: "images 2 imageUrl",
-          title: "images 2 title"
-        }
-      ],
-      streamList: [{ platform: "spotify", url: "streamList 1 url" }],
-      tracklist: [
-        [
-          {
-            genre: "tracklist 1.1 genre",
-            length: "5:00",
-            title: "tracklist 1.1 title",
-            url: "tracklist 1.1 url"
-          },
-          {
-            genre: "tracklist 1.2 genre",
-            length: "5:00",
-            title: "tracklist 1.2 title",
-            url: "tracklist 1.2 url"
-          }
-        ],
-        [
-          {
-            genre: "tracklist 2.1 genre",
-            length: "5:00",
-            title: "tracklist 2.1 title",
-            url: "tracklist 2.1 url"
-          },
-          {
-            genre: "tracklist 2.2 genre",
-            length: "5:00",
-            title: "tracklist 2.2 title",
-            url: "tracklist 2.2 url"
-          }
-        ]
-      ]
-    });
-
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("updates `isRendered` state after image has loaded", () => {
-    const { actual } = setup(mount);
-
-    actual.find("img").simulate("load");
-    expect(actual.render()).toMatchSnapshot();
-  });
-
-  it("triggers `onLoad` prop after image has loaded", () => {
-    const { actual, props } = setup(mount, {
+  const { props, wrapper } = component
+    .withProps({
       onLoad: jest.fn()
-    });
+    })
+    .mount();
 
-    actual.find("img").simulate("load");
-    expect(props.onLoad).toHaveBeenCalled();
+  it("doesn't add the isRendered class initially", () => {
+    expect(wrapper.find(".isRendered")).toHaveLength(0);
   });
 
-  it("updates `isImageLoaded` state when image has previously been loaded", () => {
-    Object.defineProperty(g.Image.prototype, "complete", {
-      value: true
-    });
+  it("loads the image", () => {
+    wrapper.find("Image.ReleaseListing--image").simulate("load");
+  });
 
-    const { actual } = setup(mount);
+  it("adds the isRendered class", () => {
+    expect(wrapper.find(".isRendered")).toHaveLength(1);
+  });
 
-    actual.find("img").simulate("load");
-    expect(actual.render()).toMatchSnapshot();
+  it("calls the onLoad prop", () => {
+    expect(props.onLoad).toHaveBeenCalledTimes(1);
+  });
+
+  it("sets the onLoad prop to be undefined", () => {
+    wrapper.setProps({ onLoad: undefined });
+  });
+
+  it("loads the image", () => {
+    wrapper.find("Image.ReleaseListing--image").simulate("load");
+  });
+
+  it("matches snapshot", () => {
+    expect(wrapper.render()).toMatchSnapshot();
   });
 });

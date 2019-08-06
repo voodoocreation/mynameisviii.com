@@ -3,50 +3,5 @@
 @import url("https://fonts.googleapis.com/css?family=Poiret+One");
 @import "~normalize-scss/sass/normalize";
 @import
-  "./variables",
-  "./mixins";
-@import
   "./animation",
-  "./document";
-@import
-  "./presentation/Button",
-  "./presentation/ButtonBar",
-  "./presentation/Image",
-  "./presentation/ImageGallery",
-  "./presentation/Carousel",
-  "./presentation/Loader",
-  "./presentation/Map",
-  "./presentation/MetaBar",
-  "./presentation/Modal",
-  "./presentation/NoResults",
-  "./presentation/Toast",
-  "./presentation/ToastContainer",
-  "./presentation/Banner",
-  "./presentation/Brand",
-  "./presentation/ActListing",
-  "./presentation/SaleListing",
-  "./presentation/WebsiteListing",
-  "./presentation/ErrorPage",
-  "./presentation/Appearance",
-  "./presentation/AppearanceListing",
-  "./presentation/GalleryListing",
-  "./presentation/Gallery",
-  "./presentation/NewsListing",
-  "./presentation/NewsArticle",
-  "./presentation/ReleaseListing",
-  "./presentation/Release",
-  "./presentation/ResourceListing",
-  "./presentation/StemListing",
-  "./presentation/PageHeader";
-@import
-  "./connected/Navigation",
-  "./connected/OfflineNotice",
-  "./connected/Shell";
-@import
-  "./routes/AppearancesRoute",
-  "./routes/GalleriesRoute",
-  "./routes/IndexRoute",
-  "./routes/ReleasesRoute",
-  "./routes/ResourcesRoute",
-  "./routes/StemsRoute",
-  "./routes/SymbolRoute";
+  "./elements";

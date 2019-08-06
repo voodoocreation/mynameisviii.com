@@ -1,13 +1,15 @@
 import cn from "classnames";
 import Head from "next/head";
 import * as React from "react";
-import { FormattedMessage, InjectedIntl } from "react-intl";
+import { FormattedMessage, InjectedIntlProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
-import { ActionCreator } from "typescript-fsa";
 
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
+import { IResource } from "../../../models/root.models";
+import { TStoreState } from "../../../reducers/root.reducers";
 import { absUrl } from "../../../transformers/transformData";
+import { IPageContext } from "../../connected/App/App";
 import OfflineNotice from "../../connected/OfflineNotice/OfflineNotice";
 import ButtonBar from "../../presentation/ButtonBar/ButtonBar";
 import LoadButton from "../../presentation/LoadButton/LoadButton";
@@ -18,34 +20,25 @@ import ResourceListing from "../../presentation/ResourceListing/ResourceListing"
 import * as actions from "../../../actions/root.actions";
 import * as selectors from "../../../selectors/root.selectors";
 
-interface IStoreProps {
-  error?: IError;
+import "./ResourcesRoute.scss";
+
+interface IProps extends InjectedIntlProps {
+  hasError: boolean;
+  fetchMoreResources: typeof actions.fetchMoreResources.started;
+  fetchResources: typeof actions.fetchResources.started;
   hasAllResources: boolean;
   isLoading: boolean;
-  resources: {
-    [index: string]: IResource[];
-  };
+  resources: Record<string, IResource[]>;
   resourcesCount: number;
 }
 
-interface IDispatchProps {
-  fetchMoreResources: ActionCreator<{}>;
-  fetchResources: ActionCreator<{}>;
-}
-
-interface IProps extends IStoreProps, IDispatchProps {
-  intl: InjectedIntl;
-}
-
 interface IState {
-  loadedListings: {
-    [index: string]: boolean;
-  };
+  loadedListings: Record<string, boolean>;
 }
 
 class ResourcesRoute extends React.Component<IProps, IState> {
-  public static async getInitialProps(props: any) {
-    const { isServer, store } = props.ctx;
+  public static async getInitialProps(context: IPageContext) {
+    const { isServer, store } = context;
 
     const state = store.getState();
 
@@ -56,32 +49,18 @@ class ResourcesRoute extends React.Component<IProps, IState> {
     }
   }
 
-  public readonly state = {
+  public readonly state: IState = {
     loadedListings: {}
   };
 
   public render() {
-    const { error, hasAllResources, resources, resourcesCount } = this.props;
+    const { hasAllResources, hasError, resources, resourcesCount } = this.props;
     const { formatMessage } = this.props.intl;
 
     const hasLoadedAllListings =
       resourcesCount === Object.keys(this.state.loadedListings).length;
 
     const isLoading = this.props.isLoading || !hasLoadedAllListings;
-
-    const loadMoreButton = hasAllResources ? null : (
-      <LoadButton
-        isLoading={isLoading}
-        isScrollLoadEnabled={!error}
-        onLoad={this.onLoadMore}
-      >
-        {!error ? (
-          <FormattedMessage id="LOAD_MORE" />
-        ) : (
-          <FormattedMessage id="TRY_AGAIN" />
-        )}
-      </LoadButton>
-    );
 
     const pageTitle = formatMessage({ id: "RESOURCES_TITLE" });
     const pageDescription = formatMessage({ id: "RESOURCES_DESCRIPTION" });
@@ -109,7 +88,7 @@ class ResourcesRoute extends React.Component<IProps, IState> {
           <FormattedMessage id="RESOURCES_TITLE" />
         </PageHeader>
 
-        {error ? <OfflineNotice /> : null}
+        {hasError ? <OfflineNotice /> : null}
 
         {resourcesCount > 0
           ? Object.keys(resources).map(this.renderListingsForType)
@@ -123,14 +102,25 @@ class ResourcesRoute extends React.Component<IProps, IState> {
           </NoResults>
         ) : null}
 
-        <ButtonBar>{loadMoreButton}</ButtonBar>
+        <ButtonBar>
+          {!hasAllResources ? (
+            <LoadButton
+              hasError={hasError}
+              isLoading={isLoading}
+              onLoad={this.onLoadMore}
+            />
+          ) : null}
+        </ButtonBar>
       </article>
     );
   }
 
   private renderListingsForType = (type: string) => (
     <section
-      className={cn("ResourceListings", `ResourceListings-${type}`)}
+      className={cn(
+        "ResourcesRoute--listings",
+        `ResourcesRoute--listings-${type}`
+      )}
       key={type}
     >
       <h2>
@@ -141,23 +131,23 @@ class ResourcesRoute extends React.Component<IProps, IState> {
         <FormattedMessage id={`RESOURCES_${type.toUpperCase()}_DESCRIPTION`} />
       </p>
 
-      <div className="ResourceListings-items">
+      <div className="ResourcesRoute--listings--items">
         {this.props.resources[type].map((resource: IResource) => (
           <ResourceListing
             {...resource}
             key={resource.slug}
-            onLoad={this.onListingLoad}
+            onLoad={this.onListingLoad(resource)}
           />
         ))}
       </div>
     </section>
   );
 
-  private onListingLoad = (slug: string) => {
+  private onListingLoad = (resource: IResource) => () => {
     this.setState({
       loadedListings: {
         ...this.state.loadedListings,
-        [slug]: true
+        [resource.slug]: true
       }
     });
   };
@@ -167,15 +157,15 @@ class ResourcesRoute extends React.Component<IProps, IState> {
   };
 }
 
-const mapStateToProps = (state: any) => ({
-  error: selectors.getResourcesError(state),
+const mapState = (state: TStoreState) => ({
   hasAllResources: selectors.getHasAllResources(state),
+  hasError: selectors.hasResourcesError(state),
   isLoading: selectors.getResourcesIsLoading(state),
   resources: selectors.getResourcesByType(state),
   resourcesCount: selectors.getResourcesCount(state)
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) =>
+const mapActions = (dispatch: Dispatch) =>
   bindActionCreators(
     {
       fetchMoreResources: actions.fetchMoreResources.started,
@@ -185,8 +175,8 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
   );
 
 export default injectIntlIntoPage(
-  connect<IStoreProps, IDispatchProps>(
-    mapStateToProps,
-    mapDispatchToProps
+  connect(
+    mapState,
+    mapActions
   )(ResourcesRoute)
 );

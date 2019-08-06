@@ -1,19 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[containers] <NavItem /> renders correctly when isSelected=true 1`] = `
+exports[`[connected] <NavItem /> when isSelected is false matches snapshot 1`] = `
 <li
-  class="isSelected"
+  class=""
 >
-  Test nav item
+  <a
+    href="/"
+    intl="[object Object]"
+  >
+    Nav item
+  </a>
 </li>
 `;
 
-exports[`[containers] <NavItem /> renders correctly with minimum props 1`] = `
-<li>
-  <a
-    href="/"
-  >
-    Test nav item
-  </a>
+exports[`[connected] <NavItem /> when isSelected is true matches snapshot 1`] = `
+<li
+  class="isSelected"
+>
+  Nav item
 </li>
 `;

@@ -1,50 +1,44 @@
 import Head from "next/head";
 import * as React from "react";
-import { InjectedIntl } from "react-intl";
+import { InjectedIntlProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
-import { ActionCreator } from "typescript-fsa";
 
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
+import { IGallery } from "../../../models/root.models";
+import { TStoreState } from "../../../reducers/root.reducers";
 import { absUrl } from "../../../transformers/transformData";
-import ErrorPage from "../../presentation/ErrorPage/ErrorPage";
+import { IPageContext } from "../../connected/App/App";
 import Gallery from "../../presentation/Gallery/Gallery";
 import Loader from "../../presentation/Loader/Loader";
 
 import * as actions from "../../../actions/root.actions";
 import * as selectors from "../../../selectors/root.selectors";
 
-interface IStoreProps {
+interface IProps extends InjectedIntlProps {
+  fetchGalleryBySlug: typeof actions.fetchGalleryBySlug.started;
   gallery?: IGallery;
-  error?: IError;
   isLoading: boolean;
-}
-
-interface IDispatchProps {
-  fetchGalleryBySlug: ActionCreator<PLFetchGalleryBySlugStarted>;
-  trackEvent: ActionCreator<PLTrackEvent>;
-}
-
-interface IProps extends IStoreProps, IDispatchProps {
-  intl: InjectedIntl;
+  trackEvent: typeof actions.trackEvent;
 }
 
 class GalleryRoute extends React.Component<IProps> {
-  public static async getInitialProps(props: any) {
-    const { query, store } = props.ctx;
+  public static async getInitialProps(context: IPageContext) {
+    const { query, store } = context;
+    const slug = query.slug as string;
 
-    store.dispatch(actions.setCurrentGallerySlug(query.slug));
+    store.dispatch(actions.setCurrentGallerySlug(slug));
 
     const state = store.getState();
     const currentGallery = selectors.getCurrentGallery(state);
 
     if (!currentGallery || !currentGallery.images) {
-      store.dispatch(actions.fetchGalleryBySlug.started(query.slug));
+      store.dispatch(actions.fetchGalleryBySlug.started(slug));
     }
   }
 
   public render() {
-    const { gallery, error, isLoading } = this.props;
+    const { gallery, isLoading } = this.props;
     const { formatMessage } = this.props.intl;
 
     if (isLoading) {
@@ -52,7 +46,7 @@ class GalleryRoute extends React.Component<IProps> {
     }
 
     if (!gallery) {
-      return <ErrorPage {...error} />;
+      return null;
     }
 
     return (
@@ -92,13 +86,12 @@ class GalleryRoute extends React.Component<IProps> {
   };
 }
 
-const mapStateToProps = (state: any) => ({
-  error: selectors.getGalleriesError(state),
+const mapState = (state: TStoreState) => ({
   gallery: selectors.getCurrentGallery(state),
   isLoading: selectors.getGalleriesIsLoading(state)
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) =>
+const mapActions = (dispatch: Dispatch) =>
   bindActionCreators(
     {
       fetchGalleryBySlug: actions.fetchGalleryBySlug.started,
@@ -108,8 +101,8 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
   );
 
 export default injectIntlIntoPage(
-  connect<IStoreProps, IDispatchProps>(
-    mapStateToProps,
-    mapDispatchToProps
+  connect(
+    mapState,
+    mapActions
   )(GalleryRoute)
 );

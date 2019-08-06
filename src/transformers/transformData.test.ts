@@ -93,6 +93,7 @@ describe("[transformers] Data", () => {
 
   describe("lengthToDuration()", () => {
     afterEach(() => {
+      // @ts-ignore-next-line
       process.env.NODE_ENV = nodeEnv;
     });
 
@@ -124,6 +125,7 @@ describe("[transformers] Data", () => {
   describe("absUrl()", () => {
     describe("when NODE_ENV=development", () => {
       beforeEach(() => {
+        // @ts-ignore-next-line
         process.env.NODE_ENV = "development";
         process.env.PORT = "5000";
       });
@@ -137,6 +139,7 @@ describe("[transformers] Data", () => {
 
     describe("when NODE_ENV=production", () => {
       beforeEach(() => {
+        // @ts-ignore-next-line
         process.env.NODE_ENV = "production";
       });
 

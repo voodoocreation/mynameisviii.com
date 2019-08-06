@@ -1,29 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[presentation] <ResourceListing /> renders correctly 1`] = `
+exports[`[presentation] <ResourceListing /> matches snapshot 1`] = `
 <article
-  class="ResourceListing"
+  class="ResourceListing isRendered"
 >
   <a
-    href="url"
+    href="URL"
     rel="noopener"
     target="_blank"
   >
     <figure
-      class="Image ResourceListing-image isLoading"
+      class="Image ResourceListing--image isLoading"
     >
       <div
-        class="Image-wrapper"
+        class="Image--wrapper"
       >
         <img
-          alt="title"
-          src="imageUrl"
+          alt="Title"
+          src="Image URL"
         />
         <span
           class="Loader"
         >
           <div
-            class="Loader-animation"
+            class="Loader--animation"
           >
             <span />
             <span />
@@ -33,83 +33,13 @@ exports[`[presentation] <ResourceListing /> renders correctly 1`] = `
       </div>
     </figure>
     <div
-      class="ResourceListing-details"
+      class="ResourceListing--details"
     >
       <h3>
-        title
+        Title
       </h3>
       <p>
-        description
-      </p>
-    </div>
-  </a>
-</article>
-`;
-
-exports[`[presentation] <ResourceListing /> updates \`isImageLoaded\` state when image has previously been loaded 1`] = `
-<article
-  class="ResourceListing isRendered"
->
-  <a
-    href="url"
-    rel="noopener"
-    target="_blank"
-  >
-    <figure
-      class="Image ResourceListing-image isRendered"
-    >
-      <div
-        class="Image-wrapper"
-      >
-        <img
-          alt="title"
-          src="imageUrl"
-        />
-      </div>
-    </figure>
-    <div
-      class="ResourceListing-details"
-    >
-      <h3>
-        title
-      </h3>
-      <p>
-        description
-      </p>
-    </div>
-  </a>
-</article>
-`;
-
-exports[`[presentation] <ResourceListing /> updates \`isRendered\` state after image has loaded 1`] = `
-<article
-  class="ResourceListing isRendered"
->
-  <a
-    href="url"
-    rel="noopener"
-    target="_blank"
-  >
-    <figure
-      class="Image ResourceListing-image isRendered"
-    >
-      <div
-        class="Image-wrapper"
-      >
-        <img
-          alt="title"
-          src="imageUrl"
-        />
-      </div>
-    </figure>
-    <div
-      class="ResourceListing-details"
-    >
-      <h3>
-        title
-      </h3>
-      <p>
-        description
+        Description
       </p>
     </div>
   </a>

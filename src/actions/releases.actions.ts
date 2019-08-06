@@ -1,25 +1,21 @@
 import actionCreatorFactory from "typescript-fsa";
 
-const actionCreator = actionCreatorFactory("RELEASES");
+import { IDynamoResponse, IRelease } from "../models/root.models";
 
-export const fetchReleases = actionCreator.async<
+const createAction = actionCreatorFactory("RELEASES");
+
+export const fetchReleases = createAction.async<
   {},
-  PLFetchReleasesDone,
-  PLFetchReleasesFailed
+  IDynamoResponse<IRelease, "releasedOn">
 >("FETCH");
 
-export const fetchMoreReleases = actionCreator.async<
+export const fetchMoreReleases = createAction.async<
   {},
-  PLFetchReleasesDone,
-  PLFetchReleasesFailed
+  IDynamoResponse<IRelease, "releasedOn">
 >("FETCH_MORE");
 
-export const fetchReleaseBySlug = actionCreator.async<
-  PLFetchReleaseBySlugStarted,
-  PLFetchReleaseBySlugDone,
-  PLFetchReleaseBySlugFailed
->("FETCH_BY_SLUG");
-
-export const setCurrentReleaseSlug = actionCreator<PLSetCurrentReleaseSlug>(
-  "SET_CURRENT_SLUG"
+export const fetchReleaseBySlug = createAction.async<string, IRelease>(
+  "FETCH_BY_SLUG"
 );
+
+export const setCurrentReleaseSlug = createAction<string>("SET_CURRENT_SLUG");

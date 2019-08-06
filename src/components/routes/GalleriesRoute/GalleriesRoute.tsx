@@ -1,13 +1,17 @@
 import cn from "classnames";
 import Head from "next/head";
 import * as React from "react";
-import { FormattedMessage, InjectedIntl } from "react-intl";
+import { FormattedMessage, InjectedIntlProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
-import { ActionCreator } from "typescript-fsa";
 
+import * as actions from "../../../actions/root.actions";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
+import { IGallery } from "../../../models/root.models";
+import { TStoreState } from "../../../reducers/root.reducers";
+import * as selectors from "../../../selectors/root.selectors";
 import { absUrl } from "../../../transformers/transformData";
+import { IPageContext } from "../../connected/App/App";
 import OfflineNotice from "../../connected/OfflineNotice/OfflineNotice";
 import ButtonBar from "../../presentation/ButtonBar/ButtonBar";
 import GalleryListing from "../../presentation/GalleryListing/GalleryListing";
@@ -15,35 +19,25 @@ import LoadButton from "../../presentation/LoadButton/LoadButton";
 import NoResults from "../../presentation/NoResults/NoResults";
 import PageHeader from "../../presentation/PageHeader/PageHeader";
 
-import * as actions from "../../../actions/root.actions";
-import * as selectors from "../../../selectors/root.selectors";
+import "./GalleriesRoute.scss";
 
-interface IStoreProps {
-  error?: IError;
+interface IProps extends InjectedIntlProps {
+  fetchGalleries: typeof actions.fetchGalleries.started;
+  fetchMoreGalleries: typeof actions.fetchMoreGalleries.started;
   galleries: IGallery[];
   galleriesCount: number;
   hasAllGalleries: boolean;
+  hasError: boolean;
   isLoading: boolean;
 }
 
-interface IDispatchProps {
-  fetchGalleries: ActionCreator<{}>;
-  fetchMoreGalleries: ActionCreator<{}>;
-}
-
-interface IProps extends IStoreProps, IDispatchProps {
-  intl: InjectedIntl;
-}
-
 interface IState {
-  loadedListings: {
-    [index: string]: boolean;
-  };
+  loadedListings: Record<string, boolean>;
 }
 
 class GalleriesRoute extends React.Component<IProps, IState> {
-  public static async getInitialProps(props: any) {
-    const { isServer, store } = props.ctx;
+  public static async getInitialProps(context: IPageContext) {
+    const { isServer, store } = context;
 
     const state = store.getState();
 
@@ -54,32 +48,18 @@ class GalleriesRoute extends React.Component<IProps, IState> {
     }
   }
 
-  public readonly state = {
+  public readonly state: IState = {
     loadedListings: {}
   };
 
   public render() {
-    const { galleries, galleriesCount, error, hasAllGalleries } = this.props;
+    const { galleries, galleriesCount, hasError, hasAllGalleries } = this.props;
     const { formatMessage } = this.props.intl;
 
     const hasLoadedAllListings =
       galleriesCount === Object.keys(this.state.loadedListings).length;
 
     const isLoading = this.props.isLoading || !hasLoadedAllListings;
-
-    const loadMoreButton = hasAllGalleries ? null : (
-      <LoadButton
-        isLoading={isLoading}
-        isScrollLoadEnabled={!error}
-        onLoad={this.onLoadMore}
-      >
-        {!error ? (
-          <FormattedMessage id="LOAD_MORE" />
-        ) : (
-          <FormattedMessage id="TRY_AGAIN" />
-        )}
-      </LoadButton>
-    );
 
     const pageTitle = formatMessage({ id: "GALLERIES_TITLE" });
     const pageDescription = formatMessage({ id: "GALLERIES_DESCRIPTION" });
@@ -109,15 +89,15 @@ class GalleriesRoute extends React.Component<IProps, IState> {
           <FormattedMessage id="GALLERIES_TITLE" />
         </PageHeader>
 
-        {error ? <OfflineNotice /> : null}
+        {hasError ? <OfflineNotice /> : null}
 
         {galleriesCount > 0 ? (
-          <section className="GalleryListings">
+          <section className="GalleriesRoute--listings">
             {galleries.map(gallery => (
               <GalleryListing
                 {...gallery}
                 key={gallery.slug}
-                onLoad={this.onListingLoad}
+                onLoad={this.onListingLoad(gallery)}
               />
             ))}
           </section>
@@ -131,16 +111,24 @@ class GalleriesRoute extends React.Component<IProps, IState> {
           </NoResults>
         ) : null}
 
-        <ButtonBar>{loadMoreButton}</ButtonBar>
+        <ButtonBar>
+          {!hasAllGalleries ? (
+            <LoadButton
+              hasError={hasError}
+              isLoading={isLoading}
+              onLoad={this.onLoadMore}
+            />
+          ) : null}
+        </ButtonBar>
       </article>
     );
   }
 
-  private onListingLoad = (slug: string) => {
+  private onListingLoad = (gallery: IGallery) => () => {
     this.setState({
       loadedListings: {
         ...this.state.loadedListings,
-        [slug]: true
+        [gallery.slug]: true
       }
     });
   };
@@ -150,15 +138,15 @@ class GalleriesRoute extends React.Component<IProps, IState> {
   };
 }
 
-const mapStateToProps = (state: any) => ({
-  error: selectors.getGalleriesError(state),
+const mapState = (state: TStoreState) => ({
   galleries: selectors.getGalleriesAsArray(state),
   galleriesCount: selectors.getGalleriesCount(state),
   hasAllGalleries: selectors.getHasAllGalleries(state),
+  hasError: selectors.hasGalleriesError(state),
   isLoading: selectors.getGalleriesIsLoading(state)
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) =>
+const mapActions = (dispatch: Dispatch) =>
   bindActionCreators(
     {
       fetchGalleries: actions.fetchGalleries.started,
@@ -168,8 +156,8 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
   );
 
 export default injectIntlIntoPage(
-  connect<IStoreProps, IDispatchProps>(
-    mapStateToProps,
-    mapDispatchToProps
+  connect(
+    mapState,
+    mapActions
   )(GalleriesRoute)
 );

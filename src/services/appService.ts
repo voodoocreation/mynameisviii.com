@@ -1,3 +1,4 @@
+// @ts-ignore
 const g: any = global;
 const s: any = self;
 const { assets, buildId, staticFiles } = g.serviceWorkerOption;
@@ -11,10 +12,7 @@ g.cacheNames = {
   precache: `${g.CACHE_PREFIX}-precache-${buildId}`
 };
 
-g.precacheUrls = [
-  ...assets,
-  ...staticFiles
-];
+g.precacheUrls = [...assets, ...staticFiles];
 
 const isCacheValid = (key: string) => Object.values(g.cacheNames).includes(key);
 

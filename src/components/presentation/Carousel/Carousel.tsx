@@ -1,10 +1,13 @@
 import cn from "classnames";
 import * as React from "react";
 
+import Button from "../Button/Button";
+import "./Carousel.scss";
+
 interface IProps {
   className?: string;
   currentIndex?: number;
-  onSlideChange?: (index: number) => void;
+  onSlideChange: (index: number) => void;
 }
 
 interface IState {
@@ -41,7 +44,7 @@ class Carousel extends React.Component<IProps, IState> {
     return (
       <div className={cn("Carousel", className)}>
         <div
-          className="Carousel-slides"
+          className="Carousel--slides"
           style={{
             transform: `translate3d(-${this.state.currentIndex * 100}%, 0, 0)`
           }}
@@ -58,9 +61,7 @@ class Carousel extends React.Component<IProps, IState> {
       currentIndex: index
     });
 
-    if (this.props.onSlideChange) {
-      this.props.onSlideChange(index);
-    }
+    this.props.onSlideChange(index);
   };
 
   private renderPagination() {
@@ -71,16 +72,17 @@ class Carousel extends React.Component<IProps, IState> {
     }
 
     return (
-      <div className="Carousel-pagination">
+      <div className="Carousel--pagination">
         {React.Children.map(children, (_, index) => (
-          <button
-            className={cn("Carousel-page", {
+          <Button
+            className={cn("Carousel--pagination--page", {
               isSelected: index === this.state.currentIndex
             })}
+            isStyled={false}
             onClick={this.onPaginationClick(index)}
           >
             <span>{index + 1}</span>
-          </button>
+          </Button>
         ))}
       </div>
     );

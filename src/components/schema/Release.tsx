@@ -1,46 +1,9 @@
 import * as React from "react";
 import stripTags from "striptags";
 
+import { IRelease, IReleaseTrack } from "../../models/root.models";
 import { absUrl, lengthToDuration } from "../../transformers/transformData";
 import Schema from "./Schema";
-
-const getProductionType = (productionType: string) => {
-  switch (productionType) {
-    default:
-    case "studio":
-      return "StudioAlbum";
-
-    case "compilation":
-      return "CompilationAlbum";
-
-    case "demo":
-      return "DemoAlbum";
-
-    case "live":
-      return "LiveAlbum";
-
-    case "remix":
-      return "RemixAlbum";
-
-    case "soundtrack":
-      return "SoundtrackAlbum";
-  }
-};
-
-const getReleaseType = (type: string) => {
-  switch (type) {
-    default:
-    case "album":
-      return "AlbumRelease";
-
-    case "ep":
-      return "EPRelease";
-
-    case "single":
-    case "remix":
-      return "SingleRelease";
-  }
-};
 
 const getFlatTracklist = (tracklist: IReleaseTrack[][]) => {
   return tracklist.reduce((acc, curr) => {
@@ -55,16 +18,14 @@ const Release: React.FC<IRelease> = props => (
     {...{
       "@id": absUrl(`/releases/${props.slug}`),
       "@type": "MusicAlbum",
-      albumProductionType: `http://schema.org/${getProductionType(
-        props.productionType
-      )}`,
+      albumProductionType: `http://schema.org/${props.productionType}`,
       albumRelease: {
         "@type": "MusicRelease",
         duration: lengthToDuration(props.length),
         name: props.title,
         recordLabel: props.recordLabel
       },
-      albumReleaseType: `http://schema.org/${getReleaseType(props.type)}`,
+      albumReleaseType: `http://schema.org/${props.type}`,
       byArtist: {
         "@type": "MusicGroup",
         name: props.artist.name
@@ -79,7 +40,7 @@ const Release: React.FC<IRelease> = props => (
       track: {
         "@type": "ItemList",
         itemListElement: getFlatTracklist(props.tracklist).map(
-          (track: IReleaseTrack, index) => ({
+          (track, index) => ({
             "@type": "ListItem",
             item: {
               "@type": "MusicRecording",

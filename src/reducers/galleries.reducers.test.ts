@@ -1,128 +1,232 @@
-import { camelizeKeys } from "humps";
-
-import galleries from "../../server/mocks/galleries.json";
-import gallery from "../../server/mocks/gallery.json";
-import { arrayToAssoc } from "../transformers/transformData";
-import reducer, { initialState as model } from "./galleries.reducers";
-
 import * as actions from "../actions/root.actions";
+import { gallery, s3Response } from "../models/root.models";
+import reducer, { initialState } from "./galleries.reducers";
 
-const mockGalleries: any = camelizeKeys(galleries);
-const mockGallery: any = camelizeKeys(gallery);
+const item1 = gallery({ slug: "test-1" });
+const item2 = gallery({ slug: "test-2" });
 
 describe("[reducers] Galleries", () => {
-  describe("actions.fetchGalleries", () => {
-    it("started is handled", () => {
-      const state = reducer(model, actions.fetchGalleries.started({}));
+  describe("actions.fetchGalleries.started", () => {
+    const state = reducer(
+      {
+        ...initialState,
+        items: {
+          [item1.slug]: item1
+        }
+      },
+      actions.fetchGalleries.started({})
+    );
 
+    it("sets hasError to false", () => {
+      expect(state.hasError).toBe(false);
+    });
+
+    it("sets isLoading to true", () => {
       expect(state.isLoading).toBe(true);
-      expect(Object.keys(state.items)).toHaveLength(0);
     });
 
-    it("done is handled", () => {
-      const result = {
-        ...mockGalleries,
-        items: arrayToAssoc(mockGalleries.items, "slug")
-      };
-      const state = reducer(
-        model,
-        actions.fetchGalleries.done({ result, params: {} })
-      );
+    it("resets items", () => {
+      expect(state.items).toEqual(initialState.items);
+    });
+  });
 
+  describe("actions.fetchGalleries.done", () => {
+    const result = s3Response({
+      isTruncated: false,
+      items: [item1, item2]
+    });
+
+    const state = reducer(
+      {
+        ...initialState,
+        isLoading: true
+      },
+      actions.fetchGalleries.done({ result, params: {} })
+    );
+
+    it("sets hasAllItems to be the inverse of isTruncated", () => {
+      expect(state.hasAllItems).toBe(!result.isTruncated);
+    });
+
+    it("sets isLoading to false", () => {
       expect(state.isLoading).toBe(false);
-      expect(Object.keys(state.items)).toHaveLength(mockGalleries.items.length);
     });
 
-    it("failed is handled", () => {
-      const error = { message: "Error", status: 500 };
-      const state = reducer(
-        model,
-        actions.fetchGalleries.failed({ error, params: {} })
-      );
+    it("reduces items correctly", () => {
+      expect(state.items).toEqual(result.items);
+    });
+  });
 
-      expect(state.error).toEqual(error);
+  describe("actions.fetchGalleries.failed", () => {
+    const state = reducer(
+      {
+        ...initialState,
+        isLoading: true
+      },
+      actions.fetchGalleries.failed({ error: "Error", params: {} })
+    );
+
+    it("sets hasError to true", () => {
+      expect(state.hasError).toBe(true);
+    });
+
+    it("sets isLoading to false", () => {
       expect(state.isLoading).toBe(false);
     });
   });
 
-  describe("actions.fetchMoreGalleries", () => {
-    const initialState = {
-      ...model,
-      items: {
-        "test-1": mockGalleries.items[0]
-      }
+  describe("actions.fetchMoreGalleries.started", () => {
+    const items = {
+      [item1.slug]: item1
     };
 
-    it("started is handled", () => {
-      const state = reducer(
-        initialState,
-        actions.fetchMoreGalleries.started({})
-      );
+    const state = reducer(
+      {
+        ...initialState,
+        hasError: true,
+        items
+      },
+      actions.fetchMoreGalleries.started({})
+    );
 
+    it("sets hasError to false", () => {
+      expect(state.hasError).toBe(false);
+    });
+
+    it("sets isLoading to true", () => {
       expect(state.isLoading).toBe(true);
-      expect(Object.keys(state.items)).toHaveLength(1);
     });
 
-    it("done is handled", () => {
-      const result = {
-        ...mockGalleries,
-        items: arrayToAssoc(mockGalleries.items, "slug")
-      };
-      const state = reducer(
-        model,
-        actions.fetchMoreGalleries.done({ result, params: {} })
-      );
+    it("doesn't reset items", () => {
+      expect(state.items).toEqual(items);
+    });
+  });
 
+  describe("actions.fetchMoreGalleries.done", () => {
+    const result = s3Response({
+      isTruncated: false,
+      items: [item2]
+    });
+
+    const state = reducer(
+      {
+        ...initialState,
+        isLoading: true,
+        items: {
+          [item1.slug]: item1
+        }
+      },
+      actions.fetchMoreGalleries.done({ result, params: {} })
+    );
+
+    it("sets hasAllItems to be the inverse of isTruncated", () => {
+      expect(state.hasAllItems).toBe(!result.isTruncated);
+    });
+
+    it("sets isLoading to false", () => {
       expect(state.isLoading).toBe(false);
-      expect(Object.keys(state.items)).toHaveLength(mockGalleries.items.length);
     });
 
-    it("failed is handled", () => {
-      const error = { message: "Error", status: 500 };
-      const state = reducer(
-        model,
-        actions.fetchMoreGalleries.failed({ error, params: {} })
-      );
+    it("merges the items from the payload with the ones in the store", () => {
+      expect(state.items).toEqual({
+        [item1.slug]: item1,
+        [item2.slug]: item2
+      });
+    });
+  });
 
-      expect(state.error).toEqual(error);
+  describe("actions.fetchMoreGalleries.failed", () => {
+    const state = reducer(
+      {
+        ...initialState,
+        isLoading: true
+      },
+      actions.fetchMoreGalleries.failed({ error: "Error", params: {} })
+    );
+
+    it("sets hasError to true", () => {
+      expect(state.hasError).toBe(true);
+    });
+
+    it("sets isLoading to false", () => {
       expect(state.isLoading).toBe(false);
     });
   });
 
-  describe("actions.fetchGalleryBySlug", () => {
-    const params = "test-1";
+  describe("actions.setCurrentGallerySlug", () => {
+    const state = reducer(
+      initialState,
+      actions.setCurrentGallerySlug(item1.slug)
+    );
 
-    it("started is handled", () => {
-      const state = reducer(model, actions.fetchGalleryBySlug.started(params));
-
-      expect(state.isLoading).toBe(true);
-    });
-
-    it("done is handled", () => {
-      const state = reducer(
-        model,
-        actions.fetchGalleryBySlug.done({ result: mockGallery, params })
-      );
-
-      expect(state.isLoading).toBe(false);
-      expect(Object.keys(state.items)).toHaveLength(1);
-    });
-
-    it("failed is handled", () => {
-      const error = { message: "Not found", status: 404 };
-      const state = reducer(
-        model,
-        actions.fetchGalleryBySlug.failed({ error, params })
-      );
-
-      expect(state.error).toEqual(error);
-      expect(state.isLoading).toBe(false);
+    it("sets currentSlug correctly", () => {
+      expect(state.currentSlug).toEqual(item1.slug);
     });
   });
 
-  it("actions.setCurrentGallerySlug is handled", () => {
-    const state = reducer(model, actions.setCurrentGallerySlug("test-1"));
+  describe("actions.fetchGalleryBySlug.started", () => {
+    const state = reducer(
+      {
+        ...initialState,
+        hasError: true
+      },
+      actions.fetchGalleryBySlug.started(item1.slug)
+    );
 
-    expect(state.currentSlug).toEqual("test-1");
+    it("sets hasError to false", () => {
+      expect(state.hasError).toBe(false);
+    });
+
+    it("sets isLoading to true", () => {
+      expect(state.isLoading).toBe(true);
+    });
+  });
+
+  describe("actions.fetchGalleryBySlug.done", () => {
+    const state = reducer(
+      {
+        ...initialState,
+        isLoading: true,
+        items: {
+          [item2.slug]: item2
+        }
+      },
+      actions.fetchGalleryBySlug.done({
+        params: item1.slug,
+        result: item1
+      })
+    );
+
+    it("sets isLoading to false", () => {
+      expect(state.isLoading).toBe(false);
+    });
+
+    it("adds the item to the store", () => {
+      expect(state.items).toEqual({
+        [item2.slug]: item2,
+        [item1.slug]: item1
+      });
+    });
+  });
+
+  describe("actions.fetchGalleryBySlug.failed", () => {
+    const state = reducer(
+      {
+        ...initialState,
+        isLoading: true
+      },
+      actions.fetchGalleryBySlug.failed({
+        error: "Error",
+        params: item1.slug
+      })
+    );
+
+    it("sets hasError to true", () => {
+      expect(state.hasError).toBe(true);
+    });
+
+    it("sets isLoading to false", () => {
+      expect(state.isLoading).toBe(false);
+    });
   });
 });

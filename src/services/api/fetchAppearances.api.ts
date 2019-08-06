@@ -1,29 +1,33 @@
-import transformAppearance from "../../transformers/transformAppearance";
+import {
+  appearance,
+  dynamoResponse,
+  failure,
+  IRawAppearance,
+  IRawDynamoResponse,
+  success
+} from "../../models/root.models";
+import { TRequest } from "../configureHttpClient";
 
-const transformAppearances = (appearances: any) =>
-  appearances.map(transformAppearance);
-
-export const fetchAppearances = (request: any) => async (
+export const fetchAppearances = (request: TRequest) => async (
   limit?: number,
   exclusiveStartKey?: string
 ) => {
   try {
-    const response = await request({
+    const response: IRawDynamoResponse<
+      IRawAppearance,
+      "startingAt"
+    > = await request({
       params: { exclusiveStartKey, limit },
       url: `/appearances/find`
     });
 
-    return {
-      data: {
+    return success(
+      dynamoResponse({
         ...response,
-        items: transformAppearances(response.items)
-      },
-      ok: true
-    };
+        items: response.items.map(appearance)
+      })
+    );
   } catch (error) {
-    return {
-      message: error.message,
-      ok: false
-    };
+    return failure(error);
   }
 };

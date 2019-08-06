@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[presentation] <Modal /> renders correctly 1`] = `
+exports[`[presentation] <Modal /> when toggling the isOpen prop matches snapshot when open 1`] = `
 <div
-  class="Portal-inPlace"
+  class="Portal--inPlace"
 >
   <div
     aria-hidden="false"
@@ -12,92 +12,45 @@ exports[`[presentation] <Modal /> renders correctly 1`] = `
     tabindex="0"
   >
     <div
-      class="Modal-overlay"
+      class="Modal--overlay"
     />
     <div
-      class="Modal-content"
+      class="Modal--content"
     >
       <div
-        class="Modal-body"
+        class="Modal--body"
       >
         <div
-          class="Modal-testContent"
+          class="Modal--testContent"
         >
-          <span>
-            Modal content
-          </span>
-          <button>
-            Modal button
-          </button>
+          <input
+            id="Modal--input"
+          />
         </div>
       </div>
       <button
-        class="Modal-closeButton"
+        class="Button Modal--closeButton"
+        type="button"
       >
-        <svg
-          fill="currentColor"
-          height="1em"
-          stroke="currentColor"
-          stroke-width="0"
-          viewBox="0 0 24 24"
-          width="1em"
+        <span
+          class="Button--content"
         >
-          <path
-            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-          />
-        </svg>
+          <svg
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
+          </svg>
+        </span>
       </button>
     </div>
-  </div>
-</div>
-`;
-
-exports[`[presentation] <Modal /> renders correctly when isOpen=false 1`] = `null`;
-
-exports[`[presentation] <Modal /> renders correctly when usePortal=true 1`] = `
-<div
-  aria-hidden="false"
-  aria-modal="true"
-  class="Modal TestModal isVisible"
-  role="dialog"
-  tabindex="0"
->
-  <div
-    class="Modal-overlay"
-  />
-  <div
-    class="Modal-content"
-  >
-    <div
-      class="Modal-body"
-    >
-      <div
-        class="Modal-testContent"
-      >
-        <span>
-          Modal content
-        </span>
-        <button>
-          Modal button
-        </button>
-      </div>
-    </div>
-    <button
-      class="Modal-closeButton"
-    >
-      <svg
-        fill="currentColor"
-        height="1em"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 24 24"
-        width="1em"
-      >
-        <path
-          d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-        />
-      </svg>
-    </button>
   </div>
 </div>
 `;

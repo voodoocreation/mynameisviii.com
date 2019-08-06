@@ -1,10 +1,11 @@
 import { createSelector, defaultMemoize } from "reselect";
-import { assocToArray } from "../transformers/transformData";
 
-export const getNewsError = (state: IRootReducers) => state.news.error;
+import { TStoreState } from "../reducers/root.reducers";
+
+export const hasNewsError = (state: TStoreState) => state.news.hasError;
 
 export const getNewsArticles = defaultMemoize(
-  (state: IRootReducers) => state.news.items
+  (state: TStoreState) => state.news.items
 );
 
 export const getNewsArticlesCount = createSelector(
@@ -15,12 +16,13 @@ export const getNewsArticlesCount = createSelector(
 export const getNewsArticlesAsArray = createSelector(
   getNewsArticles,
   articles =>
-    assocToArray(articles).sort(
-      (a: INewsArticle, b: INewsArticle) => a.createdAt < b.createdAt
+    Object.values(articles).sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
     )
 );
 
-export const getCurrentNewsArticleSlug = (state: IRootReducers) =>
+export const getCurrentNewsArticleSlug = (state: TStoreState) =>
   state.news.currentSlug;
 
 export const getCurrentNewsArticle = createSelector(
@@ -29,7 +31,7 @@ export const getCurrentNewsArticle = createSelector(
   (articles, slug) => (slug ? articles[slug] : undefined)
 );
 
-export const getNewsLastEvaluatedKey = (state: IRootReducers) =>
+export const getNewsLastEvaluatedKey = (state: TStoreState) =>
   state.news.lastEvaluatedKey;
 
 export const getNewsLastEvaluatedKeyAsString = createSelector(
@@ -48,7 +50,7 @@ export const getNewsLastEvaluatedKeyAsString = createSelector(
         )
 );
 
-export const getHasAllNewsArticles = (state: IRootReducers) =>
+export const getHasAllNewsArticles = (state: TStoreState) =>
   state.news.hasAllItems;
 
-export const getNewsIsLoading = (state: IRootReducers) => state.news.isLoading;
+export const getNewsIsLoading = (state: TStoreState) => state.news.isLoading;

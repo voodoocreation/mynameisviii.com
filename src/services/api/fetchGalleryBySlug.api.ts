@@ -1,17 +1,19 @@
-import transformGallery from "../../transformers/transformGallery";
+import {
+  failure,
+  gallery,
+  IRawGallery,
+  success
+} from "../../models/root.models";
+import { TRequest } from "../configureHttpClient";
 
-export const fetchGalleryBySlug = (request: any) => async (slug: string) => {
+export const fetchGalleryBySlug = (request: TRequest) => async (
+  slug: string
+) => {
   try {
-    const response = await request({ url: `/galleries/${slug}` });
+    const response: IRawGallery = await request({ url: `/galleries/${slug}` });
 
-    return {
-      data: transformGallery(response),
-      ok: true
-    };
+    return success(gallery(response));
   } catch (error) {
-    return {
-      message: error.message,
-      ok: false
-    };
+    return failure(error);
   }
 };

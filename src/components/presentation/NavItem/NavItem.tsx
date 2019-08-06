@@ -1,37 +1,20 @@
+import cn from "classnames";
 import * as React from "react";
 
-import Link from "../Link/Link";
+import Link, { IProps as ILinkProps } from "../Link/Link";
 
-interface IProps {
-  href?: string;
+interface IProps extends ILinkProps {
   isSelected?: boolean;
-  onClick?: () => void;
-  params?: {};
-  prefetch?: boolean;
-  route?: string;
 }
 
-const NavItem: React.SFC<IProps> = ({
-  children,
-  isSelected,
-  onClick,
-  ...linkProps
-}) =>
-  isSelected
-    ? ((
-        <li className="isSelected" onClick={onClick}>
-          {children}
-        </li>
-      ) as React.ReactElement<any>)
-    : ((
-        <li onClick={onClick}>
-          <Link {...linkProps}>{children}</Link>
-        </li>
-      ) as React.ReactElement<any>);
+const NavItem: React.FC<IProps> = ({ children, isSelected, ...linkProps }) => (
+  <li className={cn({ isSelected })}>
+    {isSelected ? children : <Link {...linkProps}>{children}</Link>}
+  </li>
+);
 
 NavItem.defaultProps = {
-  isSelected: false,
-  onClick: () => undefined
+  isSelected: false
 };
 
 export default NavItem;

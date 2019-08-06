@@ -1,31 +1,27 @@
 import actionCreatorFactory from "typescript-fsa";
 
-const actionCreator = actionCreatorFactory("APPEARANCES");
+import { IAppearance, IDynamoResponse, ILatLng } from "../models/root.models";
 
-export const fetchAppearances = actionCreator.async<
+const createAction = actionCreatorFactory("APPEARANCES");
+
+export const fetchAppearances = createAction.async<
   {},
-  PLFetchAppearancesDone,
-  PLFetchAppearancesFailed
+  IDynamoResponse<IAppearance, "startingAt">
 >("FETCH");
 
-export const fetchMoreAppearances = actionCreator.async<
+export const fetchMoreAppearances = createAction.async<
   {},
-  PLFetchAppearancesDone,
-  PLFetchAppearancesFailed
+  IDynamoResponse<IAppearance, "startingAt">
 >("FETCH_MORE");
 
-export const fetchAppearanceBySlug = actionCreator.async<
-  PLFetchAppearanceBySlugStarted,
-  PLFetchAppearanceBySlugDone,
-  PLFetchAppearanceBySlugFailed
->("FETCH_BY_SLUG");
+export const fetchAppearanceBySlug = createAction.async<string, IAppearance>(
+  "FETCH_BY_SLUG"
+);
 
-export const geocodeCurrentAppearanceAddress = actionCreator.async<
-  {},
-  PLGeocodeCurrentAppearanceAddressDone,
-  PLGeocodeCurrentAppearanceAddressFailed
->("GEOCODE_CURRENT_ADDRESS");
+export const setCurrentAppearanceSlug = createAction<string>(
+  "SET_CURRENT_SLUG"
+);
 
-export const setCurrentAppearanceSlug = actionCreator<
-  PLSetCurrentAppearanceSlug
->("SET_CURRENT_SLUG");
+export const geocodeCurrentAppearanceAddress = createAction.async<{}, ILatLng>(
+  "GEOCODE_CURRENT_ADDRESS"
+);

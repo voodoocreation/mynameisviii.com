@@ -18,9 +18,7 @@ export default class Portal extends React.Component<IProps> {
 
   public componentDidMount() {
     if (!isServer() && this.container) {
-      if (this.props.className) {
-        this.container.classList.add(this.props.className);
-      }
+      this.container.className = `${this.props.className}`;
 
       const portal = this.getPortalNode();
       portal.appendChild(this.container);
@@ -36,7 +34,7 @@ export default class Portal extends React.Component<IProps> {
 
   public render() {
     if (!this.container || this.props.isRenderingInPlace) {
-      return <div className="Portal-inPlace">{this.props.children}</div>;
+      return <div className="Portal--inPlace">{this.props.children}</div>;
     }
 
     return ReactDOM.createPortal(this.props.children, this.container);

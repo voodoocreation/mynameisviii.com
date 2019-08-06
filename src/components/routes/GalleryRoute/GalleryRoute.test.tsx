@@ -1,206 +1,124 @@
-import { mount, render } from "enzyme";
-import { camelizeKeys } from "humps";
-import merge from "lodash.merge";
-import * as React from "react";
-import { Provider } from "react-redux";
-
-import * as selectors from "../../../selectors/root.selectors";
-import createStore from "../../../store/root.store";
+import * as actions from "../../../actions/root.actions";
+import { gallery } from "../../../models/root.models";
+import ComponentTester from "../../../utilities/ComponentTester";
+import MockPageContext from "../../../utilities/MockPageContext";
 import GalleryRoute from "./GalleryRoute";
 
-import gallery from "../../../../server/mocks/gallery.json";
+const item = gallery({
+  images: [{ imageUrl: "1" }, { imageUrl: "2" }],
+  slug: "test-1"
+});
 
-const mockData: any = camelizeKeys(gallery);
-
-const setup = (fn: any, fromTestStore = {}, fromTestApi?: {}) => {
-  const store = createStore(
-    merge(
-      {
-        galleries: {
-          currentSlug: mockData.slug,
-          items: {
-            [mockData.slug]: {
-              description: mockData.description,
-              modifiedAt: mockData.modifiedAt,
-              slug: mockData.slug,
-              title: mockData.title
-            }
-          }
-        }
-      },
-      fromTestStore
-    ),
-    {},
-    fromTestApi
-  );
-
-  return {
-    actual: fn(
-      <Provider store={store}>
-        <GalleryRoute />
-      </Provider>
-    ),
-    store
-  };
+const defaultState = {
+  galleries: {
+    currentSlug: item.slug,
+    items: {
+      [item.slug]: item
+    }
+  }
 };
 
+const component = new ComponentTester(GalleryRoute, true);
+
 describe("[routes] <GalleryRoute />", () => {
-  it("renders correctly", () => {
-    const { actual } = setup(render);
+  describe("getInitialProps", () => {
+    const context = new MockPageContext()
+      .withDefaultQuery({
+        slug: item.slug
+      })
+      .withDefaultReduxState(defaultState);
 
-    expect(actual).toMatchSnapshot();
-  });
+    describe("when the gallery isn't already in the store", () => {
+      const slug = "new-slug";
 
-  it("renders a loader when item is being fetched", () => {
-    const { actual } = setup(render, {
-      galleries: { isLoading: true }
+      it("calls getInitialProps method", async () => {
+        await GalleryRoute.getInitialProps(
+          context.withQuery({ slug }).toObject()
+        );
+      });
+
+      it("dispatches actions.setCurrentGallerySlug with expected payload", () => {
+        const matchingActions = context.reduxHistory.filter(
+          actions.setCurrentGallerySlug.match
+        );
+
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload).toBe(slug);
+      });
+
+      it("dispatches actions.fetchGalleryBySlug.started", () => {
+        expect(
+          context.reduxHistory.filter(actions.fetchGalleryBySlug.started.match)
+        ).toHaveLength(1);
+      });
     });
 
-    expect(actual.hasClass("PageLoader")).toBe(true);
-    expect(actual).toMatchSnapshot();
+    describe("when the gallery is already in the store", () => {
+      it("calls getInitialProps method", async () => {
+        await GalleryRoute.getInitialProps(context.toObject());
+      });
+
+      it("dispatches actions.setCurrentGallerySlug", () => {
+        expect(
+          context.reduxHistory.filter(actions.setCurrentGallerySlug.match)
+        ).toHaveLength(1);
+      });
+
+      it("doesn't dispatch actions.fetchGalleryBySlug.started", () => {
+        expect(
+          context.reduxHistory.filter(actions.fetchGalleryBySlug.started.match)
+        ).toHaveLength(0);
+      });
+    });
   });
 
-  it("renders 404 error page when no gallery exists", () => {
-    const { actual } = setup(mount, {
-      galleries: {
-        currentSlug: "test-1",
-        error: {
-          message: "Not found",
-          status: 404
+  it("matches snapshot", () => {
+    const { wrapper } = component.withReduxState(defaultState).mount();
+
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  it("renders a loader when isLoading is true", () => {
+    const { wrapper } = component
+      .withReduxState({
+        ...defaultState,
+        galleries: { isLoading: true }
+      })
+      .mount();
+
+    expect(wrapper.find("Loader")).toHaveLength(1);
+  });
+
+  it("doesn't render anything when no gallery exists", () => {
+    const { wrapper } = component
+      .withReduxState({
+        galleries: {
+          currentSlug: undefined,
+          hasError: true,
+          items: {}
         }
-      }
-    });
+      })
+      .mount();
 
-    const ErrorPage = actual.find("ErrorPage");
-
-    expect(ErrorPage).toHaveLength(1);
-    expect(ErrorPage.prop("status")).toBe(404);
-    expect(actual.render()).toMatchSnapshot();
-  });
-
-  it("renders 500 error page when slug isn't in the store", () => {
-    const { actual } = setup(mount, {
-      galleries: {
-        currentSlug: null
-      }
-    });
-
-    const ErrorPage = actual.find("ErrorPage");
-
-    expect(ErrorPage).toHaveLength(1);
-    expect(ErrorPage.prop("status")).toBe(500);
-    expect(actual.render()).toMatchSnapshot();
+    expect(wrapper.render().html()).toBeNull();
   });
 
   it("tracks gallery interactions correctly", () => {
-    const { actual } = setup(mount, {
-      galleries: {
-        items: {
-          [mockData.slug]: mockData
-        }
-      }
-    });
+    const { wrapper } = component.withReduxState(defaultState).mount();
 
-    actual
+    wrapper
       .find("ImageGallery Image")
       .last()
       .simulate("click");
 
-    expect(window.dataLayer[0].event).toBe("gallery.gallery.itemClick");
-    expect(window.dataLayer[0].index).toBe(17);
-  });
+    const matchingActions = component.reduxHistory.filter(
+      actions.trackEvent.match
+    );
 
-  describe("getInitialProps()", () => {
-    it("sets `currentSlug` from URL", async () => {
-      const { store } = setup(render);
-
-      await GalleryRoute.getInitialProps({
-        ctx: {
-          query: { slug: "test-1" },
-          store
-        }
-      });
-
-      expect(selectors.getCurrentGallerySlug(store.getState())).toBe("test-1");
-    });
-
-    it("fetches gallery when it's not already in the store", async () => {
-      const { store } = setup(
-        render,
-        {
-          galleries: {
-            items: {}
-          }
-        },
-        {
-          fetchGalleryBySlug: () => ({
-            data: mockData,
-            ok: true
-          })
-        }
-      );
-
-      await GalleryRoute.getInitialProps({
-        ctx: {
-          query: { slug: mockData.slug },
-          store
-        }
-      });
-
-      expect(selectors.getCurrentGallery(store.getState())).toBeDefined();
-      expect(selectors.getCurrentGalleryImages(store.getState())).toBeDefined();
-    });
-
-    it("fetches full gallery when only the listing data is in the store", async () => {
-      const { store } = setup(
-        render,
-        {},
-        {
-          fetchGalleryBySlug: () => ({
-            data: mockData,
-            ok: true
-          })
-        }
-      );
-
-      expect(
-        selectors.getCurrentGalleryImages(store.getState())
-      ).toBeUndefined();
-
-      await GalleryRoute.getInitialProps({
-        ctx: {
-          query: { slug: mockData.slug },
-          store
-        }
-      });
-
-      expect(selectors.getCurrentGallery(store.getState())).toBeDefined();
-      expect(selectors.getCurrentGalleryImages(store.getState())).toBeDefined();
-    });
-
-    it("doesn't fetch gallery when it's already in the store", async () => {
-      const { store } = setup(render, {
-        galleries: {
-          items: {
-            [mockData.slug]: mockData
-          }
-        }
-      });
-
-      const itemCountBeforeRender = selectors.getGalleriesCount(
-        store.getState()
-      );
-
-      await GalleryRoute.getInitialProps({
-        ctx: {
-          query: { slug: mockData.slug },
-          store
-        }
-      });
-
-      expect(selectors.getGalleriesCount(store.getState())).toBe(
-        itemCountBeforeRender
-      );
+    expect(matchingActions).toHaveLength(1);
+    expect(matchingActions[0].payload).toEqual({
+      event: "gallery.gallery.itemClick",
+      index: 1
     });
   });
 });

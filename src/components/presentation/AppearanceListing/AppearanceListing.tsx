@@ -1,47 +1,45 @@
 import cn from "classnames";
 import * as React from "react";
 import { MdAccessTime, MdDateRange, MdPeople, MdPlace } from "react-icons/md";
-import { FormattedMessage, InjectedIntl, injectIntl } from "react-intl";
 
+import { STATUS } from "../../../constants/appearance.constants";
+import { IAppearance } from "../../../models/root.models";
 import Schema from "../../schema/Appearance";
+import AppearanceStatus from "../AppearanceStatus/AppearanceStatus";
 import DateTime from "../DateTime/DateTime";
 import Image from "../Image/Image";
 import Link from "../Link/Link";
 import Meta from "../Meta/Meta";
-import PriceRange from "../Price/PriceRange";
+import PriceRange from "../PriceRange/PriceRange";
 
-import * as selectors from "../../../selectors/root.selectors";
+import "./AppearanceListing.scss";
 
 interface IState {
   isRendered: boolean;
 }
 
 interface IProps extends IAppearance {
-  intl: InjectedIntl;
   isCondensed?: boolean;
-  onLoad?: (slug: string) => void;
+  onLoad?: () => void;
 }
 
-class AppearanceListing extends React.Component<IProps, IState> {
+export default class AppearanceListing extends React.Component<IProps, IState> {
   public static defaultProps = {
     isCondensed: false
   };
 
-  public state = {
+  public state: IState = {
     isRendered: false
   };
 
   public render() {
-    const { intl, isCondensed, onLoad, ...appearance } = this.props;
+    const { isCondensed, onLoad, ...appearance } = this.props;
     const { isRendered } = this.state;
 
-    const isCancelled = appearance.status === "EventCancelled";
-    const isPostponed = appearance.status === "EventPostponed";
-    const isFinished = appearance.finishingAt < new Date().toISOString();
-
-    const priceRange: IPriceRange = selectors.getAppearancePriceRange(
-      appearance
-    );
+    const currency =
+      appearance.sales.length > 0
+        ? appearance.sales[0].priceCurrency
+        : undefined;
 
     return (
       <article
@@ -49,38 +47,24 @@ class AppearanceListing extends React.Component<IProps, IState> {
           "AppearanceListing",
           { isRendered },
           { isCondensed },
-          { isCancelled },
-          { isPostponed },
-          { isFinished }
+          { isCancelled: this.isCancelled() },
+          { isPostponed: this.isPostponed() },
+          { isFinished: this.isFinished() }
         )}
       >
         <Link route={`/appearances/${appearance.slug}`}>
-          <div className="AppearanceListing-details">
-            <header className="AppearanceListing-header">
+          <div className="AppearanceListing--details">
+            <header className="AppearanceListing--header">
               <h3>{appearance.title}</h3>
             </header>
 
-            <section className="AppearanceListing-meta">
-              {isCancelled ? (
-                <Meta
-                  className="AppearanceListing-status"
-                  labelConstant="STATUS"
-                >
-                  <FormattedMessage id="CANCELLED" />
-                </Meta>
-              ) : null}
-              {isPostponed ? (
-                <Meta
-                  className="AppearanceListing-status"
-                  labelConstant="POSTPONED"
-                >
-                  <FormattedMessage id="POSTPONED" />
-                </Meta>
-              ) : null}
+            <section className="AppearanceListing--meta">
+              {this.renderStatus()}
+
               <Meta
-                className="AppearanceListing-date"
+                className="AppearanceListing--date"
                 icon={<MdDateRange />}
-                labelConstant="DATE"
+                labelIntlId="DATE"
               >
                 <DateTime
                   isDateOnly={true}
@@ -95,9 +79,9 @@ class AppearanceListing extends React.Component<IProps, IState> {
               </Meta>
 
               <Meta
-                className="AppearanceListing-time"
+                className="AppearanceListing--time"
                 icon={<MdAccessTime />}
-                labelConstant="TIME"
+                labelIntlId="TIME"
               >
                 <DateTime
                   isRelative={false}
@@ -111,34 +95,32 @@ class AppearanceListing extends React.Component<IProps, IState> {
               </Meta>
 
               <Meta
-                className="AppearanceListing-location"
+                className="AppearanceListing--location"
                 icon={<MdPlace />}
-                labelConstant="LOCATION"
-                title={`${appearance.location.name} - ${
-                  appearance.location.address
-                }`}
+                labelIntlId="LOCATION"
+                title={`${appearance.location.name} - ${appearance.location.address}`}
               >
                 {appearance.location.name}
               </Meta>
 
               {appearance.audience ? (
                 <Meta
-                  className="AppearanceListing-audience"
+                  className="AppearanceListing--audience"
                   icon={<MdPeople />}
-                  labelConstant="AUDIENCE"
+                  labelIntlId="AUDIENCE"
                 >
                   {appearance.audience}
                 </Meta>
               ) : null}
 
-              <Meta className="AppearanceListing-price" labelConstant="PRICE">
-                <PriceRange max={priceRange.max} min={priceRange.min} />
+              <Meta className="AppearanceListing--price" labelIntlId="PRICE">
+                <PriceRange currency={currency} {...this.getPriceRange()} />
               </Meta>
             </section>
           </div>
 
           <Image
-            className="AppearanceListing-image"
+            className="AppearanceListing--image"
             alt={appearance.title}
             onLoad={this.onLoad}
             src={appearance.imageUrl}
@@ -150,15 +132,45 @@ class AppearanceListing extends React.Component<IProps, IState> {
     );
   }
 
+  private isCancelled = () => this.props.status === STATUS.CANCELLED;
+  private isPostponed = () => this.props.status === STATUS.POSTPONED;
+  private isFinished = () => this.props.finishingAt < new Date().toISOString();
+
+  private renderStatus = () => {
+    if (!this.isCancelled() && !this.isPostponed()) {
+      return null;
+    }
+
+    return (
+      <Meta className="AppearanceListing--status" labelIntlId="STATUS">
+        <AppearanceStatus value={this.props.status} />
+      </Meta>
+    );
+  };
+
+  private getPriceRange = () =>
+    this.props.sales
+      .sort((a, b) => a.price - b.price)
+      .reduce<{ max?: number; min?: number }>((range, sale) => {
+        if (!range.min || sale.price < range.min) {
+          range.min = sale.price;
+        } else if (
+          (range.max && sale.price > range.max) ||
+          (!range.max && range.min && sale.price > range.min)
+        ) {
+          range.max = sale.price;
+        }
+
+        return range;
+      }, {});
+
   private onLoad = () => {
     this.setState({
       isRendered: true
     });
 
     if (this.props.onLoad) {
-      this.props.onLoad(this.props.slug);
+      this.props.onLoad();
     }
   };
 }
-
-export default injectIntl<any>(AppearanceListing);

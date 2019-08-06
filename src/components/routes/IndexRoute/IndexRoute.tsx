@@ -8,14 +8,17 @@ import {
   FaSpotify,
   FaTwitter
 } from "react-icons/fa";
-import { FormattedMessage, InjectedIntl } from "react-intl";
+import { FormattedMessage, InjectedIntlProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
-import { ActionCreator } from "typescript-fsa";
 
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
+import { IAppearance, INewsArticle } from "../../../models/root.models";
+import { TStoreState } from "../../../reducers/root.reducers";
 import { absUrl } from "../../../transformers/transformData";
+import { IPageContext } from "../../connected/App/App";
 import IconGenius from "../../icons/IconGenius";
+import AppearanceListing from "../../presentation/AppearanceListing/AppearanceListing";
 import Link from "../../presentation/Link/Link";
 import NewsListing from "../../presentation/NewsListing/NewsListing";
 import PageHeader from "../../presentation/PageHeader/PageHeader";
@@ -23,27 +26,21 @@ import WebsiteListing from "../../presentation/WebsiteListing/WebsiteListing";
 
 import * as actions from "../../../actions/root.actions";
 import * as selectors from "../../../selectors/root.selectors";
-import AppearanceListing from "../../presentation/AppearanceListing/AppearanceListing";
 
-interface IStoreProps {
+import "./IndexRoute.scss";
+
+interface IProps extends InjectedIntlProps {
   articles: INewsArticle[];
+  fetchAppearances: typeof actions.fetchAppearances.started;
+  fetchLatestNews: typeof actions.fetchLatestNews.started;
   hasAllAppearances: boolean;
   isAppearancesLoading: boolean;
   upcomingAppearances: IAppearance[];
 }
 
-interface IDispatchProps {
-  fetchAppearances: ActionCreator<{}>;
-  fetchLatestNews: ActionCreator<{}>;
-}
-
-interface IProps extends IStoreProps, IDispatchProps {
-  intl: InjectedIntl;
-}
-
 class IndexRoute extends React.Component<IProps> {
-  public static async getInitialProps(props: any) {
-    const { isServer, store } = props.ctx;
+  public static async getInitialProps(context: IPageContext) {
+    const { isServer, store } = context;
 
     const state = store.getState();
 
@@ -59,6 +56,7 @@ class IndexRoute extends React.Component<IProps> {
   public render() {
     const { formatMessage } = this.props.intl;
 
+    const hasNewsSection = this.props.articles.length > 0;
     const hasAppearancesSection = this.props.upcomingAppearances.length > 0;
 
     const pageTitle = formatMessage({ id: "BRAND_NAME" });
@@ -87,8 +85,10 @@ class IndexRoute extends React.Component<IProps> {
           <FormattedMessage id="BRAND_NAME" />
         </PageHeader>
 
-        <div className={cn("Home", { hasAppearancesSection })}>
-          {this.renderNewsSection()}
+        <div
+          className={cn("Home", { hasAppearancesSection }, { hasNewsSection })}
+        >
+          {hasNewsSection ? this.renderNewsSection() : null}
           {hasAppearancesSection ? this.renderAppearancesSection() : null}
           {this.renderBioSection()}
           {this.renderConnectSection()}
@@ -97,29 +97,28 @@ class IndexRoute extends React.Component<IProps> {
     );
   }
 
-  private renderNewsSection = () =>
-    this.props.articles.length < 1 ? null : (
-      <section className="Home-news">
-        <div className="Home-news-content">
-          <h2>
-            <FormattedMessage id="LATEST_NEWS" />
-          </h2>
+  private renderNewsSection = () => (
+    <section className="Home--news">
+      <div className="Home--news--content">
+        <h2>
+          <FormattedMessage id="LATEST_NEWS" />
+        </h2>
 
-          <div className="Home-news-items">
-            <NewsListing isCondensed={true} {...this.props.articles[0]} />
-          </div>
+        <div className="Home-news-items">
+          <NewsListing isCondensed={true} {...this.props.articles[0]} />
         </div>
-      </section>
-    );
+      </div>
+    </section>
+  );
 
   private renderAppearancesSection = () => (
-    <section className="Home-appearances">
-      <div className="Home-appearances-content">
+    <section className="Home--appearances">
+      <div className="Home--appearances--content">
         <h2>
           <FormattedMessage id="NEXT_APPEARANCE" />
         </h2>
 
-        <div className="Home-appearances-items">
+        <div className="Home--appearances--items">
           <AppearanceListing
             isCondensed={true}
             {...this.props.upcomingAppearances[0]}
@@ -130,8 +129,8 @@ class IndexRoute extends React.Component<IProps> {
   );
 
   private renderBioSection = () => (
-    <section className="Home-bio">
-      <div className="Home-bio-content">
+    <section className="Home--bio">
+      <div className="Home--bio--content">
         <h2>
           <FormattedMessage id="BIOGRAPHY" />
         </h2>
@@ -159,13 +158,13 @@ class IndexRoute extends React.Component<IProps> {
     const { formatMessage } = this.props.intl;
 
     return (
-      <section className="Home-connect">
-        <div className="Home-connect-content">
+      <section className="Home--connect">
+        <div className="Home--connect--content">
           <h2>
             <FormattedMessage id="CONNECT_WITH_VIII" />
           </h2>
 
-          <div className="Home-connect-websites">
+          <div className="Home--connect--websites">
             <WebsiteListing
               icon={<FaSpotify />}
               url="https://open.spotify.com/artist/59s4iD384WECjyZyUmZ18G?si=rlWWtIUNS1uvdLD5BzqxvQ"
@@ -173,6 +172,7 @@ class IndexRoute extends React.Component<IProps> {
             >
               <FormattedMessage id="SPOTIFY" />
             </WebsiteListing>
+
             <WebsiteListing
               icon={<FaFacebookSquare />}
               url="https://facebook.com/mynameisviii"
@@ -180,6 +180,7 @@ class IndexRoute extends React.Component<IProps> {
             >
               <FormattedMessage id="FACEBOOK" />
             </WebsiteListing>
+
             <WebsiteListing
               icon={<FaTwitter />}
               url="https://twitter.com/mynameisviii"
@@ -187,6 +188,7 @@ class IndexRoute extends React.Component<IProps> {
             >
               <FormattedMessage id="TWITTER" />
             </WebsiteListing>
+
             <WebsiteListing
               icon={<FaInstagram />}
               url="https://instagram.com/mynameisviii"
@@ -194,6 +196,7 @@ class IndexRoute extends React.Component<IProps> {
             >
               <FormattedMessage id="INSTAGRAM" />
             </WebsiteListing>
+
             <WebsiteListing
               icon={<FaSoundcloud />}
               url="https://soundcloud.com/iamviii"
@@ -201,6 +204,7 @@ class IndexRoute extends React.Component<IProps> {
             >
               <FormattedMessage id="SOUNDCLOUD" />
             </WebsiteListing>
+
             <WebsiteListing
               icon={<IconGenius />}
               url="https://genius.com/artists/Viii"
@@ -210,7 +214,7 @@ class IndexRoute extends React.Component<IProps> {
             </WebsiteListing>
           </div>
 
-          <div className="Home-connect-press">
+          <div className="Home--connect--press">
             <p>
               <FormattedMessage id="BOOKING_AND_PRESS_CONTACT" />{" "}
               <Link href="mailto:mgmt@mynameisviii.com">
@@ -225,14 +229,14 @@ class IndexRoute extends React.Component<IProps> {
   };
 }
 
-const mapStateToProps = (state: any) => ({
+const mapState = (state: TStoreState) => ({
   articles: selectors.getNewsArticlesAsArray(state),
   hasAllAppearances: selectors.getHasAllAppearances(state),
   isAppearancesLoading: selectors.getAppearancesIsLoading(state),
   upcomingAppearances: selectors.getUpcomingAppearances(state)
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) =>
+const mapActions = (dispatch: Dispatch) =>
   bindActionCreators(
     {
       fetchAppearances: actions.fetchAppearances.started,
@@ -242,8 +246,8 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
   );
 
 export default injectIntlIntoPage(
-  connect<IStoreProps, IDispatchProps>(
-    mapStateToProps,
-    mapDispatchToProps
+  connect(
+    mapState,
+    mapActions
   )(IndexRoute)
 );

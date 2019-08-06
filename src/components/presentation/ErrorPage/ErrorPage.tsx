@@ -1,15 +1,16 @@
 import Head from "next/head";
 import * as React from "react";
 import { MdErrorOutline } from "react-icons/md";
-import { InjectedIntl, injectIntl } from "react-intl";
+import { InjectedIntlProps, injectIntl } from "react-intl";
 
 import { absUrl } from "../../../transformers/transformData";
 import PageHeader from "../../presentation/PageHeader/PageHeader";
 
-interface IProps {
-  intl: InjectedIntl;
+import "./ErrorPage.scss";
+
+interface IProps extends InjectedIntlProps {
   message?: string;
-  status: number;
+  status?: number;
 }
 
 class ErrorPage extends React.Component<IProps> {
@@ -43,7 +44,7 @@ class ErrorPage extends React.Component<IProps> {
         <article className="ErrorPage">
           <PageHeader>{this.getTitle()}</PageHeader>
 
-          <div className="ErrorPage-content">
+          <div className="ErrorPage--content">
             <MdErrorOutline />
             <p>{this.getMessage()}</p>
           </div>
@@ -79,4 +80,4 @@ class ErrorPage extends React.Component<IProps> {
   }
 }
 
-export default injectIntl<any>(ErrorPage);
+export default injectIntl(ErrorPage);

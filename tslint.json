@@ -7,8 +7,10 @@
       "next",
       "browser-metrics",
       "core-js",
+      "next-server",
       "promise",
       "react-icons",
+      "react-intl",
       "redux-saga"
     ]
   }

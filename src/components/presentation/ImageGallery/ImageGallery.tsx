@@ -2,7 +2,10 @@ import cn from "classnames";
 import * as React from "react";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
 
+import Button from "../Button/Button";
 import Modal from "../Modal/Modal";
+
+import "./ImageGallery.scss";
 
 interface IProps {
   className?: string;
@@ -16,7 +19,7 @@ interface IProps {
 }
 
 interface IState {
-  currentIndex?: number;
+  currentIndex: number;
   isOpen: boolean;
 }
 
@@ -26,17 +29,14 @@ export default class ImageGallery extends React.Component<IProps, IState> {
     usePortal: true
   };
 
-  public readonly state = {
-    currentIndex: undefined,
+  public readonly state: IState = {
+    currentIndex: 0,
     isOpen: false
   };
 
   public render() {
     const { children, className } = this.props;
     const { currentIndex } = this.state;
-
-    const currentItem =
-      currentIndex !== undefined ? this.getItemAtIndex(currentIndex) : null;
 
     return (
       <React.Fragment>
@@ -49,25 +49,32 @@ export default class ImageGallery extends React.Component<IProps, IState> {
         </div>
 
         <Modal
-          className="ImageGallery-modal"
+          className="ImageGallery--modal"
           isOpen={this.state.isOpen}
           usePortal={this.props.usePortal}
           onClose={this.onModalClose}
           onKeyDown={this.onModalKeyDown}
         >
-          <div className="ImageGallery-modal-item">{currentItem}</div>
+          <div className="ImageGallery--modal--item">
+            {this.getItemAtIndex(currentIndex)}
+          </div>
 
-          <div className="ImageGallery-modal-controls">
-            <button
-              className="ImageGallery-modal-previous"
+          <div className="ImageGallery--modal--controls">
+            <Button
+              className="ImageGallery--modal--previousButton"
+              isStyled={false}
               onClick={this.previous}
             >
               <MdArrowBack />
-            </button>
+            </Button>
 
-            <button className="ImageGallery-modal-next" onClick={this.next}>
+            <Button
+              className="ImageGallery--modal--nextButton"
+              isStyled={false}
+              onClick={this.next}
+            >
               <MdArrowForward />
-            </button>
+            </Button>
           </div>
         </Modal>
       </React.Fragment>
@@ -79,16 +86,16 @@ export default class ImageGallery extends React.Component<IProps, IState> {
       this.setState({
         currentIndex: nextItemIndex
       });
-    }
 
-    if (this.props.onGoTo) {
-      this.props.onGoTo(nextItemIndex);
+      if (this.props.onGoTo) {
+        this.props.onGoTo(nextItemIndex);
+      }
     }
   };
 
   public previous = () => {
     const { currentIndex } = this.state;
-    const previousIndex = currentIndex !== undefined ? currentIndex - 1 : 0;
+    const previousIndex = currentIndex - 1;
     const goToIndex =
       this.props.isLooped && !this.getItemAtIndex(previousIndex)
         ? React.Children.count(this.props.children) - 1
@@ -103,7 +110,7 @@ export default class ImageGallery extends React.Component<IProps, IState> {
 
   public next = () => {
     const { currentIndex } = this.state;
-    const nextIndex = currentIndex !== undefined ? currentIndex + 1 : 0;
+    const nextIndex = currentIndex + 1;
     const goToIndex =
       this.props.isLooped && !this.getItemAtIndex(nextIndex) ? 0 : nextIndex;
 
@@ -144,7 +151,7 @@ export default class ImageGallery extends React.Component<IProps, IState> {
 
   private onModalClose = () => {
     this.setState({
-      currentIndex: undefined,
+      currentIndex: 0,
       isOpen: false
     });
 

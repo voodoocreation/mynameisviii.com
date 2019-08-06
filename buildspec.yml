@@ -19,7 +19,6 @@ phases:
 artifacts:
   files:
     - dist/**/*
-    - locales/**/*
     - scripts/**/*
     - static/**/*
     - appspec.yml

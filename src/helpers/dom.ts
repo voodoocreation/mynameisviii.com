@@ -29,7 +29,6 @@ export const isAlmostInViewport = (
   if (!element) {
     return false;
   }
-
   const html = document.documentElement as HTMLHtmlElement;
   const bounds = element.getBoundingClientRect();
   const viewport = {

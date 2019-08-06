@@ -1,11 +1,12 @@
 import { createSelector, defaultMemoize } from "reselect";
-import { assocToArray } from "../transformers/transformData";
 
-export const getGalleriesError = (state: IRootReducers) =>
-  state.galleries.error;
+import { TStoreState } from "../reducers/root.reducers";
+
+export const hasGalleriesError = (state: TStoreState) =>
+  state.galleries.hasError;
 
 export const getGalleries = defaultMemoize(
-  (state: IRootReducers) => state.galleries.items
+  (state: TStoreState) => state.galleries.items
 );
 
 export const getGalleriesCount = createSelector(
@@ -16,12 +17,13 @@ export const getGalleriesCount = createSelector(
 export const getGalleriesAsArray = createSelector(
   getGalleries,
   galleries =>
-    assocToArray(galleries).sort(
-      (a: IGallery, b: IGallery) => a.modifiedAt < b.modifiedAt
+    Object.values(galleries).sort(
+      (a, b) =>
+        new Date(b.modifiedAt).getTime() - new Date(a.modifiedAt).getTime()
     )
 );
 
-export const getCurrentGallerySlug = (state: IRootReducers) =>
+export const getCurrentGallerySlug = (state: TStoreState) =>
   state.galleries.currentSlug;
 
 export const getCurrentGallery = createSelector(
@@ -30,19 +32,14 @@ export const getCurrentGallery = createSelector(
   (galleries, slug) => (slug ? galleries[slug] : undefined)
 );
 
-export const getCurrentGalleryImages = createSelector(
-  getCurrentGallery,
-  gallery => gallery && gallery.images
-);
-
 export const getGalleriesLastKey = createSelector(
   getGalleries,
   getGalleriesCount,
   (galleries, galleriesCount) => Object.keys(galleries)[galleriesCount - 1]
 );
 
-export const getHasAllGalleries = (state: IRootReducers) =>
+export const getHasAllGalleries = (state: TStoreState) =>
   state.galleries.hasAllItems;
 
-export const getGalleriesIsLoading = (state: IRootReducers) =>
+export const getGalleriesIsLoading = (state: TStoreState) =>
   state.galleries.isLoading;

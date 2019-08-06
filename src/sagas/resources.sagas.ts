@@ -1,21 +1,23 @@
+import { SagaIterator } from "redux-saga";
 import { call, put, select, takeLatest } from "redux-saga/effects";
 
-import { arrayToAssoc } from "../transformers/transformData";
+import { IPorts } from "../services/configurePorts";
 
 import * as actions from "../actions/root.actions";
 import * as selectors from "../selectors/root.selectors";
 
-export const fetchResourcesSaga = (ports: IStorePorts) =>
-  function*() {
-    yield takeLatest(actions.fetchResources.started, function*() {
+export const fetchResourcesSaga = (ports: IPorts) =>
+  function*(): SagaIterator {
+    yield takeLatest(actions.fetchResources.started, function*(): SagaIterator {
       const response = yield call(ports.api.fetchResources);
 
       if (response.ok) {
-        const result = {
-          ...response.data,
-          items: arrayToAssoc(response.data.items, "slug")
-        };
-        yield put(actions.fetchResources.done({ result, params: {} }));
+        yield put(
+          actions.fetchResources.done({
+            params: {},
+            result: response.data
+          })
+        );
       } else {
         yield put(
           actions.fetchResources.failed({ error: response.message, params: {} })
@@ -24,40 +26,43 @@ export const fetchResourcesSaga = (ports: IStorePorts) =>
     });
   };
 
-export const fetchMoreResourcesSaga = (ports: IStorePorts) =>
-  function*() {
-    yield takeLatest(actions.fetchMoreResources.started, function*() {
-      const lastEvaluatedKey = yield select(
-        selectors.getResourcesLastEvaluatedKeyAsString
-      );
-      const response = yield call(
-        ports.api.fetchResources,
-        undefined,
-        lastEvaluatedKey
-      );
-
-      if (response.ok) {
-        const result = {
-          ...response.data,
-          items: arrayToAssoc(response.data.items, "slug")
-        };
-
-        yield put(actions.fetchMoreResources.done({ result, params: {} }));
-
-        const itemCount = yield select(selectors.getResourcesCount);
-        yield put(
-          actions.trackEvent({
-            event: "resources.fetchedMore",
-            itemCount
-          })
+export const fetchMoreResourcesSaga = (ports: IPorts) =>
+  function*(): SagaIterator {
+    yield takeLatest(
+      actions.fetchMoreResources.started,
+      function*(): SagaIterator {
+        const lastEvaluatedKey: string = yield select(
+          selectors.getResourcesLastEvaluatedKeyAsString
         );
-      } else {
-        yield put(
-          actions.fetchMoreResources.failed({
-            error: response.message,
-            params: {}
-          })
+        const response = yield call(
+          ports.api.fetchResources,
+          undefined,
+          lastEvaluatedKey
         );
+
+        if (response.ok) {
+          yield put(
+            actions.fetchMoreResources.done({
+              params: {},
+              result: response.data
+            })
+          );
+
+          const itemCount: number = yield select(selectors.getResourcesCount);
+          yield put(
+            actions.trackEvent({
+              event: "resources.fetchedMore",
+              itemCount
+            })
+          );
+        } else {
+          yield put(
+            actions.fetchMoreResources.failed({
+              error: response.message,
+              params: {}
+            })
+          );
+        }
       }
-    });
+    );
   };

@@ -1,13 +1,15 @@
 import cn from "classnames";
 import Head from "next/head";
 import * as React from "react";
-import { FormattedMessage, InjectedIntl } from "react-intl";
+import { FormattedMessage, InjectedIntlProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
-import { ActionCreator } from "typescript-fsa";
 
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
+import { IAppearance } from "../../../models/root.models";
+import { TStoreState } from "../../../reducers/root.reducers";
 import { absUrl } from "../../../transformers/transformData";
+import { IPageContext } from "../../connected/App/App";
 import OfflineNotice from "../../connected/OfflineNotice/OfflineNotice";
 import AppearanceListing from "../../presentation/AppearanceListing/AppearanceListing";
 import ButtonBar from "../../presentation/ButtonBar/ButtonBar";
@@ -18,34 +20,26 @@ import PageHeader from "../../presentation/PageHeader/PageHeader";
 import * as actions from "../../../actions/root.actions";
 import * as selectors from "../../../selectors/root.selectors";
 
-interface IStoreProps {
+import "./AppearancesRoute.scss";
+
+interface IProps extends InjectedIntlProps {
   appearancesCount: number;
-  error?: IError;
+  fetchAppearances: typeof actions.fetchAppearances.started;
+  fetchMoreAppearances: typeof actions.fetchMoreAppearances.started;
   hasAllAppearances: boolean;
+  hasError: boolean;
   isLoading: boolean;
   pastAppearances: IAppearance[];
   upcomingAppearances: IAppearance[];
 }
 
-interface IDispatchProps {
-  fetchAppearances: ActionCreator<{}>;
-  fetchMoreAppearances: ActionCreator<{}>;
-}
-
-interface IProps extends IStoreProps, IDispatchProps {
-  intl: InjectedIntl;
-}
-
 interface IState {
-  loadedListings: {
-    [index: string]: boolean;
-  };
+  loadedListings: Record<string, boolean>;
 }
 
 class AppearancesRoute extends React.Component<IProps, IState> {
-  public static async getInitialProps(props: any) {
-    const { isServer, store } = props.ctx;
-
+  public static async getInitialProps(context: IPageContext) {
+    const { isServer, store } = context;
     const state = store.getState();
 
     if (isServer || selectors.getAppearancesCount(state) === 0) {
@@ -55,14 +49,14 @@ class AppearancesRoute extends React.Component<IProps, IState> {
     }
   }
 
-  public readonly state = {
+  public readonly state: IState = {
     loadedListings: {}
   };
 
   public render() {
     const {
       appearancesCount,
-      error,
+      hasError,
       hasAllAppearances,
       pastAppearances,
       upcomingAppearances
@@ -73,20 +67,6 @@ class AppearancesRoute extends React.Component<IProps, IState> {
       appearancesCount === Object.keys(this.state.loadedListings).length;
 
     const isLoading = this.props.isLoading || !hasLoadedAllListings;
-
-    const loadMoreButton = hasAllAppearances ? null : (
-      <LoadButton
-        isLoading={isLoading}
-        isScrollLoadEnabled={!error}
-        onLoad={this.onLoadMore}
-      >
-        {!error ? (
-          <FormattedMessage id="LOAD_MORE" />
-        ) : (
-          <FormattedMessage id="TRY_AGAIN" />
-        )}
-      </LoadButton>
-    );
 
     const pageTitle = formatMessage({ id: "APPEARANCES_TITLE" });
     const pageDescription = formatMessage({ id: "APPEARANCES_DESCRIPTION" });
@@ -114,19 +94,19 @@ class AppearancesRoute extends React.Component<IProps, IState> {
 
         <PageHeader>{pageTitle}</PageHeader>
 
-        {error ? <OfflineNotice /> : null}
+        {hasError ? <OfflineNotice /> : null}
 
         {upcomingAppearances.length > 0 ? (
-          <section className="AppearanceListings AppearanceListings-upcoming">
+          <section className="AppearancesRoute--listings AppearancesRoute--upcoming">
             <h2>
               <FormattedMessage id="UPCOMING" />
             </h2>
 
-            <div className="AppearanceListings-items">
+            <div className="AppearancesRoute--listings--items">
               {upcomingAppearances.map(appearance => (
                 <AppearanceListing
                   key={appearance.slug}
-                  onLoad={this.onListingLoad}
+                  onLoad={this.onListingLoad(appearance)}
                   {...appearance}
                 />
               ))}
@@ -135,12 +115,12 @@ class AppearancesRoute extends React.Component<IProps, IState> {
         ) : null}
 
         {pastAppearances.length > 0 ? (
-          <section className="AppearanceListings AppearanceListings-past">
+          <section className="AppearancesRoute--listings AppearancesRoute--past">
             <h2>
               <FormattedMessage id="PAST" />
             </h2>
 
-            <div className="AppearanceListings-items">
+            <div className="AppearancesRoute--listings--items">
               {pastAppearances.map(appearance => (
                 <AppearanceListing key={appearance.slug} {...appearance} />
               ))}
@@ -156,16 +136,24 @@ class AppearancesRoute extends React.Component<IProps, IState> {
           </NoResults>
         ) : null}
 
-        <ButtonBar>{loadMoreButton}</ButtonBar>
+        <ButtonBar>
+          {!hasAllAppearances ? (
+            <LoadButton
+              hasError={hasError}
+              isLoading={isLoading}
+              onLoad={this.onLoadMore}
+            />
+          ) : null}
+        </ButtonBar>
       </article>
     );
   }
 
-  private onListingLoad = (slug: string) => {
+  private onListingLoad = (appearance: IAppearance) => () => {
     this.setState({
       loadedListings: {
         ...this.state.loadedListings,
-        [slug]: true
+        [appearance.slug]: true
       }
     });
   };
@@ -175,16 +163,16 @@ class AppearancesRoute extends React.Component<IProps, IState> {
   };
 }
 
-const mapStateToProps = (state: any) => ({
+const mapState = (state: TStoreState) => ({
   appearancesCount: selectors.getAppearancesCount(state),
-  error: selectors.getAppearancesError(state),
   hasAllAppearances: selectors.getHasAllAppearances(state),
+  hasError: selectors.hasAppearancesError(state),
   isLoading: selectors.getAppearancesIsLoading(state),
   pastAppearances: selectors.getPastAppearances(state),
   upcomingAppearances: selectors.getUpcomingAppearances(state)
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) =>
+const mapActions = (dispatch: Dispatch) =>
   bindActionCreators(
     {
       fetchAppearances: actions.fetchAppearances.started,
@@ -194,8 +182,8 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
   );
 
 export default injectIntlIntoPage(
-  connect<IStoreProps, IDispatchProps>(
-    mapStateToProps,
-    mapDispatchToProps
+  connect(
+    mapState,
+    mapActions
   )(AppearancesRoute)
 );

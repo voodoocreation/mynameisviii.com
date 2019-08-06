@@ -1,11 +1,14 @@
 import { createSelector, defaultMemoize } from "reselect";
-import { assocToArray } from "../transformers/transformData";
 
-export const getResourcesError = (state: IRootReducers) =>
-  state.resources.error;
+import { TYPE } from "../constants/resource.constants";
+import { IResource } from "../models/root.models";
+import { TStoreState } from "../reducers/root.reducers";
+
+export const hasResourcesError = (state: TStoreState) =>
+  state.resources.hasError;
 
 export const getResources = defaultMemoize(
-  (state: IRootReducers) => state.resources.items
+  (state: TStoreState) => state.resources.items
 );
 
 export const getResourcesCount = createSelector(
@@ -16,24 +19,30 @@ export const getResourcesCount = createSelector(
 export const getResourcesAsArray = createSelector(
   getResources,
   resources =>
-    assocToArray(resources).sort(
-      (a: IResource, b: IResource) => a.createdAt > b.createdAt
+    Object.values(resources).sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
     )
 );
 
 export const getResourcesByType = createSelector(
   getResourcesAsArray,
   resources =>
-    resources.reduce((acc: { [index: string]: any }, curr: IResource) => {
-      if (!acc[curr.type]) {
-        acc[curr.type] = [];
-      }
-      acc[curr.type].push(curr);
-      return acc;
-    }, {})
+    resources.reduce(
+      (acc: Record<TYPE, IResource[]>, curr) => {
+        if (!acc[curr.type]) {
+          acc[curr.type] = [];
+        }
+
+        acc[curr.type].push(curr);
+
+        return acc;
+      },
+      {} as any
+    )
 );
 
-export const getResourcesLastEvaluatedKey = (state: IRootReducers) =>
+export const getResourcesLastEvaluatedKey = (state: TStoreState) =>
   state.resources.lastEvaluatedKey;
 
 export const getResourcesLastEvaluatedKeyAsString = createSelector(
@@ -52,8 +61,8 @@ export const getResourcesLastEvaluatedKeyAsString = createSelector(
         )
 );
 
-export const getHasAllResources = (state: IRootReducers) =>
+export const getHasAllResources = (state: TStoreState) =>
   state.resources.hasAllItems;
 
-export const getResourcesIsLoading = (state: IRootReducers) =>
+export const getResourcesIsLoading = (state: TStoreState) =>
   state.resources.isLoading;

@@ -1,74 +1,52 @@
-import { render, shallow } from "enzyme";
-import * as React from "react";
-
+import { TYPE } from "../../../constants/location.constants";
+import { performer } from "../../../models/root.models";
+import ComponentTester from "../../../utilities/ComponentTester";
 import ActListing from "./ActListing";
 
-const g: any = global;
-
-const setup = (fn: any, fromTestProps?: any) => {
-  const props = {
-    genre: "genre",
-    imageUrl: "imageUrl",
+const component = new ComponentTester(ActListing).withDefaultProps(
+  performer({
+    genre: "Genre",
+    imageUrl: "Image URL",
     location: {
-      address: "location address",
-      name: "location name",
-      type: "location type",
-      url: "location url"
+      address: "City, Country",
+      type: TYPE.CITY
     },
-    name: "name",
-    type: "type",
-    url: "url",
-    ...fromTestProps
-  };
-
-  return {
-    actual: fn(<ActListing {...props} />),
-    props
-  };
-};
+    name: "Name"
+  })
+);
 
 describe("[presentation] <ActListing />", () => {
-  beforeEach(() => {
-    Object.defineProperty(g.Image.prototype, "complete", {
-      value: false
-    });
-  });
-
-  it("renders correctly", () => {
-    const { actual } = setup(render);
-
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("updates `isRendered` state after image has loaded", () => {
-    const { actual } = setup(shallow);
-
-    actual.find("img").simulate("load");
-    expect(actual.state("isRendered")).toBe(true);
-    expect(actual.render()).toMatchSnapshot();
-  });
-
-  it("triggers `onLoad` prop after image has loaded", () => {
-    const { actual, props } = setup(shallow, {
+  const { props, wrapper } = component
+    .withProps({
       onLoad: jest.fn()
-    });
+    })
+    .mount();
 
-    actual.find("img").simulate("load");
-    expect(props.onLoad).toHaveBeenCalled();
+  it("doesn't add the isRendered class initially", () => {
+    expect(wrapper.find(".isRendered")).toHaveLength(0);
   });
 
-  it("updates `isRendered` state and triggers onLoad prop when image has previously been loaded", () => {
-    Object.defineProperty(g.Image.prototype, "complete", {
-      value: true
-    });
+  it("loads the image", () => {
+    wrapper.find("Image.ActListing--image").simulate("load");
+  });
 
-    const { actual, props } = setup(shallow, {
-      onLoad: jest.fn()
-    });
+  it("adds the isRendered class", () => {
+    expect(wrapper.find(".isRendered")).toHaveLength(1);
+  });
 
-    actual.find("img").simulate("load");
-    expect(props.onLoad).toHaveBeenCalled();
-    expect(actual.state("isRendered")).toBe(true);
-    expect(actual.render()).toMatchSnapshot();
+  it("calls the onLoad prop", () => {
+    expect(props.onLoad).toHaveBeenCalledTimes(1);
+  });
+
+  it("sets the onLoad prop to be undefined", () => {
+    wrapper.setProps({ onLoad: undefined });
+  });
+
+  it("loads the image", () => {
+    wrapper.find("Image.ActListing--image").simulate("load");
+  });
+
+  it("matches snapshot", () => {
+    expect(wrapper.render()).toMatchSnapshot();
   });
 });

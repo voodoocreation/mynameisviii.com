@@ -1,71 +1,72 @@
-// tslint:disable:no-submodule-imports
+import { NextPageContext } from "next";
 import withReduxSaga from "next-redux-saga";
 import withRedux from "next-redux-wrapper";
-import App, { AppComponentProps, Container } from "next/app";
-import { NextDocumentContext as Context } from "next/document";
+import NextApp, { AppContext, AppProps, Container } from "next/app";
 import * as React from "react";
-import { addLocaleData, IntlProvider } from "react-intl";
+import { addLocaleData } from "react-intl";
+import { IntlProvider } from "react-intl-redux";
 import { Provider } from "react-redux";
-import { Store } from "redux";
 
 import routes from "../../../../next.routes";
 import * as actions from "../../../actions/root.actions";
 import { isServer } from "../../../helpers/dom";
 import * as selectors from "../../../selectors/root.selectors";
-import createStore from "../../../store/root.store";
+import { createStore, TStore } from "../../../store/root.store";
 
-import Shell from "../Shell/Shell";
+import Page from "../Page/Page";
 
 import en from "react-intl/locale-data/en";
-// tslint:enable:no-submodule-imports
+
+import "../../../scss/index.scss";
 
 addLocaleData([...en]);
 
-type NextPageComponent = React.ComponentType<any> & {
-  getInitialProps: (props: any) => any;
-};
-
-interface IProps extends AppComponentProps {
-  Component: NextPageComponent;
-  ctx: Context & { store: any };
-  intlProps: {
-    locale: string;
-    intlMessages: {};
-    initialNow: Date;
-  };
-  pageProps: {};
-  store: Store<any>;
+export interface IPageContext extends NextPageContext {
+  store: TStore;
+  isServer: boolean;
 }
 
-const getIntlProps = (ctx: Context) => {
+export interface IAppContext extends AppContext {
+  store: TStore;
+  ctx: IPageContext;
+}
+
+interface IProps extends AppProps {
+  intlProps: {
+    locale: string;
+    initialNow: Date;
+  };
+  store: TStore;
+}
+
+const getIntlProps = (ctx: NextPageContext) => {
   const requestProps = isServer()
     ? ctx.req
     : window.__NEXT_DATA__.props.initialProps.intlProps;
-  const { locale, intlMessages } = requestProps;
+  const { locale } = requestProps;
 
   return {
     initialNow: Date.now(),
-    intlMessages: intlMessages || {},
-    locale: locale || "en-NZ"
+    locale
   };
 };
 
-class Application extends App {
-  public static async getInitialProps({ ctx, Component }: IProps) {
+// @ts-ignore-next-line
+export class App extends NextApp<IProps> {
+  public static async getInitialProps({ ctx, Component }: IAppContext) {
     let pageProps = {};
 
     const unsubscribe = ctx.store.subscribe(() => {
-      const state = ctx.store.getState();
-      const pageError = selectors.getPageError(state);
+      const error = selectors.getAppError(ctx.store.getState());
 
-      if (pageError && ctx.res) {
-        ctx.res.statusCode = pageError.status;
+      if (error && ctx.res) {
+        ctx.res.statusCode = error.status;
         unsubscribe();
       }
     });
 
     if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps({ ctx });
+      pageProps = await Component.getInitialProps(ctx);
     }
 
     const intlProps = getIntlProps(ctx);
@@ -91,12 +92,18 @@ class Application extends App {
     routes.Router.onRouteChangeStart = this.onRouteChangeStart;
     routes.Router.onRouteChangeComplete = this.onRouteChangeComplete;
     routes.Router.onRouteChangeError = this.onRouteChangeError;
+
+    props.store.dispatch(
+      actions.initApp.started({
+        locale: props.intlProps.locale
+      })
+    );
   }
 
   public componentDidMount() {
     const { store } = this.props as IProps;
 
-    store.dispatch(actions.updateOnlineStatus(navigator.onLine));
+    store.dispatch(actions.setOnlineStatus(navigator.onLine));
     store.dispatch(actions.setCurrentRoute(routes.Router.route));
 
     if (!isServer()) {
@@ -142,19 +149,19 @@ class Application extends App {
   }
 
   public render() {
-    const { Component, intlProps, pageProps, store } = this.props as IProps;
+    const { Component, intlProps, pageProps, store } = this.props;
 
     return (
       <Container>
         <Provider store={store}>
           <IntlProvider
+            defaultLocale="en-NZ"
             initialNow={intlProps.initialNow}
-            messages={intlProps.intlMessages}
-            locale={intlProps.locale}
+            textComponent={React.Fragment}
           >
-            <Shell>
+            <Page>
               <Component {...pageProps} />
-            </Shell>
+            </Page>
           </IntlProvider>
         </Provider>
       </Container>
@@ -162,19 +169,19 @@ class Application extends App {
   }
 
   private onReceiveFeature = (event: any) => {
-    const { store } = this.props as IProps;
+    const { store } = this.props;
 
     store.dispatch(actions.addFeatures(event.detail));
   };
 
   private onReceiveServiceWorkerPostMessage = (event: any) => {
-    const { store } = this.props as IProps;
+    const { store } = this.props;
 
     store.dispatch(actions.receiveServiceWorkerMessage(event.data));
   };
 
   private onBeforeInstallPrompt = async (event: any) => {
-    const { store } = this.props as IProps;
+    const { store } = this.props;
 
     store.dispatch(
       actions.trackEvent({
@@ -193,38 +200,33 @@ class Application extends App {
   };
 
   private onOnlineStatusChange = (event: Event) => {
-    const { store } = this.props as IProps;
+    const { store } = this.props;
 
-    store.dispatch(actions.updateOnlineStatus(event.type === "online"));
+    store.dispatch(actions.setOnlineStatus(event.type === "online"));
   };
 
   private onRouteChangeStart = (path: string) => {
-    const { store } = this.props as IProps;
+    const { store } = this.props;
 
     store.dispatch(actions.changeRoute.started(path));
   };
 
   private onRouteChangeComplete = (path: string) => {
-    const { store } = this.props as IProps;
+    const { store } = this.props;
 
-    store.dispatch(actions.changeRoute.done({ params: path }));
+    store.dispatch(actions.changeRoute.done({ params: path, result: {} }));
   };
 
   private onRouteChangeError = (error: Error, path: string) => {
-    const { store } = this.props as IProps;
+    const { store } = this.props;
 
     store.dispatch(
       actions.changeRoute.failed({
-        error: {
-          message: error.toString(),
-          status: 500
-        },
+        error: error.message,
         params: path
       })
     );
   };
 }
 
-export default withRedux(createStore)(
-  withReduxSaga({ async: true })(Application)
-);
+export default withRedux(createStore)(withReduxSaga(App));

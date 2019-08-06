@@ -1,13 +1,15 @@
 import cn from "classnames";
 import Head from "next/head";
 import * as React from "react";
-import { FormattedMessage, InjectedIntl } from "react-intl";
+import { FormattedMessage, InjectedIntlProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
-import { ActionCreator } from "typescript-fsa";
 
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
+import { IRelease } from "../../../models/root.models";
+import { TStoreState } from "../../../reducers/root.reducers";
 import { absUrl } from "../../../transformers/transformData";
+import { IPageContext } from "../../connected/App/App";
 import OfflineNotice from "../../connected/OfflineNotice/OfflineNotice";
 import ButtonBar from "../../presentation/ButtonBar/ButtonBar";
 import LoadButton from "../../presentation/LoadButton/LoadButton";
@@ -18,34 +20,25 @@ import ReleaseListing from "../../presentation/ReleaseListing/ReleaseListing";
 import * as actions from "../../../actions/root.actions";
 import * as selectors from "../../../selectors/root.selectors";
 
-interface IStoreProps {
-  error?: IError;
+import "./ReleasesRoute.scss";
+
+interface IProps extends InjectedIntlProps {
+  fetchMoreReleases: typeof actions.fetchMoreReleases.started;
+  fetchReleases: typeof actions.fetchReleases.started;
   hasAllReleases: boolean;
+  hasError: boolean;
   isLoading: boolean;
-  releases: {
-    [index: string]: IRelease[];
-  };
+  releases: Record<string, IRelease[]>;
   releasesCount: number;
 }
 
-interface IDispatchProps {
-  fetchMoreReleases: ActionCreator<{}>;
-  fetchReleases: ActionCreator<{}>;
-}
-
-interface IProps extends IStoreProps, IDispatchProps {
-  intl: InjectedIntl;
-}
-
 interface IState {
-  loadedListings: {
-    [index: string]: boolean;
-  };
+  loadedListings: Record<string, boolean>;
 }
 
 class ReleasesRoute extends React.Component<IProps, IState> {
-  public static async getInitialProps(props: any) {
-    const { isServer, store } = props.ctx;
+  public static async getInitialProps(context: IPageContext) {
+    const { isServer, store } = context;
 
     const state = store.getState();
 
@@ -56,32 +49,18 @@ class ReleasesRoute extends React.Component<IProps, IState> {
     }
   }
 
-  public readonly state = {
+  public readonly state: IState = {
     loadedListings: {}
   };
 
   public render() {
-    const { error, hasAllReleases, releases, releasesCount } = this.props;
+    const { hasAllReleases, hasError, releases, releasesCount } = this.props;
     const { formatMessage } = this.props.intl;
 
     const hasLoadedAllListings =
       releasesCount === Object.keys(this.state.loadedListings).length;
 
     const isLoading = this.props.isLoading || !hasLoadedAllListings;
-
-    const loadMoreButton = hasAllReleases ? null : (
-      <LoadButton
-        isLoading={isLoading}
-        isScrollLoadEnabled={!error}
-        onLoad={this.onLoadMore}
-      >
-        {!error ? (
-          <FormattedMessage id="LOAD_MORE" />
-        ) : (
-          <FormattedMessage id="TRY_AGAIN" />
-        )}
-      </LoadButton>
-    );
 
     const pageTitle = formatMessage({ id: "RELEASES_TITLE" });
     const pageDescription = formatMessage({ id: "RELEASES_DESCRIPTION" });
@@ -110,7 +89,7 @@ class ReleasesRoute extends React.Component<IProps, IState> {
           <FormattedMessage id="RELEASES_TITLE" />
         </PageHeader>
 
-        {error ? <OfflineNotice /> : null}
+        {hasError ? <OfflineNotice /> : null}
 
         {releasesCount > 0
           ? Object.keys(releases).map(this.renderListingsForType)
@@ -124,7 +103,15 @@ class ReleasesRoute extends React.Component<IProps, IState> {
           </NoResults>
         ) : null}
 
-        <ButtonBar>{loadMoreButton}</ButtonBar>
+        <ButtonBar>
+          {!hasAllReleases ? (
+            <LoadButton
+              hasError={hasError}
+              isLoading={isLoading}
+              onLoad={this.onLoadMore}
+            />
+          ) : null}
+        </ButtonBar>
       </article>
     );
   }
@@ -132,30 +119,36 @@ class ReleasesRoute extends React.Component<IProps, IState> {
   private renderListingsForType = (type: string) =>
     this.props.releases[type] ? (
       <section
-        className={cn("ReleaseListings", `ReleaseListings-${type}`)}
+        className={cn(
+          "ReleasesRoute--listings",
+          `ReleasesRoute--listings-${type}`
+        )}
         key={type}
       >
         <h2>
-          <FormattedMessage id={`${type.toUpperCase()}S`} />
+          <FormattedMessage
+            id={type.toUpperCase()}
+            values={{ count: this.props.releases[type].length }}
+          />
         </h2>
 
-        <div className="ReleaseListings-items">
+        <div className="ReleasesRoute--listings--items">
           {this.props.releases[type].map((release: IRelease) => (
             <ReleaseListing
               {...release}
               key={release.slug}
-              onLoad={this.onListingLoad}
+              onLoad={this.onListingLoad(release)}
             />
           ))}
         </div>
       </section>
     ) : null;
 
-  private onListingLoad = (slug: string) => {
+  private onListingLoad = (release: IRelease) => () => {
     this.setState({
       loadedListings: {
         ...this.state.loadedListings,
-        [slug]: true
+        [release.slug]: true
       }
     });
   };
@@ -165,15 +158,15 @@ class ReleasesRoute extends React.Component<IProps, IState> {
   };
 }
 
-const mapStateToProps = (state: any) => ({
-  error: selectors.getReleasesError(state),
+const mapState = (state: TStoreState) => ({
   hasAllReleases: selectors.getHasAllReleases(state),
+  hasError: selectors.hasReleasesError(state),
   isLoading: selectors.getReleasesIsLoading(state),
   releases: selectors.getSortedReleasesByType(state),
   releasesCount: selectors.getReleasesCount(state)
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) =>
+const mapActions = (dispatch: Dispatch) =>
   bindActionCreators(
     {
       fetchMoreReleases: actions.fetchMoreReleases.started,
@@ -183,8 +176,8 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
   );
 
 export default injectIntlIntoPage(
-  connect<IStoreProps, IDispatchProps>(
-    mapStateToProps,
-    mapDispatchToProps
+  connect(
+    mapState,
+    mapActions
   )(ReleasesRoute)
 );

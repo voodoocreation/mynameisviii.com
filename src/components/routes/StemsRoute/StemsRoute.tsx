@@ -1,13 +1,15 @@
 import cn from "classnames";
 import Head from "next/head";
 import * as React from "react";
-import { FormattedMessage, InjectedIntl } from "react-intl";
+import { FormattedMessage, InjectedIntlProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
-import { ActionCreator } from "typescript-fsa";
 
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
+import { IStem } from "../../../models/root.models";
+import { TStoreState } from "../../../reducers/root.reducers";
 import { absUrl } from "../../../transformers/transformData";
+import { IPageContext } from "../../connected/App/App";
 import OfflineNotice from "../../connected/OfflineNotice/OfflineNotice";
 import ButtonBar from "../../presentation/ButtonBar/ButtonBar";
 import LoadButton from "../../presentation/LoadButton/LoadButton";
@@ -18,32 +20,25 @@ import StemListing from "../../presentation/StemListing/StemListing";
 import * as actions from "../../../actions/root.actions";
 import * as selectors from "../../../selectors/root.selectors";
 
-interface IStoreProps {
-  error?: IError;
+import "./StemsRoute.scss";
+
+interface IProps extends InjectedIntlProps {
+  fetchMoreStems: typeof actions.fetchMoreStems.started;
+  fetchStems: typeof actions.fetchStems.started;
   hasAllStems: boolean;
+  hasError: boolean;
   isLoading: boolean;
   stems: IStem[];
   stemsCount: number;
 }
 
-interface IDispatchProps {
-  fetchMoreStems: ActionCreator<{}>;
-  fetchStems: ActionCreator<{}>;
-}
-
-interface IProps extends IStoreProps, IDispatchProps {
-  intl: InjectedIntl;
-}
-
 interface IState {
-  loadedListings: {
-    [index: string]: boolean;
-  };
+  loadedListings: Record<string, boolean>;
 }
 
 class StemsRoute extends React.Component<IProps, IState> {
-  public static async getInitialProps(props: any) {
-    const { isServer, store } = props.ctx;
+  public static async getInitialProps(context: IPageContext) {
+    const { isServer, store } = context;
 
     const state = store.getState();
 
@@ -54,32 +49,18 @@ class StemsRoute extends React.Component<IProps, IState> {
     }
   }
 
-  public readonly state = {
+  public readonly state: IState = {
     loadedListings: {}
   };
 
   public render() {
-    const { error, hasAllStems, stems, stemsCount } = this.props;
+    const { hasAllStems, hasError, stems, stemsCount } = this.props;
     const { formatMessage } = this.props.intl;
 
     const hasLoadedAllListings =
       stemsCount === Object.keys(this.state.loadedListings).length;
 
     const isLoading = this.props.isLoading || !hasLoadedAllListings;
-
-    const loadMoreButton = hasAllStems ? null : (
-      <LoadButton
-        isLoading={isLoading}
-        isScrollLoadEnabled={!error}
-        onLoad={this.onLoadMore}
-      >
-        {!error ? (
-          <FormattedMessage id="LOAD_MORE" />
-        ) : (
-          <FormattedMessage id="TRY_AGAIN" />
-        )}
-      </LoadButton>
-    );
 
     const pageTitle = formatMessage({ id: "STEMS_TITLE" });
     const pageDescription = formatMessage({ id: "STEMS_DESCRIPTION" });
@@ -106,15 +87,15 @@ class StemsRoute extends React.Component<IProps, IState> {
 
         <PageHeader>{pageTitle}</PageHeader>
 
-        {error ? <OfflineNotice /> : null}
+        {hasError ? <OfflineNotice /> : null}
 
         {stemsCount < 1 ? null : (
-          <section className="StemListings">
+          <section className="StemsRoute--listings">
             {stems.map(stem => (
               <StemListing
                 {...stem}
                 key={stem.slug}
-                onLoad={this.onListingLoad}
+                onLoad={this.onListingLoad(stem)}
               />
             ))}
           </section>
@@ -128,16 +109,24 @@ class StemsRoute extends React.Component<IProps, IState> {
           </NoResults>
         ) : null}
 
-        <ButtonBar>{loadMoreButton}</ButtonBar>
+        <ButtonBar>
+          {!hasAllStems ? (
+            <LoadButton
+              hasError={hasError}
+              isLoading={isLoading}
+              onLoad={this.onLoadMore}
+            />
+          ) : null}
+        </ButtonBar>
       </article>
     );
   }
 
-  private onListingLoad = (slug: string) => {
+  private onListingLoad = (stem: IStem) => () => {
     this.setState({
       loadedListings: {
         ...this.state.loadedListings,
-        [slug]: true
+        [stem.slug]: true
       }
     });
   };
@@ -147,15 +136,15 @@ class StemsRoute extends React.Component<IProps, IState> {
   };
 }
 
-const mapStateToProps = (state: any) => ({
-  error: selectors.getStemsError(state),
+const mapState = (state: TStoreState) => ({
   hasAllStems: selectors.getHasAllStems(state),
+  hasError: selectors.hasStemsError(state),
   isLoading: selectors.getStemsIsLoading(state),
   stems: selectors.getStemsAsArray(state),
   stemsCount: selectors.getStemsCount(state)
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) =>
+const mapActions = (dispatch: Dispatch) =>
   bindActionCreators(
     {
       fetchMoreStems: actions.fetchMoreStems.started,
@@ -165,8 +154,8 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
   );
 
 export default injectIntlIntoPage(
-  connect<IStoreProps, IDispatchProps>(
-    mapStateToProps,
-    mapDispatchToProps
+  connect(
+    mapState,
+    mapActions
   )(StemsRoute)
 );

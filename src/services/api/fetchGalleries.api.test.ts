@@ -1,46 +1,60 @@
-import galleries from "../../../server/mocks/galleries.json";
-import createMockHttpClient from "../../helpers/createMockHttpClient";
-import { tryParseJson } from "../../transformers/transformData";
-import { createPortsWith } from "../configureApi";
+import {
+  failure,
+  gallery,
+  s3Response,
+  success
+} from "../../models/root.models";
+import {
+  mockWithRejectedPromise,
+  mockWithResolvedPromise
+} from "../../utilities/mocks";
 import { fetchGalleries } from "./fetchGalleries.api";
 
-describe("[api] fetchGalleries()", () => {
-  it("handles successful request correctly", async () => {
-    const client = createMockHttpClient(resolve => {
-      resolve({
-        data: galleries
+describe("[api] fetchGalleries", () => {
+  const params = {
+    startAfter: "test-1"
+  };
+
+  describe("when the request succeeds", () => {
+    const data = {
+      isTruncated: false,
+      items: [{ title: "" }]
+    };
+    const request = mockWithResolvedPromise(data);
+    const method = fetchGalleries(request);
+
+    it("returns a success response with the model-parsed data", async () => {
+      expect(await method(params.startAfter)).toEqual(
+        success(
+          s3Response({
+            isTruncated: data.isTruncated,
+            items: data.items.map(gallery)
+          })
+        )
+      );
+    });
+
+    it("makes the request correctly", () => {
+      expect(request).toHaveBeenCalledWith({
+        params,
+        url: "/galleries/find"
       });
     });
-    const fetch = fetchGalleries(createPortsWith({}, client));
-    const response = await fetch("test");
-
-    expect(client).toHaveBeenCalled();
-    expect(client.mock.calls[0][0].url).toBe("/galleries/find");
-    expect(client.mock.calls[0][0].params).toEqual({
-      startAfter: "test"
-    });
-    expect(response.ok).toBe(true);
-    expect(response.data.items).toHaveLength(galleries.Items.length);
   });
 
-  it("handles request failure correctly", async () => {
-    const client = createMockHttpClient((_, reject) => {
-      reject({
-        response: {
-          data: { message: "Server error" },
-          status: 500
-        }
-      });
-    });
-    const fetch = fetchGalleries(createPortsWith({}, client));
-    const response = await fetch();
+  describe("when the request fails", () => {
+    const request = mockWithRejectedPromise("Fetch failed");
+    const method = fetchGalleries(request);
 
-    expect(client).toHaveBeenCalled();
-    expect(client.mock.calls[0][0].url).toBe("/galleries/find");
-    expect(response.ok).toBe(false);
-    expect(tryParseJson(response.message)).toEqual({
-      message: "Server error",
-      status: 500
+    it("returns a failure response with the expected error", async () => {
+      expect(await method(params.startAfter)).toEqual(failure("Fetch failed"));
+    });
+
+    it("makes the request correctly", () => {
+      expect(request).toHaveBeenCalledWith({
+        params,
+        url: "/galleries/find"
+      });
     });
   });
 });

@@ -1,6 +1,8 @@
 import cn from "classnames";
 import * as React from "react";
 
+import "./ButtonBar.scss";
+
 interface IProps {
   className?: string;
 }

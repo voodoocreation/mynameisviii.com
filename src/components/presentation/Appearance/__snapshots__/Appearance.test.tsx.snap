@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[presentation] <Appearance /> renders correctly when \`rsvpUrl\` prop is defined 1`] = `
+exports[`[presentation] <Appearance /> when all props are defined matches snapshot 1`] = `
 <article
   class="Appearance"
 >
@@ -10,10 +10,10 @@ exports[`[presentation] <Appearance /> renders correctly when \`rsvpUrl\` prop i
     <h1 />
   </header>
   <div
-    class="MetaBar Appearance-meta"
+    class="MetaBar Appearance--meta"
   >
     <div
-      class="Meta Appearance-date"
+      class="Meta Appearance--date"
     >
       <svg
         fill="currentColor"
@@ -22,6 +22,7 @@ exports[`[presentation] <Appearance /> renders correctly when \`rsvpUrl\` prop i
         stroke-width="0"
         viewBox="0 0 24 24"
         width="1em"
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"
@@ -29,28 +30,25 @@ exports[`[presentation] <Appearance /> renders correctly when \`rsvpUrl\` prop i
       </svg>
        
       <span
-        class="Meta-label"
+        class="Meta--label"
       >
-        <span>
-          Date
-        </span>
-        :
+        Date:
       </span>
        
       <span
-        class="Meta-value"
+        class="Meta--value"
       >
         <time
           class="DateTime"
-          datetime="2018-10-10T18:00:00"
-          title="Wednesday, October 10, 2018"
+          datetime="2018-01-04"
+          title="Thursday, 4 January 2018"
         >
-          Wednesday, October 10, 2018
+          Thursday, 4 January 2018
         </time>
       </span>
     </div>
     <div
-      class="Meta Appearance-time"
+      class="Meta Appearance--time"
     >
       <svg
         fill="currentColor"
@@ -59,6 +57,7 @@ exports[`[presentation] <Appearance /> renders correctly when \`rsvpUrl\` prop i
         stroke-width="0"
         viewBox="0 0 24 24"
         width="1em"
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
@@ -66,37 +65,34 @@ exports[`[presentation] <Appearance /> renders correctly when \`rsvpUrl\` prop i
       </svg>
        
       <span
-        class="Meta-label"
+        class="Meta--label"
       >
-        <span>
-          Time
-        </span>
-        :
+        Time:
       </span>
        
       <span
-        class="Meta-value"
+        class="Meta--value"
       >
         <time
           class="DateTime"
-          datetime="2018-10-10T18:00:00"
-          title="6:00 PM"
+          datetime="2018-01-04T00:00:00"
+          title="12:00 AM"
         >
-          6:00 PM
+          12:00 AM
         </time>
         –
         <time
           class="DateTime"
-          datetime="2018-10-10T20:00:00"
-          title="8:00 PM"
+          datetime="2018-01-05T00:00:00"
+          title="12:00 AM"
         >
-          8:00 PM
+          12:00 AM
         </time>
       </span>
     </div>
     <div
-      class="Meta Appearance-location"
-      title="location name - undefined"
+      class="Meta Appearance--location"
+      title="Venue - 123 Address"
     >
       <svg
         fill="currentColor"
@@ -105,6 +101,7 @@ exports[`[presentation] <Appearance /> renders correctly when \`rsvpUrl\` prop i
         stroke-width="0"
         viewBox="0 0 24 24"
         width="1em"
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
@@ -112,38 +109,65 @@ exports[`[presentation] <Appearance /> renders correctly when \`rsvpUrl\` prop i
       </svg>
        
       <span
-        class="Meta-label"
+        class="Meta--label"
       >
-        <span>
-          Location
-        </span>
-        :
+        Location:
       </span>
        
       <span
-        class="Meta-value"
+        class="Meta--value"
       >
-        location name
+        Venue
+      </span>
+    </div>
+    <div
+      class="Meta Appearance--audience"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"
+        />
+      </svg>
+       
+      <span
+        class="Meta--label"
+      >
+        Audience:
+      </span>
+       
+      <span
+        class="Meta--value"
+      >
+        18+
       </span>
     </div>
   </div>
   <div
-    class="Appearance-body"
+    class="Appearance--body"
   >
     <figure
-      class="Image Appearance-image isLoading"
+      class="Image Appearance--image isLoading"
     >
       <div
-        class="Image-wrapper"
+        class="Image--wrapper"
       >
         <img
-          src="imageUrl"
+          alt=""
+          src="Image URL"
         />
         <span
           class="Loader"
         >
           <div
-            class="Loader-animation"
+            class="Loader--animation"
           >
             <span />
             <span />
@@ -153,21 +177,21 @@ exports[`[presentation] <Appearance /> renders correctly when \`rsvpUrl\` prop i
       </div>
     </figure>
     <div
-      class="Appearance-details"
+      class="Appearance--details"
     >
       <section
-        class="Appearance-description"
+        class="Appearance--description"
       >
         <p>
-          description
+          Description
         </p>
       </section>
       <section
-        class="Appearance-rsvp"
+        class="Appearance--rsvp"
       >
         <a
-          class="Appearance-rsvpLink Button"
-          href="rsvpUrl"
+          class="Appearance--rsvpLink Button"
+          href="RSVP"
           rel="noopener"
           target="_blank"
         >
@@ -178,45 +202,41 @@ exports[`[presentation] <Appearance /> renders correctly when \`rsvpUrl\` prop i
             stroke-width="0"
             viewBox="0 0 448 512"
             width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M448 80v352c0 26.5-21.5 48-48 48h-85.3V302.8h60.6l8.7-67.6h-69.3V192c0-19.6 5.4-32.9 33.5-32.9H384V98.7c-6.2-.8-27.4-2.7-52.2-2.7-51.6 0-87 31.5-87 89.4v49.9H184v67.6h60.9V480H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48z"
+              d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"
             />
           </svg>
-           
-          <span>
-            RSVP on Facebook
-          </span>
+           RSVP on Facebook
         </a>
       </section>
       <section
-        class="Appearance-acts"
+        class="Appearance--acts"
       >
         <h2>
-          <span>
-            Featured acts
-          </span>
+          Featured acts
         </h2>
         <div
-          class="Appearance-acts-items"
+          class="Appearance--acts--items"
         >
           <article
             class="ActListing"
           >
             <span
-              class="ActListing-link"
+              class="ActListing--link"
             >
               <div
-                class="ActListing-details"
+                class="ActListing--details"
               >
                 <h3>
-                  act name
+                  Act name
                 </h3>
                 <section
-                  class="ActListing-meta"
+                  class="ActListing--meta"
                 >
                   <div
-                    class="Meta ActListing-genre"
+                    class="Meta ActListing--genre"
                   >
                     <svg
                       fill="currentColor"
@@ -225,6 +245,7 @@ exports[`[presentation] <Appearance /> renders correctly when \`rsvpUrl\` prop i
                       stroke-width="0"
                       viewBox="0 0 24 24"
                       width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"
@@ -232,22 +253,19 @@ exports[`[presentation] <Appearance /> renders correctly when \`rsvpUrl\` prop i
                     </svg>
                      
                     <span
-                      class="Meta-label"
+                      class="Meta--label"
                     >
-                      <span>
-                        Genre
-                      </span>
-                      :
+                      Genre:
                     </span>
                      
                     <span
-                      class="Meta-value"
+                      class="Meta--value"
                     >
-                      act genre
+                      Genre
                     </span>
                   </div>
                   <div
-                    class="Meta ActListing-location"
+                    class="Meta ActListing--location"
                   >
                     <svg
                       fill="currentColor"
@@ -256,6 +274,7 @@ exports[`[presentation] <Appearance /> renders correctly when \`rsvpUrl\` prop i
                       stroke-width="0"
                       viewBox="0 0 24 24"
                       width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
@@ -263,1190 +282,61 @@ exports[`[presentation] <Appearance /> renders correctly when \`rsvpUrl\` prop i
                     </svg>
                      
                     <span
-                      class="Meta-label"
+                      class="Meta--label"
                     >
-                      <span>
-                        Location
-                      </span>
-                      :
+                      Location:
                     </span>
                      
                     <span
-                      class="Meta-value"
+                      class="Meta--value"
                     />
                   </div>
                 </section>
               </div>
               <figure
-                class="ActListing-image"
+                class="Image ActListing--image isLoading"
               >
-                <img
-                  alt="act name"
-                  src="act imageUrl"
-                />
-              </figure>
-            </span>
-          </article>
-        </div>
-      </section>
-    </div>
-  </div>
-</article>
-`;
-
-exports[`[presentation] <Appearance /> renders correctly when finishingAt < now 1`] = `
-<article
-  class="Appearance isFinished"
->
-  <header
-    class="PageHeader"
-  >
-    <h1 />
-  </header>
-  <div
-    class="MetaBar Appearance-meta"
-  >
-    <div
-      class="Meta Appearance-date"
-    >
-      <svg
-        fill="currentColor"
-        height="1em"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 24 24"
-        width="1em"
-      >
-        <path
-          d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"
-        />
-      </svg>
-       
-      <span
-        class="Meta-label"
-      >
-        <span>
-          Date
-        </span>
-        :
-      </span>
-       
-      <span
-        class="Meta-value"
-      >
-        <time
-          class="DateTime"
-          datetime="2018-10-10T18:00:00"
-          title="Wednesday, October 10, 2018"
-        >
-          Wednesday, October 10, 2018
-        </time>
-      </span>
-    </div>
-    <div
-      class="Meta Appearance-time"
-    >
-      <svg
-        fill="currentColor"
-        height="1em"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 24 24"
-        width="1em"
-      >
-        <path
-          d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
-        />
-      </svg>
-       
-      <span
-        class="Meta-label"
-      >
-        <span>
-          Time
-        </span>
-        :
-      </span>
-       
-      <span
-        class="Meta-value"
-      >
-        <time
-          class="DateTime"
-          datetime="2018-10-10T18:00:00"
-          title="6:00 PM"
-        >
-          6:00 PM
-        </time>
-        –
-        <time
-          class="DateTime"
-          datetime="2017-12-31T00:00:00"
-          title="12:00 AM"
-        >
-          12:00 AM
-        </time>
-      </span>
-    </div>
-    <div
-      class="Meta Appearance-location"
-      title="location name - undefined"
-    >
-      <svg
-        fill="currentColor"
-        height="1em"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 24 24"
-        width="1em"
-      >
-        <path
-          d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-        />
-      </svg>
-       
-      <span
-        class="Meta-label"
-      >
-        <span>
-          Location
-        </span>
-        :
-      </span>
-       
-      <span
-        class="Meta-value"
-      >
-        location name
-      </span>
-    </div>
-  </div>
-  <div
-    class="Appearance-body"
-  >
-    <figure
-      class="Image Appearance-image isLoading"
-    >
-      <div
-        class="Image-wrapper"
-      >
-        <img
-          src="imageUrl"
-        />
-        <span
-          class="Loader"
-        >
-          <div
-            class="Loader-animation"
-          >
-            <span />
-            <span />
-            <span />
-          </div>
-        </span>
-      </div>
-    </figure>
-    <div
-      class="Appearance-details"
-    >
-      <section
-        class="Appearance-description"
-      >
-        <p>
-          description
-        </p>
-      </section>
-      <section
-        class="Appearance-acts"
-      >
-        <h2>
-          <span>
-            Featured acts
-          </span>
-        </h2>
-        <div
-          class="Appearance-acts-items"
-        >
-          <article
-            class="ActListing"
-          >
-            <span
-              class="ActListing-link"
-            >
-              <div
-                class="ActListing-details"
-              >
-                <h3>
-                  act name
-                </h3>
-                <section
-                  class="ActListing-meta"
+                <div
+                  class="Image--wrapper"
                 >
-                  <div
-                    class="Meta ActListing-genre"
+                  <img
+                    alt="Act name"
+                    src="Image URL"
+                  />
+                  <span
+                    class="Loader"
                   >
-                    <svg
-                      fill="currentColor"
-                      height="1em"
-                      stroke="currentColor"
-                      stroke-width="0"
-                      viewBox="0 0 24 24"
-                      width="1em"
+                    <div
+                      class="Loader--animation"
                     >
-                      <path
-                        d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"
-                      />
-                    </svg>
-                     
-                    <span
-                      class="Meta-label"
-                    >
-                      <span>
-                        Genre
-                      </span>
-                      :
-                    </span>
-                     
-                    <span
-                      class="Meta-value"
-                    >
-                      act genre
-                    </span>
-                  </div>
-                  <div
-                    class="Meta ActListing-location"
-                  >
-                    <svg
-                      fill="currentColor"
-                      height="1em"
-                      stroke="currentColor"
-                      stroke-width="0"
-                      viewBox="0 0 24 24"
-                      width="1em"
-                    >
-                      <path
-                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-                      />
-                    </svg>
-                     
-                    <span
-                      class="Meta-label"
-                    >
-                      <span>
-                        Location
-                      </span>
-                      :
-                    </span>
-                     
-                    <span
-                      class="Meta-value"
-                    />
-                  </div>
-                </section>
-              </div>
-              <figure
-                class="ActListing-image"
-              >
-                <img
-                  alt="act name"
-                  src="act imageUrl"
-                />
-              </figure>
-            </span>
-          </article>
-        </div>
-      </section>
-    </div>
-  </div>
-</article>
-`;
-
-exports[`[presentation] <Appearance /> renders correctly when status=EventCancelled 1`] = `
-<article
-  class="Appearance isCancelled"
->
-  <header
-    class="PageHeader"
-  >
-    <h1 />
-  </header>
-  <div
-    class="MetaBar Appearance-meta"
-  >
-    <div
-      class="Meta Appearance-date"
-    >
-      <svg
-        fill="currentColor"
-        height="1em"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 24 24"
-        width="1em"
-      >
-        <path
-          d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"
-        />
-      </svg>
-       
-      <span
-        class="Meta-label"
-      >
-        <span>
-          Date
-        </span>
-        :
-      </span>
-       
-      <span
-        class="Meta-value"
-      >
-        <time
-          class="DateTime"
-          datetime="2018-10-10T18:00:00"
-          title="Wednesday, October 10, 2018"
-        >
-          Wednesday, October 10, 2018
-        </time>
-      </span>
-    </div>
-    <div
-      class="Meta Appearance-time"
-    >
-      <svg
-        fill="currentColor"
-        height="1em"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 24 24"
-        width="1em"
-      >
-        <path
-          d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
-        />
-      </svg>
-       
-      <span
-        class="Meta-label"
-      >
-        <span>
-          Time
-        </span>
-        :
-      </span>
-       
-      <span
-        class="Meta-value"
-      >
-        <time
-          class="DateTime"
-          datetime="2018-10-10T18:00:00"
-          title="6:00 PM"
-        >
-          6:00 PM
-        </time>
-        –
-        <time
-          class="DateTime"
-          datetime="2018-10-10T20:00:00"
-          title="8:00 PM"
-        >
-          8:00 PM
-        </time>
-      </span>
-    </div>
-    <div
-      class="Meta Appearance-location"
-      title="location name - undefined"
-    >
-      <svg
-        fill="currentColor"
-        height="1em"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 24 24"
-        width="1em"
-      >
-        <path
-          d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-        />
-      </svg>
-       
-      <span
-        class="Meta-label"
-      >
-        <span>
-          Location
-        </span>
-        :
-      </span>
-       
-      <span
-        class="Meta-value"
-      >
-        location name
-      </span>
-    </div>
-  </div>
-  <div
-    class="Appearance-body"
-  >
-    <figure
-      class="Image Appearance-image isLoading"
-    >
-      <div
-        class="Image-wrapper"
-      >
-        <img
-          src="imageUrl"
-        />
-        <span
-          class="Loader"
-        >
-          <div
-            class="Loader-animation"
-          >
-            <span />
-            <span />
-            <span />
-          </div>
-        </span>
-        <div
-          class="Meta Appearance-status"
-        >
-           
-          <span
-            class="Meta-label"
-          >
-            <span>
-              Status
-            </span>
-            :
-          </span>
-           
-          <span
-            class="Meta-value"
-          >
-            <span>
-              Cancelled
-            </span>
-          </span>
-        </div>
-      </div>
-    </figure>
-    <div
-      class="Appearance-details"
-    >
-      <section
-        class="Appearance-description"
-      >
-        <p>
-          description
-        </p>
-      </section>
-      <section
-        class="Appearance-acts"
-      >
-        <h2>
-          <span>
-            Featured acts
-          </span>
-        </h2>
-        <div
-          class="Appearance-acts-items"
-        >
-          <article
-            class="ActListing"
-          >
-            <span
-              class="ActListing-link"
-            >
-              <div
-                class="ActListing-details"
-              >
-                <h3>
-                  act name
-                </h3>
-                <section
-                  class="ActListing-meta"
-                >
-                  <div
-                    class="Meta ActListing-genre"
-                  >
-                    <svg
-                      fill="currentColor"
-                      height="1em"
-                      stroke="currentColor"
-                      stroke-width="0"
-                      viewBox="0 0 24 24"
-                      width="1em"
-                    >
-                      <path
-                        d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"
-                      />
-                    </svg>
-                     
-                    <span
-                      class="Meta-label"
-                    >
-                      <span>
-                        Genre
-                      </span>
-                      :
-                    </span>
-                     
-                    <span
-                      class="Meta-value"
-                    >
-                      act genre
-                    </span>
-                  </div>
-                  <div
-                    class="Meta ActListing-location"
-                  >
-                    <svg
-                      fill="currentColor"
-                      height="1em"
-                      stroke="currentColor"
-                      stroke-width="0"
-                      viewBox="0 0 24 24"
-                      width="1em"
-                    >
-                      <path
-                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-                      />
-                    </svg>
-                     
-                    <span
-                      class="Meta-label"
-                    >
-                      <span>
-                        Location
-                      </span>
-                      :
-                    </span>
-                     
-                    <span
-                      class="Meta-value"
-                    />
-                  </div>
-                </section>
-              </div>
-              <figure
-                class="ActListing-image"
-              >
-                <img
-                  alt="act name"
-                  src="act imageUrl"
-                />
-              </figure>
-            </span>
-          </article>
-        </div>
-      </section>
-    </div>
-  </div>
-</article>
-`;
-
-exports[`[presentation] <Appearance /> renders correctly when status=EventPostponed 1`] = `
-<article
-  class="Appearance isPostponed"
->
-  <header
-    class="PageHeader"
-  >
-    <h1 />
-  </header>
-  <div
-    class="MetaBar Appearance-meta"
-  >
-    <div
-      class="Meta Appearance-date"
-    >
-      <svg
-        fill="currentColor"
-        height="1em"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 24 24"
-        width="1em"
-      >
-        <path
-          d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"
-        />
-      </svg>
-       
-      <span
-        class="Meta-label"
-      >
-        <span>
-          Date
-        </span>
-        :
-      </span>
-       
-      <span
-        class="Meta-value"
-      >
-        <time
-          class="DateTime"
-          datetime="2018-10-10T18:00:00"
-          title="Wednesday, October 10, 2018"
-        >
-          Wednesday, October 10, 2018
-        </time>
-      </span>
-    </div>
-    <div
-      class="Meta Appearance-time"
-    >
-      <svg
-        fill="currentColor"
-        height="1em"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 24 24"
-        width="1em"
-      >
-        <path
-          d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
-        />
-      </svg>
-       
-      <span
-        class="Meta-label"
-      >
-        <span>
-          Time
-        </span>
-        :
-      </span>
-       
-      <span
-        class="Meta-value"
-      >
-        <time
-          class="DateTime"
-          datetime="2018-10-10T18:00:00"
-          title="6:00 PM"
-        >
-          6:00 PM
-        </time>
-        –
-        <time
-          class="DateTime"
-          datetime="2018-10-10T20:00:00"
-          title="8:00 PM"
-        >
-          8:00 PM
-        </time>
-      </span>
-    </div>
-    <div
-      class="Meta Appearance-location"
-      title="location name - undefined"
-    >
-      <svg
-        fill="currentColor"
-        height="1em"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 24 24"
-        width="1em"
-      >
-        <path
-          d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-        />
-      </svg>
-       
-      <span
-        class="Meta-label"
-      >
-        <span>
-          Location
-        </span>
-        :
-      </span>
-       
-      <span
-        class="Meta-value"
-      >
-        location name
-      </span>
-    </div>
-  </div>
-  <div
-    class="Appearance-body"
-  >
-    <figure
-      class="Image Appearance-image isLoading"
-    >
-      <div
-        class="Image-wrapper"
-      >
-        <img
-          src="imageUrl"
-        />
-        <span
-          class="Loader"
-        >
-          <div
-            class="Loader-animation"
-          >
-            <span />
-            <span />
-            <span />
-          </div>
-        </span>
-        <div
-          class="Meta Appearance-status"
-        >
-           
-          <span
-            class="Meta-label"
-          >
-            <span>
-              Postponed
-            </span>
-            :
-          </span>
-           
-          <span
-            class="Meta-value"
-          >
-            <span>
-              Postponed
-            </span>
-          </span>
-        </div>
-      </div>
-    </figure>
-    <div
-      class="Appearance-details"
-    >
-      <section
-        class="Appearance-description"
-      >
-        <p>
-          description
-        </p>
-      </section>
-      <section
-        class="Appearance-acts"
-      >
-        <h2>
-          <span>
-            Featured acts
-          </span>
-        </h2>
-        <div
-          class="Appearance-acts-items"
-        >
-          <article
-            class="ActListing"
-          >
-            <span
-              class="ActListing-link"
-            >
-              <div
-                class="ActListing-details"
-              >
-                <h3>
-                  act name
-                </h3>
-                <section
-                  class="ActListing-meta"
-                >
-                  <div
-                    class="Meta ActListing-genre"
-                  >
-                    <svg
-                      fill="currentColor"
-                      height="1em"
-                      stroke="currentColor"
-                      stroke-width="0"
-                      viewBox="0 0 24 24"
-                      width="1em"
-                    >
-                      <path
-                        d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"
-                      />
-                    </svg>
-                     
-                    <span
-                      class="Meta-label"
-                    >
-                      <span>
-                        Genre
-                      </span>
-                      :
-                    </span>
-                     
-                    <span
-                      class="Meta-value"
-                    >
-                      act genre
-                    </span>
-                  </div>
-                  <div
-                    class="Meta ActListing-location"
-                  >
-                    <svg
-                      fill="currentColor"
-                      height="1em"
-                      stroke="currentColor"
-                      stroke-width="0"
-                      viewBox="0 0 24 24"
-                      width="1em"
-                    >
-                      <path
-                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-                      />
-                    </svg>
-                     
-                    <span
-                      class="Meta-label"
-                    >
-                      <span>
-                        Location
-                      </span>
-                      :
-                    </span>
-                     
-                    <span
-                      class="Meta-value"
-                    />
-                  </div>
-                </section>
-              </div>
-              <figure
-                class="ActListing-image"
-              >
-                <img
-                  alt="act name"
-                  src="act imageUrl"
-                />
-              </figure>
-            </span>
-          </article>
-        </div>
-      </section>
-    </div>
-  </div>
-</article>
-`;
-
-exports[`[presentation] <Appearance /> renders correctly with all props 1`] = `
-<article
-  class="Appearance"
->
-  <header
-    class="PageHeader"
-  >
-    <h1 />
-  </header>
-  <div
-    class="MetaBar Appearance-meta"
-  >
-    <div
-      class="Meta Appearance-date"
-    >
-      <svg
-        fill="currentColor"
-        height="1em"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 24 24"
-        width="1em"
-      >
-        <path
-          d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"
-        />
-      </svg>
-       
-      <span
-        class="Meta-label"
-      >
-        <span>
-          Date
-        </span>
-        :
-      </span>
-       
-      <span
-        class="Meta-value"
-      >
-        <time
-          class="DateTime"
-          datetime="2018-10-10T18:00:00"
-          title="Wednesday, October 10, 2018"
-        >
-          Wednesday, October 10, 2018
-        </time>
-      </span>
-    </div>
-    <div
-      class="Meta Appearance-time"
-    >
-      <svg
-        fill="currentColor"
-        height="1em"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 24 24"
-        width="1em"
-      >
-        <path
-          d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
-        />
-      </svg>
-       
-      <span
-        class="Meta-label"
-      >
-        <span>
-          Time
-        </span>
-        :
-      </span>
-       
-      <span
-        class="Meta-value"
-      >
-        <time
-          class="DateTime"
-          datetime="2018-10-10T18:00:00"
-          title="6:00 PM"
-        >
-          6:00 PM
-        </time>
-        –
-        <time
-          class="DateTime"
-          datetime="2018-10-10T20:00:00"
-          title="8:00 PM"
-        >
-          8:00 PM
-        </time>
-      </span>
-    </div>
-    <div
-      class="Meta Appearance-location"
-      title="undefined - location address"
-    >
-      <svg
-        fill="currentColor"
-        height="1em"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 24 24"
-        width="1em"
-      >
-        <path
-          d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-        />
-      </svg>
-       
-      <span
-        class="Meta-label"
-      >
-        <span>
-          Location
-        </span>
-        :
-      </span>
-       
-      <span
-        class="Meta-value"
-      />
-    </div>
-    <div
-      class="Meta Appearance-audience"
-    >
-      <svg
-        fill="currentColor"
-        height="1em"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 24 24"
-        width="1em"
-      >
-        <path
-          d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"
-        />
-      </svg>
-       
-      <span
-        class="Meta-label"
-      >
-        <span>
-          Audience
-        </span>
-        :
-      </span>
-       
-      <span
-        class="Meta-value"
-      >
-        audience
-      </span>
-    </div>
-  </div>
-  <div
-    class="Appearance-body"
-  >
-    <figure
-      class="Image Appearance-image isLoading"
-    >
-      <div
-        class="Image-wrapper"
-      >
-        <img
-          src="imageUrl"
-        />
-        <span
-          class="Loader"
-        >
-          <div
-            class="Loader-animation"
-          >
-            <span />
-            <span />
-            <span />
-          </div>
-        </span>
-      </div>
-    </figure>
-    <div
-      class="Appearance-details"
-    >
-      <section
-        class="Appearance-description"
-      >
-        <p>
-          description
-        </p>
-      </section>
-      <section
-        class="Appearance-acts"
-      >
-        <h2>
-          <span>
-            Featured acts
-          </span>
-        </h2>
-        <div
-          class="Appearance-acts-items"
-        >
-          <article
-            class="ActListing"
-          >
-            <span
-              class="ActListing-link"
-            >
-              <div
-                class="ActListing-details"
-              >
-                <h3>
-                  act name
-                </h3>
-                <section
-                  class="ActListing-meta"
-                >
-                  <div
-                    class="Meta ActListing-genre"
-                  >
-                    <svg
-                      fill="currentColor"
-                      height="1em"
-                      stroke="currentColor"
-                      stroke-width="0"
-                      viewBox="0 0 24 24"
-                      width="1em"
-                    >
-                      <path
-                        d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"
-                      />
-                    </svg>
-                     
-                    <span
-                      class="Meta-label"
-                    >
-                      <span>
-                        Genre
-                      </span>
-                      :
-                    </span>
-                     
-                    <span
-                      class="Meta-value"
-                    >
-                      act genre
-                    </span>
-                  </div>
-                  <div
-                    class="Meta ActListing-location"
-                  >
-                    <svg
-                      fill="currentColor"
-                      height="1em"
-                      stroke="currentColor"
-                      stroke-width="0"
-                      viewBox="0 0 24 24"
-                      width="1em"
-                    >
-                      <path
-                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-                      />
-                    </svg>
-                     
-                    <span
-                      class="Meta-label"
-                    >
-                      <span>
-                        Location
-                      </span>
-                      :
-                    </span>
-                     
-                    <span
-                      class="Meta-value"
-                    />
-                  </div>
-                </section>
-              </div>
-              <figure
-                class="ActListing-image"
-              >
-                <img
-                  alt="act name"
-                  src="act imageUrl"
-                />
+                      <span />
+                      <span />
+                      <span />
+                    </div>
+                  </span>
+                </div>
               </figure>
             </span>
           </article>
         </div>
       </section>
       <section
-        class="Appearance-tickets"
+        class="Appearance--tickets"
       >
         <h2>
-          <span>
-            Get tickets
-          </span>
+          Get tickets
         </h2>
         <div
-          class="Appearance-tickets-items"
+          class="Appearance--tickets--items"
         >
           <article
             class="SaleListing"
           >
             <span
-              class="SaleListing-link"
+              class="SaleListing--link"
             >
               <div
-                class="SaleListing-icon"
+                class="SaleListing--icon"
               >
                 <svg
                   fill="currentColor"
@@ -1455,6 +345,7 @@ exports[`[presentation] <Appearance /> renders correctly with all props 1`] = `
                   stroke-width="0"
                   viewBox="0 0 576 512"
                   width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
                     d="M128 160h320v192H128V160zm400 96c0 26.51 21.49 48 48 48v96c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48v-96c26.51 0 48-21.49 48-48s-21.49-48-48-48v-96c0-26.51 21.49-48 48-48h480c26.51 0 48 21.49 48 48v96c-26.51 0-48 21.49-48 48zm-48-104c0-13.255-10.745-24-24-24H120c-13.255 0-24 10.745-24 24v208c0 13.255 10.745 24 24 24h336c13.255 0 24-10.745 24-24V152z"
@@ -1462,20 +353,18 @@ exports[`[presentation] <Appearance /> renders correctly with all props 1`] = `
                 </svg>
               </div>
               <div
-                class="SaleListing-details"
+                class="SaleListing--details"
               >
                 <h3>
-                  sales 1 name: 
+                  Name: 
                   <span
                     class="Price"
                   >
-                    <span>
-                      NZ$10
-                    </span>
+                    $10
                   </span>
                 </h3>
                 <section
-                  class="SaleListing-meta"
+                  class="SaleListing--meta"
                 />
               </div>
             </span>
@@ -1484,15 +373,13 @@ exports[`[presentation] <Appearance /> renders correctly with all props 1`] = `
       </section>
     </div>
     <section
-      class="Appearance-images"
+      class="Appearance--images"
     >
       <h2>
-        <span>
-          Photos
-        </span>
+        Photos
       </h2>
       <div
-        class="ImageGallery Appearance-images-items"
+        class="ImageGallery Appearance--images--items"
       >
         <figure
           class="Image isLoading"
@@ -1500,17 +387,17 @@ exports[`[presentation] <Appearance /> renders correctly with all props 1`] = `
           tabindex="0"
         >
           <div
-            class="Image-wrapper"
+            class="Image--wrapper"
           >
             <img
-              alt="images 1 title"
-              src="images 1 imageUrl"
+              alt="Title 1"
+              src="Image URL 1"
             />
             <span
               class="Loader"
             >
               <div
-                class="Loader-animation"
+                class="Loader--animation"
               >
                 <span />
                 <span />
@@ -1519,7 +406,7 @@ exports[`[presentation] <Appearance /> renders correctly with all props 1`] = `
             </span>
           </div>
           <figcaption>
-            images 1 title
+            Title 1
           </figcaption>
         </figure>
         <figure
@@ -1528,17 +415,17 @@ exports[`[presentation] <Appearance /> renders correctly with all props 1`] = `
           tabindex="0"
         >
           <div
-            class="Image-wrapper"
+            class="Image--wrapper"
           >
             <img
-              alt="images 2 title"
-              src="images 2 imageUrl"
+              alt="Title 2"
+              src="Image URL 2"
             />
             <span
               class="Loader"
             >
               <div
-                class="Loader-animation"
+                class="Loader--animation"
               >
                 <span />
                 <span />
@@ -1547,24 +434,22 @@ exports[`[presentation] <Appearance /> renders correctly with all props 1`] = `
             </span>
           </div>
           <figcaption>
-            images 2 title
+            Title 2
           </figcaption>
         </figure>
       </div>
     </section>
     <section
-      class="Appearance-map"
+      class="Appearance--map"
     >
       <h2>
-        <span>
-          Location
-        </span>
+        Location
       </h2>
       <div
         class="Map"
       >
         <div
-          class="Map-element Appearance-map-googleMap"
+          class="Map-element Appearance--map--googleMap"
           style="position:absolute;width:100%;height:100%"
         >
           <div
@@ -1579,9 +464,9 @@ exports[`[presentation] <Appearance /> renders correctly with all props 1`] = `
 </article>
 `;
 
-exports[`[presentation] <Appearance /> renders correctly with minimum props 1`] = `
+exports[`[presentation] <Appearance /> when cancelled matches snapshot 1`] = `
 <article
-  class="Appearance"
+  class="Appearance isCancelled"
 >
   <header
     class="PageHeader"
@@ -1589,10 +474,10 @@ exports[`[presentation] <Appearance /> renders correctly with minimum props 1`] 
     <h1 />
   </header>
   <div
-    class="MetaBar Appearance-meta"
+    class="MetaBar Appearance--meta"
   >
     <div
-      class="Meta Appearance-date"
+      class="Meta Appearance--date"
     >
       <svg
         fill="currentColor"
@@ -1601,6 +486,7 @@ exports[`[presentation] <Appearance /> renders correctly with minimum props 1`] 
         stroke-width="0"
         viewBox="0 0 24 24"
         width="1em"
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"
@@ -1608,28 +494,25 @@ exports[`[presentation] <Appearance /> renders correctly with minimum props 1`] 
       </svg>
        
       <span
-        class="Meta-label"
+        class="Meta--label"
       >
-        <span>
-          Date
-        </span>
-        :
+        Date:
       </span>
        
       <span
-        class="Meta-value"
+        class="Meta--value"
       >
         <time
           class="DateTime"
-          datetime="2018-10-10T18:00:00"
-          title="Wednesday, October 10, 2018"
+          datetime="2018-01-04"
+          title="Thursday, 4 January 2018"
         >
-          Wednesday, October 10, 2018
+          Thursday, 4 January 2018
         </time>
       </span>
     </div>
     <div
-      class="Meta Appearance-time"
+      class="Meta Appearance--time"
     >
       <svg
         fill="currentColor"
@@ -1638,6 +521,7 @@ exports[`[presentation] <Appearance /> renders correctly with minimum props 1`] 
         stroke-width="0"
         viewBox="0 0 24 24"
         width="1em"
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
@@ -1645,37 +529,34 @@ exports[`[presentation] <Appearance /> renders correctly with minimum props 1`] 
       </svg>
        
       <span
-        class="Meta-label"
+        class="Meta--label"
       >
-        <span>
-          Time
-        </span>
-        :
+        Time:
       </span>
        
       <span
-        class="Meta-value"
+        class="Meta--value"
       >
         <time
           class="DateTime"
-          datetime="2018-10-10T18:00:00"
-          title="6:00 PM"
+          datetime="2018-01-04T00:00:00"
+          title="12:00 AM"
         >
-          6:00 PM
+          12:00 AM
         </time>
         –
         <time
           class="DateTime"
-          datetime="2018-10-10T20:00:00"
-          title="8:00 PM"
+          datetime="2018-01-05T00:00:00"
+          title="12:00 AM"
         >
-          8:00 PM
+          12:00 AM
         </time>
       </span>
     </div>
     <div
-      class="Meta Appearance-location"
-      title="location name - undefined"
+      class="Meta Appearance--location"
+      title="Venue - undefined"
     >
       <svg
         fill="currentColor"
@@ -1684,6 +565,7 @@ exports[`[presentation] <Appearance /> renders correctly with minimum props 1`] 
         stroke-width="0"
         viewBox="0 0 24 24"
         width="1em"
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
@@ -1691,38 +573,323 @@ exports[`[presentation] <Appearance /> renders correctly with minimum props 1`] 
       </svg>
        
       <span
-        class="Meta-label"
+        class="Meta--label"
       >
-        <span>
-          Location
-        </span>
-        :
+        Location:
       </span>
        
       <span
-        class="Meta-value"
+        class="Meta--value"
       >
-        location name
+        Venue
       </span>
     </div>
   </div>
   <div
-    class="Appearance-body"
+    class="Appearance--body"
   >
     <figure
-      class="Image Appearance-image isLoading"
+      class="Image Appearance--image isLoading"
     >
       <div
-        class="Image-wrapper"
+        class="Image--wrapper"
       >
         <img
-          src="imageUrl"
+          alt=""
+          src="Image URL"
         />
         <span
           class="Loader"
         >
           <div
-            class="Loader-animation"
+            class="Loader--animation"
+          >
+            <span />
+            <span />
+            <span />
+          </div>
+        </span>
+        <div
+          class="Meta Appearance--status"
+        >
+           
+          <span
+            class="Meta--label"
+          >
+            Status:
+          </span>
+           
+          <span
+            class="Meta--value"
+          >
+            Cancelled
+          </span>
+        </div>
+      </div>
+    </figure>
+    <div
+      class="Appearance--details"
+    >
+      <section
+        class="Appearance--description"
+      >
+        <p>
+          Description
+        </p>
+      </section>
+      <section
+        class="Appearance--acts"
+      >
+        <h2>
+          Featured acts
+        </h2>
+        <div
+          class="Appearance--acts--items"
+        >
+          <article
+            class="ActListing"
+          >
+            <span
+              class="ActListing--link"
+            >
+              <div
+                class="ActListing--details"
+              >
+                <h3>
+                  Act name
+                </h3>
+                <section
+                  class="ActListing--meta"
+                >
+                  <div
+                    class="Meta ActListing--genre"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 24 24"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"
+                      />
+                    </svg>
+                     
+                    <span
+                      class="Meta--label"
+                    >
+                      Genre:
+                    </span>
+                     
+                    <span
+                      class="Meta--value"
+                    >
+                      Genre
+                    </span>
+                  </div>
+                  <div
+                    class="Meta ActListing--location"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 24 24"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                      />
+                    </svg>
+                     
+                    <span
+                      class="Meta--label"
+                    >
+                      Location:
+                    </span>
+                     
+                    <span
+                      class="Meta--value"
+                    />
+                  </div>
+                </section>
+              </div>
+              <figure
+                class="Image ActListing--image isLoading"
+              >
+                <div
+                  class="Image--wrapper"
+                >
+                  <img
+                    alt="Act name"
+                    src="Image URL"
+                  />
+                  <span
+                    class="Loader"
+                  >
+                    <div
+                      class="Loader--animation"
+                    >
+                      <span />
+                      <span />
+                      <span />
+                    </div>
+                  </span>
+                </div>
+              </figure>
+            </span>
+          </article>
+        </div>
+      </section>
+    </div>
+  </div>
+</article>
+`;
+
+exports[`[presentation] <Appearance /> when finishingAt is in the past matches snapshot 1`] = `
+<article
+  class="Appearance isFinished"
+>
+  <header
+    class="PageHeader"
+  >
+    <h1 />
+  </header>
+  <div
+    class="MetaBar Appearance--meta"
+  >
+    <div
+      class="Meta Appearance--date"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"
+        />
+      </svg>
+       
+      <span
+        class="Meta--label"
+      >
+        Date:
+      </span>
+       
+      <span
+        class="Meta--value"
+      >
+        <time
+          class="DateTime"
+          datetime="2018-01-04"
+          title="Thursday, 4 January 2018"
+        >
+          Thursday, 4 January 2018
+        </time>
+      </span>
+    </div>
+    <div
+      class="Meta Appearance--time"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
+        />
+      </svg>
+       
+      <span
+        class="Meta--label"
+      >
+        Time:
+      </span>
+       
+      <span
+        class="Meta--value"
+      >
+        <time
+          class="DateTime"
+          datetime="2018-01-04T00:00:00"
+          title="12:00 AM"
+        >
+          12:00 AM
+        </time>
+        –
+        <time
+          class="DateTime"
+          datetime="2017-12-31T00:00:00"
+          title="12:00 AM"
+        >
+          12:00 AM
+        </time>
+      </span>
+    </div>
+    <div
+      class="Meta Appearance--location"
+      title="Venue - undefined"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+        />
+      </svg>
+       
+      <span
+        class="Meta--label"
+      >
+        Location:
+      </span>
+       
+      <span
+        class="Meta--value"
+      >
+        Venue
+      </span>
+    </div>
+  </div>
+  <div
+    class="Appearance--body"
+  >
+    <figure
+      class="Image Appearance--image isLoading"
+    >
+      <div
+        class="Image--wrapper"
+      >
+        <img
+          alt=""
+          src="Image URL"
+        />
+        <span
+          class="Loader"
+        >
+          <div
+            class="Loader--animation"
           >
             <span />
             <span />
@@ -1732,43 +899,41 @@ exports[`[presentation] <Appearance /> renders correctly with minimum props 1`] 
       </div>
     </figure>
     <div
-      class="Appearance-details"
+      class="Appearance--details"
     >
       <section
-        class="Appearance-description"
+        class="Appearance--description"
       >
         <p>
-          description
+          Description
         </p>
       </section>
       <section
-        class="Appearance-acts"
+        class="Appearance--acts"
       >
         <h2>
-          <span>
-            Featured acts
-          </span>
+          Featured acts
         </h2>
         <div
-          class="Appearance-acts-items"
+          class="Appearance--acts--items"
         >
           <article
             class="ActListing"
           >
             <span
-              class="ActListing-link"
+              class="ActListing--link"
             >
               <div
-                class="ActListing-details"
+                class="ActListing--details"
               >
                 <h3>
-                  act name
+                  Act name
                 </h3>
                 <section
-                  class="ActListing-meta"
+                  class="ActListing--meta"
                 >
                   <div
-                    class="Meta ActListing-genre"
+                    class="Meta ActListing--genre"
                   >
                     <svg
                       fill="currentColor"
@@ -1777,6 +942,7 @@ exports[`[presentation] <Appearance /> renders correctly with minimum props 1`] 
                       stroke-width="0"
                       viewBox="0 0 24 24"
                       width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"
@@ -1784,22 +950,19 @@ exports[`[presentation] <Appearance /> renders correctly with minimum props 1`] 
                     </svg>
                      
                     <span
-                      class="Meta-label"
+                      class="Meta--label"
                     >
-                      <span>
-                        Genre
-                      </span>
-                      :
+                      Genre:
                     </span>
                      
                     <span
-                      class="Meta-value"
+                      class="Meta--value"
                     >
-                      act genre
+                      Genre
                     </span>
                   </div>
                   <div
-                    class="Meta ActListing-location"
+                    class="Meta ActListing--location"
                   >
                     <svg
                       fill="currentColor"
@@ -1808,6 +971,7 @@ exports[`[presentation] <Appearance /> renders correctly with minimum props 1`] 
                       stroke-width="0"
                       viewBox="0 0 24 24"
                       width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
@@ -1815,27 +979,39 @@ exports[`[presentation] <Appearance /> renders correctly with minimum props 1`] 
                     </svg>
                      
                     <span
-                      class="Meta-label"
+                      class="Meta--label"
                     >
-                      <span>
-                        Location
-                      </span>
-                      :
+                      Location:
                     </span>
                      
                     <span
-                      class="Meta-value"
+                      class="Meta--value"
                     />
                   </div>
                 </section>
               </div>
               <figure
-                class="ActListing-image"
+                class="Image ActListing--image isLoading"
               >
-                <img
-                  alt="act name"
-                  src="act imageUrl"
-                />
+                <div
+                  class="Image--wrapper"
+                >
+                  <img
+                    alt="Act name"
+                    src="Image URL"
+                  />
+                  <span
+                    class="Loader"
+                  >
+                    <div
+                      class="Loader--animation"
+                    >
+                      <span />
+                      <span />
+                      <span />
+                    </div>
+                  </span>
+                </div>
               </figure>
             </span>
           </article>
@@ -1846,7 +1022,7 @@ exports[`[presentation] <Appearance /> renders correctly with minimum props 1`] 
 </article>
 `;
 
-exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when image has loaded 1`] = `
+exports[`[presentation] <Appearance /> when only the required props are defined matches snapshot 1`] = `
 <article
   class="Appearance"
 >
@@ -1856,10 +1032,10 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
     <h1 />
   </header>
   <div
-    class="MetaBar Appearance-meta"
+    class="MetaBar Appearance--meta"
   >
     <div
-      class="Meta Appearance-date"
+      class="Meta Appearance--date"
     >
       <svg
         fill="currentColor"
@@ -1868,6 +1044,7 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
         stroke-width="0"
         viewBox="0 0 24 24"
         width="1em"
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"
@@ -1875,28 +1052,25 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
       </svg>
        
       <span
-        class="Meta-label"
+        class="Meta--label"
       >
-        <span>
-          Date
-        </span>
-        :
+        Date:
       </span>
        
       <span
-        class="Meta-value"
+        class="Meta--value"
       >
         <time
           class="DateTime"
-          datetime="2018-10-10T18:00:00"
-          title="Wednesday, October 10, 2018"
+          datetime="2018-01-04"
+          title="Thursday, 4 January 2018"
         >
-          Wednesday, October 10, 2018
+          Thursday, 4 January 2018
         </time>
       </span>
     </div>
     <div
-      class="Meta Appearance-time"
+      class="Meta Appearance--time"
     >
       <svg
         fill="currentColor"
@@ -1905,6 +1079,7 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
         stroke-width="0"
         viewBox="0 0 24 24"
         width="1em"
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
@@ -1912,37 +1087,34 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
       </svg>
        
       <span
-        class="Meta-label"
+        class="Meta--label"
       >
-        <span>
-          Time
-        </span>
-        :
+        Time:
       </span>
        
       <span
-        class="Meta-value"
+        class="Meta--value"
       >
         <time
           class="DateTime"
-          datetime="2018-10-10T18:00:00"
-          title="6:00 PM"
+          datetime="2018-01-04T00:00:00"
+          title="12:00 AM"
         >
-          6:00 PM
+          12:00 AM
         </time>
         –
         <time
           class="DateTime"
-          datetime="2018-10-10T20:00:00"
-          title="8:00 PM"
+          datetime="2018-01-05T00:00:00"
+          title="12:00 AM"
         >
-          8:00 PM
+          12:00 AM
         </time>
       </span>
     </div>
     <div
-      class="Meta Appearance-location"
-      title="location name - undefined"
+      class="Meta Appearance--location"
+      title="Venue - undefined"
     >
       <svg
         fill="currentColor"
@@ -1951,6 +1123,7 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
         stroke-width="0"
         viewBox="0 0 24 24"
         width="1em"
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
@@ -1958,73 +1131,80 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
       </svg>
        
       <span
-        class="Meta-label"
+        class="Meta--label"
       >
-        <span>
-          Location
-        </span>
-        :
+        Location:
       </span>
        
       <span
-        class="Meta-value"
+        class="Meta--value"
       >
-        location name
+        Venue
       </span>
     </div>
   </div>
   <div
-    class="Appearance-body"
+    class="Appearance--body"
   >
     <figure
-      class="Image Appearance-image isRendered"
+      class="Image Appearance--image isLoading"
     >
       <div
-        class="Image-wrapper"
+        class="Image--wrapper"
       >
         <img
-          src="imageUrl"
+          alt=""
+          src="Image URL"
         />
+        <span
+          class="Loader"
+        >
+          <div
+            class="Loader--animation"
+          >
+            <span />
+            <span />
+            <span />
+          </div>
+        </span>
       </div>
     </figure>
     <div
-      class="Appearance-details"
+      class="Appearance--details"
     >
       <section
-        class="Appearance-description"
+        class="Appearance--description"
       >
         <p>
-          description
+          Description
         </p>
       </section>
       <section
-        class="Appearance-acts"
+        class="Appearance--acts"
       >
         <h2>
-          <span>
-            Featured acts
-          </span>
+          Featured acts
         </h2>
         <div
-          class="Appearance-acts-items"
+          class="Appearance--acts--items"
         >
           <article
             class="ActListing"
           >
             <span
-              class="ActListing-link"
+              class="ActListing--link"
             >
               <div
-                class="ActListing-details"
+                class="ActListing--details"
               >
                 <h3>
-                  act name
+                  Act name
                 </h3>
                 <section
-                  class="ActListing-meta"
+                  class="ActListing--meta"
                 >
                   <div
-                    class="Meta ActListing-genre"
+                    class="Meta ActListing--genre"
                   >
                     <svg
                       fill="currentColor"
@@ -2033,6 +1213,7 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
                       stroke-width="0"
                       viewBox="0 0 24 24"
                       width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"
@@ -2040,22 +1221,19 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
                     </svg>
                      
                     <span
-                      class="Meta-label"
+                      class="Meta--label"
                     >
-                      <span>
-                        Genre
-                      </span>
-                      :
+                      Genre:
                     </span>
                      
                     <span
-                      class="Meta-value"
+                      class="Meta--value"
                     >
-                      act genre
+                      Genre
                     </span>
                   </div>
                   <div
-                    class="Meta ActListing-location"
+                    class="Meta ActListing--location"
                   >
                     <svg
                       fill="currentColor"
@@ -2064,6 +1242,7 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
                       stroke-width="0"
                       viewBox="0 0 24 24"
                       width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
@@ -2071,27 +1250,39 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
                     </svg>
                      
                     <span
-                      class="Meta-label"
+                      class="Meta--label"
                     >
-                      <span>
-                        Location
-                      </span>
-                      :
+                      Location:
                     </span>
                      
                     <span
-                      class="Meta-value"
+                      class="Meta--value"
                     />
                   </div>
                 </section>
               </div>
               <figure
-                class="ActListing-image"
+                class="Image ActListing--image isLoading"
               >
-                <img
-                  alt="act name"
-                  src="act imageUrl"
-                />
+                <div
+                  class="Image--wrapper"
+                >
+                  <img
+                    alt="Act name"
+                    src="Image URL"
+                  />
+                  <span
+                    class="Loader"
+                  >
+                    <div
+                      class="Loader--animation"
+                    >
+                      <span />
+                      <span />
+                      <span />
+                    </div>
+                  </span>
+                </div>
               </figure>
             </span>
           </article>
@@ -2102,9 +1293,9 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
 </article>
 `;
 
-exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when image has previously been loaded 1`] = `
+exports[`[presentation] <Appearance /> when postponed matches snapshot 1`] = `
 <article
-  class="Appearance"
+  class="Appearance isPostponed"
 >
   <header
     class="PageHeader"
@@ -2112,10 +1303,10 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
     <h1 />
   </header>
   <div
-    class="MetaBar Appearance-meta"
+    class="MetaBar Appearance--meta"
   >
     <div
-      class="Meta Appearance-date"
+      class="Meta Appearance--date"
     >
       <svg
         fill="currentColor"
@@ -2124,6 +1315,7 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
         stroke-width="0"
         viewBox="0 0 24 24"
         width="1em"
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"
@@ -2131,28 +1323,25 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
       </svg>
        
       <span
-        class="Meta-label"
+        class="Meta--label"
       >
-        <span>
-          Date
-        </span>
-        :
+        Date:
       </span>
        
       <span
-        class="Meta-value"
+        class="Meta--value"
       >
         <time
           class="DateTime"
-          datetime="2018-10-10T18:00:00"
-          title="Wednesday, October 10, 2018"
+          datetime="2018-01-04"
+          title="Thursday, 4 January 2018"
         >
-          Wednesday, October 10, 2018
+          Thursday, 4 January 2018
         </time>
       </span>
     </div>
     <div
-      class="Meta Appearance-time"
+      class="Meta Appearance--time"
     >
       <svg
         fill="currentColor"
@@ -2161,6 +1350,7 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
         stroke-width="0"
         viewBox="0 0 24 24"
         width="1em"
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
@@ -2168,37 +1358,34 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
       </svg>
        
       <span
-        class="Meta-label"
+        class="Meta--label"
       >
-        <span>
-          Time
-        </span>
-        :
+        Time:
       </span>
        
       <span
-        class="Meta-value"
+        class="Meta--value"
       >
         <time
           class="DateTime"
-          datetime="2018-10-10T18:00:00"
-          title="6:00 PM"
+          datetime="2018-01-04T00:00:00"
+          title="12:00 AM"
         >
-          6:00 PM
+          12:00 AM
         </time>
         –
         <time
           class="DateTime"
-          datetime="2018-10-10T20:00:00"
-          title="8:00 PM"
+          datetime="2018-01-05T00:00:00"
+          title="12:00 AM"
         >
-          8:00 PM
+          12:00 AM
         </time>
       </span>
     </div>
     <div
-      class="Meta Appearance-location"
-      title="location name - undefined"
+      class="Meta Appearance--location"
+      title="Venue - undefined"
     >
       <svg
         fill="currentColor"
@@ -2207,6 +1394,7 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
         stroke-width="0"
         viewBox="0 0 24 24"
         width="1em"
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
@@ -2214,73 +1402,96 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
       </svg>
        
       <span
-        class="Meta-label"
+        class="Meta--label"
       >
-        <span>
-          Location
-        </span>
-        :
+        Location:
       </span>
        
       <span
-        class="Meta-value"
+        class="Meta--value"
       >
-        location name
+        Venue
       </span>
     </div>
   </div>
   <div
-    class="Appearance-body"
+    class="Appearance--body"
   >
     <figure
-      class="Image Appearance-image isRendered"
+      class="Image Appearance--image isLoading"
     >
       <div
-        class="Image-wrapper"
+        class="Image--wrapper"
       >
         <img
-          src="imageUrl"
+          alt=""
+          src="Image URL"
         />
+        <span
+          class="Loader"
+        >
+          <div
+            class="Loader--animation"
+          >
+            <span />
+            <span />
+            <span />
+          </div>
+        </span>
+        <div
+          class="Meta Appearance--status"
+        >
+           
+          <span
+            class="Meta--label"
+          >
+            Status:
+          </span>
+           
+          <span
+            class="Meta--value"
+          >
+            Postponed
+          </span>
+        </div>
       </div>
     </figure>
     <div
-      class="Appearance-details"
+      class="Appearance--details"
     >
       <section
-        class="Appearance-description"
+        class="Appearance--description"
       >
         <p>
-          description
+          Description
         </p>
       </section>
       <section
-        class="Appearance-acts"
+        class="Appearance--acts"
       >
         <h2>
-          <span>
-            Featured acts
-          </span>
+          Featured acts
         </h2>
         <div
-          class="Appearance-acts-items"
+          class="Appearance--acts--items"
         >
           <article
             class="ActListing"
           >
             <span
-              class="ActListing-link"
+              class="ActListing--link"
             >
               <div
-                class="ActListing-details"
+                class="ActListing--details"
               >
                 <h3>
-                  act name
+                  Act name
                 </h3>
                 <section
-                  class="ActListing-meta"
+                  class="ActListing--meta"
                 >
                   <div
-                    class="Meta ActListing-genre"
+                    class="Meta ActListing--genre"
                   >
                     <svg
                       fill="currentColor"
@@ -2289,6 +1500,7 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
                       stroke-width="0"
                       viewBox="0 0 24 24"
                       width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"
@@ -2296,22 +1508,19 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
                     </svg>
                      
                     <span
-                      class="Meta-label"
+                      class="Meta--label"
                     >
-                      <span>
-                        Genre
-                      </span>
-                      :
+                      Genre:
                     </span>
                      
                     <span
-                      class="Meta-value"
+                      class="Meta--value"
                     >
-                      act genre
+                      Genre
                     </span>
                   </div>
                   <div
-                    class="Meta ActListing-location"
+                    class="Meta ActListing--location"
                   >
                     <svg
                       fill="currentColor"
@@ -2320,6 +1529,7 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
                       stroke-width="0"
                       viewBox="0 0 24 24"
                       width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
@@ -2327,27 +1537,39 @@ exports[`[presentation] <Appearance /> updates \`isImageLoaded\` state when imag
                     </svg>
                      
                     <span
-                      class="Meta-label"
+                      class="Meta--label"
                     >
-                      <span>
-                        Location
-                      </span>
-                      :
+                      Location:
                     </span>
                      
                     <span
-                      class="Meta-value"
+                      class="Meta--value"
                     />
                   </div>
                 </section>
               </div>
               <figure
-                class="ActListing-image"
+                class="Image ActListing--image isLoading"
               >
-                <img
-                  alt="act name"
-                  src="act imageUrl"
-                />
+                <div
+                  class="Image--wrapper"
+                >
+                  <img
+                    alt="Act name"
+                    src="Image URL"
+                  />
+                  <span
+                    class="Loader"
+                  >
+                    <div
+                      class="Loader--animation"
+                    >
+                      <span />
+                      <span />
+                      <span />
+                    </div>
+                  </span>
+                </div>
               </figure>
             </span>
           </article>

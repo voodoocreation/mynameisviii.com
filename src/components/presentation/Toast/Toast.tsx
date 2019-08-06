@@ -1,13 +1,16 @@
 import cn from "classnames";
 import * as React from "react";
 import { MdClose } from "react-icons/md";
-import { InjectedIntl, injectIntl } from "react-intl";
+import { InjectedIntlProps, injectIntl } from "react-intl";
 
-interface IProps {
-  autoDismissDelay: number;
+import Button from "../Button/Button";
+
+import "./Toast.scss";
+
+interface IProps extends InjectedIntlProps {
+  autoDismissDelay?: number;
   className?: string;
-  hasAutoDismiss: boolean;
-  intl: InjectedIntl;
+  hasAutoDismiss?: boolean;
   isVisible?: boolean;
   onClose?: () => void;
 }
@@ -25,8 +28,8 @@ class Toast extends React.Component<IProps, IState> {
     isVisible: true
   };
 
-  private dismissTimeOut: number | undefined = undefined;
-  private visibilityTimeout: number | undefined = undefined;
+  private dismissTimeOut: any = undefined;
+  private visibilityTimeout: any = undefined;
 
   constructor(props: IProps) {
     super(props);
@@ -55,16 +58,16 @@ class Toast extends React.Component<IProps, IState> {
 
     return !isRendered ? null : (
       <div className={cn("Toast", className, { isHidden: !isVisible })}>
-        <div className="Toast-content">
-          <div className="Toast-message">{children}</div>
+        <div className="Toast--content">
+          <div className="Toast--message">{children}</div>
 
-          <button
-            className="Toast-closeButton"
+          <Button
+            className="Toast--closeButton"
             onClick={this.onClose}
             title={formatMessage({ id: "CLOSE" })}
           >
             <MdClose />
-          </button>
+          </Button>
         </div>
       </div>
     );
@@ -76,22 +79,18 @@ class Toast extends React.Component<IProps, IState> {
       [isVisible ? "isRendered" : "isVisible"]: isVisible
     } as any);
 
-    if (this.visibilityTimeout) {
-      window.clearTimeout(this.visibilityTimeout);
-    }
+    clearTimeout(this.visibilityTimeout);
 
-    this.visibilityTimeout = window.setTimeout(() => {
+    this.visibilityTimeout = setTimeout(() => {
       this.setState({
         [isVisible ? "isVisible" : "isRendered"]: isVisible
       } as any);
 
       if (isVisible && this.props.hasAutoDismiss) {
-        if (this.dismissTimeOut) {
-          window.clearTimeout(this.dismissTimeOut);
-        }
+        clearTimeout(this.dismissTimeOut);
 
-        this.dismissTimeOut = window.setTimeout(
-          this.toggleVisibility.bind(this, false),
+        this.dismissTimeOut = setTimeout(
+          this.onClose,
           this.props.autoDismissDelay
         );
       }
@@ -107,4 +106,4 @@ class Toast extends React.Component<IProps, IState> {
   };
 }
 
-export default injectIntl<any>(Toast);
+export default injectIntl(Toast);

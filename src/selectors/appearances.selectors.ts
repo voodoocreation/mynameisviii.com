@@ -1,11 +1,12 @@
 import { createSelector, defaultMemoize } from "reselect";
-import { assocToArray } from "../transformers/transformData";
 
-export const getAppearancesError = (state: IRootReducers) =>
-  state.appearances.error;
+import { TStoreState } from "../reducers/root.reducers";
+
+export const hasAppearancesError = (state: TStoreState) =>
+  state.appearances.hasError;
 
 export const getAppearances = defaultMemoize(
-  (state: IRootReducers) => state.appearances.items
+  (state: TStoreState) => state.appearances.items
 );
 
 export const getAppearancesCount = createSelector(
@@ -16,8 +17,9 @@ export const getAppearancesCount = createSelector(
 export const getAppearancesAsArray = createSelector(
   getAppearances,
   appearances =>
-    assocToArray(appearances).sort(
-      (a: IAppearance, b: IAppearance) => a.startingAt > b.startingAt
+    Object.values(appearances).sort(
+      (a, b) =>
+        new Date(b.startingAt).getTime() - new Date(a.startingAt).getTime()
     )
 );
 
@@ -25,8 +27,7 @@ export const getUpcomingAppearances = createSelector(
   getAppearancesAsArray,
   appearances =>
     appearances.filter(
-      (appearance: IAppearance) =>
-        appearance.finishingAt > new Date().toISOString()
+      appearance => appearance.finishingAt > new Date().toISOString()
     )
 );
 
@@ -34,12 +35,11 @@ export const getPastAppearances = createSelector(
   getAppearancesAsArray,
   appearances =>
     appearances.filter(
-      (appearance: IAppearance) =>
-        appearance.finishingAt <= new Date().toISOString()
+      appearance => appearance.finishingAt <= new Date().toISOString()
     )
 );
 
-export const getCurrentAppearanceSlug = (state: IRootReducers) =>
+export const getCurrentAppearanceSlug = (state: TStoreState) =>
   state.appearances.currentSlug;
 
 export const getCurrentAppearance = createSelector(
@@ -48,7 +48,7 @@ export const getCurrentAppearance = createSelector(
   (appearances, slug) => (slug ? appearances[slug] : undefined)
 );
 
-export const getAppearancesLastEvaluatedKey = (state: IRootReducers) =>
+export const getAppearancesLastEvaluatedKey = (state: TStoreState) =>
   state.appearances.lastEvaluatedKey;
 
 export const getAppearancesLastEvaluatedKeyAsString = createSelector(
@@ -67,27 +67,11 @@ export const getAppearancesLastEvaluatedKeyAsString = createSelector(
         )
 );
 
-export const getHasAllAppearances = (state: IRootReducers) =>
+export const getHasAllAppearances = (state: TStoreState) =>
   state.appearances.hasAllItems;
 
-export const getAppearancesIsLoading = (state: IRootReducers) =>
+export const getAppearancesIsLoading = (state: TStoreState) =>
   state.appearances.isLoading;
 
-export const getAppearancePriceRange = (appearance: IAppearance) =>
-  appearance.sales
-    .sort((a, b) => a.price - b.price)
-    .reduce((acc: IPriceRange, curr) => {
-      if (!acc.min || curr.price < acc.min.price) {
-        acc.min = curr;
-      } else if (
-        (acc.max && curr.price > acc.max.price) ||
-        (!acc.max && acc.min && curr.price > acc.min.price)
-      ) {
-        acc.max = curr;
-      }
-
-      return acc;
-    }, {});
-
-export const getCurrentAppearanceLocation = (state: IRootReducers) =>
+export const getCurrentAppearanceLocation = (state: TStoreState) =>
   state.appearances.currentLocation;

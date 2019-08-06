@@ -1,25 +1,19 @@
 import actionCreatorFactory from "typescript-fsa";
 
-const actionCreator = actionCreatorFactory("GALLERIES");
+import { IGallery, IS3Response } from "../models/root.models";
 
-export const fetchGalleries = actionCreator.async<
-  {},
-  PLFetchGalleriesDone,
-  PLFetchGalleriesFailed
->("FETCH");
+const createAction = actionCreatorFactory("GALLERIES");
 
-export const fetchMoreGalleries = actionCreator.async<
-  {},
-  PLFetchGalleriesDone,
-  PLFetchGalleriesFailed
->("FETCH_MORE");
-
-export const fetchGalleryBySlug = actionCreator.async<
-  PLFetchGalleryBySlugStarted,
-  PLFetchGalleryBySlugDone,
-  PLFetchGalleryBySlugFailed
->("FETCH_BY_SLUG");
-
-export const setCurrentGallerySlug = actionCreator<PLSetCurrentGallerySlug>(
-  "SET_CURRENT_SLUG"
+export const fetchGalleries = createAction.async<{}, IS3Response<IGallery>>(
+  "FETCH"
 );
+
+export const fetchMoreGalleries = createAction.async<{}, IS3Response<IGallery>>(
+  "FETCH_MORE"
+);
+
+export const fetchGalleryBySlug = createAction.async<string, IGallery>(
+  "FETCH_BY_SLUG"
+);
+
+export const setCurrentGallerySlug = createAction<string>("SET_CURRENT_SLUG");

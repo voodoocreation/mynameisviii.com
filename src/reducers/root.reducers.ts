@@ -1,38 +1,41 @@
 import { combineReducers } from "redux";
 
+import app, { initialState as appIS } from "./app.reducers";
 import appearances, {
-  initialState as initialAppearances
+  initialState as appearancesIS
 } from "./appearances.reducers";
-import features, { initialState as initialFeatures } from "./features.reducers";
-import galleries, {
-  initialState as initialGalleries
-} from "./galleries.reducers";
-import news, { initialState as initialNews } from "./news.reducers";
-import page, { initialState as initialPage } from "./page.reducers";
-import releases, { initialState as initialReleases } from "./releases.reducers";
-import resources, {
-  initialState as initialResources
-} from "./resources.reducers";
-import stems, { initialState as initialStems } from "./stems.reducers";
+import features, { initialState as featuresIS } from "./features.reducers";
+import galleries, { initialState as galleriesIS } from "./galleries.reducers";
+import intl, { initialState as intlIS } from "./intl.reducers";
+import news, { initialState as newsIS } from "./news.reducers";
+import releases, { initialState as releasesIS } from "./releases.reducers";
+import resources, { initialState as resourcesIS } from "./resources.reducers";
+import stems, { initialState as stemsIS } from "./stems.reducers";
 
-export default combineReducers({
+export const initialState = {
+  app: appIS,
+  appearances: appearancesIS,
+  features: featuresIS,
+  galleries: galleriesIS,
+  intl: intlIS,
+  news: newsIS,
+  releases: releasesIS,
+  resources: resourcesIS,
+  stems: stemsIS
+};
+
+const rootReducer = combineReducers({
+  app,
   appearances,
   features,
   galleries,
+  intl,
   news,
-  page,
   releases,
   resources,
   stems
 });
 
-export const initialState: IRootReducers = {
-  appearances: initialAppearances,
-  features: initialFeatures,
-  galleries: initialGalleries,
-  news: initialNews,
-  page: initialPage,
-  releases: initialReleases,
-  resources: initialResources,
-  stems: initialStems
-};
+export default rootReducer;
+
+export type TStoreState = typeof initialState;

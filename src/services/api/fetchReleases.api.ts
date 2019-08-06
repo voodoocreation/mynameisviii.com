@@ -1,28 +1,33 @@
-import transformRelease from "../../transformers/transformRelease";
+import {
+  dynamoResponse,
+  failure,
+  IRawDynamoResponse,
+  IRawRelease,
+  release,
+  success
+} from "../../models/root.models";
+import { TRequest } from "../configureHttpClient";
 
-const transformReleases = (releases: any) => releases.map(transformRelease);
-
-export const fetchReleases = (request: any) => async (
+export const fetchReleases = (request: TRequest) => async (
   limit?: number,
   exclusiveStartKey?: string
 ) => {
   try {
-    const response = await request({
+    const response: IRawDynamoResponse<
+      IRawRelease,
+      "releasedOn"
+    > = await request({
       params: { exclusiveStartKey, limit },
       url: `/releases/find`
     });
 
-    return {
-      data: {
+    return success(
+      dynamoResponse({
         ...response,
-        items: transformReleases(response.items)
-      },
-      ok: true
-    };
+        items: response.items.map(release)
+      })
+    );
   } catch (error) {
-    return {
-      message: error.message,
-      ok: false
-    };
+    return failure(error);
   }
 };

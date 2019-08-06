@@ -1,22 +1,23 @@
+import { SagaIterator } from "redux-saga";
 import { call, put, select, takeLatest } from "redux-saga/effects";
-import { Action } from "typescript-fsa";
 
-import { arrayToAssoc, tryParseJson } from "../transformers/transformData";
+import { IPorts } from "../services/configurePorts";
 
 import * as actions from "../actions/root.actions";
 import * as selectors from "../selectors/root.selectors";
 
-export const fetchGalleriesSaga = (ports: IStorePorts) =>
-  function*() {
-    yield takeLatest(actions.fetchGalleries.started, function*() {
+export const fetchGalleriesSaga = (ports: IPorts) =>
+  function*(): SagaIterator {
+    yield takeLatest(actions.fetchGalleries.started, function*(): SagaIterator {
       const response = yield call(ports.api.fetchGalleries);
 
       if (response.ok) {
-        const result = {
-          ...response.data,
-          items: arrayToAssoc(response.data.items, "slug")
-        };
-        yield put(actions.fetchGalleries.done({ result, params: {} }));
+        yield put(
+          actions.fetchGalleries.done({
+            params: {},
+            result: response.data
+          })
+        );
       } else {
         yield put(
           actions.fetchGalleries.failed({
@@ -28,44 +29,47 @@ export const fetchGalleriesSaga = (ports: IStorePorts) =>
     });
   };
 
-export const fetchMoreGalleriesSaga = (ports: IStorePorts) =>
-  function*() {
-    yield takeLatest(actions.fetchMoreGalleries.started, function*() {
-      const lastKey = yield select(selectors.getGalleriesLastKey);
+export const fetchMoreGalleriesSaga = (ports: IPorts) =>
+  function*(): SagaIterator {
+    yield takeLatest(
+      actions.fetchMoreGalleries.started,
+      function*(): SagaIterator {
+        const lastKey: string = yield select(selectors.getGalleriesLastKey);
 
-      const response = yield call(ports.api.fetchGalleries, lastKey);
+        const response = yield call(ports.api.fetchGalleries, lastKey);
 
-      if (response.ok) {
-        const result = {
-          ...response.data,
-          items: arrayToAssoc(response.data.items, "slug")
-        };
+        if (response.ok) {
+          yield put(
+            actions.fetchMoreGalleries.done({
+              params: {},
+              result: response.data
+            })
+          );
 
-        yield put(actions.fetchMoreGalleries.done({ result, params: {} }));
-
-        const itemCount = yield select(selectors.getGalleriesCount);
-        yield put(
-          actions.trackEvent({
-            event: "galleries.fetchedMore",
-            itemCount
-          })
-        );
-      } else {
-        yield put(
-          actions.fetchMoreGalleries.failed({
-            error: response.message,
-            params: {}
-          })
-        );
+          const itemCount: number = yield select(selectors.getGalleriesCount);
+          yield put(
+            actions.trackEvent({
+              event: "galleries.fetchedMore",
+              itemCount
+            })
+          );
+        } else {
+          yield put(
+            actions.fetchMoreGalleries.failed({
+              error: response.message,
+              params: {}
+            })
+          );
+        }
       }
-    });
+    );
   };
 
-export const fetchGalleryBySlugSaga = (ports: IStorePorts) =>
-  function*() {
+export const fetchGalleryBySlugSaga = (ports: IPorts) =>
+  function*(): SagaIterator {
     yield takeLatest(actions.fetchGalleryBySlug.started, function*({
       payload
-    }: Action<PLFetchGalleryBySlugStarted>) {
+    }): SagaIterator {
       const response = yield call(ports.api.fetchGalleryBySlug, payload);
 
       if (response.ok) {
@@ -78,7 +82,7 @@ export const fetchGalleryBySlugSaga = (ports: IStorePorts) =>
       } else {
         yield put(
           actions.fetchGalleryBySlug.failed({
-            error: tryParseJson(response.message),
+            error: response.message,
             params: payload
           })
         );

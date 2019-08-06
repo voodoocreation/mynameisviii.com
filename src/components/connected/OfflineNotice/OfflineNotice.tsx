@@ -1,34 +1,29 @@
 import * as React from "react";
 import { MdPortableWifiOff } from "react-icons/md";
-import { FormattedMessage, InjectedIntl, injectIntl } from "react-intl";
+import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl";
 import { connect } from "react-redux";
 
+import { TStoreState } from "../../../reducers/root.reducers";
 import * as selectors from "../../../selectors/root.selectors";
 
-interface IStoreProps {
+import "./OfflineNotice.scss";
+
+interface IProps extends InjectedIntlProps {
   isOnline: boolean;
 }
 
-interface IProps extends IStoreProps {
-  intl: InjectedIntl;
-}
+const OfflineNotice: React.FC<IProps> = ({ isOnline }) =>
+  isOnline ? null : (
+    <div className="OfflineNotice">
+      <MdPortableWifiOff />
+      <p>
+        <FormattedMessage id="CONTENT_UNAVAILABLE_OFFLINE" />
+      </p>
+    </div>
+  );
 
-const OfflineNotice: React.SFC<IProps> = ({ isOnline }) =>
-  isOnline
-    ? null
-    : ((
-        <div className="OfflineNotice">
-          <MdPortableWifiOff />
-          <p>
-            <FormattedMessage id="CONTENT_UNAVAILABLE_OFFLINE" />
-          </p>
-        </div>
-      ) as React.ReactElement<any>);
-
-const mapStateToProps = (state: any) => ({
+const mapState = (state: TStoreState) => ({
   isOnline: selectors.isOnline(state)
 });
 
-export default injectIntl<any>(
-  connect<IStoreProps>(mapStateToProps)(OfflineNotice)
-);
+export default injectIntl(connect(mapState)(OfflineNotice));

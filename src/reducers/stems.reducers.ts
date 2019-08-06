@@ -1,28 +1,34 @@
 import { reducerWithInitialState } from "typescript-fsa-reducers";
 
 import * as actions from "../actions/root.actions";
+import { IStem, TLastEvaluatedKey } from "../models/root.models";
 
-export const initialState: IStemsReducers = {
-  error: undefined,
+export interface IState {
+  hasAllItems: boolean;
+  hasError: boolean;
+  isLoading: boolean;
+  items: Record<string, IStem>;
+  lastEvaluatedKey?: TLastEvaluatedKey<"createdAt">;
+}
+
+export const initialState: IState = {
   hasAllItems: false,
+  hasError: false,
   isLoading: false,
   items: {},
   lastEvaluatedKey: undefined
 };
 
 export default reducerWithInitialState(initialState)
-  .cases(
-    [actions.fetchStems.failed, actions.fetchMoreStems.failed],
-    (state, { error }) => ({
-      ...state,
-      error,
-      isLoading: false
-    })
-  )
+  .cases([actions.fetchStems.failed, actions.fetchMoreStems.failed], state => ({
+    ...state,
+    hasError: true,
+    isLoading: false
+  }))
 
   .case(actions.fetchStems.started, state => ({
     ...state,
-    error: undefined,
+    hasError: false,
     isLoading: true,
     items: {}
   }))
@@ -37,7 +43,7 @@ export default reducerWithInitialState(initialState)
 
   .case(actions.fetchMoreStems.started, state => ({
     ...state,
-    error: undefined,
+    hasError: false,
     isLoading: true
   }))
 

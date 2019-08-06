@@ -1,7 +1,8 @@
 import actionCreatorFactory from "typescript-fsa";
 
-const actionCreator = actionCreatorFactory("SERVICE_WORKER");
+const createAction = actionCreatorFactory("SERVICE_WORKER");
 
-export const receiveServiceWorkerMessage = actionCreator<
-  PLReceiveServiceWorkerMessage
->("RECEIVE_MESSAGE");
+export const receiveServiceWorkerMessage = createAction<{
+  type: string;
+  payload?: any;
+}>("RECEIVE_MESSAGE");

@@ -1,8 +1,15 @@
 import * as React from "react";
 
-import organisation from "../../../server/mocks/organisation.json";
+import { INewsArticle, organization } from "../../models/root.models";
 import { absUrl } from "../../transformers/transformData";
 import Schema from "./Schema";
+
+const publisher = organization({
+  email: "mgmt@mynameisviii.com",
+  logo:
+    "https://s3.amazonaws.com/mynameisviii-static/voodoo-creation-records-logo.png",
+  name: "Voodoo Creation Records"
+});
 
 const NewsArticle: React.FC<INewsArticle> = props => (
   <Schema
@@ -23,7 +30,14 @@ const NewsArticle: React.FC<INewsArticle> = props => (
         "@id": absUrl(`/news/${props.slug}`)
       },
       name: props.title,
-      publisher: organisation,
+      publisher: {
+        "@type": publisher.type,
+        email: publisher.email,
+        logo: {
+          "@type": "ImageObject",
+          url: publisher.logo
+        }
+      },
       text: props.content,
       thumbnailUrl: props.ogImageUrl
     }}

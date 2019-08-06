@@ -1,221 +1,184 @@
-import { mount, render } from "enzyme";
-import { camelizeKeys } from "humps";
-import * as React from "react";
-import { Provider } from "react-redux";
-
-import * as selectors from "../../../selectors/root.selectors";
-import createStore from "../../../store/root.store";
+import * as actions from "../../../actions/root.actions";
+import { newsArticle } from "../../../models/root.models";
+import ComponentTester from "../../../utilities/ComponentTester";
+import MockPageContext from "../../../utilities/MockPageContext";
 import NewsRoute from "./NewsRoute";
 
-import news from "../../../../server/mocks/news.json";
-import * as dom from "../../../helpers/dom";
-import { arrayToAssoc } from "../../../transformers/transformData";
+const item1 = newsArticle({ slug: "test-1" });
+const item2 = newsArticle({ slug: "test-2" });
 
-const mockData: any = camelizeKeys(news);
-
-const setup = (fn: any, fromTestStore = {}, fromTestApi?: {}) => {
-  const store = createStore(fromTestStore, {}, fromTestApi);
-
-  return {
-    actual: fn(
-      <Provider store={store}>
-        <NewsRoute />
-      </Provider>
-    ),
-    store
-  };
-};
+const component = new ComponentTester(NewsRoute, true);
 
 describe("[routes] <NewsRoute />", () => {
-  beforeAll(() => {
-    Object.defineProperty(dom, "isAlmostInViewport", {
-      value: jest.fn(() => false)
-    });
-  });
+  describe("getInitialProps", () => {
+    const context = new MockPageContext();
 
-  it("renders correctly", () => {
-    const { actual } = setup(render, {
-      news: {
-        hasAllItems: true,
-        items: arrayToAssoc(mockData.items, "slug")
-      }
+    it("dispatches actions.fetchLatestNews.started when rendering on the server", async () => {
+      await NewsRoute.getInitialProps(context.toObject(true));
+
+      expect(
+        context.reduxHistory.filter(actions.fetchLatestNews.started.match)
+      ).toHaveLength(1);
     });
 
-    expect(actual).toMatchSnapshot();
-  });
+    it("dispatches actions.fetchLatestNews.started when the store is empty", async () => {
+      await NewsRoute.getInitialProps(context.toObject());
 
-  it("renders no results correctly", () => {
-    const { actual } = setup(render, {
-      news: {
-        hasAllItems: true
-      }
+      expect(
+        context.reduxHistory.filter(actions.fetchLatestNews.started.match)
+      ).toHaveLength(1);
     });
 
-    expect(actual.find(".NoResults")).toHaveLength(1);
-  });
-
-  it("renders with an error correctly", () => {
-    const { actual } = setup(render, {
-      news: {
-        error: {
-          message: "Server error",
-          status: 500
-        }
-      }
-    });
-
-    expect(actual.find(".LoadButton").text()).toBe("Try again");
-    expect(actual).toMatchSnapshot();
-  });
-
-  it("renders with 'load more' button when hasAllItems=false", () => {
-    const { actual } = setup(render, {
-      news: {
-        hasAllItems: false
-      }
-    });
-
-    expect(actual.find(".LoadButton")).toHaveLength(1);
-  });
-
-  it("renders without 'load more' button when hasAllItems=true", () => {
-    const { actual } = setup(render, {
-      news: {
-        hasAllItems: true
-      }
-    });
-
-    expect(actual.find(".LoadButton")).toHaveLength(0);
-  });
-
-  it("loads more listings when 'load more' button is activated", () => {
-    const { actual } = setup(
-      mount,
-      {},
-      {
-        fetchLatestNews: () => ({
-          data: {
-            items: [mockData.items[0]]
-          },
-          ok: true
-        })
-      }
-    );
-
-    expect(actual.find("NewsListing")).toHaveLength(0);
-    actual.find("LoadButton").simulate("click");
-    expect(actual.find("NewsListing")).toHaveLength(1);
-  });
-
-  it("updates `loadedListings` state after a listing has loaded", () => {
-    const { actual } = setup(mount, {
-      news: {
-        items: { "test-1": mockData.items[0] }
-      }
-    });
-
-    actual.find("NewsListing img").simulate("load");
-
-    expect(actual.find(".hasLoadedAllListings")).toHaveLength(1);
-  });
-
-  describe("getInitialProps()", () => {
-    const items = [mockData.items[0]];
-
-    it("fetches items when rendering on the server", async () => {
-      const { store } = setup(
-        render,
-        {},
-        {
-          fetchLatestNews: () => ({
-            data: { items },
-            ok: true
-          })
-        }
-      );
-
-      await NewsRoute.getInitialProps({
-        ctx: {
-          isServer: true,
-          store
-        }
-      });
-
-      expect(selectors.getNewsArticlesAsArray(store.getState())).toEqual(items);
-    });
-
-    it("fetches items when the store is empty", async () => {
-      const { store } = setup(
-        render,
-        {},
-        {
-          fetchLatestNews: () => ({
-            data: { items },
-            ok: true
-          })
-        }
-      );
-
-      await NewsRoute.getInitialProps({
-        ctx: {
-          isServer: false,
-          store
-        }
-      });
-
-      expect(selectors.getNewsArticlesAsArray(store.getState())).toEqual(items);
-    });
-
-    it("fetches more items when there are more to fetch", async () => {
-      const { store } = setup(
-        render,
-        {
-          news: {
-            items: {
-              "test-1": items[0]
+    it("dispatches actions.fetchMoreLatestNews.started when there are more items to fetch", async () => {
+      await NewsRoute.getInitialProps(
+        context
+          .withReduxState({
+            news: {
+              hasAllItems: false,
+              items: {
+                [item1.slug]: item1
+              }
             }
-          }
-        },
-        {
-          fetchLatestNews: () => ({
-            data: {
-              items: [{ slug: "test-2" }]
-            },
-            ok: true
           })
-        }
+          .toObject()
       );
 
-      expect(selectors.getNewsArticlesCount(store.getState())).toBe(1);
-
-      await NewsRoute.getInitialProps({
-        ctx: {
-          isServer: false,
-          store
-        }
-      });
-
-      expect(selectors.getNewsArticlesCount(store.getState())).toBe(2);
+      expect(
+        context.reduxHistory.filter(actions.fetchMoreLatestNews.started.match)
+      ).toHaveLength(1);
     });
 
     it("doesn't fetch anything when all items are in the store", async () => {
-      const { store } = setup(render, {
+      await NewsRoute.getInitialProps(
+        context
+          .withReduxState({
+            news: {
+              hasAllItems: true,
+              items: {
+                [item1.slug]: item1
+              }
+            }
+          })
+          .toObject()
+      );
+
+      expect(
+        context.reduxHistory.filter(actions.fetchLatestNews.started.match)
+      ).toHaveLength(0);
+      expect(
+        context.reduxHistory.filter(actions.fetchMoreLatestNews.started.match)
+      ).toHaveLength(0);
+    });
+  });
+
+  describe("when all data is in the store", () => {
+    const { wrapper } = component
+      .withReduxState({
         news: {
           hasAllItems: true,
           items: {
-            "test-1": items[0]
+            [item1.slug]: item1,
+            [item2.slug]: item2
           }
         }
-      });
+      })
+      .mount();
 
-      await NewsRoute.getInitialProps({
-        ctx: {
-          isServer: false,
-          store
-        }
-      });
-
-      expect(selectors.getNewsArticlesAsArray(store.getState())).toEqual(items);
+    it("renders the listings section", () => {
+      expect(wrapper.find(".NewsRoute--listings")).toHaveLength(1);
     });
+
+    it("renders all listings", () => {
+      expect(wrapper.find("NewsListing")).toHaveLength(2);
+    });
+
+    it("matches snapshot", () => {
+      expect(wrapper.render()).toMatchSnapshot();
+    });
+  });
+
+  describe("when no data is in the store", () => {
+    const { wrapper } = component
+      .withReduxState({
+        news: {
+          hasAllItems: true,
+          items: {}
+        }
+      })
+      .mount();
+
+    it("doesn't render the listings section", () => {
+      expect(wrapper.find(".NewsRoute--listings")).toHaveLength(0);
+    });
+
+    it("renders the no results message", () => {
+      expect(wrapper.find("NoResults")).toHaveLength(1);
+    });
+  });
+
+  it("renders the offline notice when there's an error", () => {
+    const { wrapper } = component
+      .withReduxState({
+        news: {
+          hasError: true
+        }
+      })
+      .mount();
+
+    expect(wrapper.find("OfflineNotice")).toHaveLength(1);
+  });
+
+  it("renders with the 'load more' button when hasAllItems is false", () => {
+    const { wrapper } = component
+      .withReduxState({
+        news: {
+          hasAllItems: false,
+          items: {
+            [item1.slug]: item1
+          }
+        }
+      })
+      .mount();
+
+    expect(wrapper.find("LoadButton")).toHaveLength(1);
+  });
+
+  it("renders without the 'load more' button when hasAllItems is true", () => {
+    const { wrapper } = component
+      .withReduxState({
+        news: {
+          hasAllItems: true
+        }
+      })
+      .mount();
+
+    expect(wrapper.find("LoadButton")).toHaveLength(0);
+  });
+
+  it("loads more listings when the 'load more' button is clicked", () => {
+    const { wrapper } = component.mount();
+
+    wrapper.find("LoadButton").simulate("click");
+
+    expect(
+      component.reduxHistory.filter(actions.fetchMoreLatestNews.started.match)
+    );
+  });
+
+  it("updates `loadedListings` state after a listing has loaded", () => {
+    const { wrapper } = component
+      .withReduxState({
+        news: {
+          items: {
+            [item1.slug]: item1
+          }
+        }
+      })
+      .mount();
+
+    // @ts-ignore-next-line
+    wrapper.find("NewsListing").prop("onLoad")();
+
+    expect(wrapper.update().find(".hasLoadedAllListings")).toHaveLength(1);
   });
 });

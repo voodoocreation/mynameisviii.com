@@ -1,25 +1,23 @@
 import actionCreatorFactory from "typescript-fsa";
 
-const actionCreator = actionCreatorFactory("NEWS");
+import { IDynamoResponse, INewsArticle } from "../models/root.models";
 
-export const fetchLatestNews = actionCreator.async<
+const createAction = actionCreatorFactory("NEWS");
+
+export const fetchLatestNews = createAction.async<
   {},
-  PLFetchLatestNewsDone,
-  PLFetchLatestNewsFailed
+  IDynamoResponse<INewsArticle, "createdAt">
 >("FETCH");
 
-export const fetchMoreLatestNews = actionCreator.async<
+export const fetchMoreLatestNews = createAction.async<
   {},
-  PLFetchLatestNewsDone,
-  PLFetchLatestNewsFailed
+  IDynamoResponse<INewsArticle, "createdAt">
 >("FETCH_MORE");
 
-export const fetchNewsArticleBySlug = actionCreator.async<
-  PLFetchNewsArticleBySlugStarted,
-  PLFetchNewsArticleBySlugDone,
-  PLFetchNewsArticleBySlugFailed
->("FETCH_BY_SLUG");
+export const fetchNewsArticleBySlug = createAction.async<string, INewsArticle>(
+  "FETCH_BY_SLUG"
+);
 
-export const setCurrentNewsArticleSlug = actionCreator<
-  PLSetCurrentNewsArticleSlug
->("SET_CURRENT_SLUG");
+export const setCurrentNewsArticleSlug = createAction<string>(
+  "SET_CURRENT_SLUG"
+);

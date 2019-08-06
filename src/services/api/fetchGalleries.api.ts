@@ -1,25 +1,29 @@
-import transformGallery from "../../transformers/transformGallery";
+import {
+  failure,
+  gallery,
+  IRawAppearance,
+  IRawS3Response,
+  s3Response,
+  success
+} from "../../models/root.models";
+import { TRequest } from "../configureHttpClient";
 
-const transformGalleries = (galleries: any) => galleries.map(transformGallery);
-
-export const fetchGalleries = (request: any) => async (startAfter?: string) => {
+export const fetchGalleries = (request: TRequest) => async (
+  startAfter?: string
+) => {
   try {
-    const response = await request({
+    const response: IRawS3Response<IRawAppearance> = await request({
       params: { startAfter },
       url: `/galleries/find`
     });
 
-    return {
-      data: {
+    return success(
+      s3Response({
         ...response,
-        items: transformGalleries(response.items)
-      },
-      ok: true
-    };
+        items: response.items.map(gallery)
+      })
+    );
   } catch (error) {
-    return {
-      message: error.message,
-      ok: false
-    };
+    return failure(error);
   }
 };

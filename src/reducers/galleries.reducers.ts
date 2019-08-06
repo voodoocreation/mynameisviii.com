@@ -1,11 +1,20 @@
 import { reducerWithInitialState } from "typescript-fsa-reducers";
 
 import * as actions from "../actions/root.actions";
+import { IGallery } from "../models/root.models";
 
-export const initialState: IGalleriesReducers = {
+export interface IState {
+  currentSlug?: string;
+  hasAllItems: boolean;
+  hasError: boolean;
+  isLoading: boolean;
+  items: Record<string, IGallery>;
+}
+
+export const initialState: IState = {
   currentSlug: undefined,
-  error: undefined,
   hasAllItems: false,
+  hasError: false,
   isLoading: false,
   items: {}
 };
@@ -17,18 +26,18 @@ export default reducerWithInitialState(initialState)
       actions.fetchMoreGalleries.failed,
       actions.fetchGalleryBySlug.failed
     ],
-    (state, { error }) => ({
+    state => ({
       ...state,
-      error,
+      hasError: true,
       isLoading: false
     })
   )
 
   .case(actions.fetchGalleries.started, state => ({
     ...state,
-    error: undefined,
+    hasError: false,
     isLoading: true,
-    items: {}
+    items: initialState.items
   }))
 
   .case(actions.fetchGalleries.done, (state, { result }) => ({
@@ -40,7 +49,7 @@ export default reducerWithInitialState(initialState)
 
   .case(actions.fetchMoreGalleries.started, state => ({
     ...state,
-    error: undefined,
+    hasError: false,
     isLoading: true
   }))
 
@@ -61,7 +70,7 @@ export default reducerWithInitialState(initialState)
 
   .case(actions.fetchGalleryBySlug.started, state => ({
     ...state,
-    error: undefined,
+    hasError: false,
     isLoading: true
   }))
 

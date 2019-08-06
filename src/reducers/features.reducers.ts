@@ -2,7 +2,11 @@ import { reducerWithInitialState } from "typescript-fsa-reducers";
 
 import * as actions from "../actions/root.actions";
 
-export const initialState: IFeaturesReducers = {
+export interface IState {
+  items: string[];
+}
+
+export const initialState: IState = {
   items: []
 };
 

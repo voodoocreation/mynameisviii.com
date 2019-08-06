@@ -1,28 +1,30 @@
-import transformStem from "../../transformers/transformStem";
+import {
+  dynamoResponse,
+  failure,
+  IRawDynamoResponse,
+  IRawStem,
+  stem,
+  success
+} from "../../models/root.models";
+import { TRequest } from "../configureHttpClient";
 
-const transformStems = (stems: any) => stems.map(transformStem);
-
-export const fetchStems = (request: any) => async (
+export const fetchStems = (request: TRequest) => async (
   limit?: number,
   exclusiveStartKey?: string
 ) => {
   try {
-    const response = await request({
+    const response: IRawDynamoResponse<IRawStem, "createdAt"> = await request({
       params: { exclusiveStartKey, limit },
       url: `/stems/find`
     });
 
-    return {
-      data: {
+    return success(
+      dynamoResponse({
         ...response,
-        items: transformStems(response.items)
-      },
-      ok: true
-    };
+        items: response.items.map(stem)
+      })
+    );
   } catch (error) {
-    return {
-      message: error.message,
-      ok: false
-    };
+    return failure(error);
   }
 };
