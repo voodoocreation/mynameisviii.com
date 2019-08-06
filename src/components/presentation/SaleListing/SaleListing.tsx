@@ -2,8 +2,8 @@ import * as React from "react";
 import { FaTicketAlt } from "react-icons/fa";
 import { MdLanguage } from "react-icons/md";
 
+import { extractDomain } from "../../../helpers/dataTransformers";
 import { IOffer } from "../../../models/offer.models";
-import { extractDomain } from "../../../transformers/transformData";
 import Link from "../Link/Link";
 import Meta from "../Meta/Meta";
 import Price from "../Price/Price";

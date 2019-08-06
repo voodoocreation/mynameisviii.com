@@ -6,11 +6,11 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 
 import * as actions from "../../../actions/root.actions";
+import { absUrl } from "../../../helpers/dataTransformers";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { IGallery } from "../../../models/root.models";
 import { TStoreState } from "../../../reducers/root.reducers";
 import * as selectors from "../../../selectors/root.selectors";
-import { absUrl } from "../../../transformers/transformData";
 import { IPageContext } from "../../connected/App/App";
 import OfflineNotice from "../../connected/OfflineNotice/OfflineNotice";
 import ButtonBar from "../../presentation/ButtonBar/ButtonBar";

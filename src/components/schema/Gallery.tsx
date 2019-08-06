@@ -1,7 +1,7 @@
 import * as React from "react";
 
+import { absUrl } from "../../helpers/dataTransformers";
 import { IGallery } from "../../models/root.models";
-import { absUrl } from "../../transformers/transformData";
 import Schema from "./Schema";
 
 const Gallery: React.FC<IGallery> = props => (

@@ -19,30 +19,6 @@ export const arrayToAssoc = (
     {}
   );
 
-export const assocToArray: (object: any) => any = object =>
-  Object.keys(object).reduce((acc: Array<{}>, curr: string) => {
-    acc.push(object[curr]);
-    return acc;
-  }, []);
-
-export const tryParseJson = (json: any) => {
-  let result;
-
-  try {
-    let value = json;
-
-    if (json.message) {
-      value = json.message;
-    }
-
-    result = JSON.parse(value);
-  } catch (error) {
-    result = json;
-  }
-
-  return result;
-};
-
 export const lengthToDuration = (length: string) => {
   const segments = length.split(":");
 
@@ -66,7 +42,11 @@ export const lengthToDuration = (length: string) => {
 
 export const absUrl = (path: string) =>
   process.env.NODE_ENV !== "production"
-    ? `http://localhost:${process.env.PORT || window.location.port}${path}`
+    ? `http://localhost:${
+        process.env.PORT !== "undefined"
+          ? process.env.PORT
+          : window.location.port
+      }${path}`
     : `https://${
         process.env.DOMAIN !== "undefined"
           ? process.env.DOMAIN

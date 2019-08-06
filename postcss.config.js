@@ -1,4 +1,3 @@
-const poscssEasyImport = require("postcss-easy-import");
 const autoprefixer = require("autoprefixer");
 const postcssMqpacker = require("css-mqpacker");
 

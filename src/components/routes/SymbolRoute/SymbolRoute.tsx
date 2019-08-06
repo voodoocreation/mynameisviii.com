@@ -2,8 +2,8 @@ import Head from "next/head";
 import * as React from "react";
 import { FormattedMessage, InjectedIntlProps } from "react-intl";
 
+import { absUrl } from "../../../helpers/dataTransformers";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
-import { absUrl } from "../../../transformers/transformData";
 import ButtonBar from "../../presentation/ButtonBar/ButtonBar";
 import Image from "../../presentation/Image/Image";
 import Link from "../../presentation/Link/Link";

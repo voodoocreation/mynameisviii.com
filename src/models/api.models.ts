@@ -1,4 +1,4 @@
-import { arrayToAssoc } from "../transformers/transformData";
+import { arrayToAssoc } from "../helpers/dataTransformers";
 
 interface IWithSlug {
   slug: string;

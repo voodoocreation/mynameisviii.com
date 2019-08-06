@@ -1,8 +1,8 @@
 import * as React from "react";
 import stripTags from "striptags";
 
+import { absUrl, lengthToDuration } from "../../helpers/dataTransformers";
 import { IRelease, IReleaseTrack } from "../../models/root.models";
-import { absUrl, lengthToDuration } from "../../transformers/transformData";
 import Schema from "./Schema";
 
 const getFlatTracklist = (tracklist: IReleaseTrack[][]) => {

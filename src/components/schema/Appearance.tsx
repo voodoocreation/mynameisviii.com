@@ -1,8 +1,8 @@
 import * as React from "react";
 import { InjectedIntlProps, injectIntl } from "react-intl";
 
+import { absUrl } from "../../helpers/dataTransformers";
 import { IAppearance } from "../../models/appearance.models";
-import { absUrl } from "../../transformers/transformData";
 import Schema from "./Schema";
 
 interface IProps extends IAppearance, InjectedIntlProps {}

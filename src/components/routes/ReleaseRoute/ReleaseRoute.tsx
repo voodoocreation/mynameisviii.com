@@ -5,10 +5,10 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import stripTags from "striptags";
 
+import { absUrl } from "../../../helpers/dataTransformers";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { IRelease, IReleaseTrack } from "../../../models/root.models";
 import { TStoreState } from "../../../reducers/root.reducers";
-import { absUrl } from "../../../transformers/transformData";
 import { IPageContext } from "../../connected/App/App";
 import Loader from "../../presentation/Loader/Loader";
 import Release from "../../presentation/Release/Release";
