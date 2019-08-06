@@ -56,7 +56,8 @@ app.prepare().then(() => {
     const accept = accepts(req);
     const locale = accept.language(languages);
 
-    req.locale = locale || "en-NZ";
+    console.log("Locale", locale);
+    req.locale = "en-NZ";
 
     customRoutesHandler(req, res);
   });
