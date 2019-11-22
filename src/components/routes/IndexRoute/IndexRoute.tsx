@@ -8,7 +8,7 @@ import {
   FaSpotify,
   FaTwitter
 } from "react-icons/fa";
-import { FormattedMessage, InjectedIntlProps } from "react-intl";
+import { FormattedMessage, WrappedComponentProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 
@@ -29,7 +29,7 @@ import * as selectors from "../../../selectors/root.selectors";
 
 import "./IndexRoute.scss";
 
-interface IProps extends InjectedIntlProps {
+interface IProps extends WrappedComponentProps {
   articles: INewsArticle[];
   fetchAppearances: typeof actions.fetchAppearances.started;
   fetchLatestNews: typeof actions.fetchLatestNews.started;
@@ -63,7 +63,7 @@ class IndexRoute extends React.Component<IProps> {
     const pageDescription = formatMessage({ id: "INDEX_DESCRIPTION" });
 
     return (
-      <React.Fragment>
+      <>
         <Head>
           <title>{pageTitle}</title>
 
@@ -90,7 +90,7 @@ class IndexRoute extends React.Component<IProps> {
           {this.renderBioSection()}
           {this.renderConnectSection()}
         </div>
-      </React.Fragment>
+      </>
     );
   }
 
@@ -242,9 +242,4 @@ const mapActions = (dispatch: Dispatch) =>
     dispatch
   );
 
-export default injectIntlIntoPage(
-  connect(
-    mapState,
-    mapActions
-  )(IndexRoute)
-);
+export default injectIntlIntoPage(connect(mapState, mapActions)(IndexRoute));

@@ -1,12 +1,17 @@
 import cn from "classnames";
 import * as React from "react";
-import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl";
+import {
+  FormattedMessage,
+  injectIntl,
+  WrappedComponentProps
+} from "react-intl";
 
-import * as messages from "../../../locales/en-NZ";
+import messages from "../../../locales/en-NZ";
 
 import "./Meta.scss";
 
-interface IProps extends InjectedIntlProps {
+interface IProps extends WrappedComponentProps {
+  children?: React.ReactNode;
   className?: string;
   icon?: React.ReactNode;
   label?: React.ReactNode;

@@ -1,7 +1,7 @@
 import cn from "classnames";
 import Head from "next/head";
 import * as React from "react";
-import { FormattedMessage, InjectedIntlProps } from "react-intl";
+import { FormattedMessage, WrappedComponentProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 
@@ -22,7 +22,7 @@ import * as selectors from "../../../selectors/root.selectors";
 
 import "./ReleasesRoute.scss";
 
-interface IProps extends InjectedIntlProps {
+interface IProps extends WrappedComponentProps {
   fetchMoreReleases: typeof actions.fetchMoreReleases.started;
   fetchReleases: typeof actions.fetchReleases.started;
   hasAllReleases: boolean;
@@ -165,9 +165,4 @@ const mapActions = (dispatch: Dispatch) =>
     dispatch
   );
 
-export default injectIntlIntoPage(
-  connect(
-    mapState,
-    mapActions
-  )(ReleasesRoute)
-);
+export default injectIntlIntoPage(connect(mapState, mapActions)(ReleasesRoute));

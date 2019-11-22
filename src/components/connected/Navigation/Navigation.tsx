@@ -1,6 +1,10 @@
 import cn from "classnames";
 import * as React from "react";
-import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl";
+import {
+  FormattedMessage,
+  injectIntl,
+  WrappedComponentProps
+} from "react-intl";
 import { connect } from "react-redux";
 
 import * as actions from "../../../actions/root.actions";
@@ -11,7 +15,7 @@ import NavItem from "../../presentation/NavItem/NavItem";
 
 import "./Navigation.scss";
 
-interface IProps extends InjectedIntlProps {
+interface IProps extends WrappedComponentProps {
   currentRoute?: string;
   isOpen: boolean;
   setCurrentRoute: typeof actions.setCurrentRoute;
@@ -57,9 +61,4 @@ const mapState = (state: TStoreState) => ({
   isOpen: selectors.isNavOpen(state)
 });
 
-export default injectIntl(
-  connect(
-    mapState,
-    actions
-  )(Navigation)
-);
+export default injectIntl(connect(mapState, actions)(Navigation));

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import * as React from "react";
-import { InjectedIntlProps } from "react-intl";
+import { WrappedComponentProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 
@@ -15,7 +15,7 @@ import Loader from "../../presentation/Loader/Loader";
 import * as actions from "../../../actions/root.actions";
 import * as selectors from "../../../selectors/root.selectors";
 
-interface IProps extends InjectedIntlProps {
+interface IProps extends WrappedComponentProps {
   fetchGalleryBySlug: typeof actions.fetchGalleryBySlug.started;
   gallery?: IGallery;
   isLoading: boolean;
@@ -50,7 +50,7 @@ class GalleryRoute extends React.Component<IProps> {
     }
 
     return (
-      <React.Fragment>
+      <>
         <Head>
           <title>
             {gallery.title}
@@ -74,7 +74,7 @@ class GalleryRoute extends React.Component<IProps> {
           {...gallery}
           onGalleryInteraction={this.onGalleryInteraction}
         />
-      </React.Fragment>
+      </>
     );
   }
 
@@ -100,9 +100,4 @@ const mapActions = (dispatch: Dispatch) =>
     dispatch
   );
 
-export default injectIntlIntoPage(
-  connect(
-    mapState,
-    mapActions
-  )(GalleryRoute)
-);
+export default injectIntlIntoPage(connect(mapState, mapActions)(GalleryRoute));

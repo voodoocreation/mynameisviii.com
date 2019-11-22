@@ -1,5 +1,9 @@
 import * as React from "react";
-import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl";
+import {
+  FormattedMessage,
+  injectIntl,
+  WrappedComponentProps
+} from "react-intl";
 import { connect } from "react-redux";
 
 import { TStoreState } from "../../../reducers/root.reducers";
@@ -8,7 +12,7 @@ import * as selectors from "../../../selectors/root.selectors";
 import Button from "../../presentation/Button/Button";
 import Toast from "../../presentation/Toast/Toast";
 
-interface IProps extends InjectedIntlProps {
+interface IProps extends WrappedComponentProps {
   hasNewVersion: boolean;
 }
 

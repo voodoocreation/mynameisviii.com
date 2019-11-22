@@ -1,14 +1,14 @@
 import Head from "next/head";
 import * as React from "react";
 import { MdErrorOutline } from "react-icons/md";
-import { InjectedIntlProps, injectIntl } from "react-intl";
+import { injectIntl, WrappedComponentProps } from "react-intl";
 
 import { absoluteUrl, s3ThemeUrl } from "../../../helpers/dataTransformers";
 import PageHeader from "../../presentation/PageHeader/PageHeader";
 
 import "./ErrorPage.scss";
 
-interface IProps extends InjectedIntlProps {
+interface IProps extends WrappedComponentProps {
   message?: string;
   status?: number;
 }
@@ -22,7 +22,7 @@ class ErrorPage extends React.Component<IProps> {
     const { formatMessage } = this.props.intl;
 
     return (
-      <React.Fragment>
+      <>
         <Head>
           <title>
             {`${this.getTitle()} · ${formatMessage({
@@ -46,7 +46,7 @@ class ErrorPage extends React.Component<IProps> {
             <p>{this.getMessage()}</p>
           </div>
         </article>
-      </React.Fragment>
+      </>
     );
   }
 

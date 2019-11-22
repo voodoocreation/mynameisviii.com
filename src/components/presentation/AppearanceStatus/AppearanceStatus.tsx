@@ -1,9 +1,13 @@
 import * as React from "react";
-import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl";
+import {
+  FormattedMessage,
+  injectIntl,
+  WrappedComponentProps
+} from "react-intl";
 
 import { STATUS } from "../../../constants/appearance.constants";
 
-interface IProps extends InjectedIntlProps {
+interface IProps extends WrappedComponentProps {
   value: STATUS;
 }
 

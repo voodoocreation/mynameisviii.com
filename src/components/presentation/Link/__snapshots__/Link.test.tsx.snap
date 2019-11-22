@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`[presentation] <Link /> when both href and route are undefined matches snapshot 1`] = `
-<span
-  intl="[object Object]"
->
+<span>
   Link text
 </span>
 `;
@@ -11,7 +9,6 @@ exports[`[presentation] <Link /> when both href and route are undefined matches 
 exports[`[presentation] <Link /> when isExternal is true matches snapshot 1`] = `
 <a
   href="/"
-  intl="[object Object]"
   rel="noopener"
   target="_blank"
 >
@@ -22,7 +19,6 @@ exports[`[presentation] <Link /> when isExternal is true matches snapshot 1`] = 
 exports[`[presentation] <Link /> when the router is available and href is defined matches snapshot 1`] = `
 <a
   href="/"
-  intl="[object Object]"
 >
   Link text
 </a>
@@ -31,7 +27,6 @@ exports[`[presentation] <Link /> when the router is available and href is define
 exports[`[presentation] <Link /> when the router is available and route is defined matches snapshot 1`] = `
 <a
   href="/"
-  intl="[object Object]"
 >
   Link text
 </a>
@@ -40,7 +35,6 @@ exports[`[presentation] <Link /> when the router is available and route is defin
 exports[`[presentation] <Link /> when the router is unavailable and href is defined matches snapshot 1`] = `
 <a
   href="/"
-  intl="[object Object]"
 >
   Link text
 </a>

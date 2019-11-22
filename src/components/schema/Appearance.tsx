@@ -1,11 +1,11 @@
 import * as React from "react";
-import { InjectedIntlProps, injectIntl } from "react-intl";
+import { injectIntl, WrappedComponentProps } from "react-intl";
 
 import { absoluteUrl } from "../../helpers/dataTransformers";
 import { IAppearance } from "../../models/appearance.models";
 import Schema from "./Schema";
 
-interface IProps extends IAppearance, InjectedIntlProps {}
+interface IProps extends IAppearance, WrappedComponentProps {}
 
 const Appearance = ({ intl, ...props }: IProps) => (
   <Schema

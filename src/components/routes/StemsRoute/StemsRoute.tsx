@@ -1,7 +1,7 @@
 import cn from "classnames";
 import Head from "next/head";
 import * as React from "react";
-import { InjectedIntlProps } from "react-intl";
+import { WrappedComponentProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 
@@ -22,7 +22,7 @@ import * as selectors from "../../../selectors/root.selectors";
 
 import "./StemsRoute.scss";
 
-interface IProps extends InjectedIntlProps {
+interface IProps extends WrappedComponentProps {
   fetchMoreStems: typeof actions.fetchMoreStems.started;
   fetchStems: typeof actions.fetchStems.started;
   hasAllStems: boolean;
@@ -146,9 +146,4 @@ const mapActions = (dispatch: Dispatch) =>
     dispatch
   );
 
-export default injectIntlIntoPage(
-  connect(
-    mapState,
-    mapActions
-  )(StemsRoute)
-);
+export default injectIntlIntoPage(connect(mapState, mapActions)(StemsRoute));

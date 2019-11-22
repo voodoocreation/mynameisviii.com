@@ -3,7 +3,6 @@
 exports[`[presentation] <Image /> when all props are defined matches snapshot 1`] = `
 <figure
   class="Image Classname isRendered"
-  intl="[object Object]"
   role="button"
   tabindex="0"
 >

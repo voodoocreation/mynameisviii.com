@@ -39,7 +39,7 @@ export default class ImageGallery extends React.Component<IProps, IState> {
     const { currentIndex } = this.state;
 
     return (
-      <React.Fragment>
+      <>
         <div className={cn("ImageGallery", className)}>
           {React.Children.map(children, (item, index) =>
             React.cloneElement(item as React.ReactElement<any>, {
@@ -77,7 +77,7 @@ export default class ImageGallery extends React.Component<IProps, IState> {
             </Button>
           </div>
         </Modal>
-      </React.Fragment>
+      </>
     );
   }
 

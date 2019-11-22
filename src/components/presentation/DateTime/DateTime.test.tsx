@@ -1,9 +1,14 @@
+import dayjs from "dayjs";
+
 import ComponentTester from "../../../utilities/ComponentTester";
 import DateTime from "./DateTime";
 
 const component = new ComponentTester(DateTime).withDefaultProps({
   className: "TestDateTime",
-  value: "2018-10-20T20:00:00"
+  value: dayjs()
+    .add(9, "month")
+    .add(3, "hour")
+    .toDate()
 });
 
 describe("[presentation] <DateTime />", () => {
@@ -16,15 +21,15 @@ describe("[presentation] <DateTime />", () => {
       .render();
 
     it("renders with the correct datetime attribute", () => {
-      expect(wrapper.attr("datetime")).toBe("2018-10-20");
+      expect(wrapper.attr("datetime")).toBe("2018-10-01");
     });
 
     it("renders with the correct title attribute", () => {
-      expect(wrapper.attr("title")).toBe("Saturday, 20 October 2018");
+      expect(wrapper.attr("title")).toBe("Monday, 1 October 2018");
     });
 
     it("renders with the correct text content", () => {
-      expect(wrapper.text()).toBe("in 10 months");
+      expect(wrapper.text()).toBe("in 9 months");
     });
 
     it("matches snapshot", () => {
@@ -33,7 +38,7 @@ describe("[presentation] <DateTime />", () => {
   });
 
   describe("when isRelative is false and isDateOnly is false", () => {
-    const { props, wrapper } = component
+    const { wrapper } = component
       .withProps({
         isDateOnly: false,
         isRelative: false
@@ -41,15 +46,15 @@ describe("[presentation] <DateTime />", () => {
       .render();
 
     it("renders with the correct datetime attribute", () => {
-      expect(wrapper.attr("datetime")).toBe(props.value);
+      expect(wrapper.attr("datetime")).toBe("2018-10-01T03:00:00");
     });
 
     it("renders with the correct title attribute", () => {
-      expect(wrapper.attr("title")).toBe("Saturday, 20 October 2018, 8:00 pm");
+      expect(wrapper.attr("title")).toBe("Monday, 1 October 2018, 3:00 am");
     });
 
     it("renders with the correct text content", () => {
-      expect(wrapper.text()).toBe("Saturday, 20 October 2018, 8:00 pm");
+      expect(wrapper.text()).toBe("Monday, 1 October 2018, 3:00 am");
     });
 
     it("matches snapshot", () => {
@@ -66,15 +71,15 @@ describe("[presentation] <DateTime />", () => {
       .render();
 
     it("renders with the correct datetime attribute", () => {
-      expect(wrapper.attr("datetime")).toBe("2018-10-20");
+      expect(wrapper.attr("datetime")).toBe("2018-10-01");
     });
 
     it("renders with the correct title attribute", () => {
-      expect(wrapper.attr("title")).toBe("Saturday, 20 October 2018");
+      expect(wrapper.attr("title")).toBe("Monday, 1 October 2018");
     });
 
     it("renders with the correct text content", () => {
-      expect(wrapper.text()).toBe("Saturday, 20 October 2018");
+      expect(wrapper.text()).toBe("Monday, 1 October 2018");
     });
 
     it("matches snapshot", () => {
@@ -83,7 +88,7 @@ describe("[presentation] <DateTime />", () => {
   });
 
   describe("when isRelative is false and only time options are defined", () => {
-    const { props, wrapper } = component
+    const { wrapper } = component
       .withProps({
         isRelative: false,
         options: {
@@ -95,15 +100,15 @@ describe("[presentation] <DateTime />", () => {
       .render();
 
     it("renders with the correct datetime attribute", () => {
-      expect(wrapper.attr("datetime")).toBe(props.value);
+      expect(wrapper.attr("datetime")).toBe("2018-10-01T03:00:00");
     });
 
     it("renders with the correct title attribute", () => {
-      expect(wrapper.attr("title")).toBe("8:00 pm");
+      expect(wrapper.attr("title")).toBe("3:00 am");
     });
 
     it("renders with the correct text content", () => {
-      expect(wrapper.text()).toBe("8:00 pm");
+      expect(wrapper.text()).toBe("3:00 am");
     });
 
     it("matches snapshot", () => {

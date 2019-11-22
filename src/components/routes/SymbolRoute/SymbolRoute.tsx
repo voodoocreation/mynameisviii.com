@@ -1,6 +1,6 @@
 import Head from "next/head";
 import * as React from "react";
-import { FormattedMessage, InjectedIntlProps } from "react-intl";
+import { FormattedMessage, WrappedComponentProps } from "react-intl";
 
 import { absoluteUrl, s3ThemeUrl } from "../../../helpers/dataTransformers";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
@@ -11,7 +11,7 @@ import PageHeader from "../../presentation/PageHeader/PageHeader";
 
 import "./SymbolRoute.scss";
 
-interface IProps extends InjectedIntlProps {}
+interface IProps extends WrappedComponentProps {}
 
 class SymbolRoute extends React.Component<IProps> {
   public render() {

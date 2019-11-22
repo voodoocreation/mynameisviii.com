@@ -1,14 +1,15 @@
 import cn from "classnames";
 import * as React from "react";
 import { MdClose } from "react-icons/md";
-import { InjectedIntlProps, injectIntl } from "react-intl";
+import { injectIntl, WrappedComponentProps } from "react-intl";
 
 import Button from "../Button/Button";
 
 import "./Toast.scss";
 
-interface IProps extends InjectedIntlProps {
+interface IProps extends WrappedComponentProps {
   autoDismissDelay?: number;
+  children: React.ReactNode;
   className?: string;
   hasAutoDismiss?: boolean;
   isVisible?: boolean;
@@ -45,9 +46,12 @@ class Toast extends React.Component<IProps, IState> {
     this.toggleVisibility(!!this.props.isVisible);
   }
 
-  public componentWillReceiveProps(nextProps: IProps) {
-    if (nextProps.isVisible !== this.state.isToggled) {
-      this.toggleVisibility(!!nextProps.isVisible);
+  public componentDidUpdate(prevProps: IProps) {
+    if (
+      prevProps.isVisible !== this.props.isVisible &&
+      this.props.isVisible !== this.state.isToggled
+    ) {
+      this.toggleVisibility(!!this.props.isVisible);
     }
   }
 

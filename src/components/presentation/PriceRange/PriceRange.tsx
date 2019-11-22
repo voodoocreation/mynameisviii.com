@@ -9,7 +9,7 @@ interface IProps {
 }
 
 const PriceRange: React.FC<IProps> = ({ currency, max, min }) => (
-  <React.Fragment>
+  <span className="PriceRange">
     {min !== undefined ? (
       <Price className="PriceRange--min" value={min} currency={currency} />
     ) : null}
@@ -19,7 +19,7 @@ const PriceRange: React.FC<IProps> = ({ currency, max, min }) => (
     {max !== undefined ? (
       <Price className="PriceRange--max" value={max} currency={currency} />
     ) : null}
-  </React.Fragment>
+  </span>
 );
 
 export default PriceRange;

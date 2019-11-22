@@ -1,8 +1,11 @@
+// istanbul ignore file
+
 import { IncomingMessage } from "http";
 import Document, {
   DocumentContext,
   DocumentProps,
   Head,
+  Html,
   Main,
   NextScript
 } from "next/document";
@@ -11,7 +14,7 @@ import * as React from "react";
 const isDev = () => process.env.NODE_ENV !== "production";
 
 const Meta: React.FC = () => (
-  <React.Fragment>
+  <>
     <meta charSet="UTF-8" />
     <meta
       content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
@@ -49,7 +52,7 @@ const Meta: React.FC = () => (
     <meta name="msapplication-TileColor" content="#000000" />
     <meta name="msapplication-config" content="/static/browserconfig.xml" />
     <meta name="theme-color" content="#ffffff" />
-  </React.Fragment>
+  </>
 );
 
 const AnalyticsHead: React.FC = () => (
@@ -104,7 +107,7 @@ export default class<P extends IProps> extends Document<P> {
 
   public render() {
     return (
-      <html lang={this.props.locale}>
+      <Html lang={this.props.locale}>
         <Head>
           <AnalyticsHead />
           <script
@@ -121,7 +124,7 @@ export default class<P extends IProps> extends Document<P> {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }

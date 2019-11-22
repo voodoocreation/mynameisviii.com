@@ -7,7 +7,7 @@ import {
   FaCreativeCommonsSa
 } from "react-icons/fa";
 import { MdCloudDownload } from "react-icons/md";
-import { InjectedIntlProps, injectIntl } from "react-intl";
+import { injectIntl, WrappedComponentProps } from "react-intl";
 
 import { IStem } from "../../../models/root.models";
 import Image from "../Image/Image";
@@ -16,7 +16,7 @@ import Meta from "../Meta/Meta";
 
 import "./StemListing.scss";
 
-interface IProps extends IStem, InjectedIntlProps {
+interface IProps extends IStem, WrappedComponentProps {
   onLoad: () => void;
 }
 
@@ -70,12 +70,12 @@ class StemListing extends React.Component<IProps, IState> {
               <Meta
                 className="StemListing--licence"
                 icon={
-                  <React.Fragment>
+                  <>
                     <FaCreativeCommons />
                     <FaCreativeCommonsBy />
                     <FaCreativeCommonsNc />
                     <FaCreativeCommonsSa />
-                  </React.Fragment>
+                  </>
                 }
                 labelIntlId="LICENCED_UNDER_CC_REMIX"
                 title={formatMessage({ id: "LICENCED_UNDER_CC_REMIX" })}

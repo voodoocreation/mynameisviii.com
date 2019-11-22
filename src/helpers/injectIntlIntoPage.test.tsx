@@ -2,7 +2,7 @@ import { mount } from "enzyme";
 import * as React from "react";
 import { IntlProvider } from "react-intl";
 
-import * as messages from "../locales/en-NZ";
+import messages from "../locales/en-NZ";
 import injectIntlIntoPage from "./injectIntlIntoPage";
 
 describe("[helpers] injectIntlIntoPage", () => {
@@ -28,12 +28,7 @@ describe("[helpers] injectIntlIntoPage", () => {
 
       initialProps = await WithInitialPropsWrapped.getInitialProps({} as any);
       wrapper = mount(
-        <IntlProvider
-          defaultLocale="en-NZ"
-          locale="en-NZ"
-          messages={messages}
-          textComponent={React.Fragment}
-        >
+        <IntlProvider defaultLocale="en-NZ" locale="en-NZ" messages={messages}>
           <WithInitialPropsWrapped {...initialProps} />
         </IntlProvider>
       );
@@ -71,12 +66,7 @@ describe("[helpers] injectIntlIntoPage", () => {
         {} as any
       );
       wrapper = mount(
-        <IntlProvider
-          defaultLocale="en-NZ"
-          locale="en-NZ"
-          messages={messages}
-          textComponent={React.Fragment}
-        >
+        <IntlProvider defaultLocale="en-NZ" locale="en-NZ" messages={messages}>
           <WithoutInitialPropsWrapped {...initialProps} />
         </IntlProvider>
       );

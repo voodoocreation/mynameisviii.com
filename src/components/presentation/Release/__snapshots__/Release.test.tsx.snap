@@ -309,7 +309,7 @@ exports[`[presentation] <Release /> when all props are defined, with multiple di
               href="URL"
               rel="noopener"
               target="_blank"
-              title="Stream 'Title' on Spotify"
+              title="Stream {title} on Spotify"
             >
               <svg
                 fill="currentColor"
@@ -343,7 +343,7 @@ exports[`[presentation] <Release /> when all props are defined, with multiple di
               href="URL"
               rel="noopener"
               target="_blank"
-              title="Buy 'Title' from iTunes"
+              title="Buy {title} from iTunes"
             >
               <svg
                 fill="currentColor"
@@ -372,6 +372,11 @@ exports[`[presentation] <Release /> when all props are defined, with multiple di
       </section>
     </div>
   </div>
+  <script
+    type="application/ld+json"
+  >
+    {"@id":"http://localhost:/releases/release-1","@type":"MusicAlbum","albumProductionType":"http://schema.org/StudioAlbum","albumRelease":{"@type":"MusicRelease","duration":"PT5M0S","name":"Title","recordLabel":"Record Label"},"albumReleaseType":"http://schema.org/album","byArtist":{"@type":"MusicGroup","name":"Artist Name"},"datePublished":"2017-01-01T00:00:00","description":"Description","image":"Image URL","mainEntityOfPage":{"@id":"http://localhost:/releases/release-1"},"name":"Title","track":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","item":{"@type":"MusicRecording","duration":"PT0M0S","name":"Disc 1, Track 1","recordingOf":{"@type":"MusicComposition","name":"Disc 1, Track 1"}},"position":1},{"@type":"ListItem","item":{"@type":"MusicRecording","duration":"PT0M0S","name":"Disc 1, Track 2","recordingOf":{"@type":"MusicComposition","name":"Disc 1, Track 2"}},"position":2},{"@type":"ListItem","item":{"@type":"MusicRecording","duration":"PT0M0S","name":"Disc 2, Track 1","recordingOf":{"@type":"MusicComposition","name":"Disc 2, Track 1"}},"position":3},{"@type":"ListItem","item":{"@type":"MusicRecording","duration":"PT0M0S","name":"Disc 2, Track 2","recordingOf":{"@type":"MusicComposition","name":"Disc 2, Track 2"}},"position":4}],"numberOfItems":4},"@context":"http://schema.org/"}
+  </script>
 </article>
 `;
 
@@ -622,5 +627,10 @@ exports[`[presentation] <Release /> when the minimum props are defined, with onl
       </section>
     </div>
   </div>
+  <script
+    type="application/ld+json"
+  >
+    {"@id":"http://localhost:/releases/release-1","@type":"MusicAlbum","albumProductionType":"http://schema.org/StudioAlbum","albumRelease":{"@type":"MusicRelease","duration":"PT5M0S","name":"Title","recordLabel":"Record Label"},"albumReleaseType":"http://schema.org/album","byArtist":{"@type":"MusicGroup","name":"Artist Name"},"datePublished":"2017-01-01T00:00:00","description":"Description","image":"Image URL","mainEntityOfPage":{"@id":"http://localhost:/releases/release-1"},"name":"Title","track":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","item":{"@type":"MusicRecording","duration":"PT5M0S","name":"Title","recordingOf":{"@type":"MusicComposition","name":"Title"}},"position":1}],"numberOfItems":1},"@context":"http://schema.org/"}
+  </script>
 </article>
 `;

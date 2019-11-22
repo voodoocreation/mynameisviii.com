@@ -66,7 +66,7 @@ class Link extends React.Component<IProps & { router: any }> {
     }
 
     return (
-      <NextLink href={href} prefetch={prefetch}>
+      <NextLink href={href!} prefetch={prefetch}>
         <a {...externalAttrs} {...props}>
           {children}
         </a>

@@ -6,7 +6,11 @@ import {
   MdFormatListNumbered,
   MdMusicNote
 } from "react-icons/md";
-import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl";
+import {
+  FormattedMessage,
+  injectIntl,
+  WrappedComponentProps
+} from "react-intl";
 
 import { IRelease } from "../../../models/root.models";
 import Schema from "../../schema/Release";
@@ -17,7 +21,7 @@ import Meta from "../Meta/Meta";
 
 import "./ReleaseListing.scss";
 
-interface IProps extends IRelease, InjectedIntlProps {
+interface IProps extends IRelease, WrappedComponentProps {
   onLoad?: () => void;
 }
 

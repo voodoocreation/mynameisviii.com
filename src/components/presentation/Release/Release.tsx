@@ -9,8 +9,8 @@ import {
 import {
   FormattedDate,
   FormattedMessage,
-  InjectedIntlProps,
-  injectIntl
+  injectIntl,
+  WrappedComponentProps
 } from "react-intl";
 
 import { IRelease } from "../../../models/root.models";
@@ -26,7 +26,7 @@ import PlatformIcon from "../PlatformIcon/PlatformIcon";
 
 import "./Release.scss";
 
-interface IProps extends IRelease, InjectedIntlProps {
+interface IProps extends IRelease, WrappedComponentProps {
   onCarouselSlideChange?: (index: number) => void;
 }
 

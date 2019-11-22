@@ -161,19 +161,23 @@ exports[`[presentation] <AppearanceListing /> when all props are defined matches
             class="Meta--value"
           >
             <span
-              class="Price PriceRange--min"
+              class="PriceRange"
             >
-              $20
-            </span>
-            <span
-              class="PriceRange--separator"
-            >
-              –
-            </span>
-            <span
-              class="Price PriceRange--max"
-            >
-              $40
+              <span
+                class="Price PriceRange--min"
+              >
+                $20
+              </span>
+              <span
+                class="PriceRange--separator"
+              >
+                –
+              </span>
+              <span
+                class="Price PriceRange--max"
+              >
+                $40
+              </span>
             </span>
           </span>
         </div>
@@ -203,6 +207,11 @@ exports[`[presentation] <AppearanceListing /> when all props are defined matches
       </div>
     </figure>
   </a>
+  <script
+    type="application/ld+json"
+  >
+    {"@id":"http://localhost:/appearances/","@type":"MusicEvent","description":"Description","doorTime":"12:00:00 am","endDate":"2018-01-04T11:00:00.000Z","eventStatus":"EventScheduled","image":"Image URL","location":{"@type":"MusicVenue","address":"123 Address","name":"Venue"},"name":"","offers":[{"@type":"Offer","availability":"LimitedAvailability","name":"Price 2","price":20,"priceCurrency":"NZD"},{"@type":"Offer","availability":"LimitedAvailability","name":"Price 3","price":25,"priceCurrency":"NZD"},{"@type":"Offer","availability":"LimitedAvailability","name":"Price 1","price":40,"priceCurrency":"NZD"}],"organizer":{"@type":"LocalBusiness","email":"Email","logo":{"@type":"ImageObject","url":"Logo"},"name":"Organizer"},"performer":[{"@type":"MusicGroup","genre":"Genre","image":{"@type":"ImageObject","url":"Image URL"},"location":{"@type":"MusicVenue","name":""},"name":"Act name"}],"startDate":"2018-01-03T11:00:00.000Z","typicalAgeRange":"18+","url":"http://localhost:/appearances/","@context":"http://schema.org/"}
+  </script>
 </article>
 `;
 
@@ -354,9 +363,13 @@ exports[`[presentation] <AppearanceListing /> when cancelled matches snapshot 1`
             class="Meta--value"
           >
             <span
-              class="Price PriceRange--min"
+              class="PriceRange"
             >
-              $0
+              <span
+                class="Price PriceRange--min"
+              >
+                $0
+              </span>
             </span>
           </span>
         </div>
@@ -386,6 +399,11 @@ exports[`[presentation] <AppearanceListing /> when cancelled matches snapshot 1`
       </div>
     </figure>
   </a>
+  <script
+    type="application/ld+json"
+  >
+    {"@id":"http://localhost:/appearances/","@type":"MusicEvent","description":"Description","doorTime":"12:00:00 am","endDate":"2018-01-04T11:00:00.000Z","eventStatus":"EventCancelled","image":"Image URL","location":{"@type":"MusicVenue","name":"Venue"},"name":"","offers":[{"@type":"Offer","availability":"LimitedAvailability","name":"","price":0,"priceCurrency":"NZD"}],"organizer":{"@type":"LocalBusiness","name":"Organizer"},"performer":[{"@type":"MusicGroup","genre":"Genre","image":{"@type":"ImageObject","url":"Image URL"},"location":{"@type":"MusicVenue","name":""},"name":"Act name"}],"startDate":"2018-01-03T11:00:00.000Z","url":"http://localhost:/appearances/","@context":"http://schema.org/"}
+  </script>
 </article>
 `;
 
@@ -519,7 +537,11 @@ exports[`[presentation] <AppearanceListing /> when only the required props are d
            
           <span
             class="Meta--value"
-          />
+          >
+            <span
+              class="PriceRange"
+            />
+          </span>
         </div>
       </section>
     </div>
@@ -547,6 +569,11 @@ exports[`[presentation] <AppearanceListing /> when only the required props are d
       </div>
     </figure>
   </a>
+  <script
+    type="application/ld+json"
+  >
+    {"@id":"http://localhost:/appearances/","@type":"MusicEvent","description":"Description","doorTime":"12:00:00 am","endDate":"2018-01-04T11:00:00.000Z","eventStatus":"EventScheduled","image":"Image URL","location":{"@type":"MusicVenue","name":"Venue"},"name":"","offers":[],"organizer":{"@type":"LocalBusiness","name":"Organizer"},"performer":[{"@type":"MusicGroup","genre":"Genre","image":{"@type":"ImageObject","url":"Image URL"},"location":{"@type":"MusicVenue","name":""},"name":"Act name"}],"startDate":"2018-01-03T11:00:00.000Z","url":"http://localhost:/appearances/","@context":"http://schema.org/"}
+  </script>
 </article>
 `;
 
@@ -698,9 +725,13 @@ exports[`[presentation] <AppearanceListing /> when postponed matches snapshot 1`
             class="Meta--value"
           >
             <span
-              class="Price PriceRange--min"
+              class="PriceRange"
             >
-              $0
+              <span
+                class="Price PriceRange--min"
+              >
+                $0
+              </span>
             </span>
           </span>
         </div>
@@ -730,6 +761,11 @@ exports[`[presentation] <AppearanceListing /> when postponed matches snapshot 1`
       </div>
     </figure>
   </a>
+  <script
+    type="application/ld+json"
+  >
+    {"@id":"http://localhost:/appearances/","@type":"MusicEvent","description":"Description","doorTime":"12:00:00 am","endDate":"2018-01-04T11:00:00.000Z","eventStatus":"EventPostponed","image":"Image URL","location":{"@type":"MusicVenue","name":"Venue"},"name":"","offers":[{"@type":"Offer","availability":"LimitedAvailability","name":"","price":0,"priceCurrency":"NZD"}],"organizer":{"@type":"LocalBusiness","name":"Organizer"},"performer":[{"@type":"MusicGroup","genre":"Genre","image":{"@type":"ImageObject","url":"Image URL"},"location":{"@type":"MusicVenue","name":""},"name":"Act name"}],"startDate":"2018-01-03T11:00:00.000Z","url":"http://localhost:/appearances/","@context":"http://schema.org/"}
+  </script>
 </article>
 `;
 
@@ -863,7 +899,11 @@ exports[`[presentation] <AppearanceListing /> when there are no sales matches sn
            
           <span
             class="Meta--value"
-          />
+          >
+            <span
+              class="PriceRange"
+            />
+          </span>
         </div>
       </section>
     </div>
@@ -891,6 +931,11 @@ exports[`[presentation] <AppearanceListing /> when there are no sales matches sn
       </div>
     </figure>
   </a>
+  <script
+    type="application/ld+json"
+  >
+    {"@id":"http://localhost:/appearances/","@type":"MusicEvent","description":"Description","doorTime":"12:00:00 am","endDate":"2018-01-04T11:00:00.000Z","eventStatus":"EventScheduled","image":"Image URL","location":{"@type":"MusicVenue","name":"Venue"},"name":"","offers":[],"organizer":{"@type":"LocalBusiness","name":"Organizer"},"performer":[{"@type":"MusicGroup","genre":"Genre","image":{"@type":"ImageObject","url":"Image URL"},"location":{"@type":"MusicVenue","name":""},"name":"Act name"}],"startDate":"2018-01-03T11:00:00.000Z","url":"http://localhost:/appearances/","@context":"http://schema.org/"}
+  </script>
 </article>
 `;
 
@@ -1026,19 +1071,23 @@ exports[`[presentation] <AppearanceListing /> when there are three sales matches
             class="Meta--value"
           >
             <span
-              class="Price PriceRange--min"
+              class="PriceRange"
             >
-              $5
-            </span>
-            <span
-              class="PriceRange--separator"
-            >
-              –
-            </span>
-            <span
-              class="Price PriceRange--max"
-            >
-              $10
+              <span
+                class="Price PriceRange--min"
+              >
+                $5
+              </span>
+              <span
+                class="PriceRange--separator"
+              >
+                –
+              </span>
+              <span
+                class="Price PriceRange--max"
+              >
+                $10
+              </span>
             </span>
           </span>
         </div>
@@ -1068,6 +1117,11 @@ exports[`[presentation] <AppearanceListing /> when there are three sales matches
       </div>
     </figure>
   </a>
+  <script
+    type="application/ld+json"
+  >
+    {"@id":"http://localhost:/appearances/","@type":"MusicEvent","description":"Description","doorTime":"12:00:00 am","endDate":"2018-01-04T11:00:00.000Z","eventStatus":"EventScheduled","image":"Image URL","location":{"@type":"MusicVenue","name":"Venue"},"name":"","offers":[{"@type":"Offer","availability":"LimitedAvailability","name":"Price 1","price":5,"priceCurrency":"NZD"},{"@type":"Offer","availability":"LimitedAvailability","name":"Price 2","price":10,"priceCurrency":"NZD"},{"@type":"Offer","availability":"LimitedAvailability","name":"Price 2","price":10,"priceCurrency":"NZD"}],"organizer":{"@type":"LocalBusiness","name":"Organizer"},"performer":[{"@type":"MusicGroup","genre":"Genre","image":{"@type":"ImageObject","url":"Image URL"},"location":{"@type":"MusicVenue","name":""},"name":"Act name"}],"startDate":"2018-01-03T11:00:00.000Z","url":"http://localhost:/appearances/","@context":"http://schema.org/"}
+  </script>
 </article>
 `;
 
@@ -1203,19 +1257,23 @@ exports[`[presentation] <AppearanceListing /> when there are two sales matches s
             class="Meta--value"
           >
             <span
-              class="Price PriceRange--min"
+              class="PriceRange"
             >
-              $5
-            </span>
-            <span
-              class="PriceRange--separator"
-            >
-              –
-            </span>
-            <span
-              class="Price PriceRange--max"
-            >
-              $10
+              <span
+                class="Price PriceRange--min"
+              >
+                $5
+              </span>
+              <span
+                class="PriceRange--separator"
+              >
+                –
+              </span>
+              <span
+                class="Price PriceRange--max"
+              >
+                $10
+              </span>
             </span>
           </span>
         </div>
@@ -1245,6 +1303,11 @@ exports[`[presentation] <AppearanceListing /> when there are two sales matches s
       </div>
     </figure>
   </a>
+  <script
+    type="application/ld+json"
+  >
+    {"@id":"http://localhost:/appearances/","@type":"MusicEvent","description":"Description","doorTime":"12:00:00 am","endDate":"2018-01-04T11:00:00.000Z","eventStatus":"EventScheduled","image":"Image URL","location":{"@type":"MusicVenue","name":"Venue"},"name":"","offers":[{"@type":"Offer","availability":"LimitedAvailability","name":"Price 1","price":5,"priceCurrency":"NZD"},{"@type":"Offer","availability":"LimitedAvailability","name":"Price 2","price":10,"priceCurrency":"NZD"}],"organizer":{"@type":"LocalBusiness","name":"Organizer"},"performer":[{"@type":"MusicGroup","genre":"Genre","image":{"@type":"ImageObject","url":"Image URL"},"location":{"@type":"MusicVenue","name":""},"name":"Act name"}],"startDate":"2018-01-03T11:00:00.000Z","url":"http://localhost:/appearances/","@context":"http://schema.org/"}
+  </script>
 </article>
 `;
 
@@ -1380,9 +1443,13 @@ exports[`[presentation] <AppearanceListing /> when there is only one sale matche
             class="Meta--value"
           >
             <span
-              class="Price PriceRange--min"
+              class="PriceRange"
             >
-              $5
+              <span
+                class="Price PriceRange--min"
+              >
+                $5
+              </span>
             </span>
           </span>
         </div>
@@ -1412,5 +1479,10 @@ exports[`[presentation] <AppearanceListing /> when there is only one sale matche
       </div>
     </figure>
   </a>
+  <script
+    type="application/ld+json"
+  >
+    {"@id":"http://localhost:/appearances/","@type":"MusicEvent","description":"Description","doorTime":"12:00:00 am","endDate":"2018-01-04T11:00:00.000Z","eventStatus":"EventScheduled","image":"Image URL","location":{"@type":"MusicVenue","name":"Venue"},"name":"","offers":[{"@type":"Offer","availability":"LimitedAvailability","name":"Price","price":5,"priceCurrency":"NZD"}],"organizer":{"@type":"LocalBusiness","name":"Organizer"},"performer":[{"@type":"MusicGroup","genre":"Genre","image":{"@type":"ImageObject","url":"Image URL"},"location":{"@type":"MusicVenue","name":""},"name":"Act name"}],"startDate":"2018-01-03T11:00:00.000Z","url":"http://localhost:/appearances/","@context":"http://schema.org/"}
+  </script>
 </article>
 `;

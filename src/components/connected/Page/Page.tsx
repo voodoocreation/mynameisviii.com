@@ -1,7 +1,7 @@
 import cn from "classnames";
 import Head from "next/head";
 import * as React from "react";
-import { InjectedIntlProps, injectIntl } from "react-intl";
+import { injectIntl, WrappedComponentProps } from "react-intl";
 import { connect } from "react-redux";
 
 import Banner from "../../presentation/Banner/Banner";
@@ -15,7 +15,8 @@ import ErrorPage from "../../presentation/ErrorPage/ErrorPage";
 
 import "./Page.scss";
 
-interface IProps extends InjectedIntlProps {
+interface IProps extends WrappedComponentProps {
+  children: React.ReactNode;
   className?: string;
   error?: IError;
   isLoading: boolean;

@@ -26,6 +26,11 @@ exports[`[routes] <GalleriesRoute /> when all data is in the store matches snaps
           <h2 />
         </header>
       </a>
+      <script
+        type="application/ld+json"
+      >
+        {"@id":"http://localhost:/galleries/test-1","@type":"ImageGallery","dateModified":"2017-12-31T11:00:00.000Z","name":"","primaryImageOfPage":"","thumbnailUrl":"","@context":"http://schema.org/"}
+      </script>
     </article>
     <article
       class="GalleryListing isRendered"
@@ -39,6 +44,11 @@ exports[`[routes] <GalleriesRoute /> when all data is in the store matches snaps
           <h2 />
         </header>
       </a>
+      <script
+        type="application/ld+json"
+      >
+        {"@id":"http://localhost:/galleries/test-2","@type":"ImageGallery","dateModified":"2017-12-31T11:00:00.000Z","name":"","primaryImageOfPage":"","thumbnailUrl":"","@context":"http://schema.org/"}
+      </script>
     </article>
   </section>
 </article>

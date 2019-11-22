@@ -38,5 +38,10 @@ exports[`[presentation] <GalleryListing /> when imageUrl is defined matches snap
       </div>
     </figure>
   </a>
+  <script
+    type="application/ld+json"
+  >
+    {"@id":"http://localhost:/galleries/test-1","@type":"ImageGallery","dateModified":"2017-10-10T18:00:00","description":"Description","name":"Title","primaryImageOfPage":"Image URL","thumbnailUrl":"Image URL","@context":"http://schema.org/"}
+  </script>
 </article>
 `;

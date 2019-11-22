@@ -312,5 +312,10 @@ exports[`[routes] <ReleaseRoute /> matches snapshot 1`] = `
       </section>
     </div>
   </div>
+  <script
+    type="application/ld+json"
+  >
+    {"@id":"http://localhost:/releases/test-1","@type":"MusicAlbum","albumProductionType":"http://schema.org/StudioAlbum","albumRelease":{"@type":"MusicRelease","duration":"PT0M0S","name":"","recordLabel":""},"albumReleaseType":"http://schema.org/album","byArtist":{"@type":"MusicGroup","name":""},"datePublished":"2017-12-31T11:00:00.000Z","description":"","image":"Image URL 1","mainEntityOfPage":{"@id":"http://localhost:/releases/test-1"},"name":"","track":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","item":{"@type":"MusicRecording","duration":"PT0M0S","name":"Disc 1, Track 1","recordingOf":{"@type":"MusicComposition","name":"Disc 1, Track 1"}},"position":1},{"@type":"ListItem","item":{"@type":"MusicRecording","duration":"PT0M0S","name":"Disc 2, Track 1","recordingOf":{"@type":"MusicComposition","name":"Disc 2, Track 1"}},"position":2}],"numberOfItems":2},"@context":"http://schema.org/"}
+  </script>
 </article>
 `;

@@ -203,5 +203,10 @@ exports[`[routes] <AppearanceRoute /> matches snapshot 1`] = `
       </div>
     </section>
   </div>
+  <script
+    type="application/ld+json"
+  >
+    {"@id":"http://localhost:/appearances/test-1","@type":"MusicEvent","description":"","doorTime":"12:00:00 am","endDate":"2017-12-31T11:00:00.000Z","eventStatus":"EventScheduled","image":"","location":{"@type":"MusicVenue","name":""},"name":"","offers":[],"organizer":{"@type":"LocalBusiness","name":""},"performer":[],"startDate":"2017-12-31T11:00:00.000Z","url":"http://localhost:/appearances/test-1","@context":"http://schema.org/"}
+  </script>
 </article>
 `;

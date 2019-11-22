@@ -13,13 +13,10 @@ export const getStemsCount = createSelector(
   stems => Object.keys(stems).length
 );
 
-export const getStemsAsArray = createSelector(
-  getStems,
-  stems =>
-    Object.values(stems).sort(
-      (a, b) =>
-        new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
-    )
+export const getStemsAsArray = createSelector(getStems, stems =>
+  Object.values(stems).sort(
+    (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+  )
 );
 
 export const getStemsLastEvaluatedKey = (state: TStoreState) =>

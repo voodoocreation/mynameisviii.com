@@ -1,6 +1,10 @@
 import * as React from "react";
 import { MdPortableWifiOff } from "react-icons/md";
-import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl";
+import {
+  FormattedMessage,
+  injectIntl,
+  WrappedComponentProps
+} from "react-intl";
 import { connect } from "react-redux";
 
 import { TStoreState } from "../../../reducers/root.reducers";
@@ -8,7 +12,7 @@ import * as selectors from "../../../selectors/root.selectors";
 
 import "./OfflineNotice.scss";
 
-interface IProps extends InjectedIntlProps {
+interface IProps extends WrappedComponentProps {
   isOnline: boolean;
 }
 

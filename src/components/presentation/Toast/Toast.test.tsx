@@ -16,7 +16,7 @@ describe("[presentation] <Toast />", () => {
       .mount();
 
     it("renders correctly when visible", () => {
-      expect(wrapper.find(".Toast")).toHaveLength(1);
+      expect(wrapper.html()).not.toBe("");
     });
 
     it("waits for the auto dismiss delay length", () => {
@@ -24,7 +24,7 @@ describe("[presentation] <Toast />", () => {
     });
 
     it("doesn't unrender yet", () => {
-      expect(wrapper.find(".Toast")).toHaveLength(1);
+      expect(wrapper.html()).not.toBe("");
     });
 
     it("calls the onClose prop", () => {
@@ -33,7 +33,8 @@ describe("[presentation] <Toast />", () => {
 
     it("doesn't render anything after the delay has passed", () => {
       wrapper.update();
-      expect(wrapper.find(".Toast")).toHaveLength(0);
+
+      expect(wrapper.html()).toBe("");
     });
   });
 
@@ -46,7 +47,7 @@ describe("[presentation] <Toast />", () => {
       .mount();
 
     it("renders correctly when visible", () => {
-      expect(wrapper.find(".Toast")).toHaveLength(1);
+      expect(wrapper.html()).not.toBe("");
     });
 
     it("clicks the close button twice in quick succession", () => {
@@ -55,7 +56,7 @@ describe("[presentation] <Toast />", () => {
     });
 
     it("doesn't unrender yet", () => {
-      expect(wrapper.find(".Toast")).toHaveLength(1);
+      expect(wrapper.html()).not.toBe("");
     });
 
     it("calls the onClose prop", () => {
@@ -65,7 +66,8 @@ describe("[presentation] <Toast />", () => {
     it("doesn't render anything after the delay has passed", () => {
       jest.runTimersToTime(200);
       wrapper.update();
-      expect(wrapper.find(".Toast")).toHaveLength(0);
+
+      expect(wrapper.html()).toBe("");
     });
   });
 
@@ -78,21 +80,18 @@ describe("[presentation] <Toast />", () => {
       .mount();
 
     it("renders the toast when visible", () => {
-      expect(wrapper.find(".Toast")).toHaveLength(1);
+      expect(wrapper.html()).not.toBe("");
     });
 
-    it("waits for the auto dismiss delay length", () => {
-      jest.runTimersToTime(props.autoDismissDelay);
+    it("sets the isVisible prop to false", () => {
+      wrapper.setProps({ isVisible: false });
     });
 
-    it("doesn't unrender yet", () => {
-      expect(wrapper.find(".Toast")).toHaveLength(1);
-    });
-
-    it("doesn't render anything after the delay has passed", () => {
+    it("doesn't render anything", () => {
       jest.runTimersToTime(200);
       wrapper.update();
-      expect(wrapper.find(".Toast")).toHaveLength(0);
+
+      expect(wrapper.html()).toBe("");
     });
 
     it("passes isVisible prop as true again", () => {
@@ -100,22 +99,25 @@ describe("[presentation] <Toast />", () => {
     });
 
     it("renders the toast again", () => {
-      expect(wrapper.find(".Toast")).toHaveLength(1);
+      jest.runTimersToTime(200);
+      wrapper.update();
+
+      expect(wrapper.html()).not.toBe("");
     });
 
-    it("waits for the auto dismiss delay length again", () => {
+    it("waits for the auto dismiss delay length", () => {
       jest.runTimersToTime(props.autoDismissDelay);
     });
 
     it("doesn't unrender yet", () => {
-      expect(wrapper.find(".Toast")).toHaveLength(1);
+      expect(wrapper.html()).not.toBe("");
     });
 
     it("doesn't render anything after the delay has passed again", () => {
       jest.runTimersToTime(200);
       wrapper.update();
 
-      expect(wrapper.find(".Toast")).toHaveLength(0);
+      expect(wrapper.html()).toBe("");
     });
 
     it("passes isVisible prop as false after it's already hidden", () => {
@@ -123,7 +125,10 @@ describe("[presentation] <Toast />", () => {
     });
 
     it("still doesn't render anything", () => {
-      expect(wrapper.find(".Toast")).toHaveLength(0);
+      jest.runTimersToTime(200);
+      wrapper.update();
+
+      expect(wrapper.html()).toBe("");
     });
   });
 });

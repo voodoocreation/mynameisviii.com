@@ -19,7 +19,7 @@ exports[`[routes] <StemsRoute /> when all data is in the store matches snapshot 
     >
       <span
         class="StemListing--link"
-        title="Download stems for ''"
+        title="Download stems for {title}"
       >
         <div
           class="StemListing--details"
@@ -161,7 +161,7 @@ exports[`[routes] <StemsRoute /> when all data is in the store matches snapshot 
     >
       <span
         class="StemListing--link"
-        title="Download stems for ''"
+        title="Download stems for {title}"
       >
         <div
           class="StemListing--details"

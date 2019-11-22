@@ -15,30 +15,23 @@ export const getReleasesCount = createSelector(
   releases => Object.keys(releases).length
 );
 
-export const getReleasesAsArray = createSelector(
-  getReleases,
-  releases =>
-    Object.values(releases).sort(
-      (a, b) =>
-        new Date(a.releasedOn).getTime() - new Date(b.releasedOn).getTime()
-    )
+export const getReleasesAsArray = createSelector(getReleases, releases =>
+  Object.values(releases).sort(
+    (a, b) =>
+      new Date(a.releasedOn).getTime() - new Date(b.releasedOn).getTime()
+  )
 );
 
-export const getReleasesByType = createSelector(
-  getReleasesAsArray,
-  releases =>
-    releases.reduce(
-      (acc: Record<TYPE, IRelease[]>, curr) => {
-        if (!acc[curr.type]) {
-          acc[curr.type] = [];
-        }
+export const getReleasesByType = createSelector(getReleasesAsArray, releases =>
+  releases.reduce((acc: Record<TYPE, IRelease[]>, curr) => {
+    if (!acc[curr.type]) {
+      acc[curr.type] = [];
+    }
 
-        acc[curr.type].push(curr);
+    acc[curr.type].push(curr);
 
-        return acc;
-      },
-      {} as any
-    )
+    return acc;
+  }, {} as any)
 );
 
 export const getSortedReleasesByType = createSelector(

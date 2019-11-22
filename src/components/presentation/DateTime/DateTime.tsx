@@ -1,15 +1,16 @@
+import { selectUnit } from "@formatjs/intl-utils";
 import cn from "classnames";
 import dayjs from "dayjs";
 import * as React from "react";
 import {
   FormattedDate,
-  FormattedRelative,
+  FormattedRelativeTime,
   FormattedTime,
-  InjectedIntlProps,
-  injectIntl
+  injectIntl,
+  WrappedComponentProps
 } from "react-intl";
 
-interface IProps extends InjectedIntlProps {
+interface IProps extends WrappedComponentProps {
   className?: string;
   isDateOnly?: boolean;
   isRelative?: boolean;
@@ -43,7 +44,10 @@ const DateTime: React.FC<IProps> = ({
     }
   >
     {isRelative ? (
-      <FormattedRelative updateInterval={updateInterval} value={value} />
+      <FormattedRelativeTime
+        numeric="auto"
+        {...selectUnit(dayjs(value).toDate())}
+      />
     ) : isDateOnly ? (
       <FormattedDate value={value} {...options} />
     ) : (
@@ -60,7 +64,8 @@ DateTime.defaultProps = {
     month: "long",
     weekday: "long",
     year: "numeric"
-  }
+  },
+  updateInterval: 300
 };
 
 export default injectIntl(DateTime);

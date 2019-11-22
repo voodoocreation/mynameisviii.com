@@ -1,8 +1,9 @@
+import { UnifiedNumberFormatOptions } from "@formatjs/intl-unified-numberformat";
 import cn from "classnames";
 import * as React from "react";
-import { FormattedNumber, InjectedIntlProps, injectIntl } from "react-intl";
+import { FormattedNumber, injectIntl, WrappedComponentProps } from "react-intl";
 
-interface IProps extends InjectedIntlProps, Intl.NumberFormatOptions {
+interface IProps extends WrappedComponentProps, UnifiedNumberFormatOptions {
   className?: string;
   value: number;
 }

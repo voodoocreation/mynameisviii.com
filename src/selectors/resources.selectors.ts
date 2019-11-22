@@ -16,30 +16,24 @@ export const getResourcesCount = createSelector(
   resources => Object.keys(resources).length
 );
 
-export const getResourcesAsArray = createSelector(
-  getResources,
-  resources =>
-    Object.values(resources).sort(
-      (a, b) =>
-        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-    )
+export const getResourcesAsArray = createSelector(getResources, resources =>
+  Object.values(resources).sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  )
 );
 
 export const getResourcesByType = createSelector(
   getResourcesAsArray,
   resources =>
-    resources.reduce(
-      (acc: Record<TYPE, IResource[]>, curr) => {
-        if (!acc[curr.type]) {
-          acc[curr.type] = [];
-        }
+    resources.reduce((acc: Record<TYPE, IResource[]>, curr) => {
+      if (!acc[curr.type]) {
+        acc[curr.type] = [];
+      }
 
-        acc[curr.type].push(curr);
+      acc[curr.type].push(curr);
 
-        return acc;
-      },
-      {} as any
-    )
+      return acc;
+    }, {} as any)
 );
 
 export const getResourcesLastEvaluatedKey = (state: TStoreState) =>

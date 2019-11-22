@@ -1,3 +1,4 @@
+import "./polyfills";
 import Enzyme from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import createGoogleMapsMock from "jest-google-maps-mock";
@@ -31,6 +32,10 @@ Object.defineProperties(window, {
 Object.defineProperty(window.location, "assign", {
   value: jest.fn(),
   writable: true
+});
+
+Object.defineProperty(navigator, "language", {
+  value: "en-NZ"
 });
 
 const serviceWorkerEvents = {};

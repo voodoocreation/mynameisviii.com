@@ -1,10 +1,10 @@
 import cn from "classnames";
 import * as React from "react";
 import { MdAlbum, MdEvent, MdNewReleases } from "react-icons/md";
-import { InjectedIntlProps, injectIntl } from "react-intl";
+import { injectIntl, WrappedComponentProps } from "react-intl";
 import { TYPE } from "../../../constants/news.constants";
 
-interface IProps extends InjectedIntlProps {
+interface IProps extends WrappedComponentProps {
   className?: string;
   hasLabel?: boolean;
   value: string;

@@ -1,7 +1,7 @@
 import cn from "classnames";
 import Head from "next/head";
 import * as React from "react";
-import { FormattedMessage, InjectedIntlProps } from "react-intl";
+import { FormattedMessage, WrappedComponentProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 
@@ -21,7 +21,7 @@ import PageHeader from "../../presentation/PageHeader/PageHeader";
 
 import "./GalleriesRoute.scss";
 
-interface IProps extends InjectedIntlProps {
+interface IProps extends WrappedComponentProps {
   fetchGalleries: typeof actions.fetchGalleries.started;
   fetchMoreGalleries: typeof actions.fetchMoreGalleries.started;
   galleries: IGallery[];
@@ -149,8 +149,5 @@ const mapActions = (dispatch: Dispatch) =>
   );
 
 export default injectIntlIntoPage(
-  connect(
-    mapState,
-    mapActions
-  )(GalleriesRoute)
+  connect(mapState, mapActions)(GalleriesRoute)
 );

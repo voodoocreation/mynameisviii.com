@@ -1,4 +1,4 @@
-import * as messages from "../../../locales/en-NZ";
+import messages from "../../../locales/en-NZ";
 import ComponentTester from "../../../utilities/ComponentTester";
 import { createMockElement, findMockCall } from "../../../utilities/mocks";
 import LoadButton from "./LoadButton";

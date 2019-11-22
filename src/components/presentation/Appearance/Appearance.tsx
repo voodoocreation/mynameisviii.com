@@ -3,7 +3,11 @@ import { Marker } from "google-maps-react";
 import * as React from "react";
 import { FaFacebookSquare } from "react-icons/fa";
 import { MdAccessTime, MdDateRange, MdPeople, MdPlace } from "react-icons/md";
-import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl";
+import {
+  FormattedMessage,
+  injectIntl,
+  WrappedComponentProps
+} from "react-intl";
 
 import { STATUS } from "../../../constants/appearance.constants";
 import { IAppearance, ILatLng } from "../../../models/root.models";
@@ -22,7 +26,7 @@ import SaleListing from "../SaleListing/SaleListing";
 
 import "./Appearance.scss";
 
-interface IProps extends IAppearance, InjectedIntlProps {
+interface IProps extends IAppearance, WrappedComponentProps {
   locationLatLng?: ILatLng;
   onGalleryInteraction?: (type: string, index?: number) => void;
 }

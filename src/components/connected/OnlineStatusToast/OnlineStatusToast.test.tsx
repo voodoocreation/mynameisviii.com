@@ -1,5 +1,5 @@
 import * as actions from "../../../actions/root.actions";
-import * as messages from "../../../locales/en-NZ";
+import messages from "../../../locales/en-NZ";
 import ComponentTester from "../../../utilities/ComponentTester";
 import OnlineStatusToast from "./OnlineStatusToast";
 

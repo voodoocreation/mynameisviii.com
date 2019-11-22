@@ -1,6 +1,6 @@
 import Head from "next/head";
 import * as React from "react";
-import { InjectedIntlProps } from "react-intl";
+import { WrappedComponentProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import stripTags from "striptags";
@@ -16,7 +16,7 @@ import Release from "../../presentation/Release/Release";
 import * as actions from "../../../actions/root.actions";
 import * as selectors from "../../../selectors/root.selectors";
 
-interface IProps extends InjectedIntlProps {
+interface IProps extends WrappedComponentProps {
   fetchReleaseBySlug: typeof actions.fetchReleaseBySlug.started;
   isLoading: boolean;
   release?: IRelease;
@@ -50,7 +50,7 @@ class ReleaseRoute extends React.Component<IProps> {
     }
 
     return (
-      <React.Fragment>
+      <>
         <Head>
           <title>
             {release.title}
@@ -85,7 +85,7 @@ class ReleaseRoute extends React.Component<IProps> {
           {...release}
           onCarouselSlideChange={this.onCarouselSlideChange}
         />
-      </React.Fragment>
+      </>
     );
   }
 
@@ -126,9 +126,4 @@ const mapActions = (dispatch: Dispatch) =>
     dispatch
   );
 
-export default injectIntlIntoPage(
-  connect(
-    mapState,
-    mapActions
-  )(ReleaseRoute)
-);
+export default injectIntlIntoPage(connect(mapState, mapActions)(ReleaseRoute));

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import * as React from "react";
-import { InjectedIntlProps } from "react-intl";
+import { WrappedComponentProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 
@@ -15,7 +15,7 @@ import NewsArticle from "../../presentation/NewsArticle/NewsArticle";
 import * as actions from "../../../actions/root.actions";
 import * as selectors from "../../../selectors/root.selectors";
 
-interface IProps extends InjectedIntlProps {
+interface IProps extends WrappedComponentProps {
   article?: INewsArticle;
   fetchNewsArticleBySlug: typeof actions.fetchNewsArticleBySlug.started;
   isLoading: boolean;
@@ -48,7 +48,7 @@ class NewsArticleRoute extends React.Component<IProps> {
     }
 
     return (
-      <React.Fragment>
+      <>
         <Head>
           <title>
             {article.title}
@@ -73,7 +73,7 @@ class NewsArticleRoute extends React.Component<IProps> {
         </Head>
 
         <NewsArticle {...article} />
-      </React.Fragment>
+      </>
     );
   }
 }
@@ -92,8 +92,5 @@ const mapActions = (dispatch: Dispatch) =>
   );
 
 export default injectIntlIntoPage(
-  connect(
-    mapState,
-    mapActions
-  )(NewsArticleRoute)
+  connect(mapState, mapActions)(NewsArticleRoute)
 );

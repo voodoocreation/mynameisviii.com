@@ -101,6 +101,11 @@ exports[`[presentation] <Gallery /> when there are images defined matches snapsh
       </figure>
     </div>
   </section>
+  <script
+    type="application/ld+json"
+  >
+    {"@id":"http://localhost:/galleries/test-1","@type":"ImageGallery","associatedMedia":[{"@type":"ImageObject","contentUrl":"Image 1","dateModified":"2017-12-31T11:00:00.000Z"},{"@type":"ImageObject","contentUrl":"Image 2","dateModified":"2017-12-31T11:00:00.000Z"},{"@type":"ImageObject","contentUrl":"Image 3","dateModified":"2017-12-31T11:00:00.000Z"}],"dateModified":"2017-10-10T18:00:00","description":"Description","name":"Title","primaryImageOfPage":"Image URL","thumbnailUrl":"Image URL","@context":"http://schema.org/"}
+  </script>
 </article>
 `;
 
@@ -122,5 +127,10 @@ exports[`[presentation] <Gallery /> when there are no images matches snapshot 1`
       Description
     </p>
   </div>
+  <script
+    type="application/ld+json"
+  >
+    {"@id":"http://localhost:/galleries/test-1","@type":"ImageGallery","dateModified":"2017-10-10T18:00:00","description":"Description","name":"Title","primaryImageOfPage":"Image URL","thumbnailUrl":"Image URL","@context":"http://schema.org/"}
+  </script>
 </article>
 `;

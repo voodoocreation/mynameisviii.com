@@ -8,7 +8,7 @@ describe("[presentation] <PriceRange />", () => {
     const { wrapper } = component.render();
 
     it("doesn't render anything", () => {
-      expect(wrapper.html()).toBeNull();
+      expect(wrapper.html()).toBe("");
     });
   });
 
@@ -17,7 +17,7 @@ describe("[presentation] <PriceRange />", () => {
       .withProps({
         min: 99.99
       })
-      .shallow();
+      .render();
 
     it("renders the min price", () => {
       expect(wrapper.find(".PriceRange--min")).toHaveLength(1);
@@ -37,7 +37,7 @@ describe("[presentation] <PriceRange />", () => {
       .withProps({
         max: 99.99
       })
-      .shallow();
+      .render();
 
     it("doesn't render the min price", () => {
       expect(wrapper.find(".PriceRange--min")).toHaveLength(0);
@@ -58,7 +58,7 @@ describe("[presentation] <PriceRange />", () => {
         max: 99.99,
         min: 5
       })
-      .shallow();
+      .render();
 
     it("renders the min price", () => {
       expect(wrapper.find(".PriceRange--min")).toHaveLength(1);

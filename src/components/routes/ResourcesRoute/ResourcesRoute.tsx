@@ -1,7 +1,7 @@
 import cn from "classnames";
 import Head from "next/head";
 import * as React from "react";
-import { FormattedMessage, InjectedIntlProps } from "react-intl";
+import { FormattedMessage, WrappedComponentProps } from "react-intl";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 
@@ -22,7 +22,7 @@ import * as selectors from "../../../selectors/root.selectors";
 
 import "./ResourcesRoute.scss";
 
-interface IProps extends InjectedIntlProps {
+interface IProps extends WrappedComponentProps {
   hasError: boolean;
   fetchMoreResources: typeof actions.fetchMoreResources.started;
   fetchResources: typeof actions.fetchResources.started;
@@ -170,8 +170,5 @@ const mapActions = (dispatch: Dispatch) =>
   );
 
 export default injectIntlIntoPage(
-  connect(
-    mapState,
-    mapActions
-  )(ResourcesRoute)
+  connect(mapState, mapActions)(ResourcesRoute)
 );

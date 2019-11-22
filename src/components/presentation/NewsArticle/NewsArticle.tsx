@@ -1,7 +1,11 @@
 import cn from "classnames";
 import * as React from "react";
 import { MdAccessTime } from "react-icons/md";
-import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl";
+import {
+  FormattedMessage,
+  injectIntl,
+  WrappedComponentProps
+} from "react-intl";
 
 import { INewsArticle } from "../../../models/root.models";
 import Schema from "../../schema/NewsArticle";
@@ -14,7 +18,7 @@ import PageHeader from "../PageHeader/PageHeader";
 
 import "./NewsArticle.scss";
 
-interface IProps extends INewsArticle, InjectedIntlProps {}
+interface IProps extends INewsArticle, WrappedComponentProps {}
 
 interface IState {
   isImageLoaded: boolean;
@@ -49,12 +53,7 @@ class NewsArticle extends React.Component<IProps, IState> {
                 id="POSTED_ON_DATE_BY_AUTHOR"
                 values={{
                   author: article.author,
-                  date: (
-                    <DateTime
-                      value={article.createdAt}
-                      updateInterval={300000}
-                    />
-                  )
+                  date: <DateTime value={article.createdAt} />
                 }}
               />
             </div>

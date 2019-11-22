@@ -1,11 +1,15 @@
 import cn from "classnames";
 import * as React from "react";
-import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl";
+import {
+  FormattedMessage,
+  injectIntl,
+  WrappedComponentProps
+} from "react-intl";
 
 import { isAlmostInViewport, isServer } from "../../../helpers/dom";
 import Button from "../Button/Button";
 
-interface IProps extends InjectedIntlProps {
+interface IProps extends WrappedComponentProps {
   className?: string;
   hasError?: boolean;
   isDisabled?: boolean;

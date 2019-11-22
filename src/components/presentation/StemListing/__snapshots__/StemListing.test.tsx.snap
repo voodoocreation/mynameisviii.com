@@ -9,7 +9,7 @@ exports[`[presentation] <StemListing /> matches snapshot 1`] = `
     href="URL"
     rel="noopener"
     target="_blank"
-    title="Download stems for 'Title'"
+    title="Download stems for {title}"
   >
     <div
       class="StemListing--details"
