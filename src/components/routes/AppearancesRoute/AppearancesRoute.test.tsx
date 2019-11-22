@@ -13,7 +13,7 @@ const pastItem1 = appearance({
     .toISOString(),
   isActive: BOOLEAN.TRUE,
   slug: "past-1",
-  startingAt: dayjs(new Date())
+  startingAt: dayjs()
     .subtract(4, "day")
     .toISOString()
 });
@@ -38,12 +38,12 @@ const upcomingItem1 = appearance({
     .toISOString()
 });
 const upcomingItem2 = appearance({
-  finishingAt: dayjs(new Date())
+  finishingAt: dayjs()
     .add(5, "day")
     .toISOString(),
   isActive: BOOLEAN.TRUE,
   slug: "upcoming-2",
-  startingAt: dayjs(new Date())
+  startingAt: dayjs()
     .add(4, "day")
     .toISOString()
 });
