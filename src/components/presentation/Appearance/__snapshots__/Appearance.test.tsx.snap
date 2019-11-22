@@ -464,7 +464,7 @@ exports[`[presentation] <Appearance /> when all props are defined matches snapsh
   <script
     type="application/ld+json"
   >
-    {"@id":"http://localhost:/appearances/","@type":"MusicEvent","description":"Description","doorTime":"12:00:00 am","endDate":"2018-01-04T11:00:00.000Z","eventStatus":"EventScheduled","image":"Image URL","location":{"@type":"MusicVenue","address":"123 Address","name":"Venue"},"name":"","offers":[{"@type":"Offer","availability":"LimitedAvailability","name":"Name","price":10,"priceCurrency":"NZD"}],"organizer":{"@type":"LocalBusiness","email":"Email","logo":{"@type":"ImageObject","url":"Logo"},"name":"Organizer"},"performer":[{"@type":"MusicGroup","genre":"Genre","image":{"@type":"ImageObject","url":"Image URL"},"location":{"@type":"MusicVenue","name":""},"name":"Act name"}],"startDate":"2018-01-03T11:00:00.000Z","typicalAgeRange":"18+","url":"http://localhost:/appearances/","@context":"http://schema.org/"}
+    {"@id":"http://localhost:/appearances/","@type":"MusicEvent","description":"Description","doorTime":"00:00","endDate":"2018-01-04T11:00:00.000Z","eventStatus":"EventScheduled","image":"Image URL","location":{"@type":"MusicVenue","address":"123 Address","name":"Venue"},"name":"","offers":[{"@type":"Offer","availability":"LimitedAvailability","name":"Name","price":10,"priceCurrency":"NZD"}],"organizer":{"@type":"LocalBusiness","email":"Email","logo":{"@type":"ImageObject","url":"Logo"},"name":"Organizer"},"performer":[{"@type":"MusicGroup","genre":"Genre","image":{"@type":"ImageObject","url":"Image URL"},"location":{"@type":"MusicVenue","name":""},"name":"Act name"}],"startDate":"2018-01-03T11:00:00.000Z","typicalAgeRange":"18+","url":"http://localhost:/appearances/","@context":"http://schema.org/"}
   </script>
 </article>
 `;
@@ -756,7 +756,7 @@ exports[`[presentation] <Appearance /> when cancelled matches snapshot 1`] = `
   <script
     type="application/ld+json"
   >
-    {"@id":"http://localhost:/appearances/","@type":"MusicEvent","description":"Description","doorTime":"12:00:00 am","endDate":"2018-01-04T11:00:00.000Z","eventStatus":"EventCancelled","image":"Image URL","location":{"@type":"MusicVenue","name":"Venue"},"name":"","offers":[{"@type":"Offer","availability":"LimitedAvailability","name":"","price":0,"priceCurrency":"NZD"}],"organizer":{"@type":"LocalBusiness","name":"Organizer"},"performer":[{"@type":"MusicGroup","genre":"Genre","image":{"@type":"ImageObject","url":"Image URL"},"location":{"@type":"MusicVenue","name":""},"name":"Act name"}],"startDate":"2018-01-03T11:00:00.000Z","url":"http://localhost:/appearances/","@context":"http://schema.org/"}
+    {"@id":"http://localhost:/appearances/","@type":"MusicEvent","description":"Description","doorTime":"00:00","endDate":"2018-01-04T11:00:00.000Z","eventStatus":"EventCancelled","image":"Image URL","location":{"@type":"MusicVenue","name":"Venue"},"name":"","offers":[{"@type":"Offer","availability":"LimitedAvailability","name":"","price":0,"priceCurrency":"NZD"}],"organizer":{"@type":"LocalBusiness","name":"Organizer"},"performer":[{"@type":"MusicGroup","genre":"Genre","image":{"@type":"ImageObject","url":"Image URL"},"location":{"@type":"MusicVenue","name":""},"name":"Act name"}],"startDate":"2018-01-03T11:00:00.000Z","url":"http://localhost:/appearances/","@context":"http://schema.org/"}
   </script>
 </article>
 `;
@@ -1032,7 +1032,7 @@ exports[`[presentation] <Appearance /> when finishingAt is in the past matches s
   <script
     type="application/ld+json"
   >
-    {"@id":"http://localhost:/appearances/","@type":"MusicEvent","description":"Description","doorTime":"12:00:00 am","endDate":"2017-12-30T11:00:00.000Z","eventStatus":"EventScheduled","image":"Image URL","location":{"@type":"MusicVenue","name":"Venue"},"name":"","offers":[],"organizer":{"@type":"LocalBusiness","name":"Organizer"},"performer":[{"@type":"MusicGroup","genre":"Genre","image":{"@type":"ImageObject","url":"Image URL"},"location":{"@type":"MusicVenue","name":""},"name":"Act name"}],"startDate":"2018-01-03T11:00:00.000Z","url":"http://localhost:/appearances/","@context":"http://schema.org/"}
+    {"@id":"http://localhost:/appearances/","@type":"MusicEvent","description":"Description","doorTime":"00:00","endDate":"2017-12-30T11:00:00.000Z","eventStatus":"EventScheduled","image":"Image URL","location":{"@type":"MusicVenue","name":"Venue"},"name":"","offers":[],"organizer":{"@type":"LocalBusiness","name":"Organizer"},"performer":[{"@type":"MusicGroup","genre":"Genre","image":{"@type":"ImageObject","url":"Image URL"},"location":{"@type":"MusicVenue","name":""},"name":"Act name"}],"startDate":"2018-01-03T11:00:00.000Z","url":"http://localhost:/appearances/","@context":"http://schema.org/"}
   </script>
 </article>
 `;
@@ -1308,7 +1308,7 @@ exports[`[presentation] <Appearance /> when only the required props are defined 
   <script
     type="application/ld+json"
   >
-    {"@id":"http://localhost:/appearances/","@type":"MusicEvent","description":"Description","doorTime":"12:00:00 am","endDate":"2018-01-04T11:00:00.000Z","eventStatus":"EventScheduled","image":"Image URL","location":{"@type":"MusicVenue","name":"Venue"},"name":"","offers":[],"organizer":{"@type":"LocalBusiness","name":"Organizer"},"performer":[{"@type":"MusicGroup","genre":"Genre","image":{"@type":"ImageObject","url":"Image URL"},"location":{"@type":"MusicVenue","name":""},"name":"Act name"}],"startDate":"2018-01-03T11:00:00.000Z","url":"http://localhost:/appearances/","@context":"http://schema.org/"}
+    {"@id":"http://localhost:/appearances/","@type":"MusicEvent","description":"Description","doorTime":"00:00","endDate":"2018-01-04T11:00:00.000Z","eventStatus":"EventScheduled","image":"Image URL","location":{"@type":"MusicVenue","name":"Venue"},"name":"","offers":[],"organizer":{"@type":"LocalBusiness","name":"Organizer"},"performer":[{"@type":"MusicGroup","genre":"Genre","image":{"@type":"ImageObject","url":"Image URL"},"location":{"@type":"MusicVenue","name":""},"name":"Act name"}],"startDate":"2018-01-03T11:00:00.000Z","url":"http://localhost:/appearances/","@context":"http://schema.org/"}
   </script>
 </article>
 `;
@@ -1600,7 +1600,7 @@ exports[`[presentation] <Appearance /> when postponed matches snapshot 1`] = `
   <script
     type="application/ld+json"
   >
-    {"@id":"http://localhost:/appearances/","@type":"MusicEvent","description":"Description","doorTime":"12:00:00 am","endDate":"2018-01-04T11:00:00.000Z","eventStatus":"EventPostponed","image":"Image URL","location":{"@type":"MusicVenue","name":"Venue"},"name":"","offers":[{"@type":"Offer","availability":"LimitedAvailability","name":"","price":0,"priceCurrency":"NZD"}],"organizer":{"@type":"LocalBusiness","name":"Organizer"},"performer":[{"@type":"MusicGroup","genre":"Genre","image":{"@type":"ImageObject","url":"Image URL"},"location":{"@type":"MusicVenue","name":""},"name":"Act name"}],"startDate":"2018-01-03T11:00:00.000Z","url":"http://localhost:/appearances/","@context":"http://schema.org/"}
+    {"@id":"http://localhost:/appearances/","@type":"MusicEvent","description":"Description","doorTime":"00:00","endDate":"2018-01-04T11:00:00.000Z","eventStatus":"EventPostponed","image":"Image URL","location":{"@type":"MusicVenue","name":"Venue"},"name":"","offers":[{"@type":"Offer","availability":"LimitedAvailability","name":"","price":0,"priceCurrency":"NZD"}],"organizer":{"@type":"LocalBusiness","name":"Organizer"},"performer":[{"@type":"MusicGroup","genre":"Genre","image":{"@type":"ImageObject","url":"Image URL"},"location":{"@type":"MusicVenue","name":""},"name":"Act name"}],"startDate":"2018-01-03T11:00:00.000Z","url":"http://localhost:/appearances/","@context":"http://schema.org/"}
   </script>
 </article>
 `;

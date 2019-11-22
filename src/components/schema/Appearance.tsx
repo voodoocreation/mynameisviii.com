@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import * as React from "react";
 import { injectIntl, WrappedComponentProps } from "react-intl";
 
@@ -13,7 +14,7 @@ const Appearance = ({ intl, ...props }: IProps) => (
       "@id": absoluteUrl(`/appearances/${props.slug}`),
       "@type": props.type,
       description: props.description,
-      doorTime: new Date(props.startingAt).toLocaleTimeString(intl.locale),
+      doorTime: dayjs(props.startingAt).format("HH:mm"),
       endDate: props.finishingAt,
       eventStatus: props.status,
       image: props.imageUrl,
