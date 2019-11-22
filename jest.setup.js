@@ -6,7 +6,7 @@ import MockDate from "mockdate";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-MockDate.set("2017-12-31T11:00:00.000Z", 0);
+MockDate.set("2018-01-01T00:00:00", 0);
 
 Object.defineProperties(window, {
   dataLayer: {
