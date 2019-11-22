@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import * as React from "react";
 import { injectIntl, WrappedComponentProps } from "react-intl";
 
