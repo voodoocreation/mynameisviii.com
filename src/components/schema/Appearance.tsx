@@ -15,7 +15,7 @@ const Appearance = ({ intl, ...props }: IProps) => (
       "@type": props.type,
       description: props.description,
       doorTime: dayjs(props.startingAt).format("HH:mm"),
-      endDate: props.finishingAt,
+      endDate: dayjs(props.finishingAt).toISOString(),
       eventStatus: props.status,
       image: props.imageUrl,
       location: {
@@ -59,7 +59,7 @@ const Appearance = ({ intl, ...props }: IProps) => (
         name: performer.name,
         url: performer.url
       })),
-      startDate: props.startingAt,
+      startDate: dayjs(props.startingAt).toISOString(),
       typicalAgeRange: props.audience,
       url: absoluteUrl(`/appearances/${props.slug}`)
     }}
