@@ -8,42 +8,42 @@ import MockPageContext from "../../../utilities/MockPageContext";
 import AppearancesRoute from "./AppearancesRoute";
 
 const pastItem1 = appearance({
-  finishingAt: dayjs()
+  finishingAt: dayjs(new Date())
     .subtract(3, "day")
     .toISOString(),
   isActive: BOOLEAN.TRUE,
   slug: "past-1",
-  startingAt: dayjs()
+  startingAt: dayjs(new Date())
     .subtract(4, "day")
     .toISOString()
 });
 const pastItem2 = appearance({
-  finishingAt: dayjs()
+  finishingAt: dayjs(new Date())
     .subtract(4, "day")
     .toISOString(),
   isActive: BOOLEAN.TRUE,
   slug: "past-2",
-  startingAt: dayjs()
+  startingAt: dayjs(new Date())
     .subtract(5, "day")
     .toISOString()
 });
 const upcomingItem1 = appearance({
-  finishingAt: dayjs()
+  finishingAt: dayjs(new Date())
     .add(4, "day")
     .toISOString(),
   isActive: BOOLEAN.TRUE,
   slug: "upcoming-1",
-  startingAt: dayjs()
+  startingAt: dayjs(new Date())
     .add(3, "day")
     .toISOString()
 });
 const upcomingItem2 = appearance({
-  finishingAt: dayjs()
+  finishingAt: dayjs(new Date())
     .add(5, "day")
     .toISOString(),
   isActive: BOOLEAN.TRUE,
   slug: "upcoming-2",
-  startingAt: dayjs()
+  startingAt: dayjs(new Date())
     .add(4, "day")
     .toISOString()
 });
