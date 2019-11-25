@@ -8,7 +8,7 @@ import MockPageContext from "../../../utilities/MockPageContext";
 import AppearancesRoute from "./AppearancesRoute";
 
 const pastItem1 = appearance({
-  finishingAt: dayjs(new Date())
+  finishingAt: dayjs()
     .subtract(3, "day")
     .toISOString(),
   isActive: BOOLEAN.TRUE,
@@ -18,22 +18,22 @@ const pastItem1 = appearance({
     .toISOString()
 });
 const pastItem2 = appearance({
-  finishingAt: dayjs(new Date())
+  finishingAt: dayjs()
     .subtract(4, "day")
     .toISOString(),
   isActive: BOOLEAN.TRUE,
   slug: "past-2",
-  startingAt: dayjs(new Date())
+  startingAt: dayjs()
     .subtract(5, "day")
     .toISOString()
 });
 const upcomingItem1 = appearance({
-  finishingAt: dayjs(new Date())
+  finishingAt: dayjs()
     .add(4, "day")
     .toISOString(),
   isActive: BOOLEAN.TRUE,
   slug: "upcoming-1",
-  startingAt: dayjs(new Date())
+  startingAt: dayjs()
     .add(3, "day")
     .toISOString()
 });
