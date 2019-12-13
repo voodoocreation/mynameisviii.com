@@ -1,8 +1,8 @@
 import { gallery, galleryImage } from "../../../models/root.models";
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import Gallery from "./Gallery";
 
-const component = new ComponentTester(Gallery).withDefaultProps(
+const component = new WrapperWithIntl(Gallery).withDefaultProps(
   gallery({
     description: "Description",
     imageUrl: "Image URL",
@@ -20,10 +20,11 @@ const images = [
 
 describe("[presentation] <Gallery />", () => {
   describe("when there are images defined", () => {
-    const { props, wrapper } = component
+    const onGalleryInteraction = jest.fn();
+    const wrapper = component
       .withProps({
         images,
-        onGalleryInteraction: jest.fn()
+        onGalleryInteraction
       })
       .mount();
 
@@ -39,7 +40,7 @@ describe("[presentation] <Gallery />", () => {
     });
 
     it("calls onGalleryInteraction prop", () => {
-      expect(props.onGalleryInteraction).toHaveBeenCalledTimes(1);
+      expect(onGalleryInteraction).toHaveBeenCalledTimes(1);
     });
 
     it("matches snapshot", () => {
@@ -48,7 +49,7 @@ describe("[presentation] <Gallery />", () => {
   });
 
   describe("when there are no images", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         images: undefined
       })
@@ -64,7 +65,7 @@ describe("[presentation] <Gallery />", () => {
   });
 
   describe("when onGalleryInteraction isn't defined", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         images
       })

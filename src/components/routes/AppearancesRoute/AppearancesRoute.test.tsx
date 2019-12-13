@@ -3,8 +3,8 @@ import dayjs from "dayjs";
 import * as actions from "../../../actions/root.actions";
 import { BOOLEAN } from "../../../constants/api.constants";
 import { appearance } from "../../../models/root.models";
-import ComponentTester from "../../../utilities/ComponentTester";
 import MockPageContext from "../../../utilities/MockPageContext";
+import WrapperWithRedux from "../../../utilities/WrapperWithRedux";
 import AppearancesRoute from "./AppearancesRoute";
 
 const pastItem1 = appearance({
@@ -48,7 +48,7 @@ const upcomingItem2 = appearance({
     .toISOString()
 });
 
-const component = new ComponentTester(AppearancesRoute, true);
+const component = new WrapperWithRedux(AppearancesRoute);
 
 describe("[routes] <AppearancesRoute />", () => {
   describe("getInitialProps", () => {
@@ -113,7 +113,7 @@ describe("[routes] <AppearancesRoute />", () => {
   });
 
   describe("when all data is in the store", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         appearances: {
           hasAllItems: true,
@@ -147,7 +147,7 @@ describe("[routes] <AppearancesRoute />", () => {
   });
 
   describe("when no data is in the store", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         appearances: {
           hasAllItems: true,
@@ -170,7 +170,7 @@ describe("[routes] <AppearancesRoute />", () => {
   });
 
   it("renders the offline notice when there's an error", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         appearances: {
           hasError: true
@@ -182,7 +182,7 @@ describe("[routes] <AppearancesRoute />", () => {
   });
 
   it("renders with the 'load more' button when hasAllItems is false", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         appearances: {
           hasAllItems: false,
@@ -197,7 +197,7 @@ describe("[routes] <AppearancesRoute />", () => {
   });
 
   it("renders without the 'load more' button when hasAllItems is true", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         appearances: {
           hasAllItems: true
@@ -209,7 +209,7 @@ describe("[routes] <AppearancesRoute />", () => {
   });
 
   it("loads more listings when the 'load more' button is clicked", () => {
-    const { wrapper } = component.mount();
+    const wrapper = component.mount();
 
     wrapper.find("LoadButton").simulate("click");
 
@@ -219,7 +219,7 @@ describe("[routes] <AppearancesRoute />", () => {
   });
 
   it("updates `loadedListings` state after a listing has loaded", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         appearances: {
           items: {

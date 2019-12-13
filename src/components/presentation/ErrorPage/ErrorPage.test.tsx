@@ -1,12 +1,12 @@
 import messages from "../../../locales/en-NZ";
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import ErrorPage from "./ErrorPage";
 
-const component = new ComponentTester(ErrorPage);
+const component = new WrapperWithIntl(ErrorPage);
 
 describe("[presentation] <ErrorPage />", () => {
   describe("when status is 404", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         status: 404
       })
@@ -28,7 +28,7 @@ describe("[presentation] <ErrorPage />", () => {
   });
 
   describe("when status is 500", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         status: 500
       })
@@ -52,7 +52,7 @@ describe("[presentation] <ErrorPage />", () => {
   describe("when message is defined", () => {
     const message = "Test message";
 
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         message
       })

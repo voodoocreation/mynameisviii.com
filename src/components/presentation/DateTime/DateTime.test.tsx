@@ -1,9 +1,9 @@
 import dayjs from "dayjs";
 
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import DateTime from "./DateTime";
 
-const component = new ComponentTester(DateTime).withDefaultProps({
+const component = new WrapperWithIntl(DateTime).withDefaultProps({
   className: "TestDateTime",
   value: dayjs()
     .add(9, "month")
@@ -13,7 +13,7 @@ const component = new ComponentTester(DateTime).withDefaultProps({
 
 describe("[presentation] <DateTime />", () => {
   describe("when isRelative is true and isDateOnly is true", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         isDateOnly: true,
         isRelative: true
@@ -38,7 +38,7 @@ describe("[presentation] <DateTime />", () => {
   });
 
   describe("when isRelative is false and isDateOnly is false", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         isDateOnly: false,
         isRelative: false
@@ -63,7 +63,7 @@ describe("[presentation] <DateTime />", () => {
   });
 
   describe("when isRelative is false and isDateOnly is true", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         isDateOnly: true,
         isRelative: false
@@ -88,7 +88,7 @@ describe("[presentation] <DateTime />", () => {
   });
 
   describe("when isRelative is false and only time options are defined", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         isRelative: false,
         options: {

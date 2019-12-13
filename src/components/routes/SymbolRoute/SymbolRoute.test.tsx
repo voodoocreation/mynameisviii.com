@@ -1,11 +1,11 @@
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithRedux from "../../../utilities/WrapperWithRedux";
 import SymbolRoute from "./SymbolRoute";
 
-const component = new ComponentTester(SymbolRoute, true);
+const component = new WrapperWithRedux(SymbolRoute);
 
 describe("[routes] <SymbolRoute />", () => {
   it("renders correctly", () => {
-    const { wrapper } = component.mount();
+    const wrapper = component.mount();
 
     expect(wrapper.render()).toMatchSnapshot();
   });

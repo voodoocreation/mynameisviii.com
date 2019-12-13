@@ -1,6 +1,6 @@
-import merge from "lodash.merge";
 import { AnyAction, DeepPartial } from "redux";
 import ReduxSagaTester from "redux-saga-tester";
+import merge from "ts-deepmerge";
 import { ActionCreator } from "typescript-fsa";
 
 import rootReducer, {

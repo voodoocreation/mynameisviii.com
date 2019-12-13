@@ -1,5 +1,5 @@
-import merge from "lodash.merge";
 import { AnyAction, DeepPartial, Middleware } from "redux";
+import merge from "ts-deepmerge";
 
 import {
   initialState as rootInitialState,

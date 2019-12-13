@@ -1,9 +1,9 @@
 import * as React from "react";
+import { Wrapper } from "react-test-wrapper";
 
-import ComponentTester from "../../../utilities/ComponentTester";
 import Portal from "./Portal";
 
-const component = new ComponentTester(Portal)
+const component = new Wrapper(Portal)
   .withDefaultProps({ className: "TestPortal" })
   .withDefaultChildren(<div className="TestPortalComponent" />);
 
@@ -14,7 +14,7 @@ describe("[presentation] <Portal />", () => {
       writable: true
     });
 
-    const { wrapper } = component.mount();
+    const wrapper = component.mount();
 
     it("renders in-place", () => {
       expect(
@@ -37,7 +37,7 @@ describe("[presentation] <Portal />", () => {
       writable: true
     });
 
-    const { wrapper } = component.mount();
+    const wrapper = component.mount();
 
     it("creates the portal node", () => {
       expect(document.querySelectorAll(".Portal")).toHaveLength(1);

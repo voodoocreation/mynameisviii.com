@@ -1,8 +1,7 @@
-import ComponentTester from "../../../utilities/ComponentTester";
-
+import WrapperWithRedux from "../../../utilities/WrapperWithRedux";
 import Page from "./Page";
 
-const component = new ComponentTester(Page, true)
+const component = new WrapperWithRedux(Page)
   .withDefaultProps({
     className: "TestClassName"
   })
@@ -13,7 +12,7 @@ const component = new ComponentTester(Page, true)
 
 describe("[connected] <Page />", () => {
   describe("when the app isn't loading", () => {
-    const { wrapper } = component.mount();
+    const wrapper = component.mount();
     const rendered = wrapper.render();
 
     it("doesn't render with isLoading class", () => {
@@ -26,7 +25,7 @@ describe("[connected] <Page />", () => {
   });
 
   describe("when the app is loading", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         app: { isLoading: true }
       })

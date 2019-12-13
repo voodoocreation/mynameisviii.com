@@ -1,8 +1,8 @@
 import messages from "../../../locales/en-NZ";
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import Meta from "./Meta";
 
-const component = new ComponentTester(Meta)
+const component = new WrapperWithIntl(Meta)
   .withDefaultProps({
     className: "TestMeta"
   })
@@ -10,7 +10,7 @@ const component = new ComponentTester(Meta)
 
 describe("[presentation] <Meta />", () => {
   describe("when label is defined", () => {
-    const { wrapper } = component.withProps({ label: "Label" }).render();
+    const wrapper = component.withProps({ label: "Label" }).render();
 
     it("renders the label within the label element", () => {
       expect(wrapper.find(".Meta--label").text()).toBe("Label:");
@@ -22,9 +22,7 @@ describe("[presentation] <Meta />", () => {
   });
 
   describe("when labelIntlId is defined", () => {
-    const { wrapper } = component
-      .withProps({ labelIntlId: "RELEASED" })
-      .render();
+    const wrapper = component.withProps({ labelIntlId: "RELEASED" }).render();
 
     it("renders the intl message within the label element", () => {
       expect(wrapper.find(".Meta--label").text()).toBe(`${messages.RELEASED}:`);
@@ -36,7 +34,7 @@ describe("[presentation] <Meta />", () => {
   });
 
   describe("when neither label or labelIntlId are defined", () => {
-    const { wrapper } = component.render();
+    const wrapper = component.render();
 
     it("doesn't render the label element", () => {
       expect(wrapper.find(".Meta--label")).toHaveLength(0);

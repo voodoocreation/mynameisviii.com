@@ -1,8 +1,8 @@
 import { newsArticle } from "../../../models/root.models";
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import NewsListing from "./NewsListing";
 
-const component = new ComponentTester(NewsListing).withDefaultProps(
+const component = new WrapperWithIntl(NewsListing).withDefaultProps(
   newsArticle({
     author: "Author",
     content: "<p>Content</p>",
@@ -16,7 +16,7 @@ const component = new ComponentTester(NewsListing).withDefaultProps(
 
 describe("[presentation] <NewsListing />", () => {
   describe("when isCondensed is false", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         isCondensed: false
       })
@@ -32,7 +32,7 @@ describe("[presentation] <NewsListing />", () => {
   });
 
   describe("when isCondensed is true", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         isCondensed: true
       })
@@ -48,7 +48,7 @@ describe("[presentation] <NewsListing />", () => {
   });
 
   describe("when loading the image", () => {
-    const { props, wrapper } = component
+    const wrapper = component
       .withProps({
         onLoad: jest.fn()
       })
@@ -67,7 +67,7 @@ describe("[presentation] <NewsListing />", () => {
     });
 
     it("calls the onLoad prop", () => {
-      expect(props.onLoad).toHaveBeenCalledTimes(1);
+      expect(component.props.onLoad).toHaveBeenCalledTimes(1);
     });
 
     it("sets the onLoad prop to be undefined", () => {

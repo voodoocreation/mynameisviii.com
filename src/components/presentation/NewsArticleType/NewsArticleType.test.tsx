@@ -1,12 +1,12 @@
 import { TYPE } from "../../../constants/news.constants";
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import NewsArticleType from "./NewsArticleType";
 
-const component = new ComponentTester(NewsArticleType);
+const component = new WrapperWithIntl(NewsArticleType);
 
 describe("[presentation] <NewsArticleType />", () => {
   describe("when hasLabel is false", () => {
-    const { wrapper } = component.withProps({ hasLabel: false }).render();
+    const wrapper = component.withProps({ hasLabel: false }).render();
 
     it("uses the label for the title attribute", () => {
       expect(wrapper.attr("title")).toBe("News");
@@ -18,7 +18,7 @@ describe("[presentation] <NewsArticleType />", () => {
   });
 
   describe("when hasLabel is true", () => {
-    const { wrapper } = component.withProps({ hasLabel: true }).render();
+    const wrapper = component.withProps({ hasLabel: true }).render();
 
     it("has an undefined title attribute", () => {
       expect(wrapper.attr("title")).toBeUndefined();
@@ -30,7 +30,7 @@ describe("[presentation] <NewsArticleType />", () => {
   });
 
   describe("when the type is NEWS", () => {
-    const { wrapper } = component.withProps({ value: TYPE.NEWS }).mount();
+    const wrapper = component.withProps({ value: TYPE.NEWS }).mount();
 
     it("renders the correct icon", () => {
       expect(wrapper.find("MdNewReleases")).toHaveLength(1);
@@ -42,7 +42,7 @@ describe("[presentation] <NewsArticleType />", () => {
   });
 
   describe("when the type is RELEASE", () => {
-    const { wrapper } = component.withProps({ value: TYPE.RELEASE }).mount();
+    const wrapper = component.withProps({ value: TYPE.RELEASE }).mount();
 
     it("renders the correct icon", () => {
       expect(wrapper.find("MdAlbum")).toHaveLength(1);
@@ -54,7 +54,7 @@ describe("[presentation] <NewsArticleType />", () => {
   });
 
   describe("when the type is APPEARANCE", () => {
-    const { wrapper } = component.withProps({ value: TYPE.APPEARANCE }).mount();
+    const wrapper = component.withProps({ value: TYPE.APPEARANCE }).mount();
 
     it("renders the correct icon", () => {
       expect(wrapper.find("MdEvent")).toHaveLength(1);

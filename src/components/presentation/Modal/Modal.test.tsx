@@ -1,10 +1,10 @@
 import * as React from "react";
 
-import ComponentTester from "../../../utilities/ComponentTester";
 import { filterMockCalls } from "../../../utilities/mocks";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import Modal from "./Modal";
 
-const component = new ComponentTester(Modal)
+const component = new WrapperWithIntl(Modal)
   .withDefaultProps({
     className: "TestModal",
     hasFocusRestriction: true,
@@ -23,130 +23,128 @@ describe("[presentation] <Modal />", () => {
   jest.spyOn(window, "removeEventListener");
 
   it("doesn't render anything when isOpen is false", () => {
-    const { wrapper } = component.withProps({ isOpen: false }).mount();
+    const wrapper = component.withProps({ isOpen: false }).mount();
 
     expect(wrapper.render().html()).toBeNull();
   });
 
   describe("when toggling the isOpen prop", () => {
-    let result: ReturnType<typeof component.mount>;
+    let wrapper: ReturnType<typeof component.mount>;
 
     beforeAll(() => {
       jest.clearAllMocks();
     });
 
     afterAll(() => {
-      result.wrapper.unmount();
+      wrapper.unmount();
     });
 
     it("mounts the component", () => {
-      result = component.mount();
+      wrapper = component.mount();
     });
 
     it("renders the modal", () => {
-      expect(result.wrapper.find(".Modal")).toHaveLength(1);
+      expect(wrapper.find(".Modal")).toHaveLength(1);
     });
 
     it("matches snapshot when open", () => {
-      expect(result.wrapper.render()).toMatchSnapshot();
+      expect(wrapper.render()).toMatchSnapshot();
     });
 
     it("renders the children in the body element", () => {
-      expect(
-        result.wrapper.find(".Modal--body .Modal--testContent")
-      ).toHaveLength(1);
+      expect(wrapper.find(".Modal--body .Modal--testContent")).toHaveLength(1);
     });
 
     it("sets the isOpen prop to false", () => {
-      result.wrapper.setProps({ isOpen: false });
+      wrapper.setProps({ isOpen: false });
     });
 
     it("doesn't render anything", () => {
-      expect(result.wrapper.render().html()).toBeNull();
+      expect(wrapper.render().html()).toBeNull();
     });
 
     it("sets the isOpen prop to true again", () => {
-      result.wrapper.setProps({ isOpen: true });
+      wrapper.setProps({ isOpen: true });
     });
 
     it("renders the modal", () => {
-      expect(result.wrapper.find(".Modal")).toHaveLength(1);
+      expect(wrapper.find(".Modal")).toHaveLength(1);
     });
 
     it("sets the isOpen prop to false", () => {
-      result.wrapper.setProps({ isOpen: false });
+      wrapper.setProps({ isOpen: false });
     });
   });
 
   describe("when interacting with the close button", () => {
-    let result: ReturnType<typeof component.mount>;
+    let wrapper: ReturnType<typeof component.mount>;
 
     beforeAll(() => {
       jest.clearAllMocks();
     });
 
     afterAll(() => {
-      result.wrapper.unmount();
+      wrapper.unmount();
     });
 
     it("mounts the component", () => {
-      result = component.mount();
+      wrapper = component.mount();
     });
 
     it("clicks the close button", () => {
-      result.wrapper.find("Button.Modal--closeButton").simulate("click");
+      wrapper.find("Button.Modal--closeButton").simulate("click");
     });
 
     it("calls the onClose prop", () => {
-      expect(result.props.onClose).toHaveBeenCalledTimes(1);
+      expect(component.props.onClose).toHaveBeenCalledTimes(1);
     });
   });
 
   describe("when interacting with the overlay", () => {
-    let result: ReturnType<typeof component.mount>;
+    let wrapper: ReturnType<typeof component.mount>;
 
     beforeAll(() => {
       jest.clearAllMocks();
     });
 
     afterAll(() => {
-      result.wrapper.unmount();
+      wrapper.unmount();
     });
 
     it("mounts the component", () => {
-      result = component.mount();
+      wrapper = component.mount();
     });
 
     it("clicks the overlay", () => {
-      result.wrapper.find(".Modal--overlay").simulate("click");
+      wrapper.find(".Modal--overlay").simulate("click");
     });
 
     it("calls the onClose prop", () => {
-      expect(result.props.onClose).toHaveBeenCalledTimes(1);
+      expect(component.props.onClose).toHaveBeenCalledTimes(1);
     });
 
     it("sets the hasOverlayClick prop to false", () => {
-      result.wrapper.setProps({ hasOverlayClick: false });
+      wrapper.setProps({ hasOverlayClick: false });
     });
 
     it("clicks the overlay", () => {
-      result.wrapper.find(".Modal--overlay").simulate("click");
+      wrapper.find(".Modal--overlay").simulate("click");
     });
 
     it("doesn't call the onClose prop", () => {
-      expect(result.props.onClose).toHaveBeenCalledTimes(1);
+      expect(component.props.onClose).toHaveBeenCalledTimes(1);
     });
   });
 
   describe("when interacting with the keyboard", () => {
-    let result: ReturnType<typeof component.mount>;
+    let wrapper: ReturnType<typeof component.mount>;
 
     beforeAll(() => {
       jest.clearAllMocks();
     });
 
     it("mounts the component", () => {
-      result = component
+      wrapper = component
         .withProps({
           onKeyDown: jest.fn()
         })
@@ -164,11 +162,11 @@ describe("[presentation] <Modal />", () => {
     });
 
     it("calls the onClose prop", () => {
-      expect(result.props.onClose).toHaveBeenCalledTimes(1);
+      expect(component.props.onClose).toHaveBeenCalledTimes(1);
     });
 
     it("calls the onKeyDown prop", () => {
-      expect(result.props.onKeyDown).toHaveBeenCalledTimes(1);
+      expect(component.props.onKeyDown).toHaveBeenCalledTimes(1);
     });
 
     it("presses a key other than Escape", () => {
@@ -176,15 +174,15 @@ describe("[presentation] <Modal />", () => {
     });
 
     it("doesn't call the onClose prop", () => {
-      expect(result.props.onClose).toHaveBeenCalledTimes(1);
+      expect(component.props.onClose).toHaveBeenCalledTimes(1);
     });
 
     it("calls the onKeyDown prop", () => {
-      expect(result.props.onKeyDown).toHaveBeenCalledTimes(2);
+      expect(component.props.onKeyDown).toHaveBeenCalledTimes(2);
     });
 
     it("sets the onKeyDown prop to be undefined", () => {
-      result.wrapper.setProps({ onKeyDown: undefined });
+      wrapper.setProps({ onKeyDown: undefined });
     });
 
     it("presses the Escape key", () => {
@@ -192,11 +190,11 @@ describe("[presentation] <Modal />", () => {
     });
 
     it("calls the onClose prop", () => {
-      expect(result.props.onClose).toHaveBeenCalledTimes(2);
+      expect(component.props.onClose).toHaveBeenCalledTimes(2);
     });
 
     it("sets the isOpen prop to false", () => {
-      result.wrapper.setProps({ isOpen: false });
+      wrapper.setProps({ isOpen: false });
     });
 
     it("unbinds keydown event handler", () => {
@@ -206,7 +204,7 @@ describe("[presentation] <Modal />", () => {
     });
 
     it("sets the isOpen prop to true", () => {
-      result.wrapper.setProps({ isOpen: true });
+      wrapper.setProps({ isOpen: true });
     });
 
     it("binds keydown event handler", () => {
@@ -216,7 +214,7 @@ describe("[presentation] <Modal />", () => {
     });
 
     it("unmounts component", () => {
-      result.wrapper.unmount();
+      wrapper.unmount();
     });
 
     it("unbinds keydown event handler", () => {
@@ -228,18 +226,18 @@ describe("[presentation] <Modal />", () => {
 
   describe("Focus management", () => {
     describe("when binding the focus event handler", () => {
-      let result: ReturnType<typeof component.mount>;
+      let wrapper: ReturnType<typeof component.mount>;
 
       beforeAll(() => {
         jest.clearAllMocks();
       });
 
       afterAll(() => {
-        result.wrapper.unmount();
+        wrapper.unmount();
       });
 
       it("mounts the component", () => {
-        result = component
+        wrapper = component
           .withProps({
             hasFocusRestriction: true
           })
@@ -253,7 +251,7 @@ describe("[presentation] <Modal />", () => {
       });
 
       it("sets the isOpen prop to false", () => {
-        result.wrapper.setProps({ isOpen: false });
+        wrapper.setProps({ isOpen: false });
       });
 
       it("unbinds focus event handler", () => {
@@ -263,7 +261,7 @@ describe("[presentation] <Modal />", () => {
       });
 
       it("sets the isOpen prop to true", () => {
-        result.wrapper.setProps({ isOpen: true });
+        wrapper.setProps({ isOpen: true });
       });
 
       it("binds focus event handler", () => {
@@ -273,7 +271,7 @@ describe("[presentation] <Modal />", () => {
       });
 
       it("sets the hasFocusRestriction prop to false", () => {
-        result.wrapper.setProps({ hasFocusRestriction: false });
+        wrapper.setProps({ hasFocusRestriction: false });
       });
 
       it("unbinds focus event handler", () => {
@@ -283,7 +281,7 @@ describe("[presentation] <Modal />", () => {
       });
 
       it("sets the isOpen prop to false", () => {
-        result.wrapper.setProps({ isOpen: false });
+        wrapper.setProps({ isOpen: false });
       });
 
       it("doesn't unbind the focus event handler", () => {
@@ -293,7 +291,7 @@ describe("[presentation] <Modal />", () => {
       });
 
       it("sets the isOpen prop to true", () => {
-        result.wrapper.setProps({ isOpen: true });
+        wrapper.setProps({ isOpen: true });
       });
 
       it("doesn't bind the focus event handler", () => {
@@ -303,7 +301,7 @@ describe("[presentation] <Modal />", () => {
       });
 
       it("sets the hasFocusRestriction prop to true", () => {
-        result.wrapper.setProps({ hasFocusRestriction: true });
+        wrapper.setProps({ hasFocusRestriction: true });
       });
 
       it("binds focus event handler", () => {
@@ -332,18 +330,18 @@ describe("[presentation] <Modal />", () => {
       });
 
       describe("when usePortal is false", () => {
-        let result: ReturnType<typeof component.mount>;
+        let wrapper: ReturnType<typeof component.mount>;
 
         beforeAll(() => {
           jest.clearAllMocks();
         });
 
         afterAll(() => {
-          result.wrapper.unmount();
+          wrapper.unmount();
         });
 
         it("mounts the component", () => {
-          result = component.mount();
+          wrapper = component.mount();
         });
 
         it("dispatches a focus event from the body element", () => {
@@ -363,7 +361,7 @@ describe("[presentation] <Modal />", () => {
         });
 
         it("dispatches a focus event from an input element within the modal", () => {
-          const modalInput = result.wrapper.find("#Modal--input").instance();
+          const modalInput = wrapper.find("#Modal--input").instance();
           const event = new FocusEvent("focus");
           Object.defineProperties(event, {
             stopPropagation: { value: stopPropagationMock },
@@ -382,18 +380,18 @@ describe("[presentation] <Modal />", () => {
       });
 
       describe("when usePortal is true", () => {
-        let result: ReturnType<typeof component.mount>;
+        let wrapper: ReturnType<typeof component.mount>;
 
         beforeAll(() => {
           jest.clearAllMocks();
         });
 
         afterAll(() => {
-          result.wrapper.unmount();
+          wrapper.unmount();
         });
 
         it("mounts the component", () => {
-          result = component
+          wrapper = component
             .withProps({
               usePortal: true
             })
@@ -417,7 +415,7 @@ describe("[presentation] <Modal />", () => {
         });
 
         it("dispatches a focus event from an input element within the modal", () => {
-          const modalInput = result.wrapper.find("#Modal--input").instance();
+          const modalInput = wrapper.find("#Modal--input").instance();
           const event = new FocusEvent("focus");
           Object.defineProperties(event, {
             stopPropagation: { value: stopPropagationMock },

@@ -1,12 +1,12 @@
 import { STATUS } from "../../../constants/appearance.constants";
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import AppearanceStatus from "./AppearanceStatus";
 
-const component = new ComponentTester(AppearanceStatus);
+const component = new WrapperWithIntl(AppearanceStatus);
 
 describe("[presentation] <AppearanceStatus />", () => {
   describe("when the value isn't CANCELLED or POSTPONED", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         value: STATUS.SCHEDULED
       })
@@ -18,7 +18,7 @@ describe("[presentation] <AppearanceStatus />", () => {
   });
 
   describe("when the value is CANCELLED", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         value: STATUS.CANCELLED
       })
@@ -30,7 +30,7 @@ describe("[presentation] <AppearanceStatus />", () => {
   });
 
   describe("when the value is POSTPONED", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         value: STATUS.POSTPONED
       })

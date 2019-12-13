@@ -2,8 +2,8 @@ import dayjs from "dayjs";
 
 import * as actions from "../../../actions/root.actions";
 import { appearance, newsArticle } from "../../../models/root.models";
-import ComponentTester from "../../../utilities/ComponentTester";
 import MockPageContext from "../../../utilities/MockPageContext";
+import WrapperWithRedux from "../../../utilities/WrapperWithRedux";
 import IndexRoute from "./IndexRoute";
 
 const upcomingAppearance = appearance({
@@ -26,7 +26,7 @@ const pastAppearance = appearance({
 });
 const newsItem = newsArticle({ slug: "news-1" });
 
-const component = new ComponentTester(IndexRoute, true);
+const component = new WrapperWithRedux(IndexRoute);
 
 describe("[routes] <IndexRoute />", () => {
   describe("getInitialProps", () => {
@@ -74,7 +74,7 @@ describe("[routes] <IndexRoute />", () => {
   });
 
   describe("when there are news articles in the store", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         news: {
           items: {
@@ -94,7 +94,7 @@ describe("[routes] <IndexRoute />", () => {
   });
 
   describe("when there are no news articles in the store", () => {
-    const { wrapper } = component.mount();
+    const wrapper = component.mount();
 
     it("doesn't have the hasNewsSection class on the container", () => {
       expect(wrapper.find(".Home").hasClass("hasNewsSection")).toBe(false);
@@ -106,7 +106,7 @@ describe("[routes] <IndexRoute />", () => {
   });
 
   describe("when there are upcoming appearances in the store", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         appearances: {
           items: {
@@ -129,7 +129,7 @@ describe("[routes] <IndexRoute />", () => {
   });
 
   describe("when there are no upcoming appearances in the store", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         appearances: {
           items: {

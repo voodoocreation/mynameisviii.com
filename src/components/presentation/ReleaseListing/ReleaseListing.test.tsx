@@ -1,8 +1,8 @@
 import { release } from "../../../models/root.models";
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import ReleaseListing from "./ReleaseListing";
 
-const component = new ComponentTester(ReleaseListing).withDefaultProps(
+const component = new WrapperWithIntl(ReleaseListing).withDefaultProps(
   release({
     artist: {
       name: "Artist Name",
@@ -37,7 +37,7 @@ const component = new ComponentTester(ReleaseListing).withDefaultProps(
 );
 
 describe("[presentation] <ReleaseListing />", () => {
-  const { props, wrapper } = component
+  const wrapper = component
     .withProps({
       onLoad: jest.fn()
     })
@@ -56,7 +56,7 @@ describe("[presentation] <ReleaseListing />", () => {
   });
 
   it("calls the onLoad prop", () => {
-    expect(props.onLoad).toHaveBeenCalledTimes(1);
+    expect(component.props.onLoad).toHaveBeenCalledTimes(1);
   });
 
   it("sets the onLoad prop to be undefined", () => {

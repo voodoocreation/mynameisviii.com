@@ -1,9 +1,9 @@
 import { PACKAGE_FORMAT } from "../../../constants/stem.constants";
 import { stem } from "../../../models/root.models";
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import StemListing from "./StemListing";
 
-const component = new ComponentTester(StemListing).withDefaultProps(
+const component = new WrapperWithIntl(StemListing).withDefaultProps(
   stem({
     audioFormat: "Audio format",
     createdAt: "2017-10-10T18:00:00",
@@ -17,7 +17,7 @@ const component = new ComponentTester(StemListing).withDefaultProps(
 );
 
 describe("[presentation] <StemListing />", () => {
-  const { props, wrapper } = component
+  const wrapper = component
     .withProps({
       onLoad: jest.fn()
     })
@@ -36,7 +36,7 @@ describe("[presentation] <StemListing />", () => {
   });
 
   it("calls the onLoad prop", () => {
-    expect(props.onLoad).toHaveBeenCalledTimes(1);
+    expect(component.props.onLoad).toHaveBeenCalledTimes(1);
   });
 
   it("sets the onLoad prop to be undefined", () => {

@@ -1,8 +1,8 @@
 import { gallery } from "../../../models/root.models";
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import GalleryListing from "./GalleryListing";
 
-const component = new ComponentTester(GalleryListing).withDefaultProps(
+const component = new WrapperWithIntl(GalleryListing).withDefaultProps(
   gallery({
     description: "Description",
     modifiedAt: "2017-10-10T18:00:00",
@@ -13,10 +13,11 @@ const component = new ComponentTester(GalleryListing).withDefaultProps(
 
 describe("[presentation] <GalleryListing />", () => {
   describe("when imageUrl is defined", () => {
-    const { props, wrapper } = component
+    const onLoad = jest.fn();
+    const wrapper = component
       .withProps({
         imageUrl: "Image URL",
-        onLoad: jest.fn()
+        onLoad
       })
       .mount();
 
@@ -25,7 +26,7 @@ describe("[presentation] <GalleryListing />", () => {
     });
 
     it("doesn't call onLoad prop instantly", () => {
-      expect(props.onLoad).toHaveBeenCalledTimes(0);
+      expect(onLoad).toHaveBeenCalledTimes(0);
     });
 
     it("loads the image", () => {
@@ -37,7 +38,7 @@ describe("[presentation] <GalleryListing />", () => {
     });
 
     it("calls onLoad prop", () => {
-      expect(props.onLoad).toHaveBeenCalledTimes(1);
+      expect(onLoad).toHaveBeenCalledTimes(1);
     });
 
     it("matches snapshot", () => {
@@ -46,7 +47,7 @@ describe("[presentation] <GalleryListing />", () => {
   });
 
   describe("when imageUrl isn't defined", () => {
-    const { wrapper } = component.withProps({ imageUrl: undefined }).mount();
+    const wrapper = component.withProps({ imageUrl: undefined }).mount();
 
     it("renders with isRendered class instantly", () => {
       expect(wrapper.find(".isRendered")).toHaveLength(1);

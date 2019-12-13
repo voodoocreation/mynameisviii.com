@@ -1,15 +1,15 @@
 import * as React from "react";
 
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import Carousel from "./Carousel";
 
-const component = new ComponentTester(Carousel).withDefaultProps({
+const component = new WrapperWithIntl(Carousel).withDefaultProps({
   onSlideChange: jest.fn()
 });
 
 describe("[presentation] <Carousel />", () => {
   describe("when there are several children", () => {
-    const { props, wrapper } = component
+    const wrapper = component
       .withChildren([
         <div key="slide-1" className="Slide" />,
         <div key="slide-2" className="Slide" />,
@@ -34,8 +34,8 @@ describe("[presentation] <Carousel />", () => {
     });
 
     it("calls onSlideChange prop with expected payload", () => {
-      expect(props.onSlideChange).toHaveBeenCalledTimes(1);
-      expect(props.onSlideChange).toHaveBeenCalledWith(1);
+      expect(component.props.onSlideChange).toHaveBeenCalledTimes(1);
+      expect(component.props.onSlideChange).toHaveBeenCalledWith(1);
     });
 
     it("changes the current slide", () => {
@@ -74,7 +74,7 @@ describe("[presentation] <Carousel />", () => {
   });
 
   describe("when there's only one child", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withChildren([<div key="slide-1" className="Slide" />])
       .render();
 

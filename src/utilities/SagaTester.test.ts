@@ -1,4 +1,4 @@
-import merge from "lodash.merge";
+import merge from "ts-deepmerge";
 
 import { failure, success } from "../models/response.models";
 import { initialState } from "../reducers/root.reducers";

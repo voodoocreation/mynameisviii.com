@@ -1,7 +1,7 @@
 import * as actions from "../../../actions/root.actions";
 import { newsArticle } from "../../../models/root.models";
-import ComponentTester from "../../../utilities/ComponentTester";
 import MockPageContext from "../../../utilities/MockPageContext";
+import WrapperWithRedux from "../../../utilities/WrapperWithRedux";
 import NewsArticleRoute from "./NewsArticleRoute";
 
 const item = newsArticle({ slug: "test-1" });
@@ -15,7 +15,7 @@ const defaultState = {
   }
 };
 
-const component = new ComponentTester(NewsArticleRoute, true);
+const component = new WrapperWithRedux(NewsArticleRoute);
 
 describe("[routes] <NewsArticleRoute />", () => {
   describe("getInitialProps", () => {
@@ -74,13 +74,13 @@ describe("[routes] <NewsArticleRoute />", () => {
   });
 
   it("matches snapshot", () => {
-    const { wrapper } = component.withReduxState(defaultState).mount();
+    const wrapper = component.withReduxState(defaultState).mount();
 
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   it("renders a loader when isLoading is true", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         ...defaultState,
         news: { isLoading: true }
@@ -91,7 +91,7 @@ describe("[routes] <NewsArticleRoute />", () => {
   });
 
   it("doesn't render anything when no article exists", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         news: {
           currentSlug: undefined,

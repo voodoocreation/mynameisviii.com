@@ -1,7 +1,7 @@
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import Button from "./Button";
 
-const component = new ComponentTester(Button)
+const component = new WrapperWithIntl(Button)
   .withDefaultProps({
     onClick: jest.fn()
   })
@@ -9,7 +9,7 @@ const component = new ComponentTester(Button)
 
 describe("[presentation] <Button />", () => {
   describe("when rendering with default props", () => {
-    const { props, wrapper } = component.mount();
+    const wrapper = component.mount();
 
     beforeAll(() => {
       jest.clearAllMocks();
@@ -20,7 +20,7 @@ describe("[presentation] <Button />", () => {
     });
 
     it("calls the onClick prop", () => {
-      expect(props.onClick).toHaveBeenCalledTimes(1);
+      expect(component.props.onClick).toHaveBeenCalledTimes(1);
     });
 
     it("matches snapshot", () => {
@@ -29,7 +29,7 @@ describe("[presentation] <Button />", () => {
   });
 
   describe("when isLoading is true", () => {
-    const { props, wrapper } = component
+    const wrapper = component
       .withProps({
         isLoading: true
       })
@@ -52,7 +52,7 @@ describe("[presentation] <Button />", () => {
     });
 
     it("doesn't call the onClick prop", () => {
-      expect(props.onClick).toHaveBeenCalledTimes(0);
+      expect(component.props.onClick).toHaveBeenCalledTimes(0);
     });
 
     it("matches snapshot", () => {

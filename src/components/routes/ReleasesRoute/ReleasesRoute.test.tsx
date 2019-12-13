@@ -1,13 +1,13 @@
 import * as actions from "../../../actions/root.actions";
 import { release } from "../../../models/root.models";
-import ComponentTester from "../../../utilities/ComponentTester";
 import MockPageContext from "../../../utilities/MockPageContext";
+import WrapperWithRedux from "../../../utilities/WrapperWithRedux";
 import ReleasesRoute from "./ReleasesRoute";
 
 const item1 = release({ slug: "test-1", images: [{ imageUrl: "Image URL" }] });
 const item2 = release({ slug: "test-2", images: [{ imageUrl: "Image URL" }] });
 
-const component = new ComponentTester(ReleasesRoute, true);
+const component = new WrapperWithRedux(ReleasesRoute);
 
 describe("[routes] <ReleasesRoute />", () => {
   describe("getInitialProps", () => {
@@ -72,7 +72,7 @@ describe("[routes] <ReleasesRoute />", () => {
   });
 
   describe("when all data is in the store", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         releases: {
           hasAllItems: true,
@@ -98,7 +98,7 @@ describe("[routes] <ReleasesRoute />", () => {
   });
 
   describe("when no data is in the store", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         releases: {
           hasAllItems: true,
@@ -117,7 +117,7 @@ describe("[routes] <ReleasesRoute />", () => {
   });
 
   it("renders the offline notice when there's an error", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         releases: {
           hasError: true
@@ -129,7 +129,7 @@ describe("[routes] <ReleasesRoute />", () => {
   });
 
   it("renders with the 'load more' button when hasAllItems is false", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         releases: {
           hasAllItems: false,
@@ -144,7 +144,7 @@ describe("[routes] <ReleasesRoute />", () => {
   });
 
   it("renders without the 'load more' button when hasAllItems is true", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         releases: {
           hasAllItems: true
@@ -156,7 +156,7 @@ describe("[routes] <ReleasesRoute />", () => {
   });
 
   it("loads more listings when the 'load more' button is clicked", () => {
-    const { wrapper } = component.mount();
+    const wrapper = component.mount();
 
     wrapper.find("LoadButton").simulate("click");
 
@@ -166,7 +166,7 @@ describe("[routes] <ReleasesRoute />", () => {
   });
 
   it("updates `loadedListings` state after a listing has loaded", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         releases: {
           items: {

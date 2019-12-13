@@ -1,8 +1,8 @@
 import { offer } from "../../../models/root.models";
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import SaleListing from "./SaleListing";
 
-const component = new ComponentTester(SaleListing).withDefaultProps(
+const component = new WrapperWithIntl(SaleListing).withDefaultProps(
   offer({
     name: "Sale",
     price: 99.99,
@@ -12,7 +12,7 @@ const component = new ComponentTester(SaleListing).withDefaultProps(
 
 describe("[presentation] <SaleListing />", () => {
   describe("when url isn't defined", () => {
-    const { wrapper } = component.render();
+    const wrapper = component.render();
 
     it("doesn't render the website meta item", () => {
       expect(wrapper.find(".SaleListing--website")).toHaveLength(0);
@@ -24,7 +24,7 @@ describe("[presentation] <SaleListing />", () => {
   });
 
   describe("when url is defined", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         url: "https://ticket.com/id"
       })

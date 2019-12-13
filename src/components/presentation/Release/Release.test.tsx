@@ -5,10 +5,10 @@ import {
   releasePlatformLink,
   releaseTrack
 } from "../../../models/root.models";
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import Release from "./Release";
 
-const component = new ComponentTester(Release).withDefaultProps(
+const component = new WrapperWithIntl(Release).withDefaultProps(
   release({
     artist: {
       name: "Artist Name",
@@ -44,7 +44,7 @@ const component = new ComponentTester(Release).withDefaultProps(
 
 describe("[presentation] <Release />", () => {
   describe("when the minimum props are defined, with only one disc", () => {
-    const { wrapper } = component.render();
+    const wrapper = component.render();
 
     it("doesn't render the disc number heading", () => {
       expect(wrapper.find(".Release--tracklist h3")).toHaveLength(0);
@@ -64,7 +64,7 @@ describe("[presentation] <Release />", () => {
   });
 
   describe("when all props are defined, with multiple discs", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         buyList: [
           releasePlatformLink({ platform: PLATFORM.ITUNES, url: "URL" })
@@ -103,13 +103,14 @@ describe("[presentation] <Release />", () => {
   });
 
   describe("when interacting with the carousel", () => {
-    const { props, wrapper } = component
+    const onCarouselSlideChange = jest.fn();
+    const wrapper = component
       .withProps({
         images: [
           image({ imageUrl: "Image URL", title: "Image 1" }),
           image({ imageUrl: "Image URL", title: "Image 2" })
         ],
-        onCarouselSlideChange: jest.fn()
+        onCarouselSlideChange
       })
       .mount();
 
@@ -121,8 +122,8 @@ describe("[presentation] <Release />", () => {
     });
 
     it("calls the onCarouselSlideChange prop with the expected payload", () => {
-      expect(props.onCarouselSlideChange).toHaveBeenCalledTimes(1);
-      expect(props.onCarouselSlideChange).toHaveBeenCalledWith(1);
+      expect(onCarouselSlideChange).toHaveBeenCalledTimes(1);
+      expect(onCarouselSlideChange).toHaveBeenCalledWith(1);
     });
 
     it("sets the onCarouselSlideChange prop to be undefined", () => {

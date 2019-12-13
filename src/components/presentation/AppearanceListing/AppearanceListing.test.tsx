@@ -8,10 +8,10 @@ import {
   offer,
   organization
 } from "../../../models/root.models";
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import AppearanceListing from "./AppearanceListing";
 
-const component = new ComponentTester(AppearanceListing).withDefaultProps(
+const component = new WrapperWithIntl(AppearanceListing).withDefaultProps(
   appearance({
     acts: [
       {
@@ -48,7 +48,7 @@ const component = new ComponentTester(AppearanceListing).withDefaultProps(
 
 describe("[presentation] <AppearanceListing />", () => {
   describe("when only the required props are defined", () => {
-    const { wrapper } = component.render();
+    const wrapper = component.render();
 
     it("doesn't have the isCondensed class", () => {
       expect(wrapper.hasClass("isCondensed")).toBe(false);
@@ -68,7 +68,7 @@ describe("[presentation] <AppearanceListing />", () => {
   });
 
   describe("when all props are defined", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         audience: "18+",
         images: [
@@ -123,7 +123,7 @@ describe("[presentation] <AppearanceListing />", () => {
   });
 
   describe("when there are no sales", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         sales: []
       })
@@ -135,7 +135,7 @@ describe("[presentation] <AppearanceListing />", () => {
   });
 
   describe("when there is only one sale", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         sales: [
           offer({
@@ -152,7 +152,7 @@ describe("[presentation] <AppearanceListing />", () => {
   });
 
   describe("when there are two sales", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         sales: [
           offer({
@@ -173,7 +173,7 @@ describe("[presentation] <AppearanceListing />", () => {
   });
 
   describe("when there are three sales", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         sales: [
           offer({
@@ -198,7 +198,7 @@ describe("[presentation] <AppearanceListing />", () => {
   });
 
   describe("when cancelled", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         sales: [offer()],
         status: STATUS.CANCELLED
@@ -219,7 +219,7 @@ describe("[presentation] <AppearanceListing />", () => {
   });
 
   describe("when postponed", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         sales: [offer()],
         status: STATUS.POSTPONED
@@ -241,7 +241,7 @@ describe("[presentation] <AppearanceListing />", () => {
 
   describe("when the image loads", () => {
     describe("when the onLoad prop isn't defined", () => {
-      const { wrapper } = component.mount();
+      const wrapper = component.mount();
 
       it("triggers image load", () => {
         wrapper.find("img").simulate("load");
@@ -253,7 +253,7 @@ describe("[presentation] <AppearanceListing />", () => {
     });
 
     describe("when the onLoad prop is defined", () => {
-      const { props, wrapper } = component
+      const wrapper = component
         .withProps({
           onLoad: jest.fn()
         })
@@ -264,7 +264,7 @@ describe("[presentation] <AppearanceListing />", () => {
       });
 
       it("calls the onLoad prop", () => {
-        expect(props.onLoad).toHaveBeenCalled();
+        expect(component.props.onLoad).toHaveBeenCalled();
       });
 
       it("has the isRendered class", () => {

@@ -9,10 +9,10 @@ import {
   offer,
   organization
 } from "../../../models/root.models";
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import Appearance from "./Appearance";
 
-const component = new ComponentTester(Appearance).withDefaultProps(
+const component = new WrapperWithIntl(Appearance).withDefaultProps(
   appearance({
     acts: [
       {
@@ -49,7 +49,7 @@ const component = new ComponentTester(Appearance).withDefaultProps(
 
 describe("[presentation] <Appearance />", () => {
   describe("when only the required props are defined", () => {
-    const { wrapper } = component.render();
+    const wrapper = component.render();
 
     it("doesn't render the audience meta item", () => {
       expect(wrapper.find(".Appearance--audience")).toHaveLength(0);
@@ -81,7 +81,7 @@ describe("[presentation] <Appearance />", () => {
   });
 
   describe("when all props are defined", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         audience: "18+",
         images: [
@@ -140,7 +140,7 @@ describe("[presentation] <Appearance />", () => {
   });
 
   describe("when cancelled", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         sales: [offer()],
         status: STATUS.CANCELLED
@@ -165,7 +165,7 @@ describe("[presentation] <Appearance />", () => {
   });
 
   describe("when postponed", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         sales: [offer()],
         status: STATUS.POSTPONED
@@ -190,7 +190,7 @@ describe("[presentation] <Appearance />", () => {
   });
 
   describe("when finishingAt is in the past", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         finishingAt: dayjs()
           .subtract(1, "day")
@@ -212,7 +212,7 @@ describe("[presentation] <Appearance />", () => {
   });
 
   describe("when interacting with the gallery", () => {
-    const { wrapper, props } = component
+    const wrapper = component
       .withProps({
         images: [image()],
         onGalleryInteraction: jest.fn()
@@ -225,7 +225,7 @@ describe("[presentation] <Appearance />", () => {
     });
 
     it("calls the onGalleryInteraction prop", () => {
-      expect(props.onGalleryInteraction).toHaveBeenCalledTimes(1);
+      expect(component.props.onGalleryInteraction).toHaveBeenCalledTimes(1);
     });
 
     it("sets the onGalleryInteractionProp to be undefined", () => {

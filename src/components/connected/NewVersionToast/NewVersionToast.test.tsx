@@ -1,12 +1,11 @@
-import ComponentTester from "../../../utilities/ComponentTester";
-
+import WrapperWithRedux from "../../../utilities/WrapperWithRedux";
 import NewVersionToast from "./NewVersionToast";
 
-const component = new ComponentTester(NewVersionToast, true);
+const component = new WrapperWithRedux(NewVersionToast);
 
 describe("[connected] <NewVersionToast />", () => {
   describe("when there's no new version available", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         app: {
           hasNewVersion: false
@@ -20,7 +19,7 @@ describe("[connected] <NewVersionToast />", () => {
   });
 
   describe("when there's a new version available", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         app: {
           hasNewVersion: true

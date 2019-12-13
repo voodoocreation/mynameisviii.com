@@ -1,7 +1,7 @@
 import * as actions from "../../../actions/root.actions";
 import { release } from "../../../models/root.models";
-import ComponentTester from "../../../utilities/ComponentTester";
 import MockPageContext from "../../../utilities/MockPageContext";
+import WrapperWithRedux from "../../../utilities/WrapperWithRedux";
 import ReleaseRoute from "./ReleaseRoute";
 
 const item = release({
@@ -19,7 +19,7 @@ const defaultState = {
   }
 };
 
-const component = new ComponentTester(ReleaseRoute, true);
+const component = new WrapperWithRedux(ReleaseRoute);
 
 describe("[routes] <ReleaseRoute />", () => {
   describe("getInitialProps", () => {
@@ -74,13 +74,13 @@ describe("[routes] <ReleaseRoute />", () => {
   });
 
   it("matches snapshot", () => {
-    const { wrapper } = component.withReduxState(defaultState).mount();
+    const wrapper = component.withReduxState(defaultState).mount();
 
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   it("renders a loader when isLoading is true", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         ...defaultState,
         releases: { isLoading: true }
@@ -91,7 +91,7 @@ describe("[routes] <ReleaseRoute />", () => {
   });
 
   it("doesn't render anything when no release exists", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         news: {
           currentSlug: undefined,
@@ -105,7 +105,7 @@ describe("[routes] <ReleaseRoute />", () => {
   });
 
   it("tracks carousel interactions correctly", () => {
-    const { wrapper } = component.withReduxState(defaultState).mount();
+    const wrapper = component.withReduxState(defaultState).mount();
 
     wrapper
       .find(".Carousel--pagination--page")

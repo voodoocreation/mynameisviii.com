@@ -1,7 +1,7 @@
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import Link from "./Link";
 
-const component = new ComponentTester(Link)
+const component = new WrapperWithIntl(Link)
   .withDefaultProps({
     router: {
       components: {
@@ -13,7 +13,7 @@ const component = new ComponentTester(Link)
 
 describe("[presentation] <Link />", () => {
   describe("when the router is available and route is defined", () => {
-    const { wrapper } = component.withProps({ route: "/" }).mount();
+    const wrapper = component.withProps({ route: "/" }).mount();
 
     it("renders with LinkRoutes", () => {
       expect(wrapper.find("LinkRoutes")).toHaveLength(1);
@@ -33,7 +33,7 @@ describe("[presentation] <Link />", () => {
   });
 
   describe("when the router is available and href is defined", () => {
-    const { wrapper } = component.withProps({ href: "/" }).mount();
+    const wrapper = component.withProps({ href: "/" }).mount();
 
     it("doesn't render with LinkRoutes", () => {
       expect(wrapper.find("LinkRoutes")).toHaveLength(0);
@@ -53,7 +53,7 @@ describe("[presentation] <Link />", () => {
   });
 
   describe("when the router is unavailable and href is defined", () => {
-    const { props, wrapper } = component
+    const wrapper = component
       .withProps({
         href: "/",
         router: null
@@ -73,7 +73,7 @@ describe("[presentation] <Link />", () => {
     });
 
     it("<a> href is the href value", () => {
-      expect(wrapper.find("a").prop("href")).toBe(props.href);
+      expect(wrapper.find("a").prop("href")).toBe("/");
     });
 
     it("matches snapshot", () => {
@@ -82,7 +82,7 @@ describe("[presentation] <Link />", () => {
   });
 
   describe("when isExternal is true", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         isExternal: true,
         route: "/",
@@ -103,7 +103,7 @@ describe("[presentation] <Link />", () => {
   });
 
   describe("when both href and route are undefined", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         href: undefined,
         route: undefined

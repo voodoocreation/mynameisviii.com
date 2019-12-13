@@ -1,12 +1,12 @@
 import messages from "../../../locales/en-NZ";
-import ComponentTester from "../../../utilities/ComponentTester";
 import { createMockElement, findMockCall } from "../../../utilities/mocks";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import LoadButton from "./LoadButton";
 
 const screenWidth = 1920;
 const screenHeight = 1080;
 
-const component = new ComponentTester(LoadButton).withDefaultProps({
+const component = new WrapperWithIntl(LoadButton).withDefaultProps({
   className: "TestLoadButton",
   onLoad: jest.fn()
 });
@@ -31,12 +31,12 @@ describe("[presentation] <LoadButton />", () => {
   });
 
   describe("when mounting on the client and isScrollLoadEnabled is false", () => {
-    let result: ReturnType<typeof component.mount>;
+    let wrapper: ReturnType<typeof component.mount>;
 
     beforeAll(() => {
       jest.clearAllMocks();
 
-      result = component
+      wrapper = component
         .withProps({
           isScrollLoadEnabled: false
         })
@@ -48,19 +48,19 @@ describe("[presentation] <LoadButton />", () => {
     });
 
     it("doesn't call the onLoad prop", () => {
-      expect(result.props.onLoad).toHaveBeenCalledTimes(0);
+      expect(component.props.onLoad).toHaveBeenCalledTimes(0);
     });
 
     it("clicks the button", () => {
-      result.wrapper.simulate("click");
+      wrapper.simulate("click");
     });
 
     it("calls the onLoad prop", () => {
-      expect(result.props.onLoad).toHaveBeenCalledTimes(1);
+      expect(component.props.onLoad).toHaveBeenCalledTimes(1);
     });
 
     it("unmounts component", () => {
-      result.wrapper.unmount();
+      wrapper.unmount();
     });
 
     it("doesn't unbind scroll event listener", () => {
@@ -71,12 +71,12 @@ describe("[presentation] <LoadButton />", () => {
   });
 
   describe("when mounting on the client and isScrollLoadEnabled is true", () => {
-    let result: ReturnType<typeof component.mount>;
+    let wrapper: ReturnType<typeof component.mount>;
 
     beforeAll(() => {
       jest.clearAllMocks();
 
-      result = component
+      wrapper = component
         .withProps({
           isScrollLoadEnabled: true,
           triggerDistance: 200
@@ -89,7 +89,7 @@ describe("[presentation] <LoadButton />", () => {
     });
 
     it("calls the onLoad prop instantly", () => {
-      expect(result.props.onLoad).toHaveBeenCalledTimes(1);
+      expect(component.props.onLoad).toHaveBeenCalledTimes(1);
     });
 
     it("clears mocks", () => {
@@ -97,13 +97,13 @@ describe("[presentation] <LoadButton />", () => {
     });
 
     it("simulate positioning the button off the screen", () => {
-      result.wrapper
+      wrapper
         .find("LoadButton")
         // @ts-ignore-next-line
         .instance().buttonRef.current = createMockElement(
         100,
         100,
-        screenHeight + result.props.triggerDistance,
+        screenHeight + component.props.triggerDistance!,
         0
       );
     });
@@ -113,17 +113,17 @@ describe("[presentation] <LoadButton />", () => {
     });
 
     it("doesn't call the onLoad prop", () => {
-      expect(result.props.onLoad).toHaveBeenCalledTimes(0);
+      expect(component.props.onLoad).toHaveBeenCalledTimes(0);
     });
 
     it("simulate positioning the button within the trigger distance of the screen", () => {
-      result.wrapper
+      wrapper
         .find("LoadButton")
         // @ts-ignore-next-line
         .instance().buttonRef.current = createMockElement(
         100,
         100,
-        screenHeight + result.props.triggerDistance - 1,
+        screenHeight + component.props.triggerDistance! - 1,
         0
       );
     });
@@ -133,7 +133,7 @@ describe("[presentation] <LoadButton />", () => {
     });
 
     it("calls the onLoad prop", () => {
-      expect(result.props.onLoad).toHaveBeenCalledTimes(1);
+      expect(component.props.onLoad).toHaveBeenCalledTimes(1);
     });
 
     it("clears mocks", () => {
@@ -141,7 +141,7 @@ describe("[presentation] <LoadButton />", () => {
     });
 
     it("updates the props to set isScrollLoadEnabled to false", () => {
-      result.wrapper.setProps({
+      wrapper.setProps({
         isScrollLoadEnabled: false
       });
     });
@@ -151,7 +151,7 @@ describe("[presentation] <LoadButton />", () => {
     });
 
     it("updates the props to set isScrollLoadEnabled to true again", () => {
-      result.wrapper.setProps({
+      wrapper.setProps({
         isScrollLoadEnabled: true
       });
     });
@@ -161,7 +161,7 @@ describe("[presentation] <LoadButton />", () => {
     });
 
     it("calls the onLoad prop", () => {
-      expect(result.props.onLoad).toHaveBeenCalledTimes(1);
+      expect(component.props.onLoad).toHaveBeenCalledTimes(1);
     });
 
     it("clears mocks", () => {
@@ -169,7 +169,7 @@ describe("[presentation] <LoadButton />", () => {
     });
 
     it("unmounts component", () => {
-      result.wrapper.unmount();
+      wrapper.unmount();
     });
 
     it("unbinds scroll event listener", () => {
@@ -178,7 +178,7 @@ describe("[presentation] <LoadButton />", () => {
   });
 
   describe("when mounting on the server and isScrollLoadEnabled is true", () => {
-    let result: ReturnType<typeof component.mount>;
+    let wrapper: ReturnType<typeof component.mount>;
 
     beforeAll(() => {
       jest.clearAllMocks();
@@ -188,7 +188,7 @@ describe("[presentation] <LoadButton />", () => {
         writable: true
       });
 
-      result = component
+      wrapper = component
         .withProps({
           isScrollLoadEnabled: true,
           triggerDistance: 200
@@ -201,11 +201,11 @@ describe("[presentation] <LoadButton />", () => {
     });
 
     it("doesn't call the onLoad prop instantly", () => {
-      expect(result.props.onLoad).toHaveBeenCalledTimes(0);
+      expect(component.props.onLoad).toHaveBeenCalledTimes(0);
     });
 
     it("updates the props to set isScrollLoadEnabled to false", () => {
-      result.wrapper.setProps({
+      wrapper.setProps({
         isScrollLoadEnabled: false
       });
     });
@@ -217,7 +217,7 @@ describe("[presentation] <LoadButton />", () => {
     });
 
     it("updates the props to set isScrollLoadEnabled to true again", () => {
-      result.wrapper.setProps({
+      wrapper.setProps({
         isScrollLoadEnabled: true
       });
     });
@@ -228,13 +228,13 @@ describe("[presentation] <LoadButton />", () => {
   });
 
   it("renders children within the button when they're defined", () => {
-    const { wrapper } = component.withChildren("Load button").render();
+    const wrapper = component.withChildren("Load button").render();
 
     expect(wrapper.text()).toBe("Load button");
   });
 
   it("renders LOAD_MORE within the button when no children are defined and hasError is false", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         hasError: false,
         isLoading: false
@@ -245,7 +245,7 @@ describe("[presentation] <LoadButton />", () => {
   });
 
   it("renders TRY_AGAIN within the button when no children are defined and hasError is true", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         hasError: true,
         isLoading: false
@@ -256,7 +256,7 @@ describe("[presentation] <LoadButton />", () => {
   });
 
   it("renders a Loader when isLoading is true", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         isLoading: true
       })

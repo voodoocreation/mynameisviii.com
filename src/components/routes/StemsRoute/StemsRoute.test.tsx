@@ -1,13 +1,13 @@
 import * as actions from "../../../actions/root.actions";
 import { stem } from "../../../models/root.models";
-import ComponentTester from "../../../utilities/ComponentTester";
 import MockPageContext from "../../../utilities/MockPageContext";
+import WrapperWithRedux from "../../../utilities/WrapperWithRedux";
 import StemsRoute from "./StemsRoute";
 
 const item1 = stem({ slug: "test-1" });
 const item2 = stem({ slug: "test-2" });
 
-const component = new ComponentTester(StemsRoute, true);
+const component = new WrapperWithRedux(StemsRoute);
 
 describe("[routes] <StemsRoute />", () => {
   describe("getInitialProps", () => {
@@ -72,7 +72,7 @@ describe("[routes] <StemsRoute />", () => {
   });
 
   describe("when all data is in the store", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         stems: {
           hasAllItems: true,
@@ -98,7 +98,7 @@ describe("[routes] <StemsRoute />", () => {
   });
 
   describe("when no data is in the store", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         stems: {
           hasAllItems: true,
@@ -117,7 +117,7 @@ describe("[routes] <StemsRoute />", () => {
   });
 
   it("renders the offline notice when there's an error", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         stems: {
           hasError: true
@@ -129,7 +129,7 @@ describe("[routes] <StemsRoute />", () => {
   });
 
   it("renders with the 'load more' button when hasAllItems is false", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         stems: {
           hasAllItems: false,
@@ -144,7 +144,7 @@ describe("[routes] <StemsRoute />", () => {
   });
 
   it("renders without the 'load more' button when hasAllItems is true", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         stems: {
           hasAllItems: true
@@ -156,7 +156,7 @@ describe("[routes] <StemsRoute />", () => {
   });
 
   it("loads more listings when the 'load more' button is clicked", () => {
-    const { wrapper } = component.mount();
+    const wrapper = component.mount();
 
     wrapper.find("LoadButton").simulate("click");
 
@@ -164,7 +164,7 @@ describe("[routes] <StemsRoute />", () => {
   });
 
   it("updates `loadedListings` state after a listing has loaded", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         stems: {
           items: {

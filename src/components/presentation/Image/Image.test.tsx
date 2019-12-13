@@ -1,7 +1,7 @@
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import Image from "./Image";
 
-const component = new ComponentTester(Image);
+const component = new WrapperWithIntl(Image);
 
 const defaultProps = {
   alt: "Alt",
@@ -17,7 +17,7 @@ describe("[presentation] <Image />", () => {
   jest.useFakeTimers();
 
   it("doesn't render anything when src isn't defined", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         ...defaultProps,
         src: undefined
@@ -28,7 +28,7 @@ describe("[presentation] <Image />", () => {
   });
 
   it("doesn't render the caption when it's not defined", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         ...defaultProps,
         caption: undefined
@@ -39,7 +39,7 @@ describe("[presentation] <Image />", () => {
   });
 
   describe("when all props are defined", () => {
-    const { props, wrapper } = component.withProps(defaultProps).mount();
+    const wrapper = component.withProps(defaultProps).mount();
 
     it("renders with isLoading class initially", () => {
       expect(wrapper.find(".isLoading")).toHaveLength(1);
@@ -70,7 +70,7 @@ describe("[presentation] <Image />", () => {
     });
 
     it("calls the onLoad prop", () => {
-      expect(props.onLoad).toHaveBeenCalled();
+      expect(component.props.onLoad).toHaveBeenCalled();
     });
 
     it("renders the caption", () => {
@@ -89,7 +89,7 @@ describe("[presentation] <Image />", () => {
     });
 
     it("calls the onClick prop", () => {
-      expect(props.onClick).toHaveBeenCalledTimes(1);
+      expect(component.props.onClick).toHaveBeenCalledTimes(1);
     });
 
     it("presses enter on the image", () => {
@@ -97,7 +97,7 @@ describe("[presentation] <Image />", () => {
     });
 
     it("calls the onClick prop again", () => {
-      expect(props.onClick).toHaveBeenCalledTimes(2);
+      expect(component.props.onClick).toHaveBeenCalledTimes(2);
     });
 
     it("presses a different key on the image", () => {
@@ -105,7 +105,7 @@ describe("[presentation] <Image />", () => {
     });
 
     it("doesn't call the onClick prop again", () => {
-      expect(props.onClick).toHaveBeenCalledTimes(2);
+      expect(component.props.onClick).toHaveBeenCalledTimes(2);
     });
 
     it("matches snapshot", () => {
@@ -120,7 +120,7 @@ describe("[presentation] <Image />", () => {
       writable: true
     });
 
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         ...defaultProps,
         onLoad: undefined
@@ -146,7 +146,7 @@ describe("[presentation] <Image />", () => {
   });
 
   describe("when onClick isn't defined", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         ...defaultProps,
         onClick: undefined

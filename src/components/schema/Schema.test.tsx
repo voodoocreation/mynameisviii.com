@@ -1,27 +1,22 @@
-import { render } from "enzyme";
-import * as React from "react";
+import { Wrapper } from "react-test-wrapper";
 
 import Schema from "./Schema";
 
-const setup = (fn: any, fromTestProps?: any) => {
-  const props = {
-    ...fromTestProps
-  };
-
-  return {
-    actual: fn(<Schema {...props} />),
-    props
-  };
-};
+const component = new Wrapper(Schema);
 
 describe("[schema] <Schema />", () => {
   it("renders correctly", () => {
-    const { actual } = setup(render);
-    expect(actual).toMatchSnapshot();
+    const wrapper = component.render();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("renders correctly when isPretty=true", () => {
-    const { actual } = setup(render, { isPretty: true });
-    expect(actual).toMatchSnapshot();
+    const wrapper = component
+      .withProps({
+        isPretty: true
+      })
+      .render();
+
+    expect(wrapper).toMatchSnapshot();
   });
 });

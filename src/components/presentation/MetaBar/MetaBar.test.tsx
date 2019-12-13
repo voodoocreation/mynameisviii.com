@@ -1,19 +1,19 @@
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import MetaBar from "./MetaBar";
 
-const component = new ComponentTester(MetaBar).withDefaultProps({
+const component = new WrapperWithIntl(MetaBar).withDefaultProps({
   className: "TestMetaBar"
 });
 
 describe("[presentation] <MetaBar />", () => {
   it("doesn't render anything when there are no children", () => {
-    const { wrapper } = component.render();
+    const wrapper = component.render();
 
     expect(wrapper.html()).toBeNull();
   });
 
   describe("when children are defined", () => {
-    const { wrapper } = component.withChildren("Child meta").render();
+    const wrapper = component.withChildren("Child meta").render();
 
     it("renders the children within the container", () => {
       expect(wrapper.html()).toBe("Child meta");

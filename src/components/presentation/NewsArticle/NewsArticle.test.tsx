@@ -1,8 +1,8 @@
 import { newsArticle } from "../../../models/root.models";
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import NewsArticle from "./NewsArticle";
 
-const component = new ComponentTester(NewsArticle).withDefaultProps(
+const component = new WrapperWithIntl(NewsArticle).withDefaultProps(
   newsArticle({
     author: "Author",
     content: "<p>Content</p>",
@@ -16,7 +16,7 @@ const component = new ComponentTester(NewsArticle).withDefaultProps(
 
 describe("[presentation] <NewsArticle />", () => {
   describe("when no action is defined", () => {
-    const { wrapper } = component.mount();
+    const wrapper = component.mount();
 
     it("doesn't render the action", () => {
       expect(wrapper.find(".NewsArticle--action Link")).toHaveLength(0);
@@ -28,7 +28,7 @@ describe("[presentation] <NewsArticle />", () => {
   });
 
   describe("when the action is defined, with a route", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         action: {
           route: "/",
@@ -49,7 +49,7 @@ describe("[presentation] <NewsArticle />", () => {
   });
 
   describe("when the action is defined, with a url", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         action: {
           text: "Action",
@@ -70,7 +70,7 @@ describe("[presentation] <NewsArticle />", () => {
   });
 
   describe("when loading the image", () => {
-    const { wrapper } = component.mount();
+    const wrapper = component.mount();
 
     it("doesn't add the isRendered class initially", () => {
       expect(wrapper.find(".isRendered")).toHaveLength(0);

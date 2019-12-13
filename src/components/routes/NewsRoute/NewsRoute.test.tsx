@@ -1,13 +1,13 @@
 import * as actions from "../../../actions/root.actions";
 import { newsArticle } from "../../../models/root.models";
-import ComponentTester from "../../../utilities/ComponentTester";
 import MockPageContext from "../../../utilities/MockPageContext";
+import WrapperWithRedux from "../../../utilities/WrapperWithRedux";
 import NewsRoute from "./NewsRoute";
 
 const item1 = newsArticle({ slug: "test-1" });
 const item2 = newsArticle({ slug: "test-2" });
 
-const component = new ComponentTester(NewsRoute, true);
+const component = new WrapperWithRedux(NewsRoute);
 
 describe("[routes] <NewsRoute />", () => {
   describe("getInitialProps", () => {
@@ -72,7 +72,7 @@ describe("[routes] <NewsRoute />", () => {
   });
 
   describe("when all data is in the store", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         news: {
           hasAllItems: true,
@@ -98,7 +98,7 @@ describe("[routes] <NewsRoute />", () => {
   });
 
   describe("when no data is in the store", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         news: {
           hasAllItems: true,
@@ -117,7 +117,7 @@ describe("[routes] <NewsRoute />", () => {
   });
 
   it("renders the offline notice when there's an error", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         news: {
           hasError: true
@@ -129,7 +129,7 @@ describe("[routes] <NewsRoute />", () => {
   });
 
   it("renders with the 'load more' button when hasAllItems is false", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         news: {
           hasAllItems: false,
@@ -144,7 +144,7 @@ describe("[routes] <NewsRoute />", () => {
   });
 
   it("renders without the 'load more' button when hasAllItems is true", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         news: {
           hasAllItems: true
@@ -156,7 +156,7 @@ describe("[routes] <NewsRoute />", () => {
   });
 
   it("loads more listings when the 'load more' button is clicked", () => {
-    const { wrapper } = component.mount();
+    const wrapper = component.mount();
 
     wrapper.find("LoadButton").simulate("click");
 
@@ -166,7 +166,7 @@ describe("[routes] <NewsRoute />", () => {
   });
 
   it("updates `loadedListings` state after a listing has loaded", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         news: {
           items: {

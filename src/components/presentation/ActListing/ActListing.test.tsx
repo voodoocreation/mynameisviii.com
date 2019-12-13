@@ -1,9 +1,9 @@
 import { TYPE } from "../../../constants/location.constants";
 import { performer } from "../../../models/root.models";
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import ActListing from "./ActListing";
 
-const component = new ComponentTester(ActListing).withDefaultProps(
+const component = new WrapperWithIntl(ActListing).withDefaultProps(
   performer({
     genre: "Genre",
     imageUrl: "Image URL",
@@ -16,7 +16,7 @@ const component = new ComponentTester(ActListing).withDefaultProps(
 );
 
 describe("[presentation] <ActListing />", () => {
-  const { props, wrapper } = component
+  const wrapper = component
     .withProps({
       onLoad: jest.fn()
     })
@@ -35,7 +35,7 @@ describe("[presentation] <ActListing />", () => {
   });
 
   it("calls the onLoad prop", () => {
-    expect(props.onLoad).toHaveBeenCalledTimes(1);
+    expect(component.props.onLoad).toHaveBeenCalledTimes(1);
   });
 
   it("sets the onLoad prop to be undefined", () => {

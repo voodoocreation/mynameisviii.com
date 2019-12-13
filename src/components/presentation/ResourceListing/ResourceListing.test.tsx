@@ -1,8 +1,8 @@
 import { resource } from "../../../models/root.models";
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import ResourceListing from "./ResourceListing";
 
-const component = new ComponentTester(ResourceListing).withDefaultProps(
+const component = new WrapperWithIntl(ResourceListing).withDefaultProps(
   resource({
     createdAt: "2017-10-10T18:00:00",
     description: "Description",
@@ -14,7 +14,7 @@ const component = new ComponentTester(ResourceListing).withDefaultProps(
 );
 
 describe("[presentation] <ResourceListing />", () => {
-  const { props, wrapper } = component
+  const wrapper = component
     .withProps({
       onLoad: jest.fn()
     })
@@ -33,7 +33,7 @@ describe("[presentation] <ResourceListing />", () => {
   });
 
   it("calls the onLoad prop", () => {
-    expect(props.onLoad).toHaveBeenCalledTimes(1);
+    expect(component.props.onLoad).toHaveBeenCalledTimes(1);
   });
 
   it("sets the onLoad prop to be undefined", () => {

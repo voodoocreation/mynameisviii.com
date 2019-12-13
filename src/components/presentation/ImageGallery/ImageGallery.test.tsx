@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import ImageGallery from "./ImageGallery";
 
-const component = new ComponentTester(ImageGallery)
+const component = new WrapperWithIntl(ImageGallery)
   .withDefaultProps({
     className: "TestImageGallery",
     usePortal: false
@@ -16,14 +16,20 @@ const component = new ComponentTester(ImageGallery)
 
 describe("[presentation] <ImageGallery />", () => {
   describe("when all props are defined and isLooped is true", () => {
-    const { props, wrapper } = component
+    const onGoTo = jest.fn();
+    const onItemClick = jest.fn();
+    const onModalClose = jest.fn();
+    const onNext = jest.fn();
+    const onPrevious = jest.fn();
+
+    const wrapper = component
       .withProps({
         isLooped: true,
-        onGoTo: jest.fn(),
-        onItemClick: jest.fn(),
-        onModalClose: jest.fn(),
-        onNext: jest.fn(),
-        onPrevious: jest.fn()
+        onGoTo,
+        onItemClick,
+        onModalClose,
+        onNext,
+        onPrevious
       })
       .mount();
 
@@ -43,8 +49,8 @@ describe("[presentation] <ImageGallery />", () => {
     });
 
     it("calls the onItemClick prop with expected payload", () => {
-      expect(props.onItemClick).toHaveBeenCalledTimes(1);
-      expect(props.onItemClick).toHaveBeenCalledWith(0);
+      expect(onItemClick).toHaveBeenCalledTimes(1);
+      expect(onItemClick).toHaveBeenCalledWith(0);
     });
 
     it("opens the modal", () => {
@@ -72,8 +78,8 @@ describe("[presentation] <ImageGallery />", () => {
     });
 
     it("calls the onNext prop with expected payload", () => {
-      expect(props.onNext).toHaveBeenCalledTimes(1);
-      expect(props.onNext).toHaveBeenCalledWith(1);
+      expect(onNext).toHaveBeenCalledTimes(1);
+      expect(onNext).toHaveBeenCalledWith(1);
     });
 
     it("clicks the previous button", () => {
@@ -89,8 +95,8 @@ describe("[presentation] <ImageGallery />", () => {
     });
 
     it("calls the onPrevious prop with expected payload", () => {
-      expect(props.onPrevious).toHaveBeenCalledTimes(1);
-      expect(props.onPrevious).toHaveBeenCalledWith(0);
+      expect(onPrevious).toHaveBeenCalledTimes(1);
+      expect(onPrevious).toHaveBeenCalledWith(0);
     });
 
     it("clears mocks", () => {
@@ -109,8 +115,8 @@ describe("[presentation] <ImageGallery />", () => {
     });
 
     it("calls onPrevious prop with expected payload", () => {
-      expect(props.onPrevious).toHaveBeenCalledTimes(1);
-      expect(props.onPrevious).toHaveBeenCalledWith(2);
+      expect(onPrevious).toHaveBeenCalledTimes(1);
+      expect(onPrevious).toHaveBeenCalledWith(2);
     });
 
     it("presses the ArrowRight key", () => {
@@ -125,8 +131,8 @@ describe("[presentation] <ImageGallery />", () => {
     });
 
     it("calls onNext prop with expected payload", () => {
-      expect(props.onNext).toHaveBeenCalledTimes(1);
-      expect(props.onNext).toHaveBeenCalledWith(0);
+      expect(onNext).toHaveBeenCalledTimes(1);
+      expect(onNext).toHaveBeenCalledWith(0);
     });
 
     it("clears mocks", () => {
@@ -145,7 +151,7 @@ describe("[presentation] <ImageGallery />", () => {
     });
 
     it("doesn't call the onGoTo prop", () => {
-      expect(props.onGoTo).toHaveBeenCalledTimes(0);
+      expect(onGoTo).toHaveBeenCalledTimes(0);
     });
 
     it("closes the modal", () => {
@@ -153,12 +159,12 @@ describe("[presentation] <ImageGallery />", () => {
     });
 
     it("calls the onModalClose prop", () => {
-      expect(props.onModalClose).toHaveBeenCalledTimes(1);
+      expect(onModalClose).toHaveBeenCalledTimes(1);
     });
   });
 
   describe("when no event props are defined and isLooped is false", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         isLooped: false
       })

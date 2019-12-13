@@ -1,11 +1,11 @@
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import PriceRange from "./PriceRange";
 
-const component = new ComponentTester(PriceRange);
+const component = new WrapperWithIntl(PriceRange);
 
 describe("[presentation] <PriceRange />", () => {
   describe("when no props are defined", () => {
-    const { wrapper } = component.render();
+    const wrapper = component.render();
 
     it("doesn't render anything", () => {
       expect(wrapper.html()).toBe("");
@@ -13,7 +13,7 @@ describe("[presentation] <PriceRange />", () => {
   });
 
   describe("when only the min prop is defined", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         min: 99.99
       })
@@ -33,7 +33,7 @@ describe("[presentation] <PriceRange />", () => {
   });
 
   describe("when only the max prop is defined", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         max: 99.99
       })
@@ -53,7 +53,7 @@ describe("[presentation] <PriceRange />", () => {
   });
 
   describe("when both min and max are defined", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         max: 99.99,
         min: 5

@@ -1,7 +1,7 @@
 import * as actions from "../../../actions/root.actions";
 import { gallery } from "../../../models/root.models";
-import ComponentTester from "../../../utilities/ComponentTester";
 import MockPageContext from "../../../utilities/MockPageContext";
+import WrapperWithRedux from "../../../utilities/WrapperWithRedux";
 import GalleryRoute from "./GalleryRoute";
 
 const item = gallery({
@@ -18,7 +18,7 @@ const defaultState = {
   }
 };
 
-const component = new ComponentTester(GalleryRoute, true);
+const component = new WrapperWithRedux(GalleryRoute);
 
 describe("[routes] <GalleryRoute />", () => {
   describe("getInitialProps", () => {
@@ -73,13 +73,13 @@ describe("[routes] <GalleryRoute />", () => {
   });
 
   it("matches snapshot", () => {
-    const { wrapper } = component.withReduxState(defaultState).mount();
+    const wrapper = component.withReduxState(defaultState).mount();
 
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   it("renders a loader when isLoading is true", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         ...defaultState,
         galleries: { isLoading: true }
@@ -90,7 +90,7 @@ describe("[routes] <GalleryRoute />", () => {
   });
 
   it("doesn't render anything when no gallery exists", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         galleries: {
           currentSlug: undefined,
@@ -104,7 +104,7 @@ describe("[routes] <GalleryRoute />", () => {
   });
 
   it("tracks gallery interactions correctly", () => {
-    const { wrapper } = component.withReduxState(defaultState).mount();
+    const wrapper = component.withReduxState(defaultState).mount();
 
     wrapper
       .find("ImageGallery Image")

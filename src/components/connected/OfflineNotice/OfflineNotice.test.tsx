@@ -1,11 +1,11 @@
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithRedux from "../../../utilities/WrapperWithRedux";
 import OfflineNotice from "./OfflineNotice";
 
-const component = new ComponentTester(OfflineNotice, true);
+const component = new WrapperWithRedux(OfflineNotice);
 
 describe("[connected] <OfflineNotice />", () => {
   it("renders correctly when offline", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         app: {
           isOnline: false
@@ -18,7 +18,7 @@ describe("[connected] <OfflineNotice />", () => {
   });
 
   it("renders nothing when online", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withReduxState({
         app: {
           isOnline: true

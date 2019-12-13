@@ -1,17 +1,17 @@
-import ComponentTester from "../../../utilities/ComponentTester";
-
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import Toast from "./Toast";
 
-const component = new ComponentTester(Toast);
+const component = new WrapperWithIntl(Toast);
 
 describe("[presentation] <Toast />", () => {
   jest.useFakeTimers();
 
   describe("when hasAutoDismiss prop is true", () => {
-    const { props, wrapper } = component
+    const onClose = jest.fn();
+    const wrapper = component
       .withProps({
         hasAutoDismiss: true,
-        onClose: jest.fn()
+        onClose
       })
       .mount();
 
@@ -20,7 +20,7 @@ describe("[presentation] <Toast />", () => {
     });
 
     it("waits for the auto dismiss delay length", () => {
-      jest.runTimersToTime(props.autoDismissDelay);
+      jest.runTimersToTime(component.props.autoDismissDelay!);
     });
 
     it("doesn't unrender yet", () => {
@@ -28,7 +28,7 @@ describe("[presentation] <Toast />", () => {
     });
 
     it("calls the onClose prop", () => {
-      expect(props.onClose).toHaveBeenCalledTimes(1);
+      expect(onClose).toHaveBeenCalledTimes(1);
     });
 
     it("doesn't render anything after the delay has passed", () => {
@@ -39,10 +39,11 @@ describe("[presentation] <Toast />", () => {
   });
 
   describe("when hasAutoDismiss prop is false", () => {
-    const { props, wrapper } = component
+    const onClose = jest.fn();
+    const wrapper = component
       .withProps({
         hasAutoDismiss: false,
-        onClose: jest.fn()
+        onClose
       })
       .mount();
 
@@ -60,7 +61,7 @@ describe("[presentation] <Toast />", () => {
     });
 
     it("calls the onClose prop", () => {
-      expect(props.onClose).toHaveBeenCalledTimes(2);
+      expect(onClose).toHaveBeenCalledTimes(2);
     });
 
     it("doesn't render anything after the delay has passed", () => {
@@ -72,7 +73,7 @@ describe("[presentation] <Toast />", () => {
   });
 
   describe("when passing isVisible prop", () => {
-    const { props, wrapper } = component
+    const wrapper = component
       .withProps({
         hasAutoDismiss: true,
         isVisible: true
@@ -106,7 +107,7 @@ describe("[presentation] <Toast />", () => {
     });
 
     it("waits for the auto dismiss delay length", () => {
-      jest.runTimersToTime(props.autoDismissDelay);
+      jest.runTimersToTime(component.props.autoDismissDelay!);
     });
 
     it("doesn't unrender yet", () => {

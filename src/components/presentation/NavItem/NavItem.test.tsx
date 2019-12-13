@@ -1,7 +1,7 @@
-import ComponentTester from "../../../utilities/ComponentTester";
+import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import NavItem from "./NavItem";
 
-const component = new ComponentTester(NavItem)
+const component = new WrapperWithIntl(NavItem)
   .withDefaultProps({
     href: "/"
   })
@@ -9,7 +9,7 @@ const component = new ComponentTester(NavItem)
 
 describe("[connected] <NavItem />", () => {
   describe("when isSelected is false", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         isSelected: false
       })
@@ -33,7 +33,7 @@ describe("[connected] <NavItem />", () => {
   });
 
   describe("when isSelected is true", () => {
-    const { wrapper } = component
+    const wrapper = component
       .withProps({
         isSelected: true
       })
