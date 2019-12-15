@@ -2,7 +2,6 @@ import Head from "next/head";
 import * as React from "react";
 import { WrappedComponentProps } from "react-intl";
 import { connect } from "react-redux";
-import { bindActionCreators, Dispatch } from "redux";
 
 import { absoluteUrl } from "../../../helpers/dataTransformers";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
@@ -102,16 +101,12 @@ const mapState = (state: TStoreState) => ({
   isLoading: selectors.getAppearancesIsLoading(state)
 });
 
-const mapActions = (dispatch: Dispatch) =>
-  bindActionCreators(
-    {
-      fetchAppearanceBySlug: actions.fetchAppearanceBySlug.started,
-      geocodeCurrentAppearanceAddress:
-        actions.geocodeCurrentAppearanceAddress.started,
-      trackEvent: actions.trackEvent
-    },
-    dispatch
-  );
+const mapActions = {
+  fetchAppearanceBySlug: actions.fetchAppearanceBySlug.started,
+  geocodeCurrentAppearanceAddress:
+    actions.geocodeCurrentAppearanceAddress.started,
+  trackEvent: actions.trackEvent
+};
 
 export default injectIntlIntoPage(
   connect(mapState, mapActions)(AppearanceRoute)

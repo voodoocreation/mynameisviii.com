@@ -10,7 +10,6 @@ import {
 } from "react-icons/fa";
 import { FormattedMessage, WrappedComponentProps } from "react-intl";
 import { connect } from "react-redux";
-import { bindActionCreators, Dispatch } from "redux";
 
 import { absoluteUrl, s3ThemeUrl } from "../../../helpers/dataTransformers";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
@@ -233,13 +232,9 @@ const mapState = (state: TStoreState) => ({
   upcomingAppearances: selectors.getUpcomingAppearances(state)
 });
 
-const mapActions = (dispatch: Dispatch) =>
-  bindActionCreators(
-    {
-      fetchAppearances: actions.fetchAppearances.started,
-      fetchLatestNews: actions.fetchLatestNews.started
-    },
-    dispatch
-  );
+const mapActions = {
+  fetchAppearances: actions.fetchAppearances.started,
+  fetchLatestNews: actions.fetchLatestNews.started
+};
 
 export default injectIntlIntoPage(connect(mapState, mapActions)(IndexRoute));

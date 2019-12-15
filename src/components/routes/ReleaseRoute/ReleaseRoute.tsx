@@ -2,7 +2,6 @@ import Head from "next/head";
 import * as React from "react";
 import { WrappedComponentProps } from "react-intl";
 import { connect } from "react-redux";
-import { bindActionCreators, Dispatch } from "redux";
 import stripTags from "striptags";
 
 import { absoluteUrl } from "../../../helpers/dataTransformers";
@@ -117,13 +116,9 @@ const mapState = (state: TStoreState) => ({
   release: selectors.getCurrentRelease(state)
 });
 
-const mapActions = (dispatch: Dispatch) =>
-  bindActionCreators(
-    {
-      fetchReleaseBySlug: actions.fetchReleaseBySlug.started,
-      trackEvent: actions.trackEvent
-    },
-    dispatch
-  );
+const mapActions = {
+  fetchReleaseBySlug: actions.fetchReleaseBySlug.started,
+  trackEvent: actions.trackEvent
+};
 
 export default injectIntlIntoPage(connect(mapState, mapActions)(ReleaseRoute));

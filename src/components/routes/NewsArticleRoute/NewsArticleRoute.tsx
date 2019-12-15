@@ -2,7 +2,6 @@ import Head from "next/head";
 import * as React from "react";
 import { WrappedComponentProps } from "react-intl";
 import { connect } from "react-redux";
-import { bindActionCreators, Dispatch } from "redux";
 
 import { absoluteUrl } from "../../../helpers/dataTransformers";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
@@ -83,13 +82,9 @@ const mapState = (state: TStoreState) => ({
   isLoading: selectors.getNewsIsLoading(state)
 });
 
-const mapActions = (dispatch: Dispatch) =>
-  bindActionCreators(
-    {
-      fetchNewsArticleBySlug: actions.fetchNewsArticleBySlug.started
-    },
-    dispatch
-  );
+const mapActions = {
+  fetchNewsArticleBySlug: actions.fetchNewsArticleBySlug.started
+};
 
 export default injectIntlIntoPage(
   connect(mapState, mapActions)(NewsArticleRoute)

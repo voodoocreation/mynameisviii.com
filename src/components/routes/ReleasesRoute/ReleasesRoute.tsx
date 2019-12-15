@@ -3,7 +3,6 @@ import Head from "next/head";
 import * as React from "react";
 import { FormattedMessage, WrappedComponentProps } from "react-intl";
 import { connect } from "react-redux";
-import { bindActionCreators, Dispatch } from "redux";
 
 import { absoluteUrl, s3ThemeUrl } from "../../../helpers/dataTransformers";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
@@ -156,13 +155,9 @@ const mapState = (state: TStoreState) => ({
   releasesCount: selectors.getReleasesCount(state)
 });
 
-const mapActions = (dispatch: Dispatch) =>
-  bindActionCreators(
-    {
-      fetchMoreReleases: actions.fetchMoreReleases.started,
-      fetchReleases: actions.fetchReleases.started
-    },
-    dispatch
-  );
+const mapActions = {
+  fetchMoreReleases: actions.fetchMoreReleases.started,
+  fetchReleases: actions.fetchReleases.started
+};
 
 export default injectIntlIntoPage(connect(mapState, mapActions)(ReleasesRoute));

@@ -3,7 +3,6 @@ import Head from "next/head";
 import * as React from "react";
 import { FormattedMessage, WrappedComponentProps } from "react-intl";
 import { connect } from "react-redux";
-import { bindActionCreators, Dispatch } from "redux";
 
 import * as actions from "../../../actions/root.actions";
 import { absoluteUrl, s3ThemeUrl } from "../../../helpers/dataTransformers";
@@ -139,14 +138,10 @@ const mapState = (state: TStoreState) => ({
   isLoading: selectors.getGalleriesIsLoading(state)
 });
 
-const mapActions = (dispatch: Dispatch) =>
-  bindActionCreators(
-    {
-      fetchGalleries: actions.fetchGalleries.started,
-      fetchMoreGalleries: actions.fetchMoreGalleries.started
-    },
-    dispatch
-  );
+const mapActions = {
+  fetchGalleries: actions.fetchGalleries.started,
+  fetchMoreGalleries: actions.fetchMoreGalleries.started
+};
 
 export default injectIntlIntoPage(
   connect(mapState, mapActions)(GalleriesRoute)
