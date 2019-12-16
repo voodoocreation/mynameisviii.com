@@ -2,11 +2,12 @@ import * as actions from "../../../actions/root.actions";
 import WrapperWithRedux from "../../../utilities/WrapperWithRedux";
 import OnlineStatusToast from "./OnlineStatusToast";
 
+const component = new WrapperWithRedux(OnlineStatusToast);
+
 describe("[connected] <OnlineStatusToast />", () => {
   jest.useFakeTimers();
 
   describe("when initially offline", () => {
-    const component = new WrapperWithRedux(OnlineStatusToast);
     const wrapper = component
       .withReduxState({
         app: {
@@ -24,7 +25,7 @@ describe("[connected] <OnlineStatusToast />", () => {
     });
 
     it("dispatches actions.setOnlineStatus(true)", () => {
-      component.store?.dispatch(actions.setOnlineStatus(true));
+      wrapper.store.dispatch(actions.setOnlineStatus(true));
     });
 
     it("renders with YOU_ARE_BACK_ONLINE", () => {
@@ -36,7 +37,7 @@ describe("[connected] <OnlineStatusToast />", () => {
     });
 
     it("dispatches actions.setOnlineStatus(true) again", () => {
-      component.store?.dispatch(actions.setOnlineStatus(true));
+      wrapper.store.dispatch(actions.setOnlineStatus(true));
     });
 
     it("doesn't re-render the toast", () => {
@@ -45,7 +46,6 @@ describe("[connected] <OnlineStatusToast />", () => {
   });
 
   describe("when initially online", () => {
-    const component = new WrapperWithRedux(OnlineStatusToast);
     const wrapper = component
       .withReduxState({
         app: {
