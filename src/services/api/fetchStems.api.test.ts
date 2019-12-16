@@ -1,3 +1,5 @@
+import { mockWithRejectedPromise, mockWithResolvedPromise } from "jest-mocks";
+
 import { BOOLEAN } from "../../constants/api.constants";
 import {
   dynamoResponse,
@@ -5,10 +7,6 @@ import {
   stem,
   success
 } from "../../models/root.models";
-import {
-  mockWithRejectedPromise,
-  mockWithResolvedPromise
-} from "../../utilities/mocks";
 import { fetchStems } from "./fetchStems.api";
 
 describe("[api] fetchStems", () => {

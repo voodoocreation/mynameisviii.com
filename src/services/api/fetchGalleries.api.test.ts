@@ -1,13 +1,11 @@
+import { mockWithRejectedPromise, mockWithResolvedPromise } from "jest-mocks";
+
 import {
   failure,
   gallery,
   s3Response,
   success
 } from "../../models/root.models";
-import {
-  mockWithRejectedPromise,
-  mockWithResolvedPromise
-} from "../../utilities/mocks";
 import { fetchGalleries } from "./fetchGalleries.api";
 
 describe("[api] fetchGalleries", () => {

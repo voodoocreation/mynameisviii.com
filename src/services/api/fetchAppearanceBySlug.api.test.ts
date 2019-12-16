@@ -1,9 +1,7 @@
+import { mockWithRejectedPromise, mockWithResolvedPromise } from "jest-mocks";
+
 import { BOOLEAN } from "../../constants/api.constants";
 import { appearance, failure, success } from "../../models/root.models";
-import {
-  mockWithRejectedPromise,
-  mockWithResolvedPromise
-} from "../../utilities/mocks";
 import { fetchAppearanceBySlug } from "./fetchAppearanceBySlug.api";
 
 describe("[api] fetchAppearanceBySlug", () => {

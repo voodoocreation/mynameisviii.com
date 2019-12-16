@@ -1,6 +1,6 @@
+import { filterCalls } from "jest-mocks";
 import * as React from "react";
 
-import { filterMockCalls } from "../../../utilities/mocks";
 import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import Modal from "./Modal";
 
@@ -152,9 +152,9 @@ describe("[presentation] <Modal />", () => {
     });
 
     it("binds keydown event handler", () => {
-      expect(filterMockCalls(window.addEventListener, "keydown")).toHaveLength(
-        1
-      );
+      expect(
+        filterCalls(window.addEventListener as jest.Mock, "keydown")
+      ).toHaveLength(1);
     });
 
     it("presses the Escape key", () => {
@@ -199,7 +199,7 @@ describe("[presentation] <Modal />", () => {
 
     it("unbinds keydown event handler", () => {
       expect(
-        filterMockCalls(window.removeEventListener, "keydown")
+        filterCalls(window.removeEventListener as jest.Mock, "keydown")
       ).toHaveLength(1);
     });
 
@@ -208,9 +208,9 @@ describe("[presentation] <Modal />", () => {
     });
 
     it("binds keydown event handler", () => {
-      expect(filterMockCalls(window.addEventListener, "keydown")).toHaveLength(
-        2
-      );
+      expect(
+        filterCalls(window.addEventListener as jest.Mock, "keydown")
+      ).toHaveLength(2);
     });
 
     it("unmounts component", () => {
@@ -219,7 +219,7 @@ describe("[presentation] <Modal />", () => {
 
     it("unbinds keydown event handler", () => {
       expect(
-        filterMockCalls(window.removeEventListener, "keydown")
+        filterCalls(window.removeEventListener as jest.Mock, "keydown")
       ).toHaveLength(2);
     });
   });
@@ -245,9 +245,9 @@ describe("[presentation] <Modal />", () => {
       });
 
       it("binds focus event handler", () => {
-        expect(filterMockCalls(window.addEventListener, "focus")).toHaveLength(
-          1
-        );
+        expect(
+          filterCalls(window.addEventListener as jest.Mock, "focus")
+        ).toHaveLength(1);
       });
 
       it("sets the isOpen prop to false", () => {
@@ -256,7 +256,7 @@ describe("[presentation] <Modal />", () => {
 
       it("unbinds focus event handler", () => {
         expect(
-          filterMockCalls(window.removeEventListener, "focus")
+          filterCalls(window.removeEventListener as jest.Mock, "focus")
         ).toHaveLength(1);
       });
 
@@ -265,9 +265,9 @@ describe("[presentation] <Modal />", () => {
       });
 
       it("binds focus event handler", () => {
-        expect(filterMockCalls(window.addEventListener, "focus")).toHaveLength(
-          2
-        );
+        expect(
+          filterCalls(window.addEventListener as jest.Mock, "focus")
+        ).toHaveLength(2);
       });
 
       it("sets the hasFocusRestriction prop to false", () => {
@@ -276,7 +276,7 @@ describe("[presentation] <Modal />", () => {
 
       it("unbinds focus event handler", () => {
         expect(
-          filterMockCalls(window.removeEventListener, "focus")
+          filterCalls(window.removeEventListener as jest.Mock, "focus")
         ).toHaveLength(2);
       });
 
@@ -286,7 +286,7 @@ describe("[presentation] <Modal />", () => {
 
       it("doesn't unbind the focus event handler", () => {
         expect(
-          filterMockCalls(window.removeEventListener, "focus")
+          filterCalls(window.removeEventListener as jest.Mock, "focus")
         ).toHaveLength(2);
       });
 
@@ -296,7 +296,7 @@ describe("[presentation] <Modal />", () => {
 
       it("doesn't bind the focus event handler", () => {
         expect(
-          filterMockCalls(window.removeEventListener, "focus")
+          filterCalls(window.removeEventListener as jest.Mock, "focus")
         ).toHaveLength(2);
       });
 
@@ -305,9 +305,9 @@ describe("[presentation] <Modal />", () => {
       });
 
       it("binds focus event handler", () => {
-        expect(filterMockCalls(window.addEventListener, "focus")).toHaveLength(
-          3
-        );
+        expect(
+          filterCalls(window.addEventListener as jest.Mock, "focus")
+        ).toHaveLength(3);
       });
     });
 

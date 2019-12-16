@@ -1,5 +1,7 @@
+import { findCall } from "jest-mocks";
+
 import messages from "../../../locales/en-NZ";
-import { createMockElement, findMockCall } from "../../../utilities/mocks";
+import { createMockElement } from "../../../utilities/mocks";
 import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import LoadButton from "./LoadButton";
 
@@ -44,7 +46,9 @@ describe("[presentation] <LoadButton />", () => {
     });
 
     it("doesn't bind scroll event listener", () => {
-      expect(findMockCall(window.addEventListener, "scroll")).toBeUndefined();
+      expect(
+        findCall(window.addEventListener as jest.Mock, "scroll")
+      ).toBeUndefined();
     });
 
     it("doesn't call the onLoad prop", () => {
@@ -65,7 +69,7 @@ describe("[presentation] <LoadButton />", () => {
 
     it("doesn't unbind scroll event listener", () => {
       expect(
-        findMockCall(window.removeEventListener, "scroll")
+        findCall(window.removeEventListener as jest.Mock, "scroll")
       ).toBeUndefined();
     });
   });
@@ -85,7 +89,9 @@ describe("[presentation] <LoadButton />", () => {
     });
 
     it("binds scroll event listener", () => {
-      expect(findMockCall(window.addEventListener, "scroll")).toBeDefined();
+      expect(
+        findCall(window.addEventListener as jest.Mock, "scroll")
+      ).toBeDefined();
     });
 
     it("calls the onLoad prop instantly", () => {
@@ -147,7 +153,9 @@ describe("[presentation] <LoadButton />", () => {
     });
 
     it("unbinds the scroll event listener", () => {
-      expect(findMockCall(window.removeEventListener, "scroll")).toBeDefined();
+      expect(
+        findCall(window.removeEventListener as jest.Mock, "scroll")
+      ).toBeDefined();
     });
 
     it("updates the props to set isScrollLoadEnabled to true again", () => {
@@ -157,7 +165,9 @@ describe("[presentation] <LoadButton />", () => {
     });
 
     it("unbinds the scroll event listener", () => {
-      expect(findMockCall(window.addEventListener, "scroll")).toBeDefined();
+      expect(
+        findCall(window.addEventListener as jest.Mock, "scroll")
+      ).toBeDefined();
     });
 
     it("calls the onLoad prop", () => {
@@ -173,7 +183,9 @@ describe("[presentation] <LoadButton />", () => {
     });
 
     it("unbinds scroll event listener", () => {
-      expect(findMockCall(window.removeEventListener, "scroll")).toBeDefined();
+      expect(
+        findCall(window.removeEventListener as jest.Mock, "scroll")
+      ).toBeDefined();
     });
   });
 
@@ -197,7 +209,9 @@ describe("[presentation] <LoadButton />", () => {
     });
 
     it("doesn't bind scroll event listener", () => {
-      expect(findMockCall(window.addEventListener, "scroll")).toBeUndefined();
+      expect(
+        findCall(window.addEventListener as jest.Mock, "scroll")
+      ).toBeUndefined();
     });
 
     it("doesn't call the onLoad prop instantly", () => {
@@ -212,7 +226,7 @@ describe("[presentation] <LoadButton />", () => {
 
     it("doesn't unbind the scroll event listener", () => {
       expect(
-        findMockCall(window.removeEventListener, "scroll")
+        findCall(window.removeEventListener as jest.Mock, "scroll")
       ).toBeUndefined();
     });
 
@@ -223,7 +237,9 @@ describe("[presentation] <LoadButton />", () => {
     });
 
     it("doesn't unbind the scroll event listener", () => {
-      expect(findMockCall(window.addEventListener, "scroll")).toBeUndefined();
+      expect(
+        findCall(window.addEventListener as jest.Mock, "scroll")
+      ).toBeUndefined();
     });
   });
 
