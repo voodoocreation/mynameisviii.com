@@ -113,11 +113,23 @@ describe("[connected] <App />", () => {
       };
 
       beforeAll(() => {
+        context.resetReduxHistory();
         defineGlobals(true, locale);
       });
 
       it("calls getInitialProps method", async () => {
         props = await App.getInitialProps(appContext);
+      });
+
+      it("dispatches actions.initApp.started with expected payload", () => {
+        const matchingActions = context.reduxHistory.filter(
+          actions.initApp.started.match
+        );
+
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload).toEqual({
+          locale
+        });
       });
 
       it("defines pageProps correctly", async () => {
@@ -141,6 +153,7 @@ describe("[connected] <App />", () => {
       const locale = "en-US";
 
       beforeAll(() => {
+        context.resetReduxHistory();
         defineGlobals(false, locale);
       });
 
@@ -164,6 +177,17 @@ describe("[connected] <App />", () => {
 
       it("calls getInitialProps method", async () => {
         props = await App.getInitialProps(appContext);
+      });
+
+      it("dispatches actions.initApp.started with expected payload", () => {
+        const matchingActions = context.reduxHistory.filter(
+          actions.initApp.started.match
+        );
+
+        expect(matchingActions).toHaveLength(1);
+        expect(matchingActions[0].payload).toEqual({
+          locale
+        });
       });
 
       it("defines pageProps correctly", async () => {
@@ -190,17 +214,6 @@ describe("[connected] <App />", () => {
 
     it("mounts the component", async () => {
       result = await setup(context.toObject(true), MockPageComponent, locale);
-    });
-
-    it("dispatches actions.initApp.started with expected payload", () => {
-      const matchingActions = context.reduxHistory.filter(
-        actions.initApp.started.match
-      );
-
-      expect(matchingActions).toHaveLength(1);
-      expect(matchingActions[0].payload).toEqual({
-        locale
-      });
     });
 
     it("matches snapshot", () => {
@@ -248,17 +261,6 @@ describe("[connected] <App />", () => {
       expect(matchingActions).toHaveLength(1);
       expect(matchingActions[0].payload).toEqual({
         event: "optimize.activate"
-      });
-    });
-
-    it("dispatches actions.initApp.started with expected payload", () => {
-      const matchingActions = context.reduxHistory.filter(
-        actions.initApp.started.match
-      );
-
-      expect(matchingActions).toHaveLength(1);
-      expect(matchingActions[0].payload).toEqual({
-        locale
       });
     });
 
