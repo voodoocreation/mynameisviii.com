@@ -24,8 +24,8 @@ export default class SagaTester {
     reduxState: DeepPartial<TStoreState> = {},
     ports: ITestPortsParam = {}
   ) {
-    this.tester = new ReduxSagaTester({
-      initialState: merge({}, initialState, reduxState),
+    this.tester = new ReduxSagaTester<TStoreState>({
+      initialState: merge(initialState, reduxState),
       reducers: rootReducer
     });
 
