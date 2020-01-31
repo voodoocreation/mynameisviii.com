@@ -18,7 +18,7 @@
     padding-left: $spacing-half;
   }
 
-  @include screen-below($screen-xxs-max) {
+  @include when-below($screen-xxs-max) {
     svg {
       margin: auto;
     }
@@ -28,19 +28,19 @@
     }
   }
 
-  @include screen-above(350px) {
+  @include when-above(350px) {
     flex-basis: 33.333333%;
   }
 
-  @include screen-above($screen-xs-min) {
+  @include when-above($screen-xs-min) {
     flex-basis: 50%;
   }
 
-  @include screen-above(590px) {
+  @include when-above(590px) {
     flex-basis: 33.333333%;
   }
 
-  @include screen-above($screen-md-min) {
+  @include when-above($screen-md-min) {
     flex-basis: 100%;
 
     a {
@@ -52,15 +52,15 @@
     }
   }
 
-  @include screen-above(1155px) {
+  @include when-above(1155px) {
     flex-basis: 50%;
   }
 
-  @include screen-above(1540px) {
+  @include when-above(1540px) {
     flex-basis: 33.333333%;
   }
 
-  @include screen-above(1750px) {
+  @include when-above(1750px) {
     a {
       font-size: 24px;
     }

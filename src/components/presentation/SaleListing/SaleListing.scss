@@ -26,7 +26,7 @@
     font-size: 32px;
   }
 
-  @include screen-above(1400px) {
+  @include when-above(1400px) {
     &--icon {
       font-size: 64px;
     }

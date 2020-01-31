@@ -38,7 +38,7 @@
     flex-basis: 15%;
   }
 
-  @include screen-above($screen-md-min) {
+  @include when-above($screen-md-min) {
     &--details {
       flex-basis: 70%;
     }

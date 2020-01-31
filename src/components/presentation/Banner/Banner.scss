@@ -6,7 +6,7 @@
   position: fixed;
   z-index: 1;
 
-  @include screen-below($screen-xs-max) {
+  @include when-below($screen-xs-max) {
     display: flex;
     align-items: center;
     top: $spacing;
@@ -28,7 +28,7 @@
     }
   }
 
-  @include screen-above($screen-sm-min) {
+  @include when-above($screen-sm-min) {
     top: 0;
     bottom: $spacing;
     left: $spacing;
@@ -37,7 +37,11 @@
     overflow: hidden;
   }
 
-  @include screen-above($screen-md-min) {
+  @include when-above($screen-md-min) {
     width: $banner-size;
+  }
+
+  @media print {
+    display: none;
   }
 }

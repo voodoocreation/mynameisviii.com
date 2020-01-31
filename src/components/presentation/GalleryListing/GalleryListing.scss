@@ -31,11 +31,11 @@
     flex-shrink: 0;
   }
 
-  @include screen-above(570px) {
+  @include when-above(570px) {
     flex-basis: 50%;
   }
 
-  @include screen-above($screen-lg-min) {
+  @include when-above($screen-lg-min) {
     flex-basis: 33.333333%;
   }
 }

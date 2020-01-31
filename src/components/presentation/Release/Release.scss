@@ -80,7 +80,9 @@
       flex-flow: row wrap;
       position: relative;
       align-items: center;
-      padding: $spacing-half $spacing-half $spacing-half ($number-size + $spacing-half);
+      padding:
+        $spacing-half $spacing-half $spacing-half
+        ($number-size + $spacing-half);
 
       &::before {
         position: absolute;
@@ -137,13 +139,13 @@
     }
   }
 
-  @include screen-below(640px) {
+  @include when-below(640px) {
     &--tracklist--genre {
       @include hide-visually();
     }
   }
 
-  @include screen-below($screen-xxs-max) {
+  @include when-below($screen-xxs-max) {
     &--images::after {
       @include bg-2();
 
@@ -155,7 +157,7 @@
     }
   }
 
-  @include screen-above(335px) {
+  @include when-above(335px) {
     &--buyList {
       flex-basis: 50%;
       padding-right: $spacing-half;
@@ -167,7 +169,7 @@
     }
   }
 
-  @include screen-above($screen-xs-min) {
+  @include when-above($screen-xs-min) {
     &--images {
       flex-basis: 35%;
     }
@@ -182,7 +184,7 @@
     }
   }
 
-  @include screen-above($screen-sm-min) {
+  @include when-above($screen-sm-min) {
     &--images {
       flex-basis: 40%;
     }
@@ -192,7 +194,7 @@
     }
   }
 
-  @include screen-above($screen-md-min) {
+  @include when-above($screen-md-min) {
     &--description,
     &--tracklist {
       font-size: 18px;
@@ -201,6 +203,13 @@
     &--tracklist--genre {
       font-size: 12px;
       padding: 4px 8px;
+    }
+  }
+
+  @media print {
+    &--tracklist--genre {
+      color: #000;
+      border-color: #000;
     }
   }
 }

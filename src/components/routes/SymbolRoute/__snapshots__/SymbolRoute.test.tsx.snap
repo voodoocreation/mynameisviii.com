@@ -51,7 +51,7 @@ exports[`[routes] <SymbolRoute /> renders correctly 1`] = `
       Who is Viii?
     </h2>
     <figure
-      class="Image SymbolRoute-photo isLoading"
+      class="Image SymbolRoute--photo isLoading"
     >
       <div
         class="Image--wrapper"
@@ -86,7 +86,7 @@ exports[`[routes] <SymbolRoute /> renders correctly 1`] = `
       class="ButtonBar"
     >
       <a
-        class="Button"
+        class="Button isStyled"
         href="/"
       >
         Explore the rest of the site

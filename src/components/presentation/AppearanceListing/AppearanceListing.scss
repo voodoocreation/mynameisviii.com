@@ -90,13 +90,13 @@
     opacity: 1;
   }
 
-  @include screen-below($screen-sm-max) {
+  @include when-below($screen-sm-max) {
     &--details {
       padding-bottom: ($spacing * 3);
     }
   }
 
-  @include screen-below($screen-xxs-max) {
+  @include when-below($screen-xxs-max) {
     a {
       flex-direction: column-reverse;
     }
@@ -107,7 +107,7 @@
     }
   }
 
-  @include screen-above($screen-xs-min) {
+  @include when-above($screen-xs-min) {
     &--details {
       flex-basis: 60%;
     }
@@ -117,7 +117,7 @@
     }
   }
 
-  @include screen-above(600px) {
+  @include when-above(600px) {
     &--details {
       flex-basis: 70%;
     }
@@ -136,7 +136,7 @@
     }
   }
 
-  @include screen-above($screen-sm-min) {
+  @include when-above($screen-sm-min) {
     &--details {
       flex-basis: 60%;
     }
@@ -146,7 +146,7 @@
     }
   }
 
-  @include screen-above(840px) {
+  @include when-above(840px) {
     &--details {
       flex-basis: 65%;
     }
@@ -156,11 +156,11 @@
     }
   }
 
-  @include screen-above($screen-lg-min) {
+  @include when-above($screen-lg-min) {
     flex-basis: 50%;
   }
 
-  @include screen-above(1300px) {
+  @include when-above(1300px) {
     &.isCondensed {
       .AppearanceListing--image {
         position: absolute;
@@ -184,13 +184,13 @@
     }
   }
 
-  @include screen-between(1300px, 1500px) {
+  @include when-between(1300px, 1500px) {
     &.isCondensed .AppearanceListing--details {
       font-size: 14px;
     }
   }
 
-  @include screen-between($screen-lg-min, 1678px) {
+  @include when-between($screen-lg-min, 1678px) {
     &--price {
       font-size: 24px;
       padding: $spacing-half $spacing-half $spacing-half ($spacing / 4);
@@ -201,7 +201,7 @@
     }
   }
 
-  @include screen-above(1470px) {
+  @include when-above(1470px) {
     &--details {
       flex-basis: 75%;
     }

@@ -47,7 +47,7 @@
     padding: 0 $spacing $spacing;
   }
 
-  @include screen-above($screen-xs-min) {
+  @include when-above($screen-xs-min) {
     a {
       flex-direction: row;
     }
@@ -62,13 +62,13 @@
     }
   }
 
-  @include screen-above(590px) {
+  @include when-above(590px) {
     &--image {
       flex-basis: 25%;
     }
   }
 
-  @include screen-above($screen-lg-min) {
+  @include when-above($screen-lg-min) {
     flex-basis: 50%;
 
     &--image {
@@ -76,7 +76,7 @@
     }
   }
 
-  @include screen-above(1500px) {
+  @include when-above(1500px) {
     flex-basis: 33.333333%;
   }
 }

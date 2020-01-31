@@ -17,4 +17,13 @@
   .Button {
     margin: 0 $spacing-half;
   }
+
+  @media print {
+    &::before,
+    &::after {
+      height: 0;
+      border-top: #000 1px solid;
+      background: none;
+    }
+  }
 }

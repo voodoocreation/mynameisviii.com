@@ -24,11 +24,11 @@
     @include hide-visually();
   }
 
-  @include screen-below($screen-xs-max) {
+  @include when-below($screen-xs-max) {
     margin-right: $spacing;
   }
 
-  @include screen-above($screen-sm-min) {
+  @include when-above($screen-sm-min) {
     $size: $banner-size-medium - $spacing-double;
 
     width: $size;
@@ -36,7 +36,7 @@
     margin: $spacing auto -3px;
   }
 
-  @include screen-above($screen-md-min) {
+  @include when-above($screen-md-min) {
     $size: $banner-size - $spacing-double;
 
     width: $size;

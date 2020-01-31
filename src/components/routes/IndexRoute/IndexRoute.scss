@@ -65,13 +65,13 @@
     }
   }
 
-  @include screen-below($screen-xxs-max) {
+  @include when-below($screen-xxs-max) {
     &--connect--press {
       font-size: 12px;
     }
   }
 
-  @include screen-above($screen-md-min) {
+  @include when-above($screen-md-min) {
     display: flex;
     flex-wrap: wrap;
 
@@ -86,7 +86,7 @@
     }
   }
 
-  @include screen-above(1300px) {
+  @include when-above(1300px) {
     .Home--appearances {
       flex-basis: 30%;
 

@@ -5,6 +5,7 @@
 
   margin-bottom: $spacing;
   padding: $spacing;
+  page-break-inside: avoid;
 
   h2 {
     @include line-before-after();

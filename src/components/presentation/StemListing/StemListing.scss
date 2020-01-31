@@ -56,7 +56,7 @@
     transform: translate3d(0, 0, 0);
   }
 
-  @include screen-above(340px) {
+  @include when-above(340px) {
     &--thumbnail {
       display: block;
       position: relative;
@@ -66,13 +66,13 @@
     }
   }
 
-  @include screen-above(480px) {
+  @include when-above(480px) {
     &--thumbnail {
       flex-basis: 25%;
     }
   }
 
-  @include screen-above(622px) {
+  @include when-above(622px) {
     flex-basis: 50%;
 
     &-thumbnail {
@@ -80,7 +80,7 @@
     }
   }
 
-  @include screen-above($screen-sm-min) {
+  @include when-above($screen-sm-min) {
     flex-basis: 100%;
 
     &-thumbnail {
@@ -88,7 +88,7 @@
     }
   }
 
-  @include screen-above(850px) {
+  @include when-above(850px) {
     flex-basis: 50%;
 
     &-thumbnail {
@@ -96,13 +96,13 @@
     }
   }
 
-  @include screen-above(1048px) {
+  @include when-above(1048px) {
     &-thumbnail {
       flex-basis: 33.333333%;
     }
   }
 
-  @include screen-above(1330px) {
+  @include when-above(1330px) {
     flex-basis: 33.333333%;
 
     &-thumbnail {
@@ -110,7 +110,7 @@
     }
   }
 
-  @include screen-above(1784px) {
+  @include when-above(1784px) {
     &-thumbnail {
       flex-basis: 25%;
     }

@@ -24,25 +24,25 @@
     margin: -($spacing-half);
   }
 
-  @include screen-above($screen-xs-min) {
+  @include when-above($screen-xs-min) {
     &--image {
       flex-basis: 33.333333%;
     }
   }
 
-  @include screen-above($screen-sm-min) {
+  @include when-above($screen-sm-min) {
     &-image {
       flex-basis: 25%;
     }
   }
 
-  @include screen-above($screen-md-min) {
+  @include when-above($screen-md-min) {
     &--image {
       flex-basis: 20%;
     }
   }
 
-  @include screen-above($screen-lg-min) {
+  @include when-above($screen-lg-min) {
     &--image {
       flex-basis: 16.666666%;
     }

@@ -119,20 +119,20 @@
     }
   }
 
-  @include screen-below($screen-xs-max) {
+  @include when-below($screen-xs-max) {
     &--rsvp .Button {
       display: block;
       width: 100%;
     }
   }
 
-  @include screen-between(450px, $screen-xxs-max) {
+  @include when-between(450px, $screen-xxs-max) {
     &--tickets--items > * {
       flex-basis: 50%;
     }
   }
 
-  @include screen-above($screen-xs-min) {
+  @include when-above($screen-xs-min) {
     &--image {
       flex-basis: 40%;
       padding: $spacing 0 $spacing $spacing;
@@ -147,13 +147,13 @@
     }
   }
 
-  @include screen-above(650px) {
+  @include when-above(650px) {
     &--images--items > * {
       flex-basis: 25%;
     }
   }
 
-  @include screen-above($screen-md-min) {
+  @include when-above($screen-md-min) {
     &--image {
       flex-basis: 30%;
     }
@@ -172,7 +172,7 @@
     }
   }
 
-  @include screen-above($screen-lg-min) {
+  @include when-above($screen-lg-min) {
     &--acts--items > *,
     &--tickets--items > * {
       flex-basis: 33.333333%;
@@ -183,7 +183,7 @@
     }
   }
 
-  @include screen-above(1550px) {
+  @include when-above(1550px) {
     .Map {
       height: 400px;
     }
@@ -193,7 +193,7 @@
     }
   }
 
-  @include screen-above(1700px) {
+  @include when-above(1700px) {
     &--acts--items > *,
     &--tickets--items > * {
       flex-basis: 25%;

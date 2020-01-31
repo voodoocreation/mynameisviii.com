@@ -46,13 +46,13 @@
     font-size: 14px;
   }
 
-  @include screen-below($screen-xs-max) {
+  @include when-below($screen-xs-max) {
     &--details {
       @include hide-visually();
     }
   }
 
-  @include screen-above($screen-xs-min) {
+  @include when-above($screen-xs-min) {
     flex-basis: 33.333333%;
 
     &--details {
@@ -65,23 +65,23 @@
     }
   }
 
-  @include screen-above($screen-sm-min) {
+  @include when-above($screen-sm-min) {
     flex-basis: 50%;
   }
 
-  @include screen-above(840px) {
+  @include when-above(840px) {
     flex-basis: 33.333333%;
   }
 
-  @include screen-above(1100px) {
+  @include when-above(1100px) {
     flex-basis: 25%;
   }
 
-  @include screen-above(1320px) {
+  @include when-above(1320px) {
     flex-basis: 20%;
   }
 
-  @include screen-above(1400px) {
+  @include when-above(1400px) {
     &--meta {
       font-size: 16px;
     }

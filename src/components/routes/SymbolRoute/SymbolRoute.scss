@@ -18,7 +18,7 @@
     margin: auto;
 
     &::before {
-      @include bg-1();
+      @include bg-2();
       @include logo-symbol();
 
       display: block;
@@ -32,7 +32,7 @@
     @include square-image();
   }
 
-  @include screen-above($screen-xs-min) {
+  @include when-above($screen-xs-min) {
     &--symbol,
     &--photo {
       float: right;
@@ -42,7 +42,7 @@
     }
   }
 
-  @include screen-above(1500px) {
+  @include when-above(1500px) {
     &--symbol,
     &--photo {
       width: 20%;

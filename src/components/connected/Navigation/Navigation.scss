@@ -79,7 +79,7 @@
     padding: 0 $spacing-half 4px;
   }
 
-  @include screen-below($screen-xs-max) {
+  @include when-below($screen-xs-max) {
     $symbol-size: 24px;
 
     margin-right: $symbol-size;
@@ -99,7 +99,7 @@
     }
   }
 
-  @include screen-below($screen-xs-max) {
+  @include when-below($screen-xs-max) {
     ul {
       flex-direction: column;
       position: fixed;
@@ -167,7 +167,7 @@
     }
   }
 
-  @include screen-above($screen-sm-min) {
+  @include when-above($screen-sm-min) {
     padding: $spacing;
 
     &::before,
@@ -226,11 +226,11 @@
     }
   }
 
-  @include screen-between($screen-sm-min, $screen-sm-max) {
+  @include when-between($screen-sm-min, $screen-sm-max) {
     font-size: 20px;
   }
 
-  @include screen-above($screen-md-min) {
+  @include when-above($screen-md-min) {
     padding: $spacing-double $spacing;
 
     li {

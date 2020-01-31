@@ -30,4 +30,9 @@
   &:hover {
     @include panel-2();
   }
+
+  @media print {
+    color: #000;
+    border-color: #000;
+  }
 }

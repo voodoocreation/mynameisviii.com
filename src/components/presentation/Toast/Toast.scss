@@ -34,7 +34,7 @@
     opacity: 0;
   }
 
-  @include screen-below($screen-xs-max) {
+  @include when-below($screen-xs-max) {
     &--content {
       display: flex;
     }

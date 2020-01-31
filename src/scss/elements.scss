@@ -107,19 +107,19 @@ button {
   height: 100%;
 }
 
-@include screen-below($screen-xs-max) {
+@include when-below($screen-xs-max) {
   body {
     padding-top: ($banner-size-small + $spacing-double);
   }
 }
 
-@include screen-above($screen-sm-min) {
+@include when-above($screen-sm-min) {
   body {
     padding-left: ($banner-size-medium + $spacing + $spacing);
   }
 }
 
-@include screen-above($screen-md-min) {
+@include when-above($screen-md-min) {
   body {
     font-size: 21px;
     padding-left: ($banner-size + $spacing + $spacing);
@@ -131,5 +131,15 @@ button {
 
   h2 {
     font-size: 24px;
+  }
+}
+
+@media print {
+  * {
+    color: #000;
+  }
+
+  body {
+    padding: 0;
   }
 }

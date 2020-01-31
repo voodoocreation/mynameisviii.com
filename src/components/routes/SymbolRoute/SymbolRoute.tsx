@@ -73,11 +73,13 @@ class SymbolRoute extends React.Component<IProps> {
           <h2>
             <FormattedMessage id="WHO_IS_VIII" />
           </h2>
+
           <Image
             alt="Viii"
-            className="SymbolRoute-photo"
+            className="SymbolRoute--photo"
             src="https://s3.amazonaws.com/mynameisviii-static/galleries/dark-spaces-i/09.jpg"
           />
+
           <p>
             <FormattedMessage id="SYMBOL_ABOUT_CONTENT_1" />
           </p>
@@ -87,8 +89,9 @@ class SymbolRoute extends React.Component<IProps> {
           <p>
             <FormattedMessage id="SYMBOL_ABOUT_CONTENT_2" />
           </p>
+
           <ButtonBar>
-            <Link className="Button" route="/">
+            <Link className="Button isStyled" route="/">
               <FormattedMessage id="EXPLORE_THE_REST_OF_THE_SITE" />
             </Link>
           </ButtonBar>
