@@ -61,9 +61,7 @@ module.exports = withSass({
 
     config.plugins.push(
       new webpack.DefinePlugin({
-        API_URL: !dev
-          ? `"https://api.mynameisviii.com"`
-          : `"http://localhost:5000/mock-api"`
+        API_URL: `"https://api.mynameisviii.com"`
       }),
 
       new FilterWarningsPlugin({

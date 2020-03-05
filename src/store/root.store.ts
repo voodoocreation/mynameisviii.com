@@ -61,8 +61,14 @@ export const configureStore = (
 };
 
 export const createStore = (initialState: DeepPartial<TStoreState> = {}) => {
+  const dataLayer = !isServer() ? window.dataLayer : [];
+  const features = !isServer() ? window.features : [];
+  const maps = !isServer() ? window.google.maps : undefined;
+
   const ports = configurePorts({
-    fetch: isServer() ? fetch : fetch.bind(window)
+    dataLayer,
+    features,
+    maps
   });
 
   return configureStore(initialState, ports);
