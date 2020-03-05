@@ -29,6 +29,7 @@ class NewVersionToast extends React.Component<IProps> {
 
         <Button
           className="NewVersionToast--refreshButton"
+          isStyled
           onClick={this.onRefreshClick}
         >
           <FormattedMessage id="REFRESH" />

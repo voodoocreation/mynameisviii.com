@@ -178,7 +178,7 @@ exports[`[connected] <App /> when mounting on the client matches snapshot 1`] = 
             A new version of the site is available, refresh to see it.
           </p>
           <button
-            class="Button NewVersionToast--refreshButton"
+            class="Button NewVersionToast--refreshButton isStyled"
             type="button"
           >
             <span
