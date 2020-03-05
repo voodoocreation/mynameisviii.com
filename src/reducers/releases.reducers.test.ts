@@ -44,7 +44,7 @@ describe("[reducers] Release", () => {
           hasAllItems: true,
           isLoading: true
         },
-        actions.fetchReleases.done({ result, params: {} })
+        actions.fetchReleases.done({ params: {}, result })
       );
 
       it("sets hasAllItems to false", () => {
@@ -163,7 +163,7 @@ describe("[reducers] Release", () => {
             [item1.slug]: item1
           }
         },
-        actions.fetchMoreReleases.done({ result, params: {} })
+        actions.fetchMoreReleases.done({ params: {}, result })
       );
 
       it("sets hasAllItems to false", () => {

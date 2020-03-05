@@ -39,11 +39,11 @@ class StemListing extends React.Component<IProps, IState> {
         <Link
           className="StemListing--link"
           href={stem.url}
-          isExternal={true}
           title={formatMessage(
             { id: "DOWNLOAD_STEMS_FOR" },
             { title: stem.title }
           )}
+          isExternal
         >
           <div className="StemListing--details">
             <header className="StemListing--header">
@@ -87,8 +87,8 @@ class StemListing extends React.Component<IProps, IState> {
             <Image
               alt={stem.title}
               className="StemListing--image"
-              onLoad={this.onLoad}
               src={stem.imageUrl}
+              onLoad={this.onLoad}
             />
 
             <div className="StemListing--downloadIcon">

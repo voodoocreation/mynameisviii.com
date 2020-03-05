@@ -1,3 +1,4 @@
+import { API } from "../../constants/url.constants";
 import {
   failure,
   gallery,
@@ -12,10 +13,12 @@ export const fetchGalleries = (request: TRequest) => async (
   startAfter?: string
 ) => {
   try {
-    const response: IRawS3Response<IRawAppearance> = await request({
-      params: { startAfter },
-      url: `/galleries/find`
-    });
+    const response: IRawS3Response<IRawAppearance> = await request(
+      API.FETCH_GALLERIES,
+      {
+        params: { startAfter }
+      }
+    );
 
     return success(
       s3Response({

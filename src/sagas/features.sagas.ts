@@ -1,9 +1,8 @@
 import { SagaIterator } from "redux-saga";
 import { call, takeLatest } from "redux-saga/effects";
 
-import { IPorts } from "../services/configurePorts";
-
 import * as actions from "../actions/root.actions";
+import { IPorts } from "../services/configurePorts";
 
 export const addFeaturesSaga = (ports: IPorts) =>
   function*(): SagaIterator {

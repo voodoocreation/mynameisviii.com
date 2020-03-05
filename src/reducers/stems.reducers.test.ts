@@ -44,7 +44,7 @@ describe("[reducers] Stems", () => {
           hasAllItems: true,
           isLoading: true
         },
-        actions.fetchStems.done({ result, params: {} })
+        actions.fetchStems.done({ params: {}, result })
       );
 
       it("sets hasAllItems to false", () => {
@@ -163,7 +163,7 @@ describe("[reducers] Stems", () => {
             [item1.slug]: item1
           }
         },
-        actions.fetchMoreStems.done({ result, params: {} })
+        actions.fetchMoreStems.done({ params: {}, result })
       );
 
       it("sets hasAllItems to false", () => {

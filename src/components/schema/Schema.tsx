@@ -1,29 +1,25 @@
 import * as React from "react";
 
 interface IProps {
+  [index: string]: any;
   "@context"?: string;
   "@type"?: string;
   isPretty?: boolean;
-  [index: string]: any;
 }
 
-export default class Schema extends React.Component<IProps> {
-  public static defaultProps = {
-    "@context": "http://schema.org/",
-    "@type": "Thing",
-    isPretty: false
-  };
+const Schema: React.FC<IProps> = ({ isPretty, ...props }) => (
+  <script
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify(props, null, isPretty ? "  " : undefined)
+    }}
+    type="application/ld+json"
+  />
+);
 
-  public render() {
-    const { isPretty, ...props } = this.props;
+Schema.defaultProps = {
+  "@context": "http://schema.org/",
+  "@type": "Thing",
+  isPretty: false
+};
 
-    return (
-      <script
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(props, null, isPretty ? "  " : undefined)
-        }}
-        type="application/ld+json"
-      />
-    );
-  }
-}
+export default Schema;

@@ -1,3 +1,4 @@
+import { API } from "../../constants/url.constants";
 import {
   failure,
   IRawRelease,
@@ -10,7 +11,7 @@ export const fetchReleaseBySlug = (request: TRequest) => async (
   slug: string
 ) => {
   try {
-    const response: IRawRelease = await request({ url: `/releases/${slug}` });
+    const response: IRawRelease = await request(`${API.FETCH_RELEASE}/${slug}`);
 
     return success(release(response));
   } catch (error) {

@@ -5,13 +5,8 @@ import { absoluteUrl, lengthToDuration } from "../../helpers/dataTransformers";
 import { IRelease, IReleaseTrack } from "../../models/root.models";
 import Schema from "./Schema";
 
-const getFlatTracklist = (tracklist: IReleaseTrack[][]) => {
-  return tracklist.reduce((acc, curr) => {
-    acc = [...acc, ...curr];
-
-    return acc;
-  }, []);
-};
+const getFlatTracklist = (tracklist: IReleaseTrack[][]) =>
+  tracklist.reduce((acc, curr) => [...acc, ...curr], []);
 
 const Release: React.FC<IRelease> = props => (
   <Schema

@@ -2,7 +2,6 @@ import { SagaIterator } from "redux-saga";
 import { all, fork, ForkEffect } from "redux-saga/effects";
 
 import { IPorts } from "../services/configurePorts";
-
 import * as analytics from "./analytics.sagas";
 import * as appearances from "./appearances.sagas";
 import * as features from "./features.sagas";

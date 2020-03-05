@@ -1,3 +1,4 @@
+import { API } from "../../constants/url.constants";
 import {
   failure,
   gallery,
@@ -10,7 +11,7 @@ export const fetchGalleryBySlug = (request: TRequest) => async (
   slug: string
 ) => {
   try {
-    const response: IRawGallery = await request({ url: `/galleries/${slug}` });
+    const response: IRawGallery = await request(`${API.FETCH_GALLERY}/${slug}`);
 
     return success(gallery(response));
   } catch (error) {

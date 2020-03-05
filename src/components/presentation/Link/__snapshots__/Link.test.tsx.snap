@@ -9,7 +9,7 @@ exports[`[presentation] <Link /> when both href and route are undefined matches 
 exports[`[presentation] <Link /> when isExternal is true matches snapshot 1`] = `
 <a
   href="/"
-  rel="noopener"
+  rel="noopener noreferrer"
   target="_blank"
 >
   Link text

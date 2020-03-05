@@ -26,10 +26,10 @@ class ResourceListing extends React.Component<IProps, IState> {
 
     return (
       <article className={cn("ResourceListing", { isRendered })}>
-        <Link href={resource.url} isExternal={true}>
+        <Link href={resource.url} isExternal>
           <Image
-            className="ResourceListing--image"
             alt={resource.title}
+            className="ResourceListing--image"
             src={resource.imageUrl}
             onLoad={this.onLoad}
           />

@@ -1,10 +1,10 @@
 import { filterCalls } from "jest-mocks";
 import * as React from "react";
+import { Wrapper } from "react-test-wrapper";
 
-import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import Modal from "./Modal";
 
-const component = new WrapperWithIntl(Modal)
+const component = new Wrapper(Modal)
   .withDefaultProps({
     className: "TestModal",
     hasFocusRestriction: true,
@@ -116,7 +116,7 @@ describe("[presentation] <Modal />", () => {
     });
 
     it("clicks the overlay", () => {
-      wrapper.find(".Modal--overlay").simulate("click");
+      wrapper.find("Button.Modal--overlay").simulate("click");
     });
 
     it("calls the onClose prop", () => {
@@ -128,7 +128,7 @@ describe("[presentation] <Modal />", () => {
     });
 
     it("clicks the overlay", () => {
-      wrapper.find(".Modal--overlay").simulate("click");
+      wrapper.find("Button.Modal--overlay").simulate("click");
     });
 
     it("doesn't call the onClose prop", () => {

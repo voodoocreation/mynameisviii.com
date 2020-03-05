@@ -11,10 +11,12 @@ import {
 import { FormattedMessage, WrappedComponentProps } from "react-intl";
 import { connect } from "react-redux";
 
+import * as actions from "../../../actions/root.actions";
 import { absoluteUrl, s3ThemeUrl } from "../../../helpers/dataTransformers";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { IAppearance, INewsArticle } from "../../../models/root.models";
 import { TStoreState } from "../../../reducers/root.reducers";
+import * as selectors from "../../../selectors/root.selectors";
 import { IPageContext } from "../../connected/App/App";
 import IconGenius from "../../icons/IconGenius";
 import AppearanceListing from "../../presentation/AppearanceListing/AppearanceListing";
@@ -22,9 +24,6 @@ import Link from "../../presentation/Link/Link";
 import NewsListing from "../../presentation/NewsListing/NewsListing";
 import PageHeader from "../../presentation/PageHeader/PageHeader";
 import WebsiteListing from "../../presentation/WebsiteListing/WebsiteListing";
-
-import * as actions from "../../../actions/root.actions";
-import * as selectors from "../../../selectors/root.selectors";
 
 import "./IndexRoute.scss";
 
@@ -38,7 +37,7 @@ interface IProps extends WrappedComponentProps {
 }
 
 class IndexRoute extends React.Component<IProps> {
-  public static async getInitialProps(context: IPageContext) {
+  public static getInitialProps = async (context: IPageContext) => {
     const { isServer, store } = context;
 
     const state = store.getState();
@@ -50,7 +49,7 @@ class IndexRoute extends React.Component<IProps> {
     if (isServer || !selectors.getHasAllAppearances(state)) {
       store.dispatch(actions.fetchAppearances.started({}));
     }
-  }
+  };
 
   public render() {
     const { formatMessage } = this.props.intl;
@@ -68,13 +67,13 @@ class IndexRoute extends React.Component<IProps> {
 
           <meta content={pageDescription} name="description" />
 
-          <meta property="og:title" content={pageTitle} />
-          <meta property="og:description" content={pageDescription} />
-          <meta property="og:url" content={absoluteUrl("/")} />
-          <meta property="og:type" content="website" />
-          <meta property="og:image" content={s3ThemeUrl("/og/home.jpg")} />
-          <meta property="og:image:width" content="1200" />
-          <meta property="og:image:height" content="630" />
+          <meta content={pageTitle} property="og:title" />
+          <meta content={pageDescription} property="og:description" />
+          <meta content={absoluteUrl("/")} property="og:url" />
+          <meta content="website" property="og:type" />
+          <meta content={s3ThemeUrl("/og/home.jpg")} property="og:image" />
+          <meta content="1200" property="og:image:width" />
+          <meta content="630" property="og:image:height" />
         </Head>
 
         <PageHeader>
@@ -101,7 +100,7 @@ class IndexRoute extends React.Component<IProps> {
         </h2>
 
         <div className="Home-news-items">
-          <NewsListing isCondensed={true} {...this.props.articles[0]} />
+          <NewsListing isCondensed {...this.props.articles[0]} />
         </div>
       </div>
     </section>
@@ -116,7 +115,7 @@ class IndexRoute extends React.Component<IProps> {
 
         <div className="Home--appearances--items">
           <AppearanceListing
-            isCondensed={true}
+            isCondensed
             {...this.props.upcomingAppearances[0]}
           />
         </div>
@@ -163,48 +162,48 @@ class IndexRoute extends React.Component<IProps> {
           <div className="Home--connect--websites">
             <WebsiteListing
               icon={<FaSpotify />}
-              url="https://open.spotify.com/artist/59s4iD384WECjyZyUmZ18G?si=rlWWtIUNS1uvdLD5BzqxvQ"
               title={formatMessage({ id: "CONNECT_ON_SPOTIFY" })}
+              url="https://open.spotify.com/artist/59s4iD384WECjyZyUmZ18G?si=rlWWtIUNS1uvdLD5BzqxvQ"
             >
               <FormattedMessage id="SPOTIFY" />
             </WebsiteListing>
 
             <WebsiteListing
               icon={<FaFacebookSquare />}
-              url="https://facebook.com/mynameisviii"
               title={formatMessage({ id: "CONNECT_ON_FACEBOOK" })}
+              url="https://facebook.com/mynameisviii"
             >
               <FormattedMessage id="FACEBOOK" />
             </WebsiteListing>
 
             <WebsiteListing
               icon={<FaTwitter />}
-              url="https://twitter.com/mynameisviii"
               title={formatMessage({ id: "CONNECT_ON_TWITTER" })}
+              url="https://twitter.com/mynameisviii"
             >
               <FormattedMessage id="TWITTER" />
             </WebsiteListing>
 
             <WebsiteListing
               icon={<FaInstagram />}
-              url="https://instagram.com/mynameisviii"
               title={formatMessage({ id: "CONNECT_ON_INSTAGRAM" })}
+              url="https://instagram.com/mynameisviii"
             >
               <FormattedMessage id="INSTAGRAM" />
             </WebsiteListing>
 
             <WebsiteListing
               icon={<FaSoundcloud />}
-              url="https://soundcloud.com/iamviii"
               title={formatMessage({ id: "CONNECT_ON_SOUNDCLOUD" })}
+              url="https://soundcloud.com/iamviii"
             >
               <FormattedMessage id="SOUNDCLOUD" />
             </WebsiteListing>
 
             <WebsiteListing
               icon={<IconGenius />}
-              url="https://genius.com/artists/Viii"
               title={formatMessage({ id: "CONNECT_ON_GENIUS" })}
+              url="https://genius.com/artists/Viii"
             >
               <FormattedMessage id="GENIUS" />
             </WebsiteListing>

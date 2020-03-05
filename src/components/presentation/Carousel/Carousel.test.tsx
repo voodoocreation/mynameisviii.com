@@ -11,9 +11,9 @@ describe("[presentation] <Carousel />", () => {
   describe("when there are several children", () => {
     const wrapper = component
       .withChildren([
-        <div key="slide-1" className="Slide" />,
-        <div key="slide-2" className="Slide" />,
-        <div key="slide-3" className="Slide" />
+        <div className="Slide" key="slide-1" />,
+        <div className="Slide" key="slide-2" />,
+        <div className="Slide" key="slide-3" />
       ])
       .mount();
 
@@ -75,7 +75,7 @@ describe("[presentation] <Carousel />", () => {
 
   describe("when there's only one child", () => {
     const wrapper = component
-      .withChildren([<div key="slide-1" className="Slide" />])
+      .withChildren([<div className="Slide" key="slide-1" />])
       .render();
 
     it("renders all of the children", () => {

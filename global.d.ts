@@ -9,7 +9,9 @@ declare module "serviceworker-webpack-plugin/lib/runtime";
 declare module "service-worker-mock";
 declare module "google-maps-react";
 
-// tslint:disable-next-line
+declare const API_URL: string;
+
+// eslint-disable-next-line
 interface Window {
   __NEXT_DATA__: {
     initialProps: any;
@@ -21,8 +23,8 @@ interface Window {
   dataLayer: Array<{}>;
   features: string[];
   google: {
-    maps: any;
     [index: string]: any;
+    maps: any;
   };
   isServer?: boolean;
   Promise: any;

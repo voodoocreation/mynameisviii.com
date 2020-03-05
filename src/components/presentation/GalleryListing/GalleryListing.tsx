@@ -41,8 +41,8 @@ export default class GalleryListing extends React.Component<IProps, IState> {
           <Image
             alt={gallery.title}
             className="GalleryListing--image"
-            onLoad={this.onLoad}
             src={gallery.imageUrl}
+            onLoad={this.onLoad}
           />
         </Link>
 

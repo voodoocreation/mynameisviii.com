@@ -12,7 +12,7 @@ import "./SaleListing.scss";
 
 const SaleListing: React.FC<IOffer> = ({ ...sale }) => (
   <article className="SaleListing">
-    <Link className="SaleListing--link" href={sale.url} isExternal={true}>
+    <Link className="SaleListing--link" href={sale.url} isExternal>
       <div className="SaleListing--icon">
         <FaTicketAlt />
       </div>

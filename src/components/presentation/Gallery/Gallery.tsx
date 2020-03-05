@@ -28,9 +28,9 @@ export default class Gallery extends React.Component<IProps> {
           <section className="Gallery--images">
             <ImageGallery
               onItemClick={this.onGalleryInteraction("itemClick")}
+              onModalClose={this.onGalleryInteraction("modalClose")}
               onNext={this.onGalleryInteraction("next")}
               onPrevious={this.onGalleryInteraction("previous")}
-              onModalClose={this.onGalleryInteraction("modalClose")}
             >
               {gallery.images.map((image, index) => (
                 <Image

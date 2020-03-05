@@ -1,59 +1,93 @@
-import axios, { AxiosRequestConfig } from "axios";
 import { camelizeKeys } from "humps";
 
-interface IOptions {
-  apiUrl?: string;
+type THttpMethod =
+  | "DELETE"
+  | "GET"
+  | "HEAD"
+  | "OPTIONS"
+  | "PATCH"
+  | "POST"
+  | "PUT";
+
+export interface IHttpClientConfig {
+  fetch: typeof window.fetch;
 }
 
-export type TRequest = (options: AxiosRequestConfig) => Promise<any>;
+export interface IRequestOptions {
+  body?: any;
+  method?: THttpMethod;
+  params?: Record<string, string | number | undefined>;
+  headers?: Record<string, string>;
+}
+
+export type TRequest = (url: string, options?: IRequestOptions) => Promise<any>;
 
 export class ServerError extends Error {
-  public readonly response: Response;
-  public readonly data: any;
-
-  constructor(message: string, response: Response, data: any) {
+  constructor(
+    message: string,
+    public readonly response: Response,
+    public readonly data?: any
+  ) {
     super(message);
-
-    this.response = response;
-    this.data = data;
   }
 }
 
-export const configureHttpClient = (config: IOptions = {}) => async ({
-  data,
-  method = "GET",
-  params,
-  url
-}: AxiosRequestConfig) => {
-  try {
-    const response = await axios({
-      baseURL: config.apiUrl || "",
-      data,
-      headers: {
-        "Content-Type": "application/json; charset=utf-8"
-      },
-      method,
-      params,
-      url
-    });
+const parseParams = (params: Record<string, string | number | undefined>) => {
+  const filteredParams = Object.keys(params).reduce<Record<string, string>>(
+    (result, key) =>
+      params![key] !== undefined
+        ? { ...result, [key]: `${params![key]}` }
+        : result,
+    {}
+  );
 
-    return camelizeKeys(response.data);
-  } catch (error) {
-    if (error.response) {
-      // The request was made and the server responded with a status code
-      // that falls out of the range of 2xx
-      throw new ServerError(
-        `Request failed with status code ${error.response.status}.`,
-        error.response,
-        camelizeKeys(error.response.data)
-      );
-    } else if (error.request) {
-      // The request was made but no response was received
-      // `err.request` is an instance of XMLHttpRequest in the browser
-      throw new Error(error.request.statusText);
-    } else {
-      // Something happened in setting up the request that triggered an Error
-      throw new Error(error.message);
-    }
+  return Object.keys(filteredParams).length > 0
+    ? `?${new URLSearchParams(filteredParams)}`
+    : "";
+};
+
+export const configureHttpClient = (
+  config: IHttpClientConfig
+): TRequest => async (url, options = {}) => {
+  const { body, headers, method = "GET", params } = options;
+
+  const requestOptions: RequestInit = {
+    headers: {
+      "Content-Type": "application/json",
+      ...headers
+    },
+    method
+  };
+
+  let query = "";
+  if (params) {
+    query = parseParams(params);
   }
+
+  if (body) {
+    requestOptions.body = JSON.stringify(body);
+  }
+  const response = await config.fetch(`${url}${query}`, requestOptions);
+
+  // Get the response as text first, because if it's a server error it may not be JSON
+  const textData = await response.text();
+  let data: any;
+
+  try {
+    data = JSON.parse(textData);
+  } catch (error) {
+    data = textData;
+  }
+
+  data = camelizeKeys(data);
+
+  if (response.ok) {
+    return data;
+  }
+
+  throw new ServerError(
+    `Request failed with status code ${response.status}.`,
+    response,
+    data
+  );
 };

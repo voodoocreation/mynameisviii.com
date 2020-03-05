@@ -92,7 +92,7 @@ describe("[presentation] <Link />", () => {
 
     it("external attributes are defined on the <a>", () => {
       expect(wrapper.find("a").props()).toMatchObject({
-        rel: "noopener",
+        rel: "noopener noreferrer",
         target: "_blank"
       });
     });

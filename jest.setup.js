@@ -4,9 +4,30 @@ import Adapter from "enzyme-adapter-react-16";
 import createGoogleMapsMock from "jest-google-maps-mock";
 import MockDate from "mockdate";
 
+import "./polyfills";
+
 Enzyme.configure({ adapter: new Adapter() });
 
 MockDate.set("2018-01-01T00:00:00", -780);
+
+Object.defineProperties(global, {
+  API_URL: { value: "http://localhost/api", writable: true }
+});
+
+delete window.location;
+window.location = {
+  assign: jest.fn(),
+  hash: "",
+  host: "localhost",
+  hostname: "localhost",
+  href: "http://localhost",
+  origin: "http://localhost",
+  pathname: "",
+  port: 80,
+  protocol: "http:",
+  reload: jest.fn(),
+  search: ""
+};
 
 Object.defineProperties(window, {
   dataLayer: {
@@ -27,11 +48,6 @@ Object.defineProperties(window, {
     value: jest.fn(),
     writable: true
   }
-});
-
-Object.defineProperty(window.location, "assign", {
-  value: jest.fn(),
-  writable: true
 });
 
 Object.defineProperty(navigator, "language", {

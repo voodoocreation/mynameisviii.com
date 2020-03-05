@@ -1,6 +1,7 @@
 import { mockWithRejectedPromise, mockWithResolvedPromise } from "jest-mocks";
 
 import { BOOLEAN } from "../../constants/api.constants";
+import { API } from "../../constants/url.constants";
 import {
   dynamoResponse,
   failure,
@@ -39,9 +40,8 @@ describe("[api] fetchStems", () => {
     });
 
     it("makes the request correctly", () => {
-      expect(request).toHaveBeenCalledWith({
-        params,
-        url: "/stems/find"
+      expect(request).toHaveBeenCalledWith(API.FETCH_STEMS, {
+        params
       });
     });
   });
@@ -57,9 +57,8 @@ describe("[api] fetchStems", () => {
     });
 
     it("makes the request correctly", () => {
-      expect(request).toHaveBeenCalledWith({
-        params,
-        url: "/stems/find"
+      expect(request).toHaveBeenCalledWith(API.FETCH_STEMS, {
+        params
       });
     });
   });

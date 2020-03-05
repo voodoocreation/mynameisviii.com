@@ -1,8 +1,7 @@
+import * as actions from "../actions/root.actions";
 import { dynamoResponse, release } from "../models/root.models";
 import { mockWithFailure, mockWithSuccess } from "../utilities/mocks";
 import SagaTester from "../utilities/SagaTester";
-
-import * as actions from "../actions/root.actions";
 
 describe("[sagas] Releases", () => {
   const item = release({ slug: "item-1" });

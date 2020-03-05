@@ -1,0 +1,10 @@
+{
+  "extends": ["voodoocreation"],
+  "parserOptions": {
+    "project": "tsconfig.json"
+  },
+  "rules": {
+    "jsx-a11y/anchor-is-valid": "off",
+    "react/no-danger": "off"
+  }
+}

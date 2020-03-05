@@ -28,7 +28,7 @@ export default class ActListing extends React.Component<IProps, IState> {
 
     return (
       <article className={cn("ActListing", { isRendered })}>
-        <Link className="ActListing--link" href={act.url} isExternal={true}>
+        <Link className="ActListing--link" href={act.url} isExternal>
           <div className="ActListing--details">
             <h3>{act.name}</h3>
 
@@ -54,8 +54,8 @@ export default class ActListing extends React.Component<IProps, IState> {
           <Image
             alt={act.name}
             className="ActListing--image"
-            onLoad={this.onLoad}
             src={act.imageUrl}
+            onLoad={this.onLoad}
           />
         </Link>
       </article>

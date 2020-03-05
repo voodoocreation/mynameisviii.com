@@ -44,7 +44,7 @@ describe("[reducers] News", () => {
           hasAllItems: true,
           isLoading: true
         },
-        actions.fetchLatestNews.done({ result, params: {} })
+        actions.fetchLatestNews.done({ params: {}, result })
       );
 
       it("sets hasAllItems to false", () => {
@@ -163,7 +163,7 @@ describe("[reducers] News", () => {
             [item1.slug]: item1
           }
         },
-        actions.fetchMoreLatestNews.done({ result, params: {} })
+        actions.fetchMoreLatestNews.done({ params: {}, result })
       );
 
       it("sets hasAllItems to false", () => {

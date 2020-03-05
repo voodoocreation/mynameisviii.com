@@ -7,7 +7,7 @@ exports[`[presentation] <SaleListing /> when url is defined matches snapshot 1`]
   <a
     class="SaleListing--link"
     href="https://ticket.com/id"
-    rel="noopener"
+    rel="noopener noreferrer"
     target="_blank"
   >
     <div

@@ -83,7 +83,6 @@ class Release extends React.Component<IProps> {
           labelIntlId="RELEASED"
         >
           <DateTime
-            isDateOnly={true}
             isRelative={false}
             options={{
               day: "numeric",
@@ -91,6 +90,7 @@ class Release extends React.Component<IProps> {
               year: "numeric"
             }}
             value={releasedOn}
+            isDateOnly
           />
         </Meta>
 
@@ -120,12 +120,12 @@ class Release extends React.Component<IProps> {
   private renderImagesSection = () => (
     <section className="Release--images">
       <Carousel onSlideChange={this.onCarouselSlideChange}>
-        {this.props.images.map((image, index) => (
+        {this.props.images.map(image => (
           <Image
             alt={image.title}
             caption={image.title}
             className="Release--images--image"
-            key={`image-${index}`}
+            key={image.imageUrl}
             src={image.imageUrl}
           />
         ))}
@@ -139,7 +139,8 @@ class Release extends React.Component<IProps> {
         <FormattedMessage id="TRACKLIST" />
       </h2>
 
-      {this.props.tracklist.map((album, albumIndex) => (
+      {this.props.tracklist.map((disc, albumIndex) => (
+        // eslint-disable-next-line react/no-array-index-key
         <React.Fragment key={albumIndex}>
           {this.props.tracklist.length > 1 ? (
             <h3>
@@ -150,7 +151,7 @@ class Release extends React.Component<IProps> {
             </h3>
           ) : null}
           <ol>
-            {album.map(track => (
+            {disc.map(track => (
               <li key={track.title}>
                 <span className="Release--tracklist--title">{track.title}</span>{" "}
                 <span className="Release--tracklist--genre">{track.genre}</span>{" "}
@@ -177,7 +178,6 @@ class Release extends React.Component<IProps> {
             <li key={link.platform}>
               <Link
                 href={link.url}
-                isExternal={true}
                 title={this.props.intl.formatMessage(
                   {
                     id: `STREAM_ON_PLATFORM`
@@ -189,6 +189,7 @@ class Release extends React.Component<IProps> {
                     title: this.props.title
                   }
                 )}
+                isExternal
               >
                 <PlatformIcon value={link.platform} />{" "}
                 <FormattedMessage id={link.platform.toUpperCase()} />
@@ -211,7 +212,6 @@ class Release extends React.Component<IProps> {
             <li key={link.platform}>
               <Link
                 href={link.url}
-                isExternal={true}
                 title={this.props.intl.formatMessage(
                   {
                     id: `BUY_FROM_PLATFORM`
@@ -223,6 +223,7 @@ class Release extends React.Component<IProps> {
                     title: this.props.title
                   }
                 )}
+                isExternal
               >
                 <PlatformIcon value={link.platform} />{" "}
                 <FormattedMessage id={link.platform.toUpperCase()} />

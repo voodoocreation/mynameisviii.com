@@ -4,14 +4,13 @@ import * as React from "react";
 import { injectIntl, WrappedComponentProps } from "react-intl";
 import { connect } from "react-redux";
 
-import Banner from "../../presentation/Banner/Banner";
-import Loader from "../../presentation/Loader/Loader";
-import ToastContainer from "../../presentation/ToastContainer/ToastContainer";
-
 import { IError } from "../../../models/root.models";
 import { TStoreState } from "../../../reducers/root.reducers";
 import * as selectors from "../../../selectors/root.selectors";
+import Banner from "../../presentation/Banner/Banner";
 import ErrorPage from "../../presentation/ErrorPage/ErrorPage";
+import Loader from "../../presentation/Loader/Loader";
+import ToastContainer from "../../presentation/ToastContainer/ToastContainer";
 
 import "./Page.scss";
 
@@ -22,37 +21,36 @@ interface IProps extends WrappedComponentProps {
   isLoading: boolean;
 }
 
-class Page extends React.Component<IProps> {
-  public render() {
-    const { children, className, error, isLoading } = this.props;
-    const { formatMessage } = this.props.intl;
+const Page: React.FC<IProps> = ({
+  children,
+  className,
+  error,
+  intl,
+  isLoading
+}) => (
+  <article className={cn("Page", { isLoading }, className)}>
+    <Head>
+      <meta
+        content={intl.formatMessage({ id: "BRAND_NAME" })}
+        property="og:site_name"
+      />
+    </Head>
 
-    return (
-      <article className={cn("Page", { isLoading }, className)}>
-        <Head>
-          <meta
-            property="og:site_name"
-            content={formatMessage({ id: "BRAND_NAME" })}
-          />
-        </Head>
+    <Banner />
 
-        <Banner />
+    <main className="Page--body" role="main">
+      {isLoading ? (
+        <Loader className="PageLoader" />
+      ) : error ? (
+        <ErrorPage {...error} />
+      ) : (
+        children
+      )}
+    </main>
 
-        <main className="Page--body" role="main">
-          {isLoading ? (
-            <Loader className="PageLoader" />
-          ) : error ? (
-            <ErrorPage {...error} />
-          ) : (
-            children
-          )}
-        </main>
-
-        <ToastContainer />
-      </article>
-    );
-  }
-}
+    <ToastContainer />
+  </article>
+);
 
 const mapState = (state: TStoreState) => ({
   error: selectors.getAppError(state),

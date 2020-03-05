@@ -7,7 +7,7 @@ exports[`[presentation] <StemListing /> matches snapshot 1`] = `
   <a
     class="StemListing--link"
     href="URL"
-    rel="noopener"
+    rel="noopener noreferrer"
     target="_blank"
     title="Download stems for {title}"
   >

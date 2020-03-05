@@ -4,8 +4,8 @@ import MockPageContext from "../../../utilities/MockPageContext";
 import WrapperWithRedux from "../../../utilities/WrapperWithRedux";
 import ReleasesRoute from "./ReleasesRoute";
 
-const item1 = release({ slug: "test-1", images: [{ imageUrl: "Image URL" }] });
-const item2 = release({ slug: "test-2", images: [{ imageUrl: "Image URL" }] });
+const item1 = release({ images: [{ imageUrl: "Image URL" }], slug: "test-1" });
+const item2 = release({ images: [{ imageUrl: "Image URL" }], slug: "test-2" });
 
 const component = new WrapperWithRedux(ReleasesRoute);
 

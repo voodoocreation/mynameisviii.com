@@ -1,3 +1,4 @@
+import { API } from "../../constants/url.constants";
 import {
   failure,
   IRawNewsArticle,
@@ -10,7 +11,9 @@ export const fetchNewsArticleBySlug = (request: TRequest) => async (
   slug: string
 ) => {
   try {
-    const response: IRawNewsArticle = await request({ url: `/news/${slug}` });
+    const response: IRawNewsArticle = await request(
+      `${API.FETCH_NEWS_ARTICLE}/${slug}`
+    );
 
     return success(newsArticle(response));
   } catch (error) {

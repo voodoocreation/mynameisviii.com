@@ -1,3 +1,4 @@
+import { API } from "../../constants/url.constants";
 import {
   dynamoResponse,
   failure,
@@ -13,10 +14,12 @@ export const fetchStems = (request: TRequest) => async (
   exclusiveStartKey?: string
 ) => {
   try {
-    const response: IRawDynamoResponse<IRawStem, "createdAt"> = await request({
-      params: { exclusiveStartKey, limit },
-      url: `/stems/find`
-    });
+    const response: IRawDynamoResponse<IRawStem, "createdAt"> = await request(
+      API.FETCH_STEMS,
+      {
+        params: { exclusiveStartKey, limit }
+      }
+    );
 
     return success(
       dynamoResponse({

@@ -69,23 +69,31 @@ class LoadButton extends React.Component<IProps> {
   }
 
   public render() {
-    const { children, className, hasError, isLoading, ...props } = this.props;
+    const {
+      children,
+      className,
+      hasError,
+      isLoading,
+      isScrollLoadEnabled,
+      triggerDistance,
+      ...props
+    } = this.props;
 
     return (
       <Button
         {...props}
         className={cn("LoadButton", className)}
         isLoading={isLoading}
-        onClick={this.onClick}
         nodeRef={this.buttonRef}
+        isStyled
+        onClick={this.onClick}
       >
-        {!!children ? (
-          children
-        ) : !hasError ? (
-          <FormattedMessage id="LOAD_MORE" />
-        ) : (
-          <FormattedMessage id="TRY_AGAIN" />
-        )}
+        {children ||
+          (!hasError ? (
+            <FormattedMessage id="LOAD_MORE" />
+          ) : (
+            <FormattedMessage id="TRY_AGAIN" />
+          ))}
       </Button>
     );
   }

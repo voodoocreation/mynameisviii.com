@@ -11,13 +11,13 @@ interface IProps {
 const PriceRange: React.FC<IProps> = ({ currency, max, min }) => (
   <span className="PriceRange">
     {min !== undefined ? (
-      <Price className="PriceRange--min" value={min} currency={currency} />
+      <Price className="PriceRange--min" currency={currency} value={min} />
     ) : null}
     {min !== undefined && max !== undefined ? (
       <span className="PriceRange--separator">–</span>
     ) : null}
     {max !== undefined ? (
-      <Price className="PriceRange--max" value={max} currency={currency} />
+      <Price className="PriceRange--max" currency={currency} value={max} />
     ) : null}
   </span>
 );

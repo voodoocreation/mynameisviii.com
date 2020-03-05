@@ -1,6 +1,5 @@
-import reducer, { initialState } from "./features.reducers";
-
 import * as actions from "../actions/root.actions";
+import reducer, { initialState } from "./features.reducers";
 
 describe("[reducers] Features", () => {
   describe("actions.addFeatures", () => {

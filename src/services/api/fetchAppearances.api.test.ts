@@ -1,6 +1,7 @@
 import { mockWithRejectedPromise, mockWithResolvedPromise } from "jest-mocks";
 
 import { BOOLEAN } from "../../constants/api.constants";
+import { API } from "../../constants/url.constants";
 import {
   appearance,
   dynamoResponse,
@@ -39,9 +40,8 @@ describe("[api] fetchAppearances", () => {
     });
 
     it("makes the request correctly", () => {
-      expect(request).toHaveBeenCalledWith({
-        params,
-        url: "/appearances/find"
+      expect(request).toHaveBeenCalledWith(API.FETCH_APPEARANCES, {
+        params
       });
     });
   });
@@ -57,9 +57,8 @@ describe("[api] fetchAppearances", () => {
     });
 
     it("makes the request correctly", () => {
-      expect(request).toHaveBeenCalledWith({
-        params,
-        url: "/appearances/find"
+      expect(request).toHaveBeenCalledWith(API.FETCH_APPEARANCES, {
+        params
       });
     });
   });

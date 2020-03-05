@@ -90,7 +90,6 @@ class Appearance extends React.Component<IProps> {
           labelIntlId="DATE"
         >
           <DateTime
-            isDateOnly={true}
             isRelative={false}
             options={{
               day: "numeric",
@@ -99,6 +98,7 @@ class Appearance extends React.Component<IProps> {
               year: "numeric"
             }}
             value={startingAt}
+            isDateOnly
           />
         </Meta>
 
@@ -182,7 +182,7 @@ class Appearance extends React.Component<IProps> {
         <Link
           className="Appearance--rsvpLink Button"
           href={this.props.rsvpUrl}
-          isExternal={true}
+          isExternal
         >
           <FaFacebookSquare /> <FormattedMessage id="RSVP_ON_FACEBOOK" />
         </Link>
@@ -247,9 +247,9 @@ class Appearance extends React.Component<IProps> {
         <ImageGallery
           className="Appearance--images--items"
           onItemClick={this.onGalleryInteraction("itemClick")}
+          onModalClose={this.onGalleryInteraction("modalClose")}
           onNext={this.onGalleryInteraction("next")}
           onPrevious={this.onGalleryInteraction("previous")}
-          onModalClose={this.onGalleryInteraction("modalClose")}
         >
           {images.map(image => (
             <Image
@@ -265,7 +265,7 @@ class Appearance extends React.Component<IProps> {
   };
 
   private renderMapSection = () =>
-    !!this.props.locationLatLng ? (
+    this.props.locationLatLng ? (
       <section className="Appearance--map">
         <h2>
           <FormattedMessage id="LOCATION" />

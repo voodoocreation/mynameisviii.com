@@ -4,10 +4,12 @@ import * as React from "react";
 import { WrappedComponentProps } from "react-intl";
 import { connect } from "react-redux";
 
+import * as actions from "../../../actions/root.actions";
 import { absoluteUrl, s3ThemeUrl } from "../../../helpers/dataTransformers";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { IStem } from "../../../models/root.models";
 import { TStoreState } from "../../../reducers/root.reducers";
+import * as selectors from "../../../selectors/root.selectors";
 import { IPageContext } from "../../connected/App/App";
 import OfflineNotice from "../../connected/OfflineNotice/OfflineNotice";
 import ButtonBar from "../../presentation/ButtonBar/ButtonBar";
@@ -15,9 +17,6 @@ import LoadButton from "../../presentation/LoadButton/LoadButton";
 import NoResults from "../../presentation/NoResults/NoResults";
 import PageHeader from "../../presentation/PageHeader/PageHeader";
 import StemListing from "../../presentation/StemListing/StemListing";
-
-import * as actions from "../../../actions/root.actions";
-import * as selectors from "../../../selectors/root.selectors";
 
 import "./StemsRoute.scss";
 
@@ -36,7 +35,11 @@ interface IState {
 }
 
 class StemsRoute extends React.Component<IProps, IState> {
-  public static async getInitialProps(context: IPageContext) {
+  public readonly state: IState = {
+    loadedListings: {}
+  };
+
+  public static getInitialProps = async (context: IPageContext) => {
     const { isServer, store } = context;
 
     const state = store.getState();
@@ -46,10 +49,6 @@ class StemsRoute extends React.Component<IProps, IState> {
     } else if (!selectors.getHasAllStems(state)) {
       store.dispatch(actions.fetchMoreStems.started({}));
     }
-  }
-
-  public readonly state: IState = {
-    loadedListings: {}
   };
 
   public render() {
@@ -74,11 +73,11 @@ class StemsRoute extends React.Component<IProps, IState> {
           </title>
 
           <meta content={pageDescription} name="description" />
-          <meta property="og:title" content={pageTitle} />
-          <meta property="og:description" content={pageDescription} />
-          <meta property="og:type" content="website" />
-          <meta property="og:image" content={s3ThemeUrl("/og/stems.jpg")} />
-          <meta property="og:url" content={absoluteUrl("/stems")} />
+          <meta content={pageTitle} property="og:title" />
+          <meta content={pageDescription} property="og:description" />
+          <meta content="website" property="og:type" />
+          <meta content={s3ThemeUrl("/og/stems.jpg")} property="og:image" />
+          <meta content={absoluteUrl("/stems")} property="og:url" />
         </Head>
 
         <PageHeader>{pageTitle}</PageHeader>
@@ -115,12 +114,12 @@ class StemsRoute extends React.Component<IProps, IState> {
   }
 
   private onListingLoad = (stem: IStem) => () => {
-    this.setState({
+    this.setState(state => ({
       loadedListings: {
-        ...this.state.loadedListings,
+        ...state.loadedListings,
         [stem.slug]: true
       }
-    });
+    }));
   };
 
   private onLoadMore = () => {

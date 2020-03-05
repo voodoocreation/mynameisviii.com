@@ -10,15 +10,12 @@ import createSagaMiddleware, { Task } from "redux-saga";
 import merge from "ts-deepmerge";
 
 import { isServer } from "../helpers/dom";
-import { configureApi } from "../services/configureApi";
-import { configureHttpClient } from "../services/configureHttpClient";
-import { configurePorts, IPorts } from "../services/configurePorts";
-
 import rootReducer, {
   initialState as rootInitialState,
   TStoreState
 } from "../reducers/root.reducers";
 import rootSaga from "../sagas/root.sagas";
+import { configurePorts, IPorts } from "../services/configurePorts";
 
 export type TStore = Store<TStoreState> & {
   sagaTask?: Task;
@@ -64,19 +61,8 @@ export const configureStore = (
 };
 
 export const createStore = (initialState: DeepPartial<TStoreState> = {}) => {
-  const dataLayer = !isServer() ? window.dataLayer : [];
-  const features = !isServer() ? window.features : [];
-  const maps = !isServer() ? window.google.maps : undefined;
-
   const ports = configurePorts({
-    api: configureApi(
-      configureHttpClient({
-        apiUrl: "https://api.mynameisviii.com"
-      })
-    ),
-    dataLayer,
-    features,
-    maps
+    fetch: isServer() ? fetch : fetch.bind(window)
   });
 
   return configureStore(initialState, ports);

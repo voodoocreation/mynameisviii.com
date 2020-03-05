@@ -72,11 +72,11 @@ export default class Image extends React.Component<IProps, IState> {
       >
         <div className="Image--wrapper">
           <img
-            src={src}
             alt={alt}
-            onLoad={this.onLoad}
             ref={this.imageRef}
+            src={src}
             title={title}
+            onLoad={this.onLoad}
           />
           {!this.state.isRendered ? <Loader /> : null}
           {children}

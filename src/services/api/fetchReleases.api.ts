@@ -1,3 +1,4 @@
+import { API } from "../../constants/url.constants";
 import {
   dynamoResponse,
   failure,
@@ -16,9 +17,8 @@ export const fetchReleases = (request: TRequest) => async (
     const response: IRawDynamoResponse<
       IRawRelease,
       "releasedOn"
-    > = await request({
-      params: { exclusiveStartKey, limit },
-      url: `/releases/find`
+    > = await request(API.FETCH_RELEASES, {
+      params: { exclusiveStartKey, limit }
     });
 
     return success(

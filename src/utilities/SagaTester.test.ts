@@ -38,7 +38,7 @@ describe("[utilities] SagaTester", () => {
 
     it("has default mock ports defined", async () => {
       expect(await saga.ports.api.fetchStems()).toEqual(
-        failure(`API method 'fetchStems' not implemented.`)
+        failure(`API method 'fetchStems' not implemented in test.`)
       );
     });
   });

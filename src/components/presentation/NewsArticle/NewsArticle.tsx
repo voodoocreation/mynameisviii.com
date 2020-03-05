@@ -42,8 +42,8 @@ class NewsArticle extends React.Component<IProps, IState> {
           <Image
             alt={article.title}
             className="NewsArticle--image"
-            onLoad={this.onImageLoad}
             src={article.imageUrl}
+            onLoad={this.onImageLoad}
           />
 
           <section className="NewsArticle--meta">
@@ -83,7 +83,7 @@ class NewsArticle extends React.Component<IProps, IState> {
 
     if (action && action.route) {
       return (
-        <Link className="Button isStyled" route={action.route} prefetch={true}>
+        <Link className="Button isStyled" route={action.route} prefetch>
           {action.text}
         </Link>
       );
@@ -91,7 +91,7 @@ class NewsArticle extends React.Component<IProps, IState> {
 
     if (action && action.url) {
       return (
-        <Link className="Button isStyled" href={action.url} isExternal={true}>
+        <Link className="Button isStyled" href={action.url} isExternal>
           {action.text}
         </Link>
       );

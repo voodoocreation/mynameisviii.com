@@ -67,7 +67,6 @@ export default class AppearanceListing extends React.Component<IProps, IState> {
                 labelIntlId="DATE"
               >
                 <DateTime
-                  isDateOnly={true}
                   isRelative={false}
                   options={{
                     day: "numeric",
@@ -75,6 +74,7 @@ export default class AppearanceListing extends React.Component<IProps, IState> {
                     year: "numeric"
                   }}
                   value={appearance.startingAt}
+                  isDateOnly
                 />
               </Meta>
 
@@ -120,10 +120,10 @@ export default class AppearanceListing extends React.Component<IProps, IState> {
           </div>
 
           <Image
-            className="AppearanceListing--image"
             alt={appearance.title}
-            onLoad={this.onLoad}
+            className="AppearanceListing--image"
             src={appearance.imageUrl}
+            onLoad={this.onLoad}
           />
         </Link>
 

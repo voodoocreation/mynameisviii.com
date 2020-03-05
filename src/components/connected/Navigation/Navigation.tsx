@@ -50,7 +50,7 @@ class Navigation extends React.Component<IProps> {
   };
 
   private renderNavItem = (route: string, messageId: string) => (
-    <NavItem route={route} isSelected={this.props.currentRoute === route}>
+    <NavItem isSelected={this.props.currentRoute === route} route={route}>
       <FormattedMessage id={messageId} />
     </NavItem>
   );

@@ -3,16 +3,15 @@ import * as React from "react";
 import { WrappedComponentProps } from "react-intl";
 import { connect } from "react-redux";
 
+import * as actions from "../../../actions/root.actions";
 import { absoluteUrl } from "../../../helpers/dataTransformers";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { IGallery } from "../../../models/root.models";
 import { TStoreState } from "../../../reducers/root.reducers";
+import * as selectors from "../../../selectors/root.selectors";
 import { IPageContext } from "../../connected/App/App";
 import Gallery from "../../presentation/Gallery/Gallery";
 import Loader from "../../presentation/Loader/Loader";
-
-import * as actions from "../../../actions/root.actions";
-import * as selectors from "../../../selectors/root.selectors";
 
 interface IProps extends WrappedComponentProps {
   fetchGalleryBySlug: typeof actions.fetchGalleryBySlug.started;
@@ -22,7 +21,7 @@ interface IProps extends WrappedComponentProps {
 }
 
 class GalleryRoute extends React.Component<IProps> {
-  public static async getInitialProps(context: IPageContext) {
+  public static getInitialProps = async (context: IPageContext) => {
     const { query, store } = context;
     const slug = query.slug as string;
 
@@ -34,7 +33,7 @@ class GalleryRoute extends React.Component<IProps> {
     if (!currentGallery || !currentGallery.images) {
       store.dispatch(actions.fetchGalleryBySlug.started(slug));
     }
-  }
+  };
 
   public render() {
     const { gallery, isLoading } = this.props;
@@ -59,14 +58,14 @@ class GalleryRoute extends React.Component<IProps> {
 
           <meta content={gallery.description} name="description" />
 
-          <meta property="og:title" content={gallery.title} />
-          <meta property="og:description" content={gallery.description} />
+          <meta content={gallery.title} property="og:title" />
+          <meta content={gallery.description} property="og:description" />
           <meta
-            property="og:url"
             content={absoluteUrl(`/galleries/${gallery.slug}`)}
+            property="og:url"
           />
-          <meta property="og:type" content="website" />
-          <meta property="og:image" content={gallery.imageUrl} />
+          <meta content="website" property="og:type" />
+          <meta content={gallery.imageUrl} property="og:image" />
         </Head>
 
         <Gallery

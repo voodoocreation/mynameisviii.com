@@ -182,7 +182,7 @@ exports[`[routes] <ReleasesRoute /> when all data is in the store matches snapsh
         <script
           type="application/ld+json"
         >
-          {"@id":"http://localhost:/releases/test-1","@type":"MusicAlbum","albumProductionType":"http://schema.org/StudioAlbum","albumRelease":{"@type":"MusicRelease","duration":"PT0M0S","name":"","recordLabel":""},"albumReleaseType":"http://schema.org/album","byArtist":{"@type":"MusicGroup","name":""},"datePublished":"2017-12-31T11:00:00.000Z","description":"","image":"Image URL","mainEntityOfPage":{"@id":"http://localhost:/releases/test-1"},"name":"","track":{"@type":"ItemList","itemListElement":[],"numberOfItems":0},"@context":"http://schema.org/"}
+          {"@id":"http://localhost:80/releases/test-1","@type":"MusicAlbum","albumProductionType":"http://schema.org/StudioAlbum","albumRelease":{"@type":"MusicRelease","duration":"PT0M0S","name":"","recordLabel":""},"albumReleaseType":"http://schema.org/album","byArtist":{"@type":"MusicGroup","name":""},"datePublished":"2017-12-31T11:00:00.000Z","description":"","image":"Image URL","mainEntityOfPage":{"@id":"http://localhost:80/releases/test-1"},"name":"","track":{"@type":"ItemList","itemListElement":[],"numberOfItems":0},"@context":"http://schema.org/"}
         </script>
       </article>
       <article
@@ -347,7 +347,7 @@ exports[`[routes] <ReleasesRoute /> when all data is in the store matches snapsh
         <script
           type="application/ld+json"
         >
-          {"@id":"http://localhost:/releases/test-2","@type":"MusicAlbum","albumProductionType":"http://schema.org/StudioAlbum","albumRelease":{"@type":"MusicRelease","duration":"PT0M0S","name":"","recordLabel":""},"albumReleaseType":"http://schema.org/album","byArtist":{"@type":"MusicGroup","name":""},"datePublished":"2017-12-31T11:00:00.000Z","description":"","image":"Image URL","mainEntityOfPage":{"@id":"http://localhost:/releases/test-2"},"name":"","track":{"@type":"ItemList","itemListElement":[],"numberOfItems":0},"@context":"http://schema.org/"}
+          {"@id":"http://localhost:80/releases/test-2","@type":"MusicAlbum","albumProductionType":"http://schema.org/StudioAlbum","albumRelease":{"@type":"MusicRelease","duration":"PT0M0S","name":"","recordLabel":""},"albumReleaseType":"http://schema.org/album","byArtist":{"@type":"MusicGroup","name":""},"datePublished":"2017-12-31T11:00:00.000Z","description":"","image":"Image URL","mainEntityOfPage":{"@id":"http://localhost:80/releases/test-2"},"name":"","track":{"@type":"ItemList","itemListElement":[],"numberOfItems":0},"@context":"http://schema.org/"}
         </script>
       </article>
     </div>

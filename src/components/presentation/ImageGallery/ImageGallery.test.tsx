@@ -9,9 +9,9 @@ const component = new WrapperWithIntl(ImageGallery)
     usePortal: false
   })
   .withDefaultChildren([
-    <div key="image-1" className="Image" id="image-1" />,
-    <div key="image-2" className="Image" id="image-2" />,
-    <div key="image-3" className="Image" id="image-3" />
+    <div className="Image" id="image-1" key="image-1" />,
+    <div className="Image" id="image-2" key="image-2" />,
+    <div className="Image" id="image-3" key="image-3" />
   ]);
 
 describe("[presentation] <ImageGallery />", () => {

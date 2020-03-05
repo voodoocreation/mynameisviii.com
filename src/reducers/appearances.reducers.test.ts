@@ -44,7 +44,7 @@ describe("[reducers] Appearances", () => {
           hasAllItems: true,
           isLoading: true
         },
-        actions.fetchAppearances.done({ result, params: {} })
+        actions.fetchAppearances.done({ params: {}, result })
       );
 
       it("sets hasAllItems to false", () => {
@@ -163,7 +163,7 @@ describe("[reducers] Appearances", () => {
             [item1.slug]: item1
           }
         },
-        actions.fetchMoreAppearances.done({ result, params: {} })
+        actions.fetchMoreAppearances.done({ params: {}, result })
       );
 
       it("sets hasAllItems to false", () => {

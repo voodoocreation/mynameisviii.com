@@ -12,7 +12,7 @@ interface IProps {
 
 const WebsiteListing: React.FC<IProps> = ({ children, icon, title, url }) => (
   <article className="WebsiteListing">
-    <Link href={url} isExternal={true} title={title}>
+    <Link href={url} title={title} isExternal>
       {icon}
       <span className="WebsiteListing--title">{children}</span>
     </Link>

@@ -10,7 +10,6 @@ export default {
   ARTICLE: "{count, plural, one {Article} other {Articles}}",
   AUDIENCE: "Audience",
   AUDIO_FORMAT: "Audio format",
-  BIOGRAPHY: "Biography",
   BIO_CONTENT_1:
     "Viii is a New Zealand-born singer, songwriter, multi-instramentalist and producer. Known for their ability to take characteristics from their eclectic musical background to create a broad palette to paint an interesting and unique canvas.",
   BIO_CONTENT_2:
@@ -21,6 +20,7 @@ export default {
     "Outside of the music, Viii also handles their own artistic direction and other aspects surrounding releases and performances, such as photography, graphic design, software development, makeup artistry and fashion.",
   BIO_CONTENT_5:
     "Viii currently releases music under their own independent label, Voodoo Creation Records.",
+  BIOGRAPHY: "Biography",
   BOOKING_AND_PRESS_CONTACT: "For booking and press enquiries, contact",
   BRAND_NAME: "My name is Viii: a painter of frequencies and thoughts",
   BUY: "Buy",
@@ -75,12 +75,12 @@ export default {
   LOAD_MORE: "Load more",
   LOCATION: "Location",
   MENU: "Menu",
+  NEW_VERSION_AVAILABLE:
+    "A new version of the site is available, refresh to see it.",
   NEWS: "News",
   NEWS_DESCRIPTION:
     "The latest news for releases, appearances and other exciting Viii updates.",
   NEWS_TITLE: "News",
-  NEW_VERSION_AVAILABLE:
-    "A new version of the site is available, refresh to see it.",
   NEXT_APPEARANCE: "Next appearance",
   NO_APPEARANCES: "There are no upcoming appearances to show at this time.",
   NO_RESULTS: "There are no {entities} to show at this time.",

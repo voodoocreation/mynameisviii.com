@@ -1,6 +1,5 @@
-import reducer, { initialState } from "./intl.reducers";
-
 import * as actions from "../actions/root.actions";
+import reducer, { initialState } from "./intl.reducers";
 
 describe("[reducers] Intl", () => {
   describe("actions.initApp.started", () => {

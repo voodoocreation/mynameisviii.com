@@ -7,6 +7,7 @@ import {
   FaSpotify
 } from "react-icons/fa";
 import { MdPlayCircleFilled } from "react-icons/md";
+
 import { PLATFORM } from "../../../constants/release.constants";
 
 interface IProps {

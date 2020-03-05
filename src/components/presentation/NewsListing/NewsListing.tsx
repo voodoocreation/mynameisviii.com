@@ -33,12 +33,12 @@ export default class NewsListing extends React.Component<IProps, IState> {
 
     const header = isCondensed ? (
       <h3>
-        <NewsArticleType value={article.type} hasLabel={false} />
+        <NewsArticleType hasLabel={false} value={article.type} />
         <span>{article.title}</span>
       </h3>
     ) : (
       <h2>
-        <NewsArticleType value={article.type} hasLabel={false} />
+        <NewsArticleType hasLabel={false} value={article.type} />
         <span>{article.title}</span>
       </h2>
     );
@@ -49,8 +49,8 @@ export default class NewsListing extends React.Component<IProps, IState> {
           <header className="NewsListing--header">{header}</header>
 
           <Image
-            className="NewsListing--image"
             alt={article.title}
+            className="NewsListing--image"
             src={article.imageUrl}
             onLoad={this.onLoad}
           />

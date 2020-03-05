@@ -11,94 +11,92 @@ import PageHeader from "../../presentation/PageHeader/PageHeader";
 
 import "./SymbolRoute.scss";
 
-interface IProps extends WrappedComponentProps {}
+type IProps = WrappedComponentProps;
 
-class SymbolRoute extends React.Component<IProps> {
-  public render() {
-    const { formatMessage } = this.props.intl;
+const SymbolRoute: React.FC<IProps> = props => {
+  const { formatMessage } = props.intl;
 
-    const pageTitle = formatMessage({ id: "SYMBOL_TITLE" });
-    const pageDescription = formatMessage({ id: "SYMBOL_DESCRIPTION" });
+  const pageTitle = formatMessage({ id: "SYMBOL_TITLE" });
+  const pageDescription = formatMessage({ id: "SYMBOL_DESCRIPTION" });
 
-    return (
-      <article className="SymbolRoute">
-        <Head>
-          <title>
-            {pageTitle}
-            {" · "}
-            {formatMessage({ id: "BRAND_NAME" })}
-          </title>
+  return (
+    <article className="SymbolRoute">
+      <Head>
+        <title>
+          {pageTitle}
+          {" · "}
+          {formatMessage({ id: "BRAND_NAME" })}
+        </title>
 
-          <meta content={pageDescription} name="description" />
-          <meta property="og:title" content={pageTitle} />
-          <meta property="og:description" content={pageDescription} />
-          <meta property="og:type" content="website" />
-          <meta property="og:image" content={s3ThemeUrl("/og/symbol.jpg")} />
-          <meta property="og:url" content={absoluteUrl("/symbol")} />
-        </Head>
+        <meta content={pageDescription} name="description" />
+        <meta content={pageTitle} property="og:title" />
+        <meta content={pageDescription} property="og:description" />
+        <meta content="website" property="og:type" />
+        <meta content={s3ThemeUrl("/og/symbol.jpg")} property="og:image" />
+        <meta content={absoluteUrl("/symbol")} property="og:url" />
+      </Head>
 
-        <PageHeader>{pageTitle}</PageHeader>
+      <PageHeader>{pageTitle}</PageHeader>
 
-        <section className="SymbolRoute--meaning">
-          <p>
-            <FormattedMessage id="SYMBOL_MEANING_CONTENT_1" />
-          </p>
-          <div className="SymbolRoute--symbol" />
-          <p>
-            <FormattedMessage id="SYMBOL_MEANING_CONTENT_2" />
-          </p>
-          <p>
-            <FormattedMessage id="SYMBOL_MEANING_CONTENT_3" />
-          </p>
-          <ul>
-            <li>
-              <FormattedMessage id="SYMBOL_MEANING_CONTENT_4" />
-            </li>
-            <li>
-              <FormattedMessage id="SYMBOL_MEANING_CONTENT_5" />
-            </li>
-            <li>
-              <FormattedMessage id="SYMBOL_MEANING_CONTENT_6" />
-            </li>
-          </ul>
-          <p>
-            <FormattedMessage id="SYMBOL_MEANING_CONTENT_7" />
-          </p>
-          <p>
-            <FormattedMessage id="SYMBOL_MEANING_CONTENT_8" />
-          </p>
-        </section>
+      <section className="SymbolRoute--meaning">
+        <p>
+          <FormattedMessage id="SYMBOL_MEANING_CONTENT_1" />
+        </p>
+        <div className="SymbolRoute--symbol" />
+        <p>
+          <FormattedMessage id="SYMBOL_MEANING_CONTENT_2" />
+        </p>
+        <p>
+          <FormattedMessage id="SYMBOL_MEANING_CONTENT_3" />
+        </p>
+        <ul>
+          <li>
+            <FormattedMessage id="SYMBOL_MEANING_CONTENT_4" />
+          </li>
+          <li>
+            <FormattedMessage id="SYMBOL_MEANING_CONTENT_5" />
+          </li>
+          <li>
+            <FormattedMessage id="SYMBOL_MEANING_CONTENT_6" />
+          </li>
+        </ul>
+        <p>
+          <FormattedMessage id="SYMBOL_MEANING_CONTENT_7" />
+        </p>
+        <p>
+          <FormattedMessage id="SYMBOL_MEANING_CONTENT_8" />
+        </p>
+      </section>
 
-        <section className="SymbolRoute--about">
-          <h2>
-            <FormattedMessage id="WHO_IS_VIII" />
-          </h2>
+      <section className="SymbolRoute--about">
+        <h2>
+          <FormattedMessage id="WHO_IS_VIII" />
+        </h2>
 
-          <Image
-            alt="Viii"
-            className="SymbolRoute--photo"
-            src="https://s3.amazonaws.com/mynameisviii-static/galleries/dark-spaces-i/09.jpg"
-          />
+        <Image
+          alt="Viii"
+          className="SymbolRoute--photo"
+          src="https://s3.amazonaws.com/mynameisviii-static/galleries/dark-spaces-i/09.jpg"
+        />
 
-          <p>
-            <FormattedMessage id="SYMBOL_ABOUT_CONTENT_1" />
-          </p>
-          <p>
-            <FormattedMessage id="BIO_CONTENT_4" />
-          </p>
-          <p>
-            <FormattedMessage id="SYMBOL_ABOUT_CONTENT_2" />
-          </p>
+        <p>
+          <FormattedMessage id="SYMBOL_ABOUT_CONTENT_1" />
+        </p>
+        <p>
+          <FormattedMessage id="BIO_CONTENT_4" />
+        </p>
+        <p>
+          <FormattedMessage id="SYMBOL_ABOUT_CONTENT_2" />
+        </p>
 
-          <ButtonBar>
-            <Link className="Button isStyled" route="/">
-              <FormattedMessage id="EXPLORE_THE_REST_OF_THE_SITE" />
-            </Link>
-          </ButtonBar>
-        </section>
-      </article>
-    );
-  }
-}
+        <ButtonBar>
+          <Link className="Button isStyled" route="/">
+            <FormattedMessage id="EXPLORE_THE_REST_OF_THE_SITE" />
+          </Link>
+        </ButtonBar>
+      </section>
+    </article>
+  );
+};
 
 export default injectIntlIntoPage(SymbolRoute);

@@ -8,7 +8,8 @@ import {
   SCHEMA_TYPE,
   TYPE
 } from "../constants/release.constants";
-import { IImage, image, IPerformer, performer } from "./root.models";
+import { IImage, image } from "./image.models";
+import { IPerformer, performer } from "./performer.models";
 
 export interface IReleasePlatformLink {
   readonly platform: PLATFORM;

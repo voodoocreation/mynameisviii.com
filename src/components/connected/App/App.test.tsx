@@ -2,10 +2,10 @@ import { mount } from "enzyme";
 import { findCall, mockWithResolvedPromise } from "jest-mocks";
 import * as React from "react";
 
+import routes from "../../../../next.routes";
 import * as actions from "../../../actions/root.actions";
 import { error } from "../../../models/root.models";
 import MockPageContext from "../../../utilities/MockPageContext";
-
 import { App } from "./App";
 
 jest.mock("serviceworker-webpack-plugin/lib/runtime", () => ({
@@ -17,18 +17,12 @@ jest.mock("../../../../next.routes", () => ({
   }
 }));
 
-import routes from "../../../../next.routes";
-
 class MockPageComponent extends React.Component {
-  public static async getInitialProps() {
-    return {
-      mockPageComponentProp: "test"
-    };
-  }
+  public static getInitialProps = async () => ({
+    mockPageComponentProp: "test"
+  });
 
-  public render() {
-    return <div className="MockPageComponent" />;
-  }
+  public render = () => <div className="MockPageComponent" />;
 }
 
 const defineGlobals = (isServer: boolean, locale?: string) => {

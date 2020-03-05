@@ -1,10 +1,9 @@
 import { SagaIterator } from "redux-saga";
 import { call, put, select, takeLatest } from "redux-saga/effects";
 
-import { IPorts } from "../services/configurePorts";
-
 import * as actions from "../actions/root.actions";
 import * as selectors from "../selectors/root.selectors";
+import { IPorts } from "../services/configurePorts";
 
 export const fetchResourcesSaga = (ports: IPorts) =>
   function*(): SagaIterator {

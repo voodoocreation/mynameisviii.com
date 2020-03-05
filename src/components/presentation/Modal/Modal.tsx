@@ -64,28 +64,22 @@ export default class Modal extends React.Component<IProps, IState> {
   }
 
   public render() {
-    const {
-      children,
-      className,
-      hasOverlayClick,
-      isOpen,
-      usePortal
-    } = this.props;
+    const { children, className, isOpen, usePortal } = this.props;
     const { isVisible } = this.state;
 
     return !isOpen ? null : (
       <Portal className="Modal--portal" isRenderingInPlace={!usePortal}>
         <div
           aria-hidden={!isOpen}
-          aria-modal={true}
           className={cn("Modal", className, { isVisible })}
           ref={this.modalRef}
           role="dialog"
-          tabIndex={isVisible ? 0 : -1}
+          aria-modal
         >
-          <div
+          <Button
             className="Modal--overlay"
-            onClick={hasOverlayClick ? this.onClose : undefined}
+            isStyled={false}
+            onClick={this.onOverlayClick}
           />
 
           <div className="Modal--content">
@@ -122,6 +116,12 @@ export default class Modal extends React.Component<IProps, IState> {
 
   private onClose = () => {
     this.props.onClose();
+  };
+
+  private onOverlayClick = () => {
+    if (this.props.hasOverlayClick) {
+      this.onClose();
+    }
   };
 
   private onKeyDown = (event: KeyboardEvent) => {

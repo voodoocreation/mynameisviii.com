@@ -1,6 +1,7 @@
 import { mockWithRejectedPromise, mockWithResolvedPromise } from "jest-mocks";
 
 import { BOOLEAN } from "../../constants/api.constants";
+import { API } from "../../constants/url.constants";
 import { failure, release, success } from "../../models/root.models";
 import { fetchReleaseBySlug } from "./fetchReleaseBySlug.api";
 
@@ -18,7 +19,7 @@ describe("[api] fetchReleaseBySlug", () => {
     });
 
     it("makes the request correctly", () => {
-      expect(request).toHaveBeenCalledWith({ url: "/releases/test-1" });
+      expect(request).toHaveBeenCalledWith(`${API.FETCH_RELEASE}/test-1`);
     });
   });
 
@@ -31,7 +32,7 @@ describe("[api] fetchReleaseBySlug", () => {
     });
 
     it("makes the request correctly", () => {
-      expect(request).toHaveBeenCalledWith({ url: "/releases/test-1" });
+      expect(request).toHaveBeenCalledWith(`${API.FETCH_RELEASE}/test-1`);
     });
   });
 });

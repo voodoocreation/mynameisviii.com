@@ -52,7 +52,7 @@ exports[`[routes] <NewsRoute /> when all data is in the store matches snapshot 1
       <script
         type="application/ld+json"
       >
-        {"@id":"http://localhost:/news/test-1","@type":"NewsArticle","articleBody":"","author":{"@type":"Person","name":""},"dateModified":"2017-12-31T11:00:00.000Z","datePublished":"2017-12-31T11:00:00.000Z","description":"","headline":"","image":"","mainEntityOfPage":{"@id":"http://localhost:/news/test-1"},"name":"","publisher":{"@type":"LocalBusiness","email":"mgmt@mynameisviii.com","logo":{"@type":"ImageObject","url":"https://s3.amazonaws.com/mynameisviii-static/voodoo-creation-records-logo.png"}},"text":"","thumbnailUrl":"","@context":"http://schema.org/"}
+        {"@id":"http://localhost:80/news/test-1","@type":"NewsArticle","articleBody":"","author":{"@type":"Person","name":""},"dateModified":"2017-12-31T11:00:00.000Z","datePublished":"2017-12-31T11:00:00.000Z","description":"","headline":"","image":"","mainEntityOfPage":{"@id":"http://localhost:80/news/test-1"},"name":"","publisher":{"@type":"LocalBusiness","email":"mgmt@mynameisviii.com","logo":{"@type":"ImageObject","url":"https://s3.amazonaws.com/mynameisviii-static/voodoo-creation-records-logo.png"}},"text":"","thumbnailUrl":"","@context":"http://schema.org/"}
       </script>
     </article>
     <article
@@ -93,7 +93,7 @@ exports[`[routes] <NewsRoute /> when all data is in the store matches snapshot 1
       <script
         type="application/ld+json"
       >
-        {"@id":"http://localhost:/news/test-2","@type":"NewsArticle","articleBody":"","author":{"@type":"Person","name":""},"dateModified":"2017-12-31T11:00:00.000Z","datePublished":"2017-12-31T11:00:00.000Z","description":"","headline":"","image":"","mainEntityOfPage":{"@id":"http://localhost:/news/test-2"},"name":"","publisher":{"@type":"LocalBusiness","email":"mgmt@mynameisviii.com","logo":{"@type":"ImageObject","url":"https://s3.amazonaws.com/mynameisviii-static/voodoo-creation-records-logo.png"}},"text":"","thumbnailUrl":"","@context":"http://schema.org/"}
+        {"@id":"http://localhost:80/news/test-2","@type":"NewsArticle","articleBody":"","author":{"@type":"Person","name":""},"dateModified":"2017-12-31T11:00:00.000Z","datePublished":"2017-12-31T11:00:00.000Z","description":"","headline":"","image":"","mainEntityOfPage":{"@id":"http://localhost:80/news/test-2"},"name":"","publisher":{"@type":"LocalBusiness","email":"mgmt@mynameisviii.com","logo":{"@type":"ImageObject","url":"https://s3.amazonaws.com/mynameisviii-static/voodoo-creation-records-logo.png"}},"text":"","thumbnailUrl":"","@context":"http://schema.org/"}
       </script>
     </article>
   </section>

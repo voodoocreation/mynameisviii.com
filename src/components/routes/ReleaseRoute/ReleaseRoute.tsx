@@ -4,16 +4,15 @@ import { WrappedComponentProps } from "react-intl";
 import { connect } from "react-redux";
 import stripTags from "striptags";
 
+import * as actions from "../../../actions/root.actions";
 import { absoluteUrl } from "../../../helpers/dataTransformers";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { IRelease, IReleaseTrack } from "../../../models/root.models";
 import { TStoreState } from "../../../reducers/root.reducers";
+import * as selectors from "../../../selectors/root.selectors";
 import { IPageContext } from "../../connected/App/App";
 import Loader from "../../presentation/Loader/Loader";
 import Release from "../../presentation/Release/Release";
-
-import * as actions from "../../../actions/root.actions";
-import * as selectors from "../../../selectors/root.selectors";
 
 interface IProps extends WrappedComponentProps {
   fetchReleaseBySlug: typeof actions.fetchReleaseBySlug.started;
@@ -23,7 +22,7 @@ interface IProps extends WrappedComponentProps {
 }
 
 class ReleaseRoute extends React.Component<IProps> {
-  public static async getInitialProps(context: IPageContext) {
+  public static getInitialProps = async (context: IPageContext) => {
     const { query, store } = context;
     const slug = query.slug as string;
 
@@ -34,7 +33,7 @@ class ReleaseRoute extends React.Component<IProps> {
     if (!selectors.getCurrentRelease(state)) {
       store.dispatch(actions.fetchReleaseBySlug.started(slug));
     }
-  }
+  };
 
   public render() {
     const { isLoading, release } = this.props;
@@ -62,22 +61,22 @@ class ReleaseRoute extends React.Component<IProps> {
             name="description"
           />
 
-          <meta property="og:title" content={release.title} />
+          <meta content={release.title} property="og:title" />
           <meta
-            property="og:description"
             content={stripTags(release.description).replace(/\n/g, "")}
+            property="og:description"
           />
           <meta
-            property="og:url"
             content={absoluteUrl(`/releases/${release.slug}`)}
+            property="og:url"
           />
-          <meta property="og:type" content="music.album" />
-          <meta property="music:release_date" content={release.releasedOn} />
-          <meta property="music:musician" content={release.artist.url} />
+          <meta content="music.album" property="og:type" />
+          <meta content={release.releasedOn} property="music:release_date" />
+          <meta content={release.artist.url} property="music:musician" />
           {release.tracklist.map(this.renderTracklistAlbumMeta)}
-          <meta property="og:image" content={release.images[0].imageUrl} />
-          <meta property="og:image:width" content="640" />
-          <meta property="og:image:height" content="640" />
+          <meta content={release.images[0].imageUrl} property="og:image" />
+          <meta content="640" property="og:image:width" />
+          <meta content="640" property="og:image:height" />
         </Head>
 
         <Release
@@ -89,15 +88,15 @@ class ReleaseRoute extends React.Component<IProps> {
   }
 
   private renderTracklistAlbumMeta = (
-    album: IReleaseTrack[],
-    albumIndex: number
+    disc: IReleaseTrack[],
+    discIndex: number
   ) => (
-    <React.Fragment key={albumIndex}>
-      {album.map((track, trackIndex) => (
-        <React.Fragment key={trackIndex}>
-          <meta property="music:song" content={track.url} />
-          <meta property="music:disc" content={`${albumIndex + 1}`} />
-          <meta property="music:track" content={`${trackIndex + 1}`} />
+    <React.Fragment key={discIndex}>
+      {disc.map((track, trackIndex) => (
+        <React.Fragment key={track.url}>
+          <meta content={track.url} property="music:song" />
+          <meta content={`${discIndex + 1}`} property="music:disc" />
+          <meta content={`${trackIndex + 1}`} property="music:track" />
         </React.Fragment>
       ))}
     </React.Fragment>

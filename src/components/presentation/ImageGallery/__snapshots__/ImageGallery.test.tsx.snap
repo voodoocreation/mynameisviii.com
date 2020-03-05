@@ -45,11 +45,15 @@ Array [
       aria-modal="true"
       class="Modal ImageGallery--modal isVisible"
       role="dialog"
-      tabindex="0"
     >
-      <div
-        class="Modal--overlay"
-      />
+      <button
+        class="Button Modal--overlay"
+        type="button"
+      >
+        <span
+          class="Button--content"
+        />
+      </button>
       <div
         class="Modal--content"
       >

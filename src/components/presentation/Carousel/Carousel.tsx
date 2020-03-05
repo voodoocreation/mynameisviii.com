@@ -32,6 +32,7 @@ class Carousel extends React.Component<IProps, IState> {
       this.props.currentIndex !== undefined &&
       this.props.currentIndex !== prevState.currentIndex
     ) {
+      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
         currentIndex: this.props.currentIndex
       });

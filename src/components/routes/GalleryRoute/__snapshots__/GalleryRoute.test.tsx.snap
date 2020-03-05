@@ -75,7 +75,7 @@ exports[`[routes] <GalleryRoute /> matches snapshot 1`] = `
   <script
     type="application/ld+json"
   >
-    {"@id":"http://localhost:/galleries/test-1","@type":"ImageGallery","associatedMedia":[{"@type":"ImageObject","contentUrl":"1","dateModified":"2017-12-31T11:00:00.000Z"},{"@type":"ImageObject","contentUrl":"2","dateModified":"2017-12-31T11:00:00.000Z"}],"dateModified":"2017-12-31T11:00:00.000Z","name":"","primaryImageOfPage":"","thumbnailUrl":"","@context":"http://schema.org/"}
+    {"@id":"http://localhost:80/galleries/test-1","@type":"ImageGallery","associatedMedia":[{"@type":"ImageObject","contentUrl":"1","dateModified":"2017-12-31T11:00:00.000Z"},{"@type":"ImageObject","contentUrl":"2","dateModified":"2017-12-31T11:00:00.000Z"}],"dateModified":"2017-12-31T11:00:00.000Z","name":"","primaryImageOfPage":"","thumbnailUrl":"","@context":"http://schema.org/"}
   </script>
 </article>
 `;

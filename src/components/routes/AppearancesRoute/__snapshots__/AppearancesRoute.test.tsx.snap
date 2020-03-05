@@ -159,7 +159,7 @@ exports[`[routes] <AppearancesRoute /> when all data is in the store matches sna
         <script
           type="application/ld+json"
         >
-          {"@id":"http://localhost:/appearances/upcoming-1","@type":"MusicEvent","description":"","endDate":"2018-01-04T11:00:00.000Z","eventStatus":"EventScheduled","image":"","location":{"@type":"MusicVenue","name":""},"name":"","offers":[],"organizer":{"@type":"LocalBusiness","name":""},"performer":[],"startDate":"2018-01-03T11:00:00.000Z","url":"http://localhost:/appearances/upcoming-1","@context":"http://schema.org/"}
+          {"@id":"http://localhost:80/appearances/upcoming-1","@type":"MusicEvent","description":"","endDate":"2018-01-04T11:00:00.000Z","eventStatus":"EventScheduled","image":"","location":{"@type":"MusicVenue","name":""},"name":"","offers":[],"organizer":{"@type":"LocalBusiness","name":""},"performer":[],"startDate":"2018-01-03T11:00:00.000Z","url":"http://localhost:80/appearances/upcoming-1","@context":"http://schema.org/"}
         </script>
       </article>
       <article
@@ -301,7 +301,7 @@ exports[`[routes] <AppearancesRoute /> when all data is in the store matches sna
         <script
           type="application/ld+json"
         >
-          {"@id":"http://localhost:/appearances/upcoming-2","@type":"MusicEvent","description":"","endDate":"2018-01-05T11:00:00.000Z","eventStatus":"EventScheduled","image":"","location":{"@type":"MusicVenue","name":""},"name":"","offers":[],"organizer":{"@type":"LocalBusiness","name":""},"performer":[],"startDate":"2018-01-04T11:00:00.000Z","url":"http://localhost:/appearances/upcoming-2","@context":"http://schema.org/"}
+          {"@id":"http://localhost:80/appearances/upcoming-2","@type":"MusicEvent","description":"","endDate":"2018-01-05T11:00:00.000Z","eventStatus":"EventScheduled","image":"","location":{"@type":"MusicVenue","name":""},"name":"","offers":[],"organizer":{"@type":"LocalBusiness","name":""},"performer":[],"startDate":"2018-01-04T11:00:00.000Z","url":"http://localhost:80/appearances/upcoming-2","@context":"http://schema.org/"}
         </script>
       </article>
     </div>
@@ -454,7 +454,7 @@ exports[`[routes] <AppearancesRoute /> when all data is in the store matches sna
         <script
           type="application/ld+json"
         >
-          {"@id":"http://localhost:/appearances/past-1","@type":"MusicEvent","description":"","endDate":"2017-12-28T11:00:00.000Z","eventStatus":"EventScheduled","image":"","location":{"@type":"MusicVenue","name":""},"name":"","offers":[],"organizer":{"@type":"LocalBusiness","name":""},"performer":[],"startDate":"2017-12-27T11:00:00.000Z","url":"http://localhost:/appearances/past-1","@context":"http://schema.org/"}
+          {"@id":"http://localhost:80/appearances/past-1","@type":"MusicEvent","description":"","endDate":"2017-12-28T11:00:00.000Z","eventStatus":"EventScheduled","image":"","location":{"@type":"MusicVenue","name":""},"name":"","offers":[],"organizer":{"@type":"LocalBusiness","name":""},"performer":[],"startDate":"2017-12-27T11:00:00.000Z","url":"http://localhost:80/appearances/past-1","@context":"http://schema.org/"}
         </script>
       </article>
       <article
@@ -596,7 +596,7 @@ exports[`[routes] <AppearancesRoute /> when all data is in the store matches sna
         <script
           type="application/ld+json"
         >
-          {"@id":"http://localhost:/appearances/past-2","@type":"MusicEvent","description":"","endDate":"2017-12-27T11:00:00.000Z","eventStatus":"EventScheduled","image":"","location":{"@type":"MusicVenue","name":""},"name":"","offers":[],"organizer":{"@type":"LocalBusiness","name":""},"performer":[],"startDate":"2017-12-26T11:00:00.000Z","url":"http://localhost:/appearances/past-2","@context":"http://schema.org/"}
+          {"@id":"http://localhost:80/appearances/past-2","@type":"MusicEvent","description":"","endDate":"2017-12-27T11:00:00.000Z","eventStatus":"EventScheduled","image":"","location":{"@type":"MusicVenue","name":""},"name":"","offers":[],"organizer":{"@type":"LocalBusiness","name":""},"performer":[],"startDate":"2017-12-26T11:00:00.000Z","url":"http://localhost:80/appearances/past-2","@context":"http://schema.org/"}
         </script>
       </article>
     </div>

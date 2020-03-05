@@ -1,5 +1,6 @@
 import { mockWithRejectedPromise, mockWithResolvedPromise } from "jest-mocks";
 
+import { API } from "../../constants/url.constants";
 import {
   failure,
   gallery,
@@ -33,9 +34,8 @@ describe("[api] fetchGalleries", () => {
     });
 
     it("makes the request correctly", () => {
-      expect(request).toHaveBeenCalledWith({
-        params,
-        url: "/galleries/find"
+      expect(request).toHaveBeenCalledWith(API.FETCH_GALLERIES, {
+        params
       });
     });
   });
@@ -49,9 +49,8 @@ describe("[api] fetchGalleries", () => {
     });
 
     it("makes the request correctly", () => {
-      expect(request).toHaveBeenCalledWith({
-        params,
-        url: "/galleries/find"
+      expect(request).toHaveBeenCalledWith(API.FETCH_GALLERIES, {
+        params
       });
     });
   });

@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+
 import { isServer } from "../../../helpers/dom";
 
 interface IProps {

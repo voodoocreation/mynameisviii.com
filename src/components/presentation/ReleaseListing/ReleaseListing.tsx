@@ -59,7 +59,6 @@ class ReleaseListing extends React.Component<IProps, IState> {
                 labelIntlId="RELEASED"
               >
                 <DateTime
-                  isDateOnly={true}
                   isRelative={false}
                   options={{
                     day: "numeric",
@@ -67,6 +66,7 @@ class ReleaseListing extends React.Component<IProps, IState> {
                     year: "numeric"
                   }}
                   value={release.releasedOn}
+                  isDateOnly
                 />
               </Meta>
 
@@ -96,10 +96,10 @@ class ReleaseListing extends React.Component<IProps, IState> {
           </div>
 
           <Image
-            className="ReleaseListing--image"
             alt={release.title}
-            onLoad={this.onLoad}
+            className="ReleaseListing--image"
             src={release.images[0].imageUrl}
+            onLoad={this.onLoad}
           />
         </Link>
 

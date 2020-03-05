@@ -32,9 +32,7 @@ describe("[connected] <NewVersionToast />", () => {
     });
 
     describe("when clicking the refresh button", () => {
-      Object.defineProperty(window.location, "reload", {
-        value: jest.fn()
-      });
+      jest.spyOn(window.location, "reload");
 
       it("clicks the button", () => {
         wrapper.find("Button.NewVersionToast--refreshButton").simulate("click");

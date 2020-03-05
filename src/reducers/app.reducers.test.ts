@@ -1,7 +1,6 @@
-import reducer, { initialState } from "./app.reducers";
-
 import * as actions from "../actions/root.actions";
 import * as models from "../models/root.models";
+import reducer, { initialState } from "./app.reducers";
 
 describe("[reducers] App", () => {
   describe("actions.setOnlineStatus", () => {
@@ -108,7 +107,7 @@ describe("[reducers] App", () => {
     describe("actions.fetchGalleryBySlug.failed", () => {
       const state = reducer(
         initialState,
-        actions.fetchGalleryBySlug.failed({ params: "test-1", error: "Error" })
+        actions.fetchGalleryBySlug.failed({ error: "Error", params: "test-1" })
       );
 
       it("sets error to be a 404", () => {
@@ -133,7 +132,7 @@ describe("[reducers] App", () => {
     describe("actions.fetchReleaseBySlug.failed", () => {
       const state = reducer(
         initialState,
-        actions.fetchReleaseBySlug.failed({ params: "test-1", error: "Error" })
+        actions.fetchReleaseBySlug.failed({ error: "Error", params: "test-1" })
       );
 
       it("sets error to be a 404", () => {

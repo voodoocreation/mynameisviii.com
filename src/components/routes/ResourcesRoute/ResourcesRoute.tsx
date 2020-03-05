@@ -4,10 +4,12 @@ import * as React from "react";
 import { FormattedMessage, WrappedComponentProps } from "react-intl";
 import { connect } from "react-redux";
 
+import * as actions from "../../../actions/root.actions";
 import { absoluteUrl, s3ThemeUrl } from "../../../helpers/dataTransformers";
 import injectIntlIntoPage from "../../../helpers/injectIntlIntoPage";
 import { IResource } from "../../../models/root.models";
 import { TStoreState } from "../../../reducers/root.reducers";
+import * as selectors from "../../../selectors/root.selectors";
 import { IPageContext } from "../../connected/App/App";
 import OfflineNotice from "../../connected/OfflineNotice/OfflineNotice";
 import ButtonBar from "../../presentation/ButtonBar/ButtonBar";
@@ -15,9 +17,6 @@ import LoadButton from "../../presentation/LoadButton/LoadButton";
 import NoResults from "../../presentation/NoResults/NoResults";
 import PageHeader from "../../presentation/PageHeader/PageHeader";
 import ResourceListing from "../../presentation/ResourceListing/ResourceListing";
-
-import * as actions from "../../../actions/root.actions";
-import * as selectors from "../../../selectors/root.selectors";
 
 import "./ResourcesRoute.scss";
 
@@ -36,7 +35,11 @@ interface IState {
 }
 
 class ResourcesRoute extends React.Component<IProps, IState> {
-  public static async getInitialProps(context: IPageContext) {
+  public readonly state: IState = {
+    loadedListings: {}
+  };
+
+  public static getInitialProps = async (context: IPageContext) => {
     const { isServer, store } = context;
 
     const state = store.getState();
@@ -46,10 +49,6 @@ class ResourcesRoute extends React.Component<IProps, IState> {
     } else if (!selectors.getHasAllResources(state)) {
       store.dispatch(actions.fetchMoreResources.started({}));
     }
-  }
-
-  public readonly state: IState = {
-    loadedListings: {}
   };
 
   public render() {
@@ -75,11 +74,11 @@ class ResourcesRoute extends React.Component<IProps, IState> {
 
           <meta content={pageDescription} name="description" />
 
-          <meta property="og:title" content={pageTitle} />
-          <meta property="og:description" content={pageDescription} />
-          <meta property="og:url" content={absoluteUrl("/resources")} />
-          <meta property="og:type" content="website" />
-          <meta property="og:image" content={s3ThemeUrl("/og/resources.jpg")} />
+          <meta content={pageTitle} property="og:title" />
+          <meta content={pageDescription} property="og:description" />
+          <meta content={absoluteUrl("/resources")} property="og:url" />
+          <meta content="website" property="og:type" />
+          <meta content={s3ThemeUrl("/og/resources.jpg")} property="og:image" />
         </Head>
 
         <PageHeader>
@@ -138,12 +137,12 @@ class ResourcesRoute extends React.Component<IProps, IState> {
   );
 
   private onListingLoad = (resource: IResource) => () => {
-    this.setState({
+    this.setState(state => ({
       loadedListings: {
-        ...this.state.loadedListings,
+        ...state.loadedListings,
         [resource.slug]: true
       }
-    });
+    }));
   };
 
   private onLoadMore = () => {

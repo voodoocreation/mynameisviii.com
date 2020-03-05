@@ -1,6 +1,7 @@
 import { mockWithRejectedPromise, mockWithResolvedPromise } from "jest-mocks";
 
 import { BOOLEAN } from "../../constants/api.constants";
+import { API } from "../../constants/url.constants";
 import { appearance, failure, success } from "../../models/root.models";
 import { fetchAppearanceBySlug } from "./fetchAppearanceBySlug.api";
 
@@ -18,7 +19,7 @@ describe("[api] fetchAppearanceBySlug", () => {
     });
 
     it("makes the request correctly", () => {
-      expect(request).toHaveBeenCalledWith({ url: "/appearances/test-1" });
+      expect(request).toHaveBeenCalledWith(`${API.FETCH_APPEARANCE}/test-1`);
     });
   });
 
@@ -31,7 +32,7 @@ describe("[api] fetchAppearanceBySlug", () => {
     });
 
     it("makes the request correctly", () => {
-      expect(request).toHaveBeenCalledWith({ url: "/appearances/test-1" });
+      expect(request).toHaveBeenCalledWith(`${API.FETCH_APPEARANCE}/test-1`);
     });
   });
 });

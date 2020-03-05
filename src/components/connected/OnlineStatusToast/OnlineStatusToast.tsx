@@ -35,6 +35,7 @@ class OnlineStatusToast extends React.Component<IProps, IState> {
   }
 
   public componentDidUpdate() {
+    // eslint-disable-next-line react/no-did-update-set-state
     this.setState({
       isVisible: true
     });

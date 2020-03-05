@@ -44,7 +44,7 @@ describe("[reducers] Resources", () => {
           hasAllItems: true,
           isLoading: true
         },
-        actions.fetchResources.done({ result, params: {} })
+        actions.fetchResources.done({ params: {}, result })
       );
 
       it("sets hasAllItems to false", () => {
@@ -163,7 +163,7 @@ describe("[reducers] Resources", () => {
             [item1.slug]: item1
           }
         },
-        actions.fetchMoreResources.done({ result, params: {} })
+        actions.fetchMoreResources.done({ params: {}, result })
       );
 
       it("sets hasAllItems to false", () => {

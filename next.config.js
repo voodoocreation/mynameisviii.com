@@ -1,21 +1,20 @@
 const fs = require("fs");
 const path = require("path");
+const webpack = require("webpack");
 const ServiceWorkerPlugin = require("serviceworker-webpack-plugin");
 const withSass = require("@zeit/next-sass");
 const FilterWarningsPlugin = require("webpack-filter-warnings-plugin");
 
-const getPages = () => {
-  return {
-    "/": { page: "/" },
-    "/appearances": { page: "/appearances" },
-    "/galleries": { page: "/galleries" },
-    "/news": { page: "/news" },
-    "/releases": { page: "/releases" },
-    "/resources": { page: "/resources" },
-    "/stems": { page: "/stems" },
-    "/symbol": { page: "/symbol" }
-  };
-};
+const getPages = () => ({
+  "/": { page: "/" },
+  "/appearances": { page: "/appearances" },
+  "/galleries": { page: "/galleries" },
+  "/news": { page: "/news" },
+  "/releases": { page: "/releases" },
+  "/resources": { page: "/resources" },
+  "/stems": { page: "/stems" },
+  "/symbol": { page: "/symbol" }
+});
 
 const getFiles = (dir, files = []) => {
   const list = fs.readdirSync(dir);
@@ -61,6 +60,12 @@ module.exports = withSass({
     );
 
     config.plugins.push(
+      new webpack.DefinePlugin({
+        API_URL: !dev
+          ? `"https://api.mynameisviii.com"`
+          : `"http://localhost:5000/mock-api"`
+      }),
+
       new FilterWarningsPlugin({
         exclude: /Conflicting order between:/
       }),

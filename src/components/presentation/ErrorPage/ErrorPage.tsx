@@ -4,7 +4,7 @@ import { MdErrorOutline } from "react-icons/md";
 import { injectIntl, WrappedComponentProps } from "react-intl";
 
 import { absoluteUrl, s3ThemeUrl } from "../../../helpers/dataTransformers";
-import PageHeader from "../../presentation/PageHeader/PageHeader";
+import PageHeader from "../PageHeader/PageHeader";
 
 import "./ErrorPage.scss";
 
@@ -31,11 +31,11 @@ class ErrorPage extends React.Component<IProps> {
           </title>
 
           <meta content={this.getMessage()} name="description" />
-          <meta property="og:title" content={this.getTitle()} />
-          <meta property="og:description" content={this.getMessage()} />
-          <meta property="og:type" content="website" />
-          <meta property="og:image" content={s3ThemeUrl("/og/error.jpg")} />
-          <meta property="og:url" content={absoluteUrl("/symbol")} />
+          <meta content={this.getTitle()} property="og:title" />
+          <meta content={this.getMessage()} property="og:description" />
+          <meta content="website" property="og:type" />
+          <meta content={s3ThemeUrl("/og/error.jpg")} property="og:image" />
+          <meta content={absoluteUrl("/symbol")} property="og:url" />
         </Head>
 
         <article className="ErrorPage">
@@ -69,7 +69,7 @@ class ErrorPage extends React.Component<IProps> {
 
     switch (status) {
       default:
-        return message ? message : formatMessage({ id: "ERROR_MESSAGE" });
+        return message || formatMessage({ id: "ERROR_MESSAGE" });
 
       case 404:
         return formatMessage({ id: "ERROR_404_MESSAGE" });

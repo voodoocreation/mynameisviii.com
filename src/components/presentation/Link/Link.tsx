@@ -12,67 +12,62 @@ export interface IProps extends React.HTMLAttributes<HTMLAnchorElement> {
   route?: string;
 }
 
-class Link extends React.Component<IProps & { router: any }> {
-  public static defaultProps = {
-    isExternal: false,
-    prefetch: false
-  };
+const Link: React.FC<IProps & { router: any }> = ({
+  children,
+  href,
+  isExternal,
+  params,
+  prefetch,
+  route,
+  router,
+  ...props
+}) => {
+  const externalAttrs: { target?: string; rel?: string } = {};
 
-  public displayName = "Link";
+  if (isExternal) {
+    externalAttrs.target = "_blank";
+    externalAttrs.rel = "noopener noreferrer";
+  }
 
-  public render() {
-    const {
-      children,
-      href,
-      isExternal,
-      params,
-      prefetch,
-      route,
-      router,
-      ...props
-    } = this.props;
+  if (!href && !route) {
+    return <span {...props}>{children}</span>;
+  }
 
-    const externalAttrs: { target?: string; rel?: string } = {};
-
-    if (isExternal) {
-      externalAttrs.target = "_blank";
-      externalAttrs.rel = "noopener";
-    }
-
-    if (!href && !route) {
-      return <span {...props}>{children}</span>;
-    }
-
-    if (
-      !router ||
-      !router.components ||
-      Object.keys(router.components).length < 1
-    ) {
-      return (
-        <a href={route ? route : href} {...externalAttrs} {...props}>
-          {children}
-        </a>
-      );
-    }
-
-    if (route) {
-      return (
-        <Routes.Link route={route} params={params} prefetch={prefetch}>
-          <a {...externalAttrs} {...props}>
-            {children}
-          </a>
-        </Routes.Link>
-      );
-    }
-
+  if (
+    !router ||
+    !router.components ||
+    Object.keys(router.components).length < 1
+  ) {
     return (
-      <NextLink href={href!} prefetch={prefetch}>
+      <a href={route || href} {...externalAttrs} {...props}>
+        {children}
+      </a>
+    );
+  }
+
+  if (route) {
+    return (
+      <Routes.Link params={params} prefetch={prefetch} route={route}>
         <a {...externalAttrs} {...props}>
           {children}
         </a>
-      </NextLink>
+      </Routes.Link>
     );
   }
-}
+
+  return (
+    <NextLink href={href!} prefetch={prefetch}>
+      <a {...externalAttrs} {...props}>
+        {children}
+      </a>
+    </NextLink>
+  );
+};
+
+Link.displayName = "Link";
+Link.defaultProps = {
+  isExternal: false,
+  prefetch: false
+};
 
 export default withRouter(Link);

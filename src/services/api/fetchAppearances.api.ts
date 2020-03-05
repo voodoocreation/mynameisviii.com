@@ -1,3 +1,4 @@
+import { API } from "../../constants/url.constants";
 import {
   appearance,
   dynamoResponse,
@@ -16,9 +17,8 @@ export const fetchAppearances = (request: TRequest) => async (
     const response: IRawDynamoResponse<
       IRawAppearance,
       "startingAt"
-    > = await request({
-      params: { exclusiveStartKey, limit },
-      url: `/appearances/find`
+    > = await request(API.FETCH_APPEARANCES, {
+      params: { exclusiveStartKey, limit }
     });
 
     return success(

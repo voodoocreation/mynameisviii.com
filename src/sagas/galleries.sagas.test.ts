@@ -1,8 +1,7 @@
+import * as actions from "../actions/root.actions";
 import { gallery, s3Response } from "../models/root.models";
 import { mockWithFailure, mockWithSuccess } from "../utilities/mocks";
 import SagaTester from "../utilities/SagaTester";
-
-import * as actions from "../actions/root.actions";
 
 describe("[sagas] Galleries", () => {
   const item = gallery({ slug: "test-1" });

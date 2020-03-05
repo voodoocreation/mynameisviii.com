@@ -16,8 +16,8 @@ interface IProps {
 const ConnectedMap: React.FC<IProps> = ({ children, className, ...props }) => (
   <div className="Map">
     <Map
-      google={window.google}
       className={cn("Map-element", className)}
+      google={window.google}
       styles={styles}
       {...props}
     >

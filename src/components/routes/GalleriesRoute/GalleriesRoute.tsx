@@ -35,7 +35,11 @@ interface IState {
 }
 
 class GalleriesRoute extends React.Component<IProps, IState> {
-  public static async getInitialProps(context: IPageContext) {
+  public readonly state: IState = {
+    loadedListings: {}
+  };
+
+  public static getInitialProps = async (context: IPageContext) => {
     const { isServer, store } = context;
 
     const state = store.getState();
@@ -45,10 +49,6 @@ class GalleriesRoute extends React.Component<IProps, IState> {
     } else if (!selectors.getHasAllGalleries(state)) {
       store.dispatch(actions.fetchMoreGalleries.started({}));
     }
-  }
-
-  public readonly state: IState = {
-    loadedListings: {}
   };
 
   public render() {
@@ -74,11 +74,11 @@ class GalleriesRoute extends React.Component<IProps, IState> {
 
           <meta content={pageDescription} name="description" />
 
-          <meta property="og:title" content={pageTitle} />
-          <meta property="og:description" content={pageDescription} />
-          <meta property="og:type" content="website" />
-          <meta property="og:image" content={s3ThemeUrl("/og/galleries.jpg")} />
-          <meta property="og:url" content={absoluteUrl("/galleries")} />
+          <meta content={pageTitle} property="og:title" />
+          <meta content={pageDescription} property="og:description" />
+          <meta content="website" property="og:type" />
+          <meta content={s3ThemeUrl("/og/galleries.jpg")} property="og:image" />
+          <meta content={absoluteUrl("/galleries")} property="og:url" />
         </Head>
 
         <PageHeader>
@@ -117,12 +117,12 @@ class GalleriesRoute extends React.Component<IProps, IState> {
   }
 
   private onListingLoad = (gallery: IGallery) => () => {
-    this.setState({
+    this.setState(state => ({
       loadedListings: {
-        ...this.state.loadedListings,
+        ...state.loadedListings,
         [gallery.slug]: true
       }
-    });
+    }));
   };
 
   private onLoadMore = () => {

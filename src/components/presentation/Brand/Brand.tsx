@@ -1,10 +1,9 @@
 import * as React from "react";
 import { FormattedMessage } from "react-intl";
 
-import Link from "../Link/Link";
-
 import logoName from "../../../../static/img/logo-name.svg";
 import logoSymbol from "../../../../static/img/logo-symbol.svg";
+import Link from "../Link/Link";
 
 import "./Brand.scss";
 

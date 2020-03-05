@@ -41,7 +41,7 @@ describe("[reducers] Galleries", () => {
         ...initialState,
         isLoading: true
       },
-      actions.fetchGalleries.done({ result, params: {} })
+      actions.fetchGalleries.done({ params: {}, result })
     );
 
     it("sets hasAllItems to be the inverse of isTruncated", () => {
@@ -116,7 +116,7 @@ describe("[reducers] Galleries", () => {
           [item1.slug]: item1
         }
       },
-      actions.fetchMoreGalleries.done({ result, params: {} })
+      actions.fetchMoreGalleries.done({ params: {}, result })
     );
 
     it("sets hasAllItems to be the inverse of isTruncated", () => {
