@@ -3,7 +3,7 @@ import {
   failure,
   IRawNewsArticle,
   newsArticle,
-  success
+  success,
 } from "../../models/root.models";
 import { TRequest } from "../configureHttpClient";
 

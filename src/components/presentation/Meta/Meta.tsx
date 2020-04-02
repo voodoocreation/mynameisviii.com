@@ -3,7 +3,7 @@ import * as React from "react";
 import {
   FormattedMessage,
   injectIntl,
-  WrappedComponentProps
+  WrappedComponentProps,
 } from "react-intl";
 
 import messages from "../../../locales/en-NZ";
@@ -25,7 +25,7 @@ const Meta: React.FC<IProps> = ({
   icon,
   label,
   labelIntlId,
-  title
+  title,
 }) => (
   <div className={cn("Meta", className)} title={title}>
     {icon}{" "}

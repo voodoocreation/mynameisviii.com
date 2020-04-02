@@ -3,7 +3,7 @@ import {
   image,
   release,
   releasePlatformLink,
-  releaseTrack
+  releaseTrack,
 } from "../../../models/root.models";
 import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import Release from "./Release";
@@ -12,7 +12,7 @@ const component = new WrapperWithIntl(Release).withDefaultProps(
   release({
     artist: {
       name: "Artist Name",
-      url: "URL"
+      url: "URL",
     },
     buyList: [],
     description: "Description",
@@ -20,8 +20,8 @@ const component = new WrapperWithIntl(Release).withDefaultProps(
     images: [
       {
         imageUrl: "Image URL",
-        title: "Image title"
-      }
+        title: "Image title",
+      },
     ],
     length: "5:00",
     recordLabel: "Record Label",
@@ -35,10 +35,10 @@ const component = new WrapperWithIntl(Release).withDefaultProps(
           genre: "Genre",
           length: "5:00",
           title: "Title",
-          url: "URL"
-        }
-      ]
-    ]
+          url: "URL",
+        },
+      ],
+    ],
   })
 );
 
@@ -67,21 +67,21 @@ describe("[presentation] <Release />", () => {
     const wrapper = component
       .withProps({
         buyList: [
-          releasePlatformLink({ platform: PLATFORM.ITUNES, url: "URL" })
+          releasePlatformLink({ platform: PLATFORM.ITUNES, url: "URL" }),
         ],
         streamList: [
-          releasePlatformLink({ platform: PLATFORM.SPOTIFY, url: "URL" })
+          releasePlatformLink({ platform: PLATFORM.SPOTIFY, url: "URL" }),
         ],
         tracklist: [
           [
             releaseTrack({ title: "Disc 1, Track 1" }),
-            releaseTrack({ title: "Disc 1, Track 2" })
+            releaseTrack({ title: "Disc 1, Track 2" }),
           ],
           [
             releaseTrack({ title: "Disc 2, Track 1" }),
-            releaseTrack({ title: "Disc 2, Track 2" })
-          ]
-        ]
+            releaseTrack({ title: "Disc 2, Track 2" }),
+          ],
+        ],
       })
       .render();
 
@@ -108,9 +108,9 @@ describe("[presentation] <Release />", () => {
       .withProps({
         images: [
           image({ imageUrl: "Image URL", title: "Image 1" }),
-          image({ imageUrl: "Image URL", title: "Image 2" })
+          image({ imageUrl: "Image URL", title: "Image 2" }),
         ],
-        onCarouselSlideChange
+        onCarouselSlideChange,
       })
       .mount();
 

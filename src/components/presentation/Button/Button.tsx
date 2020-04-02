@@ -48,7 +48,7 @@ Button.defaultProps = {
   isDisabled: false,
   isLoading: false,
   isStyled: false,
-  type: "button"
+  type: "button",
 };
 
 export default Button;

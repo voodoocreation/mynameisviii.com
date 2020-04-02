@@ -21,7 +21,7 @@ const allSagas = {
   ...releases,
   ...resources,
   ...serviceWorker,
-  ...stems
+  ...stems,
 };
 
 const mapSagas = (ports: IPorts) => {
@@ -34,6 +34,6 @@ const mapSagas = (ports: IPorts) => {
   return mapped;
 };
 
-export default function*(ports: IPorts): SagaIterator {
+export default function* (ports: IPorts): SagaIterator {
   yield all(mapSagas(ports));
 }

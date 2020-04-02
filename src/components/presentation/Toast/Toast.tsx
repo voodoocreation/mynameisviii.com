@@ -26,7 +26,7 @@ class Toast extends React.Component<IProps, IState> {
   public static defaultProps = {
     autoDismissDelay: 5000,
     hasAutoDismiss: true,
-    isVisible: true
+    isVisible: true,
   };
 
   private dismissTimeOut: any = undefined;
@@ -38,7 +38,7 @@ class Toast extends React.Component<IProps, IState> {
     this.state = {
       isRendered: !!props.isVisible,
       isToggled: !!props.isVisible,
-      isVisible: false
+      isVisible: false,
     };
   }
 
@@ -81,14 +81,14 @@ class Toast extends React.Component<IProps, IState> {
   private toggleVisibility = (isVisible: boolean) => {
     this.setState({
       isToggled: isVisible,
-      [isVisible ? "isRendered" : "isVisible"]: isVisible
+      [isVisible ? "isRendered" : "isVisible"]: isVisible,
     } as any);
 
     clearTimeout(this.visibilityTimeout);
 
     this.visibilityTimeout = setTimeout(() => {
       this.setState({
-        [isVisible ? "isVisible" : "isRendered"]: isVisible
+        [isVisible ? "isVisible" : "isRendered"]: isVisible,
       } as any);
 
       if (isVisible && this.props.hasAutoDismiss) {

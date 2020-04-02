@@ -20,11 +20,11 @@ interface IProps extends INewsArticle {
 
 export default class NewsListing extends React.Component<IProps, IState> {
   public static defaultProps = {
-    isCondensed: false
+    isCondensed: false,
   };
 
   public readonly state = {
-    isRendered: false
+    isRendered: false,
   };
 
   public render() {
@@ -67,7 +67,7 @@ export default class NewsListing extends React.Component<IProps, IState> {
 
   private onLoad = () => {
     this.setState({
-      isRendered: true
+      isRendered: true,
     });
 
     if (this.props.onLoad) {

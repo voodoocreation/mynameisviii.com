@@ -6,16 +6,16 @@ import GalleryRoute from "./GalleryRoute";
 
 const item = gallery({
   images: [{ imageUrl: "1" }, { imageUrl: "2" }],
-  slug: "test-1"
+  slug: "test-1",
 });
 
 const defaultState = {
   galleries: {
     currentSlug: item.slug,
     items: {
-      [item.slug]: item
-    }
-  }
+      [item.slug]: item,
+    },
+  },
 };
 
 const component = new WrapperWithRedux(GalleryRoute);
@@ -24,7 +24,7 @@ describe("[routes] <GalleryRoute />", () => {
   describe("getInitialProps", () => {
     const context = new MockPageContext()
       .withDefaultQuery({
-        slug: item.slug
+        slug: item.slug,
       })
       .withDefaultReduxState(defaultState);
 
@@ -82,7 +82,7 @@ describe("[routes] <GalleryRoute />", () => {
     const wrapper = component
       .withReduxState({
         ...defaultState,
-        galleries: { isLoading: true }
+        galleries: { isLoading: true },
       })
       .mount();
 
@@ -95,8 +95,8 @@ describe("[routes] <GalleryRoute />", () => {
         galleries: {
           currentSlug: undefined,
           hasError: true,
-          items: {}
-        }
+          items: {},
+        },
       })
       .mount();
 
@@ -106,10 +106,7 @@ describe("[routes] <GalleryRoute />", () => {
   it("tracks gallery interactions correctly", () => {
     const wrapper = component.withReduxState(defaultState).mount();
 
-    wrapper
-      .find("ImageGallery Image")
-      .last()
-      .simulate("click");
+    wrapper.find("ImageGallery Image").last().simulate("click");
 
     const matchingActions = component.reduxHistory.filter(
       actions.trackEvent.match
@@ -118,7 +115,7 @@ describe("[routes] <GalleryRoute />", () => {
     expect(matchingActions).toHaveLength(1);
     expect(matchingActions[0].payload).toEqual({
       event: "gallery.gallery.itemClick",
-      index: 1
+      index: 1,
     });
   });
 });

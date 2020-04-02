@@ -78,11 +78,11 @@ class NewsArticleRoute extends React.Component<IProps> {
 
 const mapState = (state: TStoreState) => ({
   article: selectors.getCurrentNewsArticle(state),
-  isLoading: selectors.getNewsIsLoading(state)
+  isLoading: selectors.getNewsIsLoading(state),
 });
 
 const mapActions = {
-  fetchNewsArticleBySlug: actions.fetchNewsArticleBySlug.started
+  fetchNewsArticleBySlug: actions.fetchNewsArticleBySlug.started,
 };
 
 export default injectIntlIntoPage(

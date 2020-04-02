@@ -10,7 +10,7 @@ describe("[sagas] Features", () => {
       const saga = new SagaTester(
         {},
         {
-          features: []
+          features: [],
         }
       );
 
@@ -52,7 +52,7 @@ describe("[sagas] Features", () => {
       const saga = new SagaTester(
         {},
         {
-          features: [feature1, feature2, feature3]
+          features: [feature1, feature2, feature3],
         }
       );
 

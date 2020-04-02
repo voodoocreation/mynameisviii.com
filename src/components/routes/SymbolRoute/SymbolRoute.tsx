@@ -13,7 +13,7 @@ import "./SymbolRoute.scss";
 
 type IProps = WrappedComponentProps;
 
-const SymbolRoute: React.FC<IProps> = props => {
+const SymbolRoute: React.FC<IProps> = (props) => {
   const { formatMessage } = props.intl;
 
   const pageTitle = formatMessage({ id: "SYMBOL_TITLE" });

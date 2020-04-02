@@ -8,8 +8,8 @@ describe("[connected] <OfflineNotice />", () => {
     const wrapper = component
       .withReduxState({
         app: {
-          isOnline: false
-        }
+          isOnline: false,
+        },
       })
       .mount();
 
@@ -21,8 +21,8 @@ describe("[connected] <OfflineNotice />", () => {
     const wrapper = component
       .withReduxState({
         app: {
-          isOnline: true
-        }
+          isOnline: true,
+        },
       })
       .mount();
 

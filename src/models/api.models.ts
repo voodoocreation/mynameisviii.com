@@ -33,12 +33,12 @@ export const dynamoResponse = <T extends IWithSlug, K extends string>(
   options: IRawDynamoResponse<T, K>
 ): IDynamoResponse<T, K> => ({
   items: arrayToAssoc(options.items, "slug"),
-  lastEvaluatedKey: options.lastEvaluatedKey
+  lastEvaluatedKey: options.lastEvaluatedKey,
 });
 
 export const s3Response = <T extends IWithSlug>(
   options: IRawS3Response<T>
 ): IS3Response<T> => ({
   isTruncated: !!options.isTruncated,
-  items: arrayToAssoc(options.items, "slug")
+  items: arrayToAssoc(options.items, "slug"),
 });

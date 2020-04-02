@@ -4,7 +4,7 @@ import {
   FaApple,
   FaGoogle,
   FaSoundcloud,
-  FaSpotify
+  FaSpotify,
 } from "react-icons/fa";
 import { MdPlayCircleFilled } from "react-icons/md";
 

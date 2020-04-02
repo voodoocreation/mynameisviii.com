@@ -6,14 +6,14 @@ import {
   dynamoResponse,
   failure,
   release,
-  success
+  success,
 } from "../../models/root.models";
 import { fetchReleases } from "./fetchReleases.api";
 
 describe("[api] fetchReleases", () => {
   const params = {
     exclusiveStartKey: "test",
-    limit: 1
+    limit: 1,
   };
 
   describe("when the request succeeds", () => {
@@ -22,8 +22,8 @@ describe("[api] fetchReleases", () => {
       lastEvaluatedKey: {
         isActive: BOOLEAN.TRUE,
         releasedOn: "2019-01-01",
-        slug: "test-0"
-      }
+        slug: "test-0",
+      },
     };
     const request = mockWithResolvedPromise(data);
     const method = fetchReleases(request);
@@ -33,7 +33,7 @@ describe("[api] fetchReleases", () => {
         success(
           dynamoResponse({
             items: data.items.map(release),
-            lastEvaluatedKey: data.lastEvaluatedKey
+            lastEvaluatedKey: data.lastEvaluatedKey,
           })
         )
       );
@@ -41,7 +41,7 @@ describe("[api] fetchReleases", () => {
 
     it("makes the request correctly", () => {
       expect(request).toHaveBeenCalledWith(API.FETCH_RELEASES, {
-        params
+        params,
       });
     });
   });
@@ -58,7 +58,7 @@ describe("[api] fetchReleases", () => {
 
     it("makes the request correctly", () => {
       expect(request).toHaveBeenCalledWith(API.FETCH_RELEASES, {
-        params
+        params,
       });
     });
   });

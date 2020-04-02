@@ -12,8 +12,8 @@ describe("[reducers] News", () => {
       {
         ...initialState,
         items: {
-          [item1.slug]: item1
-        }
+          [item1.slug]: item1,
+        },
       },
       actions.fetchLatestNews.started({})
     );
@@ -33,8 +33,8 @@ describe("[reducers] News", () => {
       lastEvaluatedKey: {
         createdAt: item1.createdAt,
         isActive: BOOLEAN.TRUE,
-        slug: item1.slug
-      }
+        slug: item1.slug,
+      },
     });
 
     describe("when lastEvaluatedKey is defined", () => {
@@ -42,7 +42,7 @@ describe("[reducers] News", () => {
         {
           ...initialState,
           hasAllItems: true,
-          isLoading: true
+          isLoading: true,
         },
         actions.fetchLatestNews.done({ params: {}, result })
       );
@@ -73,15 +73,15 @@ describe("[reducers] News", () => {
           lastEvaluatedKey: {
             createdAt: item1.createdAt,
             isActive: BOOLEAN.TRUE,
-            slug: item1.slug
-          }
+            slug: item1.slug,
+          },
         },
         actions.fetchLatestNews.done({
           params: {},
           result: {
             ...result,
-            lastEvaluatedKey: undefined
-          }
+            lastEvaluatedKey: undefined,
+          },
         })
       );
 
@@ -107,7 +107,7 @@ describe("[reducers] News", () => {
     const state = reducer(
       {
         ...initialState,
-        isLoading: true
+        isLoading: true,
       },
       actions.fetchLatestNews.failed({ error: "Error", params: {} })
     );
@@ -123,13 +123,13 @@ describe("[reducers] News", () => {
 
   describe("actions.fetchMoreLatestNews.started", () => {
     const items = {
-      [item1.slug]: item1
+      [item1.slug]: item1,
     };
 
     const state = reducer(
       {
         ...initialState,
-        items
+        items,
       },
       actions.fetchMoreLatestNews.started({})
     );
@@ -149,8 +149,8 @@ describe("[reducers] News", () => {
       lastEvaluatedKey: {
         createdAt: item2.createdAt,
         isActive: BOOLEAN.TRUE,
-        slug: item2.slug
-      }
+        slug: item2.slug,
+      },
     });
 
     describe("when lastEvaluatedKey is defined", () => {
@@ -160,8 +160,8 @@ describe("[reducers] News", () => {
           hasAllItems: true,
           isLoading: true,
           items: {
-            [item1.slug]: item1
-          }
+            [item1.slug]: item1,
+          },
         },
         actions.fetchMoreLatestNews.done({ params: {}, result })
       );
@@ -177,7 +177,7 @@ describe("[reducers] News", () => {
       it("merges the items from the payload with the ones in the store", () => {
         expect(state.items).toEqual({
           [item1.slug]: item1,
-          [item2.slug]: item2
+          [item2.slug]: item2,
         });
       });
 
@@ -193,15 +193,15 @@ describe("[reducers] News", () => {
           hasAllItems: false,
           isLoading: true,
           items: {
-            [item1.slug]: item1
-          }
+            [item1.slug]: item1,
+          },
         },
         actions.fetchMoreLatestNews.done({
           params: {},
           result: {
             ...result,
-            lastEvaluatedKey: undefined
-          }
+            lastEvaluatedKey: undefined,
+          },
         })
       );
 
@@ -216,7 +216,7 @@ describe("[reducers] News", () => {
       it("merges the items from the payload with the ones in the store", () => {
         expect(state.items).toEqual({
           [item1.slug]: item1,
-          [item2.slug]: item2
+          [item2.slug]: item2,
         });
       });
 
@@ -230,7 +230,7 @@ describe("[reducers] News", () => {
     const state = reducer(
       {
         ...initialState,
-        isLoading: true
+        isLoading: true,
       },
       actions.fetchMoreLatestNews.failed({ error: "Error", params: {} })
     );
@@ -259,7 +259,7 @@ describe("[reducers] News", () => {
     const state = reducer(
       {
         ...initialState,
-        hasError: true
+        hasError: true,
       },
       actions.fetchNewsArticleBySlug.started(item1.slug)
     );
@@ -279,12 +279,12 @@ describe("[reducers] News", () => {
         ...initialState,
         isLoading: true,
         items: {
-          [item2.slug]: item2
-        }
+          [item2.slug]: item2,
+        },
       },
       actions.fetchNewsArticleBySlug.done({
         params: item1.slug,
-        result: item1
+        result: item1,
       })
     );
 
@@ -295,7 +295,7 @@ describe("[reducers] News", () => {
     it("adds the item to the store", () => {
       expect(state.items).toEqual({
         [item2.slug]: item2,
-        [item1.slug]: item1
+        [item1.slug]: item1,
       });
     });
   });
@@ -304,11 +304,11 @@ describe("[reducers] News", () => {
     const state = reducer(
       {
         ...initialState,
-        isLoading: true
+        isLoading: true,
       },
       actions.fetchNewsArticleBySlug.failed({
         error: "Error",
-        params: item1.slug
+        params: item1.slug,
       })
     );
 

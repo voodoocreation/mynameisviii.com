@@ -36,7 +36,7 @@ interface IState {
 
 class NewsRoute extends React.Component<IProps, IState> {
   public readonly state: IState = {
-    loadedListings: {}
+    loadedListings: {},
   };
 
   public static getInitialProps = async (context: IPageContext) => {
@@ -56,7 +56,7 @@ class NewsRoute extends React.Component<IProps, IState> {
       articles,
       articlesCount,
       hasAllNewsArticles,
-      hasError
+      hasError,
     } = this.props;
     const { formatMessage } = this.props.intl;
 
@@ -94,7 +94,7 @@ class NewsRoute extends React.Component<IProps, IState> {
 
         {articlesCount > 0 ? (
           <section className="NewsRoute--listings">
-            {articles.map(article => (
+            {articles.map((article) => (
               <NewsListing
                 {...article}
                 key={article.slug}
@@ -122,11 +122,11 @@ class NewsRoute extends React.Component<IProps, IState> {
   }
 
   private onListingLoad = (article: INewsArticle) => () => {
-    this.setState(state => ({
+    this.setState((state) => ({
       loadedListings: {
         ...state.loadedListings,
-        [article.slug]: true
-      }
+        [article.slug]: true,
+      },
     }));
   };
 
@@ -140,12 +140,12 @@ const mapState = (state: TStoreState) => ({
   articlesCount: selectors.getNewsArticlesCount(state),
   hasAllNewsArticles: selectors.getHasAllNewsArticles(state),
   hasError: selectors.hasNewsError(state),
-  isLoading: selectors.getNewsIsLoading(state)
+  isLoading: selectors.getNewsIsLoading(state),
 });
 
 const mapActions = {
   fetchLatestNews: actions.fetchLatestNews.started,
-  fetchMoreLatestNews: actions.fetchMoreLatestNews.started
+  fetchMoreLatestNews: actions.fetchMoreLatestNews.started,
 };
 
 export default injectIntlIntoPage(connect(mapState, mapActions)(NewsRoute));

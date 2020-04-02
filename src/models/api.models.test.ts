@@ -6,21 +6,21 @@ describe("[models] API", () => {
       const data = {
         items: [
           {
-            slug: "test-1"
-          }
+            slug: "test-1",
+          },
         ],
         lastEvaluatedKey: {
           isActive: "y",
           slug: "test-1",
-          test: ""
-        }
+          test: "",
+        },
       };
 
       expect(dynamoResponse(data)).toEqual({
         items: {
-          [data.items[0].slug]: data.items[0]
+          [data.items[0].slug]: data.items[0],
         },
-        lastEvaluatedKey: data.lastEvaluatedKey
+        lastEvaluatedKey: data.lastEvaluatedKey,
       });
     });
   });
@@ -30,16 +30,16 @@ describe("[models] API", () => {
       const data = {
         items: [
           {
-            slug: "test-1"
-          }
-        ]
+            slug: "test-1",
+          },
+        ],
       };
 
       expect(s3Response(data)).toEqual({
         isTruncated: false,
         items: {
-          [data.items[0].slug]: data.items[0]
-        }
+          [data.items[0].slug]: data.items[0],
+        },
       });
     });
 
@@ -48,16 +48,16 @@ describe("[models] API", () => {
         isTruncated: true,
         items: [
           {
-            slug: "test-1"
-          }
-        ]
+            slug: "test-1",
+          },
+        ],
       };
 
       expect(s3Response(data)).toEqual({
         isTruncated: data.isTruncated,
         items: {
-          [data.items[0].slug]: data.items[0]
-        }
+          [data.items[0].slug]: data.items[0],
+        },
       });
     });
   });

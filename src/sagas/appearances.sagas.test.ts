@@ -7,12 +7,12 @@ describe("[sagas] Appearances", () => {
   const item = appearance({
     location: {
       address: "123 Test Street",
-      name: "Test venue"
+      name: "Test venue",
     },
-    slug: "item-1"
+    slug: "item-1",
   });
   const data = dynamoResponse({
-    items: [item]
+    items: [item],
   });
 
   describe("fetchAppearancesSaga", () => {
@@ -21,8 +21,8 @@ describe("[sagas] Appearances", () => {
         {},
         {
           api: {
-            fetchAppearances: mockWithSuccess(data)
-          }
+            fetchAppearances: mockWithSuccess(data),
+          },
         }
       );
 
@@ -49,8 +49,8 @@ describe("[sagas] Appearances", () => {
         {},
         {
           api: {
-            fetchAppearances: mockWithFailure("Bad request")
-          }
+            fetchAppearances: mockWithFailure("Bad request"),
+          },
         }
       );
 
@@ -81,20 +81,20 @@ describe("[sagas] Appearances", () => {
             items: {
               "existing-item": {
                 ...item,
-                slug: "existing-item"
-              }
+                slug: "existing-item",
+              },
             },
             lastEvaluatedKey: {
               isActive: "y",
               slug: "existing-item",
-              startingAt: "2019-01-01T00:00:00"
-            }
-          }
+              startingAt: "2019-01-01T00:00:00",
+            },
+          },
         },
         {
           api: {
-            fetchAppearances: mockWithSuccess(data)
-          }
+            fetchAppearances: mockWithSuccess(data),
+          },
         }
       );
 
@@ -121,7 +121,7 @@ describe("[sagas] Appearances", () => {
         expect(matchingActions).toHaveLength(1);
         expect(matchingActions[0].payload).toEqual({
           event: "appearances.fetchedMore",
-          itemCount: 2
+          itemCount: 2,
         });
       });
     });
@@ -131,8 +131,8 @@ describe("[sagas] Appearances", () => {
         {},
         {
           api: {
-            fetchAppearances: mockWithFailure("Bad request")
-          }
+            fetchAppearances: mockWithFailure("Bad request"),
+          },
         }
       );
 
@@ -161,8 +161,8 @@ describe("[sagas] Appearances", () => {
         {},
         {
           api: {
-            fetchAppearanceBySlug: mockWithSuccess(item)
-          }
+            fetchAppearanceBySlug: mockWithSuccess(item),
+          },
         }
       );
 
@@ -189,8 +189,8 @@ describe("[sagas] Appearances", () => {
         {},
         {
           api: {
-            fetchAppearanceBySlug: mockWithFailure("Bad request")
-          }
+            fetchAppearanceBySlug: mockWithFailure("Bad request"),
+          },
         }
       );
 
@@ -228,16 +228,16 @@ describe("[sagas] Appearances", () => {
                 ...item,
                 location: {
                   ...item.location,
-                  latLng: { lat: 0, lng: 0 }
-                }
-              }
-            }
-          }
+                  latLng: { lat: 0, lng: 0 },
+                },
+              },
+            },
+          },
         },
         {
           maps: {
-            Geocoder: jest.fn()
-          }
+            Geocoder: jest.fn(),
+          },
         }
       );
 
@@ -269,9 +269,9 @@ describe("[sagas] Appearances", () => {
           appearances: {
             currentSlug: item.slug,
             items: {
-              [item.slug]: item
-            }
-          }
+              [item.slug]: item,
+            },
+          },
         },
         {
           maps: {
@@ -281,14 +281,14 @@ describe("[sagas] Appearances", () => {
                   [
                     {
                       geometry: {
-                        location: { lat: () => 51.54057, lng: () => -0.14334 }
-                      }
-                    }
+                        location: { lat: () => 51.54057, lng: () => -0.14334 },
+                      },
+                    },
                   ],
                   "OK"
-                )
-            }))
-          }
+                ),
+            })),
+          },
         }
       );
 
@@ -308,7 +308,7 @@ describe("[sagas] Appearances", () => {
         expect(matchingActions).toHaveLength(1);
         expect(matchingActions[0].payload.result).toEqual({
           lat: 51.54057,
-          lng: -0.14334
+          lng: -0.14334,
         });
       });
     });
@@ -321,16 +321,17 @@ describe("[sagas] Appearances", () => {
           appearances: {
             currentSlug: item.slug,
             items: {
-              [item.slug]: item
-            }
-          }
+              [item.slug]: item,
+            },
+          },
         },
         {
           maps: {
             Geocoder: jest.fn(() => ({
-              geocode: (_: any, callback: any) => callback([], "REQUEST_DENIED")
-            }))
-          }
+              geocode: (_: any, callback: any) =>
+                callback([], "REQUEST_DENIED"),
+            })),
+          },
         }
       );
 
@@ -362,18 +363,18 @@ describe("[sagas] Appearances", () => {
           appearances: {
             currentSlug: item.slug,
             items: {
-              [item.slug]: item
-            }
-          }
+              [item.slug]: item,
+            },
+          },
         },
         {
           maps: {
             Geocoder: jest.fn(() => ({
               geocode: () => {
                 throw new Error("Failed promise");
-              }
-            }))
-          }
+              },
+            })),
+          },
         }
       );
 

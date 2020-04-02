@@ -48,5 +48,5 @@ export const newsArticle = (options: IRawNewsArticle = {}): INewsArticle => ({
   ogImageUrl: options.ogImageUrl || "",
   slug: options.slug || "",
   title: options.title || "",
-  type: options.type || TYPE.NEWS
+  type: options.type || TYPE.NEWS,
 });

@@ -2,7 +2,7 @@ import * as React from "react";
 import {
   FormattedMessage,
   injectIntl,
-  WrappedComponentProps
+  WrappedComponentProps,
 } from "react-intl";
 import { connect } from "react-redux";
 
@@ -44,7 +44,7 @@ class NewVersionToast extends React.Component<IProps> {
 }
 
 const mapState = (state: TStoreState) => ({
-  hasNewVersion: selectors.hasNewVersion(state)
+  hasNewVersion: selectors.hasNewVersion(state),
 });
 
 export default injectIntl(connect(mapState)(NewVersionToast));

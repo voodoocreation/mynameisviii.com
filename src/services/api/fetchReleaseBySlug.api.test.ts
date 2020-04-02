@@ -9,7 +9,7 @@ describe("[api] fetchReleaseBySlug", () => {
   describe("when the request succeeds", () => {
     const data = {
       isActive: BOOLEAN.TRUE,
-      slug: "test-1"
+      slug: "test-1",
     };
     const request = mockWithResolvedPromise(data);
     const method = fetchReleaseBySlug(request);

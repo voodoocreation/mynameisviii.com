@@ -21,7 +21,7 @@ const Price: React.FC<IProps> = ({
 Price.defaultProps = {
   currency: "NZD",
   currencyDisplay: "symbol",
-  minimumFractionDigits: 0
+  minimumFractionDigits: 0,
 };
 
 export default injectIntl(Price);

@@ -18,7 +18,7 @@ const customRoutesHandler = customRoutes.getRequestHandler(app);
 
 const languages = glob
   .sync("./src/locales/*.ts")
-  .map(f => path.basename(f, ".ts"));
+  .map((f) => path.basename(f, ".ts"));
 
 app.prepare().then(() => {
   const server = express();
@@ -46,9 +46,9 @@ app.prepare().then(() => {
   server.use(
     "/appService.js",
     express.static(path.join(__dirname, "dist/appService.js"), {
-      setHeaders: res => {
+      setHeaders: (res) => {
         res.set("Cache-Control", "max-age=0");
-      }
+      },
     })
   );
 
@@ -60,9 +60,9 @@ app.prepare().then(() => {
       req.locale = locale;
     } else if (
       Array.isArray(locale) &&
-      locale.filter(item => item !== "*").length > 0
+      locale.filter((item) => item !== "*").length > 0
     ) {
-      req.locale = locale.filter(item => item !== "*")[0];
+      req.locale = locale.filter((item) => item !== "*")[0];
     } else {
       req.locale = "en-NZ";
     }
@@ -70,7 +70,7 @@ app.prepare().then(() => {
     customRoutesHandler(req, res);
   });
 
-  server.listen(port, err => {
+  server.listen(port, (err) => {
     if (err) throw err;
     console.log(`> Ready on http://localhost:${port}`);
   });

@@ -8,7 +8,7 @@ describe("[presentation] <AppearanceStatus />", () => {
   describe("when the value isn't CANCELLED or POSTPONED", () => {
     const wrapper = component
       .withProps({
-        value: STATUS.SCHEDULED
+        value: STATUS.SCHEDULED,
       })
       .render();
 
@@ -20,7 +20,7 @@ describe("[presentation] <AppearanceStatus />", () => {
   describe("when the value is CANCELLED", () => {
     const wrapper = component
       .withProps({
-        value: STATUS.CANCELLED
+        value: STATUS.CANCELLED,
       })
       .mount();
 
@@ -32,7 +32,7 @@ describe("[presentation] <AppearanceStatus />", () => {
   describe("when the value is POSTPONED", () => {
     const wrapper = component
       .withProps({
-        value: STATUS.POSTPONED
+        value: STATUS.POSTPONED,
       })
       .mount();
 

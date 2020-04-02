@@ -5,7 +5,7 @@ import {
   failure,
   IRawAppearance,
   IRawDynamoResponse,
-  success
+  success,
 } from "../../models/root.models";
 import { TRequest } from "../configureHttpClient";
 
@@ -18,13 +18,13 @@ export const fetchAppearances = (request: TRequest) => async (
       IRawAppearance,
       "startingAt"
     > = await request(API.FETCH_APPEARANCES, {
-      params: { exclusiveStartKey, limit }
+      params: { exclusiveStartKey, limit },
     });
 
     return success(
       dynamoResponse({
         ...response,
-        items: response.items.map(appearance)
+        items: response.items.map(appearance),
       })
     );
   } catch (error) {

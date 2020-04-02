@@ -3,10 +3,10 @@ import Page from "./Page";
 
 const component = new WrapperWithRedux(Page)
   .withDefaultProps({
-    className: "TestClassName"
+    className: "TestClassName",
   })
   .withDefaultReduxState({
-    app: { isLoading: false }
+    app: { isLoading: false },
   })
   .withDefaultChildren("Page");
 
@@ -27,7 +27,7 @@ describe("[connected] <Page />", () => {
   describe("when the app is loading", () => {
     const wrapper = component
       .withReduxState({
-        app: { isLoading: true }
+        app: { isLoading: true },
       })
       .mount();
     const rendered = wrapper.render();

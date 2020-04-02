@@ -12,8 +12,8 @@ describe("[reducers] Stems", () => {
       {
         ...initialState,
         items: {
-          [item1.slug]: item1
-        }
+          [item1.slug]: item1,
+        },
       },
       actions.fetchStems.started({})
     );
@@ -33,8 +33,8 @@ describe("[reducers] Stems", () => {
       lastEvaluatedKey: {
         createdAt: item1.createdAt,
         isActive: BOOLEAN.TRUE,
-        slug: item1.slug
-      }
+        slug: item1.slug,
+      },
     });
 
     describe("when lastEvaluatedKey is defined", () => {
@@ -42,7 +42,7 @@ describe("[reducers] Stems", () => {
         {
           ...initialState,
           hasAllItems: true,
-          isLoading: true
+          isLoading: true,
         },
         actions.fetchStems.done({ params: {}, result })
       );
@@ -73,15 +73,15 @@ describe("[reducers] Stems", () => {
           lastEvaluatedKey: {
             createdAt: item1.createdAt,
             isActive: BOOLEAN.TRUE,
-            slug: item1.slug
-          }
+            slug: item1.slug,
+          },
         },
         actions.fetchStems.done({
           params: {},
           result: {
             ...result,
-            lastEvaluatedKey: undefined
-          }
+            lastEvaluatedKey: undefined,
+          },
         })
       );
 
@@ -107,7 +107,7 @@ describe("[reducers] Stems", () => {
     const state = reducer(
       {
         ...initialState,
-        isLoading: true
+        isLoading: true,
       },
       actions.fetchStems.failed({ error: "Error", params: {} })
     );
@@ -123,13 +123,13 @@ describe("[reducers] Stems", () => {
 
   describe("actions.fetchMoreStems.started", () => {
     const items = {
-      [item1.slug]: item1
+      [item1.slug]: item1,
     };
 
     const state = reducer(
       {
         ...initialState,
-        items
+        items,
       },
       actions.fetchMoreStems.started({})
     );
@@ -149,8 +149,8 @@ describe("[reducers] Stems", () => {
       lastEvaluatedKey: {
         createdAt: item2.createdAt,
         isActive: BOOLEAN.TRUE,
-        slug: item2.slug
-      }
+        slug: item2.slug,
+      },
     });
 
     describe("when lastEvaluatedKey is defined", () => {
@@ -160,8 +160,8 @@ describe("[reducers] Stems", () => {
           hasAllItems: true,
           isLoading: true,
           items: {
-            [item1.slug]: item1
-          }
+            [item1.slug]: item1,
+          },
         },
         actions.fetchMoreStems.done({ params: {}, result })
       );
@@ -177,7 +177,7 @@ describe("[reducers] Stems", () => {
       it("merges the items from the payload with the ones in the store", () => {
         expect(state.items).toEqual({
           [item1.slug]: item1,
-          [item2.slug]: item2
+          [item2.slug]: item2,
         });
       });
 
@@ -193,15 +193,15 @@ describe("[reducers] Stems", () => {
           hasAllItems: false,
           isLoading: true,
           items: {
-            [item1.slug]: item1
-          }
+            [item1.slug]: item1,
+          },
         },
         actions.fetchMoreStems.done({
           params: {},
           result: {
             ...result,
-            lastEvaluatedKey: undefined
-          }
+            lastEvaluatedKey: undefined,
+          },
         })
       );
 
@@ -216,7 +216,7 @@ describe("[reducers] Stems", () => {
       it("merges the items from the payload with the ones in the store", () => {
         expect(state.items).toEqual({
           [item1.slug]: item1,
-          [item2.slug]: item2
+          [item2.slug]: item2,
         });
       });
 
@@ -230,7 +230,7 @@ describe("[reducers] Stems", () => {
     const state = reducer(
       {
         ...initialState,
-        isLoading: true
+        isLoading: true,
       },
       actions.fetchMoreStems.failed({ error: "Error", params: {} })
     );

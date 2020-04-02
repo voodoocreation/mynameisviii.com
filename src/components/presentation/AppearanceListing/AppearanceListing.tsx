@@ -25,11 +25,11 @@ interface IProps extends IAppearance {
 
 export default class AppearanceListing extends React.Component<IProps, IState> {
   public static defaultProps = {
-    isCondensed: false
+    isCondensed: false,
   };
 
   public state: IState = {
-    isRendered: false
+    isRendered: false,
   };
 
   public render() {
@@ -71,7 +71,7 @@ export default class AppearanceListing extends React.Component<IProps, IState> {
                   options={{
                     day: "numeric",
                     month: "long",
-                    year: "numeric"
+                    year: "numeric",
                   }}
                   value={appearance.startingAt}
                   isDateOnly
@@ -88,7 +88,7 @@ export default class AppearanceListing extends React.Component<IProps, IState> {
                   options={{
                     hour: "numeric",
                     hour12: true,
-                    minute: "numeric"
+                    minute: "numeric",
                   }}
                   value={appearance.startingAt}
                 />
@@ -166,7 +166,7 @@ export default class AppearanceListing extends React.Component<IProps, IState> {
 
   private onLoad = () => {
     this.setState({
-      isRendered: true
+      isRendered: true,
     });
 
     if (this.props.onLoad) {

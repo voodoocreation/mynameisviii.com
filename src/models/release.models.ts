@@ -6,7 +6,7 @@ import {
   PRODUCTION,
   PRODUCTION_OPTION,
   SCHEMA_TYPE,
-  TYPE
+  TYPE,
 } from "../constants/release.constants";
 import { IImage, image } from "./image.models";
 import { IPerformer, performer } from "./performer.models";
@@ -100,14 +100,14 @@ export const releaseSchemaType = (type?: TYPE) => {
 
 export const releasePlatformLink = (options: IReleasePlatformLink) => ({
   platform: options.platform,
-  url: options.url
+  url: options.url,
 });
 
 export const releaseTrack = (options: Partial<IReleaseTrack> = {}) => ({
   genre: options.genre || "",
   length: options.length || "0:00",
   title: options.title || "",
-  url: options.url || ""
+  url: options.url || "",
 });
 
 export const release = (options: IRawRelease = {}): IRelease => ({
@@ -120,11 +120,7 @@ export const release = (options: IRawRelease = {}): IRelease => ({
   length: options.length || "0:00",
   productionType: productionType(options.productionType),
   recordLabel: options.recordLabel || "",
-  releasedOn:
-    options.releasedOn ||
-    dayjs()
-      .startOf("day")
-      .toISOString(),
+  releasedOn: options.releasedOn || dayjs().startOf("day").toISOString(),
   schemaType: releaseSchemaType(options.type),
   slug: options.slug || "",
   streamList: options.streamList
@@ -132,7 +128,7 @@ export const release = (options: IRawRelease = {}): IRelease => ({
     : [],
   title: options.title || "",
   tracklist: options.tracklist
-    ? options.tracklist.map(disc => disc.map(releaseTrack))
+    ? options.tracklist.map((disc) => disc.map(releaseTrack))
     : [],
-  type: options.type || TYPE.ALBUM
+  type: options.type || TYPE.ALBUM,
 });

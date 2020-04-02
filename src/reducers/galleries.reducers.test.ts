@@ -11,8 +11,8 @@ describe("[reducers] Galleries", () => {
       {
         ...initialState,
         items: {
-          [item1.slug]: item1
-        }
+          [item1.slug]: item1,
+        },
       },
       actions.fetchGalleries.started({})
     );
@@ -33,13 +33,13 @@ describe("[reducers] Galleries", () => {
   describe("actions.fetchGalleries.done", () => {
     const result = s3Response({
       isTruncated: false,
-      items: [item1, item2]
+      items: [item1, item2],
     });
 
     const state = reducer(
       {
         ...initialState,
-        isLoading: true
+        isLoading: true,
       },
       actions.fetchGalleries.done({ params: {}, result })
     );
@@ -61,7 +61,7 @@ describe("[reducers] Galleries", () => {
     const state = reducer(
       {
         ...initialState,
-        isLoading: true
+        isLoading: true,
       },
       actions.fetchGalleries.failed({ error: "Error", params: {} })
     );
@@ -77,14 +77,14 @@ describe("[reducers] Galleries", () => {
 
   describe("actions.fetchMoreGalleries.started", () => {
     const items = {
-      [item1.slug]: item1
+      [item1.slug]: item1,
     };
 
     const state = reducer(
       {
         ...initialState,
         hasError: true,
-        items
+        items,
       },
       actions.fetchMoreGalleries.started({})
     );
@@ -105,7 +105,7 @@ describe("[reducers] Galleries", () => {
   describe("actions.fetchMoreGalleries.done", () => {
     const result = s3Response({
       isTruncated: false,
-      items: [item2]
+      items: [item2],
     });
 
     const state = reducer(
@@ -113,8 +113,8 @@ describe("[reducers] Galleries", () => {
         ...initialState,
         isLoading: true,
         items: {
-          [item1.slug]: item1
-        }
+          [item1.slug]: item1,
+        },
       },
       actions.fetchMoreGalleries.done({ params: {}, result })
     );
@@ -130,7 +130,7 @@ describe("[reducers] Galleries", () => {
     it("merges the items from the payload with the ones in the store", () => {
       expect(state.items).toEqual({
         [item1.slug]: item1,
-        [item2.slug]: item2
+        [item2.slug]: item2,
       });
     });
   });
@@ -139,7 +139,7 @@ describe("[reducers] Galleries", () => {
     const state = reducer(
       {
         ...initialState,
-        isLoading: true
+        isLoading: true,
       },
       actions.fetchMoreGalleries.failed({ error: "Error", params: {} })
     );
@@ -168,7 +168,7 @@ describe("[reducers] Galleries", () => {
     const state = reducer(
       {
         ...initialState,
-        hasError: true
+        hasError: true,
       },
       actions.fetchGalleryBySlug.started(item1.slug)
     );
@@ -188,12 +188,12 @@ describe("[reducers] Galleries", () => {
         ...initialState,
         isLoading: true,
         items: {
-          [item2.slug]: item2
-        }
+          [item2.slug]: item2,
+        },
       },
       actions.fetchGalleryBySlug.done({
         params: item1.slug,
-        result: item1
+        result: item1,
       })
     );
 
@@ -204,7 +204,7 @@ describe("[reducers] Galleries", () => {
     it("adds the item to the store", () => {
       expect(state.items).toEqual({
         [item2.slug]: item2,
-        [item1.slug]: item1
+        [item1.slug]: item1,
       });
     });
   });
@@ -213,11 +213,11 @@ describe("[reducers] Galleries", () => {
     const state = reducer(
       {
         ...initialState,
-        isLoading: true
+        isLoading: true,
       },
       actions.fetchGalleryBySlug.failed({
         error: "Error",
-        params: item1.slug
+        params: item1.slug,
       })
     );
 

@@ -5,5 +5,5 @@ export enum TYPE {
   MUSIC_VENUE = "MusicVenue",
   PARK = "Park",
   PERFORMING_ARTS_THEATER = "PerformingArtsTheater",
-  STADIUM = "StadiumOrArena"
+  STADIUM = "StadiumOrArena",
 }

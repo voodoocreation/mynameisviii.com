@@ -7,7 +7,7 @@ export interface IState {
 }
 
 export const initialState: IState = {
-  items: []
+  items: [],
 };
 
 export default reducerWithInitialState(initialState)
@@ -16,14 +16,14 @@ export default reducerWithInitialState(initialState)
     items: [
       ...state.items,
       ...(typeof payload === "string"
-        ? [payload].filter(item => !state.items.includes(item))
-        : payload.filter(item => !state.items.includes(item)))
-    ]
+        ? [payload].filter((item) => !state.items.includes(item))
+        : payload.filter((item) => !state.items.includes(item))),
+    ],
   }))
 
   .case(actions.removeFeatures, (state, payload) => ({
     ...state,
     items: state.items.filter(
-      item => item !== payload && !payload.includes(item)
-    )
+      (item) => item !== payload && !payload.includes(item)
+    ),
   }));

@@ -15,7 +15,7 @@ interface IProps extends WrappedComponentProps {
 
 class ErrorPage extends React.Component<IProps> {
   public static defaultProps = {
-    status: 500
+    status: 500,
   };
 
   public render() {
@@ -26,7 +26,7 @@ class ErrorPage extends React.Component<IProps> {
         <Head>
           <title>
             {`${this.getTitle()} · ${formatMessage({
-              id: "BRAND_NAME"
+              id: "BRAND_NAME",
             })}`}
           </title>
 

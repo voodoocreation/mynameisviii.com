@@ -5,5 +5,5 @@ export interface IImage {
 
 export const image = (options: Partial<IImage> = {}): IImage => ({
   imageUrl: options.imageUrl || "",
-  title: options.title || ""
+  title: options.title || "",
 });

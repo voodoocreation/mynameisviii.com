@@ -17,7 +17,7 @@ interface IState {
 
 class ResourceListing extends React.Component<IProps, IState> {
   public state = {
-    isRendered: false
+    isRendered: false,
   };
 
   public render() {
@@ -45,7 +45,7 @@ class ResourceListing extends React.Component<IProps, IState> {
 
   private onLoad = () => {
     this.setState({
-      isRendered: true
+      isRendered: true,
     });
 
     if (this.props.onLoad) {

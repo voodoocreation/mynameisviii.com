@@ -10,7 +10,7 @@ const component = new WrapperWithIntl(NewsArticle).withDefaultProps(
     excerpt: "Excerpt",
     imageUrl: "Image URL",
     slug: "article-1",
-    title: "Title"
+    title: "Title",
   })
 );
 
@@ -32,8 +32,8 @@ describe("[presentation] <NewsArticle />", () => {
       .withProps({
         action: {
           route: "/",
-          text: "Action"
-        }
+          text: "Action",
+        },
       })
       .mount();
 
@@ -53,8 +53,8 @@ describe("[presentation] <NewsArticle />", () => {
       .withProps({
         action: {
           text: "Action",
-          url: "/"
-        }
+          url: "/",
+        },
       })
       .mount();
 

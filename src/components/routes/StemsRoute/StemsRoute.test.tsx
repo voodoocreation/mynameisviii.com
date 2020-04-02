@@ -36,9 +36,9 @@ describe("[routes] <StemsRoute />", () => {
             stems: {
               hasAllItems: false,
               items: {
-                [item1.slug]: item1
-              }
-            }
+                [item1.slug]: item1,
+              },
+            },
           })
           .toObject()
       );
@@ -55,9 +55,9 @@ describe("[routes] <StemsRoute />", () => {
             stems: {
               hasAllItems: true,
               items: {
-                [item1.slug]: item1
-              }
-            }
+                [item1.slug]: item1,
+              },
+            },
           })
           .toObject()
       );
@@ -78,9 +78,9 @@ describe("[routes] <StemsRoute />", () => {
           hasAllItems: true,
           items: {
             [item1.slug]: item1,
-            [item2.slug]: item2
-          }
-        }
+            [item2.slug]: item2,
+          },
+        },
       })
       .mount();
 
@@ -102,8 +102,8 @@ describe("[routes] <StemsRoute />", () => {
       .withReduxState({
         stems: {
           hasAllItems: true,
-          items: {}
-        }
+          items: {},
+        },
       })
       .mount();
 
@@ -120,8 +120,8 @@ describe("[routes] <StemsRoute />", () => {
     const wrapper = component
       .withReduxState({
         stems: {
-          hasError: true
-        }
+          hasError: true,
+        },
       })
       .mount();
 
@@ -134,9 +134,9 @@ describe("[routes] <StemsRoute />", () => {
         stems: {
           hasAllItems: false,
           items: {
-            [item1.slug]: item1
-          }
-        }
+            [item1.slug]: item1,
+          },
+        },
       })
       .mount();
 
@@ -147,8 +147,8 @@ describe("[routes] <StemsRoute />", () => {
     const wrapper = component
       .withReduxState({
         stems: {
-          hasAllItems: true
-        }
+          hasAllItems: true,
+        },
       })
       .mount();
 
@@ -168,9 +168,9 @@ describe("[routes] <StemsRoute />", () => {
       .withReduxState({
         stems: {
           items: {
-            [item1.slug]: item1
-          }
-        }
+            [item1.slug]: item1,
+          },
+        },
       })
       .mount();
 

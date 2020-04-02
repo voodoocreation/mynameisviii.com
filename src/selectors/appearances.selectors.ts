@@ -11,19 +11,19 @@ export const getAppearances = defaultMemoize(
 
 export const getAppearancesCount = createSelector(
   getAppearances,
-  appearances => Object.keys(appearances).length
+  (appearances) => Object.keys(appearances).length
 );
 
 export const getAppearancesAsArray = createSelector(
   getAppearances,
-  appearances => Object.values(appearances)
+  (appearances) => Object.values(appearances)
 );
 
 export const getUpcomingAppearances = createSelector(
   getAppearancesAsArray,
-  appearances =>
+  (appearances) =>
     appearances
-      .filter(appearance => appearance.finishingAt > new Date().toISOString())
+      .filter((appearance) => appearance.finishingAt > new Date().toISOString())
       .sort(
         (a, b) =>
           new Date(a.startingAt).getTime() - new Date(b.startingAt).getTime()
@@ -32,9 +32,11 @@ export const getUpcomingAppearances = createSelector(
 
 export const getPastAppearances = createSelector(
   getAppearancesAsArray,
-  appearances =>
+  (appearances) =>
     appearances
-      .filter(appearance => appearance.finishingAt <= new Date().toISOString())
+      .filter(
+        (appearance) => appearance.finishingAt <= new Date().toISOString()
+      )
       .sort(
         (a, b) =>
           new Date(b.startingAt).getTime() - new Date(a.startingAt).getTime()
@@ -55,7 +57,7 @@ export const getAppearancesLastEvaluatedKey = (state: TStoreState) =>
 
 export const getAppearancesLastEvaluatedKeyAsString = createSelector(
   getAppearancesLastEvaluatedKey,
-  lastEvaluatedKey =>
+  (lastEvaluatedKey) =>
     !lastEvaluatedKey
       ? undefined
       : btoa(
@@ -63,7 +65,7 @@ export const getAppearancesLastEvaluatedKeyAsString = createSelector(
             JSON.stringify({
               IsActive: lastEvaluatedKey.isActive,
               Slug: lastEvaluatedKey.slug,
-              StartingAt: lastEvaluatedKey.startingAt
+              StartingAt: lastEvaluatedKey.startingAt,
             })
           )
         )

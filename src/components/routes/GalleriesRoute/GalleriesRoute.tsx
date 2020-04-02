@@ -36,7 +36,7 @@ interface IState {
 
 class GalleriesRoute extends React.Component<IProps, IState> {
   public readonly state: IState = {
-    loadedListings: {}
+    loadedListings: {},
   };
 
   public static getInitialProps = async (context: IPageContext) => {
@@ -89,7 +89,7 @@ class GalleriesRoute extends React.Component<IProps, IState> {
 
         {galleriesCount > 0 ? (
           <section className="GalleriesRoute--listings">
-            {galleries.map(gallery => (
+            {galleries.map((gallery) => (
               <GalleryListing
                 {...gallery}
                 key={gallery.slug}
@@ -117,11 +117,11 @@ class GalleriesRoute extends React.Component<IProps, IState> {
   }
 
   private onListingLoad = (gallery: IGallery) => () => {
-    this.setState(state => ({
+    this.setState((state) => ({
       loadedListings: {
         ...state.loadedListings,
-        [gallery.slug]: true
-      }
+        [gallery.slug]: true,
+      },
     }));
   };
 
@@ -135,12 +135,12 @@ const mapState = (state: TStoreState) => ({
   galleriesCount: selectors.getGalleriesCount(state),
   hasAllGalleries: selectors.getHasAllGalleries(state),
   hasError: selectors.hasGalleriesError(state),
-  isLoading: selectors.getGalleriesIsLoading(state)
+  isLoading: selectors.getGalleriesIsLoading(state),
 });
 
 const mapActions = {
   fetchGalleries: actions.fetchGalleries.started,
-  fetchMoreGalleries: actions.fetchMoreGalleries.started
+  fetchMoreGalleries: actions.fetchMoreGalleries.started,
 };
 
 export default injectIntlIntoPage(

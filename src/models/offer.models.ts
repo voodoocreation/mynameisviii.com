@@ -15,5 +15,5 @@ export const offer = (options: Partial<IOffer> = {}): IOffer => ({
   price: options.price || 0,
   priceCurrency: options.priceCurrency || "NZD",
   url: options.url,
-  validFrom: options.validFrom
+  validFrom: options.validFrom,
 });

@@ -4,13 +4,13 @@ import {
   MdAlbum,
   MdDateRange,
   MdFormatListNumbered,
-  MdMusicNote
+  MdMusicNote,
 } from "react-icons/md";
 import {
   FormattedDate,
   FormattedMessage,
   injectIntl,
-  WrappedComponentProps
+  WrappedComponentProps,
 } from "react-intl";
 
 import { IRelease } from "../../../models/root.models";
@@ -87,7 +87,7 @@ class Release extends React.Component<IProps> {
             options={{
               day: "numeric",
               month: "long",
-              year: "numeric"
+              year: "numeric",
             }}
             value={releasedOn}
             isDateOnly
@@ -120,7 +120,7 @@ class Release extends React.Component<IProps> {
   private renderImagesSection = () => (
     <section className="Release--images">
       <Carousel onSlideChange={this.onCarouselSlideChange}>
-        {this.props.images.map(image => (
+        {this.props.images.map((image) => (
           <Image
             alt={image.title}
             caption={image.title}
@@ -151,7 +151,7 @@ class Release extends React.Component<IProps> {
             </h3>
           ) : null}
           <ol>
-            {disc.map(track => (
+            {disc.map((track) => (
               <li key={track.title}>
                 <span className="Release--tracklist--title">{track.title}</span>{" "}
                 <span className="Release--tracklist--genre">{track.genre}</span>{" "}
@@ -174,19 +174,19 @@ class Release extends React.Component<IProps> {
         </h2>
 
         <ul className="Release--platformList">
-          {this.props.streamList.map(link => (
+          {this.props.streamList.map((link) => (
             <li key={link.platform}>
               <Link
                 href={link.url}
                 title={this.props.intl.formatMessage(
                   {
-                    id: `STREAM_ON_PLATFORM`
+                    id: `STREAM_ON_PLATFORM`,
                   },
                   {
                     platform: this.props.intl.formatMessage({
-                      id: link.platform.toUpperCase()
+                      id: link.platform.toUpperCase(),
                     }),
-                    title: this.props.title
+                    title: this.props.title,
                   }
                 )}
                 isExternal
@@ -208,19 +208,19 @@ class Release extends React.Component<IProps> {
         </h2>
 
         <ul className="Release--platformList">
-          {this.props.buyList.map(link => (
+          {this.props.buyList.map((link) => (
             <li key={link.platform}>
               <Link
                 href={link.url}
                 title={this.props.intl.formatMessage(
                   {
-                    id: `BUY_FROM_PLATFORM`
+                    id: `BUY_FROM_PLATFORM`,
                   },
                   {
                     platform: this.props.intl.formatMessage({
-                      id: link.platform.toUpperCase()
+                      id: link.platform.toUpperCase(),
                     }),
-                    title: this.props.title
+                    title: this.props.title,
                   }
                 )}
                 isExternal

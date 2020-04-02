@@ -5,10 +5,10 @@ import SagaTester from "../utilities/SagaTester";
 
 describe("[sagas] News", () => {
   const item = newsArticle({
-    slug: "item-1"
+    slug: "item-1",
   });
   const data = dynamoResponse({
-    items: [item]
+    items: [item],
   });
 
   describe("fetchLatestNewsSaga", () => {
@@ -17,8 +17,8 @@ describe("[sagas] News", () => {
         {},
         {
           api: {
-            fetchNewsArticles: mockWithSuccess(data)
-          }
+            fetchNewsArticles: mockWithSuccess(data),
+          },
         }
       );
 
@@ -45,8 +45,8 @@ describe("[sagas] News", () => {
         {},
         {
           api: {
-            fetchNewsArticles: mockWithFailure("Bad request")
-          }
+            fetchNewsArticles: mockWithFailure("Bad request"),
+          },
         }
       );
 
@@ -77,20 +77,20 @@ describe("[sagas] News", () => {
             items: {
               "existing-item": {
                 ...item,
-                slug: "existing-item"
-              }
+                slug: "existing-item",
+              },
             },
             lastEvaluatedKey: {
               createdAt: "2019-01-01T00:00:00",
               isActive: "y",
-              slug: "existing-item"
-            }
-          }
+              slug: "existing-item",
+            },
+          },
         },
         {
           api: {
-            fetchNewsArticles: mockWithSuccess(data)
-          }
+            fetchNewsArticles: mockWithSuccess(data),
+          },
         }
       );
 
@@ -117,7 +117,7 @@ describe("[sagas] News", () => {
         expect(matchingActions).toHaveLength(1);
         expect(matchingActions[0].payload).toEqual({
           event: "news.fetchedMore",
-          itemCount: 2
+          itemCount: 2,
         });
       });
     });
@@ -127,8 +127,8 @@ describe("[sagas] News", () => {
         {},
         {
           api: {
-            fetchNewsArticles: mockWithFailure("Bad request")
-          }
+            fetchNewsArticles: mockWithFailure("Bad request"),
+          },
         }
       );
 
@@ -157,8 +157,8 @@ describe("[sagas] News", () => {
         {},
         {
           api: {
-            fetchNewsArticleBySlug: mockWithSuccess(item)
-          }
+            fetchNewsArticleBySlug: mockWithSuccess(item),
+          },
         }
       );
 
@@ -185,8 +185,8 @@ describe("[sagas] News", () => {
         {},
         {
           api: {
-            fetchNewsArticleBySlug: mockWithFailure("Bad request")
-          }
+            fetchNewsArticleBySlug: mockWithFailure("Bad request"),
+          },
         }
       );
 

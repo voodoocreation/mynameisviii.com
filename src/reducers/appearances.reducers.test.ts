@@ -12,8 +12,8 @@ describe("[reducers] Appearances", () => {
       {
         ...initialState,
         items: {
-          [item1.slug]: item1
-        }
+          [item1.slug]: item1,
+        },
       },
       actions.fetchAppearances.started({})
     );
@@ -33,8 +33,8 @@ describe("[reducers] Appearances", () => {
       lastEvaluatedKey: {
         isActive: BOOLEAN.TRUE,
         slug: item1.slug,
-        startingAt: item1.startingAt
-      }
+        startingAt: item1.startingAt,
+      },
     });
 
     describe("when lastEvaluatedKey is defined", () => {
@@ -42,7 +42,7 @@ describe("[reducers] Appearances", () => {
         {
           ...initialState,
           hasAllItems: true,
-          isLoading: true
+          isLoading: true,
         },
         actions.fetchAppearances.done({ params: {}, result })
       );
@@ -73,15 +73,15 @@ describe("[reducers] Appearances", () => {
           lastEvaluatedKey: {
             isActive: BOOLEAN.TRUE,
             slug: item1.slug,
-            startingAt: item1.startingAt
-          }
+            startingAt: item1.startingAt,
+          },
         },
         actions.fetchAppearances.done({
           params: {},
           result: {
             ...result,
-            lastEvaluatedKey: undefined
-          }
+            lastEvaluatedKey: undefined,
+          },
         })
       );
 
@@ -107,7 +107,7 @@ describe("[reducers] Appearances", () => {
     const state = reducer(
       {
         ...initialState,
-        isLoading: true
+        isLoading: true,
       },
       actions.fetchAppearances.failed({ error: "Error", params: {} })
     );
@@ -123,13 +123,13 @@ describe("[reducers] Appearances", () => {
 
   describe("actions.fetchMoreAppearances.started", () => {
     const items = {
-      [item1.slug]: item1
+      [item1.slug]: item1,
     };
 
     const state = reducer(
       {
         ...initialState,
-        items
+        items,
       },
       actions.fetchMoreAppearances.started({})
     );
@@ -149,8 +149,8 @@ describe("[reducers] Appearances", () => {
       lastEvaluatedKey: {
         isActive: BOOLEAN.TRUE,
         slug: item2.slug,
-        startingAt: item2.startingAt
-      }
+        startingAt: item2.startingAt,
+      },
     });
 
     describe("when lastEvaluatedKey is defined", () => {
@@ -160,8 +160,8 @@ describe("[reducers] Appearances", () => {
           hasAllItems: true,
           isLoading: true,
           items: {
-            [item1.slug]: item1
-          }
+            [item1.slug]: item1,
+          },
         },
         actions.fetchMoreAppearances.done({ params: {}, result })
       );
@@ -177,7 +177,7 @@ describe("[reducers] Appearances", () => {
       it("merges the items from the payload with the ones in the store", () => {
         expect(state.items).toEqual({
           [item1.slug]: item1,
-          [item2.slug]: item2
+          [item2.slug]: item2,
         });
       });
 
@@ -193,15 +193,15 @@ describe("[reducers] Appearances", () => {
           hasAllItems: false,
           isLoading: true,
           items: {
-            [item1.slug]: item1
-          }
+            [item1.slug]: item1,
+          },
         },
         actions.fetchMoreAppearances.done({
           params: {},
           result: {
             ...result,
-            lastEvaluatedKey: undefined
-          }
+            lastEvaluatedKey: undefined,
+          },
         })
       );
 
@@ -216,7 +216,7 @@ describe("[reducers] Appearances", () => {
       it("merges the items from the payload with the ones in the store", () => {
         expect(state.items).toEqual({
           [item1.slug]: item1,
-          [item2.slug]: item2
+          [item2.slug]: item2,
         });
       });
 
@@ -230,7 +230,7 @@ describe("[reducers] Appearances", () => {
     const state = reducer(
       {
         ...initialState,
-        isLoading: true
+        isLoading: true,
       },
       actions.fetchMoreAppearances.failed({ error: "Error", params: {} })
     );
@@ -259,7 +259,7 @@ describe("[reducers] Appearances", () => {
     const state = reducer(
       {
         ...initialState,
-        hasError: true
+        hasError: true,
       },
       actions.fetchAppearanceBySlug.started(item1.slug)
     );
@@ -279,12 +279,12 @@ describe("[reducers] Appearances", () => {
         ...initialState,
         isLoading: true,
         items: {
-          [item2.slug]: item2
-        }
+          [item2.slug]: item2,
+        },
       },
       actions.fetchAppearanceBySlug.done({
         params: item1.slug,
-        result: item1
+        result: item1,
       })
     );
 
@@ -295,7 +295,7 @@ describe("[reducers] Appearances", () => {
     it("adds the item to the store", () => {
       expect(state.items).toEqual({
         [item2.slug]: item2,
-        [item1.slug]: item1
+        [item1.slug]: item1,
       });
     });
   });
@@ -304,11 +304,11 @@ describe("[reducers] Appearances", () => {
     const state = reducer(
       {
         ...initialState,
-        isLoading: true
+        isLoading: true,
       },
       actions.fetchAppearanceBySlug.failed({
         error: "Error",
-        params: item1.slug
+        params: item1.slug,
       })
     );
 
@@ -325,7 +325,7 @@ describe("[reducers] Appearances", () => {
     const state = reducer(
       {
         ...initialState,
-        currentLocation: { lat: 0, lng: 0 }
+        currentLocation: { lat: 0, lng: 0 },
       },
       actions.geocodeCurrentAppearanceAddress.started({})
     );
@@ -342,7 +342,7 @@ describe("[reducers] Appearances", () => {
       initialState,
       actions.geocodeCurrentAppearanceAddress.done({
         params: {},
-        result
+        result,
       })
     );
 

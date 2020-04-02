@@ -6,7 +6,7 @@ import SagaTester from "../utilities/SagaTester";
 describe("[sagas] Stems", () => {
   const item = stem({ slug: "item-1" });
   const data = dynamoResponse({
-    items: [item]
+    items: [item],
   });
 
   describe("fetchStemsSaga", () => {
@@ -15,8 +15,8 @@ describe("[sagas] Stems", () => {
         {},
         {
           api: {
-            fetchStems: mockWithSuccess(data)
-          }
+            fetchStems: mockWithSuccess(data),
+          },
         }
       );
 
@@ -43,8 +43,8 @@ describe("[sagas] Stems", () => {
         {},
         {
           api: {
-            fetchStems: mockWithFailure("Bad request")
-          }
+            fetchStems: mockWithFailure("Bad request"),
+          },
         }
       );
 
@@ -75,20 +75,20 @@ describe("[sagas] Stems", () => {
             items: {
               "existing-item": {
                 ...item,
-                slug: "existing-item"
-              }
+                slug: "existing-item",
+              },
             },
             lastEvaluatedKey: {
               createdAt: "2019-01-01T00:00:00",
               isActive: "y",
-              slug: "existing-item"
-            }
-          }
+              slug: "existing-item",
+            },
+          },
         },
         {
           api: {
-            fetchStems: mockWithSuccess(data)
-          }
+            fetchStems: mockWithSuccess(data),
+          },
         }
       );
 
@@ -115,7 +115,7 @@ describe("[sagas] Stems", () => {
         expect(matchingActions).toHaveLength(1);
         expect(matchingActions[0].payload).toEqual({
           event: "stems.fetchedMore",
-          itemCount: 2
+          itemCount: 2,
         });
       });
     });
@@ -125,8 +125,8 @@ describe("[sagas] Stems", () => {
         {},
         {
           api: {
-            fetchStems: mockWithFailure("Bad request")
-          }
+            fetchStems: mockWithFailure("Bad request"),
+          },
         }
       );
 

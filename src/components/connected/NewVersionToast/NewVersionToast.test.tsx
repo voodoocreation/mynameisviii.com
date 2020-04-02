@@ -8,8 +8,8 @@ describe("[connected] <NewVersionToast />", () => {
     const wrapper = component
       .withReduxState({
         app: {
-          hasNewVersion: false
-        }
+          hasNewVersion: false,
+        },
       })
       .mount();
 
@@ -22,8 +22,8 @@ describe("[connected] <NewVersionToast />", () => {
     const wrapper = component
       .withReduxState({
         app: {
-          hasNewVersion: true
-        }
+          hasNewVersion: true,
+        },
       })
       .mount();
 

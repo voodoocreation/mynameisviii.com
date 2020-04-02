@@ -5,7 +5,7 @@ import {
   IRawAppearance,
   IRawS3Response,
   s3Response,
-  success
+  success,
 } from "../../models/root.models";
 import { TRequest } from "../configureHttpClient";
 
@@ -16,14 +16,14 @@ export const fetchGalleries = (request: TRequest) => async (
     const response: IRawS3Response<IRawAppearance> = await request(
       API.FETCH_GALLERIES,
       {
-        params: { startAfter }
+        params: { startAfter },
       }
     );
 
     return success(
       s3Response({
         ...response,
-        items: response.items.map(gallery)
+        items: response.items.map(gallery),
       })
     );
   } catch (error) {

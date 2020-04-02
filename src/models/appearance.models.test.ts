@@ -8,7 +8,7 @@ import {
   location,
   offer,
   organization,
-  performer
+  performer,
 } from "./root.models";
 
 describe("[models] Appearance", () => {
@@ -30,7 +30,7 @@ describe("[models] Appearance", () => {
       startingAt: dayjs().toISOString(),
       status: STATUS.SCHEDULED,
       title: "",
-      type: TYPE.MUSIC
+      type: TYPE.MUSIC,
     });
   });
 
@@ -52,7 +52,7 @@ describe("[models] Appearance", () => {
       startingAt: "2019-01-01T20:00:00",
       status: STATUS.POSTPONED,
       title: "Title",
-      type: TYPE.FESTIVAL
+      type: TYPE.FESTIVAL,
     };
 
     expect(appearance(data)).toEqual({
@@ -72,7 +72,7 @@ describe("[models] Appearance", () => {
       startingAt: data.startingAt,
       status: data.status,
       title: data.title,
-      type: data.type
+      type: data.type,
     });
   });
 });

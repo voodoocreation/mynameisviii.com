@@ -105,19 +105,19 @@ class ReleaseRoute extends React.Component<IProps> {
   private onCarouselSlideChange = (index: number) => {
     this.props.trackEvent({
       event: "release.carousel.slideChange",
-      index
+      index,
     });
   };
 }
 
 const mapState = (state: TStoreState) => ({
   isLoading: selectors.getReleasesIsLoading(state),
-  release: selectors.getCurrentRelease(state)
+  release: selectors.getCurrentRelease(state),
 });
 
 const mapActions = {
   fetchReleaseBySlug: actions.fetchReleaseBySlug.started,
-  trackEvent: actions.trackEvent
+  trackEvent: actions.trackEvent,
 };
 
 export default injectIntlIntoPage(connect(mapState, mapActions)(ReleaseRoute));

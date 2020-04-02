@@ -4,5 +4,5 @@ export enum TYPE {
   LOCAL_BUSINESS = "LocalBusiness",
   MEDIA = "NewsMediaOrganization",
   PERFORMER = "PerformingGroup",
-  PROJECT = "Project"
+  PROJECT = "Project",
 }

@@ -15,7 +15,7 @@ describe("[models] Stem", () => {
       size: "0B",
       slug: "",
       title: "",
-      url: ""
+      url: "",
     });
   });
 
@@ -29,7 +29,7 @@ describe("[models] Stem", () => {
       size: "256MB",
       slug: "test-1",
       title: "Title",
-      url: "URL"
+      url: "URL",
     };
 
     expect(stem(data)).toEqual({
@@ -41,7 +41,7 @@ describe("[models] Stem", () => {
       size: data.size,
       slug: data.slug,
       title: data.title,
-      url: data.url
+      url: data.url,
     });
   });
 });

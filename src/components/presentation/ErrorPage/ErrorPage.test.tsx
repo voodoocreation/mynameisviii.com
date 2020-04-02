@@ -8,7 +8,7 @@ describe("[presentation] <ErrorPage />", () => {
   describe("when status is 404", () => {
     const wrapper = component
       .withProps({
-        status: 404
+        status: 404,
       })
       .render();
 
@@ -30,7 +30,7 @@ describe("[presentation] <ErrorPage />", () => {
   describe("when status is 500", () => {
     const wrapper = component
       .withProps({
-        status: 500
+        status: 500,
       })
       .render();
 
@@ -54,7 +54,7 @@ describe("[presentation] <ErrorPage />", () => {
 
     const wrapper = component
       .withProps({
-        message
+        message,
       })
       .render();
 

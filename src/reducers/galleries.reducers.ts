@@ -16,7 +16,7 @@ export const initialState: IState = {
   hasAllItems: false,
   hasError: false,
   isLoading: false,
-  items: {}
+  items: {},
 };
 
 export default reducerWithInitialState(initialState)
@@ -24,33 +24,33 @@ export default reducerWithInitialState(initialState)
     [
       actions.fetchGalleries.failed,
       actions.fetchMoreGalleries.failed,
-      actions.fetchGalleryBySlug.failed
+      actions.fetchGalleryBySlug.failed,
     ],
-    state => ({
+    (state) => ({
       ...state,
       hasError: true,
-      isLoading: false
+      isLoading: false,
     })
   )
 
-  .case(actions.fetchGalleries.started, state => ({
+  .case(actions.fetchGalleries.started, (state) => ({
     ...state,
     hasError: false,
     isLoading: true,
-    items: initialState.items
+    items: initialState.items,
   }))
 
   .case(actions.fetchGalleries.done, (state, { result }) => ({
     ...state,
     hasAllItems: !result.isTruncated,
     isLoading: false,
-    items: result.items
+    items: result.items,
   }))
 
-  .case(actions.fetchMoreGalleries.started, state => ({
+  .case(actions.fetchMoreGalleries.started, (state) => ({
     ...state,
     hasError: false,
-    isLoading: true
+    isLoading: true,
   }))
 
   .case(actions.fetchMoreGalleries.done, (state, { result }) => ({
@@ -59,19 +59,19 @@ export default reducerWithInitialState(initialState)
     isLoading: false,
     items: {
       ...state.items,
-      ...result.items
-    }
+      ...result.items,
+    },
   }))
 
   .case(actions.setCurrentGallerySlug, (state, payload) => ({
     ...state,
-    currentSlug: payload
+    currentSlug: payload,
   }))
 
-  .case(actions.fetchGalleryBySlug.started, state => ({
+  .case(actions.fetchGalleryBySlug.started, (state) => ({
     ...state,
     hasError: false,
-    isLoading: true
+    isLoading: true,
   }))
 
   .case(actions.fetchGalleryBySlug.done, (state, { result }) => ({
@@ -79,6 +79,6 @@ export default reducerWithInitialState(initialState)
     isLoading: false,
     items: {
       ...state.items,
-      [result.slug]: result
-    }
+      [result.slug]: result,
+    },
   }));

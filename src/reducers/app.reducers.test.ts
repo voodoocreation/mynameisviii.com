@@ -95,7 +95,7 @@ describe("[reducers] App", () => {
         initialState,
         actions.fetchAppearanceBySlug.failed({
           error: "Error",
-          params: "test-1"
+          params: "test-1",
         })
       );
 
@@ -120,7 +120,7 @@ describe("[reducers] App", () => {
         initialState,
         actions.fetchNewsArticleBySlug.failed({
           error: "Error",
-          params: "test-1"
+          params: "test-1",
         })
       );
 

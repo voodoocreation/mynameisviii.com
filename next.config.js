@@ -13,7 +13,7 @@ const getPages = () => ({
   "/releases": { page: "/releases" },
   "/resources": { page: "/resources" },
   "/stems": { page: "/stems" },
-  "/symbol": { page: "/symbol" }
+  "/symbol": { page: "/symbol" },
 });
 
 const getFiles = (dir, files = []) => {
@@ -51,40 +51,40 @@ module.exports = withSass({
     config.module.rules.push(
       {
         test: /\.(svg)$/,
-        use: "svg-loader"
+        use: "svg-loader",
       },
       {
         test: /\.(jpg|jpeg|png)$/,
-        use: "file-loader"
+        use: "file-loader",
       }
     );
 
     config.plugins.push(
       new webpack.DefinePlugin({
-        API_URL: `"https://api.mynameisviii.com"`
+        API_URL: `"https://api.mynameisviii.com"`,
       }),
 
       new FilterWarningsPlugin({
-        exclude: /Conflicting order between:/
+        exclude: /Conflicting order between:/,
       }),
 
       new ServiceWorkerPlugin({
         entry: path.join(__dirname, "appService.js"),
         filename: "appService.js",
-        transformOptions: swOptions => ({
+        transformOptions: (swOptions) => ({
           ...swOptions,
           assets: swOptions.assets
-            .map(asset => `/_next${asset.replace(/\\/g, "/")}`)
-            .filter(asset => asset.startsWith("/_next/static/")),
+            .map((asset) => `/_next${asset.replace(/\\/g, "/")}`)
+            .filter((asset) => asset.startsWith("/_next/static/")),
           staticFiles: [
             "/assets/main.css",
-            ...getFiles(path.join(__dirname, "static"))
+            ...getFiles(path.join(__dirname, "static")),
           ],
-          buildId
-        })
+          buildId,
+        }),
       })
     );
 
     return config;
-  }
+  },
 });

@@ -7,7 +7,7 @@ import {
   FormattedRelativeTime,
   FormattedTime,
   injectIntl,
-  WrappedComponentProps
+  WrappedComponentProps,
 } from "react-intl";
 
 interface IProps extends WrappedComponentProps {
@@ -63,9 +63,9 @@ DateTime.defaultProps = {
     day: "numeric",
     month: "long",
     weekday: "long",
-    year: "numeric"
+    year: "numeric",
   },
-  updateInterval: 300
+  updateInterval: 300,
 };
 
 export default injectIntl(DateTime);

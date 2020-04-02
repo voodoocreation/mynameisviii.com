@@ -8,7 +8,7 @@ import Schema from "./Schema";
 const getFlatTracklist = (tracklist: IReleaseTrack[][]) =>
   tracklist.reduce((acc, curr) => [...acc, ...curr], []);
 
-const Release: React.FC<IRelease> = props => (
+const Release: React.FC<IRelease> = (props) => (
   <Schema
     {...{
       "@id": absoluteUrl(`/releases/${props.slug}`),
@@ -18,18 +18,18 @@ const Release: React.FC<IRelease> = props => (
         "@type": "MusicRelease",
         duration: lengthToDuration(props.length),
         name: props.title,
-        recordLabel: props.recordLabel
+        recordLabel: props.recordLabel,
       },
       albumReleaseType: `http://schema.org/${props.type}`,
       byArtist: {
         "@type": "MusicGroup",
-        name: props.artist.name
+        name: props.artist.name,
       },
       datePublished: props.releasedOn,
       description: stripTags(props.description).replace(/\n/g, ""),
       image: props.images[0].imageUrl,
       mainEntityOfPage: {
-        "@id": absoluteUrl(`/releases/${props.slug}`)
+        "@id": absoluteUrl(`/releases/${props.slug}`),
       },
       name: props.title,
       track: {
@@ -43,14 +43,14 @@ const Release: React.FC<IRelease> = props => (
               name: track.title,
               recordingOf: {
                 "@type": "MusicComposition",
-                name: track.title
-              }
+                name: track.title,
+              },
             },
-            position: index + 1
+            position: index + 1,
           })
         ),
-        numberOfItems: getFlatTracklist(props.tracklist).length
-      }
+        numberOfItems: getFlatTracklist(props.tracklist).length,
+      },
     }}
   />
 );

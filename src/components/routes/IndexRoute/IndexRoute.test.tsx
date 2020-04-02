@@ -7,22 +7,14 @@ import WrapperWithRedux from "../../../utilities/WrapperWithRedux";
 import IndexRoute from "./IndexRoute";
 
 const upcomingAppearance = appearance({
-  finishingAt: dayjs()
-    .add(4, "day")
-    .toISOString(),
+  finishingAt: dayjs().add(4, "day").toISOString(),
   slug: "upcoming-appearance",
-  startingAt: dayjs()
-    .add(3, "day")
-    .toISOString()
+  startingAt: dayjs().add(3, "day").toISOString(),
 });
 const pastAppearance = appearance({
-  finishingAt: dayjs()
-    .subtract(3, "day")
-    .toISOString(),
+  finishingAt: dayjs().subtract(3, "day").toISOString(),
   slug: "past-appearance",
-  startingAt: dayjs()
-    .subtract(4, "day")
-    .toISOString()
+  startingAt: dayjs().subtract(4, "day").toISOString(),
 });
 const newsItem = newsArticle({ slug: "news-1" });
 
@@ -59,7 +51,7 @@ describe("[routes] <IndexRoute />", () => {
         context
           .withReduxState({
             appearances: { hasAllItems: true },
-            news: { hasAllItems: true }
+            news: { hasAllItems: true },
           })
           .toObject()
       );
@@ -78,9 +70,9 @@ describe("[routes] <IndexRoute />", () => {
       .withReduxState({
         news: {
           items: {
-            [newsItem.slug]: newsItem
-          }
-        }
+            [newsItem.slug]: newsItem,
+          },
+        },
       })
       .mount();
 
@@ -111,9 +103,9 @@ describe("[routes] <IndexRoute />", () => {
         appearances: {
           items: {
             [pastAppearance.slug]: pastAppearance,
-            [upcomingAppearance.slug]: upcomingAppearance
-          }
-        }
+            [upcomingAppearance.slug]: upcomingAppearance,
+          },
+        },
       })
       .mount();
 
@@ -133,9 +125,9 @@ describe("[routes] <IndexRoute />", () => {
       .withReduxState({
         appearances: {
           items: {
-            [pastAppearance.slug]: pastAppearance
-          }
-        }
+            [pastAppearance.slug]: pastAppearance,
+          },
+        },
       })
       .mount();
 

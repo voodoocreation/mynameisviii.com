@@ -20,10 +20,10 @@ const geocode = (geocoder: any, params: any) =>
   });
 
 export const fetchAppearancesSaga = (ports: IPorts) =>
-  function*(): SagaIterator {
+  function* (): SagaIterator {
     yield takeLatest(
       actions.fetchAppearances.started,
-      function*(): SagaIterator {
+      function* (): SagaIterator {
         const response = yield call(ports.api.fetchAppearances);
 
         if (response.ok) {
@@ -34,7 +34,7 @@ export const fetchAppearancesSaga = (ports: IPorts) =>
           yield put(
             actions.fetchAppearances.failed({
               error: response.message,
-              params: {}
+              params: {},
             })
           );
         }
@@ -43,10 +43,10 @@ export const fetchAppearancesSaga = (ports: IPorts) =>
   };
 
 export const fetchMoreAppearancesSaga = (ports: IPorts) =>
-  function*(): SagaIterator {
+  function* (): SagaIterator {
     yield takeLatest(
       actions.fetchMoreAppearances.started,
-      function*(): SagaIterator {
+      function* (): SagaIterator {
         const lastEvaluatedKey: string = yield select(
           selectors.getAppearancesLastEvaluatedKeyAsString
         );
@@ -60,7 +60,7 @@ export const fetchMoreAppearancesSaga = (ports: IPorts) =>
           yield put(
             actions.fetchMoreAppearances.done({
               params: {},
-              result: response.data
+              result: response.data,
             })
           );
 
@@ -68,14 +68,14 @@ export const fetchMoreAppearancesSaga = (ports: IPorts) =>
           yield put(
             actions.trackEvent({
               event: "appearances.fetchedMore",
-              itemCount
+              itemCount,
             })
           );
         } else {
           yield put(
             actions.fetchMoreAppearances.failed({
               error: response.message,
-              params: {}
+              params: {},
             })
           );
         }
@@ -84,9 +84,9 @@ export const fetchMoreAppearancesSaga = (ports: IPorts) =>
   };
 
 export const fetchAppearanceBySlugSaga = (ports: IPorts) =>
-  function*(): SagaIterator {
-    yield takeLatest(actions.fetchAppearanceBySlug.started, function*({
-      payload
+  function* (): SagaIterator {
+    yield takeLatest(actions.fetchAppearanceBySlug.started, function* ({
+      payload,
     }): SagaIterator {
       const response = yield call(ports.api.fetchAppearanceBySlug, payload);
 
@@ -94,14 +94,14 @@ export const fetchAppearanceBySlugSaga = (ports: IPorts) =>
         yield put(
           actions.fetchAppearanceBySlug.done({
             params: payload,
-            result: response.data
+            result: response.data,
           })
         );
       } else {
         yield put(
           actions.fetchAppearanceBySlug.failed({
             error: response.message,
-            params: payload
+            params: payload,
           })
         );
       }
@@ -109,10 +109,10 @@ export const fetchAppearanceBySlugSaga = (ports: IPorts) =>
   };
 
 export const geocodeCurrentAppearanceAddressSaga = (ports: IPorts) =>
-  function*(): SagaIterator {
+  function* (): SagaIterator {
     yield takeLatest(
       actions.geocodeCurrentAppearanceAddress.started,
-      function*(): SagaIterator {
+      function* (): SagaIterator {
         const currentAppearance = yield select(selectors.getCurrentAppearance);
         const { address, latLng, name } = currentAppearance.location;
 
@@ -120,7 +120,7 @@ export const geocodeCurrentAppearanceAddressSaga = (ports: IPorts) =>
           yield put(
             actions.geocodeCurrentAppearanceAddress.done({
               params: {},
-              result: latLng
+              result: latLng,
             })
           );
         } else {
@@ -139,15 +139,15 @@ export const geocodeCurrentAppearanceAddressSaga = (ports: IPorts) =>
                   params: {},
                   result: {
                     lat: location.lat(),
-                    lng: location.lng()
-                  }
+                    lng: location.lng(),
+                  },
                 })
               );
             } else {
               yield put(
                 actions.geocodeCurrentAppearanceAddress.failed({
                   error: `Geocoder error: ${status}`,
-                  params: {}
+                  params: {},
                 })
               );
             }
@@ -155,7 +155,7 @@ export const geocodeCurrentAppearanceAddressSaga = (ports: IPorts) =>
             yield put(
               actions.geocodeCurrentAppearanceAddress.failed({
                 error: error.message,
-                params: {}
+                params: {},
               })
             );
           }

@@ -8,7 +8,7 @@ import Document, {
   Head,
   Html,
   Main,
-  NextScript
+  NextScript,
 } from "next/document";
 import * as React from "react";
 
@@ -67,7 +67,7 @@ const AnalyticsHead: React.FC = () => (
             ? `+ '&gtm_auth=5N0VfAOq-iEoyMOidFx0kQ&gtm_preview=env-3&gtm_cookies_win=x'`
             : ""
         };f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-TJZ52XC');`
+      })(window,document,'script','dataLayer','GTM-TJZ52XC');`,
     }}
   />
 );
@@ -103,7 +103,7 @@ export default class<P extends IProps> extends Document<P> {
     return {
       ...initialProps,
       ...props,
-      locale: req.locale || "en-NZ"
+      locale: req.locale || "en-NZ",
     };
   };
 
@@ -114,7 +114,7 @@ export default class<P extends IProps> extends Document<P> {
           <AnalyticsHead />
           <script
             dangerouslySetInnerHTML={{
-              __html: `document.documentElement.classList.add("isClientRendered");`
+              __html: `document.documentElement.classList.add("isClientRendered");`,
             }}
           />
           <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBO41slvNUu9QtGI9aNZ4RLeqBlD13y_5M" />

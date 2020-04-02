@@ -36,7 +36,7 @@ interface IState {
 
 class ResourcesRoute extends React.Component<IProps, IState> {
   public readonly state: IState = {
-    loadedListings: {}
+    loadedListings: {},
   };
 
   public static getInitialProps = async (context: IPageContext) => {
@@ -137,11 +137,11 @@ class ResourcesRoute extends React.Component<IProps, IState> {
   );
 
   private onListingLoad = (resource: IResource) => () => {
-    this.setState(state => ({
+    this.setState((state) => ({
       loadedListings: {
         ...state.loadedListings,
-        [resource.slug]: true
-      }
+        [resource.slug]: true,
+      },
     }));
   };
 
@@ -155,12 +155,12 @@ const mapState = (state: TStoreState) => ({
   hasError: selectors.hasResourcesError(state),
   isLoading: selectors.getResourcesIsLoading(state),
   resources: selectors.getResourcesByType(state),
-  resourcesCount: selectors.getResourcesCount(state)
+  resourcesCount: selectors.getResourcesCount(state),
 });
 
 const mapActions = {
   fetchMoreResources: actions.fetchMoreResources.started,
-  fetchResources: actions.fetchResources.started
+  fetchResources: actions.fetchResources.started,
 };
 
 export default injectIntlIntoPage(

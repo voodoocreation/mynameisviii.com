@@ -20,17 +20,17 @@ const Appearance = ({ intl, ...props }: IProps) => (
         "@type": props.location.type,
         address: props.location.address,
         name: props.location.name,
-        sameAs: props.location.url
+        sameAs: props.location.url,
       },
       name: props.title,
-      offers: props.sales.map(offer => ({
+      offers: props.sales.map((offer) => ({
         "@type": "Offer",
         availability: offer.availability,
         name: offer.name,
         price: offer.price,
         priceCurrency: offer.priceCurrency,
         url: offer.url,
-        validFrom: offer.validFrom
+        validFrom: offer.validFrom,
       })),
       organizer: {
         "@type": props.organizer.type,
@@ -39,27 +39,27 @@ const Appearance = ({ intl, ...props }: IProps) => (
           ? undefined
           : {
               "@type": "ImageObject",
-              url: props.organizer.logo
+              url: props.organizer.logo,
             },
-        name: props.organizer.name
+        name: props.organizer.name,
       },
-      performer: props.acts.map(performer => ({
+      performer: props.acts.map((performer) => ({
         "@type": performer.type,
         genre: performer.genre,
         image: {
           "@type": "ImageObject",
-          url: performer.imageUrl
+          url: performer.imageUrl,
         },
         location: {
           "@type": performer.location.type,
-          name: performer.location.name
+          name: performer.location.name,
         },
         name: performer.name,
-        url: performer.url
+        url: performer.url,
       })),
       startDate: props.startingAt,
       typicalAgeRange: props.audience,
-      url: absoluteUrl(`/appearances/${props.slug}`)
+      url: absoluteUrl(`/appearances/${props.slug}`),
     }}
   />
 );

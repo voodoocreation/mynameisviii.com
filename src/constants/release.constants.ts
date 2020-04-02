@@ -5,7 +5,7 @@ export enum PLATFORM {
   ITUNES = "itunes",
   SOUNDCLOUD = "soundcloud",
   SPOTIFY = "spotify",
-  TIDAL = "tidal"
+  TIDAL = "tidal",
 }
 
 export enum PRODUCTION_OPTION {
@@ -14,7 +14,7 @@ export enum PRODUCTION_OPTION {
   LIVE = "live",
   REMIX = "remix",
   SOUNDTRACK = "soundtrack",
-  STUDIO = "studio"
+  STUDIO = "studio",
 }
 
 export enum PRODUCTION {
@@ -23,18 +23,18 @@ export enum PRODUCTION {
   LIVE = "LiveAlbum",
   REMIX = "RemixAlbum",
   SOUNDTRACK = "SoundtrackAlbum",
-  STUDIO = "StudioAlbum"
+  STUDIO = "StudioAlbum",
 }
 
 export enum TYPE {
   ALBUM = "album",
   EP = "ep",
   REMIX = "remix",
-  SINGLE = "single"
+  SINGLE = "single",
 }
 
 export enum SCHEMA_TYPE {
   ALBUM = "AlbumRelease",
   EP = "EPRelease",
-  SINGLE = "SingleRelease"
+  SINGLE = "SingleRelease",
 }

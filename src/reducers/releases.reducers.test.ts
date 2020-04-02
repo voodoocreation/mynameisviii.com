@@ -12,8 +12,8 @@ describe("[reducers] Release", () => {
       {
         ...initialState,
         items: {
-          [item1.slug]: item1
-        }
+          [item1.slug]: item1,
+        },
       },
       actions.fetchReleases.started({})
     );
@@ -33,8 +33,8 @@ describe("[reducers] Release", () => {
       lastEvaluatedKey: {
         isActive: BOOLEAN.TRUE,
         releasedOn: item1.releasedOn,
-        slug: item1.slug
-      }
+        slug: item1.slug,
+      },
     });
 
     describe("when lastEvaluatedKey is defined", () => {
@@ -42,7 +42,7 @@ describe("[reducers] Release", () => {
         {
           ...initialState,
           hasAllItems: true,
-          isLoading: true
+          isLoading: true,
         },
         actions.fetchReleases.done({ params: {}, result })
       );
@@ -73,15 +73,15 @@ describe("[reducers] Release", () => {
           lastEvaluatedKey: {
             isActive: BOOLEAN.TRUE,
             releasedOn: item1.releasedOn,
-            slug: item1.slug
-          }
+            slug: item1.slug,
+          },
         },
         actions.fetchReleases.done({
           params: {},
           result: {
             ...result,
-            lastEvaluatedKey: undefined
-          }
+            lastEvaluatedKey: undefined,
+          },
         })
       );
 
@@ -107,7 +107,7 @@ describe("[reducers] Release", () => {
     const state = reducer(
       {
         ...initialState,
-        isLoading: true
+        isLoading: true,
       },
       actions.fetchReleases.failed({ error: "Error", params: {} })
     );
@@ -123,13 +123,13 @@ describe("[reducers] Release", () => {
 
   describe("actions.fetchMoreReleases.started", () => {
     const items = {
-      [item1.slug]: item1
+      [item1.slug]: item1,
     };
 
     const state = reducer(
       {
         ...initialState,
-        items
+        items,
       },
       actions.fetchMoreReleases.started({})
     );
@@ -149,8 +149,8 @@ describe("[reducers] Release", () => {
       lastEvaluatedKey: {
         isActive: BOOLEAN.TRUE,
         releasedOn: item2.releasedOn,
-        slug: item2.slug
-      }
+        slug: item2.slug,
+      },
     });
 
     describe("when lastEvaluatedKey is defined", () => {
@@ -160,8 +160,8 @@ describe("[reducers] Release", () => {
           hasAllItems: true,
           isLoading: true,
           items: {
-            [item1.slug]: item1
-          }
+            [item1.slug]: item1,
+          },
         },
         actions.fetchMoreReleases.done({ params: {}, result })
       );
@@ -177,7 +177,7 @@ describe("[reducers] Release", () => {
       it("merges the items from the payload with the ones in the store", () => {
         expect(state.items).toEqual({
           [item1.slug]: item1,
-          [item2.slug]: item2
+          [item2.slug]: item2,
         });
       });
 
@@ -193,15 +193,15 @@ describe("[reducers] Release", () => {
           hasAllItems: false,
           isLoading: true,
           items: {
-            [item1.slug]: item1
-          }
+            [item1.slug]: item1,
+          },
         },
         actions.fetchMoreReleases.done({
           params: {},
           result: {
             ...result,
-            lastEvaluatedKey: undefined
-          }
+            lastEvaluatedKey: undefined,
+          },
         })
       );
 
@@ -216,7 +216,7 @@ describe("[reducers] Release", () => {
       it("merges the items from the payload with the ones in the store", () => {
         expect(state.items).toEqual({
           [item1.slug]: item1,
-          [item2.slug]: item2
+          [item2.slug]: item2,
         });
       });
 
@@ -230,7 +230,7 @@ describe("[reducers] Release", () => {
     const state = reducer(
       {
         ...initialState,
-        isLoading: true
+        isLoading: true,
       },
       actions.fetchMoreReleases.failed({ error: "Error", params: {} })
     );
@@ -259,7 +259,7 @@ describe("[reducers] Release", () => {
     const state = reducer(
       {
         ...initialState,
-        hasError: true
+        hasError: true,
       },
       actions.fetchReleaseBySlug.started(item1.slug)
     );
@@ -279,12 +279,12 @@ describe("[reducers] Release", () => {
         ...initialState,
         isLoading: true,
         items: {
-          [item2.slug]: item2
-        }
+          [item2.slug]: item2,
+        },
       },
       actions.fetchReleaseBySlug.done({
         params: item1.slug,
-        result: item1
+        result: item1,
       })
     );
 
@@ -295,7 +295,7 @@ describe("[reducers] Release", () => {
     it("adds the item to the store", () => {
       expect(state.items).toEqual({
         [item2.slug]: item2,
-        [item1.slug]: item1
+        [item1.slug]: item1,
       });
     });
   });
@@ -304,11 +304,11 @@ describe("[reducers] Release", () => {
     const state = reducer(
       {
         ...initialState,
-        isLoading: true
+        isLoading: true,
       },
       actions.fetchReleaseBySlug.failed({
         error: "Error",
-        params: item1.slug
+        params: item1.slug,
       })
     );
 

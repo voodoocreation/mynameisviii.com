@@ -6,7 +6,7 @@ const component = new WrapperWithIntl(ReleaseListing).withDefaultProps(
   release({
     artist: {
       name: "Artist Name",
-      url: "URL"
+      url: "URL",
     },
     buyList: [],
     description: "Description",
@@ -14,8 +14,8 @@ const component = new WrapperWithIntl(ReleaseListing).withDefaultProps(
     images: [
       {
         imageUrl: "Image URL",
-        title: "Image title"
-      }
+        title: "Image title",
+      },
     ],
     length: "5:00",
     recordLabel: "Record Label",
@@ -29,17 +29,17 @@ const component = new WrapperWithIntl(ReleaseListing).withDefaultProps(
           genre: "Genre",
           length: "5:00",
           title: "Title",
-          url: "URL"
-        }
-      ]
-    ]
+          url: "URL",
+        },
+      ],
+    ],
   })
 );
 
 describe("[presentation] <ReleaseListing />", () => {
   const wrapper = component
     .withProps({
-      onLoad: jest.fn()
+      onLoad: jest.fn(),
     })
     .mount();
 

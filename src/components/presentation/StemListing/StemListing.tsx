@@ -4,7 +4,7 @@ import {
   FaCreativeCommons,
   FaCreativeCommonsBy,
   FaCreativeCommonsNc,
-  FaCreativeCommonsSa
+  FaCreativeCommonsSa,
 } from "react-icons/fa";
 import { MdCloudDownload } from "react-icons/md";
 import { injectIntl, WrappedComponentProps } from "react-intl";
@@ -26,7 +26,7 @@ interface IState {
 
 class StemListing extends React.Component<IProps, IState> {
   public readonly state: IState = {
-    isRendered: false
+    isRendered: false,
   };
 
   public render() {
@@ -102,7 +102,7 @@ class StemListing extends React.Component<IProps, IState> {
 
   private onLoad = () => {
     this.setState({
-      isRendered: true
+      isRendered: true,
     });
 
     if (this.props.onLoad) {

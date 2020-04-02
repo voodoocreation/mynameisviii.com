@@ -5,19 +5,19 @@ import {
   failure,
   gallery,
   s3Response,
-  success
+  success,
 } from "../../models/root.models";
 import { fetchGalleries } from "./fetchGalleries.api";
 
 describe("[api] fetchGalleries", () => {
   const params = {
-    startAfter: "test-1"
+    startAfter: "test-1",
   };
 
   describe("when the request succeeds", () => {
     const data = {
       isTruncated: false,
-      items: [{ title: "" }]
+      items: [{ title: "" }],
     };
     const request = mockWithResolvedPromise(data);
     const method = fetchGalleries(request);
@@ -27,7 +27,7 @@ describe("[api] fetchGalleries", () => {
         success(
           s3Response({
             isTruncated: data.isTruncated,
-            items: data.items.map(gallery)
+            items: data.items.map(gallery),
           })
         )
       );
@@ -35,7 +35,7 @@ describe("[api] fetchGalleries", () => {
 
     it("makes the request correctly", () => {
       expect(request).toHaveBeenCalledWith(API.FETCH_GALLERIES, {
-        params
+        params,
       });
     });
   });
@@ -50,7 +50,7 @@ describe("[api] fetchGalleries", () => {
 
     it("makes the request correctly", () => {
       expect(request).toHaveBeenCalledWith(API.FETCH_GALLERIES, {
-        params
+        params,
       });
     });
   });

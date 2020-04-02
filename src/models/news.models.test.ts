@@ -16,7 +16,7 @@ describe("[models] News", () => {
       ogImageUrl: "",
       slug: "",
       title: "",
-      type: TYPE.NEWS
+      type: TYPE.NEWS,
     });
   });
 
@@ -24,7 +24,7 @@ describe("[models] News", () => {
     const data = {
       action: {
         route: "/releases/test-1",
-        text: "Action"
+        text: "Action",
       },
       author: "Author",
       content: "Content",
@@ -35,7 +35,7 @@ describe("[models] News", () => {
       ogImageUrl: "OG image URL",
       slug: "test-1",
       title: "Title",
-      type: TYPE.RELEASE
+      type: TYPE.RELEASE,
     };
 
     expect(newsArticle(data)).toEqual({
@@ -49,7 +49,7 @@ describe("[models] News", () => {
       ogImageUrl: data.ogImageUrl,
       slug: data.slug,
       title: data.title,
-      type: data.type
+      type: data.type,
     });
   });
 });

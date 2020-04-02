@@ -6,16 +6,16 @@ import AppearanceRoute from "./AppearanceRoute";
 
 const item = appearance({
   images: [image({ imageUrl: "1" }), image({ imageUrl: "2" })],
-  slug: "test-1"
+  slug: "test-1",
 });
 
 const defaultState = {
   appearances: {
     currentSlug: item.slug,
     items: {
-      [item.slug]: item
-    }
-  }
+      [item.slug]: item,
+    },
+  },
 };
 
 const component = new WrapperWithRedux(AppearanceRoute);
@@ -24,7 +24,7 @@ describe("[routes] <AppearanceRoute />", () => {
   describe("getInitialProps", () => {
     const context = new MockPageContext()
       .withDefaultQuery({
-        slug: item.slug
+        slug: item.slug,
       })
       .withDefaultReduxState(defaultState);
 
@@ -86,7 +86,7 @@ describe("[routes] <AppearanceRoute />", () => {
     const wrapper = component
       .withReduxState({
         ...defaultState,
-        appearances: { isLoading: true }
+        appearances: { isLoading: true },
       })
       .mount();
 
@@ -99,8 +99,8 @@ describe("[routes] <AppearanceRoute />", () => {
         appearances: {
           currentSlug: undefined,
           hasError: true,
-          items: {}
-        }
+          items: {},
+        },
       })
       .mount();
 
@@ -110,10 +110,7 @@ describe("[routes] <AppearanceRoute />", () => {
   it("tracks gallery interactions correctly", () => {
     const wrapper = component.withReduxState(defaultState).mount();
 
-    wrapper
-      .find("ImageGallery Image")
-      .last()
-      .simulate("click");
+    wrapper.find("ImageGallery Image").last().simulate("click");
 
     const matchingActions = component.reduxHistory.filter(
       actions.trackEvent.match
@@ -122,7 +119,7 @@ describe("[routes] <AppearanceRoute />", () => {
     expect(matchingActions).toHaveLength(1);
     expect(matchingActions[0].payload).toEqual({
       event: "appearance.gallery.itemClick",
-      index: 1
+      index: 1,
     });
   });
 });

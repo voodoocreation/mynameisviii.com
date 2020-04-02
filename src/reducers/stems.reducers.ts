@@ -16,21 +16,24 @@ export const initialState: IState = {
   hasError: false,
   isLoading: false,
   items: {},
-  lastEvaluatedKey: undefined
+  lastEvaluatedKey: undefined,
 };
 
 export default reducerWithInitialState(initialState)
-  .cases([actions.fetchStems.failed, actions.fetchMoreStems.failed], state => ({
-    ...state,
-    hasError: true,
-    isLoading: false
-  }))
+  .cases(
+    [actions.fetchStems.failed, actions.fetchMoreStems.failed],
+    (state) => ({
+      ...state,
+      hasError: true,
+      isLoading: false,
+    })
+  )
 
-  .case(actions.fetchStems.started, state => ({
+  .case(actions.fetchStems.started, (state) => ({
     ...state,
     hasError: false,
     isLoading: true,
-    items: {}
+    items: {},
   }))
 
   .case(actions.fetchStems.done, (state, { result }) => ({
@@ -38,13 +41,13 @@ export default reducerWithInitialState(initialState)
     hasAllItems: !result.lastEvaluatedKey,
     isLoading: false,
     items: result.items,
-    lastEvaluatedKey: result.lastEvaluatedKey
+    lastEvaluatedKey: result.lastEvaluatedKey,
   }))
 
-  .case(actions.fetchMoreStems.started, state => ({
+  .case(actions.fetchMoreStems.started, (state) => ({
     ...state,
     hasError: false,
-    isLoading: true
+    isLoading: true,
   }))
 
   .case(actions.fetchMoreStems.done, (state, { result }) => ({
@@ -53,7 +56,7 @@ export default reducerWithInitialState(initialState)
     isLoading: false,
     items: {
       ...state.items,
-      ...result.items
+      ...result.items,
     },
-    lastEvaluatedKey: result.lastEvaluatedKey
+    lastEvaluatedKey: result.lastEvaluatedKey,
   }));

@@ -6,7 +6,7 @@ import { MdAccessTime, MdDateRange, MdPeople, MdPlace } from "react-icons/md";
 import {
   FormattedMessage,
   injectIntl,
-  WrappedComponentProps
+  WrappedComponentProps,
 } from "react-intl";
 
 import { STATUS } from "../../../constants/appearance.constants";
@@ -95,7 +95,7 @@ class Appearance extends React.Component<IProps> {
               day: "numeric",
               month: "long",
               weekday: "long",
-              year: "numeric"
+              year: "numeric",
             }}
             value={startingAt}
             isDateOnly
@@ -112,7 +112,7 @@ class Appearance extends React.Component<IProps> {
             options={{
               hour: "numeric",
               hour12: true,
-              minute: "numeric"
+              minute: "numeric",
             }}
             value={startingAt}
           />
@@ -122,7 +122,7 @@ class Appearance extends React.Component<IProps> {
             options={{
               hour: "numeric",
               hour12: true,
-              minute: "numeric"
+              minute: "numeric",
             }}
             value={finishingAt}
           />
@@ -197,7 +197,7 @@ class Appearance extends React.Component<IProps> {
       </h2>
 
       <div className="Appearance--acts--items">
-        {this.props.acts.map(act => (
+        {this.props.acts.map((act) => (
           <ActListing key={act.name} {...act} />
         ))}
       </div>
@@ -223,7 +223,7 @@ class Appearance extends React.Component<IProps> {
         </h2>
 
         <div className="Appearance--tickets--items">
-          {sales.map(sale => (
+          {sales.map((sale) => (
             <SaleListing key={sale.name} {...sale} />
           ))}
         </div>
@@ -251,7 +251,7 @@ class Appearance extends React.Component<IProps> {
           onNext={this.onGalleryInteraction("next")}
           onPrevious={this.onGalleryInteraction("previous")}
         >
-          {images.map(image => (
+          {images.map((image) => (
             <Image
               alt={image.title}
               caption={image.title}

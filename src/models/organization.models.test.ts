@@ -6,7 +6,7 @@ describe("[models] Organization", () => {
     expect(organization()).toEqual({
       logo: "",
       name: "",
-      type: TYPE.LOCAL_BUSINESS
+      type: TYPE.LOCAL_BUSINESS,
     });
   });
 
@@ -15,14 +15,14 @@ describe("[models] Organization", () => {
       email: "Email",
       logo: "Logo",
       name: "Name",
-      type: TYPE.PERFORMER
+      type: TYPE.PERFORMER,
     };
 
     expect(organization(data)).toEqual({
       email: data.email,
       logo: data.logo,
       name: data.name,
-      type: data.type
+      type: data.type,
     });
   });
 });

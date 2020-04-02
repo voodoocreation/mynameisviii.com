@@ -89,7 +89,7 @@ class AppearanceRoute extends React.Component<IProps> {
   private onGalleryInteraction = (type: string, index?: number) => {
     this.props.trackEvent({
       event: `appearance.gallery.${type}`,
-      index
+      index,
     });
   };
 }
@@ -97,14 +97,14 @@ class AppearanceRoute extends React.Component<IProps> {
 const mapState = (state: TStoreState) => ({
   appearance: selectors.getCurrentAppearance(state),
   currentLocation: selectors.getCurrentAppearanceLocation(state),
-  isLoading: selectors.getAppearancesIsLoading(state)
+  isLoading: selectors.getAppearancesIsLoading(state),
 });
 
 const mapActions = {
   fetchAppearanceBySlug: actions.fetchAppearanceBySlug.started,
   geocodeCurrentAppearanceAddress:
     actions.geocodeCurrentAppearanceAddress.started,
-  trackEvent: actions.trackEvent
+  trackEvent: actions.trackEvent,
 };
 
 export default injectIntlIntoPage(

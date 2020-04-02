@@ -4,7 +4,7 @@ import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import Carousel from "./Carousel";
 
 const component = new WrapperWithIntl(Carousel).withDefaultProps({
-  onSlideChange: jest.fn()
+  onSlideChange: jest.fn(),
 });
 
 describe("[presentation] <Carousel />", () => {
@@ -13,7 +13,7 @@ describe("[presentation] <Carousel />", () => {
       .withChildren([
         <div className="Slide" key="slide-1" />,
         <div className="Slide" key="slide-2" />,
-        <div className="Slide" key="slide-3" />
+        <div className="Slide" key="slide-3" />,
       ])
       .mount();
 
@@ -27,10 +27,7 @@ describe("[presentation] <Carousel />", () => {
     });
 
     it("clicks a pagination page", () => {
-      wrapper
-        .find(".Carousel--pagination Button")
-        .at(1)
-        .simulate("click");
+      wrapper.find(".Carousel--pagination Button").at(1).simulate("click");
     });
 
     it("calls onSlideChange prop with expected payload", () => {

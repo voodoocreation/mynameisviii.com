@@ -10,7 +10,7 @@ const screenHeight = 1080;
 
 const component = new WrapperWithIntl(LoadButton).withDefaultProps({
   className: "TestLoadButton",
-  onLoad: jest.fn()
+  onLoad: jest.fn(),
 });
 
 describe("[presentation] <LoadButton />", () => {
@@ -20,16 +20,16 @@ describe("[presentation] <LoadButton />", () => {
   Object.defineProperties(window, {
     innerHeight: {
       value: screenHeight,
-      writable: true
+      writable: true,
     },
     innerWidth: {
       value: screenWidth,
-      writable: true
+      writable: true,
     },
     isServer: {
       value: false,
-      writable: true
-    }
+      writable: true,
+    },
   });
 
   describe("when mounting on the client and isScrollLoadEnabled is false", () => {
@@ -40,7 +40,7 @@ describe("[presentation] <LoadButton />", () => {
 
       wrapper = component
         .withProps({
-          isScrollLoadEnabled: false
+          isScrollLoadEnabled: false,
         })
         .mount();
     });
@@ -83,7 +83,7 @@ describe("[presentation] <LoadButton />", () => {
       wrapper = component
         .withProps({
           isScrollLoadEnabled: true,
-          triggerDistance: 200
+          triggerDistance: 200,
         })
         .mount();
     });
@@ -148,7 +148,7 @@ describe("[presentation] <LoadButton />", () => {
 
     it("updates the props to set isScrollLoadEnabled to false", () => {
       wrapper.setProps({
-        isScrollLoadEnabled: false
+        isScrollLoadEnabled: false,
       });
     });
 
@@ -160,7 +160,7 @@ describe("[presentation] <LoadButton />", () => {
 
     it("updates the props to set isScrollLoadEnabled to true again", () => {
       wrapper.setProps({
-        isScrollLoadEnabled: true
+        isScrollLoadEnabled: true,
       });
     });
 
@@ -197,13 +197,13 @@ describe("[presentation] <LoadButton />", () => {
 
       Object.defineProperty(window, "isServer", {
         value: true,
-        writable: true
+        writable: true,
       });
 
       wrapper = component
         .withProps({
           isScrollLoadEnabled: true,
-          triggerDistance: 200
+          triggerDistance: 200,
         })
         .mount();
     });
@@ -220,7 +220,7 @@ describe("[presentation] <LoadButton />", () => {
 
     it("updates the props to set isScrollLoadEnabled to false", () => {
       wrapper.setProps({
-        isScrollLoadEnabled: false
+        isScrollLoadEnabled: false,
       });
     });
 
@@ -232,7 +232,7 @@ describe("[presentation] <LoadButton />", () => {
 
     it("updates the props to set isScrollLoadEnabled to true again", () => {
       wrapper.setProps({
-        isScrollLoadEnabled: true
+        isScrollLoadEnabled: true,
       });
     });
 
@@ -253,7 +253,7 @@ describe("[presentation] <LoadButton />", () => {
     const wrapper = component
       .withProps({
         hasError: false,
-        isLoading: false
+        isLoading: false,
       })
       .render();
 
@@ -264,7 +264,7 @@ describe("[presentation] <LoadButton />", () => {
     const wrapper = component
       .withProps({
         hasError: true,
-        isLoading: false
+        isLoading: false,
       })
       .render();
 
@@ -274,7 +274,7 @@ describe("[presentation] <LoadButton />", () => {
   it("renders a Loader when isLoading is true", () => {
     const wrapper = component
       .withProps({
-        isLoading: true
+        isLoading: true,
       })
       .mount();
 

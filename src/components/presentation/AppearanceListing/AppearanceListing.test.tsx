@@ -6,7 +6,7 @@ import {
   appearance,
   location,
   offer,
-  organization
+  organization,
 } from "../../../models/root.models";
 import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import AppearanceListing from "./AppearanceListing";
@@ -18,31 +18,27 @@ const component = new WrapperWithIntl(AppearanceListing).withDefaultProps(
         genre: "Genre",
         imageUrl: "Image URL",
         location: {
-          address: "City, Country"
+          address: "City, Country",
         },
-        name: "Act name"
-      }
+        name: "Act name",
+      },
     ],
     description: "Description",
-    finishingAt: dayjs()
-      .add(4, "day")
-      .toISOString(),
+    finishingAt: dayjs().add(4, "day").toISOString(),
     imageUrl: "Image URL",
     isActive: BOOLEAN.TRUE,
     location: {
       latLng: {
         lat: 0,
-        lng: 0
+        lng: 0,
       },
-      name: "Venue"
+      name: "Venue",
     },
     organizer: {
-      name: "Organizer"
+      name: "Organizer",
     },
-    startingAt: dayjs()
-      .add(3, "day")
-      .toISOString(),
-    status: STATUS.SCHEDULED
+    startingAt: dayjs().add(3, "day").toISOString(),
+    status: STATUS.SCHEDULED,
   })
 );
 
@@ -74,38 +70,38 @@ describe("[presentation] <AppearanceListing />", () => {
         images: [
           {
             imageUrl: "Image URL 1",
-            title: "Title 1"
+            title: "Title 1",
           },
           {
             imageUrl: "Image URL 2",
-            title: "Title 2"
-          }
+            title: "Title 2",
+          },
         ],
         isCondensed: true,
         location: location({
           address: "123 Address",
-          name: "Venue"
+          name: "Venue",
         }),
         organizer: organization({
           email: "Email",
           logo: "Logo",
-          name: "Organizer"
+          name: "Organizer",
         }),
         rsvpUrl: "RSVP",
         sales: [
           offer({
             name: "Price 1",
-            price: 40
+            price: 40,
           }),
           offer({
             name: "Price 2",
-            price: 20
+            price: 20,
           }),
           offer({
             name: "Price 3",
-            price: 25
-          })
-        ]
+            price: 25,
+          }),
+        ],
       })
       .render();
 
@@ -125,7 +121,7 @@ describe("[presentation] <AppearanceListing />", () => {
   describe("when there are no sales", () => {
     const wrapper = component
       .withProps({
-        sales: []
+        sales: [],
       })
       .render();
 
@@ -140,9 +136,9 @@ describe("[presentation] <AppearanceListing />", () => {
         sales: [
           offer({
             name: "Price",
-            price: 5
-          })
-        ]
+            price: 5,
+          }),
+        ],
       })
       .render();
 
@@ -157,13 +153,13 @@ describe("[presentation] <AppearanceListing />", () => {
         sales: [
           offer({
             name: "Price 1",
-            price: 5
+            price: 5,
           }),
           offer({
             name: "Price 2",
-            price: 10
-          })
-        ]
+            price: 10,
+          }),
+        ],
       })
       .render();
 
@@ -178,17 +174,17 @@ describe("[presentation] <AppearanceListing />", () => {
         sales: [
           offer({
             name: "Price 1",
-            price: 5
+            price: 5,
           }),
           offer({
             name: "Price 2",
-            price: 10
+            price: 10,
           }),
           offer({
             name: "Price 2",
-            price: 10
-          })
-        ]
+            price: 10,
+          }),
+        ],
       })
       .render();
 
@@ -201,7 +197,7 @@ describe("[presentation] <AppearanceListing />", () => {
     const wrapper = component
       .withProps({
         sales: [offer()],
-        status: STATUS.CANCELLED
+        status: STATUS.CANCELLED,
       })
       .render();
 
@@ -222,7 +218,7 @@ describe("[presentation] <AppearanceListing />", () => {
     const wrapper = component
       .withProps({
         sales: [offer()],
-        status: STATUS.POSTPONED
+        status: STATUS.POSTPONED,
       })
       .render();
 
@@ -255,7 +251,7 @@ describe("[presentation] <AppearanceListing />", () => {
     describe("when the onLoad prop is defined", () => {
       const wrapper = component
         .withProps({
-          onLoad: jest.fn()
+          onLoad: jest.fn(),
         })
         .mount();
 

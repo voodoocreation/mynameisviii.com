@@ -6,7 +6,7 @@ import {
   PRODUCTION,
   PRODUCTION_OPTION,
   SCHEMA_TYPE,
-  TYPE
+  TYPE,
 } from "../constants/release.constants";
 import {
   image,
@@ -15,7 +15,7 @@ import {
   release,
   releasePlatformLink,
   releaseSchemaType,
-  releaseTrack
+  releaseTrack,
 } from "./root.models";
 
 describe("[models] Release", () => {
@@ -31,15 +31,13 @@ describe("[models] Release", () => {
         length: "0:00",
         productionType: PRODUCTION.STUDIO,
         recordLabel: "",
-        releasedOn: dayjs()
-          .startOf("day")
-          .toISOString(),
+        releasedOn: dayjs().startOf("day").toISOString(),
         schemaType: SCHEMA_TYPE.ALBUM,
         slug: "",
         streamList: [],
         title: "",
         tracklist: [],
-        type: TYPE.ALBUM
+        type: TYPE.ALBUM,
       });
     });
 
@@ -47,7 +45,7 @@ describe("[models] Release", () => {
       const data = {
         artist: {
           name: "Artist",
-          url: "URL"
+          url: "URL",
         },
         buyList: [{ platform: PLATFORM.ITUNES, url: "URL" }],
         description: "Description",
@@ -63,9 +61,9 @@ describe("[models] Release", () => {
         title: "Title",
         tracklist: [
           [{ title: "Disc 1, track 1" }],
-          [{ title: "Disc 2, track 1" }]
+          [{ title: "Disc 2, track 1" }],
         ],
-        type: TYPE.EP
+        type: TYPE.EP,
       };
 
       expect(release(data)).toEqual({
@@ -83,8 +81,8 @@ describe("[models] Release", () => {
         slug: data.slug,
         streamList: data.streamList.map(releasePlatformLink),
         title: data.title,
-        tracklist: data.tracklist.map(disc => disc.map(releaseTrack)),
-        type: TYPE.EP
+        tracklist: data.tracklist.map((disc) => disc.map(releaseTrack)),
+        type: TYPE.EP,
       });
     });
   });
@@ -95,7 +93,7 @@ describe("[models] Release", () => {
         genre: "",
         length: "0:00",
         title: "",
-        url: ""
+        url: "",
       });
     });
 
@@ -104,7 +102,7 @@ describe("[models] Release", () => {
         genre: "Genre",
         length: "11:11",
         title: "Title",
-        url: "URL"
+        url: "URL",
       };
 
       expect(releaseTrack(data)).toEqual(data);

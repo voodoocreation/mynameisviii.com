@@ -8,14 +8,14 @@ const component = new WrapperWithIntl(Gallery).withDefaultProps(
     imageUrl: "Image URL",
     modifiedAt: "2017-10-10T18:00:00",
     slug: "test-1",
-    title: "Title"
+    title: "Title",
   })
 );
 
 const images = [
   galleryImage({ imageUrl: "Image 1" }),
   galleryImage({ imageUrl: "Image 2" }),
-  galleryImage({ imageUrl: "Image 3" })
+  galleryImage({ imageUrl: "Image 3" }),
 ];
 
 describe("[presentation] <Gallery />", () => {
@@ -24,7 +24,7 @@ describe("[presentation] <Gallery />", () => {
     const wrapper = component
       .withProps({
         images,
-        onGalleryInteraction
+        onGalleryInteraction,
       })
       .mount();
 
@@ -33,10 +33,7 @@ describe("[presentation] <Gallery />", () => {
     });
 
     it("clicks an image", () => {
-      wrapper
-        .find("Image.Gallery--image")
-        .first()
-        .simulate("click");
+      wrapper.find("Image.Gallery--image").first().simulate("click");
     });
 
     it("calls onGalleryInteraction prop", () => {
@@ -51,7 +48,7 @@ describe("[presentation] <Gallery />", () => {
   describe("when there are no images", () => {
     const wrapper = component
       .withProps({
-        images: undefined
+        images: undefined,
       })
       .render();
 
@@ -67,16 +64,13 @@ describe("[presentation] <Gallery />", () => {
   describe("when onGalleryInteraction isn't defined", () => {
     const wrapper = component
       .withProps({
-        images
+        images,
       })
       .mount();
 
     it("doesn't throw an error when clicking a gallery item", () => {
       expect(() => {
-        wrapper
-          .find("Image.Gallery--image")
-          .first()
-          .simulate("click");
+        wrapper.find("Image.Gallery--image").first().simulate("click");
       }).not.toThrowError();
     });
   });

@@ -5,7 +5,7 @@ import {
   IRawDynamoResponse,
   IRawRelease,
   release,
-  success
+  success,
 } from "../../models/root.models";
 import { TRequest } from "../configureHttpClient";
 
@@ -18,13 +18,13 @@ export const fetchReleases = (request: TRequest) => async (
       IRawRelease,
       "releasedOn"
     > = await request(API.FETCH_RELEASES, {
-      params: { exclusiveStartKey, limit }
+      params: { exclusiveStartKey, limit },
     });
 
     return success(
       dynamoResponse({
         ...response,
-        items: response.items.map(release)
+        items: response.items.map(release),
       })
     );
   } catch (error) {

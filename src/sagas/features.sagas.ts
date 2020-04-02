@@ -5,23 +5,23 @@ import * as actions from "../actions/root.actions";
 import { IPorts } from "../services/configurePorts";
 
 export const addFeaturesSaga = (ports: IPorts) =>
-  function*(): SagaIterator {
-    yield takeLatest(actions.addFeatures, function*(action): SagaIterator {
+  function* (): SagaIterator {
+    yield takeLatest(actions.addFeatures, function* (action): SagaIterator {
       const featuresToAdd =
         typeof action.payload === "string" ? [action.payload] : action.payload;
 
       yield call(
         ports.features.push.bind(
           ports.features,
-          ...featuresToAdd.filter(item => !ports.features.includes(item))
+          ...featuresToAdd.filter((item) => !ports.features.includes(item))
         )
       );
     });
   };
 
 export const removeFeaturesSaga = (ports: IPorts) =>
-  function*(): SagaIterator {
-    yield takeLatest(actions.removeFeatures, function*(action): SagaIterator {
+  function* (): SagaIterator {
+    yield takeLatest(actions.removeFeatures, function* (action): SagaIterator {
       const featuresToRemove =
         typeof action.payload === "string" ? [action.payload] : action.payload;
 

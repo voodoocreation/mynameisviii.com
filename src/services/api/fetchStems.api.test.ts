@@ -6,14 +6,14 @@ import {
   dynamoResponse,
   failure,
   stem,
-  success
+  success,
 } from "../../models/root.models";
 import { fetchStems } from "./fetchStems.api";
 
 describe("[api] fetchStems", () => {
   const params = {
     exclusiveStartKey: "test",
-    limit: 1
+    limit: 1,
   };
 
   describe("when the request succeeds", () => {
@@ -22,8 +22,8 @@ describe("[api] fetchStems", () => {
       lastEvaluatedKey: {
         createdAt: "2019-01-01T00:00:00",
         isActive: BOOLEAN.TRUE,
-        slug: "test-0"
-      }
+        slug: "test-0",
+      },
     };
     const request = mockWithResolvedPromise(data);
     const method = fetchStems(request);
@@ -33,7 +33,7 @@ describe("[api] fetchStems", () => {
         success(
           dynamoResponse({
             items: data.items.map(stem),
-            lastEvaluatedKey: data.lastEvaluatedKey
+            lastEvaluatedKey: data.lastEvaluatedKey,
           })
         )
       );
@@ -41,7 +41,7 @@ describe("[api] fetchStems", () => {
 
     it("makes the request correctly", () => {
       expect(request).toHaveBeenCalledWith(API.FETCH_STEMS, {
-        params
+        params,
       });
     });
   });
@@ -58,7 +58,7 @@ describe("[api] fetchStems", () => {
 
     it("makes the request correctly", () => {
       expect(request).toHaveBeenCalledWith(API.FETCH_STEMS, {
-        params
+        params,
       });
     });
   });

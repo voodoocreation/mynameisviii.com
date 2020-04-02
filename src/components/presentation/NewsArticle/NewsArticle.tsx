@@ -4,7 +4,7 @@ import { MdAccessTime } from "react-icons/md";
 import {
   FormattedMessage,
   injectIntl,
-  WrappedComponentProps
+  WrappedComponentProps,
 } from "react-intl";
 
 import { INewsArticle } from "../../../models/root.models";
@@ -26,7 +26,7 @@ interface IState {
 
 class NewsArticle extends React.Component<IProps, IState> {
   public readonly state: IState = {
-    isImageLoaded: false
+    isImageLoaded: false,
   };
 
   public render() {
@@ -53,7 +53,7 @@ class NewsArticle extends React.Component<IProps, IState> {
                 id="POSTED_ON_DATE_BY_AUTHOR"
                 values={{
                   author: article.author,
-                  date: <DateTime value={article.createdAt} />
+                  date: <DateTime value={article.createdAt} />,
                 }}
               />
             </div>
@@ -102,7 +102,7 @@ class NewsArticle extends React.Component<IProps, IState> {
 
   private onImageLoad = () => {
     this.setState({
-      isImageLoaded: true
+      isImageLoaded: true,
     });
   };
 }

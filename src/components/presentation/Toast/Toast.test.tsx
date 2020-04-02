@@ -11,7 +11,7 @@ describe("[presentation] <Toast />", () => {
     const wrapper = component
       .withProps({
         hasAutoDismiss: true,
-        onClose
+        onClose,
       })
       .mount();
 
@@ -43,7 +43,7 @@ describe("[presentation] <Toast />", () => {
     const wrapper = component
       .withProps({
         hasAutoDismiss: false,
-        onClose
+        onClose,
       })
       .mount();
 
@@ -76,7 +76,7 @@ describe("[presentation] <Toast />", () => {
     const wrapper = component
       .withProps({
         hasAutoDismiss: true,
-        isVisible: true
+        isVisible: true,
       })
       .mount();
 

@@ -3,7 +3,7 @@ import {
   failure,
   IRawRelease,
   release,
-  success
+  success,
 } from "../../models/root.models";
 import { TRequest } from "../configureHttpClient";
 

@@ -18,5 +18,5 @@ export const location = (options: Partial<ILocation> = {}): ILocation => ({
   latLng: options.latLng,
   name: options.name || "",
   type: options.type || TYPE.MUSIC_VENUE,
-  url: options.url
+  url: options.url,
 });

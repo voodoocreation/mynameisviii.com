@@ -14,7 +14,7 @@ describe("[models] Resource", () => {
       slug: "",
       title: "",
       type: TYPE.DESIGN,
-      url: ""
+      url: "",
     });
   });
 
@@ -27,7 +27,7 @@ describe("[models] Resource", () => {
       slug: "test-1",
       title: "Title",
       type: TYPE.PRESS,
-      url: "URL"
+      url: "URL",
     };
 
     expect(resource(data)).toEqual({
@@ -38,7 +38,7 @@ describe("[models] Resource", () => {
       slug: data.slug,
       title: data.title,
       type: data.type,
-      url: data.url
+      url: data.url,
     });
   });
 });

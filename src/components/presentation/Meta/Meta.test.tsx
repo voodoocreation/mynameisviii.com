@@ -4,7 +4,7 @@ import Meta from "./Meta";
 
 const component = new WrapperWithIntl(Meta)
   .withDefaultProps({
-    className: "TestMeta"
+    className: "TestMeta",
   })
   .withDefaultChildren("Value");
 

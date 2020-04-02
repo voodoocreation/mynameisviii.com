@@ -36,7 +36,7 @@ interface IState {
 
 class ReleasesRoute extends React.Component<IProps, IState> {
   public readonly state: IState = {
-    loadedListings: {}
+    loadedListings: {},
   };
 
   public static getInitialProps = async (context: IPageContext) => {
@@ -133,11 +133,11 @@ class ReleasesRoute extends React.Component<IProps, IState> {
     ) : null;
 
   private onListingLoad = (release: IRelease) => () => {
-    this.setState(state => ({
+    this.setState((state) => ({
       loadedListings: {
         ...state.loadedListings,
-        [release.slug]: true
-      }
+        [release.slug]: true,
+      },
     }));
   };
 
@@ -151,12 +151,12 @@ const mapState = (state: TStoreState) => ({
   hasError: selectors.hasReleasesError(state),
   isLoading: selectors.getReleasesIsLoading(state),
   releases: selectors.getSortedReleasesByType(state),
-  releasesCount: selectors.getReleasesCount(state)
+  releasesCount: selectors.getReleasesCount(state),
 });
 
 const mapActions = {
   fetchMoreReleases: actions.fetchMoreReleases.started,
-  fetchReleases: actions.fetchReleases.started
+  fetchReleases: actions.fetchReleases.started,
 };
 
 export default injectIntlIntoPage(connect(mapState, mapActions)(ReleasesRoute));

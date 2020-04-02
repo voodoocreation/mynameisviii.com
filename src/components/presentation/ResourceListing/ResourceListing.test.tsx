@@ -9,14 +9,14 @@ const component = new WrapperWithIntl(ResourceListing).withDefaultProps(
     imageUrl: "Image URL",
     slug: "resource-1",
     title: "Title",
-    url: "URL"
+    url: "URL",
   })
 );
 
 describe("[presentation] <ResourceListing />", () => {
   const wrapper = component
     .withProps({
-      onLoad: jest.fn()
+      onLoad: jest.fn(),
     })
     .mount();
 

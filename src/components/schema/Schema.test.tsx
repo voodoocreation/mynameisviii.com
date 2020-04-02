@@ -13,7 +13,7 @@ describe("[schema] <Schema />", () => {
   it("renders correctly when isPretty=true", () => {
     const wrapper = component
       .withProps({
-        isPretty: true
+        isPretty: true,
       })
       .render();
 

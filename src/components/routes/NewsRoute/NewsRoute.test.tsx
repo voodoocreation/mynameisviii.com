@@ -36,9 +36,9 @@ describe("[routes] <NewsRoute />", () => {
             news: {
               hasAllItems: false,
               items: {
-                [item1.slug]: item1
-              }
-            }
+                [item1.slug]: item1,
+              },
+            },
           })
           .toObject()
       );
@@ -55,9 +55,9 @@ describe("[routes] <NewsRoute />", () => {
             news: {
               hasAllItems: true,
               items: {
-                [item1.slug]: item1
-              }
-            }
+                [item1.slug]: item1,
+              },
+            },
           })
           .toObject()
       );
@@ -78,9 +78,9 @@ describe("[routes] <NewsRoute />", () => {
           hasAllItems: true,
           items: {
             [item1.slug]: item1,
-            [item2.slug]: item2
-          }
-        }
+            [item2.slug]: item2,
+          },
+        },
       })
       .mount();
 
@@ -102,8 +102,8 @@ describe("[routes] <NewsRoute />", () => {
       .withReduxState({
         news: {
           hasAllItems: true,
-          items: {}
-        }
+          items: {},
+        },
       })
       .mount();
 
@@ -120,8 +120,8 @@ describe("[routes] <NewsRoute />", () => {
     const wrapper = component
       .withReduxState({
         news: {
-          hasError: true
-        }
+          hasError: true,
+        },
       })
       .mount();
 
@@ -134,9 +134,9 @@ describe("[routes] <NewsRoute />", () => {
         news: {
           hasAllItems: false,
           items: {
-            [item1.slug]: item1
-          }
-        }
+            [item1.slug]: item1,
+          },
+        },
       })
       .mount();
 
@@ -147,8 +147,8 @@ describe("[routes] <NewsRoute />", () => {
     const wrapper = component
       .withReduxState({
         news: {
-          hasAllItems: true
-        }
+          hasAllItems: true,
+        },
       })
       .mount();
 
@@ -170,9 +170,9 @@ describe("[routes] <NewsRoute />", () => {
       .withReduxState({
         news: {
           items: {
-            [item1.slug]: item1
-          }
-        }
+            [item1.slug]: item1,
+          },
+        },
       })
       .mount();
 

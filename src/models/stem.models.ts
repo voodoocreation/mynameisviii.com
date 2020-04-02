@@ -36,5 +36,5 @@ export const stem = (options: IRawStem = {}): IStem => ({
   size: options.size || "0B",
   slug: options.slug || "",
   title: options.title || "",
-  url: options.url || ""
+  url: options.url || "",
 });

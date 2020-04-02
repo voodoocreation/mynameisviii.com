@@ -8,5 +8,5 @@ export const API = {
   FETCH_RELEASE: `${API_URL}/releases`,
   FETCH_RELEASES: `${API_URL}/releases/find`,
   FETCH_RESOURCES: `${API_URL}/resources/find`,
-  FETCH_STEMS: `${API_URL}/stems/find`
+  FETCH_STEMS: `${API_URL}/stems/find`,
 };

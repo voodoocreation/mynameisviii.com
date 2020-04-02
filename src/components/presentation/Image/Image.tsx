@@ -21,7 +21,7 @@ interface IState {
 
 export default class Image extends React.Component<IProps, IState> {
   public readonly state = {
-    isRendered: false
+    isRendered: false,
   };
 
   private imageRef = React.createRef<HTMLImageElement>();
@@ -55,7 +55,7 @@ export default class Image extends React.Component<IProps, IState> {
           onClick,
           onKeyPress: this.onKeyPress,
           role: "button",
-          tabIndex: 0
+          tabIndex: 0,
         }
       : undefined;
 
@@ -94,7 +94,7 @@ export default class Image extends React.Component<IProps, IState> {
 
   private onLoad = () => {
     this.setState({
-      isRendered: true
+      isRendered: true,
     });
 
     if (this.props.onLoad) {

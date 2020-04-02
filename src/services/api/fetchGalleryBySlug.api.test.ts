@@ -9,7 +9,7 @@ describe("[api] fetchGalleryBySlug", () => {
     const data = {
       images: [{ imageUrl: "Image URL" }],
       slug: "test-1",
-      title: "Title"
+      title: "Title",
     };
 
     const request = mockWithResolvedPromise(data);

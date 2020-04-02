@@ -10,12 +10,12 @@ export const getNewsArticles = defaultMemoize(
 
 export const getNewsArticlesCount = createSelector(
   getNewsArticles,
-  articles => Object.keys(articles).length
+  (articles) => Object.keys(articles).length
 );
 
 export const getNewsArticlesAsArray = createSelector(
   getNewsArticles,
-  articles =>
+  (articles) =>
     Object.values(articles).sort(
       (a, b) =>
         new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
@@ -36,7 +36,7 @@ export const getNewsLastEvaluatedKey = (state: TStoreState) =>
 
 export const getNewsLastEvaluatedKeyAsString = createSelector(
   getNewsLastEvaluatedKey,
-  lastEvaluatedKey =>
+  (lastEvaluatedKey) =>
     !lastEvaluatedKey
       ? undefined
       : btoa(
@@ -44,7 +44,7 @@ export const getNewsLastEvaluatedKeyAsString = createSelector(
             JSON.stringify({
               CreatedAt: lastEvaluatedKey.createdAt,
               IsActive: lastEvaluatedKey.isActive,
-              Slug: lastEvaluatedKey.slug
+              Slug: lastEvaluatedKey.slug,
             })
           )
         )

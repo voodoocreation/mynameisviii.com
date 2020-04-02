@@ -54,7 +54,7 @@ const NewsArticleType: React.FC<IProps> = ({
 };
 
 NewsArticleType.defaultProps = {
-  hasLabel: true
+  hasLabel: true,
 };
 
 export default injectIntl(NewsArticleType);

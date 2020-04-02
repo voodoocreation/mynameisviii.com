@@ -79,19 +79,19 @@ class GalleryRoute extends React.Component<IProps> {
   private onGalleryInteraction = (type: string, index?: number) => {
     this.props.trackEvent({
       event: `gallery.gallery.${type}`,
-      index
+      index,
     });
   };
 }
 
 const mapState = (state: TStoreState) => ({
   gallery: selectors.getCurrentGallery(state),
-  isLoading: selectors.getGalleriesIsLoading(state)
+  isLoading: selectors.getGalleriesIsLoading(state),
 });
 
 const mapActions = {
   fetchGalleryBySlug: actions.fetchGalleryBySlug.started,
-  trackEvent: actions.trackEvent
+  trackEvent: actions.trackEvent,
 };
 
 export default injectIntlIntoPage(connect(mapState, mapActions)(GalleryRoute));

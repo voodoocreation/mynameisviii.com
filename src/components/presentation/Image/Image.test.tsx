@@ -10,7 +10,7 @@ const defaultProps = {
   onClick: jest.fn(),
   onLoad: jest.fn(),
   src: "Image URL",
-  title: "Title"
+  title: "Title",
 };
 
 describe("[presentation] <Image />", () => {
@@ -20,7 +20,7 @@ describe("[presentation] <Image />", () => {
     const wrapper = component
       .withProps({
         ...defaultProps,
-        src: undefined
+        src: undefined,
       })
       .render();
 
@@ -31,7 +31,7 @@ describe("[presentation] <Image />", () => {
     const wrapper = component
       .withProps({
         ...defaultProps,
-        caption: undefined
+        caption: undefined,
       })
       .render();
 
@@ -80,7 +80,7 @@ describe("[presentation] <Image />", () => {
     it("has the clickable attributes defined", () => {
       expect(wrapper.find("figure").props()).toMatchObject({
         role: "button",
-        tabIndex: 0
+        tabIndex: 0,
       });
     });
 
@@ -117,13 +117,13 @@ describe("[presentation] <Image />", () => {
     // @ts-ignore-next-line
     Object.defineProperty(global.Image.prototype, "complete", {
       value: true,
-      writable: true
+      writable: true,
     });
 
     const wrapper = component
       .withProps({
         ...defaultProps,
-        onLoad: undefined
+        onLoad: undefined,
       })
       .mount();
 
@@ -149,14 +149,14 @@ describe("[presentation] <Image />", () => {
     const wrapper = component
       .withProps({
         ...defaultProps,
-        onClick: undefined
+        onClick: undefined,
       })
       .mount();
 
     it("doesn't have the clickable attributes defined", () => {
       expect(wrapper.find("figure").props()).not.toMatchObject({
         role: "button",
-        tabIndex: 0
+        tabIndex: 0,
       });
     });
   });

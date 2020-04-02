@@ -9,13 +9,13 @@ describe("[utilities] SagaTester", () => {
   describe("when creating an instance with all parameters defined", () => {
     const testState = {
       app: {
-        isLoading: true
-      }
+        isLoading: true,
+      },
     };
     const saga = new SagaTester(testState, {
       api: {
-        fetchStems: mockWithSuccess({ test: true })
-      }
+        fetchStems: mockWithSuccess({ test: true }),
+      },
     });
 
     it("merges the initial state with the full root initial state", () => {

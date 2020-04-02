@@ -2,7 +2,7 @@ export enum STATUS {
   CANCELLED = "EventCancelled",
   POSTPONED = "EventPostponed",
   RESCHEDULED = "EventRescheduled",
-  SCHEDULED = "EventScheduled"
+  SCHEDULED = "EventScheduled",
 }
 
 export enum TYPE {
@@ -11,5 +11,5 @@ export enum TYPE {
   FESTIVAL = "Festival",
   MUSIC = "MusicEvent",
   SCREENING = "ScreeningEvent",
-  SOCIAL = "SocialEvent"
+  SOCIAL = "SocialEvent",
 }

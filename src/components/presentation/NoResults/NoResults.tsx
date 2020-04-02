@@ -3,7 +3,7 @@ import * as React from "react";
 import {
   FormattedMessage,
   injectIntl,
-  WrappedComponentProps
+  WrappedComponentProps,
 } from "react-intl";
 
 import messages from "../../../locales/en-NZ";
@@ -22,7 +22,7 @@ const NoResults: React.FC<IProps> = ({ className, entityIntlId, intl }) => (
       values={{
         entities: intl
           .formatMessage({ id: entityIntlId }, { count: 2 })
-          .toLowerCase()
+          .toLowerCase(),
       }}
     />
   </div>

@@ -3,7 +3,7 @@ import { MdPortableWifiOff } from "react-icons/md";
 import {
   FormattedMessage,
   injectIntl,
-  WrappedComponentProps
+  WrappedComponentProps,
 } from "react-intl";
 import { connect } from "react-redux";
 
@@ -27,7 +27,7 @@ const OfflineNotice: React.FC<IProps> = ({ isOnline }) =>
   );
 
 const mapState = (state: TStoreState) => ({
-  isOnline: selectors.isOnline(state)
+  isOnline: selectors.isOnline(state),
 });
 
 export default injectIntl(connect(mapState)(OfflineNotice));

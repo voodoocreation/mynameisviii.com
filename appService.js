@@ -6,12 +6,12 @@ const cacheNames = {
   cdn: `${CACHE_PREFIX}-cdn`,
   googleApis: `${CACHE_PREFIX}-googleApis`,
   local: `${CACHE_PREFIX}-local-${buildId}`,
-  precache: `${CACHE_PREFIX}-precache-${buildId}`
+  precache: `${CACHE_PREFIX}-precache-${buildId}`,
 };
 
 const precacheUrls = [].concat(assets, staticFiles);
 
-const isCacheValid = key => {
+const isCacheValid = (key) => {
   for (const name in cacheNames) {
     if (cacheNames[name] === key) {
       return true;
@@ -27,7 +27,7 @@ importScripts(
 
 workbox.core.setCacheNameDetails({
   prefix: CACHE_PREFIX,
-  suffix: buildId
+  suffix: buildId,
 });
 
 workbox.skipWaiting();
@@ -35,36 +35,36 @@ workbox.clientsClaim();
 
 if (buildId !== "development") {
   workbox.precaching.precacheAndRoute(
-    precacheUrls.map(item => ({
+    precacheUrls.map((item) => ({
       revision: buildId,
-      url: item
+      url: item,
     })),
     {
-      cleanUrls: false
+      cleanUrls: false,
     }
   );
 
   // Local cache-first requests
   workbox.routing.registerRoute(
-    request =>
+    (request) =>
       request.url.host === self.location.host &&
       !precacheUrls.includes(request.url.pathname),
     workbox.strategies.cacheFirst({
       cacheName: cacheNames.local,
       plugins: [
         new workbox.cacheableResponse.Plugin({
-          statuses: [0, 200]
+          statuses: [0, 200],
         }),
         new workbox.expiration.Plugin({
-          maxAgeSeconds: 2 * 60 * 60
-        })
-      ]
+          maxAgeSeconds: 2 * 60 * 60,
+        }),
+      ],
     })
   );
 }
 
 workbox.googleAnalytics.initialize({
-  cacheName: cacheNames.googleApis
+  cacheName: cacheNames.googleApis,
 });
 
 // Static content requests from Google APIs
@@ -74,9 +74,9 @@ workbox.routing.registerRoute(
     cacheName: cacheNames.googleApis,
     plugins: [
       new workbox.cacheableResponse.Plugin({
-        statuses: [0, 200]
-      })
-    ]
+        statuses: [0, 200],
+      }),
+    ],
   })
 );
 
@@ -87,9 +87,9 @@ workbox.routing.registerRoute(
     cacheName: cacheNames.googleApis,
     plugins: [
       new workbox.cacheableResponse.Plugin({
-        statuses: [0, 200]
-      })
-    ]
+        statuses: [0, 200],
+      }),
+    ],
   })
 );
 
@@ -100,9 +100,9 @@ workbox.routing.registerRoute(
     cacheName: cacheNames.cdn,
     plugins: [
       new workbox.cacheableResponse.Plugin({
-        statuses: [0, 200]
-      })
-    ]
+        statuses: [0, 200],
+      }),
+    ],
   })
 );
 
@@ -114,12 +114,12 @@ workbox.routing.registerRoute(
     cacheName: cacheNames.api,
     plugins: [
       new workbox.cacheableResponse.Plugin({
-        statuses: [0, 200]
+        statuses: [0, 200],
       }),
       new workbox.expiration.Plugin({
-        maxAgeSeconds: 2 * 60 * 60
-      })
-    ]
+        maxAgeSeconds: 2 * 60 * 60,
+      }),
+    ],
   })
 );
 // Entities - cache for a week
@@ -129,21 +129,21 @@ workbox.routing.registerRoute(
     cacheName: cacheNames.api,
     plugins: [
       new workbox.cacheableResponse.Plugin({
-        statuses: [0, 200]
+        statuses: [0, 200],
       }),
       new workbox.expiration.Plugin({
-        maxAgeSeconds: 7 * 24 * 60 * 60
-      })
-    ]
+        maxAgeSeconds: 7 * 24 * 60 * 60,
+      }),
+    ],
   })
 );
 
-self.addEventListener("activate", event => {
+self.addEventListener("activate", (event) => {
   // Cleanup redundant caches
   event.waitUntil(
-    caches.keys().then(keys => {
+    caches.keys().then((keys) => {
       let hasDeletedCaches = false;
-      keys.forEach(key => {
+      keys.forEach((key) => {
         if (!isCacheValid(key)) {
           caches.delete(key);
           indexedDB.deleteDatabase(key);
@@ -153,10 +153,10 @@ self.addEventListener("activate", event => {
 
       // Notify client that a new version is available, when an old version exists
       if (hasDeletedCaches) {
-        self.clients.matchAll().then(clients => {
-          clients.forEach(client => {
+        self.clients.matchAll().then((clients) => {
+          clients.forEach((client) => {
             client.postMessage({
-              type: "serviceWorker.activate"
+              type: "serviceWorker.activate",
             });
           });
         });
@@ -166,10 +166,10 @@ self.addEventListener("activate", event => {
 });
 
 // Handle postMessage requests from the application
-self.onmessage = message => {
+self.onmessage = (message) => {
   if (message.data.type === "changeRoute") {
     return caches
       .open(cacheNames.local)
-      .then(cache => cache.add(message.data.payload));
+      .then((cache) => cache.add(message.data.payload));
   }
 };

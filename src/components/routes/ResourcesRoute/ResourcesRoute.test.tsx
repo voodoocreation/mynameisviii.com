@@ -36,9 +36,9 @@ describe("[routes] <ResourcesRoute />", () => {
             resources: {
               hasAllItems: false,
               items: {
-                [item1.slug]: item1
-              }
-            }
+                [item1.slug]: item1,
+              },
+            },
           })
           .toObject()
       );
@@ -55,9 +55,9 @@ describe("[routes] <ResourcesRoute />", () => {
             resources: {
               hasAllItems: true,
               items: {
-                [item1.slug]: item1
-              }
-            }
+                [item1.slug]: item1,
+              },
+            },
           })
           .toObject()
       );
@@ -78,9 +78,9 @@ describe("[routes] <ResourcesRoute />", () => {
           hasAllItems: true,
           items: {
             [item1.slug]: item1,
-            [item2.slug]: item2
-          }
-        }
+            [item2.slug]: item2,
+          },
+        },
       })
       .mount();
 
@@ -102,8 +102,8 @@ describe("[routes] <ResourcesRoute />", () => {
       .withReduxState({
         resources: {
           hasAllItems: true,
-          items: {}
-        }
+          items: {},
+        },
       })
       .mount();
 
@@ -120,8 +120,8 @@ describe("[routes] <ResourcesRoute />", () => {
     const wrapper = component
       .withReduxState({
         resources: {
-          hasError: true
-        }
+          hasError: true,
+        },
       })
       .mount();
 
@@ -134,9 +134,9 @@ describe("[routes] <ResourcesRoute />", () => {
         resources: {
           hasAllItems: false,
           items: {
-            [item1.slug]: item1
-          }
-        }
+            [item1.slug]: item1,
+          },
+        },
       })
       .mount();
 
@@ -147,8 +147,8 @@ describe("[routes] <ResourcesRoute />", () => {
     const wrapper = component
       .withReduxState({
         resources: {
-          hasAllItems: true
-        }
+          hasAllItems: true,
+        },
       })
       .mount();
 
@@ -170,9 +170,9 @@ describe("[routes] <ResourcesRoute />", () => {
       .withReduxState({
         resources: {
           items: {
-            [item1.slug]: item1
-          }
-        }
+            [item1.slug]: item1,
+          },
+        },
       })
       .mount();
 

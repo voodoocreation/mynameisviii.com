@@ -3,7 +3,7 @@ import Price from "./Price";
 
 const component = new WrapperWithIntl(Price).withDefaultProps({
   className: "TestPrice",
-  value: 199.99
+  value: 199.99,
 });
 
 describe("[presentation] <Price />", () => {
@@ -16,7 +16,7 @@ describe("[presentation] <Price />", () => {
   it("renders correctly with FormattedNumber props defined", () => {
     const wrapper = component
       .withProps({
-        maximumFractionDigits: 0
+        maximumFractionDigits: 0,
       })
       .render();
 

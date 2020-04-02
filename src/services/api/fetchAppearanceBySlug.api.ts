@@ -3,7 +3,7 @@ import {
   appearance,
   failure,
   IRawAppearance,
-  success
+  success,
 } from "../../models/root.models";
 import { TRequest } from "../configureHttpClient";
 

@@ -6,33 +6,36 @@ import * as selectors from "../selectors/root.selectors";
 import { IPorts } from "../services/configurePorts";
 
 export const fetchGalleriesSaga = (ports: IPorts) =>
-  function*(): SagaIterator {
-    yield takeLatest(actions.fetchGalleries.started, function*(): SagaIterator {
-      const response = yield call(ports.api.fetchGalleries);
+  function* (): SagaIterator {
+    yield takeLatest(
+      actions.fetchGalleries.started,
+      function* (): SagaIterator {
+        const response = yield call(ports.api.fetchGalleries);
 
-      if (response.ok) {
-        yield put(
-          actions.fetchGalleries.done({
-            params: {},
-            result: response.data
-          })
-        );
-      } else {
-        yield put(
-          actions.fetchGalleries.failed({
-            error: response.message,
-            params: {}
-          })
-        );
+        if (response.ok) {
+          yield put(
+            actions.fetchGalleries.done({
+              params: {},
+              result: response.data,
+            })
+          );
+        } else {
+          yield put(
+            actions.fetchGalleries.failed({
+              error: response.message,
+              params: {},
+            })
+          );
+        }
       }
-    });
+    );
   };
 
 export const fetchMoreGalleriesSaga = (ports: IPorts) =>
-  function*(): SagaIterator {
+  function* (): SagaIterator {
     yield takeLatest(
       actions.fetchMoreGalleries.started,
-      function*(): SagaIterator {
+      function* (): SagaIterator {
         const lastKey: string = yield select(selectors.getGalleriesLastKey);
 
         const response = yield call(ports.api.fetchGalleries, lastKey);
@@ -41,7 +44,7 @@ export const fetchMoreGalleriesSaga = (ports: IPorts) =>
           yield put(
             actions.fetchMoreGalleries.done({
               params: {},
-              result: response.data
+              result: response.data,
             })
           );
 
@@ -49,14 +52,14 @@ export const fetchMoreGalleriesSaga = (ports: IPorts) =>
           yield put(
             actions.trackEvent({
               event: "galleries.fetchedMore",
-              itemCount
+              itemCount,
             })
           );
         } else {
           yield put(
             actions.fetchMoreGalleries.failed({
               error: response.message,
-              params: {}
+              params: {},
             })
           );
         }
@@ -65,9 +68,9 @@ export const fetchMoreGalleriesSaga = (ports: IPorts) =>
   };
 
 export const fetchGalleryBySlugSaga = (ports: IPorts) =>
-  function*(): SagaIterator {
-    yield takeLatest(actions.fetchGalleryBySlug.started, function*({
-      payload
+  function* (): SagaIterator {
+    yield takeLatest(actions.fetchGalleryBySlug.started, function* ({
+      payload,
     }): SagaIterator {
       const response = yield call(ports.api.fetchGalleryBySlug, payload);
 
@@ -75,14 +78,14 @@ export const fetchGalleryBySlugSaga = (ports: IPorts) =>
         yield put(
           actions.fetchGalleryBySlug.done({
             params: payload,
-            result: response.data
+            result: response.data,
           })
         );
       } else {
         yield put(
           actions.fetchGalleryBySlug.failed({
             error: response.message,
-            params: payload
+            params: payload,
           })
         );
       }

@@ -20,7 +20,7 @@ export const initialState: IState = {
   hasError: false,
   isLoading: false,
   items: {},
-  lastEvaluatedKey: undefined
+  lastEvaluatedKey: undefined,
 };
 
 export default reducerWithInitialState(initialState)
@@ -28,20 +28,20 @@ export default reducerWithInitialState(initialState)
     [
       actions.fetchAppearances.failed,
       actions.fetchMoreAppearances.failed,
-      actions.fetchAppearanceBySlug.failed
+      actions.fetchAppearanceBySlug.failed,
     ],
-    state => ({
+    (state) => ({
       ...state,
       hasError: true,
-      isLoading: false
+      isLoading: false,
     })
   )
 
-  .case(actions.fetchAppearances.started, state => ({
+  .case(actions.fetchAppearances.started, (state) => ({
     ...state,
     hasError: false,
     isLoading: true,
-    items: initialState.items
+    items: initialState.items,
   }))
 
   .case(actions.fetchAppearances.done, (state, { result }) => ({
@@ -49,18 +49,18 @@ export default reducerWithInitialState(initialState)
     hasAllItems: !result.lastEvaluatedKey,
     isLoading: false,
     items: result.items,
-    lastEvaluatedKey: result.lastEvaluatedKey
+    lastEvaluatedKey: result.lastEvaluatedKey,
   }))
 
   .cases(
     [
       actions.fetchMoreAppearances.started,
-      actions.fetchAppearanceBySlug.started
+      actions.fetchAppearanceBySlug.started,
     ],
-    state => ({
+    (state) => ({
       ...state,
       hasError: false,
-      isLoading: true
+      isLoading: true,
     })
   )
 
@@ -70,15 +70,15 @@ export default reducerWithInitialState(initialState)
     isLoading: false,
     items: {
       ...state.items,
-      ...result.items
+      ...result.items,
     },
-    lastEvaluatedKey: result.lastEvaluatedKey
+    lastEvaluatedKey: result.lastEvaluatedKey,
   }))
 
   .case(actions.setCurrentAppearanceSlug, (state, payload) => ({
     ...state,
     currentLocation: undefined,
-    currentSlug: payload
+    currentSlug: payload,
   }))
 
   .case(actions.fetchAppearanceBySlug.done, (state, { result }) => ({
@@ -86,16 +86,16 @@ export default reducerWithInitialState(initialState)
     isLoading: false,
     items: {
       ...state.items,
-      [result.slug]: result
-    }
+      [result.slug]: result,
+    },
   }))
 
-  .case(actions.geocodeCurrentAppearanceAddress.started, state => ({
+  .case(actions.geocodeCurrentAppearanceAddress.started, (state) => ({
     ...state,
-    currentLocation: undefined
+    currentLocation: undefined,
   }))
 
   .case(actions.geocodeCurrentAppearanceAddress.done, (state, { result }) => ({
     ...state,
-    currentLocation: result
+    currentLocation: result,
   }));

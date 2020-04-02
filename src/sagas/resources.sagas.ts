@@ -6,30 +6,36 @@ import * as selectors from "../selectors/root.selectors";
 import { IPorts } from "../services/configurePorts";
 
 export const fetchResourcesSaga = (ports: IPorts) =>
-  function*(): SagaIterator {
-    yield takeLatest(actions.fetchResources.started, function*(): SagaIterator {
-      const response = yield call(ports.api.fetchResources);
+  function* (): SagaIterator {
+    yield takeLatest(
+      actions.fetchResources.started,
+      function* (): SagaIterator {
+        const response = yield call(ports.api.fetchResources);
 
-      if (response.ok) {
-        yield put(
-          actions.fetchResources.done({
-            params: {},
-            result: response.data
-          })
-        );
-      } else {
-        yield put(
-          actions.fetchResources.failed({ error: response.message, params: {} })
-        );
+        if (response.ok) {
+          yield put(
+            actions.fetchResources.done({
+              params: {},
+              result: response.data,
+            })
+          );
+        } else {
+          yield put(
+            actions.fetchResources.failed({
+              error: response.message,
+              params: {},
+            })
+          );
+        }
       }
-    });
+    );
   };
 
 export const fetchMoreResourcesSaga = (ports: IPorts) =>
-  function*(): SagaIterator {
+  function* (): SagaIterator {
     yield takeLatest(
       actions.fetchMoreResources.started,
-      function*(): SagaIterator {
+      function* (): SagaIterator {
         const lastEvaluatedKey: string = yield select(
           selectors.getResourcesLastEvaluatedKeyAsString
         );
@@ -43,7 +49,7 @@ export const fetchMoreResourcesSaga = (ports: IPorts) =>
           yield put(
             actions.fetchMoreResources.done({
               params: {},
-              result: response.data
+              result: response.data,
             })
           );
 
@@ -51,14 +57,14 @@ export const fetchMoreResourcesSaga = (ports: IPorts) =>
           yield put(
             actions.trackEvent({
               event: "resources.fetchedMore",
-              itemCount
+              itemCount,
             })
           );
         } else {
           yield put(
             actions.fetchMoreResources.failed({
               error: response.message,
-              params: {}
+              params: {},
             })
           );
         }

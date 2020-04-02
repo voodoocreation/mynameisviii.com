@@ -36,7 +36,7 @@ interface IState {
 
 class StemsRoute extends React.Component<IProps, IState> {
   public readonly state: IState = {
-    loadedListings: {}
+    loadedListings: {},
   };
 
   public static getInitialProps = async (context: IPageContext) => {
@@ -86,7 +86,7 @@ class StemsRoute extends React.Component<IProps, IState> {
 
         {stemsCount < 1 ? null : (
           <section className="StemsRoute--listings">
-            {stems.map(stem => (
+            {stems.map((stem) => (
               <StemListing
                 {...stem}
                 key={stem.slug}
@@ -114,11 +114,11 @@ class StemsRoute extends React.Component<IProps, IState> {
   }
 
   private onListingLoad = (stem: IStem) => () => {
-    this.setState(state => ({
+    this.setState((state) => ({
       loadedListings: {
         ...state.loadedListings,
-        [stem.slug]: true
-      }
+        [stem.slug]: true,
+      },
     }));
   };
 
@@ -132,12 +132,12 @@ const mapState = (state: TStoreState) => ({
   hasError: selectors.hasStemsError(state),
   isLoading: selectors.getStemsIsLoading(state),
   stems: selectors.getStemsAsArray(state),
-  stemsCount: selectors.getStemsCount(state)
+  stemsCount: selectors.getStemsCount(state),
 });
 
 const mapActions = {
   fetchMoreStems: actions.fetchMoreStems.started,
-  fetchStems: actions.fetchStems.started
+  fetchStems: actions.fetchStems.started,
 };
 
 export default injectIntlIntoPage(connect(mapState, mapActions)(StemsRoute));

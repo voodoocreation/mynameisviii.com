@@ -9,19 +9,19 @@ const { body } = document;
 const setScreenSize = (width: number, height: number, isInner = true) => {
   Object.defineProperties(window, {
     innerHeight: { value: isInner ? height : undefined, writable: true },
-    innerWidth: { value: isInner ? width : undefined, writable: true }
+    innerWidth: { value: isInner ? width : undefined, writable: true },
   });
 
   Object.defineProperties(document.documentElement, {
     clientHeight: { value: !isInner ? height : undefined, writable: true },
-    clientWidth: { value: !isInner ? width : undefined, writable: true }
+    clientWidth: { value: !isInner ? width : undefined, writable: true },
   });
 };
 
 const setIsServer = (value = true) => {
   Object.defineProperty(window, "isServer", {
     value,
-    writable: true
+    writable: true,
   });
 };
 
@@ -36,7 +36,7 @@ describe("[helpers] DOM", () => {
         screenWidth - 200
       ),
       topLeft: createMockElement(200, 200),
-      topRight: createMockElement(200, 200, 0, screenWidth - 200)
+      topRight: createMockElement(200, 200, 0, screenWidth - 200),
     };
     const outside: any = {
       bottomLeft: createMockElement(200, 200, screenHeight - 199),
@@ -47,7 +47,7 @@ describe("[helpers] DOM", () => {
         screenWidth - 199
       ),
       topLeft: createMockElement(200, 200, -1, -1),
-      topRight: createMockElement(200, 200, -1, screenWidth - 199)
+      topRight: createMockElement(200, 200, -1, screenWidth - 199),
     };
 
     it("returns false when an element isn't provided", () => {
@@ -105,7 +105,7 @@ describe("[helpers] DOM", () => {
         screenWidth + 199
       ),
       topLeft: createMockElement(200, 200, -399, -399),
-      topRight: createMockElement(200, 200, -399, screenWidth + 199)
+      topRight: createMockElement(200, 200, -399, screenWidth + 199),
     };
     const outside: any = {
       bottomLeft: createMockElement(200, 200, screenHeight + 200, -400),
@@ -116,7 +116,7 @@ describe("[helpers] DOM", () => {
         screenWidth + 200
       ),
       topLeft: createMockElement(200, 200, -400, -400),
-      topRight: createMockElement(200, 200, -400, screenWidth + 200)
+      topRight: createMockElement(200, 200, -400, screenWidth + 200),
     };
 
     it("returns false when an element isn't provided", () => {

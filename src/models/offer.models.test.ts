@@ -7,7 +7,7 @@ describe("[models] Offer", () => {
       availability: AVAILABILITY.LIMITED,
       name: "",
       price: 0,
-      priceCurrency: "NZD"
+      priceCurrency: "NZD",
     });
   });
 
@@ -18,7 +18,7 @@ describe("[models] Offer", () => {
       price: 999.99,
       priceCurrency: "USD",
       url: "URL",
-      validFrom: "2019-01-01T00:00:00"
+      validFrom: "2019-01-01T00:00:00",
     };
 
     expect(offer(data)).toEqual({
@@ -27,7 +27,7 @@ describe("[models] Offer", () => {
       price: data.price,
       priceCurrency: data.priceCurrency,
       url: data.url,
-      validFrom: data.validFrom
+      validFrom: data.validFrom,
     });
   });
 });

@@ -14,7 +14,7 @@ const NavItem: React.FC<IProps> = ({ children, isSelected, ...linkProps }) => (
 );
 
 NavItem.defaultProps = {
-  isSelected: false
+  isSelected: false,
 };
 
 export default NavItem;

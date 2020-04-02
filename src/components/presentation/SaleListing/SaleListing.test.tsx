@@ -6,7 +6,7 @@ const component = new WrapperWithIntl(SaleListing).withDefaultProps(
   offer({
     name: "Sale",
     price: 99.99,
-    priceCurrency: "USD"
+    priceCurrency: "USD",
   })
 );
 
@@ -26,7 +26,7 @@ describe("[presentation] <SaleListing />", () => {
   describe("when url is defined", () => {
     const wrapper = component
       .withProps({
-        url: "https://ticket.com/id"
+        url: "https://ticket.com/id",
       })
       .render();
 

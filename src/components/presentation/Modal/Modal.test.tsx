@@ -10,7 +10,7 @@ const component = new Wrapper(Modal)
     hasFocusRestriction: true,
     isOpen: true,
     onClose: jest.fn(),
-    usePortal: false
+    usePortal: false,
   })
   .withDefaultChildren(
     <div className="Modal--testContent">
@@ -146,7 +146,7 @@ describe("[presentation] <Modal />", () => {
     it("mounts the component", () => {
       wrapper = component
         .withProps({
-          onKeyDown: jest.fn()
+          onKeyDown: jest.fn(),
         })
         .mount();
     });
@@ -239,7 +239,7 @@ describe("[presentation] <Modal />", () => {
       it("mounts the component", () => {
         wrapper = component
           .withProps({
-            hasFocusRestriction: true
+            hasFocusRestriction: true,
           })
           .mount();
       });
@@ -317,7 +317,7 @@ describe("[presentation] <Modal />", () => {
       const bodyEvent = new FocusEvent("focus");
       Object.defineProperties(bodyEvent, {
         stopPropagation: { value: stopPropagationMock },
-        target: { value: document.body }
+        target: { value: document.body },
       });
 
       const inputNode = document.createElement("input");
@@ -326,7 +326,7 @@ describe("[presentation] <Modal />", () => {
       const outsideInputEvent = new FocusEvent("focus");
       Object.defineProperties(outsideInputEvent, {
         stopPropagation: { value: stopPropagationMock },
-        target: { value: inputNode }
+        target: { value: inputNode },
       });
 
       describe("when usePortal is false", () => {
@@ -365,7 +365,7 @@ describe("[presentation] <Modal />", () => {
           const event = new FocusEvent("focus");
           Object.defineProperties(event, {
             stopPropagation: { value: stopPropagationMock },
-            target: { value: modalInput }
+            target: { value: modalInput },
           });
           window.dispatchEvent(event);
         });
@@ -393,7 +393,7 @@ describe("[presentation] <Modal />", () => {
         it("mounts the component", () => {
           wrapper = component
             .withProps({
-              usePortal: true
+              usePortal: true,
             })
             .mount();
         });
@@ -419,7 +419,7 @@ describe("[presentation] <Modal />", () => {
           const event = new FocusEvent("focus");
           Object.defineProperties(event, {
             stopPropagation: { value: stopPropagationMock },
-            target: { value: modalInput }
+            target: { value: modalInput },
           });
           window.dispatchEvent(event);
         });

@@ -6,14 +6,14 @@ import {
   dynamoResponse,
   failure,
   newsArticle,
-  success
+  success,
 } from "../../models/root.models";
 import { fetchNewsArticles } from "./fetchNewsArticles.api";
 
 describe("[api] fetchNewsArticles", () => {
   const params = {
     exclusiveStartKey: "test",
-    limit: 1
+    limit: 1,
   };
 
   describe("when the request succeeds", () => {
@@ -22,8 +22,8 @@ describe("[api] fetchNewsArticles", () => {
       lastEvaluatedKey: {
         createdAt: "2019-01-01T00:00:00",
         isActive: BOOLEAN.TRUE,
-        slug: "test-0"
-      }
+        slug: "test-0",
+      },
     };
     const request = mockWithResolvedPromise(data);
     const method = fetchNewsArticles(request);
@@ -33,7 +33,7 @@ describe("[api] fetchNewsArticles", () => {
         success(
           dynamoResponse({
             items: data.items.map(newsArticle),
-            lastEvaluatedKey: data.lastEvaluatedKey
+            lastEvaluatedKey: data.lastEvaluatedKey,
           })
         )
       );
@@ -41,7 +41,7 @@ describe("[api] fetchNewsArticles", () => {
 
     it("makes the request correctly", () => {
       expect(request).toHaveBeenCalledWith(API.FETCH_NEWS_ARTICLES, {
-        params
+        params,
       });
     });
   });
@@ -58,7 +58,7 @@ describe("[api] fetchNewsArticles", () => {
 
     it("makes the request correctly", () => {
       expect(request).toHaveBeenCalledWith(API.FETCH_NEWS_ARTICLES, {
-        params
+        params,
       });
     });
   });

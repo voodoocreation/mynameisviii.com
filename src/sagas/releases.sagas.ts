@@ -6,15 +6,15 @@ import * as selectors from "../selectors/root.selectors";
 import { IPorts } from "../services/configurePorts";
 
 export const fetchReleasesSaga = (ports: IPorts) =>
-  function*(): SagaIterator {
-    yield takeLatest(actions.fetchReleases.started, function*(): SagaIterator {
+  function* (): SagaIterator {
+    yield takeLatest(actions.fetchReleases.started, function* (): SagaIterator {
       const response = yield call(ports.api.fetchReleases);
 
       if (response.ok) {
         yield put(
           actions.fetchReleases.done({
             params: {},
-            result: response.data
+            result: response.data,
           })
         );
       } else {
@@ -26,10 +26,10 @@ export const fetchReleasesSaga = (ports: IPorts) =>
   };
 
 export const fetchMoreReleasesSaga = (ports: IPorts) =>
-  function*(): SagaIterator {
+  function* (): SagaIterator {
     yield takeLatest(
       actions.fetchMoreReleases.started,
-      function*(): SagaIterator {
+      function* (): SagaIterator {
         const lastEvaluatedKey = yield select(
           selectors.getReleasesLastEvaluatedKeyAsString
         );
@@ -43,7 +43,7 @@ export const fetchMoreReleasesSaga = (ports: IPorts) =>
           yield put(
             actions.fetchMoreReleases.done({
               params: {},
-              result: response.data
+              result: response.data,
             })
           );
 
@@ -51,14 +51,14 @@ export const fetchMoreReleasesSaga = (ports: IPorts) =>
           yield put(
             actions.trackEvent({
               event: "releases.fetchedMore",
-              itemCount
+              itemCount,
             })
           );
         } else {
           yield put(
             actions.fetchMoreReleases.failed({
               error: response.message,
-              params: {}
+              params: {},
             })
           );
         }
@@ -67,9 +67,9 @@ export const fetchMoreReleasesSaga = (ports: IPorts) =>
   };
 
 export const fetchReleaseBySlugSaga = (ports: IPorts) =>
-  function*(): SagaIterator {
-    yield takeLatest(actions.fetchReleaseBySlug.started, function*({
-      payload
+  function* (): SagaIterator {
+    yield takeLatest(actions.fetchReleaseBySlug.started, function* ({
+      payload,
     }): SagaIterator {
       const response = yield call(ports.api.fetchReleaseBySlug, payload);
 
@@ -77,14 +77,14 @@ export const fetchReleaseBySlugSaga = (ports: IPorts) =>
         yield put(
           actions.fetchReleaseBySlug.done({
             params: payload,
-            result: response.data
+            result: response.data,
           })
         );
       } else {
         yield put(
           actions.fetchReleaseBySlug.failed({
             error: response.message,
-            params: payload
+            params: payload,
           })
         );
       }

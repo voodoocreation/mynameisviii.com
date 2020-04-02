@@ -16,14 +16,14 @@ interface IState {
 
 class Carousel extends React.Component<IProps, IState> {
   public static defaultProps = {
-    currentIndex: 0
+    currentIndex: 0,
   };
 
   constructor(props: IProps) {
     super(props);
 
     this.state = {
-      currentIndex: props.currentIndex || 0
+      currentIndex: props.currentIndex || 0,
     };
   }
 
@@ -34,7 +34,7 @@ class Carousel extends React.Component<IProps, IState> {
     ) {
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
-        currentIndex: this.props.currentIndex
+        currentIndex: this.props.currentIndex,
       });
     }
   }
@@ -47,7 +47,7 @@ class Carousel extends React.Component<IProps, IState> {
         <div
           className="Carousel--slides"
           style={{
-            transform: `translate3d(-${this.state.currentIndex * 100}%, 0, 0)`
+            transform: `translate3d(-${this.state.currentIndex * 100}%, 0, 0)`,
           }}
         >
           {children}
@@ -59,7 +59,7 @@ class Carousel extends React.Component<IProps, IState> {
 
   private onPaginationClick = (index: number) => () => {
     this.setState({
-      currentIndex: index
+      currentIndex: index,
     });
 
     this.props.onSlideChange(index);
@@ -77,7 +77,7 @@ class Carousel extends React.Component<IProps, IState> {
         {React.Children.map(children, (_, index) => (
           <Button
             className={cn("Carousel--pagination--page", {
-              isSelected: index === this.state.currentIndex
+              isSelected: index === this.state.currentIndex,
             })}
             isStyled={false}
             onClick={this.onPaginationClick(index)}

@@ -17,5 +17,5 @@ module.exports = {
   releases,
   release: releases.Items[0] || {},
   resources,
-  stems
+  stems,
 };

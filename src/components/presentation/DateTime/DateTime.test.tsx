@@ -5,10 +5,7 @@ import DateTime from "./DateTime";
 
 const component = new WrapperWithIntl(DateTime).withDefaultProps({
   className: "TestDateTime",
-  value: dayjs()
-    .add(9, "month")
-    .add(3, "hour")
-    .toDate()
+  value: dayjs().add(9, "month").add(3, "hour").toDate(),
 });
 
 describe("[presentation] <DateTime />", () => {
@@ -16,7 +13,7 @@ describe("[presentation] <DateTime />", () => {
     const wrapper = component
       .withProps({
         isDateOnly: true,
-        isRelative: true
+        isRelative: true,
       })
       .render();
 
@@ -41,7 +38,7 @@ describe("[presentation] <DateTime />", () => {
     const wrapper = component
       .withProps({
         isDateOnly: false,
-        isRelative: false
+        isRelative: false,
       })
       .render();
 
@@ -66,7 +63,7 @@ describe("[presentation] <DateTime />", () => {
     const wrapper = component
       .withProps({
         isDateOnly: true,
-        isRelative: false
+        isRelative: false,
       })
       .render();
 
@@ -94,8 +91,8 @@ describe("[presentation] <DateTime />", () => {
         options: {
           hour: "numeric",
           hour12: true,
-          minute: "numeric"
-        }
+          minute: "numeric",
+        },
       })
       .render();
 

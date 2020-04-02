@@ -18,7 +18,7 @@ interface IProps extends IGallery {
 
 export default class GalleryListing extends React.Component<IProps, IState> {
   public readonly state = {
-    isRendered: false
+    isRendered: false,
   };
 
   public componentDidMount() {
@@ -53,7 +53,7 @@ export default class GalleryListing extends React.Component<IProps, IState> {
 
   private onLoad = () => {
     this.setState({
-      isRendered: true
+      isRendered: true,
     });
 
     if (this.props.onLoad) {

@@ -5,7 +5,7 @@ import {
   IRawDynamoResponse,
   IRawNewsArticle,
   newsArticle,
-  success
+  success,
 } from "../../models/root.models";
 import { TRequest } from "../configureHttpClient";
 
@@ -18,13 +18,13 @@ export const fetchNewsArticles = (request: TRequest) => async (
       IRawNewsArticle,
       "createdAt"
     > = await request(API.FETCH_NEWS_ARTICLES, {
-      params: { exclusiveStartKey, limit }
+      params: { exclusiveStartKey, limit },
     });
 
     return success(
       dynamoResponse({
         ...response,
-        items: response.items.map(newsArticle)
+        items: response.items.map(newsArticle),
       })
     );
   } catch (error) {

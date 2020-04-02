@@ -9,7 +9,7 @@ describe("[models] Gallery", () => {
         imageUrl: "",
         modifiedAt: dayjs().toISOString(),
         slug: "",
-        title: ""
+        title: "",
       });
     });
 
@@ -20,7 +20,7 @@ describe("[models] Gallery", () => {
         images: [{ imageUrl: "Image URL" }],
         modifiedAt: "2019-01-01T00:00:00",
         slug: "gallery-1",
-        title: "Title"
+        title: "Title",
       };
 
       expect(gallery(data)).toEqual({
@@ -29,7 +29,7 @@ describe("[models] Gallery", () => {
         images: data.images.map(galleryImage),
         modifiedAt: data.modifiedAt,
         slug: data.slug,
-        title: data.title
+        title: data.title,
       });
     });
   });
@@ -38,19 +38,19 @@ describe("[models] Gallery", () => {
     it("creates a valid object with defaults", () => {
       expect(galleryImage()).toEqual({
         imageUrl: "",
-        modifiedAt: dayjs().toISOString()
+        modifiedAt: dayjs().toISOString(),
       });
     });
 
     it("creates a valid object when all properties are defined", () => {
       const data = {
         imageUrl: "Image URL",
-        modifiedAt: "2019-01-01T00:00:00"
+        modifiedAt: "2019-01-01T00:00:00",
       };
 
       expect(galleryImage(data)).toEqual({
         imageUrl: data.imageUrl,
-        modifiedAt: data.modifiedAt
+        modifiedAt: data.modifiedAt,
       });
     });
   });

@@ -7,16 +7,16 @@ import ReleaseRoute from "./ReleaseRoute";
 const item = release({
   images: [{ imageUrl: "Image URL 1" }, { imageUrl: "Image URL 2" }],
   slug: "test-1",
-  tracklist: [[{ title: "Disc 1, Track 1" }], [{ title: "Disc 2, Track 1" }]]
+  tracklist: [[{ title: "Disc 1, Track 1" }], [{ title: "Disc 2, Track 1" }]],
 });
 
 const defaultState = {
   releases: {
     currentSlug: item.slug,
     items: {
-      [item.slug]: item
-    }
-  }
+      [item.slug]: item,
+    },
+  },
 };
 
 const component = new WrapperWithRedux(ReleaseRoute);
@@ -25,7 +25,7 @@ describe("[routes] <ReleaseRoute />", () => {
   describe("getInitialProps", () => {
     const context = new MockPageContext()
       .withDefaultQuery({
-        slug: item.slug
+        slug: item.slug,
       })
       .withDefaultReduxState(defaultState);
 
@@ -83,7 +83,7 @@ describe("[routes] <ReleaseRoute />", () => {
     const wrapper = component
       .withReduxState({
         ...defaultState,
-        releases: { isLoading: true }
+        releases: { isLoading: true },
       })
       .mount();
 
@@ -96,8 +96,8 @@ describe("[routes] <ReleaseRoute />", () => {
         news: {
           currentSlug: undefined,
           hasError: true,
-          items: {}
-        }
+          items: {},
+        },
       })
       .mount();
 
@@ -107,10 +107,7 @@ describe("[routes] <ReleaseRoute />", () => {
   it("tracks carousel interactions correctly", () => {
     const wrapper = component.withReduxState(defaultState).mount();
 
-    wrapper
-      .find(".Carousel--pagination--page")
-      .last()
-      .simulate("click");
+    wrapper.find(".Carousel--pagination--page").last().simulate("click");
 
     const matchingActions = component.reduxHistory.filter(
       actions.trackEvent.match
@@ -119,7 +116,7 @@ describe("[routes] <ReleaseRoute />", () => {
     expect(matchingActions).toHaveLength(1);
     expect(matchingActions[0].payload).toEqual({
       event: "release.carousel.slideChange",
-      index: 1
+      index: 1,
     });
   });
 });

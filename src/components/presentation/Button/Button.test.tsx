@@ -3,7 +3,7 @@ import Button from "./Button";
 
 const component = new WrapperWithIntl(Button)
   .withDefaultProps({
-    onClick: jest.fn()
+    onClick: jest.fn(),
   })
   .withDefaultChildren("Button text");
 
@@ -31,7 +31,7 @@ describe("[presentation] <Button />", () => {
   describe("when isLoading is true", () => {
     const wrapper = component
       .withProps({
-        isLoading: true
+        isLoading: true,
       })
       .mount();
 

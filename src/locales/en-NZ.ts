@@ -147,5 +147,5 @@ export default {
   X_TRACKS: "{trackCount} {trackCount, plural, one {track} other {tracks}}",
   YOU_ARE_BACK_ONLINE: "You are back online!",
   YOU_ARE_OFFLINE:
-    "You are offline. Some data and external links will be unavailable until you reconnect."
+    "You are offline. Some data and external links will be unavailable until you reconnect.",
 };

@@ -10,9 +10,9 @@ const defaultState = {
   news: {
     currentSlug: item.slug,
     items: {
-      [item.slug]: item
-    }
-  }
+      [item.slug]: item,
+    },
+  },
 };
 
 const component = new WrapperWithRedux(NewsArticleRoute);
@@ -21,7 +21,7 @@ describe("[routes] <NewsArticleRoute />", () => {
   describe("getInitialProps", () => {
     const context = new MockPageContext()
       .withDefaultQuery({
-        slug: item.slug
+        slug: item.slug,
       })
       .withDefaultReduxState(defaultState);
 
@@ -83,7 +83,7 @@ describe("[routes] <NewsArticleRoute />", () => {
     const wrapper = component
       .withReduxState({
         ...defaultState,
-        news: { isLoading: true }
+        news: { isLoading: true },
       })
       .mount();
 
@@ -96,8 +96,8 @@ describe("[routes] <NewsArticleRoute />", () => {
         news: {
           currentSlug: undefined,
           hasError: true,
-          items: {}
-        }
+          items: {},
+        },
       })
       .mount();
 

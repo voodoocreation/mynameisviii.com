@@ -26,11 +26,11 @@ export default class Modal extends React.Component<IProps, IState> {
   public static defaultProps = {
     hasFocusRestriction: true,
     hasOverlayClick: true,
-    usePortal: true
+    usePortal: true,
   };
 
   public readonly state = {
-    isVisible: false
+    isVisible: false,
   };
 
   private modalRef = React.createRef<HTMLDivElement>();
@@ -143,7 +143,7 @@ export default class Modal extends React.Component<IProps, IState> {
     }
 
     this.setState({
-      isVisible: true
+      isVisible: true,
     });
     lockScroll();
     modalRef.focus();
@@ -158,7 +158,7 @@ export default class Modal extends React.Component<IProps, IState> {
 
     unlockScroll();
     this.setState({
-      isVisible: false
+      isVisible: false,
     });
   };
 }

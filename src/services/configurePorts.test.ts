@@ -21,10 +21,10 @@ describe("[services] Ports", () => {
   describe("when creating the mock ports object, with all ports defined", () => {
     const ports = configureTestPorts({
       api: {
-        fetchAppearances: mockWithFailure("Server error")
+        fetchAppearances: mockWithFailure("Server error"),
       },
       dataLayer: [],
-      features: []
+      features: [],
     });
 
     it("has all ports defined", () => {

@@ -12,35 +12,37 @@ export const getReleases = defaultMemoize(
 
 export const getReleasesCount = createSelector(
   getReleases,
-  releases => Object.keys(releases).length
+  (releases) => Object.keys(releases).length
 );
 
-export const getReleasesAsArray = createSelector(getReleases, releases =>
+export const getReleasesAsArray = createSelector(getReleases, (releases) =>
   Object.values(releases).sort(
     (a, b) =>
       new Date(a.releasedOn).getTime() - new Date(b.releasedOn).getTime()
   )
 );
 
-export const getReleasesByType = createSelector(getReleasesAsArray, releases =>
-  releases.reduce((acc: Record<TYPE, IRelease[]>, curr) => {
-    if (!acc[curr.type]) {
-      acc[curr.type] = [];
-    }
+export const getReleasesByType = createSelector(
+  getReleasesAsArray,
+  (releases) =>
+    releases.reduce((acc: Record<TYPE, IRelease[]>, curr) => {
+      if (!acc[curr.type]) {
+        acc[curr.type] = [];
+      }
 
-    acc[curr.type].push(curr);
+      acc[curr.type].push(curr);
 
-    return acc;
-  }, {} as any)
+      return acc;
+    }, {} as any)
 );
 
 export const getSortedReleasesByType = createSelector(
   getReleasesByType,
-  releases => ({
+  (releases) => ({
     [TYPE.ALBUM]: releases[TYPE.ALBUM],
     [TYPE.EP]: releases[TYPE.EP],
     [TYPE.SINGLE]: releases[TYPE.SINGLE],
-    [TYPE.REMIX]: releases[TYPE.REMIX]
+    [TYPE.REMIX]: releases[TYPE.REMIX],
   })
 );
 
@@ -58,7 +60,7 @@ export const getReleasesLastEvaluatedKey = (state: TStoreState) =>
 
 export const getReleasesLastEvaluatedKeyAsString = createSelector(
   getReleasesLastEvaluatedKey,
-  lastEvaluatedKey =>
+  (lastEvaluatedKey) =>
     !lastEvaluatedKey
       ? undefined
       : btoa(
@@ -66,7 +68,7 @@ export const getReleasesLastEvaluatedKeyAsString = createSelector(
             JSON.stringify({
               IsActive: lastEvaluatedKey.isActive,
               ReleasedOn: lastEvaluatedKey.releasedOn,
-              Slug: lastEvaluatedKey.slug
+              Slug: lastEvaluatedKey.slug,
             })
           )
         )

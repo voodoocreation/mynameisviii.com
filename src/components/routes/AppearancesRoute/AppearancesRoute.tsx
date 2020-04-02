@@ -37,7 +37,7 @@ interface IState {
 
 class AppearancesRoute extends React.Component<IProps, IState> {
   public readonly state: IState = {
-    loadedListings: {}
+    loadedListings: {},
   };
 
   public static getInitialProps = async (context: IPageContext) => {
@@ -57,7 +57,7 @@ class AppearancesRoute extends React.Component<IProps, IState> {
       hasError,
       hasAllAppearances,
       pastAppearances,
-      upcomingAppearances
+      upcomingAppearances,
     } = this.props;
     const { formatMessage } = this.props.intl;
 
@@ -101,7 +101,7 @@ class AppearancesRoute extends React.Component<IProps, IState> {
             </h2>
 
             <div className="AppearancesRoute--listings--items">
-              {upcomingAppearances.map(appearance => (
+              {upcomingAppearances.map((appearance) => (
                 <AppearanceListing
                   key={appearance.slug}
                   onLoad={this.onListingLoad(appearance)}
@@ -119,7 +119,7 @@ class AppearancesRoute extends React.Component<IProps, IState> {
             </h2>
 
             <div className="AppearancesRoute--listings--items">
-              {pastAppearances.map(appearance => (
+              {pastAppearances.map((appearance) => (
                 <AppearanceListing key={appearance.slug} {...appearance} />
               ))}
             </div>
@@ -144,11 +144,11 @@ class AppearancesRoute extends React.Component<IProps, IState> {
   }
 
   private onListingLoad = (appearance: IAppearance) => () => {
-    this.setState(state => ({
+    this.setState((state) => ({
       loadedListings: {
         ...state.loadedListings,
-        [appearance.slug]: true
-      }
+        [appearance.slug]: true,
+      },
     }));
   };
 
@@ -163,12 +163,12 @@ const mapState = (state: TStoreState) => ({
   hasError: selectors.hasAppearancesError(state),
   isLoading: selectors.getAppearancesIsLoading(state),
   pastAppearances: selectors.getPastAppearances(state),
-  upcomingAppearances: selectors.getUpcomingAppearances(state)
+  upcomingAppearances: selectors.getUpcomingAppearances(state),
 });
 
 const mapActions = {
   fetchAppearances: actions.fetchAppearances.started,
-  fetchMoreAppearances: actions.fetchMoreAppearances.started
+  fetchMoreAppearances: actions.fetchMoreAppearances.started,
 };
 
 export default injectIntlIntoPage(

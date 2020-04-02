@@ -9,16 +9,16 @@ const component = new WrapperWithIntl(ActListing).withDefaultProps(
     imageUrl: "Image URL",
     location: {
       address: "City, Country",
-      type: TYPE.CITY
+      type: TYPE.CITY,
     },
-    name: "Name"
+    name: "Name",
   })
 );
 
 describe("[presentation] <ActListing />", () => {
   const wrapper = component
     .withProps({
-      onLoad: jest.fn()
+      onLoad: jest.fn(),
     })
     .mount();
 

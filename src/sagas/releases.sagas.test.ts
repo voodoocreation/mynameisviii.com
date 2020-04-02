@@ -6,7 +6,7 @@ import SagaTester from "../utilities/SagaTester";
 describe("[sagas] Releases", () => {
   const item = release({ slug: "item-1" });
   const data = dynamoResponse({
-    items: [item]
+    items: [item],
   });
 
   describe("fetchReleasesSaga", () => {
@@ -15,8 +15,8 @@ describe("[sagas] Releases", () => {
         {},
         {
           api: {
-            fetchReleases: mockWithSuccess(data)
-          }
+            fetchReleases: mockWithSuccess(data),
+          },
         }
       );
 
@@ -43,8 +43,8 @@ describe("[sagas] Releases", () => {
         {},
         {
           api: {
-            fetchReleases: mockWithFailure("Bad request")
-          }
+            fetchReleases: mockWithFailure("Bad request"),
+          },
         }
       );
 
@@ -75,20 +75,20 @@ describe("[sagas] Releases", () => {
             items: {
               "existing-item": {
                 ...item,
-                slug: "existing-item"
-              }
+                slug: "existing-item",
+              },
             },
             lastEvaluatedKey: {
               isActive: "y",
               releasedOn: "2019-01-01",
-              slug: "existing-item"
-            }
-          }
+              slug: "existing-item",
+            },
+          },
         },
         {
           api: {
-            fetchReleases: mockWithSuccess(data)
-          }
+            fetchReleases: mockWithSuccess(data),
+          },
         }
       );
 
@@ -115,7 +115,7 @@ describe("[sagas] Releases", () => {
         expect(matchingActions).toHaveLength(1);
         expect(matchingActions[0].payload).toEqual({
           event: "releases.fetchedMore",
-          itemCount: 2
+          itemCount: 2,
         });
       });
     });
@@ -125,8 +125,8 @@ describe("[sagas] Releases", () => {
         {},
         {
           api: {
-            fetchReleases: mockWithFailure("Bad request")
-          }
+            fetchReleases: mockWithFailure("Bad request"),
+          },
         }
       );
 
@@ -155,8 +155,8 @@ describe("[sagas] Releases", () => {
         {},
         {
           api: {
-            fetchReleaseBySlug: mockWithSuccess(item)
-          }
+            fetchReleaseBySlug: mockWithSuccess(item),
+          },
         }
       );
 
@@ -183,8 +183,8 @@ describe("[sagas] Releases", () => {
         {},
         {
           api: {
-            fetchReleaseBySlug: mockWithFailure("Bad request")
-          }
+            fetchReleaseBySlug: mockWithFailure("Bad request"),
+          },
         }
       );
 

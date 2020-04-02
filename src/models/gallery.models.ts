@@ -27,7 +27,7 @@ export const galleryImage = (
   options: Partial<IGalleryImage> = {}
 ): IGalleryImage => ({
   imageUrl: options.imageUrl || "",
-  modifiedAt: options.modifiedAt || dayjs().toISOString()
+  modifiedAt: options.modifiedAt || dayjs().toISOString(),
 });
 
 export const gallery = (options: IRawGallery = {}): IGallery => ({
@@ -36,5 +36,5 @@ export const gallery = (options: IRawGallery = {}): IGallery => ({
   images: options.images ? options.images.map(galleryImage) : undefined,
   modifiedAt: options.modifiedAt || dayjs().toISOString(),
   slug: options.slug || "",
-  title: options.title || ""
+  title: options.title || "",
 });

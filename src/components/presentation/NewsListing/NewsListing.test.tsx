@@ -10,7 +10,7 @@ const component = new WrapperWithIntl(NewsListing).withDefaultProps(
     excerpt: "Excerpt",
     imageUrl: "Image URL",
     slug: "article-1",
-    title: "Title"
+    title: "Title",
   })
 );
 
@@ -18,7 +18,7 @@ describe("[presentation] <NewsListing />", () => {
   describe("when isCondensed is false", () => {
     const wrapper = component
       .withProps({
-        isCondensed: false
+        isCondensed: false,
       })
       .render();
 
@@ -34,7 +34,7 @@ describe("[presentation] <NewsListing />", () => {
   describe("when isCondensed is true", () => {
     const wrapper = component
       .withProps({
-        isCondensed: true
+        isCondensed: true,
       })
       .render();
 
@@ -50,7 +50,7 @@ describe("[presentation] <NewsListing />", () => {
   describe("when loading the image", () => {
     const wrapper = component
       .withProps({
-        onLoad: jest.fn()
+        onLoad: jest.fn(),
       })
       .mount();
 

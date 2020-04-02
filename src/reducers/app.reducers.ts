@@ -20,28 +20,28 @@ export const initialState: IState = {
   isLoading: false,
   isNavOpen: false,
   isOnline: true,
-  transitioningTo: undefined
+  transitioningTo: undefined,
 };
 
 export default reducerWithInitialState(initialState)
   .case(actions.setOnlineStatus, (state, payload) => ({
     ...state,
-    isOnline: payload
+    isOnline: payload,
   }))
 
   .case(actions.setHasNewVersion, (state, payload) => ({
     ...state,
-    hasNewVersion: payload
+    hasNewVersion: payload,
   }))
 
-  .case(actions.toggleNavigation, state => ({
+  .case(actions.toggleNavigation, (state) => ({
     ...state,
-    isNavOpen: !state.isNavOpen
+    isNavOpen: !state.isNavOpen,
   }))
 
   .case(actions.setCurrentRoute, (state, payload) => ({
     ...state,
-    currentRoute: payload
+    currentRoute: payload,
   }))
 
   .case(actions.changeRoute.started, (state, payload) => ({
@@ -49,21 +49,21 @@ export default reducerWithInitialState(initialState)
     error: undefined,
     isLoading: true,
     isNavOpen: false,
-    transitioningTo: payload
+    transitioningTo: payload,
   }))
 
   .case(actions.changeRoute.done, (state, { params }) => ({
     ...state,
     currentRoute: params,
     isLoading: false,
-    transitioningTo: undefined
+    transitioningTo: undefined,
   }))
 
   .case(actions.changeRoute.failed, (state, payload) => ({
     ...state,
     error: error(payload.error),
     isLoading: false,
-    transitioningTo: undefined
+    transitioningTo: undefined,
   }))
 
   .cases(
@@ -71,12 +71,12 @@ export default reducerWithInitialState(initialState)
       actions.fetchAppearanceBySlug.failed,
       actions.fetchGalleryBySlug.failed,
       actions.fetchNewsArticleBySlug.failed,
-      actions.fetchReleaseBySlug.failed
+      actions.fetchReleaseBySlug.failed,
     ],
-    state => ({
+    (state) => ({
       ...state,
       error: error({
-        status: 404
-      })
+        status: 404,
+      }),
     })
   );

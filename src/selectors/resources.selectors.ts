@@ -13,10 +13,10 @@ export const getResources = defaultMemoize(
 
 export const getResourcesCount = createSelector(
   getResources,
-  resources => Object.keys(resources).length
+  (resources) => Object.keys(resources).length
 );
 
-export const getResourcesAsArray = createSelector(getResources, resources =>
+export const getResourcesAsArray = createSelector(getResources, (resources) =>
   Object.values(resources).sort(
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
   )
@@ -24,7 +24,7 @@ export const getResourcesAsArray = createSelector(getResources, resources =>
 
 export const getResourcesByType = createSelector(
   getResourcesAsArray,
-  resources =>
+  (resources) =>
     resources.reduce((acc: Record<TYPE, IResource[]>, curr) => {
       if (!acc[curr.type]) {
         acc[curr.type] = [];
@@ -41,7 +41,7 @@ export const getResourcesLastEvaluatedKey = (state: TStoreState) =>
 
 export const getResourcesLastEvaluatedKeyAsString = createSelector(
   getResourcesLastEvaluatedKey,
-  lastEvaluatedKey =>
+  (lastEvaluatedKey) =>
     !lastEvaluatedKey
       ? undefined
       : btoa(
@@ -49,7 +49,7 @@ export const getResourcesLastEvaluatedKeyAsString = createSelector(
             JSON.stringify({
               CreatedAt: lastEvaluatedKey.createdAt,
               IsActive: lastEvaluatedKey.isActive,
-              Slug: lastEvaluatedKey.slug
+              Slug: lastEvaluatedKey.slug,
             })
           )
         )

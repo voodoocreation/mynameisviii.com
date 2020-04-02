@@ -5,7 +5,7 @@ import {
   IRawDynamoResponse,
   IRawResource,
   resource,
-  success
+  success,
 } from "../../models/root.models";
 import { TRequest } from "../configureHttpClient";
 
@@ -18,13 +18,13 @@ export const fetchResources = (request: TRequest) => async (
       IRawResource,
       "createdAt"
     > = await request(API.FETCH_RESOURCES, {
-      params: { exclusiveStartKey, limit }
+      params: { exclusiveStartKey, limit },
     });
 
     return success(
       dynamoResponse({
         ...response,
-        items: response.items.map(resource)
+        items: response.items.map(resource),
       })
     );
   } catch (error) {

@@ -6,5 +6,5 @@ export enum AVAILABILITY {
   ONLINE = "OnlineOnly",
   PRE_ORDER = "PreOrder",
   PRE_SALE = "PreSale",
-  SOLD_OUT = "SoldOut"
+  SOLD_OUT = "SoldOut",
 }

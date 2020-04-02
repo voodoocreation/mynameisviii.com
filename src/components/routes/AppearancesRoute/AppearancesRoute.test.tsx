@@ -8,44 +8,28 @@ import WrapperWithRedux from "../../../utilities/WrapperWithRedux";
 import AppearancesRoute from "./AppearancesRoute";
 
 const pastItem1 = appearance({
-  finishingAt: dayjs()
-    .subtract(3, "day")
-    .toISOString(),
+  finishingAt: dayjs().subtract(3, "day").toISOString(),
   isActive: BOOLEAN.TRUE,
   slug: "past-1",
-  startingAt: dayjs()
-    .subtract(4, "day")
-    .toISOString()
+  startingAt: dayjs().subtract(4, "day").toISOString(),
 });
 const pastItem2 = appearance({
-  finishingAt: dayjs()
-    .subtract(4, "day")
-    .toISOString(),
+  finishingAt: dayjs().subtract(4, "day").toISOString(),
   isActive: BOOLEAN.TRUE,
   slug: "past-2",
-  startingAt: dayjs()
-    .subtract(5, "day")
-    .toISOString()
+  startingAt: dayjs().subtract(5, "day").toISOString(),
 });
 const upcomingItem1 = appearance({
-  finishingAt: dayjs()
-    .add(4, "day")
-    .toISOString(),
+  finishingAt: dayjs().add(4, "day").toISOString(),
   isActive: BOOLEAN.TRUE,
   slug: "upcoming-1",
-  startingAt: dayjs()
-    .add(3, "day")
-    .toISOString()
+  startingAt: dayjs().add(3, "day").toISOString(),
 });
 const upcomingItem2 = appearance({
-  finishingAt: dayjs()
-    .add(5, "day")
-    .toISOString(),
+  finishingAt: dayjs().add(5, "day").toISOString(),
   isActive: BOOLEAN.TRUE,
   slug: "upcoming-2",
-  startingAt: dayjs()
-    .add(4, "day")
-    .toISOString()
+  startingAt: dayjs().add(4, "day").toISOString(),
 });
 
 const component = new WrapperWithRedux(AppearancesRoute);
@@ -77,9 +61,9 @@ describe("[routes] <AppearancesRoute />", () => {
             appearances: {
               hasAllItems: false,
               items: {
-                [upcomingItem1.slug]: upcomingItem1
-              }
-            }
+                [upcomingItem1.slug]: upcomingItem1,
+              },
+            },
           })
           .toObject()
       );
@@ -96,9 +80,9 @@ describe("[routes] <AppearancesRoute />", () => {
             appearances: {
               hasAllItems: true,
               items: {
-                [upcomingItem1.slug]: upcomingItem1
-              }
-            }
+                [upcomingItem1.slug]: upcomingItem1,
+              },
+            },
           })
           .toObject()
       );
@@ -121,9 +105,9 @@ describe("[routes] <AppearancesRoute />", () => {
             [pastItem1.slug]: pastItem1,
             [pastItem2.slug]: pastItem2,
             [upcomingItem1.slug]: upcomingItem1,
-            [upcomingItem2.slug]: upcomingItem2
-          }
-        }
+            [upcomingItem2.slug]: upcomingItem2,
+          },
+        },
       })
       .mount();
 
@@ -151,8 +135,8 @@ describe("[routes] <AppearancesRoute />", () => {
       .withReduxState({
         appearances: {
           hasAllItems: true,
-          items: {}
-        }
+          items: {},
+        },
       })
       .mount();
 
@@ -173,8 +157,8 @@ describe("[routes] <AppearancesRoute />", () => {
     const wrapper = component
       .withReduxState({
         appearances: {
-          hasError: true
-        }
+          hasError: true,
+        },
       })
       .mount();
 
@@ -187,9 +171,9 @@ describe("[routes] <AppearancesRoute />", () => {
         appearances: {
           hasAllItems: false,
           items: {
-            [upcomingItem1.slug]: upcomingItem1
-          }
-        }
+            [upcomingItem1.slug]: upcomingItem1,
+          },
+        },
       })
       .mount();
 
@@ -200,8 +184,8 @@ describe("[routes] <AppearancesRoute />", () => {
     const wrapper = component
       .withReduxState({
         appearances: {
-          hasAllItems: true
-        }
+          hasAllItems: true,
+        },
       })
       .mount();
 
@@ -223,9 +207,9 @@ describe("[routes] <AppearancesRoute />", () => {
       .withReduxState({
         appearances: {
           items: {
-            [upcomingItem1.slug]: upcomingItem1
-          }
-        }
+            [upcomingItem1.slug]: upcomingItem1,
+          },
+        },
       })
       .mount();
 

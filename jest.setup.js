@@ -11,7 +11,7 @@ Enzyme.configure({ adapter: new Adapter() });
 MockDate.set("2018-01-01T00:00:00", -780);
 
 Object.defineProperties(global, {
-  API_URL: { value: "http://localhost/api", writable: true }
+  API_URL: { value: "http://localhost/api", writable: true },
 });
 
 delete window.location;
@@ -26,32 +26,32 @@ window.location = {
   port: 80,
   protocol: "http:",
   reload: jest.fn(),
-  search: ""
+  search: "",
 };
 
 Object.defineProperties(window, {
   dataLayer: {
     value: [],
-    writable: true
+    writable: true,
   },
   google: {
     value: {
-      maps: createGoogleMapsMock()
+      maps: createGoogleMapsMock(),
     },
-    writable: true
+    writable: true,
   },
   requestAnimationFrame: {
-    value: callback => setTimeout(callback, 0),
-    writable: true
+    value: (callback) => setTimeout(callback, 0),
+    writable: true,
   },
   scrollTo: {
     value: jest.fn(),
-    writable: true
-  }
+    writable: true,
+  },
 });
 
 Object.defineProperty(navigator, "language", {
-  value: "en-NZ"
+  value: "en-NZ",
 });
 
 const serviceWorkerEvents = {};
@@ -65,11 +65,11 @@ Object.defineProperty(window.navigator, "serviceWorker", {
     }),
     controller: {
       postMessage: jest.fn(),
-      state: "activated"
+      state: "activated",
     },
-    dispatchEvent: jest.fn(event => {
+    dispatchEvent: jest.fn((event) => {
       if (serviceWorkerEvents[event.type]) {
-        serviceWorkerEvents[event.type].forEach(handler => {
+        serviceWorkerEvents[event.type].forEach((handler) => {
           handler(event);
         });
       }
@@ -83,7 +83,7 @@ Object.defineProperty(window.navigator, "serviceWorker", {
           }
         });
       }
-    })
+    }),
   },
-  writable: true
+  writable: true,
 });

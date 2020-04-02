@@ -6,7 +6,7 @@ import SagaTester from "../utilities/SagaTester";
 describe("[sagas] Galleries", () => {
   const item = gallery({ slug: "test-1" });
   const data = s3Response({
-    items: [item]
+    items: [item],
   });
 
   describe("fetchGalleriesSaga", () => {
@@ -15,8 +15,8 @@ describe("[sagas] Galleries", () => {
         {},
         {
           api: {
-            fetchGalleries: mockWithSuccess(data)
-          }
+            fetchGalleries: mockWithSuccess(data),
+          },
         }
       );
 
@@ -43,8 +43,8 @@ describe("[sagas] Galleries", () => {
         {},
         {
           api: {
-            fetchGalleries: mockWithFailure("Bad request")
-          }
+            fetchGalleries: mockWithFailure("Bad request"),
+          },
         }
       );
 
@@ -75,15 +75,15 @@ describe("[sagas] Galleries", () => {
             items: {
               "existing-item": {
                 ...item,
-                slug: "existing-item"
-              }
-            }
-          }
+                slug: "existing-item",
+              },
+            },
+          },
         },
         {
           api: {
-            fetchGalleries: mockWithSuccess(data)
-          }
+            fetchGalleries: mockWithSuccess(data),
+          },
         }
       );
 
@@ -110,7 +110,7 @@ describe("[sagas] Galleries", () => {
         expect(matchingActions).toHaveLength(1);
         expect(matchingActions[0].payload).toEqual({
           event: "galleries.fetchedMore",
-          itemCount: 2
+          itemCount: 2,
         });
       });
     });
@@ -120,8 +120,8 @@ describe("[sagas] Galleries", () => {
         {},
         {
           api: {
-            fetchGalleries: mockWithFailure("Bad request")
-          }
+            fetchGalleries: mockWithFailure("Bad request"),
+          },
         }
       );
 
@@ -150,8 +150,8 @@ describe("[sagas] Galleries", () => {
         {},
         {
           api: {
-            fetchGalleryBySlug: mockWithSuccess(item)
-          }
+            fetchGalleryBySlug: mockWithSuccess(item),
+          },
         }
       );
 
@@ -178,8 +178,8 @@ describe("[sagas] Galleries", () => {
         {},
         {
           api: {
-            fetchGalleryBySlug: mockWithFailure("Bad request")
-          }
+            fetchGalleryBySlug: mockWithFailure("Bad request"),
+          },
         }
       );
 

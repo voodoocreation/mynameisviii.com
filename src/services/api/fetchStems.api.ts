@@ -5,7 +5,7 @@ import {
   IRawDynamoResponse,
   IRawStem,
   stem,
-  success
+  success,
 } from "../../models/root.models";
 import { TRequest } from "../configureHttpClient";
 
@@ -17,14 +17,14 @@ export const fetchStems = (request: TRequest) => async (
     const response: IRawDynamoResponse<IRawStem, "createdAt"> = await request(
       API.FETCH_STEMS,
       {
-        params: { exclusiveStartKey, limit }
+        params: { exclusiveStartKey, limit },
       }
     );
 
     return success(
       dynamoResponse({
         ...response,
-        items: response.items.map(stem)
+        items: response.items.map(stem),
       })
     );
   } catch (error) {

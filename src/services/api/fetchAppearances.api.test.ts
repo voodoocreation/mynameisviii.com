@@ -6,14 +6,14 @@ import {
   appearance,
   dynamoResponse,
   failure,
-  success
+  success,
 } from "../../models/root.models";
 import { fetchAppearances } from "./fetchAppearances.api";
 
 describe("[api] fetchAppearances", () => {
   const params = {
     exclusiveStartKey: "test",
-    limit: 1
+    limit: 1,
   };
 
   describe("when the request succeeds", () => {
@@ -22,8 +22,8 @@ describe("[api] fetchAppearances", () => {
       lastEvaluatedKey: {
         isActive: BOOLEAN.TRUE,
         slug: "test-0",
-        startingAt: "2019-01-01T00:00:00"
-      }
+        startingAt: "2019-01-01T00:00:00",
+      },
     };
     const request = mockWithResolvedPromise(data);
     const method = fetchAppearances(request);
@@ -33,7 +33,7 @@ describe("[api] fetchAppearances", () => {
         success(
           dynamoResponse({
             items: data.items.map(appearance),
-            lastEvaluatedKey: data.lastEvaluatedKey
+            lastEvaluatedKey: data.lastEvaluatedKey,
           })
         )
       );
@@ -41,7 +41,7 @@ describe("[api] fetchAppearances", () => {
 
     it("makes the request correctly", () => {
       expect(request).toHaveBeenCalledWith(API.FETCH_APPEARANCES, {
-        params
+        params,
       });
     });
   });
@@ -58,7 +58,7 @@ describe("[api] fetchAppearances", () => {
 
     it("makes the request correctly", () => {
       expect(request).toHaveBeenCalledWith(API.FETCH_APPEARANCES, {
-        params
+        params,
       });
     });
   });

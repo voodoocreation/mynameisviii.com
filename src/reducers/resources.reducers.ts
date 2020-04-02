@@ -16,24 +16,24 @@ export const initialState: IState = {
   hasError: false,
   isLoading: false,
   items: {},
-  lastEvaluatedKey: undefined
+  lastEvaluatedKey: undefined,
 };
 
 export default reducerWithInitialState(initialState)
   .cases(
     [actions.fetchResources.failed, actions.fetchMoreResources.failed],
-    state => ({
+    (state) => ({
       ...state,
       hasError: true,
-      isLoading: false
+      isLoading: false,
     })
   )
 
-  .case(actions.fetchResources.started, state => ({
+  .case(actions.fetchResources.started, (state) => ({
     ...state,
     hasError: false,
     isLoading: true,
-    items: {}
+    items: {},
   }))
 
   .case(actions.fetchResources.done, (state, { result }) => ({
@@ -41,13 +41,13 @@ export default reducerWithInitialState(initialState)
     hasAllItems: !result.lastEvaluatedKey,
     isLoading: false,
     items: result.items,
-    lastEvaluatedKey: result.lastEvaluatedKey
+    lastEvaluatedKey: result.lastEvaluatedKey,
   }))
 
-  .case(actions.fetchMoreResources.started, state => ({
+  .case(actions.fetchMoreResources.started, (state) => ({
     ...state,
     hasError: false,
-    isLoading: true
+    isLoading: true,
   }))
 
   .case(actions.fetchMoreResources.done, (state, { result }) => ({
@@ -56,7 +56,7 @@ export default reducerWithInitialState(initialState)
     isLoading: false,
     items: {
       ...state.items,
-      ...result.items
+      ...result.items,
     },
-    lastEvaluatedKey: result.lastEvaluatedKey
+    lastEvaluatedKey: result.lastEvaluatedKey,
   }));

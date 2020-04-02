@@ -3,7 +3,7 @@ import {
   failure,
   gallery,
   IRawGallery,
-  success
+  success,
 } from "../../models/root.models";
 import { TRequest } from "../configureHttpClient";
 

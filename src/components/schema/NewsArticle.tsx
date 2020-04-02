@@ -8,10 +8,10 @@ const publisher = organization({
   email: "mgmt@mynameisviii.com",
   logo:
     "https://s3.amazonaws.com/mynameisviii-static/voodoo-creation-records-logo.png",
-  name: "Voodoo Creation Records"
+  name: "Voodoo Creation Records",
 });
 
-const NewsArticle: React.FC<INewsArticle> = props => (
+const NewsArticle: React.FC<INewsArticle> = (props) => (
   <Schema
     {...{
       "@id": absoluteUrl(`/news/${props.slug}`),
@@ -19,7 +19,7 @@ const NewsArticle: React.FC<INewsArticle> = props => (
       articleBody: props.content,
       author: {
         "@type": "Person",
-        name: props.author
+        name: props.author,
       },
       dateModified: props.createdAt,
       datePublished: props.createdAt,
@@ -27,7 +27,7 @@ const NewsArticle: React.FC<INewsArticle> = props => (
       headline: props.title,
       image: props.imageUrl,
       mainEntityOfPage: {
-        "@id": absoluteUrl(`/news/${props.slug}`)
+        "@id": absoluteUrl(`/news/${props.slug}`),
       },
       name: props.title,
       publisher: {
@@ -35,11 +35,11 @@ const NewsArticle: React.FC<INewsArticle> = props => (
         email: publisher.email,
         logo: {
           "@type": "ImageObject",
-          url: publisher.logo
-        }
+          url: publisher.logo,
+        },
       },
       text: props.content,
-      thumbnailUrl: props.ogImageUrl
+      thumbnailUrl: props.ogImageUrl,
     }}
   />
 );

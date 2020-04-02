@@ -3,7 +3,7 @@ import * as React from "react";
 import {
   FormattedMessage,
   injectIntl,
-  WrappedComponentProps
+  WrappedComponentProps,
 } from "react-intl";
 
 import { isAlmostInViewport, isServer } from "../../../helpers/dom";
@@ -25,7 +25,7 @@ class LoadButton extends React.Component<IProps> {
     isDisabled: false,
     isLoading: false,
     isScrollLoadEnabled: true,
-    triggerDistance: 50
+    triggerDistance: 50,
   };
 
   private buttonRef = React.createRef<HTMLButtonElement>();

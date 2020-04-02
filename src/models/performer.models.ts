@@ -25,5 +25,5 @@ export const performer = (options: IRawPerformer = {}): IPerformer => ({
   location: location(options.location),
   name: options.name || "",
   type: options.type || TYPE.BAND,
-  url: options.url
+  url: options.url,
 });

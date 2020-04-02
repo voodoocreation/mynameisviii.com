@@ -6,12 +6,12 @@ import ImageGallery from "./ImageGallery";
 const component = new WrapperWithIntl(ImageGallery)
   .withDefaultProps({
     className: "TestImageGallery",
-    usePortal: false
+    usePortal: false,
   })
   .withDefaultChildren([
     <div className="Image" id="image-1" key="image-1" />,
     <div className="Image" id="image-2" key="image-2" />,
-    <div className="Image" id="image-3" key="image-3" />
+    <div className="Image" id="image-3" key="image-3" />,
   ]);
 
 describe("[presentation] <ImageGallery />", () => {
@@ -29,7 +29,7 @@ describe("[presentation] <ImageGallery />", () => {
         onItemClick,
         onModalClose,
         onNext,
-        onPrevious
+        onPrevious,
       })
       .mount();
 
@@ -42,10 +42,7 @@ describe("[presentation] <ImageGallery />", () => {
     });
 
     it("clicks an image", () => {
-      wrapper
-        .find(".Image")
-        .first()
-        .simulate("click");
+      wrapper.find(".Image").first().simulate("click");
     });
 
     it("calls the onItemClick prop with expected payload", () => {
@@ -166,15 +163,12 @@ describe("[presentation] <ImageGallery />", () => {
   describe("when no event props are defined and isLooped is false", () => {
     const wrapper = component
       .withProps({
-        isLooped: false
+        isLooped: false,
       })
       .mount();
 
     it("clicks the first image", () => {
-      wrapper
-        .find(".Image")
-        .first()
-        .simulate("click");
+      wrapper.find(".Image").first().simulate("click");
     });
 
     it("opens the modal", () => {

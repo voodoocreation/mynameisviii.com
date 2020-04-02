@@ -2,7 +2,7 @@ import * as React from "react";
 import {
   FormattedMessage,
   injectIntl,
-  WrappedComponentProps
+  WrappedComponentProps,
 } from "react-intl";
 
 import { STATUS } from "../../../constants/appearance.constants";

@@ -5,7 +5,7 @@ describe("[models] Location", () => {
   it("creates a valid object with defaults", () => {
     expect(location()).toEqual({
       name: "",
-      type: TYPE.MUSIC_VENUE
+      type: TYPE.MUSIC_VENUE,
     });
   });
 
@@ -15,7 +15,7 @@ describe("[models] Location", () => {
       latLng: { lat: 0, lng: 0 },
       name: "Name",
       type: TYPE.STADIUM,
-      url: "URL"
+      url: "URL",
     };
 
     expect(location(data)).toEqual({
@@ -23,7 +23,7 @@ describe("[models] Location", () => {
       latLng: data.latLng,
       name: data.name,
       type: data.type,
-      url: data.url
+      url: data.url,
     });
   });
 });

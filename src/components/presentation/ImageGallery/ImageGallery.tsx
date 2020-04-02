@@ -26,12 +26,12 @@ interface IState {
 export default class ImageGallery extends React.Component<IProps, IState> {
   public static defaultProps = {
     isLooped: true,
-    usePortal: true
+    usePortal: true,
   };
 
   public readonly state: IState = {
     currentIndex: 0,
-    isOpen: false
+    isOpen: false,
   };
 
   public render() {
@@ -43,7 +43,7 @@ export default class ImageGallery extends React.Component<IProps, IState> {
         <div className={cn("ImageGallery", className)}>
           {React.Children.map(children, (item, index) =>
             React.cloneElement(item as React.ReactElement<any>, {
-              onClick: this.onItemClick(index)
+              onClick: this.onItemClick(index),
             })
           )}
         </div>
@@ -84,7 +84,7 @@ export default class ImageGallery extends React.Component<IProps, IState> {
   public goTo = (nextItemIndex: number) => {
     if (this.getItemAtIndex(nextItemIndex)) {
       this.setState({
-        currentIndex: nextItemIndex
+        currentIndex: nextItemIndex,
       });
 
       if (this.props.onGoTo) {
@@ -129,7 +129,7 @@ export default class ImageGallery extends React.Component<IProps, IState> {
   private onItemClick = (index: number) => () => {
     this.setState({
       currentIndex: index,
-      isOpen: true
+      isOpen: true,
     });
 
     if (this.props.onItemClick) {
@@ -152,7 +152,7 @@ export default class ImageGallery extends React.Component<IProps, IState> {
   private onModalClose = () => {
     this.setState({
       currentIndex: 0,
-      isOpen: false
+      isOpen: false,
     });
 
     if (this.props.onModalClose) {

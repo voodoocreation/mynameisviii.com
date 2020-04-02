@@ -6,7 +6,7 @@ import {
   FaInstagram,
   FaSoundcloud,
   FaSpotify,
-  FaTwitter
+  FaTwitter,
 } from "react-icons/fa";
 import { FormattedMessage, WrappedComponentProps } from "react-intl";
 import { connect } from "react-redux";
@@ -228,12 +228,12 @@ const mapState = (state: TStoreState) => ({
   articles: selectors.getNewsArticlesAsArray(state),
   hasAllAppearances: selectors.getHasAllAppearances(state),
   isAppearancesLoading: selectors.getAppearancesIsLoading(state),
-  upcomingAppearances: selectors.getUpcomingAppearances(state)
+  upcomingAppearances: selectors.getUpcomingAppearances(state),
 });
 
 const mapActions = {
   fetchAppearances: actions.fetchAppearances.started,
-  fetchLatestNews: actions.fetchLatestNews.started
+  fetchLatestNews: actions.fetchLatestNews.started,
 };
 
 export default injectIntlIntoPage(connect(mapState, mapActions)(IndexRoute));

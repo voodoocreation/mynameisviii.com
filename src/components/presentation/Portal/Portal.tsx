@@ -10,7 +10,7 @@ interface IProps {
 
 export default class Portal extends React.Component<IProps> {
   public static defaultProps = {
-    isRenderingInPlace: false
+    isRenderingInPlace: false,
   };
 
   private container: HTMLDivElement | undefined = !isServer()

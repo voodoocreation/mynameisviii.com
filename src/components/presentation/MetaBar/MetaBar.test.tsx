@@ -2,7 +2,7 @@ import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import MetaBar from "./MetaBar";
 
 const component = new WrapperWithIntl(MetaBar).withDefaultProps({
-  className: "TestMetaBar"
+  className: "TestMetaBar",
 });
 
 describe("[presentation] <MetaBar />", () => {

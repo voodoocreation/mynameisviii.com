@@ -19,7 +19,7 @@ interface IProps extends IPerformer {
 
 export default class ActListing extends React.Component<IProps, IState> {
   public readonly state: IState = {
-    isRendered: false
+    isRendered: false,
   };
 
   public render() {
@@ -64,7 +64,7 @@ export default class ActListing extends React.Component<IProps, IState> {
 
   private onLoad = () => {
     this.setState({
-      isRendered: true
+      isRendered: true,
     });
 
     if (this.props.onLoad) {

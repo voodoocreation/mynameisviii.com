@@ -33,5 +33,5 @@ export const resource = (options: IRawResource = {}): IResource => ({
   slug: options.slug || "",
   title: options.title || "",
   type: options.type || TYPE.DESIGN,
-  url: options.url || ""
+  url: options.url || "",
 });

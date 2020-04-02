@@ -8,7 +8,7 @@ describe("[models] Performer", () => {
       imageUrl: "",
       location: location(),
       name: "",
-      type: TYPE.BAND
+      type: TYPE.BAND,
     });
   });
 
@@ -19,7 +19,7 @@ describe("[models] Performer", () => {
       location: { name: "Location" },
       name: "Name",
       type: TYPE.SOLO,
-      url: "URL"
+      url: "URL",
     };
 
     expect(performer(data)).toEqual({
@@ -28,7 +28,7 @@ describe("[models] Performer", () => {
       location: location(data.location),
       name: data.name,
       type: data.type,
-      url: data.url
+      url: data.url,
     });
   });
 });

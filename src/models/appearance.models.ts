@@ -65,5 +65,5 @@ export const appearance = (options: IRawAppearance = {}): IAppearance => ({
   startingAt: options.startingAt || dayjs().toISOString(),
   status: options.status || STATUS.SCHEDULED,
   title: options.title || "",
-  type: options.type || TYPE.MUSIC
+  type: options.type || TYPE.MUSIC,
 });

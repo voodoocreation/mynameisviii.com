@@ -7,7 +7,7 @@ import {
   image,
   location,
   offer,
-  organization
+  organization,
 } from "../../../models/root.models";
 import WrapperWithIntl from "../../../utilities/WrapperWithIntl";
 import Appearance from "./Appearance";
@@ -19,31 +19,27 @@ const component = new WrapperWithIntl(Appearance).withDefaultProps(
         genre: "Genre",
         imageUrl: "Image URL",
         location: {
-          address: "City, Country"
+          address: "City, Country",
         },
-        name: "Act name"
-      }
+        name: "Act name",
+      },
     ],
     description: "Description",
-    finishingAt: dayjs()
-      .add(4, "day")
-      .toISOString(),
+    finishingAt: dayjs().add(4, "day").toISOString(),
     imageUrl: "Image URL",
     isActive: BOOLEAN.TRUE,
     location: {
       latLng: {
         lat: 0,
-        lng: 0
+        lng: 0,
       },
-      name: "Venue"
+      name: "Venue",
     },
     organizer: {
-      name: "Organizer"
+      name: "Organizer",
     },
-    startingAt: dayjs()
-      .add(3, "day")
-      .toISOString(),
-    status: STATUS.SCHEDULED
+    startingAt: dayjs().add(3, "day").toISOString(),
+    status: STATUS.SCHEDULED,
   })
 );
 
@@ -87,30 +83,30 @@ describe("[presentation] <Appearance />", () => {
         images: [
           {
             imageUrl: "Image URL 1",
-            title: "Title 1"
+            title: "Title 1",
           },
           {
             imageUrl: "Image URL 2",
-            title: "Title 2"
-          }
+            title: "Title 2",
+          },
         ],
         location: location({
           address: "123 Address",
-          name: "Venue"
+          name: "Venue",
         }),
         locationLatLng: { lat: 0, lng: 0 },
         organizer: organization({
           email: "Email",
           logo: "Logo",
-          name: "Organizer"
+          name: "Organizer",
         }),
         rsvpUrl: "RSVP",
         sales: [
           offer({
             name: "Name",
-            price: 10
-          })
-        ]
+            price: 10,
+          }),
+        ],
       })
       .render();
 
@@ -143,7 +139,7 @@ describe("[presentation] <Appearance />", () => {
     const wrapper = component
       .withProps({
         sales: [offer()],
-        status: STATUS.CANCELLED
+        status: STATUS.CANCELLED,
       })
       .render();
 
@@ -168,7 +164,7 @@ describe("[presentation] <Appearance />", () => {
     const wrapper = component
       .withProps({
         sales: [offer()],
-        status: STATUS.POSTPONED
+        status: STATUS.POSTPONED,
       })
       .render();
 
@@ -192,9 +188,7 @@ describe("[presentation] <Appearance />", () => {
   describe("when finishingAt is in the past", () => {
     const wrapper = component
       .withProps({
-        finishingAt: dayjs()
-          .subtract(1, "day")
-          .toISOString()
+        finishingAt: dayjs().subtract(1, "day").toISOString(),
       })
       .render();
 
@@ -215,7 +209,7 @@ describe("[presentation] <Appearance />", () => {
     const wrapper = component
       .withProps({
         images: [image()],
-        onGalleryInteraction: jest.fn()
+        onGalleryInteraction: jest.fn(),
       })
       .mount();
 

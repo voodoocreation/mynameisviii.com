@@ -18,7 +18,7 @@ export const initialState: IState = {
   hasError: false,
   isLoading: false,
   items: {},
-  lastEvaluatedKey: undefined
+  lastEvaluatedKey: undefined,
 };
 
 export default reducerWithInitialState(initialState)
@@ -26,20 +26,20 @@ export default reducerWithInitialState(initialState)
     [
       actions.fetchLatestNews.failed,
       actions.fetchMoreLatestNews.failed,
-      actions.fetchNewsArticleBySlug.failed
+      actions.fetchNewsArticleBySlug.failed,
     ],
-    state => ({
+    (state) => ({
       ...state,
       hasError: true,
-      isLoading: false
+      isLoading: false,
     })
   )
 
-  .case(actions.fetchLatestNews.started, state => ({
+  .case(actions.fetchLatestNews.started, (state) => ({
     ...state,
     hasError: false,
     isLoading: true,
-    items: {}
+    items: {},
   }))
 
   .case(actions.fetchLatestNews.done, (state, { result }) => ({
@@ -47,13 +47,13 @@ export default reducerWithInitialState(initialState)
     hasAllItems: !result.lastEvaluatedKey,
     isLoading: false,
     items: result.items,
-    lastEvaluatedKey: result.lastEvaluatedKey
+    lastEvaluatedKey: result.lastEvaluatedKey,
   }))
 
-  .case(actions.fetchMoreLatestNews.started, state => ({
+  .case(actions.fetchMoreLatestNews.started, (state) => ({
     ...state,
     hasError: false,
-    isLoading: true
+    isLoading: true,
   }))
 
   .case(actions.fetchMoreLatestNews.done, (state, { result }) => ({
@@ -62,20 +62,20 @@ export default reducerWithInitialState(initialState)
     isLoading: false,
     items: {
       ...state.items,
-      ...result.items
+      ...result.items,
     },
-    lastEvaluatedKey: result.lastEvaluatedKey
+    lastEvaluatedKey: result.lastEvaluatedKey,
   }))
 
   .case(actions.setCurrentNewsArticleSlug, (state, payload) => ({
     ...state,
-    currentSlug: payload
+    currentSlug: payload,
   }))
 
-  .case(actions.fetchNewsArticleBySlug.started, state => ({
+  .case(actions.fetchNewsArticleBySlug.started, (state) => ({
     ...state,
     hasError: false,
-    isLoading: true
+    isLoading: true,
   }))
 
   .case(actions.fetchNewsArticleBySlug.done, (state, { result }) => ({
@@ -83,6 +83,6 @@ export default reducerWithInitialState(initialState)
     isLoading: false,
     items: {
       ...state.items,
-      [result.slug]: result
-    }
+      [result.slug]: result,
+    },
   }));

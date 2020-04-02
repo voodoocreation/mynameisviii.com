@@ -2,7 +2,7 @@ import * as React from "react";
 import {
   FormattedMessage,
   injectIntl,
-  WrappedComponentProps
+  WrappedComponentProps,
 } from "react-intl";
 import { connect } from "react-redux";
 
@@ -23,7 +23,7 @@ class OnlineStatusToast extends React.Component<IProps, IState> {
     super(props);
 
     this.state = {
-      isVisible: !props.isOnline
+      isVisible: !props.isOnline,
     };
   }
 
@@ -37,7 +37,7 @@ class OnlineStatusToast extends React.Component<IProps, IState> {
   public componentDidUpdate() {
     // eslint-disable-next-line react/no-did-update-set-state
     this.setState({
-      isVisible: true
+      isVisible: true,
     });
   }
 
@@ -57,7 +57,7 @@ class OnlineStatusToast extends React.Component<IProps, IState> {
   }
 }
 const mapState = (state: TStoreState) => ({
-  isOnline: selectors.isOnline(state)
+  isOnline: selectors.isOnline(state),
 });
 
 export default injectIntl(connect(mapState)(OnlineStatusToast));

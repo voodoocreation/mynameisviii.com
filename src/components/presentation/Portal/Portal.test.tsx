@@ -11,7 +11,7 @@ describe("[presentation] <Portal />", () => {
   describe("when mounting on the server", () => {
     Object.defineProperty(window, "isServer", {
       value: true,
-      writable: true
+      writable: true,
     });
 
     const wrapper = component.mount();
@@ -34,7 +34,7 @@ describe("[presentation] <Portal />", () => {
   describe("when mounting on the client", () => {
     Object.defineProperty(window, "isServer", {
       value: false,
-      writable: true
+      writable: true,
     });
 
     const wrapper = component.mount();

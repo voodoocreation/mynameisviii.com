@@ -13,5 +13,5 @@ export const organization = (
   email: options.email,
   logo: options.logo || "",
   name: options.name || "",
-  type: options.type || TYPE.LOCAL_BUSINESS
+  type: options.type || TYPE.LOCAL_BUSINESS,
 });

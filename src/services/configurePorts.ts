@@ -47,7 +47,7 @@ export const configurePorts = (config: IPortsConfig = {}): IPorts => {
     api,
     dataLayer,
     features: config.features || [],
-    maps: config.maps || {}
+    maps: config.maps || {},
   };
 };
 
@@ -61,7 +61,7 @@ export const configureTestPorts = (ports: ITestPortsParam = {}): ITestPorts => {
     features: ports.features || [],
     maps: {
       ...window.google.maps,
-      ...(ports.maps || {})
-    }
+      ...(ports.maps || {}),
+    },
   };
 };

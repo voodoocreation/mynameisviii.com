@@ -4,12 +4,12 @@ import {
   MdAccessTime,
   MdDateRange,
   MdFormatListNumbered,
-  MdMusicNote
+  MdMusicNote,
 } from "react-icons/md";
 import {
   FormattedMessage,
   injectIntl,
-  WrappedComponentProps
+  WrappedComponentProps,
 } from "react-intl";
 
 import { IRelease } from "../../../models/root.models";
@@ -31,7 +31,7 @@ interface IState {
 
 class ReleaseListing extends React.Component<IProps, IState> {
   public state: IState = {
-    isRendered: false
+    isRendered: false,
   };
 
   public render() {
@@ -63,7 +63,7 @@ class ReleaseListing extends React.Component<IProps, IState> {
                   options={{
                     day: "numeric",
                     month: "long",
-                    year: "numeric"
+                    year: "numeric",
                   }}
                   value={release.releasedOn}
                   isDateOnly
@@ -110,7 +110,7 @@ class ReleaseListing extends React.Component<IProps, IState> {
 
   private onLoad = () => {
     this.setState({
-      isRendered: true
+      isRendered: true,
     });
 
     if (this.props.onLoad) {

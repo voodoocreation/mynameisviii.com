@@ -10,10 +10,10 @@ export const getStems = defaultMemoize(
 
 export const getStemsCount = createSelector(
   getStems,
-  stems => Object.keys(stems).length
+  (stems) => Object.keys(stems).length
 );
 
-export const getStemsAsArray = createSelector(getStems, stems =>
+export const getStemsAsArray = createSelector(getStems, (stems) =>
   Object.values(stems).sort(
     (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
   )
@@ -24,7 +24,7 @@ export const getStemsLastEvaluatedKey = (state: TStoreState) =>
 
 export const getStemsLastEvaluatedKeyAsString = createSelector(
   getStemsLastEvaluatedKey,
-  lastEvaluatedKey =>
+  (lastEvaluatedKey) =>
     !lastEvaluatedKey
       ? undefined
       : btoa(
@@ -32,7 +32,7 @@ export const getStemsLastEvaluatedKeyAsString = createSelector(
             JSON.stringify({
               CreatedAt: lastEvaluatedKey.createdAt,
               IsActive: lastEvaluatedKey.isActive,
-              Slug: lastEvaluatedKey.slug
+              Slug: lastEvaluatedKey.slug,
             })
           )
         )

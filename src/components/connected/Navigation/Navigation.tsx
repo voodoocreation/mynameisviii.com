@@ -3,7 +3,7 @@ import * as React from "react";
 import {
   FormattedMessage,
   injectIntl,
-  WrappedComponentProps
+  WrappedComponentProps,
 } from "react-intl";
 import { connect } from "react-redux";
 
@@ -58,7 +58,7 @@ class Navigation extends React.Component<IProps> {
 
 const mapState = (state: TStoreState) => ({
   currentRoute: selectors.getCurrentRoute(state),
-  isOpen: selectors.isNavOpen(state)
+  isOpen: selectors.isNavOpen(state),
 });
 
 export default injectIntl(connect(mapState, actions)(Navigation));

@@ -30,7 +30,7 @@ describe("[sagas] Service worker", () => {
 
         expect(postMessage).toHaveBeenCalledWith({
           payload: newRoute,
-          type: "changeRoute"
+          type: "changeRoute",
         });
       });
     });
@@ -119,7 +119,7 @@ describe("[sagas] Service worker", () => {
       it("dispatches actions.receiveServiceWorkerMessage", () => {
         saga.dispatch(
           actions.receiveServiceWorkerMessage({
-            type: "serviceWorker.activate"
+            type: "serviceWorker.activate",
           })
         );
       });

@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 
 import app, { initialState as appIS } from "./app.reducers";
 import appearances, {
-  initialState as appearancesIS
+  initialState as appearancesIS,
 } from "./appearances.reducers";
 import features, { initialState as featuresIS } from "./features.reducers";
 import galleries, { initialState as galleriesIS } from "./galleries.reducers";
@@ -21,7 +21,7 @@ export const initialState = {
   news: newsIS,
   releases: releasesIS,
   resources: resourcesIS,
-  stems: stemsIS
+  stems: stemsIS,
 };
 
 const rootReducer = combineReducers({
@@ -33,7 +33,7 @@ const rootReducer = combineReducers({
   news,
   releases,
   resources,
-  stems
+  stems,
 });
 
 export default rootReducer;

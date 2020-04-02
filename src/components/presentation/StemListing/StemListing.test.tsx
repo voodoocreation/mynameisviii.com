@@ -12,14 +12,14 @@ const component = new WrapperWithIntl(StemListing).withDefaultProps(
     size: "Size",
     slug: "stem-1",
     title: "Title",
-    url: "URL"
+    url: "URL",
   })
 );
 
 describe("[presentation] <StemListing />", () => {
   const wrapper = component
     .withProps({
-      onLoad: jest.fn()
+      onLoad: jest.fn(),
     })
     .mount();
 

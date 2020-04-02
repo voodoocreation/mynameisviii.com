@@ -7,7 +7,7 @@ const component = new WrapperWithIntl(GalleryListing).withDefaultProps(
     description: "Description",
     modifiedAt: "2017-10-10T18:00:00",
     slug: "test-1",
-    title: "Title"
+    title: "Title",
   })
 );
 
@@ -17,7 +17,7 @@ describe("[presentation] <GalleryListing />", () => {
     const wrapper = component
       .withProps({
         imageUrl: "Image URL",
-        onLoad
+        onLoad,
       })
       .mount();
 

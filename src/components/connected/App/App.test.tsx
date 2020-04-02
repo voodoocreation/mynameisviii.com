@@ -9,17 +9,17 @@ import MockPageContext from "../../../utilities/MockPageContext";
 import { App } from "./App";
 
 jest.mock("serviceworker-webpack-plugin/lib/runtime", () => ({
-  register: mockWithResolvedPromise({})
+  register: mockWithResolvedPromise({}),
 }));
 jest.mock("../../../../next.routes", () => ({
   Router: {
-    route: ""
-  }
+    route: "",
+  },
 }));
 
 class MockPageComponent extends React.Component {
   public static getInitialProps = async () => ({
-    mockPageComponentProp: "test"
+    mockPageComponentProp: "test",
   });
 
   public render = () => <div className="MockPageComponent" />;
@@ -32,17 +32,17 @@ const defineGlobals = (isServer: boolean, locale?: string) => {
         props: {
           initialProps: {
             intlProps: {
-              locale
-            }
-          }
-        }
+              locale,
+            },
+          },
+        },
       },
-      writable: true
+      writable: true,
     },
     isServer: {
       value: isServer,
-      writable: true
-    }
+      writable: true,
+    },
   });
 };
 
@@ -52,24 +52,24 @@ const setup = async (context: any, Component: any, locale?: string) => {
     ctx: {
       ...context,
       req: {
-        locale
-      }
+        locale,
+      },
     },
     router: {
-      pathname: ""
+      pathname: "",
     },
-    store: context.store
+    store: context.store,
   };
 
   const initialProps = await App.getInitialProps(appContext);
   const props = {
     ...appContext,
-    ...initialProps
+    ...initialProps,
   };
 
   return {
     props,
-    wrapper: mount(<App {...props} />)
+    wrapper: mount(<App {...props} />),
   };
 };
 
@@ -84,8 +84,8 @@ describe("[connected] <App />", () => {
       const ctx = context
         .withReduxState({
           app: {
-            error: error({ message: "Error", status: 404 })
-          }
+            error: error({ message: "Error", status: 404 }),
+          },
         })
         .toObject(true);
 
@@ -94,16 +94,16 @@ describe("[connected] <App />", () => {
         ctx: {
           ...ctx,
           req: {
-            locale
+            locale,
           },
           res: {
-            statusCode: 200
-          }
+            statusCode: 200,
+          },
         },
         router: {
-          pathname: ""
+          pathname: "",
         },
-        store: ctx.store
+        store: ctx.store,
       };
 
       beforeAll(() => {
@@ -122,7 +122,7 @@ describe("[connected] <App />", () => {
 
         expect(matchingActions).toHaveLength(1);
         expect(matchingActions[0].payload).toEqual({
-          locale
+          locale,
         });
       });
 
@@ -160,13 +160,13 @@ describe("[connected] <App />", () => {
         ctx: {
           ...ctx,
           req: {
-            locale: "en-US"
-          }
+            locale: "en-US",
+          },
         },
         router: {
-          pathname: ""
+          pathname: "",
         },
-        store: ctx.store
+        store: ctx.store,
       };
 
       it("calls getInitialProps method", async () => {
@@ -180,7 +180,7 @@ describe("[connected] <App />", () => {
 
         expect(matchingActions).toHaveLength(1);
         expect(matchingActions[0].payload).toEqual({
-          locale
+          locale,
         });
       });
 
@@ -254,7 +254,7 @@ describe("[connected] <App />", () => {
 
       expect(matchingActions).toHaveLength(1);
       expect(matchingActions[0].payload).toEqual({
-        event: "optimize.activate"
+        event: "optimize.activate",
       });
     });
 
@@ -263,7 +263,7 @@ describe("[connected] <App />", () => {
 
       window.dispatchEvent(
         new CustomEvent("feature", {
-          detail: features
+          detail: features,
         })
       );
 
@@ -303,11 +303,11 @@ describe("[connected] <App />", () => {
 
       expect(matchingActions).toHaveLength(3);
       expect(matchingActions[1].payload).toEqual({
-        event: "addToHomeScreen.prompted"
+        event: "addToHomeScreen.prompted",
       });
       expect(matchingActions[2].payload).toEqual({
         event: "addToHomeScreen.outcome",
-        outcome
+        outcome,
       });
     });
 

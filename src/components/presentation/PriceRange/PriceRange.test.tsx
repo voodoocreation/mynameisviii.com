@@ -15,7 +15,7 @@ describe("[presentation] <PriceRange />", () => {
   describe("when only the min prop is defined", () => {
     const wrapper = component
       .withProps({
-        min: 99.99
+        min: 99.99,
       })
       .render();
 
@@ -35,7 +35,7 @@ describe("[presentation] <PriceRange />", () => {
   describe("when only the max prop is defined", () => {
     const wrapper = component
       .withProps({
-        max: 99.99
+        max: 99.99,
       })
       .render();
 
@@ -56,7 +56,7 @@ describe("[presentation] <PriceRange />", () => {
     const wrapper = component
       .withProps({
         max: 99.99,
-        min: 5
+        min: 5,
       })
       .render();
 

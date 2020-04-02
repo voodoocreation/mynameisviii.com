@@ -10,7 +10,7 @@ interface IProps {
 const Schema: React.FC<IProps> = ({ isPretty, ...props }) => (
   <script
     dangerouslySetInnerHTML={{
-      __html: JSON.stringify(props, null, isPretty ? "  " : undefined)
+      __html: JSON.stringify(props, null, isPretty ? "  " : undefined),
     }}
     type="application/ld+json"
   />
@@ -19,7 +19,7 @@ const Schema: React.FC<IProps> = ({ isPretty, ...props }) => (
 Schema.defaultProps = {
   "@context": "http://schema.org/",
   "@type": "Thing",
-  isPretty: false
+  isPretty: false,
 };
 
 export default Schema;

@@ -26,7 +26,7 @@ const Page: React.FC<IProps> = ({
   className,
   error,
   intl,
-  isLoading
+  isLoading,
 }) => (
   <article className={cn("Page", { isLoading }, className)}>
     <Head>
@@ -54,7 +54,7 @@ const Page: React.FC<IProps> = ({
 
 const mapState = (state: TStoreState) => ({
   error: selectors.getAppError(state),
-  isLoading: selectors.isAppLoading(state)
+  isLoading: selectors.isAppLoading(state),
 });
 
 export default injectIntl(connect(mapState)(Page));

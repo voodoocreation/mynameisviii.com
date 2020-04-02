@@ -11,10 +11,10 @@ export const getGalleries = defaultMemoize(
 
 export const getGalleriesCount = createSelector(
   getGalleries,
-  galleries => Object.keys(galleries).length
+  (galleries) => Object.keys(galleries).length
 );
 
-export const getGalleriesAsArray = createSelector(getGalleries, galleries =>
+export const getGalleriesAsArray = createSelector(getGalleries, (galleries) =>
   Object.values(galleries).sort(
     (a, b) =>
       new Date(b.modifiedAt).getTime() - new Date(a.modifiedAt).getTime()

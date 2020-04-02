@@ -11,8 +11,8 @@ describe("[connected] <OnlineStatusToast />", () => {
     const wrapper = component
       .withReduxState({
         app: {
-          isOnline: false
-        }
+          isOnline: false,
+        },
       })
       .mount();
 
@@ -49,8 +49,8 @@ describe("[connected] <OnlineStatusToast />", () => {
     const wrapper = component
       .withReduxState({
         app: {
-          isOnline: true
-        }
+          isOnline: true,
+        },
       })
       .mount();
 
