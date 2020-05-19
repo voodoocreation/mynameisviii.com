@@ -52,7 +52,7 @@ const Meta: React.FC = () => (
     <link href="/static/favicon/favicon.ico" rel="shortcut icon" />
     <meta content="#000000" name="msapplication-TileColor" />
     <meta content="/static/browserconfig.xml" name="msapplication-config" />
-    <meta content="#ffffff" name="theme-color" />
+    <meta content="#54122f" name="theme-color" />
   </>
 );
 
