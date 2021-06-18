@@ -105,7 +105,7 @@
     "scrollbar-size": "^2.1.0",
     "service-worker-mock": "^2.0.4",
     "serviceworker-webpack-plugin": "^1.0.1",
-    "striptags": "^3.1.1",
+    "striptags": "^3.2.0",
     "stylelint": "^13.2.1",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.0.0",
