@@ -2,7 +2,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 10
+      nodejs: 11
     commands:
       - "npm install -g yarn"
   pre_build:
