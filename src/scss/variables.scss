@@ -1,6 +1,6 @@
 $aws-url: "https://s3.amazonaws.com/mynameisviii-static";
 
-$body-color: #210813;
+$body-color: #1a0b0b;
 $text-color: #ffe6eb;
 $link-color: #fff;
 $link-color-hover: darken($text-color, 10%);
@@ -11,7 +11,7 @@ $panel-1-text: $text-color;
 $panel-2-bg: rgba($panel-base-color, 0.4);
 $panel-2-text: $text-color;
 
-$bg-1: $body-color url("#{$aws-url}/theme/heart-dark/bg-dark.jpg") 0 0 fixed no-repeat;
+$bg-1: $body-color url("#{$aws-url}/theme/lost-heart/bg-dark.jpg") 0 0 fixed no-repeat;
 $bg-2: $text-color url("#{$aws-url}/theme/heart/sky-day.jpg") 0 0 fixed no-repeat;
 
 $spacing: 20px;

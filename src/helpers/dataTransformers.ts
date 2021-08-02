@@ -62,7 +62,7 @@ export const absoluteUrl = (path: string) =>
       }${path}`;
 
 export const s3ThemeUrl = (path: string) =>
-  `https://s3.amazonaws.com/mynameisviii-static/theme/heart-dark${path}`;
+  `https://s3.amazonaws.com/mynameisviii-static/theme/lost-heart${path}`;
 
 export const extractDomain = (url: string) => url.split("/")[2];
 
